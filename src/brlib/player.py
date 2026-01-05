@@ -502,6 +502,9 @@ class Player():
         # remove team ids from multi-team season summary rows, e.g. 2TM
         df.loc[(~df["Team ID"].isna()) & (df["Team"].str.fullmatch("[1-9]TM")), "Team ID"] = None
         df = convert_numeric_cols(df)
+        # season could be int64 if total rows are missing, e.g. hawkiro01, johns11
+        if df["Season"].dtype == "int64":
+            df["Season"] = df["Season"].astype(str)
         return df
 
     @staticmethod
