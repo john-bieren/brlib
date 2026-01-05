@@ -114,16 +114,19 @@ class NoHitterDicts(Singleton):
         records = []
         for row in individual_table.find_all("tr"):
             record = [ele.text.strip("*") for ele in row.find_all(["th", "td"])]
-            records.append(record[:8])
+            records.append(record[:9])
         individual_df = pd.DataFrame(
             records,
-            columns=("Rk", "Name", "Perfect", "Gcar", "Gtm", "Year", "Date", "Team")
+            columns=("Rk", "Name", "Perfect", "Gcar", "Gtm", "Year", "Date", "Team", "Home/Away")
         )
         # remove the header rows which appear every 25 rows
         individual_df = individual_df.loc[individual_df["Name"] != "Name"].reset_index(drop=True)
         individual_df["Game Type"] = "R"
         postseason_mask = ((individual_df["Gcar"] == "") &
-                           (individual_df["Year"].astype(int) > FIRST_GAMES_YEAR))
+                           # before FIRST_GAMES_YEAR, Gcar is always blank
+                           (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR) &
+                           # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
+                           (individual_df["Home/Away"] != "?"))
         individual_df.loc[postseason_mask, "Game Type"] = "P"
         individual_df.loc[individual_df["Perfect"] == "", "Perfect"] = "N"
         individual_df = individual_df.reindex(
@@ -142,7 +145,11 @@ class NoHitterDicts(Singleton):
                 game_id_column.append(game_id)
 
         individual_df["Player ID"] = player_id_column
+        # fix the only exception to postseason_mask
+        individual_df.loc[individual_df["Player ID"] == "griercl01", "Game Type"] = "P"
+
         individual_df["Game ID"] = individual_df["Game ID"].astype("object")
+        # filter out games without box scores and IDs
         individual_df.loc[
             (~individual_df["Team"].isin(BML_TEAM_ABVS)) &
             (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
@@ -156,16 +163,17 @@ class NoHitterDicts(Singleton):
         records = []
         for row in combined_table.find_all("tr"):
             record = [ele.text.strip("*") for ele in row.find_all(["th", "td"])]
-            records.append(record[:11])
+            records.append(record[:9])
         combined_df = pd.DataFrame(
             records,
-            columns=("Rk", "Year", "Date", "Team", "Home/Away", "Opp", "Rslt", "Name", "Gcar", "Gtm", "Inngs")
+            columns=("Rk", "Year", "Date", "Team", "Home/Away", "Opp", "Rslt", "Name", "Gcar")
         )
         # remove the header rows which appear every 25 rows
         combined_df = combined_df.loc[combined_df["Name"] != "Name"].reset_index(drop=True)
         combined_df["Game Type"] = "R"
         postseason_mask = ((combined_df["Gcar"] == "") &
-                           (combined_df["Inngs"] != ""))
+                           # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
+                           (combined_df["Home/Away"] != "?"))
         combined_df.loc[postseason_mask, "Game Type"] = "P"
         combined_df = combined_df.reindex(
             columns=["Player ID", "Perfect", "Combined", "Year", "Team", "Game ID", "Game Type"]
