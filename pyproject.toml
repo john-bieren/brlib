@@ -41,9 +41,6 @@ Documentation = "https://github.com/john-bieren/brlib/tree/master/docs"
 Repository = "https://github.com/john-bieren/brlib.git"
 Issues = "https://github.com/john-bieren/brlib/issues"
 
-[tool.hatch.build]
-packages = ["src/brlib"]
-
 [tool.hatch.version]
 path = "src/brlib/__init__.py"
 
