@@ -1,11 +1,12 @@
-name: Run Tests
+name: Tests
 
 on: 
   push:
     branches: '**'
   schedule:
-    # run daily tests after the previous day's scores have hopefully been added
-    - cron: '0 12 * * *'
+    # run at 12 UTC, hopefully after BR's daily in-season updates
+    # run weekly because any more would be overkill
+    - cron: '0 12 * * 1'
 
 jobs:
   pytest:
