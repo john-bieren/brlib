@@ -8,6 +8,8 @@ from brlib._helpers.abbreviations_manager import abv_man
 
 
 def test_abv_man():
+    # when run locally, the data will be from cache if the file isn't manually removed beforehand
+    # changing this would cause the CI runner to request the data twice
     suite()
 
     # re-load data from cache and test again

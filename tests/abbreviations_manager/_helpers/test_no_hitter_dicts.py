@@ -7,7 +7,9 @@ from brlib._helpers.no_hitter_dicts import nhd
 
 def test_nhd():
     assert not nhd._populated
-    nhd.populate()
+    requested_data = nhd._get()
+    assert not requested_data.empty
+    nhd._generate_dicts(requested_data)
     suite()
 
     # re-load data from cache and test again
@@ -15,7 +17,9 @@ def test_nhd():
     nhd.player_inh_dict, nhd.player_pg_dict, nhd.player_cnh_dict = ({} for _ in range(3))
     nhd.team_inh_dict, nhd.team_pg_dict, nhd.team_cnh_dict = ({} for _ in range(3))
     assert nhd._has_valid_cache
-    nhd._load()
+    cached_data = nhd._load()
+    assert not cached_data.empty
+    nhd._generate_dicts(cached_data)
     suite()
 
 def suite():
@@ -39,8 +43,10 @@ def game_dicts():
 def player_dicts():
     assert nhd.player_inh_dict.get("pressry01") is None
     assert nhd.player_inh_dict["hallaro01"] == [["2010", "PHI", "P"], ["2010", "PHI", "R"]]
-    # checks that Negro League no-hitters are marked as regular season
+    # checks that Negro League no-hitters aren't all marked as postseason
     assert nhd.player_inh_dict["dayle99"] == [["1946", "NE", "R"]]
+    # ...except for Red Grier's no-hitter
+    assert nhd.player_inh_dict["griercl01"] == [["1926", "AC", "P"]]
 
     assert nhd.player_pg_dict.get("paxtoja01") is None
     assert nhd.player_pg_dict["hernafe02"] == [["2012", "SEA", "R"]]
@@ -65,7 +71,7 @@ def team_dicts():
         ["buehlwa01", "R", "SDN201805040"], ["cingrto01", "R", "SDN201805040"],
         ["garciyi01", "R", "SDN201805040"], ["liberad01", "R", "SDN201805040"]
     ]
-    assert nhd.game_cnh_dict["HOU2022"] == [
+    assert nhd.team_cnh_dict["HOU2022"] == [
         ["javiecr01", "P", "PHI202211020"], ["abreubr01", "P", "PHI202211020"],
         ["montera01", "P", "PHI202211020"], ["pressry01", "P", "PHI202211020"],
         ["javiecr01", "R", "NYA202206250"], ["nerishe01", "R", "NYA202206250"],
