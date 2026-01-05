@@ -7,7 +7,7 @@ from itertools import chain
 import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import TEAM_REPLACEMENTS
+from ._helpers.constants import MULTI_TEAM_REGEX, TEAM_REPLACEMENTS
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.utils import runtime_typecheck
 from .player import Player
@@ -85,7 +85,7 @@ class Players():
                           (self.pitching["Game Type"].str.startswith(game_type))) |
                         # multi-team season row
                          ((self.pitching["Season"] == year) &
-                          (self.pitching["Team"].str.fullmatch("[1-9]TM"))) |
+                          (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))) |
                         # career totals row, team career totals row
                          ((self.pitching["Season"] == "Career Totals") &
                           ((self.pitching["Team"].isna()) |

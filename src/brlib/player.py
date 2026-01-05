@@ -14,10 +14,11 @@ from curl_cffi import Response
 from dateutil.relativedelta import relativedelta
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import (BLING_DICT, LEAGUE_ABVS, PLAYER_BATTING_COLS,
-                                 PLAYER_BLING_COLS, PLAYER_FIELDING_COLS,
-                                 PLAYER_INFO_COLS, PLAYER_PITCHING_COLS,
-                                 PLAYER_URL_REGEX, RELATIVES_DICT,
+from ._helpers.constants import (BLING_DICT, LEAGUE_ABVS, MULTI_TEAM_REGEX,
+                                 PLAYER_BATTING_COLS, PLAYER_BLING_COLS,
+                                 PLAYER_FIELDING_COLS, PLAYER_INFO_COLS,
+                                 PLAYER_PITCHING_COLS, PLAYER_URL_REGEX,
+                                 RELATIVES_DICT, SEASON_REGEX,
                                  TEAM_REPLACEMENTS)
 from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
@@ -106,7 +107,7 @@ class Player():
                      (self.pitching["Game Type"].str.startswith(game_type))) |
                     # multi-team season row
                     ((self.pitching["Season"] == year) &
-                     (self.pitching["Team"].str.fullmatch("[1-9]TM"))) |
+                     (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))) |
                     # career totals row, team career totals row
                     ((self.pitching["Season"] == "Career Totals") &
                      ((self.pitching["Team"].isna()) |
@@ -500,7 +501,12 @@ class Player():
             "Team ID"
         ] = df["Team"] + df["Season"]
         # remove team ids from multi-team season summary rows, e.g. 2TM
-        df.loc[(~df["Team ID"].isna()) & (df["Team"].str.fullmatch("[1-9]TM")), "Team ID"] = None
+        df.loc[
+            (~df["Team ID"].isna()) &
+            (df["Team"].str.fullmatch(MULTI_TEAM_REGEX)),
+            "Team ID"
+        ] = None
+
         df = convert_numeric_cols(df)
         # season could be int64 if total rows are missing, e.g. hawkiro01, johns11
         if df["Season"].dtype == "int64":
@@ -743,9 +749,9 @@ class Player():
     @staticmethod
     def _scrape_teams_from_df(df: pd.DataFrame) -> list[tuple[str, str]]:
         """Returns a list of the teams which appear in `df`."""
-        season_rows = df.loc[df["Season"].str.fullmatch(r"[1-2][0-9]{3}")]
+        season_rows = df.loc[df["Season"].str.fullmatch(SEASON_REGEX)]
         # remove multi-team season summary rows
-        season_rows = season_rows[~season_rows["Team"].str.fullmatch("[1-9]TM")]
+        season_rows = season_rows[~season_rows["Team"].str.fullmatch(MULTI_TEAM_REGEX)]
         teams = list(zip(season_rows["Team"], season_rows["Season"])) # ("SEA", 2019)
         teams = list(dict.fromkeys(teams))
         return teams
