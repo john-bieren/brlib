@@ -13,7 +13,7 @@ from .players import Players
 from .team import Team
 from .teams import Teams
 
-__version__ = "0.0.2"
+__version__ = "0.0.3.dev0"
 
 __all__ = [
     "all_major_leaguers",
