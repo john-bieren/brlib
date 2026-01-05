@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "brlib"
+description = "A library for collecting baseball statistics from Baseball Reference"
+authors = [{ name = "John Bieren", email = "jbieren64@gmail.com" }]
+dynamic = ["version"]
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.3.0,<3.0.0",
+    "beautifulsoup4>=4.14.0,<5.0.0",
+    "tqdm>=4.67.1,<5.0.0",
+    "curl-cffi>=0.13.0,<1.0.0",
+    "lxml>=6.0.2,<7.0.0",
+    "platformdirs>=4.5.0,<5.0.0"
+]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE.txt"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+]
+keywords = ["baseball reference", "baseball", "baseball stats", "mlb"]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.0.0"]
+
+[project.urls]
+Homepage = "https://github.com/john-bieren/brlib"
+Documentation = "https://github.com/john-bieren/brlib/tree/master/docs"
+Repository = "https://github.com/john-bieren/brlib.git"
+Issues = "https://github.com/john-bieren/brlib/issues"
+
+[tool.hatch.build]
+packages = ["src/brlib"]
+
+[tool.hatch.version]
+path = "src/brlib/__init__.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
