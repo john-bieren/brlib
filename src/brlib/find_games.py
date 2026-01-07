@@ -29,6 +29,62 @@ def find_games(
         home_away: str = "ALL",
         game_type: str = "ALL"
         ) -> list[tuple[str, str, str]]:
+    """
+    Returns a list of game tuples which can be an input to `get_games`.
+
+    ## Parameters
+
+    * `teams`: `str` or `list[str]`, default `"ALL"`
+
+        A team abbreviation (e.g. `"sea"`), `"all"`, or a list of team abbreviations to specify which teams' games should be found. Abbreviations are subject to era adjustment, and aliases are not accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+
+    * `seasons`: `str` or `list[str]`, default `"ALL"`
+
+        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such inputs which specify the seasons from which to find games.
+
+    * `opponents`: `str` or `list[str]`, default `"ALL"`
+
+        A valid `teams` input specifying the opponents which `teams` must be facing in returned games.
+
+    * `dates`: `str` or `list[str]`, default `"ALL"`
+
+        A string representing a date in MMDD format as a number (e.g. `"0704"`), an inclusive range of such numbers (e.g. `"0314-0325"`), `"all"`, or a list of multiple such inputs which specify the dates from which games should be found.
+
+    * `home_away`: `str`, default `"ALL"`
+
+        `"home"`, `"away"`, or `"all"` to specify the role which `teams` should have in returned games.
+
+    * `game_type`: `str`, default `"ALL"`
+
+        `"reg"`, `"post"`, or `"all"` to specify whether to find regular season and/or postseason games.
+
+    ## Returns
+
+    `list[tuple[str, str, str]]`
+
+    ## Examples
+
+    Find all games from a team's season:
+
+    ```
+    >>> br.find_games("SEA", "2020")
+    [('HOU', '20200724', '0'), ('HOU', '20200725', '0'), ...]
+    ```
+
+    Find matchups between teams:
+
+    ```
+    >>> br.find_games("SEA", "2019", "STL")
+    [('SEA', '20190702', '0'), ('SEA', '20190703', '0'), ('SEA', '20190704', '0')]
+    ```
+
+    Abbreviations can match multiple teams due to era adjustment:
+
+    ```
+    >>> br.find_games(teams="BAL", seasons="1915", dates="825-826", home_away="home")
+    [('BAL', '19150825', '1'), ('BAL', '19150825', '2'), ('SLB', '19150825', '0'), ('BAL', '19150826', '0'), ('SLB', '19150826', '0')]
+    ```
+    """
     # make sure all possible list inputs are lists
     teams = [teams] if not isinstance(teams, list) else teams
     seasons = [seasons] if not isinstance(seasons, list) else seasons

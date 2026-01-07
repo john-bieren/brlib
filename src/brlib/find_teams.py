@@ -20,6 +20,46 @@ def find_teams(
     teams: str | list[str] = "ALL",
     seasons: str | list[str] = "ALL"
     ) -> list[tuple[str, str]]:
+    """
+    Returns a list of team tuples which can be an input to `get_teams`.
+
+    ## Parameters
+
+    * `teams`: `str` or `list[str]`, default `"ALL"`
+
+        A team abbreviation (e.g. `"sea"`), segregation-era league identifier (i.e. `"bml"` for Black major league teams or `"wml"` for White major league teams), `"all"`, or a list of multiple such inputs to specify which teams' games should be found. Abbreviations are subject to era adjustment, and aliases are not accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+
+    * `seasons`: `str` or `list[str]`, default `"ALL"`
+
+        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such inputs which specify the years from which to find games.
+
+    ## Returns
+
+    `list[tuple[str, str]]`
+
+    ## Examples
+
+    Find teams from a range of seasons without worrying about abbreviation changes:
+
+    ```
+    >>> br.find_teams("OAK", "2022-2025")
+    [('OAK', '2022'), ('OAK', '2023'), ('OAK', '2024'), ('ATH', '2025')]
+    ```
+
+    Survey entire seasons:
+
+    ```
+    >>> br.find_teams("BML", "1948")
+    [('BBB', '1948'), ('BEG', '1948'), ('CAG', '1948'), ('CBE', '1948'), ...]
+    ```
+
+    Abbreviations can match multiple teams due to era adjustment:
+
+    ```
+    >>> br.find_teams("BAL", "1914")
+    [('SLB', '1914'), ('BAL', '1914')]
+    ```
+    """
     # make sure all possible list inputs are lists
     teams = [teams] if not isinstance(teams, list) else teams
     seasons = [seasons] if not isinstance(seasons, list) else seasons

@@ -13,6 +13,35 @@ from .options import write
 
 @runtime_typecheck
 def find_asg(seasons: str | list[str] = "ALL") -> list[tuple[str, str, str]]:
+    """
+    Returns a list of All-Star Game tuples which can be an input to `get_games`.
+
+    ## Parameters
+
+    * `seasons`: `str` or `list[str]`, default `"ALL"`
+
+        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such inputs which specify the seasons from which to find All-Star Games.
+
+    ## Returns
+
+    `list[tuple[str, str, str]]`
+
+    ## Examples
+
+    Seasons which did not have All-Star Games are taken into account:
+
+    ```
+    >>> br.find_asg("2019-2022")
+    [('allstar', '2019', '0'), ('allstar', '2021', '0'), ('allstar', '2022', '0')]
+    ```
+
+    Seasons with two All-Star Games are also accounted for:
+
+    ```
+    >>> br.find_asg("1962")
+    [('allstar', '1962', '1'), ('allstar', '1962', '2')]
+    ```
+    """
     # process input
     seasons = [seasons] if not isinstance(seasons, list) else seasons
     seasons = [s.upper() for s in seasons]

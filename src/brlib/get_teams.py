@@ -16,6 +16,36 @@ def get_teams(
         team_list: list[tuple[str, str]],
         add_no_hitters: bool | None = None
         ) -> list[Team]:
+    """
+    Returns a list of `Team` objects corresponding to the input list of tuples which mimic the `Team` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+
+    ## Parameters
+
+    * `team_list`: `list[tuple[str, str]]`
+
+        A list of tuples containing `team`, and `season` arguments like those for a [`Team`](https://github.com/john-bieren/brlib/wiki/Team) object.
+
+    ## Returns
+
+    `list[Team]`
+
+    ## Examples
+
+    Gather some teams of interest:
+
+    ```
+    >>> br.get_teams([("HOU", "2019"), ("SEA", "2021"), ("WSN", "2022")])
+    [Team('HOU', '2019'), Team('SEA', '2021'), Team('WSN', '2022')]
+    ```
+
+    Directly pass `find_teams` results or `teams` attributes:
+
+    ```
+    >>> ft = br.find_teams(["SEA", "TBR"], ["2008", "2010"])
+    >>> br.get_teams(ft)
+    [Team('SEA', '2008'), Team('TBR', '2008'), Team('SEA', '2010'), Team('TBR', '2010')]
+    ```
+    """
     if add_no_hitters is None:
         add_no_hitters = options.add_no_hitters
 

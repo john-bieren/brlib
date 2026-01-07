@@ -11,6 +11,49 @@ from .options import print_page
 
 
 def all_major_leaguers() -> pd.DataFrame:
+    """
+    Returns a DataFrame of basic information about all players in major league history.
+
+    ## Parameters
+
+    None.
+
+    ## Returns
+
+    `pandas.DataFrame`
+
+    ## Examples
+
+    The output (as of 2025-26 offseason):
+
+    ```
+    >>> br.all_major_leaguers()
+        Player ID             Name  Career Start  Career End  Active
+    0      aardsda01    David Aardsma          2004        2015   False
+    1      aaronha01      Henry Aaron          1954        1976   False
+    2      aaronto01     Tommie Aaron          1962        1971   False
+    3       aasedo01         Don Aase          1977        1990   False
+    4       abadan01        Andy Abad          2001        2006   False
+    ...          ...              ...           ...         ...     ...
+    23610   zupofr01       Frank Zupo          1957        1961   False
+    23611  zuvelpa01     Paul Zuvella          1982        1991   False
+    23612  zuverge01  George Zuverink          1951        1959   False
+    23613  zwilldu01   Dutch Zwilling          1910        1916   False
+    23614   zychto01        Tony Zych          2015        2017   False
+
+    [23615 rows x 5 columns]
+    ```
+
+    You can filter results and convert them into a `get_players` input:
+
+    ```
+    >>> aml = br.all_major_leaguers()
+    >>> mask = aml["Player ID"].str.startswith("q")
+    >>> aml = aml.loc[mask]
+    >>> aml["Player ID"].values.tolist()
+    ['quackke01', 'quallch01', 'quallji01', ...]
+    ```
+    """
     page = req_man.get_page("/short/inc/players_search_list.csv")
     print_page("All MLB Players")
     csv_lines = str(page.content, "UTF-8").strip()

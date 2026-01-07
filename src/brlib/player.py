@@ -30,6 +30,75 @@ from .options import dev_alert, options, print_page
 
 
 class Player():
+    """
+    Statistics and information from a player. Can be initialized by specifying `player_id`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded player page. If neither of these parameters are given, an exception is raised.
+
+    ## Parameters
+
+    * `player_id`: `str`, default `""`
+
+        The first 5 letters of the player's last name, followed by the first two letters of their first name, and two digits as a unique identifier. This ID can be found in the URL of the player's page.
+
+    * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
+
+        A previously loaded player page.
+
+    * `add_no_hitters`: `bool` or `None`, default `None`
+
+        Whether to populate the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+
+    ## Attributes
+
+    * `id`: `str`
+
+        The unique identifier for the player used in the URL (e.g. `"vogelda01"`).
+
+    * `name`: `str`
+
+        The player's name (e.g. `"Daniel Vogelbach"`).
+
+    * `info`: `pandas.DataFrame`
+
+        Contains biographical information about the player.
+
+    * `bling`: `pandas.DataFrame`
+
+        Contains the player's career accolades as displayed by the banners in the upper right-hand corner of their page.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains the player's batting and baserunning stats from the three batting tables.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains the player's pitching stats from the three pitching tables.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains the player's fielding stats from the standard fielding table.
+
+    * `relatives`: `dict[str: list[str]]`
+
+        The player's relationships with other major leaguers. The relationships are they keys, and the values list the players. These values can be inputs to `get_players`.
+
+    * `teams`: `list[tuple[str, str]]`
+
+        A list of the teams on which the player appeared. Can be an input to `get_teams`.
+
+    ## Example
+
+    Load a player:
+
+    ```
+    >>> br.Player("whiteev01").name
+    'Evan White'
+    ```
+
+    ## Methods
+
+    * [`Player.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Player.add_no_hitters)
+    * [`Player.update_team_name`](https://github.com/john-bieren/brlib/wiki/Player.update_team_name)
+    """
     @runtime_typecheck
     def __init__(
             self,
@@ -71,9 +140,79 @@ class Player():
         return f"Player('{self.id}')"
 
     def update_team_name(self) -> None:
+        """
+        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> p = br.Player("beckejo02")
+        >>> p.info["Draft Team"]
+        0    Florida Marlins
+        Name: Draft Team, dtype: object
+        >>> p.update_team_name()
+        >>> p.info["Draft Team"]
+        0    Miami Marlins
+        Name: Draft Team, dtype: object
+        ```
+        """
         self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> p = br.Player("gilbety01")
+        >>> p.pitching[["Team", "Season", "NH", "PG", "CNH"]]
+            Team         Season  NH  PG  CNH
+        0    ARI           2021 NaN NaN  NaN
+        1    ARI           2022 NaN NaN  NaN
+        2    ARI           2023 NaN NaN  NaN
+        3    PHI           2024 NaN NaN  NaN
+        4    CHW           2025 NaN NaN  NaN
+        5   None  Career Totals NaN NaN  NaN
+        6   None   162 Game Avg NaN NaN  NaN
+        7    ARI  Career Totals NaN NaN  NaN
+        8    CHW  Career Totals NaN NaN  NaN
+        9    PHI  Career Totals NaN NaN  NaN
+        10  None  Career Totals NaN NaN  NaN
+        11  None  Career Totals NaN NaN  NaN
+        >>> p.add_no_hitters()
+        >>> p.pitching[["Team", "Season", "NH", "PG", "CNH"]]
+            Team         Season   NH   PG  CNH
+        0    ARI           2021  1.0  0.0  0.0
+        1    ARI           2022  0.0  0.0  0.0
+        2    ARI           2023  0.0  0.0  0.0
+        3    PHI           2024  0.0  0.0  0.0
+        4    CHW           2025  0.0  0.0  0.0
+        5   None  Career Totals  1.0  0.0  0.0
+        6   None   162 Game Avg  NaN  NaN  NaN
+        7    ARI  Career Totals  1.0  0.0  0.0
+        8    CHW  Career Totals  0.0  0.0  0.0
+        9    PHI  Career Totals  0.0  0.0  0.0
+        10  None  Career Totals  NaN  NaN  NaN
+        11  None  Career Totals  NaN  NaN  NaN
+        ```
+        """
         success = nhd.populate()
         if not success:
             return

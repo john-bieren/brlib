@@ -22,6 +22,70 @@ from .options import dev_alert, options, print_page
 
 
 class Team():
+    """
+    Statistics and information from a team. Can be initialized by specifying `team`, and `season`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded team page. If neither of these sets of parameters are given, an exception is raised.
+
+    ## Parameters
+
+    * `team`: `str`, default `""`
+
+        The team's abbreviation. Era adjustment is not used, and aliases are not accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+
+    * `season`: `str`, default `""`
+
+        The year in which the team played in YYYY format (e.g. `"2022"`).
+
+    * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
+
+        A previously loaded team page.
+
+    * `add_no_hitters`: `bool` or `None`, default `None`
+
+        Whether to populate the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+
+    ## Attributes
+
+    * `id`: `str`
+
+        The unique identifier for the team made up of its abbreviation and season (e.g. `"SEA2017"`).
+
+    * `name`: `str`
+
+        The team's name (e.g. `"2017 Seattle Mariners"`).
+
+    * `info`: `pandas.DataFrame`
+
+        Contains information about the team, its results, and its personnel.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains the team's batting and baserunning stats from the two batting tables.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains the team's pitching stats from the two pitching tables.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains the team's fielding stats from the standard fielding table.
+
+    * `players`: `list[str]`
+
+        A list of the players who played for the team. Can be an input to `get_players`.
+
+    ## Example
+
+    Load a team:
+
+    ```
+    >>> br.Team("SDP", "2022").name
+    '2022 San Diego Padres'
+    ```
+
+    ## Methods
+
+    * [`Team.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Team.add_no_hitters)
+    """
     @runtime_typecheck
     def __init__(
             self,
@@ -67,6 +131,40 @@ class Team():
         return f"Team('{team}', '{season}')"
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t = br.Team("BOS", "1904")
+        >>> t.pitching[["Player", "NH", "PG", "CNH"]]
+                    Player  NH  PG  CNH
+        0         Cy Young NaN NaN  NaN
+        1    George Winter NaN NaN  NaN
+        2  Jesse Tannehill NaN NaN  NaN
+        3   Norwood Gibson NaN NaN  NaN
+        4     Bill Dinneen NaN NaN  NaN
+        5      Team Totals NaN NaN  NaN
+        >>> t.add_no_hitters()
+        >>> t.pitching[["Player", "NH", "PG", "CNH"]]
+                    Player   NH   PG  CNH
+        0         Cy Young  1.0  1.0  0.0
+        1    George Winter  0.0  0.0  0.0
+        2  Jesse Tannehill  1.0  0.0  0.0
+        3   Norwood Gibson  0.0  0.0  0.0
+        4     Bill Dinneen  0.0  0.0  0.0
+        5      Team Totals  2.0  1.0  0.0
+        ```
+        """
         success = nhd.populate()
         if not success:
             return

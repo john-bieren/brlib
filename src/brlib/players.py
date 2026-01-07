@@ -14,6 +14,65 @@ from .player import Player
 
 
 class Players():
+    """
+    Aggregation of multiple `Player` objects.
+
+    ## Parameters
+
+    * `players`: `list[Player]`
+
+        The list of the players to aggregate.
+
+    ## Attributes
+
+    * `info`: `pandas.DataFrame`
+
+        Contains biographical information about the players.
+
+    * `bling`: `pandas.DataFrame`
+
+        Contains the players' career accolades as displayed by the banners in the upper right-hand corner of their pages.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains the players' batting and baserunning stats.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains the players' pitching stats.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains the players' fielding stats.
+
+    * `teams`: `list[tuple[str, str]]`
+
+        A list of the teams on which the players appeared. Can be an input to `get_teams`.
+
+    ## Examples
+
+    Aggregate a list of `Player` objects:
+
+    ```
+    >>> p1 = br.Player("lewisky01")
+    >>> p2 = br.Player("sanchsi01")
+    >>> br.Players([p1, p2])
+    Players(Player(lewisky01), Player(sanchsi01))
+    ```
+
+    Directly pass `get_players` results:
+
+    ```
+    >>> pl = br.get_players(["lewisky01", "sanchsi01"])
+    >>> br.Players(pl)      
+    Players(Player(lewisky01), Player(sanchsi01))
+    ```
+
+    ## Methods
+
+    * [`Players.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Players.add_no_hitters)
+    * [`Players.update_team_names`](https://github.com/john-bieren/brlib/wiki/Players.update_team_names)
+    """
     @runtime_typecheck
     def __init__(self, players: list[Player]) -> None:
         self._contents = tuple(player.id for player in players)
@@ -39,9 +98,81 @@ class Players():
         return f"Players({", ".join((f"Player({p})" for p in self._contents))})"
 
     def update_team_names(self) -> None:
+        """
+        Standardizes team names in `Players.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> pl = br.get_players(["longoev01", "shielja02", "uptonbj01"])
+        >>> ps = br.Players(pl)
+        >>> ps.info["Draft Team"]
+        0    Tampa Bay Devil Rays
+        1    Tampa Bay Devil Rays
+        2    Tampa Bay Devil Rays
+        Name: Draft Team, dtype: object
+        >>> ps.update_team_names()
+        >>> ps.info["Draft Team"]
+        0    Tampa Bay Rays
+        1    Tampa Bay Rays
+        2    Tampa Bay Rays
+        Name: Draft Team, dtype: object
+        ```
+        """
         self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Players.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> p1 = br.Player("coleta01")
+        >>> p2 = br.Player("penafe01")
+        >>> ps = br.Players([p1, p2])
+        >>> mask = ps.pitching["Season"].str.len() == 4
+        >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
+                Player Season  NH  PG  CNH
+        0   Taylor Cole   2017 NaN NaN  NaN
+        1   Taylor Cole   2018 NaN NaN  NaN
+        2   Taylor Cole   2019 NaN NaN  NaN
+        7    Félix Peña   2016 NaN NaN  NaN
+        8    Félix Peña   2017 NaN NaN  NaN
+        9    Félix Peña   2018 NaN NaN  NaN
+        10   Félix Peña   2019 NaN NaN  NaN
+        11   Félix Peña   2020 NaN NaN  NaN
+        12   Félix Peña   2021 NaN NaN  NaN
+        >>> ps.add_no_hitters()
+        >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
+                Player Season   NH   PG  CNH
+        0   Taylor Cole   2017  0.0  0.0  0.0
+        1   Taylor Cole   2018  0.0  0.0  0.0
+        2   Taylor Cole   2019  0.0  0.0  1.0
+        7    Félix Peña   2016  0.0  0.0  0.0
+        8    Félix Peña   2017  0.0  0.0  0.0
+        9    Félix Peña   2018  0.0  0.0  0.0
+        10   Félix Peña   2019  0.0  0.0  1.0
+        11   Félix Peña   2020  0.0  0.0  0.0
+        12   Félix Peña   2021  0.0  0.0  0.0
+        ```
+        """
         success = nhd.populate()
         if not success:
             return

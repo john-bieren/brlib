@@ -27,6 +27,108 @@ from .options import dev_alert, options, print_page
 
 
 class Game():
+    """
+    Statistics and information from a game. Can be initialized by specifying `home_team`, `date`, and `doubleheader`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded box score page. If neither of these sets of parameters are given, an exception is raised.
+
+    ## Parameters
+
+    * `home_team`: `str`, default `""`
+
+        The home team's abbreviation (e.g. `"sea"`), or, if the game is an All-Star Game, `"allstar"`. Era adjustment is not used, and aliases are accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+
+    * `date`: `str`, default `""`
+
+        The date of the game in YYYYMMDD format (e.g. `"20230830"`). Or, if the game is an All-Star Game, the year in YYYY format.
+
+    * `doubleheader`: `str`, default `""`
+
+        The game's status as part of a doubleheader:
+        * `"0"` if not part of a doubleheader.
+        * `"1"` if first game of a doubleheader.
+        * `"2"` if second game of a doubleheader.
+        * `"3"` if third game of a tripleheader (i.e. [PIT192010023](https://www.baseball-reference.com/boxes/PIT/PIT192010023.shtml)).
+
+        Or, if the game is an All-Star Game:
+        * `"0"` if only ASG of the year.
+        * `"1"` if first ASG of the year.
+        * `"2"` if second ASG of the year.
+
+    * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
+
+        A previously loaded box score page.
+
+    * `add_no_hitters`: `bool` or `None`, default `None`
+
+        Whether to populate the no-hitter columns in the `Game.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+
+    ## Attributes
+
+    * `id`: `str`
+
+        The unique identifier for the game used in the URL (e.g. "SEA201805020").
+
+    * `name`: `str`
+
+        The unique, pretty name of the game (e.g. "May 2, 2018, Oakland Athletics vs Seattle Mariners").
+
+    * `info`: `pandas.DataFrame`
+
+        Contains information about the game and its circumstances.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains batting and baserunning stats from the batting tables and the information beneath them.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains pitching stats from the pitching tables and the information beneath them.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains fielding stats from the batting tables and the information beneath them.
+
+    * `team_info`: `pandas.DataFrame`
+
+        Contains information about the teams involved in the game.
+
+    * `ump_info`: `pandas.DataFrame`
+
+        Contains the names and positions of the game's umpires.
+
+    * `linescore`: `pandas.DataFrame`
+
+        Contains the game's linescore, a box score fixture which displays the teams' run totals by inning, among other stats.
+
+    * `players`: `list[str]`
+
+        A list of the players who appeared in the game. Can be an input to `get_players`.
+
+    * `teams`: `list[tuple[str, str]]`
+
+        A list of the teams involved in the game. Can be an input to `get_teams`.
+
+    ## Examples
+
+    Load a game:
+
+    ```
+    >>> br.Game("SEA", "20190926", "0").name
+    'September 26, 2019, Oakland Athletics vs Seattle Mariners'
+    ```
+
+    Load an All-Star Game:
+
+    ```
+    >>> br.Game("allstar", "2024", "0").name
+    '2024 All-Star Game, July 16'
+    ```
+
+    ## Methods
+
+    * [`Game.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Game.add_no_hitters)
+    * [`Game.update_team_names`](https://github.com/john-bieren/brlib/wiki/Game.update_team_names)
+    * [`Game.update_venue_name`](https://github.com/john-bieren/brlib/wiki/Game.update_venue_name)
+    """
     @runtime_typecheck
     def __init__(
             self,
@@ -83,6 +185,30 @@ class Game():
         return f"Game('{home_team}', '{date}', '{doubleheader}')"
 
     def update_team_names(self) -> None:
+        """
+        Standardizes team names such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g = br.Game("FLO", "19940729", "0")
+        >>> g.info[["Away Team", "Home Team"]]
+                Away Team        Home Team
+        0  Montreal Expos  Florida Marlins
+        >>> g.update_team_names()
+        >>> g.info[["Away Team", "Home Team"]]
+                Away Team      Home Team
+        0  Montreal Expos  Miami Marlins
+        ```
+        """
         if self._is_asg:
             return
 
@@ -137,9 +263,71 @@ class Game():
         self.name = self.info["Game"].values[0]
 
     def update_venue_name(self) -> None:
+        """
+        Standardizes venue name such that venues are identified by one name.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g = br.Game("FLO", "19940729", "0")
+        >>> g.info["Venue"]
+        0    Joe Robbie Stadium
+        Name: Venue, dtype: object
+        >>> g.update_venue_name()
+        >>> g.info["Venue"]
+        0    Hard Rock Stadium
+        Name: Venue, dtype: object
+        ```
+        """
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Game.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g = br.Game("TOR", "20180508", "0")
+        >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                Player               Team  NH  PG  CNH
+        0    James Paxton   Seattle Mariners NaN NaN  NaN
+        1     Team Totals   Seattle Mariners NaN NaN  NaN
+        2  Marcus Stroman  Toronto Blue Jays NaN NaN  NaN
+        3       Tim Mayza  Toronto Blue Jays NaN NaN  NaN
+        4   Jake Petricka  Toronto Blue Jays NaN NaN  NaN
+        5      Aaron Loup  Toronto Blue Jays NaN NaN  NaN
+        6     John Axford  Toronto Blue Jays NaN NaN  NaN
+        7     Team Totals  Toronto Blue Jays NaN NaN  NaN
+        >>> g.add_no_hitters()
+        >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                Player               Team   NH   PG  CNH
+        0    James Paxton   Seattle Mariners  1.0  0.0  0.0
+        1     Team Totals   Seattle Mariners  1.0  0.0  0.0
+        2  Marcus Stroman  Toronto Blue Jays  0.0  0.0  0.0
+        3       Tim Mayza  Toronto Blue Jays  0.0  0.0  0.0
+        4   Jake Petricka  Toronto Blue Jays  0.0  0.0  0.0
+        5      Aaron Loup  Toronto Blue Jays  0.0  0.0  0.0
+        6     John Axford  Toronto Blue Jays  0.0  0.0  0.0
+        7     Team Totals  Toronto Blue Jays  0.0  0.0  0.0
+        ```
+        """
         success = nhd.populate()
         if not success:
             return

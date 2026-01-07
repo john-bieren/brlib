@@ -14,6 +14,64 @@ from .team import Team
 
 
 class Teams():
+    """
+    Aggregation of multiple `Team` objects.
+
+    ## Parameters
+
+    * `teams`: `list[Team]`
+
+        The list of the teams to aggregate.
+
+    ## Attributes
+
+    * `info`: `pandas.DataFrame`
+
+        Contains information about the teams, their results, and their personnel.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains the teams' batting and baserunning stats.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains the teams' pitching stats.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains the teams' fielding stats.
+
+    * `records`: `pandas.DataFrame`
+
+        Contains the teams' regular season records by franchise.
+
+    * `players`: `list[str]`
+
+        A list of the players who played for the teams. Can be an input to `get_players`.
+
+    ## Examples
+
+    Aggregate a list of `Team` objects:
+
+    ```
+    >>> t1 = br.Team("SEP", "1969")
+    >>> t2 = br.Team("MLA", "1901")
+    >>> br.Teams([t1, t2])
+    Teams(Team('SEP', '1969'), Team('MLA', '1901'))
+    ```
+
+    Directly pass `get_teams` results:
+
+    ```
+    >>> tl = br.get_teams([("SEP", "1969"), ("MLA", "1901")])
+    >>> br.Teams(tl)
+    Teams(Team('SEP', '1969'), Team('MLA', '1901'))
+    ```
+
+    ## Methods
+
+    * [`Teams.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Teams.add_no_hitters)
+    """
     @runtime_typecheck
     def __init__(self, teams: list[Team]) -> None:
         self._contents = tuple(team.id for team in teams)
@@ -57,6 +115,58 @@ class Teams():
         self.records = self.records.reindex(columns=RECORDS_COLS)
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Teams.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t1 = br.Team("BOS", "1917")
+        >>> t2 = br.Team("PRO", "1883")
+        >>> ts = br.Teams([t1, t2])
+        >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
+                    Player  NH  PG  CNH
+        0      Weldon Wyckoff NaN NaN  NaN
+        1         Ernie Shore NaN NaN  NaN
+        2           Babe Ruth NaN NaN  NaN
+        3        Herb Pennock NaN NaN  NaN
+        4           Carl Mays NaN NaN  NaN
+        5       Dutch Leonard NaN NaN  NaN
+        6       Sad Sam Jones NaN NaN  NaN
+        7         Rube Foster NaN NaN  NaN
+        8          Lore Bader NaN NaN  NaN
+        9         Team Totals NaN NaN  NaN
+        10    Charlie Sweeney NaN NaN  NaN
+        11       Lee Richmond NaN NaN  NaN
+        12  Old Hoss Radbourn NaN NaN  NaN
+        13        Team Totals NaN NaN  NaN
+        >>> ts.add_no_hitters()
+        >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
+                    Player   NH   PG  CNH
+        0      Weldon Wyckoff  0.0  0.0  0.0
+        1         Ernie Shore  0.0  0.0  1.0
+        2           Babe Ruth  0.0  0.0  1.0
+        3        Herb Pennock  0.0  0.0  0.0
+        4           Carl Mays  0.0  0.0  0.0
+        5       Dutch Leonard  0.0  0.0  0.0
+        6       Sad Sam Jones  0.0  0.0  0.0
+        7         Rube Foster  0.0  0.0  0.0
+        8          Lore Bader  0.0  0.0  0.0
+        9         Team Totals  0.0  0.0  1.0
+        10    Charlie Sweeney  0.0  0.0  0.0
+        11       Lee Richmond  0.0  0.0  0.0
+        12  Old Hoss Radbourn  0.0  0.0  0.0
+        13        Team Totals  0.0  0.0  0.0
+        ```
+        """
         success = nhd.populate()
         if not success:
             return

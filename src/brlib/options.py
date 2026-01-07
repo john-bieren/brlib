@@ -14,6 +14,83 @@ from ._helpers.utils import is_type
 
 
 class Options(Singleton):
+    """
+    Options to change brlib's behavior. The options' values can be read or set using attributes. The type of an assigned value must match that of the option's default value, unless the assigned value is `None`, which removes a previous assignment.
+
+    ## Attributes
+
+    * `add_no_hitters`, default `False`
+
+        Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team` objects.
+
+    * `request_buffer`, default `2.015`
+
+        Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate limit](https://www.sports-reference.com/429.html).
+
+    * `timeout_limit`, default `10`
+
+        Timeout parameter for requests.
+
+    * `max_retries`, default `2`
+
+        Number of retries to attempt on failed requests.
+
+    * `pb_format`, default `"{percentage:3.2f}%|{bar}{r_bar}"`
+
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument, read the tqdm docs [here](https://tqdm.github.io/docs/tqdm).
+
+    * `pb_color`, default `"#cccccc"`
+
+        The color of the progress bar. The value is passed to the tqdm `colour` argument, read the tqdm docs [here](https://tqdm.github.io/docs/tqdm).
+
+    * `pb_disable`, default `False`
+
+        Whether to disable the progress bar.
+
+    * `print_pages`, default `False`
+
+        Whether to print descriptions of visited pages.
+
+    * `dev_alerts`, default `False`
+
+        Whether to print alerts meant for brlib developers.
+
+    * `quiet`, default `False`
+
+        Whether to mute most printed messages.
+
+    ## Examples
+
+    Read the value of an option:
+
+    ```
+    >>> br.options.request_buffer
+    2.015
+    ```
+
+    Change an option's value for the duration of the session:
+
+    ```
+    >>> br.options.pb_disable = True
+    ```
+
+    Remove the assigned value:
+
+    ```
+    >>> br.options.print_pages = True
+    >>> br.options.print_pages
+    True
+    >>> br.options.print_pages = None
+    >>> br.options.print_pages
+    False
+    ```
+
+    ## Methods
+
+    * [`options.clear_cache`](https://github.com/john-bieren/brlib/wiki/options.clear_cache)
+    * [`options.clear_preferences`](https://github.com/john-bieren/brlib/wiki/options.clear_preferences)
+    * [`options.set_preference`](https://github.com/john-bieren/brlib/wiki/options.set_preference)
+    """
     def __init__(self) -> None:
         self._defaults = {
             "add_no_hitters": False,
@@ -53,6 +130,48 @@ class Options(Singleton):
                 del self._preferences[option]
 
     def set_preference(self, option: str, value: Any) -> None:
+        """
+        Changes the default value of an option for current and future sessions.
+
+        ## Parameters
+
+        * `option`: `str`
+
+            The name of the option.
+
+        * `value`: `Any`
+
+            The new default value. Must use the correct type for the given option. Use `None` to remove a preference.
+
+        ## Returns
+
+        `None`
+
+        ## Examples
+
+        Setting and removing a preference:
+
+        ```
+        >>> br.options.set_preference("add_no_hitters", True)
+        >>> br.options.add_no_hitters
+        True
+        >>> br.options.set_preference("add_no_hitters", None)
+        >>> br.options.add_no_hitters
+        False
+        ```
+
+        Session-level changes to option values persist:
+
+        ```
+        >>> br.options.max_retries = 3
+        >>> br.options.set_preference("max_retries", 5)
+        >>> br.options.max_retries
+        3
+        >>> br.options.max_retries = None
+        >>> br.options.max_retries
+        5
+        ```
+        """
         if option not in self._defaults:
             if not self.quiet:
                 print(f'unknown option "{option}"')
@@ -76,10 +195,65 @@ class Options(Singleton):
 
     @staticmethod
     def clear_cache() -> None:
+        """
+        Deletes all files in the cache directory. The cache will be replenished when necessary in a future session, but the deleted data will persist for the duration of the current session.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        Clear the cache:
+
+        ```
+        >>> br.options.clear_cache()
+        ```
+        """
         for file in CACHE_DIR.iterdir():
             file.unlink()
 
     def clear_preferences(self) -> None:
+        """
+        Resets option preferences for current and future sessions.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Examples
+
+        Changes take effect immediately:
+
+        ```
+        >>> br.options.set_preference("print_pages", True)
+        >>> br.options.print_pages
+        True
+        >>> br.options.clear_preferences()
+        >>> br.options.print_pages
+        False
+        ```
+
+        Session-level changes to option values persist:
+
+        ```
+        >>> br.options.set_preference("max_retries", 5)
+        >>> br.options.max_retries
+        5
+        >>> br.options.max_retries = 3
+        >>> br.options.clear_preferences()
+        >>> br.options.max_retries
+        3
+        ```
+        """
         self._preferences.clear()
         self._preferences_file.write_text(json.dumps({}), encoding="UTF-8")
 

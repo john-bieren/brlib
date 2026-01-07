@@ -16,6 +16,36 @@ def get_players(
         player_list: list[str],
         add_no_hitters: bool | None = None
         ) -> list[Player]:
+    """
+    Returns a list of `Player` objects corresponding to the input list of player IDs. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+
+    ## Parameters
+
+    * `player_list`: `list[str]`
+
+        A list of player ID arguments like those for a [`Player`](https://github.com/john-bieren/brlib/wiki/Player) object.
+
+    ## Returns
+
+    `list[Player]`
+
+    ## Examples
+
+    Gather some players of interest:
+
+    ```
+    >>> br.get_players(["hanigmi01", "mooredy01", "munozan01"])
+    [Player('hanigmi01'), Player('mooredy01'), Player('munozan01')]
+    ```
+
+    Directly pass `players` attributes:
+
+    ```
+    >>> t = br.Team("OAK", "2023")
+    >>> pl = br.get_players(t.players)
+    [Player('wadety01'), Player('thomaco01'), Player('soderty01'), ...]
+    ```
+    """
     if add_no_hitters is None:
         add_no_hitters = options.add_no_hitters
 

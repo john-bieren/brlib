@@ -15,6 +15,78 @@ from .game import Game
 
 
 class Games():
+    """
+    Aggregation of multiple `Game` objects.
+
+    ## Parameters
+
+    * `games`: `list[Game]`
+
+        The list of the games to aggregate.
+
+    ## Attributes
+
+    * `info`: `pandas.DataFrame`
+
+        Contains information about the games and their circumstances.
+
+    * `batting`: `pandas.DataFrame`
+
+        Contains batting and baserunning stats from the batting tables and the information beneath them.
+
+    * `pitching`: `pandas.DataFrame`
+
+        Contains pitching stats from the pitching tables and the information beneath them.
+
+    * `fielding`: `pandas.DataFrame`
+
+        Contains fielding stats from the batting tables and the information beneath them.
+
+    * `team_info`: `pandas.DataFrame`
+
+        Contains information about the teams involved in the games.
+
+    * `ump_info`: `pandas.DataFrame`
+
+        Contains the names and positions of the games' umpires.
+
+    * `records`: `pandas.DataFrame`
+
+        Contains team records in the games by franchise.
+
+    * `players`: `list[str]`
+
+        A list of the players who appeared in the games. Can be an input to `get_players`.
+
+    * `teams`: `list[tuple[str, str]]`
+
+        A list of the teams involved in the games. Can be an input to `get_teams`.
+
+    ## Examples
+
+    Aggregate a list of `Game` objects:
+
+    ```
+    >>> g1 = br.Game("SEA", "20180930", "0")                                          
+    >>> g2 = br.Game("SEA", "20190929", "0")
+    >>> br.Games([g1, g2])                
+    Games(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    ```
+
+    Directly pass `get_games` results:
+
+    ```
+    >>> gl = br.get_games([("SEA", "20180930", "0"), ("SEA", "20190929", "0")])              
+    >>> br.Games(gl)
+    Games(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    ```
+
+    ## Methods
+
+    * [`Games.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Games.add_no_hitters)
+    * [`Games.update_team_names`](https://github.com/john-bieren/brlib/wiki/Games.update_team_names)
+    * [`Games.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Games.update_venue_names)
+    """
     @runtime_typecheck
     def __init__(self, games: list[Game]) -> None:
         self._contents = tuple(game.id for game in games)
@@ -78,6 +150,34 @@ class Games():
         self.records["Win %"] = self.records["Wins"] / (self.records["Wins"]+self.records["Losses"])
 
     def update_team_names(self) -> None:
+        """
+        Standardizes team names such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g1 = br.Game("SEA", "20180401", "0")
+        >>> g2 = br.Game("TBA", "20050828", "0")
+        >>> gs = br.Games([g1, g2])
+        >>> gs.info[["Away Team", "Home Team"]]
+                            Away Team             Home Team
+        0              Cleveland Indians      Seattle Mariners
+        1  Los Angeles Angels of Anaheim  Tampa Bay Devil Rays
+        >>> gs.update_team_names()
+        >>> gs.info[["Away Team", "Home Team"]]
+                    Away Team         Home Team
+        0  Cleveland Guardians  Seattle Mariners
+        1   Los Angeles Angels    Tampa Bay Rays
+        ```
+        """
         # replace old team names
         self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
@@ -134,9 +234,83 @@ class Games():
                 self.team_info.loc[team_info_mask, cols].replace(name_dict)
 
     def update_venue_names(self) -> None:
+        """
+        Standardizes venue names such that venues are identified by one name.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g1 = br.Game("SEA", "20180401", "0")
+        >>> g2 = br.Game("TBA", "20050828", "0")
+        >>> gs = br.Games([g1, g2])
+        >>> gs.info["Venue"]
+        0       Safeco Field
+        1    Tropicana Field
+        Name: Venue, dtype: object
+        >>> gs.update_venue_names()
+        >>> gs.info["Venue"]
+        0      T-Mobile Park
+        1    Tropicana Field
+        Name: Venue, dtype: object
+        ```
+        """
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
 
     def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `Games.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g1 = br.Game("SEA", "20120815", "0")
+        >>> g2 = br.Game("SEA", "20120608", "0")
+        >>> gs = br.Games([g1, g2])
+        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                    Player                 Team  NH  PG  CNH
+        0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN
+        1     Kyle Farnsworth       Tampa Bay Rays NaN NaN  NaN
+        2         Team Totals       Tampa Bay Rays NaN NaN  NaN
+        3     Félix Hernández     Seattle Mariners NaN NaN  NaN
+        4         Team Totals     Seattle Mariners NaN NaN  NaN
+        ...               ...                  ... ... ...  ...
+        11      Stephen Pryor     Seattle Mariners NaN NaN  NaN
+        12       Lucas Luetge     Seattle Mariners NaN NaN  NaN
+        13     Brandon League     Seattle Mariners NaN NaN  NaN
+        14     Tom Wilhelmsen     Seattle Mariners NaN NaN  NaN
+        15        Team Totals     Seattle Mariners NaN NaN  NaN
+        >>> gs.add_no_hitters()
+        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                    Player                 Team   NH   PG  CNH
+        0   Jeremy Hellickson       Tampa Bay Rays  0.0  0.0  0.0
+        1     Kyle Farnsworth       Tampa Bay Rays  0.0  0.0  0.0
+        2         Team Totals       Tampa Bay Rays  0.0  0.0  0.0
+        3     Félix Hernández     Seattle Mariners  1.0  1.0  0.0
+        4         Team Totals     Seattle Mariners  1.0  1.0  0.0
+        ...               ...                  ...  ...  ...  ...
+        11      Stephen Pryor     Seattle Mariners  0.0  0.0  1.0
+        12       Lucas Luetge     Seattle Mariners  0.0  0.0  1.0
+        13     Brandon League     Seattle Mariners  0.0  0.0  1.0
+        14     Tom Wilhelmsen     Seattle Mariners  0.0  0.0  1.0
+        15        Team Totals     Seattle Mariners  0.0  0.0  1.0
+        ```
+        """
         success = nhd.populate()
         if not success:
             return
