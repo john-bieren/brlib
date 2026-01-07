@@ -725,6 +725,33 @@ class Game():
         h_df.loc[~is_player_mask, "Player ID"] = None
         self.players = self.players + player_id_column
 
+        # make sure all batters have only one row, combine stats in cases of illegal substitution
+        if not h_df["Player ID"].is_unique:
+            counts = h_df["Player ID"].value_counts()
+            assert len(counts.loc[counts > 2]) == 0
+            dup_players = counts.loc[counts == 2].index.tolist()
+
+            # combine stats from the players' two rows and drop the second row
+            for player in dup_players:
+                player_mask = h_df["Player ID"] == player
+                player_indices = h_df.loc[player_mask].index.to_list()
+                keep_row = h_df.iloc[player_indices[0]]
+                drop_row = h_df.iloc[player_indices[1]]
+                h_df.drop(index=player_indices[1], inplace=True)
+                # re-define this after dropping one of the rows
+                player_mask = h_df["Player ID"] == player
+
+                # stats are split across only certain columns, the rest are copied
+                for col in ["AB", "R", "H", "RBI", "BB", "SO", "PO", "A"]:
+                    total = str(int(keep_row[col]) + int(drop_row[col]))
+                    h_df.loc[player_mask, col] = total
+
+                # positions can differ as well
+                if keep_row["Position"] != drop_row["Position"]:
+                    positions = "-".join([keep_row["Position"], drop_row["Position"]])
+                    h_df.loc[player_mask, "Position"] = positions
+            h_df.reset_index(drop=True, inplace=True)
+
         # determine home team
         if str_remove(self._home_team, " ", "-", ".") in table_id:
             h_df = self._set_home_team(h_df, True)
@@ -780,7 +807,8 @@ class Game():
                     else:
                         player = player.split(" (")[0]
                         number = 1
-                    h_df.loc[h_df["Player"] == player, stat_name] = number
+                    # += because players can be listed twice, e.g. BOS201708250
+                    h_df.loc[h_df["Player"] == player, stat_name] += number
                     h_df.loc[h_df["Player"] == "Team Totals", stat_name] += number
 
             elif team_stats.get(stat) is not None:
