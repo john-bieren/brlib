@@ -1,0 +1,15 @@
+Player,Player ID,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Whitey Ford,fordwh01,SP,3.0,2,1,1.0,0,2,0,3.0,11,,,,,,,,,,53.0,,,0.026,0.83,,,0.5,0,0,1,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Frank Lary,laryfr01,RP,0.0,0,1,0.0,0,0,0,,1,,,,,,,,,,,0.0,0.0,-0.058,0.82,,,-0.6,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Dick Donovan,donovdi01,RP,2.0,4,0,0.0,0,1,0,0.0,10,,,,,,,,,,,1.0,1.0,0.02,0.95,,,0.6,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Jim Bunning,bunniji01,RP,2.0,0,0,0.0,0,2,0,0.0,6,,,,,,,,,,,0.0,0.0,0.088,0.58,,,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Mike Fornieles,fornimi01,RP,0.1,2,1,1.0,0,0,1,27.0,3,,,,,,,,,,,0.0,0.0,-0.072,0.3,,,-1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Hoyt Wilhelm,wilheho01,RP,1.2,3,2,2.0,1,1,0,10.8,10,,,,,,,,,,,1.0,0.0,-0.656,2.43,,,-2.0,0,1,0,1,0,0,0,0,0,0,0,1,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Team Totals,,,9.0,11,5,,1,6,1,0.0,41,,,,,,,,,,53.0,2.0,1.0,-0.652,0.0,,,-1.6,0,1,1,1,0,0,0,0,0,0,0,1,0,0.0,0.0,0.0,AL All-Stars,,NL All-Stars,,4,Loss,Away,1961-allstar-game-1
+Warren Spahn,spahnwa01,SP,3.0,0,0,0.0,0,3,0,0.0,9,,,,,,,,,,62.0,,,0.154,0.68,,,1.5,0,0,1,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Bob Purkey,purkebo01,RP,2.0,0,0,0.0,0,1,0,0.0,7,,,,,,,,,,,0.0,0.0,0.121,1.2,,,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Mike McCormick,mccormi03,RP,3.0,1,1,1.0,1,3,1,3.0,11,,,,,,,,,,,0.0,0.0,0.172,1.4,,,0.5,0,0,0,0,0,0,0,0,1,0,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Roy Face,facero01,RP,0.1,2,2,2.0,0,1,0,54.0,3,,,,,,,,,,,0.0,0.0,-0.097,1.5,,,-1.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Sandy Koufax,koufasa01,RP,0.0,1,0,0.0,0,0,0,,1,,,,,,,,,,,1.0,0.0,-0.11,3.85,,,-0.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Stu Miller,millest01,RP,1.2,0,1,0.0,1,4,0,0.0,9,,,,,,,,,,,2.0,1.0,-0.391,3.67,,,-0.6,1,0,0,1,0,0,0,1,0,1,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1
+Team Totals,,,10.0,4,4,,2,12,1,0.0,40,,,,,,,,,,62.0,3.0,1.0,-0.151,0.0,,,0.9,1,0,1,1,0,0,0,1,2,1,0,0,0,0.0,0.0,0.0,NL All-Stars,,AL All-Stars,,5,Win,Home,1961-allstar-game-1

@@ -1,0 +1,27 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Shin-Soo Choo,choosh01,LF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Elvis Andrus,andruel01,SS,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Joey Gallo,gallojo01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Logan Forsythe,forsylo01,3B,1.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Nomar Mazara,mazarno01,RF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Rougned Odor,odorro01,2B,1.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Ronald Guzmán,guzmaro01,1B,5.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Jeff Mathis,mathije01,C,14.0,0,1,0,0,0,1,6,0,0,4,1,1,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Lance Lynn,lynnla01,P,0.0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+José Leclerc,leclejo01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Kyle Bird,birdky01,P,0.0,0,0,0,0,0,0,4,0,0,2,1,1,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Team Totals,,,24.0,3,1,0,0,0,1,6,0,0,4,1,1,0,0,0,0,0,0,Texas Rangers,TEX2019,Seattle Mariners,SEA2019,2,Loss,Away,SEA201905270
+Mitch Haniger,hanigmi01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Kyle Seager,seageky01,3B,0.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Omar Narváez,narvaom01,C,12.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Domingo Santana,santado01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Jay Bruce,bruceja01,1B,6.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+J.P. Crawford,crawfjp01,SS,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Shed Long Jr.,longsh01,2B,1.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Mallex Smith,smithma05,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Tommy Milone,milonto01,P,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Cory Gearrin,gearrco01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Jesse Biddle,biddlje01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Austin Adams,adamsau02,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Anthony Bass,bassan01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270
+Team Totals,,,27.0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2019,Texas Rangers,TEX2019,6,Win,Home,SEA201905270

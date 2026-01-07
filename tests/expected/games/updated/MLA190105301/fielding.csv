@@ -1,0 +1,21 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+John Farrell,farrejo02,CF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Sam Dungan,dungasa01,RF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Joe Quinn,quinnjo02,2B,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Clarence Foster,fostepo01,LF,4.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Bill Everitt,everibi01,1B,7.0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Mike Grady,gradymi01,C,5.0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Billy Clingman,clingbi01,SS,1.0,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Bill Coughlin,coughbi01,3B,0.0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Wyatt Lee,leewa01,P,2.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Team Totals,,,24.0,11,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Nationals (1901-1960),WSH1901,Milwaukee Brewers (1901),MLA1901,2,Loss,Away,MLA190105301
+Irv Waldron,waldrir01,RF,2.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Billy Gilbert,gilbebi02,2B,3.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Bill Hallman,hallmbi02,LF,3.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+John Anderson,anderjo01,1B,9.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Wid Conroy,conrowi01,SS,4.0,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Hugh Duffy,duffyhu01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Jimmy Burke,burkeji01,3B,2.0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Joe Connor,connojo03,C,2.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Tully Sparks,sparktu01,P,0.0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301
+Team Totals,,,27.0,12,3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers (1901),MLA1901,Washington Nationals (1901-1960),WSH1901,5,Win,Home,MLA190105301

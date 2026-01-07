@@ -1,0 +1,3 @@
+Team,Team ID,Score,Record,Previous Game ID,Next Game ID,Result,Home/Away,Game ID
+Baltimore Orioles,BAL2017,16,63-65,BAL201708230,BOS201708260,Win,Away,BOS201708250
+Boston Red Sox,BOS2017,3,73-55,CLE201708240,BOS201708260,Loss,Home,BOS201708250

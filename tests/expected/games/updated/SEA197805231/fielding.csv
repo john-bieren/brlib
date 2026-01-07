@@ -1,0 +1,24 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Tom Poquette,poqueto01,RF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Hal McRae,mcraeha01,LF,1.0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Amos Otis,otisam01,PR-CF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+George Brett,brettge01,3B,0.0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Clint Hurdle,hurdlcl01,1B,12.0,3,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Darrell Porter,porteda02,C,4.0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Frank White,whitefr01,2B,2.0,4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+U L Washington,washiu_01,SS,2.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Willie Wilson,wilsowi02,CF-LF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Andy Hassler,hasslan01,P,2.0,4,0,1,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Team Totals,,,24.0,19,0,2,0,1,1,1,2,0,1,0,0,2,0,0,0,0,0,Kansas City Royals,KCR1978,Seattle Mariners,SEA1978,3,Loss,Away,SEA197805231
+Julio Cruz,cruzju01,2B,1.0,7,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Juan Bernhardt,bernhju01,1B,16.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Bruce Bochte,bochtbr01,LF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Leon Roberts,roberle01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Ruppert Jones,jonesru01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Larry Milbourne,milbola01,3B-SS,1.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Craig Reynolds,reynocr01,SS,0.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+José Báez,baezjo01,3B,0.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Bill Plummer,plummbi01,C,4.0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Dick Pole,poledi01,P,1.0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Jim Todd,toddji01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231
+Team Totals,,,27.0,16,1,1,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,SEA1978,Kansas City Royals,KCR1978,4,Win,Home,SEA197805231

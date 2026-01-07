@@ -1,0 +1,5 @@
+Player,Player ID,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Wyatt Lee,leewa01,SP,8,9,5,0,1,4,0,2.9,36,,,,,,,,,,57,,,,,,,,0,1,1,1,1,0,0,0,0,0,0,0,0,,,,Washington Senators,WSH1901,Milwaukee Brewers,MLA1901,2,Loss,Away,MLA190105301
+Team Totals,,,8,9,5,0,1,4,0,0.0,36,,,,,,,,,,57,,,,,,,,0,1,1,1,1,0,0,0,0,0,0,0,0,,,,Washington Senators,WSH1901,Milwaukee Brewers,MLA1901,2,Loss,Away,MLA190105301
+Tully Sparks,sparktu01,SP,9,7,2,1,6,2,0,2.93,39,,,,,,,,,,63,,,,,,,,1,0,1,1,1,0,0,0,0,0,0,0,0,,,,Milwaukee Brewers,MLA1901,Washington Senators,WSH1901,5,Win,Home,MLA190105301
+Team Totals,,,9,7,2,1,6,2,0,1.0,39,,,,,,,,,,63,,,,,,,,1,0,1,1,1,0,0,0,0,0,0,0,0,,,,Milwaukee Brewers,MLA1901,Washington Senators,WSH1901,5,Win,Home,MLA190105301

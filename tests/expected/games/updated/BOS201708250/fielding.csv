@@ -1,0 +1,32 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Tim Beckham,beckhti01,SS,1.0,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Manny Machado,machama01,3B,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Anthony Santander,santaan02,PH-RF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Jonathan Schoop,schoojo01,2B,0.0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Caleb Joseph,josepca01,PH-3B,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Adam Jones,jonesad01,CF,4.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Craig Gentry,gentrcr01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Trey Mancini,mancitr01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Chris Davis,davisch02,1B,9.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Welington Castillo,castiwe01,C,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Seth Smith,smithse01,RF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Ryan Flaherty,flahery01,3B-2B,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Jeremy Hellickson,hellije01,P,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Richard Bleier,bleieri01,P,0.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Mike Wright Jr.,wrighmi01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Team Totals,,,27.0,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,BAL2017,Boston Red Sox,BOS2017,16,Win,Away,BOS201708250
+Eduardo Núñez,nunezed02,2B,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Brock Holt,holtbr01,2B,1.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Andrew Benintendi,beninan01,LF,2.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Mookie Betts,bettsmo01,RF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Mitch Moreland,morelmi01,1B-P,4.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Xander Bogaerts,bogaexa01,SS,2.0,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Rafael Devers,deverra01,3B,0.0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Hanley Ramírez,ramirha01,1B,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Rajai Davis,davisra01,CF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Sandy León,leonsa01,C,9.0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Rick Porcello,porceri01,P,1.0,2,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Joe Kelly,kellyjo05,P,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Blaine Boyer,boyerbl01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Robby Scott,scottro02,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
+Team Totals,,,27.0,10,5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,BOS2017,Baltimore Orioles,BAL2017,3,Loss,Home,BOS201708250
