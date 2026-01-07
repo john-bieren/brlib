@@ -79,6 +79,7 @@ class Games():
 
     def update_team_names(self) -> None:
         # replace old team names
+        self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({
                 "Home Team": TEAM_REPLACEMENTS,

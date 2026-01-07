@@ -88,8 +88,8 @@ class Game():
 
         # replace old team names
         self.linescore.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
+        self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
-        self.name = self.info["Game"].values[0]
         self.info.replace({
                 "Home Team": TEAM_REPLACEMENTS,
                 "Away Team": TEAM_REPLACEMENTS,
@@ -107,13 +107,16 @@ class Game():
             {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
         )
 
-        # replace old team names within a given range
+        # replace old team names within a certain range
         year = int(self._home_team_id[-4:])
         for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
             if year not in range(start_year, end_year+1):
                 continue
             name_dict = {old_name: new_name}
 
+            self.linescore.replace({"Team": name_dict}, regex=True, inplace=True)
+            self.team_info.replace({"Team": name_dict}, regex=True, inplace=True)
+            self.info.replace({"Game": name_dict}, regex=True, inplace=True)
             self.info.replace({
                     "Home Team": name_dict,
                     "Away Team": name_dict,
@@ -130,6 +133,8 @@ class Game():
             self.fielding.replace(
                 {"Team": name_dict, "Opponent": name_dict}, inplace=True
             )
+
+        self.name = self.info["Game"].values[0]
 
     def update_venue_name(self) -> None:
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
