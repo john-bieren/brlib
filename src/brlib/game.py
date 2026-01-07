@@ -203,6 +203,7 @@ class Game():
 
         self.batting = convert_numeric_cols(self.batting)
         self.pitching = convert_numeric_cols(self.pitching)
+        self.players = list(dict.fromkeys(self.players))
 
         self.info["Game"] = self.name
         self.info["Game ID"] = self.id
@@ -597,14 +598,14 @@ class Game():
                 total, player_list = players.split(". ", maxsplit=1)
                 h_df.loc[h_df["Player"] == "Team Totals", stat] = int(total)
 
-                for player_list in player_list.split("; "):
-                    if player_list.rsplit(maxsplit=1)[1].isnumeric():
-                        player_list, number = player_list.rsplit(maxsplit=1)
+                for dp_players in player_list.split("; "):
+                    if dp_players.rsplit(maxsplit=1)[1].isnumeric():
+                        dp_players, number = dp_players.rsplit(maxsplit=1)
                         number = int(number)
                     else:
                         number = 1
-                    for player in set(player_list.split("-")):
-                        h_df.loc[h_df["Player"] == player, stat] = number
+                    for player in set(dp_players.split("-")):
+                        h_df.loc[h_df["Player"] == player, stat] += number
 
         # convert cWPA from percentage to a float
         if "cWPA" in h_df.columns:
@@ -668,10 +669,9 @@ class Game():
                     p_df["SHO"] = 1
 
             # create details column with wins, losses, saves, blown saves, and holds
+            p_df[["W", "L", "SV", "BS", "Holds"]] = 0
             try:
                 p_df[["Player", "Details"]] = p_df["Player"].str.split(", ", expand=True, regex=False, n=1)
-                # extract stats from details column
-                p_df[["W", "L", "SV", "BS", "Holds"]] = 0
                 for i, row in p_df.iterrows():
                     if row["Details"] is None:
                         continue
@@ -786,3 +786,4 @@ class Game():
         # reindex to remove fielding columns; remove pitchers who did not hit
         self.batting = self.batting.reindex(columns=GAME_BATTING_COLS)
         self.batting = self.batting.loc[~self.batting["AB"].isna()]
+        self.batting.reset_index(drop=True, inplace=True)
