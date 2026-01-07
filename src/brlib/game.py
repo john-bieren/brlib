@@ -612,16 +612,6 @@ class Game():
             h_df["cWPA"] = h_df["cWPA"].str.strip("%")
             h_df["cWPA"] = pd.to_numeric(h_df["cWPA"], errors="coerce") / 100
             h_df["cWPA"] = h_df["cWPA"].round(4)
-
-        # add plate appearances to All-Star Games
-        if self._is_asg:
-            h_df.loc[:, "PA"] = 0
-            for col in ("AB", "BB", "HBP", "SF", "SH"):
-                try:
-                    h_df["PA"] += h_df[col].astype(int)
-                except ValueError:
-                    # h_df[col] == ""
-                    continue
         return h_df
 
     def _scrape_game_pitching(self, pitching_section: Tag) -> None:
