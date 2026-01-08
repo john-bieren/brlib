@@ -665,12 +665,13 @@ class Player():
         h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
 
-        # count the summary rows which won't be under the advanced table
-        buffer_rows = h_df_1.loc[
-            (h_df_1["Season"].str.endswith(")")) &
-            (h_df_1["Game Type"] == "Regular Season")
+        # count the team/league summary rows which won't be under the advanced table
+        summary_rows = h_df_1.loc[
+            (h_df_1["Season"] == "Career Totals") &
+            (h_df_1["Game Type"] == "Regular Season") &
+            ((~h_df_1["Team"].isna()) | (~h_df_1["League"].isna()))
         ]
-        advanced_batting_buffer = len(buffer_rows) + 1 # add one for 162 game average row
+        advanced_batting_buffer = len(summary_rows) + 1 # add one for 162 game average row
         return h_df_1, advanced_batting_buffer
 
     @staticmethod
@@ -688,12 +689,13 @@ class Player():
         p_df_1 = Player._process_career_totals(p_df_1)
         p_df_1["IP"].apply(change_innings_notation)
 
-        # count the summary rows which won't be under the advanced table
-        buffer_rows = p_df_1.loc[
-            (p_df_1["Season"].str.endswith(")")) &
-            (p_df_1["Game Type"] == "Regular Season")
+        # count the team/league summary rows which won't be under the advanced table
+        summary_rows = p_df_1.loc[
+            (p_df_1["Season"] == "Career Totals") &
+            (p_df_1["Game Type"] == "Regular Season") &
+            ((~p_df_1["Team"].isna()) | (~p_df_1["League"].isna()))
         ]
-        advanced_pitching_buffer = len(buffer_rows) + 1 # add one for 162 game average row
+        advanced_pitching_buffer = len(summary_rows) + 1 # add one for 162 game average row
         return p_df_1, advanced_pitching_buffer
 
     def _scrape_standard_fielding(self, table: Tag) -> None:
