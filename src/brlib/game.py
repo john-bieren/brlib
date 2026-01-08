@@ -455,7 +455,7 @@ class Game():
             # print the series abbreviation instead of the full name, except for the World Series
             if "(" in series_game:
                 series_game = series_game.split("(", maxsplit=1)[1].replace(")", "")
-            self.name = f"{month_day}, {year}, {series_game}, {matchup}"
+            self.name = f"{month_day}, {year}, {matchup}, {series_game}"
 
             if "World Series" in heading:
                 self.info["Game Type"] = "World Series"
