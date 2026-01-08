@@ -58,8 +58,7 @@ class AbbreviationsManager(Singleton):
     def _load(self) -> None:
         """Loads abbreviations data from cache."""
         self.df = pd.read_csv(self._cache_file)
-        self.df["Alias"] = self.df["Alias"].astype(str)
-        self.df.loc[self.df["Alias"] == "nan", "Alias"] = ""
+        self.df.loc[self.df["Alias"].isna(), "Alias"] = ""
 
     def _get(self) -> None:
         """Gets abbreviations data from Baseball Reference."""
