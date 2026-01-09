@@ -5,7 +5,7 @@
 from brlib._helpers.no_hitter_dicts import nhd
 
 
-def test_nhd():
+def test_nhd() -> None:
     """Tests attributes of the NoHitterDicts singleton when loaded from cache and the web."""
     assert not nhd._populated
     requested_data = nhd._get()
@@ -23,13 +23,13 @@ def test_nhd():
     nhd._generate_dicts(cached_data)
     suite()
 
-def suite():
+def suite() -> None:
     """Runs the tests for all of the dictionaries."""
     game_dicts()
     player_dicts()
     team_dicts()
 
-def game_dicts():
+def game_dicts() -> None:
     """Tests the contents of the game dictionaries."""
     assert nhd.game_inh_dict["CIN202408020"] == "snellbl01"
     assert nhd.game_inh_dict["NYA195610080"] == "larsedo01"
@@ -43,7 +43,7 @@ def game_dicts():
     ]
     assert nhd.game_cnh_dict["DET202307080"] == ["mannima02", "foleyja01", "langeal01"]
 
-def player_dicts():
+def player_dicts() -> None:
     """Tests the contents of the player dictionaries."""
     assert nhd.player_inh_dict.get("pressry01") is None
     assert nhd.player_inh_dict["hallaro01"] == [["2010", "PHI", "P"], ["2010", "PHI", "R"]]
@@ -60,7 +60,7 @@ def player_dicts():
     assert nhd.player_cnh_dict["sanchaa01"] == [["2019", "HOU", "R"]]
     assert nhd.player_cnh_dict["pressry01"] == [["2022", "HOU", "P"], ["2022", "HOU", "R"]]
 
-def team_dicts():
+def team_dicts() -> None:
     """Tests the contents of the team dictionaries."""
     assert nhd.team_inh_dict.get("LAD2018") is None
     # checks that pre-1901 no-hitters are marked as regular season
