@@ -803,6 +803,7 @@ class Player():
         # scrape regular season and postseason tabs
         reg_records, post_records = ([] for _ in range(2))
         tables = 0
+        postseason_included = False
 
         for row in table.find_all("tr"):
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
@@ -810,9 +811,13 @@ class Player():
             if record[0] == "":
                 continue
 
-            # figure out when the postseason table starts
-            if record[0] == "Season": # means this record is a column header row
+            # count the number of column label rows, and therefore tables, seen
+            if record[0] == "Season":
                 tables += 1
+            assert tables in {1, 2}
+            # postseason stats rows include this identifier
+            if "_post." in row.get("id", ""):
+                postseason_included = True
 
             if tables == 1: # on the first table (presumably regular season)
                 reg_records.append(record)
@@ -838,11 +843,11 @@ class Player():
             df = pd.DataFrame(reg_records, columns=reg_column_names)
             df = Player._clean_dataframe(df)
             if add_game_type:
-                # make sure this isn't a player who's only appeared in the playoffs
-                if reg_records[0][1] != "": # age is empty in postseason tables
-                    df.loc[:, "Game Type"] = "Regular Season"
-                else:
+                # this could be a player who's only appeared in the playoffs, e.g. kigerma01
+                if postseason_included:
                     df.loc[:, "Game Type"] = "Postseason"
+                else:
+                    df.loc[:, "Game Type"] = "Regular Season"
         return df
 
     @staticmethod
