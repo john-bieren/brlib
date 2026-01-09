@@ -467,19 +467,17 @@ class Player():
                 self.info.loc[:, "Draft Year"] = draft_year
                 self.info.loc[:, "Draft Type"] = draft_type.split(" from ", maxsplit=1)[0].strip(".")
 
-            elif line_str.startswith("High School"):
-                self.info.loc[:, "High School"] = line_str.replace("High School: ", "")
+            elif "School:" in line_str:
+                school_type, school_name = line_str.split(": ", maxsplit=1)
+                self.info.loc[:, school_type+"s"] = f'"{school_name}"'
 
-            elif line_str.startswith("School:"):
-                self.info.loc[:, "Schools"] = f'"{line_str.replace("School: ", "")}"'
-
-            elif line_str.startswith("Schools"):
-                line_str = line_str.replace("Schools: ", "")
+            elif "Schools" in line_str:
+                col, school_list = line_str.split(": ", maxsplit=1)
                 # ")" included because there are also commas in the names of the schools' cities
-                schools = [school.strip() for school in line_str.split("),")]
+                schools = [school.strip() for school in school_list.split("),")]
                 # restore ")" where necessary
                 schools = [school + ")" if school[-1] != ")" else school for school in schools]
-                self.info.loc[:, "Schools"] = f'"{'", "'.join(schools)}"'
+                self.info.loc[:, col] = f'"{'", "'.join(schools)}"'
 
             elif line_str.startswith("Debut") and "AL/NL" not in line_str:
                 debut_date = str_between(line_str, "Debut:", "(").strip()

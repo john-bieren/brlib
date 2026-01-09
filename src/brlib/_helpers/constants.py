@@ -511,7 +511,7 @@ PLAYER_INFO_COLS = (
     "Draft Pick",
     "Draft Year",
     "Draft Type",
-    "High School",
+    "High Schools",
     "Schools",
     "Debut",
     "Debut Game ID",
