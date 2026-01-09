@@ -421,7 +421,7 @@ class Team():
                 # we're in the final rows of regular season table
                 end_of_reg_table = True
             if end_of_reg_table and record[0] == "Rk":
-                # we're on another column header row and therefore a new table
+                # we're on another column label row and therefore a new table
                 found_postseason_table = True
 
             if found_postseason_table:
@@ -447,7 +447,7 @@ class Team():
             df_1 = pd.DataFrame(reg_records, columns=reg_column_names)
             df_1.loc[:, "Game Type"] = "Regular Season"
 
-        # remove column header rows
+        # remove column label rows
         df_1 = df_1.loc[
             (df_1["Rk"] != "Rk") &
             (df_1["Player"] != "Standard")
@@ -505,7 +505,7 @@ class Team():
         # set up DataFrame
         column_names = records.pop(0)
         df_2 = pd.DataFrame(records, columns=column_names)
-        # remove column header rows
+        # remove column label rows
         df_2 = df_2.loc[df_2["Rk"] != "Rk"]
 
         # add player ids to table, exclude non-player rows

@@ -465,7 +465,7 @@ class Game():
     def _scrape_linescore(self, linescore: Tag) -> None:
         """Scrapes team names and run totals, and populates `self.linescore` from `linescore`."""
         records = []
-        for row in linescore.find_all("tr")[:3]: # only grab column headers and two teams' lines
+        for row in linescore.find_all("tr")[:3]: # only grab column labels and two teams' lines
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             record = [i for i in record if "Sports Logos.net" not in i]
             # remove the X in the bottom of the ninth, if applicable

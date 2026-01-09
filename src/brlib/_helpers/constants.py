@@ -513,7 +513,7 @@ PLAYER_INFO_COLS = (
     "Draft Type",
     "High Schools",
     "Schools",
-    "Debut",
+    "Debut Date",
     "Debut Game ID",
     "Debut Age",
     "Debut Age (Days)",

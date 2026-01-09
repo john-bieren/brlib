@@ -481,7 +481,7 @@ class Player():
 
             elif line_str.startswith("Debut") and "AL/NL" not in line_str:
                 debut_date = str_between(line_str, "Debut:", "(").strip()
-                self.info.loc[:, "Debut"] = reformat_date(debut_date)
+                self.info.loc[:, "Debut Date"] = reformat_date(debut_date)
                 try:
                     debut_datetime = datetime.strptime(debut_date, "%B %d, %Y")
                     age = relativedelta(debut_datetime, birth_datetime)
@@ -489,7 +489,7 @@ class Player():
                     self.info.loc[:, "Debut Age (Days)"] = (debut_datetime - birth_datetime).days
                 except (ValueError, UnboundLocalError):
                     # incomplete debut date or missing birth date, respectively
-                    continue
+                    pass
 
                 debut_game_link = line.find_all("a", href=True)[-1]["href"]
                 if "/boxes/" in debut_game_link:
