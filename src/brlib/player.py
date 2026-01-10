@@ -328,6 +328,8 @@ class Player():
         self.pitching = self.pitching.reindex(columns=PLAYER_PITCHING_COLS)
         self.fielding = self.fielding.reindex(columns=PLAYER_FIELDING_COLS)
 
+        # get final pieces of info which require the above DataFrames
+        self._count_years_played()
         self._find_teams_info()
 
     def _scrape_info(self, info: Tag, wrap: Tag) -> None:
@@ -340,7 +342,13 @@ class Player():
         player_bling = info.find("ul", {"id": "bling"})
         self._scrape_bling(player_bling)
 
-        self._scrape_other_totals(wrap)
+        # find career wins above replacement
+        major_totals_summary = wrap.find("div", {"class": "p1"})
+        if major_totals_summary is not None:
+            self.info.loc[:, "bWAR"] = major_totals_summary.text.split("\n")[3]
+        else:
+            # player has played in postseason but not regular season
+            self.info.loc[:, "bWAR"] = ""
 
     def _scrape_bio(self, player_bio: Tag) -> None:
         """Adds biographical information to `self.info`."""
@@ -553,24 +561,6 @@ class Player():
                         self.relatives[relation] = [player_ids.pop(0) for _ in range(player_count)]
                     else:
                         dev_alert(f'{self.id}: unexpected relation "{r.strip()}"')
-
-    def _scrape_other_totals(self, wrap: Tag) -> None:
-        """Adds bWAR and years played to `self.info`."""
-        # find career wins above replacement
-        major_totals_summary = wrap.find("div", {"class": "p1"})
-        if major_totals_summary is not None:
-            self.info.loc[:, "bWAR"] = major_totals_summary.text.split("\n")[3]
-        else:
-            # player has played in postseason but not regular season
-            self.info.loc[:, "bWAR"] = ""
-
-        # determine the years in which they played
-        years_played = set()
-        # add all the years found in the tables to years_played
-        for row in wrap.find_all("th", {"data-stat": "year_id"}):
-            if row.text.isnumeric():
-                years_played.add(row.text)
-        self.info.loc[:, "Years Played"] = len(years_played)
 
     def _scrape_bling(self, player_bling: Tag) -> None:
         """Populates `self.bling`."""
@@ -872,11 +862,18 @@ class Player():
         df.loc[df["Season"].str.contains("Yrs*$", na=False), "Season"] = "Career Totals"
         return df
 
+    def _count_years_played(self) -> None:
+        """Adds `"Years Played"` to `self.info`."""
+        years_played = set()
+        years_played.update(self.batting["Season"].values.tolist())
+        years_played.update(self.pitching["Season"].values.tolist())
+        years_played.update(self.fielding["Season"].values.tolist())
+        # filter out "Career Totals", "162 Game Avg", and anything else that isn't a year
+        years_played = set(filter(lambda x: x.isnumeric(), years_played))
+        self.info.loc[:, "Years Played"] = len(years_played)
+
     def _find_teams_info(self) -> None:
-        """
-        Adds info about the number of teams that the player played on
-        and their most teams in a season to `self.info`.
-        """
+        """Adds `"Teams Played For"` and `"Most Teams in a Year"` to `self.info`."""
         bat_teams = Player._scrape_teams_from_df(self.batting) if not self.batting.empty else []
         pit_teams = Player._scrape_teams_from_df(self.pitching) if not self.pitching.empty else []
         fld_teams = Player._scrape_teams_from_df(self.fielding) if not self.fielding.empty else []
