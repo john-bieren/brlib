@@ -1,0 +1,4 @@
+Player,Player ID,Season,Age,Team,Team ID,League,Game Type,Batting bWAR,G,PA,AB,R,H,2B,3B,HR,RBI,SB,CS,BB,SO,BA,OBP,SLG,OPS,OPS+,rOBA,Rbat+,TB,GIDP,HBP,SH,SF,IBB,Pos,Rbat,Rbaser,Rdp,Rfield,Rpos,RAA,WAA,Rrep,RAR,waaWL%,162WL%,oWAR,dWAR,oRAR,BAbip,ISO,HR%,SO%,BB%,EV,HardH%,LD%,GB%,FB%,GB/FB,Pull%,Cent%,Oppo%,WPA,cWPA,RE24,RS%,SB%,XBT%,Salary,AS,GG,SS,MVP Finish,CYA Finish,ROY Finish,LCS MVP,WS MVP
+Collins,colli05,1948,,MRS,MRS1948,NAL,Regular Season,,1,0,0,0,0,0,0,0,,,,0,,,,,,,,,,,,,,,/1,0,0,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Collins,colli05,Career Totals,,,,,Regular Season,,1,0,0,0,0,0,0,0,,,,0,,,,,,,,,,,,,,,/1,0,0,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Collins,colli05,162 Game Avg,,,,,Regular Season,,162,0,0,0,0,0,0,0,,,,0,,,,,,,,,,,,,,,,0,0,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
