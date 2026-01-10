@@ -652,6 +652,7 @@ class Player():
         )
         h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
+        h_df_1.loc[h_df_1["Season"] == "162 Game Avg", "Pos"] = None
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = h_df_1.loc[
@@ -697,6 +698,7 @@ class Player():
         )
 
         self.fielding = Player._process_awards_column(self.fielding)
+        self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
         # set by-position totals rows to be labelled as such, the "Positions" column already exists
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
         self.fielding.loc[career_position_totals_mask, "Season"] = "Career Totals"
