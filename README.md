@@ -1,7 +1,7 @@
 # brlib
 
 [![Tests](https://github.com/john-bieren/brlib/actions/workflows/test.yml/badge.svg)](https://github.com/john-bieren/brlib/actions/workflows/test.yml)
-[![PyPI Latest Release](https://img.shields.io/pypi/v/brlib.svg)](https://pypi.org/project/brlib)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/brlib?label=PyPI&logo=pypi&logoColor=ffe873&color=0073b7)](https://pypi.org/project/brlib)
 
 A library for collecting baseball statistics from [Baseball Reference](https://www.baseball-reference.com).
 

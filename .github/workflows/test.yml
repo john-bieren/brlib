@@ -6,7 +6,7 @@ on:
   schedule:
     # run at 12 UTC, hopefully after BR's daily in-season updates
     # run weekly because any more would be overkill
-    - cron: '0 12 * * 1'
+    - cron: '0 12 * * 6'
 
 jobs:
   pytest:
