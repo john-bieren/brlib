@@ -50,3 +50,32 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
         game.update_team_names()
         game.update_venue_name()
     return games_list_copy
+
+@pytest.fixture(scope="session")
+def players_list() -> list[br.Player]:
+    """The Player outputs to be tested, before any public methods are run."""
+    return [
+        # tons of relatives (including a manager), two missing seasons
+        br.Player("aloumo01"),
+        # lots of missing data (especially advanced pitching)
+        br.Player("bendech01"),
+        # very little information
+        br.Player("colli05"),
+        # regular season and postseason no-hitter
+        br.Player("hallaro01"),
+        # lots of postseason stats
+        br.Player("jacksre01"),
+        # only played in postseason, drafted multiple times
+        br.Player("kigerma01"),
+        # multiple combined no-hitters (in one season, even), multiple high schools
+        br.Player("pressry01")
+    ]
+
+@pytest.fixture(scope="session")
+def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
+    """The Player outputs to be tested, after all public methods are run."""
+    players_list_copy = copy.deepcopy(players_list)
+    for player in players_list_copy:
+        player.add_no_hitters()
+        player.update_team_name()
+    return players_list_copy
