@@ -123,7 +123,7 @@ class Player():
         self.info, self.bling = (pd.DataFrame({"Player ID": [self.id]}) for _ in range(2))
         self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(3))
         self.teams = []
-        self.relatives = {}
+        self.relatives = defaultdict(list)
         self._url = page.url
 
         self._scrape_player(page)
@@ -547,18 +547,22 @@ class Player():
                 self.info.loc[:, "Full Name"] = line_str.replace("Full Name: ", "").strip()
 
             elif line_str.startswith("Relatives"):
-                player_ids = [player["href"] for player in line.find_all("a", href=True)]
-                player_ids = [str_between(link, "/", ".", anchor="end") for link in player_ids]
+                relative_links = [player["href"] for player in line.find_all("a", href=True)]
+                player_ids = [str_between(link, "/", ".", anchor="end") for link in relative_links]
+                # relatives could also be managers
+                is_player = [str_between(link, "/", "/") == "players" for link in relative_links]
                 relations = line_str.replace("Relatives: ", "").split(";")
                 # associate ids with players using their shared order
                 for r in relations:
                     relation, players = r.strip().split(" of ", maxsplit=1)
                     player_count = players.count(", ") + 1
                     # swap the direction of some relationships, e.g. "Father of" refers to his Son
-                    # those which don't need swapping, e.g. "Brother", are included not changed
                     relation = RELATIVES_DICT.get(relation, None)
                     if relation is not None:
-                        self.relatives[relation] = [player_ids.pop(0) for _ in range(player_count)]
+                        for _ in range(player_count):
+                            relative = player_ids.pop(0)
+                            if is_player.pop(0):
+                                self.relatives[relation].append(relative)
                     else:
                         dev_alert(f'{self.id}: unexpected relation "{r.strip()}"')
 
