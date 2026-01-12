@@ -254,29 +254,29 @@ class Team():
             if table_name == "all_players_standard_batting":
                 table_text = table.decode_contents().strip()
                 table = bs(table_text, "lxml")
-                h_df_1 = Team._scrape_standard_table(table)
+                h_df_1 = self._scrape_standard_table(table)
 
                 h_df_1.rename(columns={"WAR": "Batting bWAR"}, inplace=True)
 
             elif table_name == "all_players_value_batting":
                 table = soup_from_comment(table, only_if_table=True)
-                h_df_2 = Team._scrape_value_table(table)
+                h_df_2 = self._scrape_value_table(table)
 
             elif table_name == "all_players_standard_pitching":
                 table_text = table.decode_contents().strip()
                 table = bs(table_text, "lxml")
-                p_df_1 = Team._scrape_standard_table(table)
+                p_df_1 = self._scrape_standard_table(table)
 
                 p_df_1.rename(columns={"WAR": "Pitching bWAR"}, inplace=True)
                 p_df_1["IP"].apply(change_innings_notation)
 
             elif table_name == "all_players_value_pitching":
                 table = soup_from_comment(table, only_if_table=True)
-                p_df_2 = Team._scrape_value_table(table)
+                p_df_2 = self._scrape_value_table(table)
 
             elif table_name == "all_players_standard_fielding":
                 table = soup_from_comment(table, only_if_table=True)
-                self.fielding = Team._scrape_standard_table(table)
+                self.fielding = self._scrape_standard_table(table)
 
                 if "Inn" in self.fielding.columns:
                     self.fielding["Inn"].apply(change_innings_notation)
@@ -302,11 +302,7 @@ class Team():
         self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
         self.fielding = convert_numeric_cols(self.fielding)
 
-        self.players = self.players + list(self.batting["Player ID"].values)
-        self.players = self.players + list(self.pitching["Player ID"].values)
-        self.players = self.players + list(self.fielding["Player ID"].values)
         self.players = list(dict.fromkeys(self.players))
-        self.players.remove("") # player id field from team totals rows
 
     def _scrape_info(self, info: Tag, bling: Tag | None) -> None:
         """Populates `self.info` with data from `info` and `bling`."""
@@ -406,8 +402,7 @@ class Team():
         self.info = self.info.reindex(columns=TEAM_INFO_COLS)
         self.info = convert_numeric_cols(self.info)
 
-    @staticmethod
-    def _scrape_standard_table(table: bs) -> pd.DataFrame:
+    def _scrape_standard_table(self, table: bs) -> pd.DataFrame:
         """Gathers team standard batting/pitching/fielding stats from `table`."""
         # scrape regular season and postseason tabs
         reg_records, post_records = ([] for _ in range(2))
@@ -454,11 +449,14 @@ class Team():
         ]
         # remove handedness indicators
         df_1.loc[:, "Player"] = df_1["Player"].str.strip("*#")
-        # add player ids to table, exclude non-player rows
+
+        # add player ids to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_1.loc[df_1["Rk"] != "", "Player ID"] = player_id_column
-        df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = ""
-        # sort values for consistency across tables
+        df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = None
+        self.players = self.players + player_id_column
+
+        # sort table so that it can be joined to the value table with the expected alignment
         df_1.sort_values(by=["Game Type", "Player ID"], ascending=False, inplace=True)
         df_1.reset_index(drop=True, inplace=True)
         df_1 = Team._process_awards_column(df_1)
@@ -493,8 +491,7 @@ class Team():
                             df_1.loc[team_totals_mask, f"{col} Finish"] += 1
         return df_1
 
-    @staticmethod
-    def _scrape_value_table(table: bs) -> pd.DataFrame:
+    def _scrape_value_table(self, table: bs) -> pd.DataFrame:
         """Gathers team value batting/pitching stats from `table`."""
         # scrape table
         records = []
@@ -508,13 +505,14 @@ class Team():
         # remove column label rows
         df_2 = df_2.loc[df_2["Rk"] != "Rk"]
 
-        # add player ids to table, exclude non-player rows
+        # add player ids to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_2.loc[df_2["Rk"] != "", "Player ID"] = player_id_column
-        df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = ""
-        # sort table so that table can be joined to standard batting with expected alignment
-        df_2.sort_values(by="Player ID", ascending=False, inplace=True)
+        df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = None
+        self.players = self.players + player_id_column
 
+        # sort table so that it can be joined to the standard table with the expected alignment
+        df_2.sort_values(by="Player ID", ascending=False, inplace=True)
         # remove columns also found in standard table
         df_2.drop(
             columns=[
@@ -522,4 +520,5 @@ class Team():
                 "G", "GS", "R", "WAR", "Pos", "Awards"
             ], inplace=True, errors="ignore"
         )
-        return df_2.reset_index(drop=True)
+        df_2.reset_index(drop=True, inplace=True)
+        return df_2
