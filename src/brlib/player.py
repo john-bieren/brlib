@@ -382,7 +382,7 @@ class Player():
                 if "(Date unknown)" not in birth_date:
                     birth_date = birth_date.split(":", maxsplit=1)[1].strip()
                     # can have two spaces if date is only month and year
-                    self.info.loc[:, "Birth Date"] = birth_date.replace("  ", " ")
+                    self.info.loc[:, "Birth Date"] = reformat_date(birth_date.replace("  ", " "))
 
                 # get birth datetime for later use
                 try:
@@ -416,7 +416,7 @@ class Player():
 
                 # handle death dates
                 death_date = death_date.split(":", maxsplit=1)[1].strip()
-                self.info.loc[:, "Death Date"] = death_date
+                self.info.loc[:, "Death Date"] = reformat_date(death_date)
                 try:
                     death_datetime = datetime.strptime(death_date, "%B %d, %Y")
                     age = relativedelta(death_datetime, birth_datetime)
