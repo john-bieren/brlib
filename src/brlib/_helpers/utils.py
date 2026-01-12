@@ -123,7 +123,7 @@ def str_remove(string: str, *substrings: str) -> str:
 def reformat_date(string_date: str) -> str:
     """
     Converts `string_date` of "MM DD, YYYY" to "YY-MM-DD" for formatting consistency.
-    If `string_date` does not match this format, and empty string will be returned.
+    If `string_date` does not match this format, an empty string will be returned.
     """
     try:
         date = datetime.strptime(string_date, "%B %d, %Y")
