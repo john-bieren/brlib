@@ -37,3 +37,7 @@ Once installed, you can import brlib into your Python scripts:
 ```python
 import brlib as br
 ```
+
+## Data Use
+
+Since brlib gathers data from Baseball Reference, your use of this data is subject to their [data use policy](https://www.sports-reference.com/data_use.html).
