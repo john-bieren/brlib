@@ -5,8 +5,9 @@
 import json
 from pathlib import Path
 
-import brlib as br
 import pandas as pd
+
+import brlib as br
 
 games_data = Path(__file__).parent.resolve() / "expected" / "games"
 
