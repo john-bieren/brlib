@@ -232,7 +232,6 @@ class Team():
             "Season": [season],
             "Team ID": [self.id],
             # default values:
-            "Playoff Finish": ["N/A"],
             "Pennant": [0],
             "Championship": [0]
         })
