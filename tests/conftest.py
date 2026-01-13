@@ -80,3 +80,31 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
         player.add_no_hitters()
         player.update_team_name()
     return players_list_copy
+
+@pytest.fixture(scope="session")
+def teams_list() -> list[br.Team]:
+    """The Team outputs to be tested, before any public methods are run."""
+    return [
+        # WS winner, renamed ballpark, CNH in regular and postseason
+        br.Team("HOU", "2022"),
+        # team gold glove, pandemic season
+        br.Team("CHC", "2020"),
+        # renamed team
+        br.Team("LAA", "2012"),
+        # perfect game and CNH, renamed ballpark
+        br.Team("SEA", "2012"),
+        # non-AL/NL pennant winner
+        br.Team("BEG", "1939"),
+        # four managers, limited data, partial park factors
+        br.Team("BBB", "1924"),
+        # team shares name with later one
+        br.Team("WSH", "1904")
+    ]
+
+@pytest.fixture(scope="session")
+def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
+    """The Team outputs to be tested, after all public methods are run."""
+    teams_list_copy = copy.deepcopy(teams_list)
+    for team in teams_list_copy:
+        team.add_no_hitters()
+    return teams_list_copy
