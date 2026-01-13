@@ -320,11 +320,11 @@ class Team():
                     division_finish = str_between(line_str, ",", "place").strip().split()[0]
                 self.info.loc[:, "Division Finish"] = division_finish.strip("stndrh")
 
-                try:
-                    division = str_between(line_str, " in ", "(Schedule").strip()
-                except ValueError:
+                if "(Schedule" in line_str:
+                    division = str_between(line_str, " in ", "(Schedule")
+                else:
                     division = line_str.rsplit(" in ", maxsplit=1)[1]
-                self.info.loc[:, "Division"] = division.replace("_", " ")
+                self.info.loc[:, "Division"] = division.strip().replace("_", " ")
 
             elif "Postseason" in line_str:
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
