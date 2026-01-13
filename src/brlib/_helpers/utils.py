@@ -120,6 +120,10 @@ def str_remove(string: str, *substrings: str) -> str:
         string = string.replace(substring, "")
     return string
 
+def clean_spaces(string: str) -> str:
+    """Removes consecutive, leading, and trailing spaces from `string`."""
+    return " ".join(string.split()).strip()
+
 def reformat_date(string_date: str) -> str:
     """
     Converts `string_date` of "MM DD, YYYY" to "YY-MM-DD" for formatting consistency.

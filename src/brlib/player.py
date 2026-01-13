@@ -23,8 +23,9 @@ from ._helpers.constants import (BLING_DICT, LEAGUE_ABVS, MULTI_TEAM_REGEX,
 from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, convert_numeric_cols,
-                             reformat_date, report_on_exc, runtime_typecheck,
+from ._helpers.utils import (change_innings_notation, clean_spaces,
+                             convert_numeric_cols, reformat_date,
+                             report_on_exc, runtime_typecheck,
                              soup_from_comment, str_between, str_remove)
 from .options import dev_alert, options, print_page
 
@@ -451,7 +452,7 @@ class Player():
 
             elif line_str.startswith("Draft"):
                 # only use final time player was drafted
-                draft_line = line_str.split("and  the")[-1].replace("  ", " ")
+                draft_line = clean_spaces(line_str.split("and  the")[-1])
 
                 draft_team, draft_line = draft_line.split(" in the ")
                 draft_round = draft_line[0:2].strip("snrt")

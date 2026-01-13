@@ -15,9 +15,10 @@ from ._helpers.constants import (TEAM_BATTING_COLS, TEAM_FIELDING_COLS,
 from ._helpers.inputs import validate_team_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, convert_numeric_cols,
-                             report_on_exc, runtime_typecheck,
-                             scrape_player_ids, soup_from_comment, str_between)
+from ._helpers.utils import (change_innings_notation, clean_spaces,
+                             convert_numeric_cols, report_on_exc,
+                             runtime_typecheck, scrape_player_ids,
+                             soup_from_comment, str_between)
 from .options import dev_alert, options, print_page
 
 
@@ -325,13 +326,12 @@ class Team():
 
             elif "Postseason" in line_str:
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
-                self.info.loc[:, "Playoff Finish"] = latest_series_result.replace("  ", " ")
+                self.info.loc[:, "Playoff Finish"] = clean_spaces(latest_series_result)
 
             # switching to startswith; nested p tags result in overlapping matches for "if str in"
             elif line_str.startswith("Manager"):
                 managers = line_str.split(":", maxsplit=1)[1]
-                spaces_cleaned = " ".join(managers.split())
-                self.info.loc[:, "Managers"] = spaces_cleaned.replace(" , ", ", ")
+                self.info.loc[:, "Managers"] = clean_spaces(managers).replace(" , ", ", ")
 
             elif line_str.split(":", maxsplit=1)[0] in set([
                     "Ballpark",
@@ -341,8 +341,7 @@ class Team():
                     "Scouting Director"
                     ]):
                 col, value = line_str.split(":", maxsplit=1)
-                spaces_cleaned = " ".join(value.split())
-                self.info.loc[:, col] = spaces_cleaned
+                self.info.loc[:, col] = clean_spaces(value)
 
             elif line_str.startswith("Attendance"):
                 self.info.loc[:, "Attendance"] = str_between(line_str, "Attendance:", "(").strip()

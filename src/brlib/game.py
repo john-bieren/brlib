@@ -19,8 +19,9 @@ from ._helpers.constants import (ALLSTAR_GAME_URL_REGEX, GAME_BATTING_COLS,
 from ._helpers.inputs import validate_game_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, convert_numeric_cols,
-                             reformat_date, report_on_exc, runtime_typecheck,
+from ._helpers.utils import (change_innings_notation, clean_spaces,
+                             convert_numeric_cols, reformat_date,
+                             report_on_exc, runtime_typecheck,
                              scrape_player_ids, soup_from_comment, str_between,
                              str_remove)
 from .options import dev_alert, options, print_page
@@ -415,7 +416,7 @@ class Game():
         """Populates `self.info` with data from `content` and `other_info`."""
         self.info = pd.DataFrame([self.name], columns=["Game"])
         self.team_info = pd.DataFrame({"Home/Away": ["Away", "Home"], "Game ID": [self.id, self.id]})
-        heading = content.find("h1").text.replace("  ", " ")
+        heading = clean_spaces(content.find("h1").text)
         linescore = content.find("div", {"class": "linescore_wrap"})
         scorebox = content.find("div", {"class": "scorebox"})
 
