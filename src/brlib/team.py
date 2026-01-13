@@ -230,10 +230,7 @@ class Team():
         self.info = pd.DataFrame({
             "Team": [team_name],
             "Season": [season],
-            "Team ID": [self.id],
-            # default values:
-            "Pennant": [0],
-            "Championship": [0]
+            "Team ID": [self.id]
         })
         info = soup.find(id="info")
         bling = info.find(id="bling")
@@ -329,10 +326,6 @@ class Team():
             elif "Postseason" in line_str:
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
                 self.info.loc[:, "Playoff Finish"] = latest_series_result.replace("  ", " ")
-                if "World Series" in latest_series_result:
-                    self.info.loc[:, "Pennant"] = 1
-                    if "Won " in latest_series_result:
-                        self.info.loc[:, "Championship"] = 1
 
             # switching to startswith; nested p tags result in overlapping matches for "if str in"
             elif line_str.startswith("Manager"):
@@ -387,16 +380,19 @@ class Team():
                 self.info.loc[:, "Pythagorean Wins"] = pyth_w
                 self.info.loc[:, "Pythagorean Losses"] = pyth_l
 
-        # other than team gold gloves, bling only has redundant info (pennants, WS wins)
-        self.info.loc[:, "Team Gold Glove"] = 0
+        # scrape bling section
+        self.info.loc[:, ["Team Gold Glove", "Pennant", "World Series"]] = 0
         if bling is not None:
             for line in bling.find_all("a"):
-                line_str = line.text
-                if line_str == "Team Gold Glove":
+                bling_name = line.text
+                if bling_name == "Team Gold Glove":
                     self.info.loc[:, "Team Gold Glove"] = 1
-                elif (line_str != "World Series Champions"
-                      and line_str[-7:] != "Pennant"):
-                    dev_alert(f'{self.id}: unexpected bling element "{bling}"')
+                elif bling_name == "World Series Champions":
+                    self.info.loc[:, "World Series"] = 1
+                elif bling_name[-7:] == "Pennant":
+                    self.info.loc[:, "Pennant"] = 1
+                else:
+                    dev_alert(f'{self.id}: unexpected bling element "{bling_name}"')
 
         self.info = self.info.reindex(columns=TEAM_INFO_COLS)
         self.info = convert_numeric_cols(self.info)

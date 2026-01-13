@@ -800,7 +800,7 @@ TEAM_INFO_COLS = (
     "Pythagorean Losses",
     "Team Gold Glove",
     "Pennant",
-    "Championship"
+    "World Series"
 )
 
 TEAM_BATTING_COLS = (
