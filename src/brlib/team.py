@@ -449,6 +449,13 @@ class Team():
         # remove handedness indicators
         df_1.loc[:, "Player"] = df_1["Player"].str.strip("*#")
 
+        # missing position values should not be an empty string
+        if "Pos" in df_1.columns:
+            df_1.loc[df_1["Pos"] == "", "Pos"] = None
+        # not elif because batting DataFrame has both columns
+        if "Position" in df_1.columns:
+            df_1.loc[df_1["Position"] == "", "Position"] = None
+
         # add player ids to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_1.loc[df_1["Rk"] != "", "Player ID"] = player_id_column
