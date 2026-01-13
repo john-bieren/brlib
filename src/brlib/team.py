@@ -468,28 +468,21 @@ class Team():
         """Adds stats that are found in the awards column as their own columns in `df_1`."""
         df_1.loc[:, ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = 0
         df_1.loc[:, ["MVP Finish", "CYA Finish", "ROY Finish"]] = None
-        # null out awards columns for subtotals rows
-        df_1.loc[
-            (df_1["Player ID"] == "" ) & (df_1["Player"] != "Team Totals"),
-            ["AS", "GG", "SS", "LCS MVP", "WS MVP"]
-        ] = None
-        team_totals_mask = df_1["Player"] == "Team Totals"
-        # for team totals, set awards with voting info to 0 to count vote getters
-        df_1.loc[team_totals_mask, ["MVP Finish", "CYA Finish", "ROY Finish"]] = 0
+        # null out awards columns for totals rows
+        df_1.loc[df_1["Player ID"].isna(), ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = None
 
         for _, row in df_1.iterrows():
             awards = row["Awards"].split(",")
             player_mask = df_1["Player ID"] == row["Player ID"]
             for award in awards:
                 if award in {"AS", "GG", "SS", "WS MVP"}:
-                    df_1.loc[(player_mask) | (team_totals_mask), award] += 1
+                    df_1.loc[player_mask, award] += 1
                 elif award in {"ALCS MVP", "NLCS MVP"}:
-                    df_1.loc[(player_mask) | (team_totals_mask), "LCS MVP"] += 1
+                    df_1.loc[player_mask, "LCS MVP"] = 1
                 else:
                     for col in ("MVP", "CYA", "ROY"):
                         if col in award:
                             df_1.loc[player_mask, f"{col} Finish"] = int(award.strip(f"{col}-"))
-                            df_1.loc[team_totals_mask, f"{col} Finish"] += 1
         return df_1
 
     def _scrape_value_table(self, table: bs) -> pd.DataFrame:
