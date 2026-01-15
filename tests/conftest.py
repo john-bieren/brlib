@@ -62,6 +62,8 @@ def players_list() -> list[br.Player]:
         br.Player("bendech01"),
         # very little information
         br.Player("colli05"),
+        # multiple AS in certain seasons, catcher (more fielding stats)
+        br.Player("gibsojo99"),
         # regular season and postseason no-hitter
         br.Player("hallaro01"),
         # lots of postseason stats
@@ -93,7 +95,7 @@ def teams_list() -> list[br.Team]:
         br.Team("LAA", "2012"),
         # perfect game and CNH, renamed ballpark
         br.Team("SEA", "2012"),
-        # non-AL/NL pennant winner
+        # non-AL/NL pennant winner, players with multiple AS
         br.Team("BEG", "1939"),
         # four managers, limited data, partial park factors
         br.Team("BBB", "1924"),
