@@ -450,7 +450,7 @@ class Game():
         # postseason game
         else:
             self.info["Doubleheader"] = int(self.id[-1])
-            year_series_game, matchup, month_day = heading.rsplit((", "), maxsplit=2)
+            year_series_game, matchup, month_day = heading.rsplit(", ", maxsplit=2)
             year, series_game = year_series_game.split(" ", maxsplit=1)
 
             # print the series abbreviation instead of the full name, except for the World Series

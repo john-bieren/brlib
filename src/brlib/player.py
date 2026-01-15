@@ -128,6 +128,7 @@ class Player():
         self._url = page.url
 
         self._scrape_player(page)
+        self.relatives = dict(self.relatives)
         if add_no_hitters:
             self.add_no_hitters()
         print_page(self.name)
@@ -657,7 +658,7 @@ class Player():
         )
         h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
-        h_df_1.loc[h_df_1["Season"] == "162 Game Avg", "Pos"] = None
+        h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = None
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = h_df_1.loc[

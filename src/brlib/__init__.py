@@ -7,7 +7,7 @@ from .games import Games
 from .get_games import get_games
 from .get_players import get_players
 from .get_teams import get_teams
-from .options import Options, options
+from .options import options
 from .player import Player
 from .players import Players
 from .team import Team
