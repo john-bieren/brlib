@@ -878,7 +878,7 @@ class Player():
         years_played.update(self.fielding["Season"].values.tolist())
         # filter out "Career Totals", "162 Game Avg", and anything else that isn't a year
         years_played = set(filter(lambda x: x.isnumeric(), years_played))
-        self.info.loc[:, "Years Played"] = len(years_played)
+        self.info["Years Played"] = len(years_played)
 
     def _find_teams_info(self) -> None:
         """Adds `"Teams Played For"` and `"Most Teams in a Year"` to `self.info`."""
