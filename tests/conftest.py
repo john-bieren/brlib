@@ -71,7 +71,9 @@ def players_list() -> list[br.Player]:
         # only played in postseason, drafted multiple times
         br.Player("kigerma01"),
         # multiple combined no-hitters (in one season, even), multiple high schools
-        br.Player("pressry01")
+        br.Player("pressry01"),
+        # catcher (with modern fielding stats), renamed draft team
+        br.Player("vogtst01")
     ]
 
 @pytest.fixture(scope="session")
