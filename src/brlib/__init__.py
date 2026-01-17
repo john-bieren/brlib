@@ -3,17 +3,17 @@ from .find_asg import find_asg
 from .find_games import find_games
 from .find_teams import find_teams
 from .game import Game
-from .games import Games
+from .game_set import GameSet
 from .get_games import get_games
 from .get_players import get_players
 from .get_teams import get_teams
 from .options import options
 from .player import Player
-from .players import Players
+from .player_set import PlayerSet
 from .team import Team
-from .teams import Teams
+from .team_set import TeamSet
 
-__version__ = "0.0.3.dev0"
+__version__ = "0.1.0.dev0"
 
 __all__ = [
     "all_major_leaguers",
@@ -21,13 +21,13 @@ __all__ = [
     "find_games",
     "find_teams",
     "Game",
-    "Games",
+    "GameSet",
     "get_games",
     "get_players",
     "get_teams",
     "options",
     "Player",
-    "Players",
+    "PlayerSet",
     "Team",
-    "Teams"
+    "TeamSet"
 ]

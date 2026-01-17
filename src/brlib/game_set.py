@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Games class."""
+"""Defines GameSet class."""
 
 from itertools import chain
 
@@ -14,9 +14,9 @@ from ._helpers.utils import runtime_typecheck
 from .game import Game
 
 
-class Games():
+class GameSet():
     """
-    Aggregation of multiple `Game` objects.
+    The aggregated contents of multiple `Game` objects.
 
     ## Parameters
 
@@ -69,23 +69,23 @@ class Games():
     ```
     >>> g1 = br.Game("SEA", "20180930", "0")                                          
     >>> g2 = br.Game("SEA", "20190929", "0")
-    >>> br.Games([g1, g2])                
-    Games(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    >>> br.GameSet([g1, g2])                
+    GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
     ```
 
     Directly pass `get_games` results:
 
     ```
     >>> gl = br.get_games([("SEA", "20180930", "0"), ("SEA", "20190929", "0")])              
-    >>> br.Games(gl)
-    Games(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    >>> br.GameSet(gl)
+    GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
     ```
 
     ## Methods
 
-    * [`Games.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Games.add_no_hitters)
-    * [`Games.update_team_names`](https://github.com/john-bieren/brlib/wiki/Games.update_team_names)
-    * [`Games.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Games.update_venue_names)
+    * [`GameSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/GameSet.add_no_hitters)
+    * [`GameSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/GameSet.update_team_names)
+    * [`GameSet.update_venue_names`](https://github.com/john-bieren/brlib/wiki/GameSet.update_venue_names)
     """
     @runtime_typecheck
     def __init__(self, games: list[Game]) -> None:
@@ -125,7 +125,7 @@ class Games():
                 date = game[3:-1]
                 dh = game[-1]
             display_games.append(f"Game('{team}', '{date}', '{dh}')")
-        return f"Games({", ".join((g for g in display_games))})"
+        return f"GameSet({", ".join((g for g in display_games))})"
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""
@@ -166,7 +166,7 @@ class Games():
         ```
         >>> g1 = br.Game("SEA", "20180401", "0")
         >>> g2 = br.Game("TBA", "20050828", "0")
-        >>> gs = br.Games([g1, g2])
+        >>> gs = br.GameSet([g1, g2])
         >>> gs.info[["Away Team", "Home Team"]]
                             Away Team             Home Team
         0              Cleveland Indians      Seattle Mariners
@@ -250,7 +250,7 @@ class Games():
         ```
         >>> g1 = br.Game("SEA", "20180401", "0")
         >>> g2 = br.Game("TBA", "20050828", "0")
-        >>> gs = br.Games([g1, g2])
+        >>> gs = br.GameSet([g1, g2])
         >>> gs.info["Venue"]
         0       Safeco Field
         1    Tropicana Field
@@ -266,7 +266,7 @@ class Games():
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Games.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `GameSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 
@@ -281,7 +281,7 @@ class Games():
         ```
         >>> g1 = br.Game("SEA", "20120815", "0")
         >>> g2 = br.Game("SEA", "20120608", "0")
-        >>> gs = br.Games([g1, g2])
+        >>> gs = br.GameSet([g1, g2])
         >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
                     Player                 Team  NH  PG  CNH
         0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN

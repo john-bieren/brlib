@@ -11,7 +11,7 @@ A library for collecting baseball statistics from [Baseball Reference](https://w
 ## Key Features
 
 * `Game`, `Player`, and `Team` classes give you easy access to all associated data in one place, with attributes for stats tables, information, and more.
-* Aggregate these into `Games`, `Players`, or `Teams` classes, which contain similar attributes, for easy analysis of larger samples.
+* Aggregate these into `GameSet`, `PlayerSet`, or `TeamSet` classes, which have similar attributes, for easy analysis of larger samples.
 * Quickly search for games, players, and teams of interest, and gather their stats without violating the [rate limit](https://www.sports-reference.com/429.html).
 
 Learn more by reading the documentation on the [wiki](https://github.com/john-bieren/brlib/wiki).

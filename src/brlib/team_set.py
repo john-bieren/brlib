@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Teams class."""
+"""Defines TeamSet class."""
 
 from itertools import chain
 
@@ -13,9 +13,9 @@ from ._helpers.utils import runtime_typecheck
 from .team import Team
 
 
-class Teams():
+class TeamSet():
     """
-    Aggregation of multiple `Team` objects.
+    The aggregated contents of multiple `Team` objects.
 
     ## Parameters
 
@@ -56,21 +56,21 @@ class Teams():
     ```
     >>> t1 = br.Team("SEP", "1969")
     >>> t2 = br.Team("MLA", "1901")
-    >>> br.Teams([t1, t2])
-    Teams(Team('SEP', '1969'), Team('MLA', '1901'))
+    >>> br.TeamSet([t1, t2])
+    TeamSet(Team('SEP', '1969'), Team('MLA', '1901'))
     ```
 
     Directly pass `get_teams` results:
 
     ```
     >>> tl = br.get_teams([("SEP", "1969"), ("MLA", "1901")])
-    >>> br.Teams(tl)
-    Teams(Team('SEP', '1969'), Team('MLA', '1901'))
+    >>> br.TeamSet(tl)
+    TeamSet(Team('SEP', '1969'), Team('MLA', '1901'))
     ```
 
     ## Methods
 
-    * [`Teams.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Teams.add_no_hitters)
+    * [`TeamSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/TeamSet.add_no_hitters)
     """
     @runtime_typecheck
     def __init__(self, teams: list[Team]) -> None:
@@ -96,7 +96,7 @@ class Teams():
 
     def __repr__(self) -> str:
         display_teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
-        return f"Teams({", ".join(display_teams)})"
+        return f"TeamSet({", ".join(display_teams)})"
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""
@@ -116,7 +116,7 @@ class Teams():
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Teams.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `TeamSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 
@@ -131,7 +131,7 @@ class Teams():
         ```
         >>> t1 = br.Team("BOS", "1917")
         >>> t2 = br.Team("PRO", "1883")
-        >>> ts = br.Teams([t1, t2])
+        >>> ts = br.TeamSet([t1, t2])
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
                     Player  NH  PG  CNH
         0      Weldon Wyckoff NaN NaN  NaN

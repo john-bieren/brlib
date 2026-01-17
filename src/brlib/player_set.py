@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Players class."""
+"""Defines PlayerSet class."""
 
 from itertools import chain
 
@@ -13,9 +13,9 @@ from ._helpers.utils import runtime_typecheck
 from .player import Player
 
 
-class Players():
+class PlayerSet():
     """
-    Aggregation of multiple `Player` objects.
+    The aggregated contents of multiple `Player` objects.
 
     ## Parameters
 
@@ -56,22 +56,22 @@ class Players():
     ```
     >>> p1 = br.Player("lewisky01")
     >>> p2 = br.Player("sanchsi01")
-    >>> br.Players([p1, p2])
-    Players(Player(lewisky01), Player(sanchsi01))
+    >>> br.PlayerSet([p1, p2])
+    PlayerSet(Player(lewisky01), Player(sanchsi01))
     ```
 
     Directly pass `get_players` results:
 
     ```
     >>> pl = br.get_players(["lewisky01", "sanchsi01"])
-    >>> br.Players(pl)      
-    Players(Player(lewisky01), Player(sanchsi01))
+    >>> br.PlayerSet(pl)      
+    PlayerSet(Player(lewisky01), Player(sanchsi01))
     ```
 
     ## Methods
 
-    * [`Players.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Players.add_no_hitters)
-    * [`Players.update_team_names`](https://github.com/john-bieren/brlib/wiki/Players.update_team_names)
+    * [`PlayerSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/PlayerSet.add_no_hitters)
+    * [`PlayerSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/PlayerSet.update_team_names)
     """
     @runtime_typecheck
     def __init__(self, players: list[Player]) -> None:
@@ -95,11 +95,11 @@ class Players():
         return f"{self.__len__()} players"
 
     def __repr__(self) -> str:
-        return f"Players({", ".join((f"Player({p})" for p in self._contents))})"
+        return f"PlayerSet({", ".join((f"Player({p})" for p in self._contents))})"
 
     def update_team_names(self) -> None:
         """
-        Standardizes team names in `Players.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
 
         ## Parameters
 
@@ -113,7 +113,7 @@ class Players():
 
         ```
         >>> pl = br.get_players(["longoev01", "shielja02", "uptonbj01"])
-        >>> ps = br.Players(pl)
+        >>> ps = br.PlayerSet(pl)
         >>> ps.info["Draft Team"]
         0    Tampa Bay Devil Rays
         1    Tampa Bay Devil Rays
@@ -131,7 +131,7 @@ class Players():
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Players.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `PlayerSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 
@@ -146,7 +146,7 @@ class Players():
         ```
         >>> p1 = br.Player("coleta01")
         >>> p2 = br.Player("penafe01")
-        >>> ps = br.Players([p1, p2])
+        >>> ps = br.PlayerSet([p1, p2])
         >>> mask = ps.pitching["Season"].str.len() == 4
         >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
                 Player Season  NH  PG  CNH
