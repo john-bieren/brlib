@@ -214,8 +214,8 @@ def _find_year_list(
         year_set = {y for y in year_set if y not in NO_POSTSEASON_YEARS}
 
     # filter years to those which could possibly contain a matchup of the teams and opponents
-    if teams != ["ALL"] and opponents != ["ALL"]:
-        valid_years = set(range(FIRST_GAMES_YEAR, year_range_end))
+    if teams != ["ALL"] or opponents != ["ALL"]:
+        valid_years = set(all_game_years)
         if teams != ["ALL"]:
             valid_years.intersection_update(_all_franchise_seasons(teams))
         if opponents != ["ALL"]:
