@@ -207,13 +207,10 @@ def _find_year_list(
                 continue
             year_set.add(seasons_input)
 
-    len_before = len(year_set)
     year_set = {y for y in year_set if y in all_game_years}
-    if len_before != len(year_set):
+    if len(year_set) == 0:
         write(f"box scores are only available from {FIRST_GAMES_YEAR} through {year_range_end - 1}")
-
     if game_type == "POST":
-        # remove years which had no postseason (silently, so that nothing prints if seasons="ALL")
         year_set = {y for y in year_set if y not in NO_POSTSEASON_YEARS}
 
     # filter years to those which could possibly contain a matchup of the teams and opponents

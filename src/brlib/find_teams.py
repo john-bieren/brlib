@@ -144,10 +144,9 @@ def _make_year_list(seasons: list[str]) -> list[int]:
                 continue
             year_set.add(int(seasons_input))
 
-    len_before = len(year_set)
     year_list = [y for y in year_set if y in all_team_years]
-    if len_before != len(year_list):
-        write(f"teams are only available from {FIRST_TEAMS_YEAR} through {year_range_end - 1}")
+    if len(year_list) == 0:
+        write(f"team stats are only available from {FIRST_TEAMS_YEAR} through {year_range_end - 1}")
     year_list.sort()
     return year_list
 

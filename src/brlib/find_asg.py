@@ -72,11 +72,9 @@ def find_asg(seasons: str | list[str] = "ALL") -> list[tuple[str, str, str]]:
                 continue
             year_set.add(seasons_input)
 
-    len_before = len(year_set)
     year_list = [y for y in year_set if y in all_asg_years]
-    if len_before != len(year_list):
-        write(f"All-Star Game box scores are only available from {FIRST_ASG_YEAR} through {year_range_end - 1}")
-    # remove years which had no All-Star Game (silently, so that nothing prints if seasons="ALL")
+    if len(year_list) == 0:
+        write(f"All-Star Games have only been held from {FIRST_ASG_YEAR} through {year_range_end - 1}")
     year_list = [y for y in year_list if y not in NO_ASG_YEARS]
     year_list.sort()
 
