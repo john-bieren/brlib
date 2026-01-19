@@ -13,7 +13,7 @@ from .player_set import PlayerSet
 from .team import Team
 from .team_set import TeamSet
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0"
 
 __all__ = [
     "all_major_leaguers",
