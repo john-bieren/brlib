@@ -17,7 +17,7 @@ def get_teams(
         add_no_hitters: bool | None = None
         ) -> list[Team]:
     """
-    Returns a list of `Team` objects corresponding to the input list of tuples which mimic the `Team` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+    Returns a list of `Team` objects corresponding to the tuples in `team_list`, which mimic the `Team` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 

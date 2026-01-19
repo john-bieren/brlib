@@ -17,7 +17,7 @@ def get_players(
         add_no_hitters: bool | None = None
         ) -> list[Player]:
     """
-    Returns a list of `Player` objects corresponding to the input list of player IDs. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+    Returns a list of `Player` objects corresponding to the player IDs in `player_list`. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 

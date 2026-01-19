@@ -17,7 +17,7 @@ def get_games(
         add_no_hitters: bool | None = None
         ) -> list[Game]:
     """
-    Returns a list of `Game` objects corresponding to the input list of tuples which mimic the `Game` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+    Returns a list of `Game` objects corresponding to the tuples in `game_list`, which mimic the `Game` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 
