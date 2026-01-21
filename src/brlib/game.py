@@ -574,7 +574,7 @@ class Game:
         """Scrapes weather and umpire info from `other_info`."""
         other_info_text = other_info.decode_contents().split("--")[1].strip()
         other_info_list = bs(other_info_text, "lxml").find_all("div")
-        # skip first tag which is the parent of the others
+        # [1:] because the first tag is the parent of the others
         for line in other_info_list[1:]:
             line_str = line.text.strip(" \n.")
             if "Umpires" in line_str:
@@ -797,7 +797,8 @@ class Game:
         h_df[dp_tp] = 0
 
         footer = table.find("div", {"class": "footer no_hide_long"})
-        for line in footer.find_all("div"):
+        # [1:] because the first tag is the parent of the others
+        for line in footer.find_all("div")[1:]:
             line_str = line.text.replace("\xa0", " ").strip(".")
             stat, players = line_str.split(": ", maxsplit=1)
 
