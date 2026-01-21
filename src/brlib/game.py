@@ -601,10 +601,10 @@ class Game:
                 self.info["Temperature"] = info.split("°", maxsplit=1)[0]
             elif "Dome" in info:
                 self.info["Weather"] = info
-                self.info["Windspeed"] = "0"
+                self.info["Wind Speed"] = "0"
             elif "Wind" in info:
-                self.info["Windspeed"] = windspeed = str_between(info, "Wind ", "mph")
-                if windspeed != "0":
+                self.info["Wind Speed"] = wind_speed = str_between(info, "Wind ", "mph")
+                if wind_speed != "0":
                     try:
                         self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
                     except IndexError:

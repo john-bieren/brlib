@@ -316,7 +316,7 @@ GAME_INFO_COLS = (
     "Innings",
     "Field Condition",
     "Temperature",
-    "Windspeed",
+    "Wind Speed",
     "Wind Direction",
     "Weather",
     "Precipitation",
