@@ -433,16 +433,15 @@ class Game:
         if "All-Star" in heading:
             self._is_asg = True
             self.info["Game Type"] = "All-Star Game"
-            self.info["Doubleheader"] = 0
             # name includes date because some years had multiple ASG
             self.name = heading.replace(" Box Score", "")
 
         # regular season game
         elif ")" not in heading and "World Series" not in heading:
-            self.info["Doubleheader"] = doubleheader = int(self.id[-1])
             self.info["Game Type"] = "Regular Season"
             matchup, date = heading.replace(" Box Score:", ",").split(", ", maxsplit=1)
 
+            doubleheader = int(self.id[-1])
             if doubleheader == 0:
                 self.name = f"{date}, {matchup}"
             else:
@@ -450,7 +449,6 @@ class Game:
 
         # postseason game
         else:
-            self.info["Doubleheader"] = int(self.id[-1])
             year_series_game, matchup, month_day = heading.rsplit(", ", maxsplit=2)
             year, series_game = year_series_game.split(" ", maxsplit=1)
 

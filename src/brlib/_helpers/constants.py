@@ -337,8 +337,7 @@ GAME_INFO_COLS = (
     "Wind Direction",
     "Weather",
     "Precipitation",
-    "Game Type",
-    "Doubleheader"
+    "Game Type"
 )
 
 GAME_BATTING_COLS = (
