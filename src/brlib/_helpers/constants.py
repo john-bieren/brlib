@@ -234,6 +234,23 @@ MISSING_SEASONS_DICT = {
     1940: {"JRC"}
 }
 
+# some games need their winners altered due to forfeits (https://www.retrosheet.org/forfeits.htm)
+FORFEITED_GAME_WINNERS = {
+    "NY1190105130": "New York Giants",
+    "DET190105310": "Detroit Tigers",
+    "CLE190107230": "Washington Senators",
+    "PIT190508050": "Pittsburgh Pirates",
+    "NYA190609032": "New York Highlanders",
+    "SLN190710051": "St. Louis Cardinals",
+    "NY1190910042": "New York Giants",
+    "CHN191607180": "Brooklyn Robins",
+    "CHA191709090": "Chicago White Sox",
+    "WS1194108150": "Boston Red Sox",
+    "NY1194209262": "Boston Braves",
+    "WS2197109300": "New York Yankees",
+    "CLE197406040": "Texas Rangers"
+}
+
 # for distinguishing between league and team abbreviations when processing player career totals
 LEAGUE_ABVS = {
     "WS", "NL", "AL", "NNL", "NN2", "NAL", "ECL", "ANL",

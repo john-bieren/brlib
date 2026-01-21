@@ -10,7 +10,8 @@ from bs4 import BeautifulSoup as bs
 from bs4 import Tag
 from curl_cffi import Response
 
-from ._helpers.constants import (ALLSTAR_GAME_URL_REGEX, GAME_BATTING_COLS,
+from ._helpers.constants import (ALLSTAR_GAME_URL_REGEX,
+                                 FORFEITED_GAME_WINNERS, GAME_BATTING_COLS,
                                  GAME_FIELDING_COLS, GAME_INFO_COLS,
                                  GAME_PITCHING_COLS, GAME_TEAM_INFO_COLS,
                                  GAME_URL_REGEX, PICKOFF_REGEX,
@@ -480,9 +481,10 @@ class Game:
         self.info["Away Team"] = self._away_team = records[1][0]
         self.info["Home Team"] = self._home_team = records[2][0]
 
-        if self._home_score > self._away_score:
+        changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
+        if self._home_score > self._away_score or changed_winner == self._home_team:
             self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
-        elif self._away_score > self._home_score:
+        elif self._away_score > self._home_score or changed_winner == self._away_team:
             self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
         else:
             self.info["Losing Team"] = self._winning_team = None
@@ -561,9 +563,9 @@ class Game:
         self.team_info.loc[:, "Team ID"] = [self._away_team_id, self._home_team_id]
         self.team_info.loc[:, "Score"] = [self._away_score, self._home_score]
 
-        if self._home_score > self._away_score:
+        if self._winning_team == self._home_team:
             self.team_info.loc[:, "Result"] = ["Loss", "Win"]
-        elif self._away_score > self._home_score:
+        elif self._winning_team == self._away_team:
             self.team_info.loc[:, "Result"] = ["Win", "Loss"]
         else:
             self.team_info.loc[:, "Result"] = "Tie"
