@@ -726,7 +726,8 @@ class Game():
         h_df.loc[~is_player_mask, "Player ID"] = None
         self.players = self.players + player_id_column
 
-        # make sure all batters have only one row, combine stats in cases of illegal substitution
+        # make sure all batters have only one row, combine their stats if not
+        # used when a player is DH and pitches or when there is an illegal substitution
         if not h_df["Player ID"].is_unique:
             counts = h_df["Player ID"].value_counts()
             assert len(counts.loc[counts > 2]) == 0
@@ -744,8 +745,9 @@ class Game():
 
                 # stats are split across only certain columns, the rest are copied
                 for col in ["AB", "R", "H", "RBI", "BB", "SO", "PO", "A"]:
-                    total = str(int(keep_row[col]) + int(drop_row[col]))
-                    h_df.loc[player_mask, col] = total
+                    keep = int(keep_row[col]) if keep_row[col] != "" else 0
+                    drop = int(drop_row[col]) if drop_row[col] != "" else 0
+                    h_df.loc[player_mask, col] = str(keep + drop)
 
                 # positions can differ as well
                 if keep_row["Position"] != drop_row["Position"]:
