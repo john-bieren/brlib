@@ -16,6 +16,8 @@ def games_list() -> list[br.Game]:
     return [
         # ASG, tons of substitutions, tie, illegal(?) substitution with one position and split stats
         br.Game("allstar", "2025", "0"),
+        # Ohtani plays DH and SP
+        br.Game("ANA", "20230509", "0"),
         # combined no-hitter, WS game (matters for name)
         br.Game("PHI", "20221102", "0"),
         # non-WS postseason game (matters for name), 18 innings
@@ -38,6 +40,8 @@ def games_list() -> list[br.Game]:
         br.Game("allstar", "1961", "1"),
         # dh = 3, 6 innings, 2 CGs with IP<9
         br.Game("PIT", "19201002", "3"),
+        # forfeited by team which finished with the lead, 4 innings
+        br.Game("SLN", "19071005", "1"),
         # both teams share names with later ones, limited stats (especially SB info), dh != 0
         br.Game("MLA", "19010530", "1")
     ]

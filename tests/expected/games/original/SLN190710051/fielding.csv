@@ -1,0 +1,22 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Jimmy Slagle,slaglji01,CF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Jimmy Sheckard,sheckji01,LF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Frank Chance,chancfr01,1B,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Harry Steinfeldt,steinha01,3B,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Pat Moran,moranpa01,C,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Johnny Evers,eversjo01,2B,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Heinie Zimmerman,zimmehe01,2B,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Solly Hofman,hofmaso01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Joe Tinker,tinkejo01,SS,0.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Orval Overall,overaor01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Team Totals,,,9.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Al Shaw,shawal02,CF,0.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+John Barry,barrysh01,RF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Joe Delahanty,delahjo01,LF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Konetchy,koneted01,1B,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Bobby Byrne,byrnebo01,3B,2.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Holly,hollyed01,SS,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Art Hoelskoetter,hoelsar01,2B,0.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Pete Noonan,noonape01,C,5.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Karger,kargeed01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Team Totals,,,12.0,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051

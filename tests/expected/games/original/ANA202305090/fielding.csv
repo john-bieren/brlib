@@ -1,0 +1,25 @@
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Mauricio Dubón,dubonma01,2B,0.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+David Hensley,henslda01,PR-2B,0.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Alex Bregman,bregmal01,3B,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+José Abreu,abreujo02,1B,6.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Kyle Tucker,tuckeky01,RF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Jeremy Peña,penaje02,SS,1.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Corey Julks,julksco01,LF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Jake Meyers,meyerja02,CF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Martín Maldonado,maldoma01,C,14.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Framber Valdez,valdefr01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Ryan Pressly,pressry01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Team Totals,,,27.0,5,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,HOU2023,Los Angeles Angels,LAA2023,3,Win,Away,ANA202305090
+Taylor Ward,wardta01,LF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Mike Trout,troutmi01,CF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Shohei Ohtani,ohtansh01,DH-P,1.0,2,0,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Anthony Rendon,rendoan01,3B,0.0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Hunter Renfroe,renfrhu01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Brandon Drury,drurybr01,2B,4.0,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Gio Urshela,urshegi01,1B,9.0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Chris Okey,okeych01,C,6.0,1,1,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Matt Thaiss,thaisma01,C,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Zach Neto,netoza01,SS,2.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Andrew Wantz,wantzan01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090
+Team Totals,,,27.0,14,1,1,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,LAA2023,Houston Astros,HOU2023,1,Loss,Home,ANA202305090

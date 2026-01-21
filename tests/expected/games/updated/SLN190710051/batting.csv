@@ -1,0 +1,22 @@
+Player,Player ID,Position,AB,R,H,RBI,BB,SO,PA,BA,OBP,SLG,OPS,Pit,Str,WPA,aLI,WPA+,WPA-,cWPA,acLI,RE24,2B,3B,HR,TB,SF,SH,HBP,GDP,IBB,SB,CS,Picked Off,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Picked Off,2B Picked Off,3B Picked Off,2-Out RBI,LOB,RISP,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Jimmy Slagle,slaglji01,CF,2,1,0,,0,,2,0.257,0.369,0.295,0.664,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Jimmy Sheckard,sheckji01,LF,2,1,2,,0,0.0,2,0.264,0.362,0.32,0.682,,,,,,,,,,1,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Frank Chance,chancfr01,1B,2,0,1,,0,,2,0.292,0.395,0.36,0.755,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Harry Steinfeldt,steinha01,3B,2,0,0,,0,,2,0.265,0.326,0.336,0.662,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Pat Moran,moranpa01,C,2,0,0,,0,,2,0.234,0.284,0.287,0.571,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Johnny Evers,eversjo01,2B,1,0,0,,1,,2,0.249,0.313,0.313,0.626,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Heinie Zimmerman,zimmehe01,2B,0,0,0,,0,0.0,0,0.333,0.333,0.5,0.833,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Solly Hofman,hofmaso01,RF,2,0,1,,0,,2,0.265,0.318,0.306,0.624,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Joe Tinker,tinkejo01,SS,2,0,1,,0,,2,0.223,0.267,0.273,0.541,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Orval Overall,overaor01,P,2,0,1,,0,,2,0.213,0.237,0.298,0.535,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Team Totals,,,17,2,6,,1,0.0,18,0.353,0.389,0.471,0.859,,,,,,,,,,2,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4.0,,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Al Shaw,shawal02,CF,2,0,0,0.0,0,,2,0.313,0.389,0.313,0.701,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+John Barry,barrysh01,RF,2,0,1,0.0,0,,2,0.248,0.32,0.28,0.599,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Joe Delahanty,delahjo01,LF,1,0,0,0.0,0,,1,0.417,0.417,0.667,1.083,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Konetchy,koneted01,1B,1,0,0,0.0,0,,1,0.243,0.304,0.349,0.653,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Bobby Byrne,byrnebo01,3B,1,0,0,0.0,0,,1,0.256,0.313,0.294,0.607,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Holly,hollyed01,SS,1,0,0,0.0,0,,1,0.231,0.288,0.281,0.569,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Art Hoelskoetter,hoelsar01,2B,1,0,0,0.0,0,,1,0.25,0.302,0.296,0.599,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Pete Noonan,noonape01,C,1,0,0,0.0,0,,1,0.23,0.255,0.298,0.553,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Ed Karger,kargeed01,P,1,0,1,0.0,0,0.0,1,0.179,0.207,0.25,0.457,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Team Totals,,,11,0,2,0.0,0,0.0,11,0.182,0.182,0.182,0.364,,,,,,,,,,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.0,,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
