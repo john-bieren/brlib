@@ -18,7 +18,7 @@ from tqdm import tqdm
 def report_on_exc(resp_index: int = 1) -> Callable[..., Any]:
     """
     Prints the URL of a page which causes an exception.
-    `resp_index` is the index of the decorated function's Response arugment which
+    `resp_index` is the index of the decorated function's Response argument which
     corresponds to the offending page.
     """
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
@@ -153,7 +153,7 @@ def soup_from_comment(tag: Tag, only_if_table: bool = False) -> bs | Tag:
     except (IndexError, ValueError):
         return tag
 
-def scrape_player_ids(table: bs) -> list[str]:
+def scrape_player_ids(table: bs | Tag) -> list[str]:
     """Returns player IDs from anchor tags in `table`."""
     player_id_column = []
     for row in table.find_all("a", href=True):

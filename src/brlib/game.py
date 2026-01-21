@@ -27,7 +27,7 @@ from ._helpers.utils import (change_innings_notation, clean_spaces,
 from .options import dev_alert, options, print_page
 
 
-class Game():
+class Game:
     """
     Statistics and information from a game. Can be initialized by specifying `home_team`, `date`, and `doubleheader`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded box score page. If neither of these sets of parameters are given, an exception is raised.
 
@@ -348,7 +348,7 @@ class Game():
             player_mask = self.pitching["Player ID"] == player_id
             nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
             self.pitching.loc[
-                (player_mask) |
+                player_mask |
                 ((self.pitching["Player"] == "Team Totals") &
                  (self.pitching["Team ID"] == nh_team_id)),
                 col
@@ -359,7 +359,7 @@ class Game():
             player_mask = self.pitching["Player ID"] == player_id
             nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
             self.pitching.loc[
-                (player_mask) |
+                player_mask |
                 ((self.pitching["Player"] == "Team Totals") &
                  (self.pitching["Team ID"] == nh_team_id)),
                 "CNH"
@@ -675,7 +675,7 @@ class Game():
 
                         defense_team = self.batting.loc[players_mask, "Team"].values[0]
                         defense_mask = (
-                            (players_mask) |
+                            players_mask |
                             ((self.batting["Player"] == "Team Totals") &
                              (self.batting["Team"] == defense_team))
                         )
@@ -684,7 +684,7 @@ class Game():
                         # incremenet offensive stats
                         stealer_mask = self.batting["Player"] == stealer
                         offense_mask = (
-                            (stealer_mask) |
+                            stealer_mask |
                             ((self.batting["Player"] == "Team Totals") &
                              (self.batting["Team"] != defense_team))
                         )
@@ -693,7 +693,7 @@ class Game():
                             self.batting.loc[offense_mask, "Picked Off"] += times
                         self.batting.loc[offense_mask, f"{base} {off_stat}"] += times
 
-    def _scrape_game_batting(self, table: Tag) -> None:
+    def _scrape_game_batting(self, table: Tag) -> pd.DataFrame:
         """Scrapes batting stats from `table`."""
         # extract stats from table
         table_id = table.get("id")
@@ -715,7 +715,7 @@ class Game():
         is_player_mask = h_df["Player"] != "Team Totals"
         h_df[["Player", "Position"]] = h_df.loc[is_player_mask, "Player"].str.rsplit(expand=True, n=1)
         # find and fix split-up player names where no position was present, e.g. CHN190306020
-        has_pos_mask = (is_player_mask) & (h_df["Position"].str.isupper())
+        has_pos_mask = is_player_mask & (h_df["Position"].str.isupper())
         # this also renames final "Player" row to "Team Totals" instead of "Team"
         h_df.loc[~has_pos_mask, "Player"] = original_player_col.loc[~has_pos_mask]
         h_df.loc[~has_pos_mask, "Position"] = np.nan
@@ -924,7 +924,7 @@ class Game():
 
                 player_mask = self.pitching["Player"] == player
                 team_name = self.pitching.loc[player_mask, "Team"].values[0]
-                team_totals_mask = (both_team_totals_mask) & (self.pitching["Team"] == team_name)
+                team_totals_mask = both_team_totals_mask & (self.pitching["Team"] == team_name)
                 self.pitching.loc[player_mask, event] = number
                 self.pitching.loc[team_totals_mask, event] += number
 

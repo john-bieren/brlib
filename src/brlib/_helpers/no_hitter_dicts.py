@@ -199,7 +199,7 @@ class NoHitterDicts(Singleton):
                 player_id_column.append(player_id)
             elif href.startswith("/boxes"):
                 game_id = str_between(href, "/", ".", anchor="end")
-                # filter out links to non-existant pages
+                # filter out links to non-existent pages
                 if game_id[:-9] not in BML_TEAM_ABVS:
                     game_id_column.append(game_id)
 

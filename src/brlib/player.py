@@ -30,7 +30,7 @@ from ._helpers.utils import (change_innings_notation, clean_spaces,
 from .options import dev_alert, options, print_page
 
 
-class Player():
+class Player:
     """
     Statistics and information from a player. Can be initialized by specifying `player_id`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded player page. If neither of these parameters are given, an exception is raised.
 
@@ -705,7 +705,7 @@ class Player():
 
         self.fielding = Player._process_awards_column(self.fielding)
         self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
-        # set by-position totals rows to be labelled as such, the "Positions" column already exists
+        # set by-position totals rows to be labeled as such, the "Positions" column already exists
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
         self.fielding.loc[career_position_totals_mask, "Season"] = "Career Totals"
         if "Inn" in self.fielding.columns:
@@ -751,8 +751,8 @@ class Player():
         abbreviations = df_1["Season"].str.split(" (", regex=False, n=1).str[0]
         is_league_mask = abbreviations.isin(LEAGUE_ABVS)
         is_total_mask = df_1["Season"].str.contains("(", regex=False) # can be team or league
-        league_summary_mask = (is_total_mask) & (is_league_mask)
-        team_summary_mask = (is_total_mask) & (~is_league_mask)
+        league_summary_mask = is_total_mask & is_league_mask
+        team_summary_mask = is_total_mask & (~is_league_mask)
 
         # move franchise and league abbreviations into their respective columns
         df_1.loc[league_summary_mask, "League"] = abbreviations.loc[league_summary_mask]

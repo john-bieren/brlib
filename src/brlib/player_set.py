@@ -13,7 +13,7 @@ from ._helpers.utils import runtime_typecheck
 from .player import Player
 
 
-class PlayerSet():
+class PlayerSet:
     """
     The aggregated contents of multiple `Player` objects.
 
@@ -209,7 +209,7 @@ class PlayerSet():
                     # so we check for career rows for any of the franchise's abbreviations
                     all_team_abvs = abv_man.all_team_abvs(team, int(year))
                     self.pitching.loc[
-                        (player_mask) &
+                        player_mask &
                         # team and season row
                         (((self.pitching["Season"] == year) &
                           (self.pitching["Team"] == team) &

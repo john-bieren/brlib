@@ -13,7 +13,7 @@ from ._helpers.utils import runtime_typecheck
 from .team import Team
 
 
-class TeamSet():
+class TeamSet:
     """
     The aggregated contents of multiple `Team` objects.
 
@@ -192,7 +192,7 @@ class TeamSet():
                 ):
                 for player, game_type in inh_list:
                     self.pitching.loc[
-                        (team_mask) &
+                        team_mask &
                         # player totals
                         (((self.pitching["Player ID"] == player) &
                           (self.pitching["Game Type"].str.startswith(game_type))) |

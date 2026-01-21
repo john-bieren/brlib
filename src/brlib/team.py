@@ -22,7 +22,7 @@ from ._helpers.utils import (change_innings_notation, clean_spaces,
 from .options import dev_alert, options, print_page
 
 
-class Team():
+class Team:
     """
     Statistics and information from a team. Can be initialized by specifying `team`, and `season`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded team page. If neither of these sets of parameters are given, an exception is raised.
 
@@ -312,7 +312,7 @@ class Team():
                 self.info.loc[:, "Losses"] = team_record[1]
                 self.info.loc[:, "Ties"] = team_record[2] if len(team_record) > 2 else 0
 
-                if "Finished" in line_str: # if season is compelte
+                if "Finished" in line_str: # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
                 else:
                     division_finish = str_between(line_str, ",", "place").strip().split()[0]
@@ -333,13 +333,13 @@ class Team():
                 managers = line_str.split(":", maxsplit=1)[1]
                 self.info.loc[:, "Managers"] = clean_spaces(managers).replace(" , ", ", ")
 
-            elif line_str.split(":", maxsplit=1)[0] in set([
+            elif line_str.split(":", maxsplit=1)[0] in {
                     "Ballpark",
                     "President",
                     "General Manager",
                     "Farm Director",
                     "Scouting Director"
-                    ]):
+                    }:
                 col, value = line_str.split(":", maxsplit=1)
                 self.info.loc[:, col] = clean_spaces(value)
 

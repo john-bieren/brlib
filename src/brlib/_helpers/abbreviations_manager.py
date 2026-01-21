@@ -121,7 +121,7 @@ class AbbreviationsManager(Singleton):
         Can return an empty DataFrame if there is no match.
 
         If `era_adjustment` is True, the return DataFrame will contain the row associated with
-        `abbrevation`'s franchise during `season` even if the abbreviation is not correct.
+        `abbreviation`'s franchise during `season` even if the abbreviation is not correct.
         For example, `self._find_correct_teams("FLA", 2025, True)` returns the `MIA` team row.
         There can be multiple rows in the return DataFrame if an abbreviation, e.g. `BAL`,
         is valid during a season, e.g. 1915, and is also associated with a franchise that

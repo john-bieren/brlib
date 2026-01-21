@@ -14,7 +14,7 @@ br.options.add_no_hitters = False
 def games_list() -> list[br.Game]:
     """The Game outputs to be tested, before any public methods are run."""
     return [
-        # ASG, tons of subtitutions, tie, illegal(?) substitution with one position and split stats
+        # ASG, tons of substitutions, tie, illegal(?) substitution with one position and split stats
         br.Game("allstar", "2025", "0"),
         # combined no-hitter, WS game (matters for name)
         br.Game("PHI", "20221102", "0"),

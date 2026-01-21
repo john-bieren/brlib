@@ -14,7 +14,7 @@ from ._helpers.utils import runtime_typecheck
 from .game import Game
 
 
-class GameSet():
+class GameSet:
     """
     The aggregated contents of multiple `Game` objects.
 
@@ -336,11 +336,11 @@ class GameSet():
                 ):
                 if player_id == "":
                     continue
-                player_mask = (self.pitching["Player ID"] == player_id) & (game_mask)
+                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
                 nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
                 self.pitching.loc[
-                    (player_mask) |
-                    ((game_mask) &
+                    player_mask |
+                    (game_mask &
                      (self.pitching["Player"] == "Team Totals") &
                      (self.pitching["Team ID"] == nh_team_id)),
                     col
@@ -348,11 +348,11 @@ class GameSet():
 
             # add combined no-hitters
             for player_id in cnh_list:
-                player_mask = (self.pitching["Player ID"] == player_id) & (game_mask)
+                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
                 nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
                 self.pitching.loc[
-                    (player_mask) |
-                    ((game_mask) &
+                    player_mask |
+                    (game_mask &
                      (self.pitching["Player"] == "Team Totals") &
                      (self.pitching["Team ID"] == nh_team_id)),
                     "CNH"

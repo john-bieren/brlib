@@ -24,7 +24,7 @@ def test_nhd() -> None:
     suite()
 
 def suite() -> None:
-    """Runs the tests for all of the dictionaries."""
+    """Runs the tests for all the dictionaries."""
     game_dicts()
     player_dicts()
     team_dicts()

@@ -253,7 +253,7 @@ def _find_season_games(
         ) -> list[tuple[str, str, str]]:
     """
     Scrapes an MLB schedule page, and returns the games from that season which
-    match all of the other input parameters. Inputs must be uppercase.
+    match all the other input parameters. Inputs must be uppercase.
     """
     team_set = set(teams)
     opponent_set = set(opponents)

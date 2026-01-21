@@ -58,11 +58,11 @@ DATE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]$")
 DATE_RANGE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]$")
 PLAYER_ID_REGEX = re.compile("^[a-z.'_]{3,7}[0-9]{2}$")
 SCHEDULE_TAG_REGEX = re.compile("^all_[0-9]")
-GAME_URL_REGEX = re.compile(r"https:\/\/www\.baseball-reference\.com\/boxes\/[A-Z1-2]{2,3}\/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml")
-ALLSTAR_GAME_URL_REGEX = re.compile(r"https:\/\/www\.baseball-reference\.com\/allstar\/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml")
-PLAYER_URL_REGEX = re.compile(r"https:\/\/www\.baseball-reference\.com\/players\/[a-z]\/[a-z.'_]{3,7}[0-9]{2}\.shtml")
-TEAM_URL_REGEX = re.compile(r"https:\/\/www\.baseball-reference\.com\/teams\/[A-Z1-4]{2,3}\/[1-2][0-9]{3}\.shtml")
-SB_ATTEMPT_REGEX = re.compile(r"^(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)\/(?P<catcher>\D+)(?P<times>[0-9]?)$")
+GAME_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/boxes/[A-Z1-2]{2,3}/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml")
+ALLSTAR_GAME_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/allstar/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml")
+PLAYER_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/players/[a-z]/[a-z.'_]{3,7}[0-9]{2}\.shtml")
+TEAM_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/teams/[A-Z1-4]{2,3}/[1-2][0-9]{3}\.shtml")
+SB_ATTEMPT_REGEX = re.compile(r"^(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)$")
 PICKOFF_REGEX = re.compile(r"^(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)$")
 
 # old names for teams (which have box scores) that didn't relocate
@@ -234,7 +234,7 @@ MISSING_SEASONS_DICT = {
     1940: {"JRC"}
 }
 
-# for distniguishing between league and team abbreviations when processing player career totals
+# for distinguishing between league and team abbreviations when processing player career totals
 LEAGUE_ABVS = {
     "WS", "NL", "AL", "NNL", "NN2", "NAL", "ECL", "ANL",
     "EWL", "NSL", "FL", "AA", "PL", "UA", "NA"
