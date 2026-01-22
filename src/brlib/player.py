@@ -80,7 +80,7 @@ class Player:
 
     * `relatives`: `dict[str: list[str]]`
 
-        The player's relationships with other major leaguers. The relationships are they keys, and the values list the players. These values can be inputs to `get_players`.
+        The player's relationships with other major-leaguers. The relationships are they keys, and the values list the players. These values can be inputs to `get_players`.
 
     * `teams`: `list[tuple[str, str]]`
 
@@ -614,12 +614,12 @@ class Player:
                 self._yearly_salaries[record[0]] += int(record[3].replace(",", ""))
 
     @staticmethod
-    def _merge_dataframes(*args: pd.DataFrame) -> pd.DataFrame:
-        """Joins `args` DataFrames into one."""
-        df = args[0]
-        for df_arg in args[1:]:
-            df = df.join(df_arg.reset_index(drop=True))
-        return df
+    def _merge_dataframes(*to_merge: pd.DataFrame) -> pd.DataFrame:
+        """Joins `to_merge` DataFrames into one DataFrame."""
+        merged_df = to_merge[0]
+        for df in to_merge[1:]:
+            merged_df = merged_df.join(df.reset_index(drop=True))
+        return merged_df
 
     def _finish_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         """Adds player name, player ID, salary, and team IDs to `df`, and corrects dtypes."""
