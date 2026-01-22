@@ -93,13 +93,13 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
 def teams_list() -> list[br.Team]:
     """The Team outputs to be tested, before any public methods are run."""
     return [
-        # WS winner, renamed ballpark, CNH in regular and postseason
+        # WS winner, renamed venue, CNH in regular and postseason
         br.Team("HOU", "2022"),
         # team gold glove, pandemic season
         br.Team("CHC", "2020"),
         # renamed team
         br.Team("LAA", "2012"),
-        # perfect game and CNH, renamed ballpark
+        # perfect game and CNH, renamed venue
         br.Team("SEA", "2012"),
         # non-AL/NL pennant winner, players with multiple AS
         br.Team("BEG", "1939"),

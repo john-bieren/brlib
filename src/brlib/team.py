@@ -334,13 +334,14 @@ class Team:
                 self.info.loc[:, "Managers"] = clean_spaces(managers).replace(" , ", ", ")
 
             elif line_str.split(":", maxsplit=1)[0] in {
-                    "Ballpark",
                     "President",
                     "General Manager",
                     "Farm Director",
-                    "Scouting Director"
+                    "Scouting Director",
+                    "Ballpark"
                     }:
                 col, value = line_str.split(":", maxsplit=1)
+                col = "Venue" if col == "Ballpark" else col # for consistency across library
                 self.info.loc[:, col] = clean_spaces(value)
 
             elif line_str.startswith("Attendance"):
