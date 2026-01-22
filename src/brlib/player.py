@@ -125,6 +125,7 @@ class Player:
         self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(3))
         self.teams = []
         self.relatives = defaultdict(list)
+        self._yearly_salaries = defaultdict(int)
         self._url = page.url
 
         self._scrape_player(page)
@@ -278,11 +279,10 @@ class Player:
         self.info = convert_numeric_cols(self.info)
 
         # find salary data first to add it to value tables
-        yearly_salaries = {}
         for table in tables:
             if table.get("id") == "all_br-salaries":
-                yearly_salaries = self._find_career_earnings(table)
-                self.info.loc[:, "Minimum Career Earnings"] = sum(yearly_salaries.values())
+                self._find_career_earnings(table)
+                self.info.loc[:, "Minimum Career Earnings"] = sum(self._yearly_salaries.values())
 
         # then find the rest of the stats
         has_batted = has_pitched = has_fielded = False
@@ -296,7 +296,7 @@ class Player:
                 h_df_1, advanced_batting_buffer = Player._scrape_standard_batting(table)
 
             elif table_id == "all_players_value_batting":
-                h_df_2 = Player._scrape_value_table(table, yearly_salaries)
+                h_df_2 = Player._scrape_value_table(table)
 
             elif table_id == "all_players_advanced_batting":
                 h_df_3 = Player._scrape_advanced_table(table, advanced_batting_buffer)
@@ -306,7 +306,7 @@ class Player:
                 p_df_1, advanced_pitching_buffer = Player._scrape_standard_pitching(table)
 
             elif table_id == "all_players_value_pitching":
-                p_df_2 = Player._scrape_value_table(table, yearly_salaries)
+                p_df_2 = Player._scrape_value_table(table)
 
             elif table_id == "all_players_advanced_pitching":
                 p_df_3 = Player._scrape_advanced_table(table, advanced_pitching_buffer)
@@ -591,10 +591,8 @@ class Player:
             elif "Hall of Fame" not in bling: # HOF is handled in the bio
                 dev_alert(f'{self.id}: unexpected bling element "{bling}"')
 
-    @staticmethod
-    def _find_career_earnings(table: Tag) -> defaultdict[str, int]:
-        """Returns salary by year from salaries table."""
-        yearly_salaries = defaultdict(int)
+    def _find_career_earnings(self, table: Tag) -> None:
+        """Populates `self._yearly_salaries` from salaries table."""
         table = soup_from_comment(table, only_if_table=True)
         records = []
 
@@ -613,8 +611,7 @@ class Player:
                 # trailing asterisk indicates inconsistent reports, but I'll allow it
                 record[3] = record[3].strip("$*")
                 # += because years can have multiple rows, like salary and a paid buyout
-                yearly_salaries[record[0]] += int(record[3].replace(",", ""))
-        return yearly_salaries
+                self._yearly_salaries[record[0]] += int(record[3].replace(",", ""))
 
     @staticmethod
     def _merge_dataframes(*args: pd.DataFrame) -> pd.DataFrame:
@@ -625,9 +622,11 @@ class Player:
         return df
 
     def _finish_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Adds player name, player ID, and team IDs to `df`, and corrects dtypes."""
+        """Adds player name, player ID, salary, and team IDs to `df`, and corrects dtypes."""
         df.loc[:, "Player ID"] = self.id
         df.loc[:, "Player"] = self.name
+        df["Salary"] = df["Season"].apply(lambda x: self._yearly_salaries.get(x, None))
+
         df.loc[
             (~df["Team"].isna()) &
             (df["Season"] != "Career Totals"),
@@ -761,10 +760,9 @@ class Player:
         return df_1
 
     @staticmethod
-    def _scrape_value_table(table, yearly_salaries: defaultdict[str, int]) -> pd.DataFrame:
+    def _scrape_value_table(table) -> pd.DataFrame:
         """Scrapes value batting/pitching stats from `table`."""
         df_2 = Player._table_to_df(table, add_game_type=False)
-        df_2["Salary"] = df_2["Season"].apply(lambda x: yearly_salaries.get(x, None))
         df_2.drop(
             columns=[
                 "Season", "Age", "Team", "Lg", "PA", "IP", "G", "GS", "R", "WAR", "Pos", "Awards"

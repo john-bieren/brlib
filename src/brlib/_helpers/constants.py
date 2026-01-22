@@ -778,6 +778,7 @@ PLAYER_FIELDING_COLS = (
     "CS%",
     "lgCS%",
     "Pick",
+    "Salary",
     "AS",
     "GG",
     "SS",

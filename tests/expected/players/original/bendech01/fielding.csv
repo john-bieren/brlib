@@ -1,43 +1,43 @@
-Player,Player ID,Season,Age,Team,Team ID,League,Game Type,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,AS,GG,SS,MVP Finish,CYA Finish,ROY Finish,LCS MVP,WS MVP
-Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,P,36,33,29,270.0,100,12,79,9,0,0.91,0.948,,,,,3.03,3.19,2.53,3.13,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,1B,3,1,1,19.0,25,23,1,1,2,0.96,0.981,,,,,11.37,10.99,8.0,10.8,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,LF,1,1,1,,2,2,0,0,0,1.0,0.955,,,,,,,2.0,2.0,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,OF,1,1,1,9.0,2,2,0,0,0,1.0,0.95,,,,,2.0,2.0,2.0,2.0,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1904,20.0,PHA,PHA1904,AL,Regular Season,P,29,20,18,204.0,68,13,48,7,0,0.897,0.952,,,,,2.69,3.45,2.1,3.39,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1905,21.0,PHA,PHA1905,AL,Regular Season,P,35,23,18,229.0,94,14,77,3,2,0.968,0.942,,,,,3.58,3.24,2.6,3.21,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,P,36,27,24,238.0,87,25,54,8,1,0.908,0.948,,,,,2.99,3.22,2.19,3.17,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,OF,4,3,3,27.0,7,7,0,0,0,1.0,0.963,,,,,2.33,1.93,1.75,1.9,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,CF,3,3,3,,6,6,0,0,0,1.0,0.967,,,,,,,2.0,2.27,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,LF,1,0,0,,1,1,0,0,0,1.0,0.96,,,,,,,1.0,2.0,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,P,33,24,20,219.0,76,14,57,5,2,0.934,0.946,,,,,2.92,3.28,2.15,3.25,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,1B,2,1,1,15.0,21,18,0,3,0,0.857,0.982,,,,,10.8,11.28,9.0,11.15,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,2B,1,0,0,2.0,0,0,0,0,0,,,,,,,0.0,5.4,0.0,5.4,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,CF,1,0,0,,0,0,0,0,0,,,,,,,,,0.0,2.2,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,OF,1,0,0,,0,0,0,0,0,,,,,,,,,0.0,1.9,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1908,24.0,PHA,PHA1908,AL,Regular Season,P,18,17,14,139.0,43,12,28,3,0,0.93,0.946,,,,,2.59,3.2,2.22,3.19,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1908,24.0,PHA,PHA1908,AL,Regular Season,1B,1,1,1,11.0,16,13,3,0,1,1.0,0.984,,,,,13.09,11.45,16.0,11.4,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1909,25.0,PHA,PHA1909,AL,Regular Season,P,34,29,24,250.0,95,13,78,4,1,0.958,0.942,,,,,3.28,3.19,2.68,3.15,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1910,26.0,PHA,PHA1910,AL,Regular Season,P,30,28,25,250.0,101,13,85,3,3,0.97,0.942,,,,,3.53,3.29,3.27,3.28,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1911,27.0,PHA,PHA1911,AL,Regular Season,P,31,24,16,216.0,69,11,58,0,4,1.0,0.938,,,,,2.88,2.88,2.23,2.85,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1912,28.0,PHA,PHA1912,AL,Regular Season,P,27,19,12,171.0,44,6,36,2,2,0.955,0.94,,,,,2.21,2.96,1.56,2.9,,,15.0,21.0,58.3,41.8,0.0,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1913,29.0,PHA,PHA1913,AL,Regular Season,P,48,21,14,237.0,65,8,55,2,1,0.969,0.938,,,,,2.39,3.01,1.31,2.98,,,12.0,21.0,63.6,,1.0,0.0,0.0,0.0,22.0,,,0.0,0.0
-Charles Bender,bendech01,1914,30.0,PHA,PHA1914,AL,Regular Season,P,28,23,14,179.0,56,7,47,2,0,0.964,0.936,,,,,2.72,2.96,1.93,2.93,,,7.0,11.0,61.1,,2.0,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1915,31.0,BAL,BAL1915,FL,Regular Season,P,26,23,15,178.0,61,12,45,4,3,0.934,0.956,,,,,2.88,3.08,2.19,3.05,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1916,32.0,PHI,PHI1916,NL,Regular Season,P,27,13,4,123.0,49,8,39,2,1,0.959,0.959,,,,,3.44,2.67,1.74,2.67,,,14.0,13.0,48.1,,1.0,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1916,32.0,PHI,PHI1916,NL,Regular Season,3B,1,0,0,3.0,2,1,1,0,0,1.0,0.94,,,,,6.0,3.3,2.0,3.2,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1917,33.0,PHI,PHI1917,NL,Regular Season,P,20,10,8,113.0,28,5,22,1,4,0.964,0.961,,,,,2.15,2.85,1.35,2.86,,,7.0,11.0,61.1,44.8,0.0,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1925,41.0,CHW,CHW1925,AL,Regular Season,P,1,0,0,1.0,0,0,0,0,0,,,,,,,0.0,2.7,0.0,2.6,,,0.0,0.0,,,0.0,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,,473,341,262,3103.0,1109,237,813,59,27,0.947,0.948,,,,,3.05,3.23,2.22,3.16,,,55.0,77.0,58.3,17.5,4.0,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,P,459,334,255,3017.0,1036,173,808,55,24,0.947,0.945,,,,,2.93,3.13,2.14,3.07,,,55.0,77.0,58.3,17.5,4.0,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,1B,6,3,3,45.0,62,54,4,4,3,0.935,0.982,,,,,11.6,11.2,9.67,11.02,,,,,,,,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,OF,6,4,4,36.0,9,9,0,0,0,1.0,0.96,,,,,2.25,1.95,1.5,1.92,,,,,,,,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,CF,4,3,3,,6,6,0,0,0,1.0,0.967,,,,,,,1.5,2.25,,,,,,,,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,LF,2,1,1,,3,3,0,0,0,1.0,0.957,,,,,,,1.5,2.0,,,,,,,,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,2B,1,0,0,2.0,0,0,0,0,0,,,,,,,0.0,5.4,0.0,5.4,,,,,,,,,,,,,,,
-Charles Bender,bendech01,Career Totals,,,,,Regular Season,3B,1,0,0,3.0,2,1,1,0,0,1.0,0.94,,,,,6.0,3.3,2.0,3.2,,,,,,,,,,,,,,,
-Charles Bender,bendech01,1905,21.0,PHA,PHA1905,WS,Postseason,P,2,2,2,17.0,6,1,5,0,0,1.0,,,,,,3.18,,3.0,,,,2.0,2.0,50.0,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1910,26.0,PHA,PHA1910,WS,Postseason,P,2,2,2,18.2,3,1,2,0,1,1.0,,,,,,1.45,,1.5,,,,1.0,5.0,83.3,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1911,27.0,PHA,PHA1911,WS,Postseason,P,3,3,3,26.0,7,1,6,0,0,1.0,,,,,,2.42,,2.33,,,,2.0,2.0,50.0,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,1913,29.0,PHA,PHA1913,WS,Postseason,P,2,2,2,18.0,5,0,5,0,0,1.0,,,,,,2.5,,2.5,,,,2.0,2.0,50.0,,,0.0,0.0,0.0,22.0,,,0.0,0.0
-Charles Bender,bendech01,1914,30.0,PHA,PHA1914,WS,Postseason,P,1,1,0,5.1,4,1,3,0,2,1.0,,,,,,6.75,,4.0,,,,0.0,0.0,,,,0.0,0.0,0.0,,,,0.0,0.0
-Charles Bender,bendech01,Career Totals,,,,,Postseason,,10,10,9,85.0,25,4,21,0,3,1.0,,,,,,2.65,,2.5,,,,7.0,11.0,61.1,,,,,,,,,,
+Player,Player ID,Season,Age,Team,Team ID,League,Game Type,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,Salary,AS,GG,SS,MVP Finish,CYA Finish,ROY Finish,LCS MVP,WS MVP
+Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,P,36,33,29,270.0,100,12,79,9,0,0.91,0.948,,,,,3.03,3.19,2.53,3.13,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,1B,3,1,1,19.0,25,23,1,1,2,0.96,0.981,,,,,11.37,10.99,8.0,10.8,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,LF,1,1,1,,2,2,0,0,0,1.0,0.955,,,,,,,2.0,2.0,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1903,19.0,PHA,PHA1903,AL,Regular Season,OF,1,1,1,9.0,2,2,0,0,0,1.0,0.95,,,,,2.0,2.0,2.0,2.0,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1904,20.0,PHA,PHA1904,AL,Regular Season,P,29,20,18,204.0,68,13,48,7,0,0.897,0.952,,,,,2.69,3.45,2.1,3.39,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1905,21.0,PHA,PHA1905,AL,Regular Season,P,35,23,18,229.0,94,14,77,3,2,0.968,0.942,,,,,3.58,3.24,2.6,3.21,,,,,,,,2100.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,P,36,27,24,238.0,87,25,54,8,1,0.908,0.948,,,,,2.99,3.22,2.19,3.17,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,OF,4,3,3,27.0,7,7,0,0,0,1.0,0.963,,,,,2.33,1.93,1.75,1.9,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,CF,3,3,3,,6,6,0,0,0,1.0,0.967,,,,,,,2.0,2.27,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1906,22.0,PHA,PHA1906,AL,Regular Season,LF,1,0,0,,1,1,0,0,0,1.0,0.96,,,,,,,1.0,2.0,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,P,33,24,20,219.0,76,14,57,5,2,0.934,0.946,,,,,2.92,3.28,2.15,3.25,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,1B,2,1,1,15.0,21,18,0,3,0,0.857,0.982,,,,,10.8,11.28,9.0,11.15,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,2B,1,0,0,2.0,0,0,0,0,0,,,,,,,0.0,5.4,0.0,5.4,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,CF,1,0,0,,0,0,0,0,0,,,,,,,,,0.0,2.2,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1907,23.0,PHA,PHA1907,AL,Regular Season,OF,1,0,0,,0,0,0,0,0,,,,,,,,,0.0,1.9,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1908,24.0,PHA,PHA1908,AL,Regular Season,P,18,17,14,139.0,43,12,28,3,0,0.93,0.946,,,,,2.59,3.2,2.22,3.19,,,,,,,,3000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1908,24.0,PHA,PHA1908,AL,Regular Season,1B,1,1,1,11.0,16,13,3,0,1,1.0,0.984,,,,,13.09,11.45,16.0,11.4,,,,,,,,3000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1909,25.0,PHA,PHA1909,AL,Regular Season,P,34,29,24,250.0,95,13,78,4,1,0.958,0.942,,,,,3.28,3.19,2.68,3.15,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1910,26.0,PHA,PHA1910,AL,Regular Season,P,30,28,25,250.0,101,13,85,3,3,0.97,0.942,,,,,3.53,3.29,3.27,3.28,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1911,27.0,PHA,PHA1911,AL,Regular Season,P,31,24,16,216.0,69,11,58,0,4,1.0,0.938,,,,,2.88,2.88,2.23,2.85,,,,,,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1912,28.0,PHA,PHA1912,AL,Regular Season,P,27,19,12,171.0,44,6,36,2,2,0.955,0.94,,,,,2.21,2.96,1.56,2.9,,,15.0,21.0,58.3,41.8,0.0,3000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1913,29.0,PHA,PHA1913,AL,Regular Season,P,48,21,14,237.0,65,8,55,2,1,0.969,0.938,,,,,2.39,3.01,1.31,2.98,,,12.0,21.0,63.6,,1.0,1500.0,0.0,0.0,0.0,22.0,,,0.0,0.0
+Charles Bender,bendech01,1914,30.0,PHA,PHA1914,AL,Regular Season,P,28,23,14,179.0,56,7,47,2,0,0.964,0.936,,,,,2.72,2.96,1.93,2.93,,,7.0,11.0,61.1,,2.0,4000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1915,31.0,BAL,BAL1915,FL,Regular Season,P,26,23,15,178.0,61,12,45,4,3,0.934,0.956,,,,,2.88,3.08,2.19,3.05,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1916,32.0,PHI,PHI1916,NL,Regular Season,P,27,13,4,123.0,49,8,39,2,1,0.959,0.959,,,,,3.44,2.67,1.74,2.67,,,14.0,13.0,48.1,,1.0,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1916,32.0,PHI,PHI1916,NL,Regular Season,3B,1,0,0,3.0,2,1,1,0,0,1.0,0.94,,,,,6.0,3.3,2.0,3.2,,,,,,,,2500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1917,33.0,PHI,PHI1917,NL,Regular Season,P,20,10,8,113.0,28,5,22,1,4,0.964,0.961,,,,,2.15,2.85,1.35,2.86,,,7.0,11.0,61.1,44.8,0.0,4500.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1925,41.0,CHW,CHW1925,AL,Regular Season,P,1,0,0,1.0,0,0,0,0,0,,,,,,,0.0,2.7,0.0,2.6,,,0.0,0.0,,,0.0,3000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,,473,341,262,3103.0,1109,237,813,59,27,0.947,0.948,,,,,3.05,3.23,2.22,3.16,,,55.0,77.0,58.3,17.5,4.0,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,P,459,334,255,3017.0,1036,173,808,55,24,0.947,0.945,,,,,2.93,3.13,2.14,3.07,,,55.0,77.0,58.3,17.5,4.0,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,1B,6,3,3,45.0,62,54,4,4,3,0.935,0.982,,,,,11.6,11.2,9.67,11.02,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,OF,6,4,4,36.0,9,9,0,0,0,1.0,0.96,,,,,2.25,1.95,1.5,1.92,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,CF,4,3,3,,6,6,0,0,0,1.0,0.967,,,,,,,1.5,2.25,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,LF,2,1,1,,3,3,0,0,0,1.0,0.957,,,,,,,1.5,2.0,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,2B,1,0,0,2.0,0,0,0,0,0,,,,,,,0.0,5.4,0.0,5.4,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,Career Totals,,,,,Regular Season,3B,1,0,0,3.0,2,1,1,0,0,1.0,0.94,,,,,6.0,3.3,2.0,3.2,,,,,,,,,,,,,,,,
+Charles Bender,bendech01,1905,21.0,PHA,PHA1905,WS,Postseason,P,2,2,2,17.0,6,1,5,0,0,1.0,,,,,,3.18,,3.0,,,,2.0,2.0,50.0,,,2100.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1910,26.0,PHA,PHA1910,WS,Postseason,P,2,2,2,18.2,3,1,2,0,1,1.0,,,,,,1.45,,1.5,,,,1.0,5.0,83.3,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1911,27.0,PHA,PHA1911,WS,Postseason,P,3,3,3,26.0,7,1,6,0,0,1.0,,,,,,2.42,,2.33,,,,2.0,2.0,50.0,,,1200.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,1913,29.0,PHA,PHA1913,WS,Postseason,P,2,2,2,18.0,5,0,5,0,0,1.0,,,,,,2.5,,2.5,,,,2.0,2.0,50.0,,,1500.0,0.0,0.0,0.0,22.0,,,0.0,0.0
+Charles Bender,bendech01,1914,30.0,PHA,PHA1914,WS,Postseason,P,1,1,0,5.1,4,1,3,0,2,1.0,,,,,,6.75,,4.0,,,,0.0,0.0,,,,4000.0,0.0,0.0,0.0,,,,0.0,0.0
+Charles Bender,bendech01,Career Totals,,,,,Postseason,,10,10,9,85.0,25,4,21,0,3,1.0,,,,,,2.65,,2.5,,,,7.0,11.0,61.1,,,,,,,,,,,
