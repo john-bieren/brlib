@@ -142,33 +142,6 @@ class Player:
             return "Player()"
         return f"Player('{self.id}')"
 
-    def update_team_names(self) -> None:
-        """
-        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
-
-        ## Parameters
-
-        None.
-
-        ## Returns
-
-        `None`
-
-        ## Example
-
-        ```
-        >>> p = br.Player("beckejo02")
-        >>> p.info["Draft Team"]
-        0    Florida Marlins
-        Name: Draft Team, dtype: object
-        >>> p.update_team_names()
-        >>> p.info["Draft Team"]
-        0    Miami Marlins
-        Name: Draft Team, dtype: object
-        ```
-        """
-        self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
-
     def add_no_hitters(self) -> None:
         """
         Populates the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
@@ -258,6 +231,33 @@ class Player:
                      (self.pitching["Game Type"].str.startswith(game_type))),
                     col
                 ] += 1
+
+    def update_team_names(self) -> None:
+        """
+        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> p = br.Player("beckejo02")
+        >>> p.info["Draft Team"]
+        0    Florida Marlins
+        Name: Draft Team, dtype: object
+        >>> p.update_team_names()
+        >>> p.info["Draft Team"]
+        0    Miami Marlins
+        Name: Draft Team, dtype: object
+        ```
+        """
+        self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
 
     @staticmethod
     def _get_player(player_id: str) -> Response:

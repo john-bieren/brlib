@@ -149,6 +149,100 @@ class GameSet:
         self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype(int)
         self.records["Win %"] = self.records["Wins"] / (self.records["Wins"]+self.records["Losses"])
 
+    def add_no_hitters(self) -> None:
+        """
+        Populates the no-hitter columns in the `GameSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> g1 = br.Game("SEA", "20120815", "0")
+        >>> g2 = br.Game("SEA", "20120608", "0")
+        >>> gs = br.GameSet([g1, g2])
+        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                    Player                 Team  NH  PG  CNH
+        0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN
+        1     Kyle Farnsworth       Tampa Bay Rays NaN NaN  NaN
+        2         Team Totals       Tampa Bay Rays NaN NaN  NaN
+        3     Félix Hernández     Seattle Mariners NaN NaN  NaN
+        4         Team Totals     Seattle Mariners NaN NaN  NaN
+        ...               ...                  ... ... ...  ...
+        11      Stephen Pryor     Seattle Mariners NaN NaN  NaN
+        12       Lucas Luetge     Seattle Mariners NaN NaN  NaN
+        13     Brandon League     Seattle Mariners NaN NaN  NaN
+        14     Tom Wilhelmsen     Seattle Mariners NaN NaN  NaN
+        15        Team Totals     Seattle Mariners NaN NaN  NaN
+        >>> gs.add_no_hitters()
+        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
+                    Player                 Team   NH   PG  CNH
+        0   Jeremy Hellickson       Tampa Bay Rays  0.0  0.0  0.0
+        1     Kyle Farnsworth       Tampa Bay Rays  0.0  0.0  0.0
+        2         Team Totals       Tampa Bay Rays  0.0  0.0  0.0
+        3     Félix Hernández     Seattle Mariners  1.0  1.0  0.0
+        4         Team Totals     Seattle Mariners  1.0  1.0  0.0
+        ...               ...                  ...  ...  ...  ...
+        11      Stephen Pryor     Seattle Mariners  0.0  0.0  1.0
+        12       Lucas Luetge     Seattle Mariners  0.0  0.0  1.0
+        13     Brandon League     Seattle Mariners  0.0  0.0  1.0
+        14     Tom Wilhelmsen     Seattle Mariners  0.0  0.0  1.0
+        15        Team Totals     Seattle Mariners  0.0  0.0  1.0
+        ```
+        """
+        success = nhd.populate()
+        if not success:
+            return
+        self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
+
+        # find the games which include no-hitters
+        nh_games = set()
+        nh_games.update(nhd.game_inh_dict.keys())
+        nh_games.update(nhd.game_pg_dict.keys())
+        nh_games.update(nhd.game_cnh_dict.keys())
+        nh_games = set(self._contents).intersection(nh_games)
+
+        for game_id in list(nh_games):
+            inh_player_id = nhd.game_inh_dict.get(game_id, "")
+            pg_player_id = nhd.game_pg_dict.get(game_id, "")
+            cnh_list = nhd.game_cnh_dict.get(game_id, [])
+            game_mask = self.pitching["Game ID"] == game_id
+
+            # add individual no-hitters
+            for col, player_id in (
+                ("NH", inh_player_id),
+                ("PG", pg_player_id)
+                ):
+                if player_id == "":
+                    continue
+                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
+                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                self.pitching.loc[
+                    player_mask |
+                    (game_mask &
+                     (self.pitching["Player"] == "Team Totals") &
+                     (self.pitching["Team ID"] == nh_team_id)),
+                    col
+                ] = 1
+
+            # add combined no-hitters
+            for player_id in cnh_list:
+                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
+                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                self.pitching.loc[
+                    player_mask |
+                    (game_mask &
+                     (self.pitching["Player"] == "Team Totals") &
+                     (self.pitching["Team ID"] == nh_team_id)),
+                    "CNH"
+                ] = 1
+
     def update_team_names(self) -> None:
         """
         Standardizes team names such that teams are identified by one name, excluding relocations.
@@ -263,97 +357,3 @@ class GameSet:
         ```
         """
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
-
-    def add_no_hitters(self) -> None:
-        """
-        Populates the no-hitter columns in the `GameSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
-
-        ## Parameters
-
-        None.
-
-        ## Returns
-
-        `None`
-
-        ## Example
-
-        ```
-        >>> g1 = br.Game("SEA", "20120815", "0")
-        >>> g2 = br.Game("SEA", "20120608", "0")
-        >>> gs = br.GameSet([g1, g2])
-        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                    Player                 Team  NH  PG  CNH
-        0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN
-        1     Kyle Farnsworth       Tampa Bay Rays NaN NaN  NaN
-        2         Team Totals       Tampa Bay Rays NaN NaN  NaN
-        3     Félix Hernández     Seattle Mariners NaN NaN  NaN
-        4         Team Totals     Seattle Mariners NaN NaN  NaN
-        ...               ...                  ... ... ...  ...
-        11      Stephen Pryor     Seattle Mariners NaN NaN  NaN
-        12       Lucas Luetge     Seattle Mariners NaN NaN  NaN
-        13     Brandon League     Seattle Mariners NaN NaN  NaN
-        14     Tom Wilhelmsen     Seattle Mariners NaN NaN  NaN
-        15        Team Totals     Seattle Mariners NaN NaN  NaN
-        >>> gs.add_no_hitters()
-        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                    Player                 Team   NH   PG  CNH
-        0   Jeremy Hellickson       Tampa Bay Rays  0.0  0.0  0.0
-        1     Kyle Farnsworth       Tampa Bay Rays  0.0  0.0  0.0
-        2         Team Totals       Tampa Bay Rays  0.0  0.0  0.0
-        3     Félix Hernández     Seattle Mariners  1.0  1.0  0.0
-        4         Team Totals     Seattle Mariners  1.0  1.0  0.0
-        ...               ...                  ...  ...  ...  ...
-        11      Stephen Pryor     Seattle Mariners  0.0  0.0  1.0
-        12       Lucas Luetge     Seattle Mariners  0.0  0.0  1.0
-        13     Brandon League     Seattle Mariners  0.0  0.0  1.0
-        14     Tom Wilhelmsen     Seattle Mariners  0.0  0.0  1.0
-        15        Team Totals     Seattle Mariners  0.0  0.0  1.0
-        ```
-        """
-        success = nhd.populate()
-        if not success:
-            return
-        self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
-
-        # find the games which include no-hitters
-        nh_games = set()
-        nh_games.update(nhd.game_inh_dict.keys())
-        nh_games.update(nhd.game_pg_dict.keys())
-        nh_games.update(nhd.game_cnh_dict.keys())
-        nh_games = set(self._contents).intersection(nh_games)
-
-        for game_id in list(nh_games):
-            inh_player_id = nhd.game_inh_dict.get(game_id, "")
-            pg_player_id = nhd.game_pg_dict.get(game_id, "")
-            cnh_list = nhd.game_cnh_dict.get(game_id, [])
-            game_mask = self.pitching["Game ID"] == game_id
-
-            # add individual no-hitters
-            for col, player_id in (
-                ("NH", inh_player_id),
-                ("PG", pg_player_id)
-                ):
-                if player_id == "":
-                    continue
-                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
-                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
-                self.pitching.loc[
-                    player_mask |
-                    (game_mask &
-                     (self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Team ID"] == nh_team_id)),
-                    col
-                ] = 1
-
-            # add combined no-hitters
-            for player_id in cnh_list:
-                player_mask = (self.pitching["Player ID"] == player_id) & game_mask
-                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
-                self.pitching.loc[
-                    player_mask |
-                    (game_mask &
-                     (self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Team ID"] == nh_team_id)),
-                    "CNH"
-                ] = 1

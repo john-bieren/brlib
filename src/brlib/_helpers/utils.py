@@ -3,10 +3,11 @@
 """Defines utility functions used throughout the codebase."""
 
 import functools
+import typing
 from collections.abc import Callable
 from datetime import datetime
 from types import UnionType
-from typing import Any, get_args, get_origin, get_type_hints
+from typing import Any
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
@@ -40,7 +41,7 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     Raises a TypeError at runtime if values passed to the function
     do not match its type annotations.
     """
-    hints = get_type_hints(func)
+    hints = typing.get_type_hints(func)
 
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -61,11 +62,11 @@ def is_type(value: Any, expected_type: type) -> bool:
     if expected_type == Any:
         return True
 
-    origin = get_origin(expected_type)
+    origin = typing.get_origin(expected_type)
     if origin is None:
         return isinstance(value, expected_type)
 
-    args = get_args(expected_type)
+    args = typing.get_args(expected_type)
     if origin is UnionType:
         return any(is_type(value, arg) for arg in args)
 

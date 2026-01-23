@@ -97,38 +97,6 @@ class PlayerSet:
     def __repr__(self) -> str:
         return f"PlayerSet({", ".join((f"Player({p})" for p in self._contents))})"
 
-    def update_team_names(self) -> None:
-        """
-        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
-
-        ## Parameters
-
-        None.
-
-        ## Returns
-
-        `None`
-
-        ## Example
-
-        ```
-        >>> pl = br.get_players(["longoev01", "shielja02", "uptonbj01"])
-        >>> ps = br.PlayerSet(pl)
-        >>> ps.info["Draft Team"]
-        0    Tampa Bay Devil Rays
-        1    Tampa Bay Devil Rays
-        2    Tampa Bay Devil Rays
-        Name: Draft Team, dtype: object
-        >>> ps.update_team_names()
-        >>> ps.info["Draft Team"]
-        0    Tampa Bay Rays
-        1    Tampa Bay Rays
-        2    Tampa Bay Rays
-        Name: Draft Team, dtype: object
-        ```
-        """
-        self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
-
     def add_no_hitters(self) -> None:
         """
         Populates the no-hitter columns in the `PlayerSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
@@ -225,3 +193,35 @@ class PlayerSet:
                           (self.pitching["Game Type"].str.startswith(game_type)))),
                         col
                     ] += 1
+
+    def update_team_names(self) -> None:
+        """
+        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> pl = br.get_players(["longoev01", "shielja02", "uptonbj01"])
+        >>> ps = br.PlayerSet(pl)
+        >>> ps.info["Draft Team"]
+        0    Tampa Bay Devil Rays
+        1    Tampa Bay Devil Rays
+        2    Tampa Bay Devil Rays
+        Name: Draft Team, dtype: object
+        >>> ps.update_team_names()
+        >>> ps.info["Draft Team"]
+        0    Tampa Bay Rays
+        1    Tampa Bay Rays
+        2    Tampa Bay Rays
+        Name: Draft Team, dtype: object
+        ```
+        """
+        self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
