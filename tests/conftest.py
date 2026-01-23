@@ -5,6 +5,7 @@
 import copy
 
 import pytest
+from curl_cffi.requests import get
 
 import brlib as br
 
@@ -92,7 +93,16 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
 @pytest.fixture(scope="session")
 def teams_list() -> list[br.Team]:
     """The Team outputs to be tested, before any public methods are run."""
+    # load team page that was archived during Spring Training
+    # these can be accessed between SEASON_START_DATE and the end of Spring Training
+    page = get("https://web.archive.org/web/20240313202035/baseball-reference.com/teams/SEA/2024.shtml")
+    # spoof the url validation on page arguments
+    page.url = page.url.replace("web.archive.org/web/20240313202035/", "www.")
+    sea_2024_spring_training = br.Team(page=page)
+
     return [
+        # tests handling of team pages during Spring Training
+        sea_2024_spring_training,
         # WS winner, renamed venue, CNH in regular and postseason
         br.Team("HOU", "2022"),
         # team gold glove, pandemic season
@@ -103,6 +113,8 @@ def teams_list() -> list[br.Team]:
         br.Team("SEA", "2012"),
         # non-AL/NL pennant winner, players with multiple AS
         br.Team("BEG", "1939"),
+        # no player stats available
+        br.Team("COT", "1932"),
         # four managers, limited data, partial park factors
         br.Team("BBB", "1924"),
         # team shares name with later one

@@ -237,14 +237,16 @@ class Team:
         bling = info.find(id="bling")
         self._scrape_info(info, bling)
 
-        # gather player stats from relevant tables
+        # check that the page has player stats
         content = soup.find(id="content")
-        if "No stats are currently available for this team." in content.text: # e.g. COT1932
+        if ("No stats are currently available for this team." in content.text or # e.g. COT1932
+            "These stats are for the players to appear in spring training games" in content.text):
             self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
             self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
             self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
             return
 
+        # gather player stats from the relevant tables
         page_tables = content.find_all("div", {"class": "table_wrapper"}, recursive=False)
         for table in page_tables:
             table_name = table.get("id")
