@@ -129,7 +129,7 @@ class Game:
 
     * [`Game.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Game.add_no_hitters)
     * [`Game.update_team_names`](https://github.com/john-bieren/brlib/wiki/Game.update_team_names)
-    * [`Game.update_venue_name`](https://github.com/john-bieren/brlib/wiki/Game.update_venue_name)
+    * [`Game.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Game.update_venue_names)
     """
     @runtime_typecheck
     def __init__(
@@ -264,7 +264,7 @@ class Game:
 
         self.name = self.info["Game"].values[0]
 
-    def update_venue_name(self) -> None:
+    def update_venue_names(self) -> None:
         """
         Standardizes venue name such that venues are identified by one name.
 
@@ -283,7 +283,7 @@ class Game:
         >>> g.info["Venue"]
         0    Joe Robbie Stadium
         Name: Venue, dtype: object
-        >>> g.update_venue_name()
+        >>> g.update_venue_names()
         >>> g.info["Venue"]
         0    Hard Rock Stadium
         Name: Venue, dtype: object

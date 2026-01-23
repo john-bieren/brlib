@@ -54,7 +54,7 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
     for game in games_list_copy:
         game.add_no_hitters()
         game.update_team_names()
-        game.update_venue_name()
+        game.update_venue_names()
     return games_list_copy
 
 @pytest.fixture(scope="session")
@@ -87,7 +87,7 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
     players_list_copy = copy.deepcopy(players_list)
     for player in players_list_copy:
         player.add_no_hitters()
-        player.update_team_name()
+        player.update_team_names()
     return players_list_copy
 
 @pytest.fixture(scope="session")

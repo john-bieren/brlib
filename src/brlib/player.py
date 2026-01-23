@@ -98,7 +98,7 @@ class Player:
     ## Methods
 
     * [`Player.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Player.add_no_hitters)
-    * [`Player.update_team_name`](https://github.com/john-bieren/brlib/wiki/Player.update_team_name)
+    * [`Player.update_team_names`](https://github.com/john-bieren/brlib/wiki/Player.update_team_names)
     """
     @runtime_typecheck
     def __init__(
@@ -142,7 +142,7 @@ class Player:
             return "Player()"
         return f"Player('{self.id}')"
 
-    def update_team_name(self) -> None:
+    def update_team_names(self) -> None:
         """
         Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
 
@@ -161,7 +161,7 @@ class Player:
         >>> p.info["Draft Team"]
         0    Florida Marlins
         Name: Draft Team, dtype: object
-        >>> p.update_team_name()
+        >>> p.update_team_names()
         >>> p.info["Draft Team"]
         0    Miami Marlins
         Name: Draft Team, dtype: object
