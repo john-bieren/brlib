@@ -127,4 +127,6 @@ def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
     teams_list_copy = copy.deepcopy(teams_list)
     for team in teams_list_copy:
         team.add_no_hitters()
+        team.update_team_names()
+        team.update_venue_names()
     return teams_list_copy

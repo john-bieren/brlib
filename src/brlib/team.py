@@ -11,7 +11,7 @@ from curl_cffi import Response
 
 from ._helpers.constants import (TEAM_BATTING_COLS, TEAM_FIELDING_COLS,
                                  TEAM_INFO_COLS, TEAM_PITCHING_COLS,
-                                 TEAM_URL_REGEX)
+                                 TEAM_URL_REGEX, TEAM_REPLACEMENTS, VENUE_REPLACEMENTS, RANGE_TEAM_REPLACEMENTS)
 from ._helpers.inputs import validate_team_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
@@ -208,6 +208,77 @@ class Team:
                     "CNH"
                 ] += 1
                 games_logged.append(game_id)
+
+    def update_team_names(self) -> None:
+        """
+        Standardizes team names such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t = br.Team("LAA", "2015")
+        >>> t.info["Team"]
+        0    Los Angeles Angels of Anaheim
+        Name: Team, dtype: object
+        >>> t.update_team_names()
+        >>> t.info["Team"]
+        0    Los Angeles Angels
+        Name: Team, dtype: object
+        ```
+        """
+        # replace old team names
+        self.info.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.batting.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.pitching.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.fielding.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+
+        # replace old team names within a certain range
+        year = int(self.id[-4:])
+        for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
+            if year not in range(start_year, end_year+1):
+                continue
+            name_dict = {old_name: new_name}
+            self.info.replace({"Team": name_dict}, inplace=True)
+            self.batting.replace({"Team": name_dict}, inplace=True)
+            self.pitching.replace({"Team": name_dict}, inplace=True)
+            self.fielding.replace({"Team": name_dict}, inplace=True)
+
+        self.name = f"{self.id[-4:]} {self.info["Team"].values[0]}"
+
+    def update_venue_names(self) -> None:
+        """
+        Standardizes venue name such that venues are identified by one name.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t = br.Team("OAK", "2021")
+        >>> t.info["Venue"]
+        0    RingCentral Coliseum
+        Name: Venue, dtype: object
+        >>> t.update_venue_names()
+        >>> t.info["Venue"]
+        0    Oakland-Alameda County Coliseum
+        Name: Venue, dtype: object
+        ```
+        """
+        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
 
     @staticmethod
     def _get_team(team: tuple[str, str]) -> Response:

@@ -1,0 +1,37 @@
+Player,Player ID,Team,Season,Team ID,Game Type,Age,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,Pick,Pos,AS,GG,SS,MVP Finish,CYA Finish,ROY Finish,LCS MVP,WS MVP
+Jim Willis,williji05,Baltimore Elite Giants,1939,BEG1939,Regular Season,,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Jim West,westji01,Baltimore Elite Giants,1939,BEG1939,Regular Season,34.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,3,0.0,0.0,0.0,,,,0.0,0.0
+Hoss Walker,walkeho01,Baltimore Elite Giants,1939,BEG1939,Regular Season,34.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,6/54,0.0,0.0,0.0,,,,0.0,0.0
+Felton Snow,snowfe01,Baltimore Elite Giants,1939,BEG1939,Regular Season,33.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,56/43,0.0,0.0,0.0,,,,0.0,0.0
+Bobby Robinson,robinbo02,Baltimore Elite Giants,1939,BEG1939,Regular Season,26.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/6,0.0,0.0,0.0,,,,0.0,0.0
+Charlie Rivera,riverch01,Baltimore Elite Giants,1939,BEG1939,Regular Season,26.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,5/6,0.0,0.0,0.0,,,,0.0,0.0
+Lefty Phillips,phillle01,Baltimore Elite Giants,1939,BEG1939,Regular Season,22.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Red Moore,moorere01,Baltimore Elite Giants,1939,BEG1939,Regular Season,22.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/35,0.0,0.0,0.0,,,,0.0,0.0
+Biz Mackey,mackebi99,Baltimore Elite Giants,1939,BEG1939,Regular Season,41.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,2,0.0,0.0,0.0,,,,0.0,0.0
+Johnny Johnson,johnsjo12,Baltimore Elite Giants,1939,BEG1939,Regular Season,23.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Sammy Hughes,hughesa01,Baltimore Elite Giants,1939,BEG1939,Regular Season,28.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,4/2,2.0,0.0,0.0,,,,0.0,0.0
+Willie Hubert,huberwi01,Baltimore Elite Giants,1939,BEG1939,Regular Season,26.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Bill Harvey,harvebi01,Baltimore Elite Giants,1939,BEG1939,Regular Season,31.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Tom Glover,gloveto01,Baltimore Elite Giants,1939,BEG1939,Regular Season,26.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Jonas Gaines,gainejo02,Baltimore Elite Giants,1939,BEG1939,Regular Season,24.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/19,0.0,0.0,0.0,,,,0.0,0.0
+Roy Campanella,camparo01,Baltimore Elite Giants,1939,BEG1939,Regular Season,17.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,2,0.0,0.0,0.0,,,,0.0,0.0
+Bill Byrd,byrdbi01,Baltimore Elite Giants,1939,BEG1939,Regular Season,31.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,1/9,2.0,0.0,0.0,,,,0.0,0.0
+Tommy Butts,buttsto01,Baltimore Elite Giants,1939,BEG1939,Regular Season,19.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/69,0.0,0.0,0.0,,,,0.0,0.0
+Oscar Boone,booneos01,Baltimore Elite Giants,1939,BEG1939,Regular Season,28.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/2,0.0,0.0,0.0,,,,0.0,0.0
+Emery Adams,adamsem01,Baltimore Elite Giants,1939,BEG1939,Regular Season,27.0,,,,,,,,,,,,,,,,,0.0,,,,,,,,/179,0.0,0.0,0.0,,,,0.0,0.0
+Team Totals,,Baltimore Elite Giants,1939,BEG1939,Regular Season,,,,,,,,,,,,,,,,,,0.0,,,,,,,,,,,,,,,,
+Wild Bill Wright,wrighwi01,Baltimore Elite Giants,1939,BEG1939,Postseason,25.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Hoss Walker,walkeho01,Baltimore Elite Giants,1939,BEG1939,Postseason,34.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Felton Snow,snowfe01,Baltimore Elite Giants,1939,BEG1939,Postseason,33.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Red Moore,moorere01,Baltimore Elite Giants,1939,BEG1939,Postseason,22.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Henry Kimbro,kimbrhe01,Baltimore Elite Giants,1939,BEG1939,Postseason,27.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Sammy Hughes,hughesa01,Baltimore Elite Giants,1939,BEG1939,Postseason,28.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,2.0,0.0,0.0,,,,0.0,0.0
+Willie Hubert,huberwi01,Baltimore Elite Giants,1939,BEG1939,Postseason,26.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Bill Hoskins,hoskibi01,Baltimore Elite Giants,1939,BEG1939,Postseason,25.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Tom Glover,gloveto01,Baltimore Elite Giants,1939,BEG1939,Postseason,26.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Jonas Gaines,gainejo02,Baltimore Elite Giants,1939,BEG1939,Postseason,24.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Roy Campanella,camparo01,Baltimore Elite Giants,1939,BEG1939,Postseason,17.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,0.0,,,,0.0,0.0,0.0,,,,0.0,0.0
+Bill Byrd,byrdbi01,Baltimore Elite Giants,1939,BEG1939,Postseason,31.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,/1,2.0,0.0,0.0,,,,0.0,0.0
+Tommy Butts,buttsto01,Baltimore Elite Giants,1939,BEG1939,Postseason,19.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,,0.0,0.0,0.0,,,,0.0,0.0
+Emery Adams,adamsem01,Baltimore Elite Giants,1939,BEG1939,Postseason,27.0,,,0.0,0.0,,,0.0,,0.0,,,,,,,,0.0,,,,,,,,/1,0.0,0.0,0.0,,,,0.0,0.0
+Team Totals,,Baltimore Elite Giants,1939,BEG1939,Postseason,,,,0.0,72.0,,,0.0,,0.0,,,,,,,,0.0,,,,,0.0,,,,,,,,,,,

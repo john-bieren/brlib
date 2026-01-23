@@ -7,7 +7,8 @@ from itertools import chain
 import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import RECORDS_COLS
+from ._helpers.constants import (RANGE_TEAM_REPLACEMENTS, RECORDS_COLS,
+                                 TEAM_REPLACEMENTS, VENUE_REPLACEMENTS)
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.utils import runtime_typecheck
 from .team import Team
@@ -221,3 +222,92 @@ class TeamSet:
                         "CNH"
                     ] += 1
                     games_logged.append(game_id)
+
+    def update_team_names(self) -> None:
+        """
+        Standardizes team names such that teams are identified by one name, excluding relocations.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t1 = br.Team("FLA", "2003")
+        >>> t2 = br.Team("MON", "2003")
+        >>> ts = br.TeamSet([t1, t2])
+        >>> ts.info["Team"]
+        0    Florida Marlins
+        1     Montreal Expos
+        Name: Team, dtype: object
+        >>> ts.update_team_names()
+        >>> ts.info["Team"]
+        0     Miami Marlins
+        1    Montreal Expos
+        Name: Team, dtype: object
+        ```
+        """
+        # replace old team names
+        self.info.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.batting.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.pitching.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.fielding.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+
+        # replace old team names within a certain range
+        info_year_col = self.info["Team ID"].str[-4:].astype("float64")
+        batting_year_col = self.batting["Team ID"].str[-4:].astype("float64")
+        pitching_year_col = self.pitching["Team ID"].str[-4:].astype("float64")
+        fielding_year_col = self.fielding["Team ID"].str[-4:].astype("float64")
+
+        for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
+            years = range(start_year, end_year+1)
+            name_dict = {old_name: new_name}
+            info_mask = info_year_col.isin(years)
+            batting_mask = batting_year_col.isin(years)
+            pitching_mask = pitching_year_col.isin(years)
+            fielding_mask = fielding_year_col.isin(years)
+
+            self.info.loc[info_mask, "Team"] =\
+                self.info.loc[info_mask, "Team"].replace(name_dict)
+            self.batting.loc[batting_mask, "Team"] =\
+                self.batting.loc[batting_mask, "Team"].replace(name_dict)
+            self.pitching.loc[pitching_mask, "Team"] =\
+                self.pitching.loc[pitching_mask, "Team"].replace(name_dict)
+            self.fielding.loc[fielding_mask, "Team"] =\
+                self.fielding.loc[fielding_mask, "Team"].replace(name_dict)
+
+    def update_venue_names(self) -> None:
+        """
+        Standardizes venue names such that venues are identified by one name.
+
+        ## Parameters
+
+        None.
+
+        ## Returns
+
+        `None`
+
+        ## Example
+
+        ```
+        >>> t1 = br.Team("PHA", "1954")
+        >>> t2 = br.Team("SFG", "2017")
+        >>> ts = br.TeamSet([t1, t2])
+        >>> ts.info["Venue"]
+        0    Connie Mack Stadium
+        1              AT&T Park
+        Name: Venue, dtype: object
+        >>> ts.update_venue_names()
+        >>> ts.info["Venue"]
+        0     Shibe Park
+        1    Oracle Park
+        Name: Venue, dtype: object
+        ```
+        """
+        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
