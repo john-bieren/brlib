@@ -37,11 +37,11 @@ class Options(Singleton):
 
     * `pb_format`, default `"{percentage:3.2f}%|{bar}{r_bar}"`
 
-        The format of the progress bar. The value is passed to the tqdm `bar_format` argument, read the tqdm docs [here](https://tqdm.github.io/docs/tqdm).
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument. For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
 
     * `pb_color`, default `"#cccccc"`
 
-        The color of the progress bar. The value is passed to the tqdm `colour` argument, read the tqdm docs [here](https://tqdm.github.io/docs/tqdm).
+        The color of the progress bar. The value is passed to the tqdm `colour` argument. For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
 
     * `pb_disable`, default `False`
 
@@ -72,6 +72,8 @@ class Options(Singleton):
 
     ```
     >>> br.options.pb_disable = True
+    >>> br.options.pb_disable
+    True
     ```
 
     Remove the assigned value:
@@ -259,6 +261,10 @@ class Options(Singleton):
 
     @property
     def add_no_hitters(self) -> bool:
+        """
+        Default value for `add_no_hitters` arguments when initializing
+        `Game`, `Player`, and `Team` objects.
+        """
         return self._settings["add_no_hitters"]
 
     @add_no_hitters.setter
@@ -274,6 +280,10 @@ class Options(Singleton):
 
     @property
     def request_buffer(self) -> float:
+        """
+        Buffer, in seconds, between requests.
+        Necessary to obey Baseball Reference's [rate limit](https://www.sports-reference.com/429.html).
+        """
         return self._settings["request_buffer"]
 
     @request_buffer.setter
@@ -293,6 +303,7 @@ class Options(Singleton):
 
     @property
     def timeout_limit(self) -> int:
+        """Timeout parameter for requests."""
         return self._settings["timeout_limit"]
 
     @timeout_limit.setter
@@ -312,6 +323,7 @@ class Options(Singleton):
 
     @property
     def max_retries(self) -> int:
+        """Number of retries to attempt on failed requests."""
         return self._settings["max_retries"]
 
     @max_retries.setter
@@ -331,6 +343,10 @@ class Options(Singleton):
 
     @property
     def pb_format(self) -> str:
+        """
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument.
+        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        """
         return self._settings["pb_format"]
 
     @pb_format.setter
@@ -346,6 +362,10 @@ class Options(Singleton):
 
     @property
     def pb_color(self) -> str:
+        """
+        The color of the progress bar. The value is passed to the tqdm `colour` argument.
+        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        """
         return self._settings["pb_color"]
 
     @pb_color.setter
@@ -361,6 +381,7 @@ class Options(Singleton):
 
     @property
     def pb_disable(self) -> bool:
+        """Whether to disable the progress bar."""
         return self._settings["pb_disable"]
 
     @pb_disable.setter
@@ -376,6 +397,7 @@ class Options(Singleton):
 
     @property
     def print_pages(self) -> bool:
+        """Whether to print descriptions of visited pages."""
         return self._settings["print_pages"]
 
     @print_pages.setter
@@ -391,6 +413,7 @@ class Options(Singleton):
 
     @property
     def dev_alerts(self) -> bool:
+        """Whether to print alerts meant for brlib developers."""
         return self._settings["dev_alerts"]
 
     @dev_alerts.setter
@@ -406,6 +429,7 @@ class Options(Singleton):
 
     @property
     def quiet(self) -> bool:
+        """Whether to mute most printed messages."""
         return self._settings["quiet"]
 
     @quiet.setter
