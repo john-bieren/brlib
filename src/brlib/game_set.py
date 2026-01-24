@@ -155,7 +155,7 @@ class GameSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -249,7 +249,7 @@ class GameSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -258,18 +258,18 @@ class GameSet:
         ## Example
 
         ```
-        >>> g1 = br.Game("SEA", "20180401", "0")
+        >>> g1 = br.Game("KC1", "19550824", "0")
         >>> g2 = br.Game("TBA", "20050828", "0")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.info[["Away Team", "Home Team"]]
-                            Away Team             Home Team
-        0              Cleveland Indians      Seattle Mariners
-        1  Los Angeles Angels of Anaheim  Tampa Bay Devil Rays
+                            Away Team              Home Team
+        0           Washington Nationals  Kansas City Athletics
+        1  Los Angeles Angels of Anaheim   Tampa Bay Devil Rays
         >>> gs.update_team_names()
         >>> gs.info[["Away Team", "Home Team"]]
-                    Away Team         Home Team
-        0  Cleveland Guardians  Seattle Mariners
-        1   Los Angeles Angels    Tampa Bay Rays
+                                Away Team              Home Team
+        0  Washington Nationals (1901-1960)  Kansas City Athletics
+        1                Los Angeles Angels         Tampa Bay Rays
         ```
         """
         # replace old team names
@@ -333,7 +333,7 @@ class GameSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 

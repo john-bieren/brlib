@@ -103,7 +103,7 @@ class PlayerSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -200,7 +200,7 @@ class PlayerSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -209,18 +209,18 @@ class PlayerSet:
         ## Example
 
         ```
-        >>> pl = br.get_players(["longoev01", "shielja02", "uptonbj01"])
+        >>> pl = br.get_players(["longoev01", "hanigmi01", "troutmi01"])
         >>> ps = br.PlayerSet(pl)
         >>> ps.info["Draft Team"]
-        0    Tampa Bay Devil Rays
-        1    Tampa Bay Devil Rays
-        2    Tampa Bay Devil Rays
+        0             Tampa Bay Devil Rays
+        1                Milwaukee Brewers
+        2    Los Angeles Angels of Anaheim
         Name: Draft Team, dtype: object
         >>> ps.update_team_names()
         >>> ps.info["Draft Team"]
-        0    Tampa Bay Rays
-        1    Tampa Bay Rays
-        2    Tampa Bay Rays
+        0        Tampa Bay Rays
+        1     Milwaukee Brewers
+        2    Los Angeles Angels
         Name: Draft Team, dtype: object
         ```
         """

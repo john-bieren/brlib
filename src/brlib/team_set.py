@@ -121,7 +121,7 @@ class TeamSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -229,7 +229,7 @@ class TeamSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -238,17 +238,17 @@ class TeamSet:
         ## Example
 
         ```
-        >>> t1 = br.Team("FLA", "2003")
-        >>> t2 = br.Team("MON", "2003")
+        >>> t1 = br.Team("BRO", "1920")
+        >>> t2 = br.Team("NYY", "1920")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.info["Team"]
-        0    Florida Marlins
-        1     Montreal Expos
+        0     Brooklyn Robins
+        1    New York Yankees
         Name: Team, dtype: object
         >>> ts.update_team_names()
         >>> ts.info["Team"]
-        0     Miami Marlins
-        1    Montreal Expos
+        0    Brooklyn Dodgers
+        1    New York Yankees
         Name: Team, dtype: object
         ```
         """
@@ -287,7 +287,7 @@ class TeamSet:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 

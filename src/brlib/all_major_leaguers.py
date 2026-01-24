@@ -16,7 +16,7 @@ def all_major_leaguers() -> pd.DataFrame:
 
     ## Parameters
 
-    None.
+    None
 
     ## Returns
 

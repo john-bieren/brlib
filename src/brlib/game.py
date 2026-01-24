@@ -211,7 +211,7 @@ class Game:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -286,7 +286,7 @@ class Game:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -364,7 +364,7 @@ class Game:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 

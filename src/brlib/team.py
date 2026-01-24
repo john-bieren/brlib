@@ -156,7 +156,7 @@ class Team:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -234,7 +234,7 @@ class Team:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -278,7 +278,7 @@ class Team:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 

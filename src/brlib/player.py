@@ -157,7 +157,7 @@ class Player:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -247,7 +247,7 @@ class Player:
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 

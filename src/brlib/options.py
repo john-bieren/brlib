@@ -212,7 +212,7 @@ class Options(Singleton):
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
@@ -235,7 +235,7 @@ class Options(Singleton):
 
         ## Parameters
 
-        None.
+        None
 
         ## Returns
 
