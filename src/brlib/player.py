@@ -48,6 +48,10 @@ class Player:
 
         Whether to populate the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
 
+    * `update_team_names`: `bool` or `None`, default `None`
+
+        Whether to standardize team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+
     ## Attributes
 
     * `id`: `str`
@@ -105,10 +109,13 @@ class Player:
             self,
             player_id: str = "",
             page: Response = Response(),
-            add_no_hitters: bool | None = None
+            add_no_hitters: bool | None = None,
+            update_team_names: bool | None = None
             ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
+        if update_team_names is None:
+            update_team_names = options.update_team_names
 
         if page.url == "":
             player_ids = validate_player_list([player_id])
@@ -129,10 +136,12 @@ class Player:
         self._url = page.url
 
         self._scrape_player(page)
-        self.relatives = dict(self.relatives)
+        print_page(self.name)
+
         if add_no_hitters:
             self.add_no_hitters()
-        print_page(self.name)
+        if update_team_names:
+            self.update_team_names()
 
     def __str__(self) -> str:
         return self.id
@@ -329,6 +338,7 @@ class Player:
         self.batting = self.batting.reindex(columns=PLAYER_BATTING_COLS)
         self.pitching = self.pitching.reindex(columns=PLAYER_PITCHING_COLS)
         self.fielding = self.fielding.reindex(columns=PLAYER_FIELDING_COLS)
+        self.relatives = dict(self.relatives)
 
         # get final pieces of info which require the above DataFrames
         self._count_years_played()

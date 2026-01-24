@@ -23,6 +23,14 @@ class Options(Singleton):
 
         Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team` objects.
 
+    * `update_team_names`, default `False`
+
+        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and `Team` objects.
+
+    * `update_venue_names`, default `False`
+
+        Default value for `update_venue_names` arguments when initializing `Game`, `Player`, and `Team` objects.
+
     * `request_buffer`, default `2.015`
 
         Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate limit](https://www.sports-reference.com/429.html).
@@ -96,6 +104,8 @@ class Options(Singleton):
     def __init__(self) -> None:
         self._defaults = {
             "add_no_hitters": False,
+            "update_team_names": False,
+            "update_venue_names": False,
             "request_buffer": 2.015,
             "timeout_limit": 10,
             "max_retries": 2,
@@ -277,6 +287,44 @@ class Options(Singleton):
                 print(f"add_no_hitters preference must have type {bool}")
             return
         self._changes["add_no_hitters"] = value
+
+    @property
+    def update_team_names(self) -> bool:
+        """
+        Default value for `update_team_names` arguments when initializing
+        `Game`, `Player`, and `Team` objects.
+        """
+        return self._settings["update_team_names"]
+
+    @update_team_names.setter
+    def update_team_names(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("update_team_names", None)
+            return
+        if not isinstance(value, bool):
+            if not self.quiet:
+                print(f"update_team_names preference must have type {bool}")
+            return
+        self._changes["update_team_names"] = value
+
+    @property
+    def update_venue_names(self) -> bool:
+        """
+        Default value for `update_venue_names` arguments when initializing
+        `Game`, `Player`, and `Team` objects.
+        """
+        return self._settings["update_venue_names"]
+
+    @update_venue_names.setter
+    def update_venue_names(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("update_venue_names", None)
+            return
+        if not isinstance(value, bool):
+            if not self.quiet:
+                print(f"update_venue_names preference must have type {bool}")
+            return
+        self._changes["update_venue_names"] = value
 
     @property
     def request_buffer(self) -> float:

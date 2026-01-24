@@ -10,6 +10,8 @@ from curl_cffi.requests import get
 import brlib as br
 
 br.options.add_no_hitters = False
+br.options.update_team_names = False
+br.options.update_venue_names = False
 
 @pytest.fixture(scope="session")
 def games_list() -> list[br.Game]:

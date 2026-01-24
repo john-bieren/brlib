@@ -44,6 +44,14 @@ class Team:
 
         Whether to populate the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
 
+    * `update_team_names`: `bool` or `None`, default `None`
+
+        Whether to standardize team names such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+
+    * `update_venue_names`: `bool` or `None`, default `None`
+
+        Whether to standardize venue name such that venues are identified by one name. If no value is passed, the value of `options.update_venue_names` is used.
+
     ## Attributes
 
     * `id`: `str`
@@ -93,10 +101,16 @@ class Team:
             team: str = "",
             season: str = "",
             page: Response = Response(),
-            add_no_hitters: bool | None = None
+            add_no_hitters: bool | None = None,
+            update_team_names: bool | None = None,
+            update_venue_names: bool | None = None
             ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
+        if update_team_names is None:
+            update_team_names = options.update_team_names
+        if update_venue_names is None:
+            update_venue_names = options.update_venue_names
 
         if page.url == "":
             if any(s == "" for s in (team, season)):
@@ -117,9 +131,14 @@ class Team:
         self._url = page.url
 
         self._scrape_team(page)
+        print_page(self.name)
+
         if add_no_hitters:
             self.add_no_hitters()
-        print_page(self.name)
+        if update_team_names:
+            self.update_team_names()
+        if update_venue_names:
+            self.update_venue_names()
 
     def __str__(self) -> str:
         return self.name
