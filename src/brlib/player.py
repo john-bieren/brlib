@@ -412,6 +412,7 @@ class Player:
                         birth_city, birth_state_or_country = birth_place.split(", ", maxsplit=1)
                     except ValueError:
                         # city and/or state/country could be missing, so there's nothing to do
+                        dev_alert(f'{self.id}: malformed birth place "{birth_place.strip()}"')
                         continue
                     self.info.loc[:, "Birth City"] = birth_city
                     if len(birth_state_or_country) == 2: # states are represented by abbreviations

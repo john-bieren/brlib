@@ -497,12 +497,6 @@ GAME_TEAM_INFO_COLS = (
     "Game ID"
 )
 
-GAME_UMP_INFO_COLS = (
-    "Game ID",
-    "Position",
-    "Umpire"
-)
-
 PLAYER_INFO_COLS = (
     "Player",
     "Player ID",
