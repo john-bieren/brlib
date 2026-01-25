@@ -140,7 +140,7 @@ def reformat_date(string_date: str) -> str:
     day = f"0{day}" if day < 10 else day
     return f"{date.year}-{month}-{day}"
 
-def soup_from_comment(tag: Tag, only_if_table: bool = False) -> bs | Tag:
+def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
     """
     Returns contents from the first comment within `tag`.
     If `tag` does not include a table and `only_if_table` == True, returns `tag`.

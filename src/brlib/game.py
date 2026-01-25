@@ -591,8 +591,9 @@ class Game:
 
     def _scrape_other_info(self, other_info: Tag) -> None:
         """Scrapes weather and umpire info from `other_info`."""
-        other_info_text = other_info.decode_contents().split("--")[1].strip()
-        other_info_list = bs(other_info_text, "lxml").find_all("div")
+        other_info = soup_from_comment(other_info, only_if_table=False)
+        other_info_list = other_info.find_all("div")
+
         # [1:] because the first tag is the parent of the others
         for line in other_info_list[1:]:
             line_str = line.text.strip(" \n.")
@@ -651,11 +652,9 @@ class Game:
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
 
         for table in batting_tables:
-            # use the commented-out version of the table
-            table_text = table.decode_contents().split("--")[1].strip()
-            table = bs(table_text, "lxml")
-
+            table = soup_from_comment(table, only_if_table=True)
             footer = table.find("div", {"class": "footer no_hide_long"})
+
             for line in footer.find_all("div", {"id": sb_ids}):
                 line_str = line.text.strip(".")
                 off_stat, players = line_str.split(": ", maxsplit=1)
@@ -860,8 +859,7 @@ class Game:
 
     def _scrape_game_pitching(self, pitching_section: Tag) -> None:
         """Scrapes pitching stats from `table`."""
-        section_text = pitching_section.decode_contents().split("--")[1].strip()
-        pitching_section = bs(section_text, "lxml")
+        pitching_section = soup_from_comment(pitching_section, only_if_table=True)
 
         for table in pitching_section.find_all("div", {"class": "table_wrapper"}):
             # extract stats from table
