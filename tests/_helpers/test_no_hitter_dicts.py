@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests attributes of the NoHitterDicts singleton."""
+"""Tests the attributes of the NoHitterDicts singleton."""
 
 import copy
 
@@ -9,7 +9,8 @@ from brlib._helpers.no_hitter_dicts import nhd
 
 def test_cache() -> None:
     """Tests that contents are the same when loaded from cache and the web."""
-    # make sure the data has been loaded from the web
+    # make sure the data has been loaded from the web by the CI runner
+    # locally, you'll have to delete the cache file to replicate this behavior
     assert nhd.populate()
 
     expected_gi = copy.deepcopy(nhd.game_inh_dict)

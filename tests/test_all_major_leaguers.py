@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests output of the all_major_leaguers function."""
+"""Tests the output of the all_major_leaguers function."""
 
 import pandas as pd
 

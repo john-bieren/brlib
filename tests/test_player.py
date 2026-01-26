@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests attributes and methods of the Player class."""
+"""Tests the attributes and methods of the Player class."""
 
 import json
 from pathlib import Path

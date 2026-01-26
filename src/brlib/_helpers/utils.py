@@ -98,10 +98,10 @@ def str_between(string: str, start: str, end: str, anchor: str = "start") -> str
     Returns the substring of `string` which appears between `start` and `end`.
     `string` must contain `start` and `end`.
 
-    If `anchor` == "start", the substring between the first occurrence of `start`
+    If `anchor` == `"start"`, the substring between the first occurrence of `start`
     and the first subsequent occurrence of `end` will be returned.
 
-    If `anchor` == "end", the substring between the final occurrence of `end`
+    If `anchor` == `"end"`, the substring between the final occurrence of `end`
     and the final prior occurrence of `start` will be returned.
     """
     if start not in string:
@@ -127,7 +127,7 @@ def clean_spaces(string: str) -> str:
 
 def reformat_date(string_date: str) -> str:
     """
-    Converts `string_date` of "MM DD, YYYY" to "YY-MM-DD" for formatting consistency.
+    Converts `string_date` of "Month DD, YYYY" to "YY-MM-DD" for formatting consistency.
     If `string_date` does not match this format, an empty string will be returned.
     """
     try:

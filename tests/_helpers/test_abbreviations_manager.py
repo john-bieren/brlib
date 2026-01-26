@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests methods of the AbbreviationsManager singleton."""
+"""Tests the methods of the AbbreviationsManager singleton."""
 
 from brlib._helpers.abbreviations_manager import abv_man
 
@@ -8,6 +8,7 @@ from brlib._helpers.abbreviations_manager import abv_man
 def test_cache() -> None:
     """Tests that contents are the same when loaded from cache and the web."""
     # on the CI runner, the DataFrame has already been loaded from the web and cached
+    # locally, you'll have to delete the cache file to replicate this behavior
     expected_df = abv_man.df.copy()
     assert abv_man._has_valid_cache
     abv_man._load()

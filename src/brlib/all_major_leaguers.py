@@ -67,6 +67,6 @@ def all_major_leaguers() -> pd.DataFrame:
     # convert active column from 0/1 to boolean
     players_df["Active"] = players_df["Active"].astype(bool)
 
-    columns=["Player ID", "Name", "Career Start", "Career End", "Active"]
+    columns = ["Player ID", "Name", "Career Start", "Career End", "Active"]
     players_df = players_df.reindex(columns=columns)
     return players_df
