@@ -4,6 +4,7 @@
 
 import copy
 
+import pandas as pd
 import pytest
 
 import brlib as br
@@ -11,6 +12,13 @@ import brlib as br
 br.options.add_no_hitters = False
 br.options.update_team_names = False
 br.options.update_venue_names = False
+
+@pytest.fixture(scope="module")
+def aml_filtered() -> pd.DataFrame:
+    """The output of `all_major_leaguers` filtered to a stable subset of retired players."""
+    aml = br.all_major_leaguers()
+    aml = aml.loc[aml["Career End"] < 2019]
+    return aml
 
 @pytest.fixture(scope="session")
 def games_list() -> list[br.Game]:
