@@ -2,34 +2,42 @@
 
 """Tests attributes of the NoHitterDicts singleton."""
 
+import copy
+
 from brlib._helpers.no_hitter_dicts import nhd
 
 
-def test_nhd() -> None:
-    """Tests attributes of the NoHitterDicts singleton when loaded from cache and the web."""
-    assert not nhd._populated
-    requested_data = nhd._get()
-    assert not requested_data.empty
-    nhd._generate_dicts(requested_data)
-    suite()
+def test_cache() -> None:
+    """Tests that contents are the same when loaded from cache and the web."""
+    # make sure the data has been loaded from the web
+    assert nhd.populate()
 
-    # re-load data from cache and test again
-    nhd.game_inh_dict, nhd.game_pg_dict, nhd.game_cnh_dict = ({} for _ in range(3))
-    nhd.player_inh_dict, nhd.player_pg_dict, nhd.player_cnh_dict = ({} for _ in range(3))
-    nhd.team_inh_dict, nhd.team_pg_dict, nhd.team_cnh_dict = ({} for _ in range(3))
+    expected_gi = copy.deepcopy(nhd.game_inh_dict)
+    expected_gp = copy.deepcopy(nhd.game_pg_dict)
+    expected_gc = copy.deepcopy(nhd.game_cnh_dict)
+    expected_pi = copy.deepcopy(nhd.player_inh_dict)
+    expected_pp = copy.deepcopy(nhd.player_pg_dict)
+    expected_pc = copy.deepcopy(nhd.player_cnh_dict)
+    expected_ti = copy.deepcopy(nhd.team_inh_dict)
+    expected_tp = copy.deepcopy(nhd.team_pg_dict)
+    expected_tc = copy.deepcopy(nhd.team_cnh_dict)
+
+    # reset contents and load data from cache
     assert nhd._has_valid_cache
-    cached_data = nhd._load()
-    assert not cached_data.empty
-    nhd._generate_dicts(cached_data)
-    suite()
+    nhd.__init__()
+    assert nhd.populate()
 
-def suite() -> None:
-    """Runs the tests for all the dictionaries."""
-    game_dicts()
-    player_dicts()
-    team_dicts()
+    assert nhd.game_inh_dict == expected_gi
+    assert nhd.game_pg_dict == expected_gp
+    assert nhd.game_cnh_dict == expected_gc
+    assert nhd.player_inh_dict == expected_pi
+    assert nhd.player_pg_dict == expected_pp
+    assert nhd.player_cnh_dict == expected_pc
+    assert nhd.team_inh_dict == expected_ti
+    assert nhd.team_pg_dict == expected_tp
+    assert nhd.team_cnh_dict == expected_tc
 
-def game_dicts() -> None:
+def test_game_dicts() -> None:
     """Tests the contents of the game dictionaries."""
     assert nhd.game_inh_dict["CIN202408020"] == "snellbl01"
     assert nhd.game_inh_dict["NYA195610080"] == "larsedo01"
@@ -43,7 +51,7 @@ def game_dicts() -> None:
     ]
     assert nhd.game_cnh_dict["DET202307080"] == ["mannima02", "foleyja01", "langeal01"]
 
-def player_dicts() -> None:
+def test_player_dicts() -> None:
     """Tests the contents of the player dictionaries."""
     assert nhd.player_inh_dict.get("pressry01") is None
     assert nhd.player_inh_dict["hallaro01"] == [["2010", "PHI", "P"], ["2010", "PHI", "R"]]
@@ -60,7 +68,7 @@ def player_dicts() -> None:
     assert nhd.player_cnh_dict["sanchaa01"] == [["2019", "HOU", "R"]]
     assert nhd.player_cnh_dict["pressry01"] == [["2022", "HOU", "P"], ["2022", "HOU", "R"]]
 
-def team_dicts() -> None:
+def test_team_dicts() -> None:
     """Tests the contents of the team dictionaries."""
     assert nhd.team_inh_dict.get("LAD2018") is None
     # checks that pre-1901 no-hitters are marked as regular season
