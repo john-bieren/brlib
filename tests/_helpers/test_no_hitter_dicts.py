@@ -38,7 +38,8 @@ def test_cache() -> None:
     assert nhd.player_cnh_dict == expected_pc
     assert nhd.team_inh_dict == expected_ti
     assert nhd.team_pg_dict == expected_tp
-    assert nhd.team_cnh_dict == expected_tc
+    # some game ids are np.nan which does not equal itself, so numpy tooling is required
+    np.testing.assert_equal(nhd.team_cnh_dict, expected_tc)
 
 def test_game_dicts() -> None:
     """Tests the contents of the game dictionaries."""
