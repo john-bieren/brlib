@@ -817,7 +817,9 @@ class Game:
         footer = table.find("div", {"class": "footer no_hide_long"})
         # [1:] because the first tag is the parent of the others
         for line in footer.find_all("div")[1:]:
-            line_str = line.text.replace("\xa0", " ").strip(".")
+            line_str = line.text.replace("\xa0", " ")
+            # can't use line_str.strip(".") because "Jr." ends with a period
+            line_str = line_str[:-1] if line_str[-1] == "." else line_str
             stat, players = line_str.split(": ", maxsplit=1)
 
             if player_stats.get(stat) is not None:
