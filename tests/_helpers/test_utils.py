@@ -22,6 +22,7 @@ def test_is_type() -> None:
     assert not is_type(("foo", "bar", "baz"), tuple[str])
     assert is_type({"a": 1, "b": 2, "c": 3}, dict[str, int])
     assert not is_type({"a": 1, "b": 2, "c": "3"}, dict[str, int])
+    assert is_type(None, str | None)
     assert is_type(1, int | list[int])
     assert is_type([1, 2, 3], int | list[int])
     assert not is_type([1, 2, "3"], int | list[int])
