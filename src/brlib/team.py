@@ -220,7 +220,8 @@ class Team:
                 "CNH"
             ] += 1
             # team totals row (only increment total once per game)
-            if game_id not in games_logged:
+            # works when game_id is None because no team without box scores had multiple CNHs
+            if game_id not in games_logged or game_id is None:
                 self.pitching.loc[
                     ((self.pitching["Player"] == "Team Totals") &
                      (self.pitching["Game Type"].str.startswith(game_type))),

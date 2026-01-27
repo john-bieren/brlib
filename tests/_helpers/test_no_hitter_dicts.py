@@ -4,6 +4,8 @@
 
 import copy
 
+import numpy as np
+
 from brlib._helpers.no_hitter_dicts import nhd
 
 
@@ -90,4 +92,8 @@ def test_team_dicts() -> None:
         ["montera01", "P", "PHI202211020"], ["pressry01", "P", "PHI202211020"],
         ["javiecr01", "R", "NYA202206250"], ["nerishe01", "R", "NYA202206250"],
         ["pressry01", "R", "NYA202206250"]
+    ]
+    # check game id value for combined no-hitters without a box score
+    assert nhd.team_cnh_dict["KCM1923"] == [
+        ["roganbu99", "R", np.nan], ["mendejo99", "R", np.nan]
     ]

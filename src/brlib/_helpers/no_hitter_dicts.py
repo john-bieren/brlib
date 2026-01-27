@@ -204,7 +204,7 @@ class NoHitterDicts(Singleton):
                     game_id_column.append(game_id)
 
         combined_df["Player ID"] = player_id_column
-        combined_df["Game ID"] = combined_df["Game ID"].astype("object")
+        combined_df["Game ID"] = combined_df["Game ID"].astype("object") # cast to nullable dtype
         combined_df.loc[
             (~combined_df["Team"].isin(BML_TEAM_ABVS)) &
             (combined_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
