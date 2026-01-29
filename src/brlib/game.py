@@ -519,7 +519,7 @@ class Game:
             teams = [tuple(str_between(team, "/teams/", ".").split("/", maxsplit=1)) for team in teams]
             assert len(teams) == 2
             self._away_team_id, self._home_team_id = ("".join(team) for team in teams)
-            self.teams = self.teams + teams
+            self.teams += teams
 
     def _scrape_scorebox(self, scorebox: Tag) -> None:
         """Scrapes several pieces of game info from `scorebox`."""
@@ -742,7 +742,7 @@ class Game:
         player_id_column = scrape_player_ids(table)
         h_df.loc[is_player_mask, "Player ID"] = player_id_column
         h_df.loc[~is_player_mask, "Player ID"] = None
-        self.players = self.players + player_id_column
+        self.players += player_id_column
 
         # make sure all batters have only one row, combine their stats if not
         # used when a player is DH and pitches or when there is an illegal substitution
@@ -877,7 +877,7 @@ class Game:
             player_id_column = scrape_player_ids(table)
             p_df.loc[p_df["Player"] != "Team Totals", "Player ID"] = player_id_column
             p_df.loc[p_df["Player"] == "Team Totals", "Player ID"] = None
-            self.players = self.players + player_id_column
+            self.players += player_id_column
 
             # determine home team
             if str_remove(self._home_team, " ", "-", ".") in table.get("id"):

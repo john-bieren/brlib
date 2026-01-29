@@ -37,6 +37,7 @@ def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str,
         if len(correct_abv) == 0: # correct_abv is a list of length 0 or 1
             write(f'cannot get "({home_team}, {date}, {doubleheader})": {home_team} did not play in {year}')
             continue
+        # use correct_abv moving forward to account for discontinuities
         correct_abv = abv_man.to_alias(*correct_abv, year)
         result.append((correct_abv, date, doubleheader))
     return result

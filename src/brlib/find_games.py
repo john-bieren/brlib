@@ -48,7 +48,7 @@ def find_games(
 
     * `dates`: `str` or `list[str]`, default `"all"`
 
-        A string representing a date in MMDD format as a number (e.g. `"0704"`), an inclusive range of such numbers (e.g. `"0314-0325"`), `"all"`, or a list of multiple such inputs which specify the dates from which games should be found.
+        A string representing a date in MMDD format as a number (e.g. `"1005"` or `"704"`), an inclusive range of such numbers (e.g. `"927-1002"`), `"all"`, or a list of multiple such inputs which specify the dates from which games should be found.
 
     * `home_away`: `str`, default `"all"`
 

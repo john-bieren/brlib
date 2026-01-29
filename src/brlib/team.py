@@ -549,7 +549,7 @@ class Team:
         player_id_column = scrape_player_ids(table)
         df_1.loc[df_1["Rk"] != "", "Player ID"] = player_id_column
         df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = None
-        self.players = self.players + player_id_column
+        self.players += player_id_column
 
         # sort table so that it can be joined to the value table with the expected alignment
         df_1.sort_values(by=["Game Type", "Player ID"], ascending=False, inplace=True)
@@ -597,7 +597,7 @@ class Team:
         player_id_column = scrape_player_ids(table)
         df_2.loc[df_2["Rk"] != "", "Player ID"] = player_id_column
         df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = None
-        self.players = self.players + player_id_column
+        self.players += player_id_column
 
         # sort table so that it can be joined to the standard table with the expected alignment
         df_2.sort_values(by="Player ID", ascending=False, inplace=True)
