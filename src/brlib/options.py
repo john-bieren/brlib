@@ -129,16 +129,16 @@ class Options(Singleton):
 
         self._preferences.update(json.loads(self._preferences_file.read_bytes()))
         if not is_type(self._preferences, dict[str, Any]):
-            print(f"ignoring preferences: preferences.json keys must have type {str}")
+            tqdm.write(f"ignoring preferences: preferences.json keys must have type {str}")
 
         for option, value in self._preferences.items():
             if option not in self._defaults:
-                print(f'unknown option "{option}" listed in preferences.json')
+                tqdm.write(f'unknown option "{option}" listed in preferences.json')
                 del self._preferences[option]
                 continue
 
             if not isinstance(value, type(self._defaults[option])):
-                print(f"{option} preference in preferences.json must have type {type(self._defaults[option])}")
+                tqdm.write(f"{option} preference in preferences.json must have type {type(self._defaults[option])}")
                 del self._preferences[option]
 
     def set_preference(self, option: str, value: Any) -> None:
@@ -185,21 +185,18 @@ class Options(Singleton):
         ```
         """
         if option not in self._defaults:
-            if not self.quiet:
-                print(f'unknown option "{option}"')
+            write(f'unknown option "{option}"')
             return
 
         if value is not None:
             if not isinstance(value, type(self._defaults[option])):
-                if not self.quiet:
-                    print(f"{option} preference must have type {type(self._defaults[option])}")
+                write(f"{option} preference must have type {type(self._defaults[option])}")
                 return
             self._preferences[option] = value
         else:
             # reset to default
             if option not in self._preferences:
-                if not self.quiet:
-                    print(f'no preference set for {option}')
+                write(f'no preference set for {option}')
                 return
             del self._preferences[option]
 
@@ -283,8 +280,7 @@ class Options(Singleton):
             self._changes.pop("add_no_hitters", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"add_no_hitters preference must have type {bool}")
+            write(f"add_no_hitters value must have type {bool}")
             return
         self._changes["add_no_hitters"] = value
 
@@ -302,8 +298,7 @@ class Options(Singleton):
             self._changes.pop("update_team_names", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"update_team_names preference must have type {bool}")
+            write(f"update_team_names value must have type {bool}")
             return
         self._changes["update_team_names"] = value
 
@@ -321,8 +316,7 @@ class Options(Singleton):
             self._changes.pop("update_venue_names", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"update_venue_names preference must have type {bool}")
+            write(f"update_venue_names value must have type {bool}")
             return
         self._changes["update_venue_names"] = value
 
@@ -339,13 +333,11 @@ class Options(Singleton):
         if value is None:
             self._changes.pop("request_buffer", None)
             return
-        if value < 0:
-            if not self.quiet:
-                print("cannot set request_buffer to negative value")
-            return
         if not isinstance(value, float):
-            if not self.quiet:
-                print(f"request_buffer preference must have type {float}")
+            write(f"request_buffer value must have type {float}")
+            return
+        if value < 0:
+            write("request_buffer value cannot be negative")
             return
         self._changes["request_buffer"] = value
 
@@ -359,13 +351,11 @@ class Options(Singleton):
         if value is None:
             self._changes.pop("timeout_limit", None)
             return
-        if value < 0:
-            if not self.quiet:
-                print("cannot set timeout_limit to negative value")
-            return
         if not isinstance(value, int):
-            if not self.quiet:
-                print(f"timeout_limit preference must have type {int}")
+            write(f"timeout_limit value must have type {int}")
+            return
+        if value < 0:
+            write("timeout_limit value cannot be negative")
             return
         self._changes["timeout_limit"] = value
 
@@ -379,13 +369,11 @@ class Options(Singleton):
         if value is None:
             self._changes.pop("max_retries", None)
             return
-        if value < 0:
-            if not self.quiet:
-                print("cannot set max_retries to negative value")
-            return
         if not isinstance(value, int):
-            if not self.quiet:
-                print(f"max_retries preference must have type {int}")
+            write(f"max_retries value must have type {int}")
+            return
+        if value < 0:
+            write("max_retries value cannot be negative")
             return
         self._changes["max_retries"] = value
 
@@ -403,8 +391,7 @@ class Options(Singleton):
             self._changes.pop("pb_format", None)
             return
         if not isinstance(value, str):
-            if not self.quiet:
-                print(f"pb_format preference must have type {str}")
+            write(f"pb_format value must have type {str}")
             return
         self._changes["pb_format"] = value
 
@@ -422,8 +409,7 @@ class Options(Singleton):
             self._changes.pop("pb_color", None)
             return
         if not isinstance(value, str):
-            if not self.quiet:
-                print(f"pb_color preference must have type {str}")
+            write(f"pb_color value must have type {str}")
             return
         self._changes["pb_color"] = value
 
@@ -438,8 +424,7 @@ class Options(Singleton):
             self._changes.pop("pb_disable", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"pb_disable preference must have type {bool}")
+            write(f"pb_disable value must have type {bool}")
             return
         self._changes["pb_disable"] = value
 
@@ -454,8 +439,7 @@ class Options(Singleton):
             self._changes.pop("print_pages", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"print_pages preference must have type {bool}")
+            write(f"print_pages value must have type {bool}")
             return
         self._changes["print_pages"] = value
 
@@ -470,8 +454,7 @@ class Options(Singleton):
             self._changes.pop("dev_alerts", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"dev_alerts preference must have type {bool}")
+            write(f"dev_alerts value must have type {bool}")
             return
         self._changes["dev_alerts"] = value
 
@@ -486,8 +469,7 @@ class Options(Singleton):
             self._changes.pop("quiet", None)
             return
         if not isinstance(value, bool):
-            if not self.quiet:
-                print(f"quiet preference must have type {bool}")
+            write(f"quiet value must have type {bool}")
             return
         self._changes["quiet"] = value
 
