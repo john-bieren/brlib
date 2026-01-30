@@ -1,2 +1,2 @@
-Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Game Duration,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
-"1961 All-Star Game, July 11",1961-allstar-game-1,AL All-Stars,,NL All-Stars,,4,5,NL All-Stars,AL All-Stars,1961-07-11,Tuesday,,44115,Candlestick Park,173,10,Unknown,,,,,,All-Star Game
+Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Game Duration,Surface,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
+"1961 All-Star Game, July 11",1961-allstar-game-1,AL All-Stars,,NL All-Stars,,4,5,NL All-Stars,AL All-Stars,1961-07-11,Tuesday,,44115,Candlestick Park,173,Grass,10,Unknown,,,,,,All-Star Game
