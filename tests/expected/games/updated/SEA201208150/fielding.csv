@@ -1,4 +1,4 @@
-Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SBA,RTO,Pickoffs,2B SBA,3B SBA,HP SBA,2B RTO,3B RTO,HP RTO,1B Pickoffs,2B Pickoffs,3B Pickoffs,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
 Sam Fuld,fuldsa01,LF,5.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Tampa Bay Rays,TBR2012,Seattle Mariners,SEA2012,0,Loss,Away,SEA201208150
 B.J. Upton,uptonbj01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Tampa Bay Rays,TBR2012,Seattle Mariners,SEA2012,0,Loss,Away,SEA201208150
 Matt Joyce,joycema01,RF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Tampa Bay Rays,TBR2012,Seattle Mariners,SEA2012,0,Loss,Away,SEA201208150

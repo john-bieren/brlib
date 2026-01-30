@@ -428,9 +428,15 @@ class Game:
         self.batting.reset_index(drop=True, inplace=True)
         self.pitching.reset_index(drop=True, inplace=True)
 
-        self._scrape_stolen_base_stats(batting_tables)
         self._get_fielding_dataframe()
+        self._scrape_stolen_base_stats(batting_tables)
         self._get_ump_info()
+
+        self.info = self.info.reindex(columns=GAME_INFO_COLS)
+        self.batting = self.batting.reindex(columns=GAME_BATTING_COLS)
+        self.pitching = self.pitching.reindex(columns=GAME_PITCHING_COLS)
+        self.fielding = self.fielding.reindex(columns=GAME_FIELDING_COLS)
+        self.team_info = self.team_info.reindex(columns=GAME_TEAM_INFO_COLS)
 
     def _scrape_game_info(self, content: Tag, other_info: Tag) -> None:
         """Populates `self.info` with data from `content` and `other_info`."""
@@ -587,8 +593,6 @@ class Game:
         else:
             self.team_info.loc[:, "Result"] = "Tie"
 
-        self.team_info = self.team_info.reindex(columns=GAME_TEAM_INFO_COLS)
-
     def _scrape_other_info(self, other_info: Tag) -> None:
         """Scrapes weather and umpire info from `other_info`."""
         other_info = soup_from_comment(other_info, only_if_table=False)
@@ -639,15 +643,15 @@ class Game:
     def _scrape_stolen_base_stats(self, batting_tables: list[Tag]) -> None:
         """Tallies SB attempts and results by catcher, stealer, and base."""
         self.batting[[
-            "SBA", "RTO", "Pickoffs", "Picked Off",
-            "2B SBA", "3B SBA", "HP SBA",
-            "2B RTO", "3B RTO", "HP RTO",
             "2B SB", "3B SB", "HP SB",
             "2B CS", "3B CS", "HP CS",
-            "1B Pickoffs", "2B Pickoffs", "3B Pickoffs",
-            "1B Picked Off", "2B Picked Off", "3B Picked Off"
+            "Pick", "1B Pick", "2B Pick", "3B Pick"
         ]] = 0
-        def_stat_conversions = {"SB": "SBA", "CS": "RTO", "Pickoffs": "Picked Off"}
+        self.fielding[[
+            "SB", "2B SB", "3B SB", "HP SB",
+            "CS", "2B CS", "3B CS", "HP CS",
+            "Pick", "1B Pick", "2B Pick", "3B Pick"
+        ]] = 0
         base_conversions = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
 
@@ -657,11 +661,8 @@ class Game:
 
             for line in footer.find_all("div", {"id": sb_ids}):
                 line_str = line.text.strip(".")
-                off_stat, players = line_str.split(": ", maxsplit=1)
-                def_stat = def_stat_conversions[off_stat]
-                # SB and CS are offensive stats, but pickoffs are defensive
-                if off_stat == "Pickoffs":
-                    off_stat, def_stat = def_stat, off_stat
+                stat, players = line_str.split(": ", maxsplit=1)
+                stat = "Pick" if stat == "Pickoffs" else stat
 
                 for player in players.split("; "):
                     stealer, info = player.strip(")").split(" (", maxsplit=1)
@@ -687,17 +688,17 @@ class Game:
                         if len(att_match.groups()) == 4: # match is _SB_ATTEMPT_REGEX
                             # strip() because there's a trailing space if times != 1
                             catcher = att_match.group("catcher").strip()
-                            players_mask = self.batting["Player"].isin({pitcher, catcher})
+                            defenders_mask = self.fielding["Player"].isin({pitcher, catcher})
                         else:
-                            players_mask = self.batting["Player"] == pitcher
+                            defenders_mask = self.fielding["Player"] == pitcher
 
-                        defense_team = self.batting.loc[players_mask, "Team"].values[0]
+                        defense_team = self.fielding.loc[defenders_mask, "Team"].values[0]
                         defense_mask = (
-                            players_mask |
-                            ((self.batting["Player"] == "Team Totals") &
-                             (self.batting["Team"] == defense_team))
+                            defenders_mask |
+                            ((self.fielding["Player"] == "Team Totals") &
+                             (self.fielding["Team"] == defense_team))
                         )
-                        self.batting.loc[defense_mask, [def_stat, f"{base} {def_stat}"]] += times
+                        self.fielding.loc[defense_mask, [stat, f"{base} {stat}"]] += times
 
                         # incremenet offensive stats
                         stealer_mask = self.batting["Player"] == stealer
@@ -707,9 +708,9 @@ class Game:
                              (self.batting["Team"] != defense_team))
                         )
                         # no need to increment SB or CS because they're already tallied
-                        if off_stat == "Picked Off":
-                            self.batting.loc[offense_mask, "Picked Off"] += times
-                        self.batting.loc[offense_mask, f"{base} {off_stat}"] += times
+                        if stat == "Pick":
+                            self.batting.loc[offense_mask, "Pick"] += times
+                        self.batting.loc[offense_mask, f"{base} {stat}"] += times
 
     def _scrape_game_batting(self, table: Tag) -> pd.DataFrame:
         """Scrapes batting stats from `table`."""
@@ -954,8 +955,6 @@ class Game:
             self.pitching["cWPA"] = pd.to_numeric(self.pitching["cWPA"], errors="coerce") / 100
             self.pitching["cWPA"] = self.pitching["cWPA"].round(4)
 
-        self.pitching = self.pitching.reindex(columns=GAME_PITCHING_COLS)
-
     def _set_home_team(self, df: pd.DataFrame, team_is_home: bool) -> pd.DataFrame:
         """Sets variables and `df` columns related to which team is at home."""
         if team_is_home:
@@ -996,13 +995,15 @@ class Game:
         self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")
 
-        # reindex to remove ump columns
-        self.info = self.info.reindex(columns=GAME_INFO_COLS)
-
     def _get_fielding_dataframe(self) -> None:
-        """Moves fielding stats from `self.batting` to `self.fielding`."""
-        self.fielding = self.batting.copy()
-        self.fielding = self.fielding[[*GAME_FIELDING_COLS]]
+        """Copies info and moves fielding stats from `self.batting` to `self.fielding`."""
+        self.fielding = self.batting[
+            [
+                "Player", "Player ID", "Position", "PO", "A", "E", "DP", "TP", "OFA",
+                "PB", "SB", "CS", "Team", "Team ID", "Opponent", "Opponent Team ID",
+                "Team Score", "Result for Team", "Home/Away", "Game ID"
+            ]
+        ].copy()
 
         # filter out batters who did not appear in the field
         positions = self.fielding["Position"].copy()
@@ -1017,7 +1018,6 @@ class Game:
         # some old games have an asterisk in PO team total rows (e.g. SLN190106150)
         self.fielding.loc[self.fielding["PO"] == "*", "PO"] = None
 
-        # reindex to remove fielding columns; remove pitchers who did not hit
-        self.batting = self.batting.reindex(columns=GAME_BATTING_COLS)
+        # remove pitchers who did not hit
         self.batting = self.batting.loc[~self.batting["AB"].isna()]
         self.batting.reset_index(drop=True, inplace=True)
