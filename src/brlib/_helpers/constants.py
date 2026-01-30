@@ -792,7 +792,7 @@ TEAM_INFO_COLS = (
     "Ties",
     "Division Finish",
     "Division",
-    "Playoff Finish",
+    "Postseason Finish",
     "Managers",
     "President",
     "General Manager",

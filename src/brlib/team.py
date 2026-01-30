@@ -419,7 +419,7 @@ class Team:
 
             elif "Postseason" in line_str:
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
-                self.info.loc[:, "Playoff Finish"] = clean_spaces(latest_series_result)
+                self.info.loc[:, "Postseason Finish"] = clean_spaces(latest_series_result)
 
             # switching to startswith; nested p tags result in overlapping matches for "if str in"
             elif line_str.startswith("Manager"):

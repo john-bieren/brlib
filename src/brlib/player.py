@@ -850,7 +850,7 @@ class Player:
             df = pd.DataFrame(reg_records, columns=reg_column_names)
             df = Player._clean_dataframe(df)
             if add_game_type:
-                # this could be a player who's only appeared in the playoffs, e.g. kigerma01
+                # this could be a player who's only appeared in the postseason, e.g. kigerma01
                 if postseason_included:
                     df.loc[:, "Game Type"] = "Postseason"
                 else:
