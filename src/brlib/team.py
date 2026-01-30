@@ -65,18 +65,22 @@ class Team:
     * `info`: `pandas.DataFrame`
 
         Contains information about the team, its results, and its personnel.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
     * `batting`: `pandas.DataFrame`
 
         Contains the team's batting and baserunning stats from the two batting tables.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
         Contains the team's pitching stats from the two pitching tables.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
         Contains the team's fielding stats from the standard fielding table.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
 
     * `players`: `list[str]`
 
@@ -94,6 +98,8 @@ class Team:
     ## Methods
 
     * [`Team.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Team.add_no_hitters)
+    * [`Team.update_team_names`](https://github.com/john-bieren/brlib/wiki/Team.update_team_names)
+    * [`Team.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Team.update_venue_names)
     """
     @runtime_typecheck
     def __init__(

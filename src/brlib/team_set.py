@@ -29,22 +29,27 @@ class TeamSet:
     * `info`: `pandas.DataFrame`
 
         Contains information about the teams, their results, and their personnel.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
     * `batting`: `pandas.DataFrame`
 
         Contains the teams' batting and baserunning stats.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
         Contains the teams' pitching stats.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
         Contains the teams' fielding stats.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
 
     * `records`: `pandas.DataFrame`
 
         Contains the teams' regular season records by franchise.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
 
     * `players`: `list[str]`
 
@@ -72,6 +77,8 @@ class TeamSet:
     ## Methods
 
     * [`TeamSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/TeamSet.add_no_hitters)
+    * [`TeamSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/TeamSet.update_team_names)
+    * [`TeamSet.update_venue_names`](https://github.com/john-bieren/brlib/wiki/TeamSet.update_venue_names)
     """
     @runtime_typecheck
     def __init__(self, teams: list[Team]) -> None:

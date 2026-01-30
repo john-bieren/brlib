@@ -65,22 +65,27 @@ class Player:
     * `info`: `pandas.DataFrame`
 
         Contains biographical information about the player.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerinfo-and-playersetinfo)
 
     * `bling`: `pandas.DataFrame`
 
         Contains the player's career accolades as displayed by the banners in the upper right-hand corner of their page.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
 
     * `batting`: `pandas.DataFrame`
 
         Contains the player's batting and baserunning stats from the three batting tables.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbatting-and-playersetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
         Contains the player's pitching stats from the three pitching tables.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerpitching-and-playersetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
         Contains the player's fielding stats from the standard fielding table.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
 
     * `relatives`: `dict[str: list[str]]`
 

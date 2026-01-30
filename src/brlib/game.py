@@ -84,26 +84,32 @@ class Game:
     * `info`: `pandas.DataFrame`
 
         Contains information about the game and its circumstances.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameinfo-and-gamesetinfo)
 
     * `batting`: `pandas.DataFrame`
 
         Contains batting and baserunning stats from the batting tables and the information beneath them.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamebatting-and-gamesetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
         Contains pitching stats from the pitching tables and the information beneath them.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamepitching-and-gamesetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
         Contains fielding stats from the batting tables and the information beneath them.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamefielding-and-gamesetfielding)
 
     * `team_info`: `pandas.DataFrame`
 
         Contains information about the teams involved in the game.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameteam_info-and-gamesetteam_info)
 
     * `ump_info`: `pandas.DataFrame`
 
         Contains the names and positions of the game's umpires.
+        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameump_info-and-gamesetump_info)
 
     * `linescore`: `pandas.DataFrame`
 
