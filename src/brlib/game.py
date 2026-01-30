@@ -580,9 +580,9 @@ class Game:
             elif "Venue:" in line_str:
                 self.info["Venue"] = line_str.replace("Venue: ", "")
             elif "Duration:" in line_str:
-                dur = line_str.replace("Game Duration: ", "")
-                hours, minutes = dur.split(":", maxsplit=1)
-                self.info["Game Duration"] = int(hours)*60 + int(minutes)
+                duration = line_str.replace("Game Duration: ", "")
+                hours, minutes = duration.split(":", maxsplit=1)
+                self.info["Duration"] = int(hours)*60 + int(minutes)
             elif "Game, on" in line_str:
                 self.info["Surface"] = line_str.split(", on ", maxsplit=1)[1].capitalize()
 

@@ -1,2 +1,2 @@
-Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Game Duration,Surface,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
+Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Duration,Surface,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
 "October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",SLN190710051,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,0,St. Louis Cardinals,Chicago Cubs,1907-10-05,Saturday,,2000,Robison Field,105,Grass,4,Unknown,,,,,,Regular Season

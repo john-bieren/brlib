@@ -327,7 +327,7 @@ GAME_INFO_COLS = (
     "Start Time",
     "Attendance",
     "Venue",
-    "Game Duration",
+    "Duration",
     "Surface",
     "Innings",
     "Field Condition",

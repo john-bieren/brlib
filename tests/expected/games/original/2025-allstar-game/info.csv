@@ -1,2 +1,2 @@
-Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Game Duration,Surface,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
+Game,Game ID,Away Team,Away Team ID,Home Team,Home Team ID,Away Score,Home Score,Winning Team,Losing Team,Date,Day of Week,Start Time,Attendance,Venue,Duration,Surface,Innings,Field Condition,Temperature,Wind Speed,Wind Direction,Weather,Precipitation,Game Type
 "2025 All-Star Game, July 15",2025-allstar-game,AL All-Stars,,NL All-Stars,,6,6,,,2025-07-15,Tuesday,8:00 p.m.,41702,Truist Park,313,Grass,9,Unknown,83,10,from Left to Right,Overcast,No Precipitation,All-Star Game
