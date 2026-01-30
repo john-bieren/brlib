@@ -67,16 +67,16 @@ class GameSet:
     Aggregate a list of `Game` objects:
 
     ```
-    >>> g1 = br.Game("SEA", "20180930", "0")                                          
+    >>> g1 = br.Game("SEA", "20180930", "0")
     >>> g2 = br.Game("SEA", "20190929", "0")
-    >>> br.GameSet([g1, g2])                
+    >>> br.GameSet([g1, g2])
     GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
     ```
 
     Directly pass `get_games` results:
 
     ```
-    >>> gl = br.get_games([("SEA", "20180930", "0"), ("SEA", "20190929", "0")])              
+    >>> gl = br.get_games([("SEA", "20180930", "0"), ("SEA", "20190929", "0")])
     >>> br.GameSet(gl)
     GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
     ```

@@ -64,7 +64,7 @@ class PlayerSet:
 
     ```
     >>> pl = br.get_players(["lewisky01", "sanchsi01"])
-    >>> br.PlayerSet(pl)      
+    >>> br.PlayerSet(pl)
     PlayerSet(Player(lewisky01), Player(sanchsi01))
     ```
 
