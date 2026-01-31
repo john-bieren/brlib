@@ -9,12 +9,12 @@ authors = [{ name = "John Bieren", email = "jbieren64@gmail.com" }]
 dynamic = ["version"]
 requires-python = ">=3.12"
 dependencies = [
-    "pandas>=2.3.0,<3.0.0",
     "beautifulsoup4>=4.14.0,<5.0.0",
-    "tqdm>=4.67.1,<5.0.0",
     "curl-cffi>=0.13.0,<1.0.0",
     "lxml>=6.0.2,<7.0.0",
-    "platformdirs>=4.5.0,<5.0.0"
+    "pandas>=2.3.0,<3.0.0",
+    "platformdirs>=4.5.0,<5.0.0",
+    "tqdm>=4.67.1,<5.0.0"
 ]
 readme = "README.md"
 license = "MIT"
@@ -22,15 +22,19 @@ license-files = ["LICENSE.txt"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
-    "Operating System :: OS Independent",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-keywords = ["baseball reference", "baseball", "baseball stats", "mlb"]
+keywords = ["baseball reference", "baseball", "baseball stats", "mlb", "mlb stats"]
 
 [project.optional-dependencies]
 dev = ["pytest>=9.0.0"]
