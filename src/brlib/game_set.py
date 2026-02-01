@@ -121,7 +121,7 @@ class GameSet:
         return f"{self.__len__()} games"
 
     def __repr__(self) -> str:
-        display_games = []
+        games = []
         for game in self._contents:
             if "allstar" in game:
                 team = "allstar"
@@ -131,8 +131,8 @@ class GameSet:
                 team = game[:3]
                 date = game[3:-1]
                 dh = game[-1]
-            display_games.append(f"Game('{team}', '{date}', '{dh}')")
-        return f"GameSet({", ".join((g for g in display_games))})"
+            games.append(f"Game('{team}', '{date}', '{dh}')")
+        return f"GameSet({", ".join(games)})"
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""

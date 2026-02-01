@@ -503,7 +503,8 @@ class Player:
                 schools = [school.strip() for school in school_list.split("),")]
                 # restore ")" where necessary
                 schools = [school + ")" if school[-1] != ")" else school for school in schools]
-                self.info.loc[:, col] = f'"{'", "'.join(schools)}"'
+                schools_str = '", "'.join(schools)
+                self.info.loc[:, col] = f'"{schools_str}"'
 
             elif line_str.startswith("Debut") and "AL/NL" not in line_str:
                 debut_date = str_between(line_str, "Debut:", "(").strip()
@@ -750,7 +751,7 @@ class Player:
                 else:
                     for col in ("MVP", "CYA", "ROY"):
                         if col in award:
-                            df_1.loc[season_mask, f"{col} Finish"] = int(award.strip(f"{col}-"))
+                            df_1.loc[season_mask, f"{col} Finish"] = int(award[4:])
 
         # summary rows should have missing values; totals can be found in Player.bling
         df_1.loc[df_1["Team"].isna(), ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = None

@@ -35,7 +35,7 @@ def test_validate_game_list() -> None:
         ("allstar", "1932", "0"),
         # reject ASG in future
         ("allstar", "2099", "0"),
-        # reject ASG in year where it was cancelled
+        # reject ASG in year when it was canceled
         ("allstar", "2020", "0"),
         # convert allstar to uppercase
         ("allstar", "1960", "2")

@@ -48,7 +48,7 @@ class TeamSet:
 
     * `records`: `pandas.DataFrame`
 
-        Contains the teams' regular season records by franchise.
+        Contains the teams' cumulative regular season records by franchise.
         [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
 
     * `players`: `list[str]`
@@ -103,8 +103,8 @@ class TeamSet:
         return f"{self.__len__()} teams"
 
     def __repr__(self) -> str:
-        display_teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
-        return f"TeamSet({", ".join(display_teams)})"
+        teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
+        return f"TeamSet({", ".join(teams)})"
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""

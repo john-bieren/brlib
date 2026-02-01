@@ -582,7 +582,7 @@ class Team:
                 else:
                     for col in ("MVP", "CYA", "ROY"):
                         if col in award:
-                            df_1.loc[player_mask, f"{col} Finish"] = int(award.strip(f"{col}-"))
+                            df_1.loc[player_mask, f"{col} Finish"] = int(award[4:])
         return df_1
 
     def _scrape_value_table(self, table: bs) -> pd.DataFrame:
