@@ -104,7 +104,7 @@ class TeamSet:
 
     def __repr__(self) -> str:
         teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
-        return f"TeamSet({", ".join(teams)})"
+        return f'TeamSet({", ".join(teams)})'
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""

@@ -7,7 +7,7 @@ name = "brlib"
 description = "A library for collecting baseball statistics from Baseball Reference"
 authors = [{ name = "John Bieren", email = "jbieren64@gmail.com" }]
 dynamic = ["version"]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "beautifulsoup4>=4.12.0,<4.15.0",
     "curl-cffi>=0.11.1,<0.15.0",
@@ -27,6 +27,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",

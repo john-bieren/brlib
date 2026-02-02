@@ -132,7 +132,7 @@ class GameSet:
                 date = game[3:-1]
                 dh = game[-1]
             games.append(f"Game('{team}', '{date}', '{dh}')")
-        return f"GameSet({", ".join(games)})"
+        return f'GameSet({", ".join(games)})'
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""

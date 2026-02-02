@@ -277,7 +277,7 @@ class Team:
             self.pitching.replace({"Team": name_dict}, inplace=True)
             self.fielding.replace({"Team": name_dict}, inplace=True)
 
-        self.name = f"{self.id[-4:]} {self.info["Team"].values[0]}"
+        self.name = f'{self.id[-4:]} {self.info["Team"].values[0]}'
 
     def update_venue_names(self) -> None:
         """
