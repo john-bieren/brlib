@@ -40,7 +40,7 @@ classifiers = [
 keywords = ["baseball reference", "baseball", "baseball stats", "mlb", "mlb stats"]
 
 [project.optional-dependencies]
-dev = ["pytest>=9.0.0"]
+dev = ["pytest>=7.0.0"]
 
 [project.urls]
 Documentation = "https://github.com/john-bieren/brlib/wiki"
