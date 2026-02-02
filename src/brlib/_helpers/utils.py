@@ -67,7 +67,7 @@ def is_type(value: Any, expected_type: type) -> bool:
         return isinstance(value, expected_type)
 
     args = typing.get_args(expected_type)
-    if origin is UnionType:
+    if origin is UnionType or origin is typing.Union: # typing.Union for 3.10 support
         return any(is_type(value, arg) for arg in args)
 
     if not isinstance(value, origin):
