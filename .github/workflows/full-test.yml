@@ -1,13 +1,12 @@
-name: Tests
+name: Full Tests
 
-on: 
+on:
   push:
-    branches:
-      - '**'
-  schedule:
-    # run at 12 UTC, hopefully after BR's daily in-season updates
-    # run weekly, because anything more would be overkill
-    - cron: '0 12 * * 6'
+    tags:
+      # test release candidates
+      - 'v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+'
+  # can be triggered manually as well
+  workflow_dispatch:
 
 jobs:
   pytest:
@@ -15,11 +14,9 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: ["3.10", "3.14"]
-        exclude:
-        - os: windows-latest
-          python-version: "3.10"
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        resolution: ["highest", "lowest"]
 
     steps:
       - name: Checkout code
@@ -34,7 +31,7 @@ jobs:
         run: uv python install ${{ matrix.python-version }}
 
       - name: Install brlib
-        run: uv pip install --resolution highest -e .[dev]
+        run: uv pip install --resolution ${{ matrix.resolution }} -e .[dev]
 
       - name: Run pytest
         run: uv run --no-sync pytest
