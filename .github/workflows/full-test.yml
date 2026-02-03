@@ -31,7 +31,7 @@ jobs:
         run: uv python install ${{ matrix.python-version }}
 
       - name: Install brlib
-        run: uv pip install --resolution ${{ matrix.resolution }} -e .[dev]
+        run: uv pip install --system --resolution ${{ matrix.resolution }} -e .[dev]
 
       - name: Run pytest
         run: uv run --no-sync pytest
