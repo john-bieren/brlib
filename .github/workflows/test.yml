@@ -33,8 +33,11 @@ jobs:
       - name: Install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
+      - name: Create virtual environment
+        run: uv venv
+
       - name: Install brlib
-        run: uv pip install --system --resolution highest -e .[dev]
+        run: uv pip install --resolution highest -e .[dev]
 
       - name: Run pytest
-        run: uv run --no-sync pytest
+        run: uv run pytest
