@@ -79,6 +79,8 @@ def players_list() -> list[br.Player]:
             "bendech01",
             # very little information
             "colli05",
+            # born and died in Canada (tests province parsing)
+            "cormirh01",
             # multiple AS in certain seasons, catcher (more fielding stats)
             "gibsojo99",
             # regular season and postseason no-hitter
