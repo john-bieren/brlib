@@ -413,18 +413,26 @@ class Player:
                     self.info.loc[:, "Birth Country"] = birth_place.strip()
                 else:
                     birth_place = birth_place[:-2] # remove text representation of country flag
-                    try:
-                        birth_city, birth_state_or_country = birth_place.split(", ", maxsplit=1)
-                    except ValueError:
+                    birth_place_split = birth_place.split(", ")
+                    if len(birth_place_split) == 1:
                         # city and/or state/country could be missing, so there's nothing to do
                         dev_alert(f'{self.id}: malformed birth place "{birth_place.strip()}"')
                         continue
-                    self.info.loc[:, "Birth City"] = birth_city
-                    if len(birth_state_or_country) == 2: # states are represented by abbreviations
-                        self.info.loc[:, "Birth State"] = birth_state_or_country
-                        self.info.loc[:, "Birth Country"] = "U.S."
-                    else:
-                        self.info.loc[:, "Birth Country"] = birth_state_or_country
+                    if len(birth_place_split) == 2:
+                        birth_city, birth_state_or_country = birth_place.split(", ", maxsplit=1)
+                        self.info.loc[:, "Birth City"] = birth_city
+                        # US states are represented by abbreviations
+                        if len(birth_state_or_country) == 2:
+                            self.info.loc[:, "Birth State/Province"] = birth_state_or_country
+                            self.info.loc[:, "Birth Country"] = "U.S."
+                        else:
+                            self.info.loc[:, "Birth Country"] = birth_state_or_country
+                    elif len(birth_place_split) == 3:
+                        # likely Canada with province abbreviation and country name
+                        birth_city, birth_province, birth_country = birth_place.split(", ", maxsplit=2)
+                        self.info.loc[:, "Birth City"] = birth_city
+                        self.info.loc[:, "Birth State/Province"] = birth_province
+                        self.info.loc[:, "Birth Country"] = birth_country
 
             elif line_str.startswith("Died"):
                 if "in" in line_str:
@@ -456,13 +464,13 @@ class Player:
                     death_city, death_state_or_country = death_place.split(", ", maxsplit=1)
                     self.info.loc[:, "Death City"] = death_city
                     if len(death_state_or_country) == 2:
-                        self.info.loc[:, "Death State"] = death_state_or_country
+                        self.info.loc[:, "Death State/Province"] = death_state_or_country
                         self.info.loc[:, "Death Country"] = "U.S."
                     else:
                         self.info.loc[:, "Death Country"] = death_state_or_country
                 elif death_place != "": # only state/country listed
                     if len(death_place) == 2: # states are represented by abbreviations
-                        self.info.loc[:, "Death State"] = death_place
+                        self.info.loc[:, "Death State/Province"] = death_place
                         self.info.loc[:, "Death Country"] = "U.S."
                     else:
                         self.info.loc[:, "Death Country"] = death_place
