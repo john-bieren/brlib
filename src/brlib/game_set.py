@@ -7,8 +7,12 @@ from itertools import chain
 import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import (RANGE_TEAM_REPLACEMENTS, RECORDS_COLS,
-                                 TEAM_REPLACEMENTS, VENUE_REPLACEMENTS)
+from ._helpers.constants import (
+    RANGE_TEAM_REPLACEMENTS,
+    RECORDS_COLS,
+    TEAM_REPLACEMENTS,
+    VENUE_REPLACEMENTS,
+)
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.utils import runtime_typecheck
 from .game import Game
@@ -94,6 +98,7 @@ class GameSet:
     * [`GameSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/GameSet.update_team_names)
     * [`GameSet.update_venue_names`](https://github.com/john-bieren/brlib/wiki/GameSet.update_venue_names)
     """
+
     @runtime_typecheck
     def __init__(self, games: list[Game]) -> None:
         self._contents = tuple(game.id for game in games)
@@ -132,7 +137,7 @@ class GameSet:
                 date = game[3:-1]
                 dh = game[-1]
             games.append(f"Game('{team}', '{date}', '{dh}')")
-        return f'GameSet({", ".join(games)})' # single quotes for <3.12 support
+        return f'GameSet({", ".join(games)})'  # single quotes for <3.12 support
 
     def _gather_records(self) -> None:
         """Populates `self.records`."""
@@ -154,7 +159,9 @@ class GameSet:
 
         self.records = self.records.reindex(columns=RECORDS_COLS)
         self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype(int)
-        self.records["Win %"] = self.records["Wins"] / (self.records["Wins"]+self.records["Losses"])
+        self.records["Win %"] = self.records["Wins"] / (
+            self.records["Wins"] + self.records["Losses"]
+        )
 
     def add_no_hitters(self) -> None:
         """
@@ -222,20 +229,19 @@ class GameSet:
             game_mask = self.pitching["Game ID"] == game_id
 
             # add individual no-hitters
-            for col, player_id in (
-                ("NH", inh_player_id),
-                ("PG", pg_player_id)
-                ):
+            for col, player_id in (("NH", inh_player_id), ("PG", pg_player_id)):
                 if player_id == "":
                     continue
                 player_mask = (self.pitching["Player ID"] == player_id) & game_mask
                 nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
                 self.pitching.loc[
-                    player_mask |
-                    (game_mask &
-                     (self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Team ID"] == nh_team_id)),
-                    col
+                    player_mask
+                    | (
+                        game_mask
+                        & (self.pitching["Player"] == "Team Totals")
+                        & (self.pitching["Team ID"] == nh_team_id)
+                    ),
+                    col,
                 ] = 1
 
             # add combined no-hitters
@@ -243,11 +249,13 @@ class GameSet:
                 player_mask = (self.pitching["Player ID"] == player_id) & game_mask
                 nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
                 self.pitching.loc[
-                    player_mask |
-                    (game_mask &
-                     (self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Team ID"] == nh_team_id)),
-                    "CNH"
+                    player_mask
+                    | (
+                        game_mask
+                        & (self.pitching["Player"] == "Team Totals")
+                        & (self.pitching["Team ID"] == nh_team_id)
+                    ),
+                    "CNH",
                 ] = 1
 
     def update_team_names(self) -> None:
@@ -282,12 +290,14 @@ class GameSet:
         # replace old team names
         self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
-        self.info.replace({
+        self.info.replace(
+            {
                 "Home Team": TEAM_REPLACEMENTS,
                 "Away Team": TEAM_REPLACEMENTS,
                 "Winning Team": TEAM_REPLACEMENTS,
-                "Losing Team": TEAM_REPLACEMENTS
-            }, inplace=True
+                "Losing Team": TEAM_REPLACEMENTS,
+            },
+            inplace=True,
         )
         self.batting.replace(
             {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
@@ -308,7 +318,7 @@ class GameSet:
 
         # replace old team names within a given range
         for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            years = range(start_year, end_year+1)
+            years = range(start_year, end_year + 1)
             name_dict = {old_name: new_name}
             info_mask = info_year_col.isin(years)
             batting_mask = batting_year_col.isin(years)
@@ -317,22 +327,26 @@ class GameSet:
             team_info_mask = team_info_year_col.isin(years)
 
             cols = ["Home Team", "Away Team", "Winning Team", "Losing Team"]
-            self.info.loc[info_mask, cols] =\
-                self.info.loc[info_mask, cols].replace(name_dict)
-            self.info.loc[info_mask, "Game"] =\
-                self.info.loc[info_mask, "Game"].replace(name_dict, regex=True)
+            self.info.loc[info_mask, cols] = self.info.loc[info_mask, cols].replace(name_dict)
+            self.info.loc[info_mask, "Game"] = self.info.loc[info_mask, "Game"].replace(
+                name_dict, regex=True
+            )
 
             cols = ["Team", "Opponent"]
-            self.batting.loc[batting_mask, cols] =\
-                self.batting.loc[batting_mask, cols].replace(name_dict)
-            self.pitching.loc[pitching_mask, cols] =\
-                self.pitching.loc[pitching_mask, cols].replace(name_dict)
-            self.fielding.loc[fielding_mask, cols] =\
-                self.fielding.loc[fielding_mask, cols].replace(name_dict)
+            self.batting.loc[batting_mask, cols] = self.batting.loc[batting_mask, cols].replace(
+                name_dict
+            )
+            self.pitching.loc[pitching_mask, cols] = self.pitching.loc[pitching_mask, cols].replace(
+                name_dict
+            )
+            self.fielding.loc[fielding_mask, cols] = self.fielding.loc[fielding_mask, cols].replace(
+                name_dict
+            )
 
             cols = ["Team"]
-            self.team_info.loc[team_info_mask, cols] =\
-                self.team_info.loc[team_info_mask, cols].replace(name_dict)
+            self.team_info.loc[team_info_mask, cols] = self.team_info.loc[
+                team_info_mask, cols
+            ].replace(name_dict)
 
     def update_venue_names(self) -> None:
         """

@@ -13,9 +13,9 @@ from .options import options
 
 @runtime_typecheck
 def get_games(
-        game_list: list[tuple[str, str, str]],
-        add_no_hitters: bool | None = None
-        ) -> list[Game]:
+    game_list: list[tuple[str, str, str]],
+    add_no_hitters: bool | None = None,
+) -> list[Game]:
     """
     Returns a list of `Game` objects corresponding to the tuples in `game_list`, which mimic the `Game` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
@@ -55,12 +55,12 @@ def get_games(
 
     results = []
     for home_team, date, doubleheader in tqdm(
-            iterable=list(dict.fromkeys(game_list)),
-            unit="game",
-            bar_format=options.pb_format,
-            colour=options.pb_color,
-            disable=options.pb_disable
-            ):
+        iterable=list(dict.fromkeys(game_list)),
+        unit="game",
+        bar_format=options.pb_format,
+        colour=options.pb_color,
+        disable=options.pb_disable,
+    ):
         if home_team == "ALLSTAR":
             game_number = f"-{doubleheader}" if doubleheader != "0" else ""
             endpoint = f"/allstar/{date}-allstar-game{game_number}.shtml"

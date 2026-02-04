@@ -11,6 +11,7 @@ import brlib as br
 
 games_data = Path(__file__).parent.resolve() / "expected" / "games"
 
+
 def test_info(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the info DataFrame."""
     for game in games_list:
@@ -24,6 +25,7 @@ def test_info(games_list: list[br.Game], updated_games_list: list[br.Game]) -> N
         expected_df = pd.read_csv(file)
         compared = game.info.compare(expected_df)
         assert compared.empty
+
 
 def test_batting(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the batting DataFrame."""
@@ -39,6 +41,7 @@ def test_batting(games_list: list[br.Game], updated_games_list: list[br.Game]) -
         compared = game.batting.compare(expected_df)
         assert compared.empty
 
+
 def test_pitching(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the pitching DataFrame."""
     for game in games_list:
@@ -52,6 +55,7 @@ def test_pitching(games_list: list[br.Game], updated_games_list: list[br.Game]) 
         expected_df = pd.read_csv(file)
         compared = game.pitching.compare(expected_df)
         assert compared.empty
+
 
 def test_fielding(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the fielding DataFrame."""
@@ -67,6 +71,7 @@ def test_fielding(games_list: list[br.Game], updated_games_list: list[br.Game]) 
         compared = game.fielding.compare(expected_df)
         assert compared.empty
 
+
 def test_linescore(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the linescore DataFrame."""
     for game in games_list:
@@ -80,6 +85,7 @@ def test_linescore(games_list: list[br.Game], updated_games_list: list[br.Game])
         expected_df = pd.read_csv(file)
         compared = game.linescore.compare(expected_df)
         assert compared.empty
+
 
 def test_team_info(games_list: list[br.Game], updated_games_list: list[br.Game]) -> None:
     """Tests the contents of the team_info DataFrame."""
@@ -95,6 +101,7 @@ def test_team_info(games_list: list[br.Game], updated_games_list: list[br.Game])
         compared = game.team_info.compare(expected_df)
         assert compared.empty
 
+
 def test_ump_info(games_list: list[br.Game]) -> None:
     """Tests the contents of the ump_info DataFrame."""
     for game in games_list:
@@ -103,12 +110,14 @@ def test_ump_info(games_list: list[br.Game]) -> None:
         compared = game.ump_info.compare(expected_df)
         assert compared.empty
 
+
 def test_players(games_list: list[br.Game]) -> None:
     """Tests the contents of the players list."""
     for game in games_list:
         file = games_data / "original" / game.id / "players.json"
         expected_list = json.loads(file.read_bytes())
         assert game.players == expected_list
+
 
 def test_teams(games_list: list[br.Game]) -> None:
     """Tests the contents of the teams list."""

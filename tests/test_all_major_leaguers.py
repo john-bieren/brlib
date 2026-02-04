@@ -8,15 +8,30 @@ import pandas as pd
 def test_shape(aml_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame has the right shape."""
     assert len(aml_filtered) == 20547
-    assert aml_filtered.columns.tolist() == ["Player ID", "Name", "Career Start", "Career End", "Active"]
+    assert aml_filtered.columns.tolist() == [
+        "Player ID",
+        "Name",
+        "Career Start",
+        "Career End",
+        "Active",
+    ]
+
 
 def test_data(aml_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame contains the expected data."""
     assert aml_filtered["Player ID"].iloc[:5].values.tolist() == [
-        "aardsda01", "aaronha01", "aaronto01", "aasedo01",  "abadan01"
+        "aardsda01",
+        "aaronha01",
+        "aaronto01",
+        "aasedo01",
+        "abadan01",
     ]
     assert aml_filtered["Name"].iloc[:5].values.tolist() == [
-        "David Aardsma", "Henry Aaron", "Tommie Aaron", "Don Aase", "Andy Abad"
+        "David Aardsma",
+        "Henry Aaron",
+        "Tommie Aaron",
+        "Don Aase",
+        "Andy Abad",
     ]
     assert aml_filtered["Career Start"].iloc[:5].values.tolist() == [2004, 1954, 1962, 1977, 2001]
     assert aml_filtered["Career End"].iloc[:5].values.tolist() == [2015, 1976, 1971, 1990, 2006]

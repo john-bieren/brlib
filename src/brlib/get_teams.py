@@ -12,10 +12,7 @@ from .team import Team
 
 
 @runtime_typecheck
-def get_teams(
-        team_list: list[tuple[str, str]],
-        add_no_hitters: bool | None = None
-        ) -> list[Team]:
+def get_teams(team_list: list[tuple[str, str]], add_no_hitters: bool | None = None) -> list[Team]:
     """
     Returns a list of `Team` objects corresponding to the tuples in `team_list`, which mimic the `Team` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
@@ -55,12 +52,12 @@ def get_teams(
 
     results = []
     for abv, season in tqdm(
-            iterable=list(dict.fromkeys(team_list)),
-            unit="team",
-            bar_format=options.pb_format,
-            colour=options.pb_color,
-            disable=options.pb_disable
-            ):
+        iterable=list(dict.fromkeys(team_list)),
+        unit="team",
+        bar_format=options.pb_format,
+        colour=options.pb_color,
+        disable=options.pb_disable,
+    ):
         endpoint = f"/teams/{abv}/{season}.shtml"
 
         page = req_man.get_page(endpoint)

@@ -101,6 +101,7 @@ class Options(Singleton):
     * [`options.clear_preferences`](https://github.com/john-bieren/brlib/wiki/options.clear_preferences)
     * [`options.set_preference`](https://github.com/john-bieren/brlib/wiki/options.set_preference)
     """
+
     def __init__(self) -> None:
         self._defaults = {
             "add_no_hitters": False,
@@ -114,7 +115,7 @@ class Options(Singleton):
             "pb_disable": False,
             "print_pages": False,
             "dev_alerts": False,
-            "quiet": False
+            "quiet": False,
         }
         self._preferences_file = CONFIG_DIR / "preferences_v1.json"
         self._changes, self._preferences = ({} for _ in range(2))
@@ -138,7 +139,9 @@ class Options(Singleton):
                 continue
 
             if not isinstance(value, type(self._defaults[option])):
-                tqdm.write(f"{option} preference in preferences.json must have type {type(self._defaults[option])}")
+                tqdm.write(
+                    f"{option} preference in preferences.json must have type {type(self._defaults[option])}"
+                )
                 del self._preferences[option]
 
     def set_preference(self, option: str, value: Any) -> None:
@@ -196,7 +199,7 @@ class Options(Singleton):
         else:
             # reset to default
             if option not in self._preferences:
-                write(f'no preference set for {option}')
+                write(f"no preference set for {option}")
                 return
             del self._preferences[option]
 
@@ -473,17 +476,21 @@ class Options(Singleton):
             return
         self._changes["quiet"] = value
 
+
 options = Options()
+
 
 def write(message: str) -> None:
     """Prints something if options.quiet is False."""
     if not options.quiet:
         tqdm.write(message)
 
+
 def print_page(message: str) -> None:
     """Prints something if options.print_pages is True."""
     if options.print_pages:
         tqdm.write(message)
+
 
 def dev_alert(message: str) -> None:
     """Prints something if options.dev_alerts is True."""

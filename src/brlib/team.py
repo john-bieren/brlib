@@ -9,16 +9,29 @@ from bs4 import BeautifulSoup as bs
 from bs4 import Tag
 from curl_cffi import Response
 
-from ._helpers.constants import (TEAM_BATTING_COLS, TEAM_FIELDING_COLS,
-                                 TEAM_INFO_COLS, TEAM_PITCHING_COLS,
-                                 TEAM_URL_REGEX, TEAM_REPLACEMENTS, VENUE_REPLACEMENTS, RANGE_TEAM_REPLACEMENTS)
+from ._helpers.constants import (
+    RANGE_TEAM_REPLACEMENTS,
+    TEAM_BATTING_COLS,
+    TEAM_FIELDING_COLS,
+    TEAM_INFO_COLS,
+    TEAM_PITCHING_COLS,
+    TEAM_REPLACEMENTS,
+    TEAM_URL_REGEX,
+    VENUE_REPLACEMENTS,
+)
 from ._helpers.inputs import validate_team_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, clean_spaces,
-                             convert_numeric_cols, report_on_exc,
-                             runtime_typecheck, scrape_player_ids,
-                             soup_from_comment, str_between)
+from ._helpers.utils import (
+    change_innings_notation,
+    clean_spaces,
+    convert_numeric_cols,
+    report_on_exc,
+    runtime_typecheck,
+    scrape_player_ids,
+    soup_from_comment,
+    str_between,
+)
 from .options import dev_alert, options, print_page
 
 
@@ -101,16 +114,17 @@ class Team:
     * [`Team.update_team_names`](https://github.com/john-bieren/brlib/wiki/Team.update_team_names)
     * [`Team.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Team.update_venue_names)
     """
+
     @runtime_typecheck
     def __init__(
-            self,
-            team: str = "",
-            season: str = "",
-            page: Response = Response(),
-            add_no_hitters: bool | None = None,
-            update_team_names: bool | None = None,
-            update_venue_names: bool | None = None
-            ) -> None:
+        self,
+        team: str = "",
+        season: str = "",
+        page: Response = Response(),
+        add_no_hitters: bool | None = None,
+        update_team_names: bool | None = None,
+        update_venue_names: bool | None = None,
+    ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
         if update_team_names is None:
@@ -132,7 +146,7 @@ class Team:
 
         self.name = ""
         self.id = str_between(page.url, "teams/", ".shtml").replace("/", "")
-        self.info, self.batting, self.pitching , self.fielding = (pd.DataFrame() for _ in range(4))
+        self.info, self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(4))
         self.players = []
         self._url = page.url
 
@@ -201,19 +215,20 @@ class Team:
         cnh_list = nhd.team_cnh_dict.get(self.id, [])
 
         # add individual no-hitters
-        for col, inh_list in (
-            ("NH", inh_list),
-            ("PG", pg_list)
-            ):
+        for col, inh_list in (("NH", inh_list), ("PG", pg_list)):
             for player, game_type in inh_list:
                 self.pitching.loc[
-                    # player totals
-                    ((self.pitching["Player ID"] == player) &
-                     (self.pitching["Game Type"].str.startswith(game_type))) |
-                    # team totals row
-                    ((self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Game Type"].str.startswith(game_type))),
-                    col
+                    (
+                        # player totals
+                        (self.pitching["Player ID"] == player)
+                        & (self.pitching["Game Type"].str.startswith(game_type))
+                    )
+                    | (
+                        # team totals row
+                        (self.pitching["Player"] == "Team Totals")
+                        & (self.pitching["Game Type"].str.startswith(game_type))
+                    ),
+                    col,
                 ] += 1
 
         # add combined no-hitters
@@ -221,17 +236,21 @@ class Team:
         for player, game_type, game_id in cnh_list:
             # player totals
             self.pitching.loc[
-                ((self.pitching["Player ID"] == player) &
-                 (self.pitching["Game Type"].str.startswith(game_type))),
-                "CNH"
+                (
+                    (self.pitching["Player ID"] == player)
+                    & (self.pitching["Game Type"].str.startswith(game_type))
+                ),
+                "CNH",
             ] += 1
             # team totals row (only increment total once per game)
             # works when game_id is None because no team without box scores had multiple CNHs
             if game_id not in games_logged or game_id is None:
                 self.pitching.loc[
-                    ((self.pitching["Player"] == "Team Totals") &
-                     (self.pitching["Game Type"].str.startswith(game_type))),
-                    "CNH"
+                    (
+                        (self.pitching["Player"] == "Team Totals")
+                        & (self.pitching["Game Type"].str.startswith(game_type))
+                    ),
+                    "CNH",
                 ] += 1
                 games_logged.append(game_id)
 
@@ -269,7 +288,7 @@ class Team:
         # replace old team names within a certain range
         year = int(self.id[-4:])
         for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            if year not in range(start_year, end_year+1):
+            if year not in range(start_year, end_year + 1):
                 continue
             name_dict = {old_name: new_name}
             self.info.replace({"Team": name_dict}, inplace=True)
@@ -277,7 +296,8 @@ class Team:
             self.pitching.replace({"Team": name_dict}, inplace=True)
             self.fielding.replace({"Team": name_dict}, inplace=True)
 
-        self.name = f'{self.id[-4:]} {self.info["Team"].values[0]}' # single quotes for <3.12 support
+        # single quotes for <3.12 support
+        self.name = f'{self.id[-4:]} {self.info["Team"].values[0]}'
 
     def update_venue_names(self) -> None:
         """
@@ -325,19 +345,17 @@ class Team:
         self.name = " ".join((season, team_name))
 
         # gather team info
-        self.info = pd.DataFrame({
-            "Team": [team_name],
-            "Season": [season],
-            "Team ID": [self.id]
-        })
+        self.info = pd.DataFrame({"Team": [team_name], "Season": [season], "Team ID": [self.id]})
         info = soup.find(id="info")
         bling = info.find(id="bling")
         self._scrape_info(info, bling)
 
         # check that the page has player stats
         content = soup.find(id="content")
-        if ("No stats are currently available for this team." in content.text or # e.g. COT1932
-            "These stats are for the players to appear in spring training games" in content.text):
+        if (
+            "No stats are currently available for this team." in content.text  # e.g. COT1932
+            or "These stats are for the players to appear in spring training games" in content.text
+        ):
             self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
             self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
             self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
@@ -411,7 +429,7 @@ class Team:
                 self.info.loc[:, "Losses"] = team_record[1]
                 self.info.loc[:, "Ties"] = team_record[2] if len(team_record) > 2 else 0
 
-                if "Finished" in line_str: # if season is complete
+                if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
                 else:
                     division_finish = str_between(line_str, ",", "place").strip().split()[0]
@@ -433,14 +451,14 @@ class Team:
                 self.info.loc[:, "Managers"] = clean_spaces(managers).replace(" , ", ", ")
 
             elif line_str.split(":", maxsplit=1)[0] in {
-                    "President",
-                    "General Manager",
-                    "Farm Director",
-                    "Scouting Director",
-                    "Ballpark"
-                    }:
+                "President",
+                "General Manager",
+                "Farm Director",
+                "Scouting Director",
+                "Ballpark",
+            }:
                 col, value = line_str.split(":", maxsplit=1)
-                col = "Venue" if col == "Ballpark" else col # for consistency across library
+                col = "Venue" if col == "Ballpark" else col  # for consistency across library
                 self.info.loc[:, col] = clean_spaces(value)
 
             elif line_str.startswith("Attendance"):
@@ -523,7 +541,7 @@ class Team:
         if len(reg_records[0]) != len(reg_records[1]):
             reg_records.pop(0)
         reg_column_names = reg_records.pop(0)
-        if reg_column_names[3] == "Pos": # table has two columns named "Pos" by default
+        if reg_column_names[3] == "Pos":  # table has two columns named "Pos" by default
             reg_column_names[3] = "Position"
         if found_postseason_table:
             post_column_names = post_records.pop(0)
@@ -537,10 +555,7 @@ class Team:
             df_1.loc[:, "Game Type"] = "Regular Season"
 
         # remove column label rows
-        df_1 = df_1.loc[
-            (df_1["Rk"] != "Rk") &
-            (df_1["Player"] != "Standard")
-        ]
+        df_1 = df_1.loc[(df_1["Rk"] != "Rk") & (df_1["Player"] != "Standard")]
         # remove handedness indicators
         df_1.loc[:, "Player"] = df_1["Player"].str.strip("*#")
 
@@ -610,9 +625,21 @@ class Team:
         # remove columns also found in standard table
         df_2.drop(
             columns=[
-                "Rk", "Player", "Player ID", "Age", "PA", "IP",
-                "G", "GS", "R", "WAR", "Pos", "Awards"
-            ], inplace=True, errors="ignore"
+                "Rk",
+                "Player",
+                "Player ID",
+                "Age",
+                "PA",
+                "IP",
+                "G",
+                "GS",
+                "R",
+                "WAR",
+                "Pos",
+                "Awards",
+            ],
+            inplace=True,
+            errors="ignore",
         )
         df_2.reset_index(drop=True, inplace=True)
         return df_2

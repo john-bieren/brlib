@@ -13,12 +13,14 @@ br.options.add_no_hitters = False
 br.options.update_team_names = False
 br.options.update_venue_names = False
 
+
 @pytest.fixture(scope="module")
 def aml_filtered() -> pd.DataFrame:
     """The output of all_major_leaguers filtered to a stable subset of retired players."""
     aml = br.all_major_leaguers()
     aml = aml.loc[aml["Career End"] < 2019]
     return aml
+
 
 @pytest.fixture(scope="session")
 def games_list() -> list[br.Game]:
@@ -54,9 +56,10 @@ def games_list() -> list[br.Game]:
             # forfeited by team which finished with the lead, 4 innings, dh != 0
             ("SLN", "19071005", "1"),
             # both teams share names with later ones, limited stats (especially SB info), dh != 0
-            ("MLA", "19010530", "1")
+            ("MLA", "19010530", "1"),
         ]
     )
+
 
 @pytest.fixture(scope="session")
 def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
@@ -67,6 +70,7 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
         game.update_team_names()
         game.update_venue_names()
     return games_list_copy
+
 
 @pytest.fixture(scope="session")
 def players_list() -> list[br.Player]:
@@ -92,9 +96,10 @@ def players_list() -> list[br.Player]:
             # multiple combined no-hitters (in one season, even), multiple high schools
             "pressry01",
             # catcher (with modern fielding stats), renamed draft team
-            "vogtst01"
+            "vogtst01",
         ]
     )
+
 
 @pytest.fixture(scope="session")
 def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
@@ -104,6 +109,7 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
         player.add_no_hitters()
         player.update_team_names()
     return players_list_copy
+
 
 @pytest.fixture(scope="session")
 def teams_list() -> list[br.Team]:
@@ -125,9 +131,10 @@ def teams_list() -> list[br.Team]:
             # four managers, limited data, partial park factors
             ("BBB", "1924"),
             # team shares name with later one
-            ("WSH", "1904")
+            ("WSH", "1904"),
         ]
     )
+
 
 @pytest.fixture(scope="session")
 def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:

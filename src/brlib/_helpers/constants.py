@@ -19,10 +19,10 @@ CURRENT_YEAR = int(CURRENT_DATE[20:24])
 CURRENT_MONTH = int(time.strftime("%m"))
 CURRENT_DAY = int(CURRENT_DATE[8:10])
 
-FIRST_GAMES_YEAR = 1901 # the first year from which box scores are available
+FIRST_GAMES_YEAR = 1901  # the first year from which box scores are available
 FIRST_TEAMS_YEAR = 1871
 FIRST_ASG_YEAR = 1933
-TWO_ASG_YEARS = {1959, 1960, 1961, 1962} # years in which two All-Star Games were held
+TWO_ASG_YEARS = {1959, 1960, 1961, 1962}  # years in which two All-Star Games were held
 NO_ASG_YEARS = {1945, 2020}
 NO_POSTSEASON_YEARS = {1901, 1902, 1904, 1994}
 
@@ -33,8 +33,11 @@ SEASON_END_DATE = "11-08"
 
 # determine if there's been baseball played in the current year
 SEASON_START_MONTH, SEASON_START_DAY = (int(s) for s in SEASON_START_DATE.split("-"))
-if (CURRENT_MONTH < SEASON_START_MONTH
-    or CURRENT_MONTH == SEASON_START_MONTH and CURRENT_DAY < SEASON_START_DAY):
+if (
+    CURRENT_MONTH < SEASON_START_MONTH
+    or CURRENT_MONTH == SEASON_START_MONTH
+    and CURRENT_DAY < SEASON_START_DAY
+):
     CY_BASEBALL = False
 else:
     CY_BASEBALL = True
@@ -58,12 +61,24 @@ DATE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]$")
 DATE_RANGE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]$")
 PLAYER_ID_REGEX = re.compile("^[a-z.'_]{3,7}[0-9]{2}$")
 SCHEDULE_TAG_REGEX = re.compile("^all_[0-9]")
-GAME_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/boxes/[A-Z1-2]{2,3}/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml")
-ALLSTAR_GAME_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/allstar/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml")
-PLAYER_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/players/[a-z]/[a-z.'_]{3,7}[0-9]{2}\.shtml")
-TEAM_URL_REGEX = re.compile(r"https://www\.baseball-reference\.com/teams/[A-Z1-4]{2,3}/[1-2][0-9]{3}\.shtml")
-SB_ATTEMPT_REGEX = re.compile(r"^(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)$")
-PICKOFF_REGEX = re.compile(r"^(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)$")
+GAME_URL_REGEX = re.compile(
+    r"https://www\.baseball-reference\.com/boxes/[A-Z1-2]{2,3}/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml"
+)
+ALLSTAR_GAME_URL_REGEX = re.compile(
+    r"https://www\.baseball-reference\.com/allstar/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml"
+)
+PLAYER_URL_REGEX = re.compile(
+    r"https://www\.baseball-reference\.com/players/[a-z]/[a-z.'_]{3,7}[0-9]{2}\.shtml"
+)
+TEAM_URL_REGEX = re.compile(
+    r"https://www\.baseball-reference\.com/teams/[A-Z1-4]{2,3}/[1-2][0-9]{3}\.shtml"
+)
+SB_ATTEMPT_REGEX = re.compile(
+    r"^(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)$"
+)
+PICKOFF_REGEX = re.compile(
+    r"^(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)$"
+)
 
 # old names for teams (which have box scores) that didn't relocate
 TEAM_REPLACEMENTS = {
@@ -91,7 +106,7 @@ TEAM_REPLACEMENTS = {
     "Florida Marlins": "Miami Marlins",
     "New York Highlanders": "New York Yankees",
     "Philadelphia Phils": "Philadelphia Phillies",
-    "Tampa Bay Devil Rays": "Tampa Bay Rays"
+    "Tampa Bay Devil Rays": "Tampa Bay Rays",
 }
 
 # team's that should be renamed within the given inclusive range
@@ -103,7 +118,7 @@ RANGE_TEAM_REPLACEMENTS = (
     (1901, 1902, "Baltimore Orioles", "Baltimore Orioles (1901-1902)"),
     (1901, 1901, "Milwaukee Brewers", "Milwaukee Brewers (1901)"),
     (1901, 1956, "Washington Nationals", "Washington Nationals (1901-1960)"),
-    (1901, 1960, "Washington Senators", "Washington Nationals (1901-1960)")
+    (1901, 1960, "Washington Senators", "Washington Nationals (1901-1960)"),
 )
 
 # map all names of a venue to its best known name, or current name, if applicable
@@ -155,28 +170,160 @@ VENUE_REPLACEMENTS = {
     "SunTrust Park": "Truist Park",
     "Weeghman Park": "Wrigley Field",
     "Cubs Park": "Wrigley Field",
-    "Yankee Stadium IIx": "Yankee Stadium II"
+    "Yankee Stadium IIx": "Yankee Stadium II",
 }
 
 # all Black major league team abbreviations
 BML_TEAM_ABVS = {
-    "AB2", "AB3", "ABC", "BBB", "BBS", "BCA", "BEG", "BRG", "CAG", "CBB", "CBE", "CBN",
-    "CBR", "CCB", "CCU", "CEG", "CEL", "CHT", "CLS", "COB", "COG", "COT", "CRS", "CSE",
-    "CSW", "CTG", "CTS", "CUP", "DTS", "HBG", "HIL", "IAB", "JRC", "KCM", "LOW", "LRG",
-    "LVB", "MGS", "MRM", "MRS", "NBY", "NEG", "NLG", "NWB", "NYC", "PBG", "PTG", "SEN",
-    "SL2", "SL3", "SLG", "SLS", "SNS", "TC2", "WAP", "WEG", "WMP",
-    "AC", "AG", "BE", "CC", "CG", "CS", "CT", "DM", "DS", "DW", "HG", "IA",
-    "IC", "ID", "MB", "ND", "NE", "NS", "PC", "PK", "PS", "TC", "TT", "WP"
+    "AB2",
+    "AB3",
+    "ABC",
+    "BBB",
+    "BBS",
+    "BCA",
+    "BEG",
+    "BRG",
+    "CAG",
+    "CBB",
+    "CBE",
+    "CBN",
+    "CBR",
+    "CCB",
+    "CCU",
+    "CEG",
+    "CEL",
+    "CHT",
+    "CLS",
+    "COB",
+    "COG",
+    "COT",
+    "CRS",
+    "CSE",
+    "CSW",
+    "CTG",
+    "CTS",
+    "CUP",
+    "DTS",
+    "HBG",
+    "HIL",
+    "IAB",
+    "JRC",
+    "KCM",
+    "LOW",
+    "LRG",
+    "LVB",
+    "MGS",
+    "MRM",
+    "MRS",
+    "NBY",
+    "NEG",
+    "NLG",
+    "NWB",
+    "NYC",
+    "PBG",
+    "PTG",
+    "SEN",
+    "SL2",
+    "SL3",
+    "SLG",
+    "SLS",
+    "SNS",
+    "TC2",
+    "WAP",
+    "WEG",
+    "WMP",
+    "AC",
+    "AG",
+    "BE",
+    "CC",
+    "CG",
+    "CS",
+    "CT",
+    "DM",
+    "DS",
+    "DW",
+    "HG",
+    "IA",
+    "IC",
+    "ID",
+    "MB",
+    "ND",
+    "NE",
+    "NS",
+    "PC",
+    "PK",
+    "PS",
+    "TC",
+    "TT",
+    "WP",
 }
 
 # all Black major league franchise abbreviations
 BML_FRANCHISE_ABVS = {
-    "AB2", "ABC", "BAG", "BBB", "BBS", "BCA", "BEG", "BR2", "CAG", "CBB", "CBE", "CBN",
-    "CCU", "CEL", "CHT", "CL2", "COB", "COG", "COT", "CRS", "CSE", "CSW", "CTG", "CTS",
-    "CUP", "DTS", "DYM", "HBG", "HIL", "JRC", "KCM", "LRG", "LVB", "MGS", "MRM", "MRS",
-    "NBY", "NLG", "NWB", "NYC", "PBG", "PBK", "PTG", "SEN", "SL2", "SLS", "SNH", "WAP",
-    "AG", "CG", "CT", "DS", "DW", "HG", "IA", "IC",
-    "MB", "ND", "NE", "NS", "PC", "PS", "TT", "WP"
+    "AB2",
+    "ABC",
+    "BAG",
+    "BBB",
+    "BBS",
+    "BCA",
+    "BEG",
+    "BR2",
+    "CAG",
+    "CBB",
+    "CBE",
+    "CBN",
+    "CCU",
+    "CEL",
+    "CHT",
+    "CL2",
+    "COB",
+    "COG",
+    "COT",
+    "CRS",
+    "CSE",
+    "CSW",
+    "CTG",
+    "CTS",
+    "CUP",
+    "DTS",
+    "DYM",
+    "HBG",
+    "HIL",
+    "JRC",
+    "KCM",
+    "LRG",
+    "LVB",
+    "MGS",
+    "MRM",
+    "MRS",
+    "NBY",
+    "NLG",
+    "NWB",
+    "NYC",
+    "PBG",
+    "PBK",
+    "PTG",
+    "SEN",
+    "SL2",
+    "SLS",
+    "SNH",
+    "WAP",
+    "AG",
+    "CG",
+    "CT",
+    "DS",
+    "DW",
+    "HG",
+    "IA",
+    "IC",
+    "MB",
+    "ND",
+    "NE",
+    "NS",
+    "PC",
+    "PS",
+    "TT",
+    "WP",
 }
 
 # alternate abbreviations used in box score urls
@@ -205,7 +352,7 @@ TEAM_ALIASES = {
     "TBR": "TBA",
     "WSA": "WS2",
     "WSH": "WS1",
-    "WSN": "WAS"
+    "WSN": "WAS",
 }
 
 # seasons between a franchise's first and last in which they didn't actually play
@@ -229,7 +376,7 @@ MISSING_SEASONS_DICT = {
     1937: {"BCA", "NYC"},
     1938: {"NYC"},
     1939: {"BBB", "JRC"},
-    1940: {"JRC"}
+    1940: {"JRC"},
 }
 
 # some games need their winners altered due to forfeits (https://www.retrosheet.org/forfeits.htm)
@@ -246,13 +393,26 @@ FORFEITED_GAME_WINNERS = {
     "WS1194108150": "Boston Red Sox",
     "NY1194209262": "Boston Braves",
     "WS2197109300": "New York Yankees",
-    "CLE197406040": "Texas Rangers"
+    "CLE197406040": "Texas Rangers",
 }
 
 # for distinguishing between league and team abbreviations when processing player career totals
 LEAGUE_ABVS = {
-    "WS", "NL", "AL", "NNL", "NN2", "NAL", "ECL", "ANL",
-    "EWL", "NSL", "FL", "AA", "PL", "UA", "NA"
+    "WS",
+    "NL",
+    "AL",
+    "NNL",
+    "NN2",
+    "NAL",
+    "ECL",
+    "ANL",
+    "EWL",
+    "NSL",
+    "FL",
+    "AA",
+    "PL",
+    "UA",
+    "NA",
 }
 
 # the page text and corresponding columns for scraping player awards in _scrape_bling
@@ -279,7 +439,7 @@ BLING_DICT = {
     "ML PoY": "TSN POY",
     "Wilson Overall Def Player": "Wilson ODP",
     "Rolaids Relief": "Rolaids",
-    "Mgr of the year": "Manager of the Year"
+    "Mgr of the year": "Manager of the Year",
 }
 
 # used to swap the direction of relationships in player relative lists
@@ -299,17 +459,10 @@ RELATIVES_DICT = {
     # include relationships that don't need swapping so that unknown ones can be found
     "Brother": "Brother",
     "Cousin": "Cousin",
-    "Brother-In-Law": "Brother-In-Law"
+    "Brother-In-Law": "Brother-In-Law",
 }
 
-RECORDS_COLS = (
-    "Franchise",
-    "Games",
-    "Wins",
-    "Losses",
-    "Ties",
-    "Win %"
-)
+RECORDS_COLS = ("Franchise", "Games", "Wins", "Losses", "Ties", "Win %")
 
 GAME_INFO_COLS = (
     "Game",
@@ -336,7 +489,7 @@ GAME_INFO_COLS = (
     "Wind Direction",
     "Weather",
     "Precipitation",
-    "Game Type"
+    "Game Type",
 )
 
 GAME_BATTING_COLS = (
@@ -394,7 +547,7 @@ GAME_BATTING_COLS = (
     "Team Score",
     "Result for Team",
     "Home/Away",
-    "Game ID"
+    "Game ID",
 )
 
 GAME_PITCHING_COLS = (
@@ -450,7 +603,7 @@ GAME_PITCHING_COLS = (
     "Team Score",
     "Result for Team",
     "Home/Away",
-    "Game ID"
+    "Game ID",
 )
 
 GAME_FIELDING_COLS = (
@@ -483,7 +636,7 @@ GAME_FIELDING_COLS = (
     "Team Score",
     "Result for Team",
     "Home/Away",
-    "Game ID"
+    "Game ID",
 )
 
 GAME_TEAM_INFO_COLS = (
@@ -495,7 +648,7 @@ GAME_TEAM_INFO_COLS = (
     "Next Game ID",
     "Result",
     "Home/Away",
-    "Game ID"
+    "Game ID",
 )
 
 PLAYER_INFO_COLS = (
@@ -540,7 +693,7 @@ PLAYER_INFO_COLS = (
     "Years Played",
     "Minimum Career Earnings",
     "Teams Played For",
-    "Most Teams in a Year"
+    "Most Teams in a Year",
 )
 
 PLAYER_BLING_COLS = (
@@ -567,7 +720,7 @@ PLAYER_BLING_COLS = (
     "TSN POY",
     "Wilson ODP",
     "Rolaids",
-    "Manager of the Year"
+    "Manager of the Year",
 )
 
 PLAYER_BATTING_COLS = (
@@ -649,7 +802,7 @@ PLAYER_BATTING_COLS = (
     "CYA Finish",
     "ROY Finish",
     "LCS MVP",
-    "WS MVP"
+    "WS MVP",
 )
 
 PLAYER_PITCHING_COLS = (
@@ -734,7 +887,7 @@ PLAYER_PITCHING_COLS = (
     "WS MVP",
     "NH",
     "PG",
-    "CNH"
+    "CNH",
 )
 
 PLAYER_FIELDING_COLS = (
@@ -781,7 +934,7 @@ PLAYER_FIELDING_COLS = (
     "CYA Finish",
     "ROY Finish",
     "LCS MVP",
-    "WS MVP"
+    "WS MVP",
 )
 
 TEAM_INFO_COLS = (
@@ -810,7 +963,7 @@ TEAM_INFO_COLS = (
     "Pythagorean Losses",
     "Team Gold Glove",
     "Pennant",
-    "World Series"
+    "World Series",
 )
 
 TEAM_BATTING_COLS = (
@@ -871,7 +1024,7 @@ TEAM_BATTING_COLS = (
     "CYA Finish",
     "ROY Finish",
     "LCS MVP",
-    "WS MVP"
+    "WS MVP",
 )
 
 TEAM_PITCHING_COLS = (
@@ -938,7 +1091,7 @@ TEAM_PITCHING_COLS = (
     "WS MVP",
     "NH",
     "PG",
-    "CNH"
+    "CNH",
 )
 
 TEAM_FIELDING_COLS = (
@@ -981,5 +1134,5 @@ TEAM_FIELDING_COLS = (
     "CYA Finish",
     "ROY Finish",
     "LCS MVP",
-    "WS MVP"
+    "WS MVP",
 )

@@ -11,6 +11,7 @@ import brlib as br
 
 players_data = Path(__file__).parent.resolve() / "expected" / "players"
 
+
 def test_info(players_list: list[br.Player], updated_players_list: list[br.Player]) -> None:
     """Tests the contents of the info DataFrame."""
     for player in players_list:
@@ -25,6 +26,7 @@ def test_info(players_list: list[br.Player], updated_players_list: list[br.Playe
         compared = player.info.compare(expected_df)
         assert compared.empty
 
+
 def test_batting(players_list: list[br.Player]) -> None:
     """Tests the contents of the batting DataFrame."""
     for player in players_list:
@@ -32,6 +34,7 @@ def test_batting(players_list: list[br.Player]) -> None:
         expected_df = pd.read_csv(file)
         compared = player.batting.compare(expected_df)
         assert compared.empty
+
 
 def test_pitching(players_list: list[br.Player], updated_players_list: list[br.Player]) -> None:
     """Tests the contents of the pitching DataFrame."""
@@ -47,6 +50,7 @@ def test_pitching(players_list: list[br.Player], updated_players_list: list[br.P
         compared = player.pitching.compare(expected_df)
         assert compared.empty
 
+
 def test_fielding(players_list: list[br.Player]) -> None:
     """Tests the contents of the fielding DataFrame."""
     for player in players_list:
@@ -54,6 +58,7 @@ def test_fielding(players_list: list[br.Player]) -> None:
         expected_df = pd.read_csv(file)
         compared = player.fielding.compare(expected_df)
         assert compared.empty
+
 
 def test_bling(players_list: list[br.Player]) -> None:
     """Tests the contents of the bling DataFrame."""
@@ -63,12 +68,14 @@ def test_bling(players_list: list[br.Player]) -> None:
         compared = player.bling.compare(expected_df)
         assert compared.empty
 
+
 def test_relatives(players_list: list[br.Player]) -> None:
     """Tests the contents of the relatives dictionary."""
     for player in players_list:
         file = players_data / "original" / player.id / "relatives.json"
         expected_dict = json.loads(file.read_bytes())
         assert player.relatives == expected_dict
+
 
 def test_teams(players_list: list[br.Player]) -> None:
     """Tests the contents of the teams list."""

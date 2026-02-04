@@ -14,19 +14,34 @@ from curl_cffi import Response
 from dateutil.relativedelta import relativedelta
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import (BLING_DICT, LEAGUE_ABVS, MULTI_TEAM_REGEX,
-                                 PLAYER_BATTING_COLS, PLAYER_BLING_COLS,
-                                 PLAYER_FIELDING_COLS, PLAYER_INFO_COLS,
-                                 PLAYER_PITCHING_COLS, PLAYER_URL_REGEX,
-                                 RELATIVES_DICT, SEASON_REGEX,
-                                 TEAM_REPLACEMENTS)
+from ._helpers.constants import (
+    BLING_DICT,
+    LEAGUE_ABVS,
+    MULTI_TEAM_REGEX,
+    PLAYER_BATTING_COLS,
+    PLAYER_BLING_COLS,
+    PLAYER_FIELDING_COLS,
+    PLAYER_INFO_COLS,
+    PLAYER_PITCHING_COLS,
+    PLAYER_URL_REGEX,
+    RELATIVES_DICT,
+    SEASON_REGEX,
+    TEAM_REPLACEMENTS,
+)
 from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, clean_spaces,
-                             convert_numeric_cols, reformat_date,
-                             report_on_exc, runtime_typecheck,
-                             soup_from_comment, str_between, str_remove)
+from ._helpers.utils import (
+    change_innings_notation,
+    clean_spaces,
+    convert_numeric_cols,
+    reformat_date,
+    report_on_exc,
+    runtime_typecheck,
+    soup_from_comment,
+    str_between,
+    str_remove,
+)
 from .options import dev_alert, options, print_page
 
 
@@ -109,14 +124,15 @@ class Player:
     * [`Player.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Player.add_no_hitters)
     * [`Player.update_team_names`](https://github.com/john-bieren/brlib/wiki/Player.update_team_names)
     """
+
     @runtime_typecheck
     def __init__(
-            self,
-            player_id: str = "",
-            page: Response = Response(),
-            add_no_hitters: bool | None = None,
-            update_team_names: bool | None = None
-            ) -> None:
+        self,
+        player_id: str = "",
+        page: Response = Response(),
+        add_no_hitters: bool | None = None,
+        update_team_names: bool | None = None,
+    ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
         if update_team_names is None:
@@ -208,10 +224,9 @@ class Player:
             return
         # set zeros for calculable rows
         self.pitching.loc[
-            (self.pitching["Season"] != "162 Game Avg") &
-            ~((self.pitching["Season"] == "Career Totals") &
-              (~self.pitching["League"].isna())),
-            ["NH", "PG", "CNH"]
+            (self.pitching["Season"] != "162 Game Avg")
+            & ~((self.pitching["Season"] == "Career Totals") & (~self.pitching["League"].isna())),
+            ["NH", "PG", "CNH"],
         ] = 0
 
         inh_list = nhd.player_inh_dict.get(self.id, [])
@@ -219,31 +234,35 @@ class Player:
         cnh_list = nhd.player_cnh_dict.get(self.id, [])
 
         # add no-hitters to season stats
-        for col, nh_list in (
-            ("NH", inh_list),
-            ("PG", pg_list),
-            ("CNH", cnh_list)
-            ):
+        for col, nh_list in (("NH", inh_list), ("PG", pg_list), ("CNH", cnh_list)):
             for year, team, game_type in nh_list:
                 # spahnwa01 threw his no-hitters for MLN, but the applicable total row is for BSN
                 # not only are these different, but BSN isn't even the franchise abv (ATL is)
                 # check for career rows for any of the franchise's abbreviations
                 all_team_abvs = abv_man.all_team_abvs(team, int(year))
                 self.pitching.loc[
-                    # team and season row
-                    ((self.pitching["Season"] == year) &
-                     (self.pitching["Team"] == team) &
-                     (self.pitching["Game Type"].str.startswith(game_type))) |
-                    # multi-team season row
-                    ((self.pitching["Season"] == year) &
-                     (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))) |
-                    # career totals row, team career totals row
-                    ((self.pitching["Season"] == "Career Totals") &
-                     ((self.pitching["Team"].isna()) |
-                      (self.pitching["Team"].isin(all_team_abvs))) &
-                     (self.pitching["League"].isna()) &
-                     (self.pitching["Game Type"].str.startswith(game_type))),
-                    col
+                    (
+                        # team and season row
+                        (self.pitching["Season"] == year)
+                        & (self.pitching["Team"] == team)
+                        & (self.pitching["Game Type"].str.startswith(game_type))
+                    )
+                    | (
+                        # multi-team season row
+                        (self.pitching["Season"] == year)
+                        & (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))
+                    )
+                    | (
+                        # career totals row, team career totals row
+                        (self.pitching["Season"] == "Career Totals")
+                        & (
+                            (self.pitching["Team"].isna())
+                            | (self.pitching["Team"].isin(all_team_abvs))
+                        )
+                        & (self.pitching["League"].isna())
+                        & (self.pitching["Game Type"].str.startswith(game_type))
+                    ),
+                    col,
                 ] += 1
 
     def update_team_names(self) -> None:
@@ -378,21 +397,24 @@ class Player:
                 self.info.loc[:, "Batting Hand"] = bats.strip()
                 self.info.loc[:, "Throwing Hand"] = throws.strip()
 
-            elif (("kg)" in line_str or "cm," in line_str or "cm)" in line_str) and
-                  "(" in line_str and ")" in line_str):
+            elif (
+                ("kg)" in line_str or "cm," in line_str or "cm)" in line_str)
+                and "(" in line_str
+                and ")" in line_str
+            ):
                 line_str = line_str.split("(", maxsplit=1)[0]
                 # need to handle potential for missing height or weight
                 for measurement in line_str.split(",", maxsplit=1):
                     if "-" in measurement:
                         feet, inches = measurement.strip().split("-", maxsplit=1)
-                        self.info.loc[:, "Height (in.)"] = int(feet)*12 + int(inches)
+                        self.info.loc[:, "Height (in.)"] = int(feet) * 12 + int(inches)
                     elif "lb" in measurement:
                         self.info.loc[:, "Weight (lbs.)"] = measurement.strip("\xa0 lb")
 
             elif line_str.startswith("Born"):
                 if " in " in line_str:
                     birth_date, birth_place = line_str.split(" in ", maxsplit=1)
-                else: # no birth place listed
+                else:  # no birth place listed
                     birth_date, birth_place = line_str, ""
 
                 # handle birth dates
@@ -409,10 +431,10 @@ class Player:
                     pass
 
                 # handle birth places
-                if "Ocean" in birth_place: # handle players born at sea
+                if "Ocean" in birth_place:  # handle players born at sea
                     self.info.loc[:, "Birth Country"] = birth_place.strip()
                 else:
-                    birth_place = birth_place[:-2] # remove text representation of country flag
+                    birth_place = birth_place[:-2]  # remove text representation of country flag
                     birth_place_split = birth_place.split(", ")
                     if len(birth_place_split) == 1:
                         # city and/or state/country could be missing, so there's nothing to do
@@ -429,7 +451,9 @@ class Player:
                             self.info.loc[:, "Birth Country"] = birth_state_or_country
                     elif len(birth_place_split) == 3:
                         # likely Canada with province abbreviation and country name
-                        birth_city, birth_province, birth_country = birth_place.split(", ", maxsplit=2)
+                        birth_city, birth_province, birth_country = birth_place.split(
+                            ", ", maxsplit=2
+                        )
                         self.info.loc[:, "Birth City"] = birth_city
                         self.info.loc[:, "Birth State/Province"] = birth_province
                         self.info.loc[:, "Birth Country"] = birth_country
@@ -437,7 +461,7 @@ class Player:
             elif line_str.startswith("Died"):
                 if "in" in line_str:
                     death_date, death_place = line_str.split(" in ", maxsplit=1)
-                else: # no death place listed
+                else:  # no death place listed
                     death_date, death_place = line_str, ""
 
                 # handle death dates
@@ -449,16 +473,16 @@ class Player:
                     self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
                 except (
-                    ValueError, # date is not formatted as expected
-                    UnboundLocalError # birth_datetime has improper format, was not defined
-                    ):
+                    ValueError,  # date is not formatted as expected
+                    UnboundLocalError,  # birth_datetime has improper format, was not defined
+                ):
                     pass
                 # remove current age cols, since they are inaccurate
                 self.info.loc[:, "Age"] = None
                 self.info.loc[:, "Age (Days)"] = np.nan
 
                 # handle death places
-                if "Ocean" in death_place: # handle players born at sea differently
+                if "Ocean" in death_place:  # handle players born at sea differently
                     self.info.loc[:, "Death Country"] = death_place.strip()
                 elif ", " in death_place:
                     death_city, death_state_or_country = death_place.split(", ", maxsplit=1)
@@ -468,8 +492,8 @@ class Player:
                         self.info.loc[:, "Death Country"] = "U.S."
                     else:
                         self.info.loc[:, "Death Country"] = death_state_or_country
-                elif death_place != "": # only state/country listed
-                    if len(death_place) == 2: # states are represented by abbreviations
+                elif death_place != "":  # only state/country listed
+                    if len(death_place) == 2:  # states are represented by abbreviations
                         self.info.loc[:, "Death State/Province"] = death_place
                         self.info.loc[:, "Death Country"] = "U.S."
                     else:
@@ -491,7 +515,9 @@ class Player:
                 self.info.loc[:, "Draft Round"] = draft_round
 
                 try:
-                    self.info.loc[:, "Draft Pick"] = str_between(draft_line, "round (", ")").strip("stndrh")
+                    self.info.loc[:, "Draft Pick"] = str_between(draft_line, "round (", ")").strip(
+                        "stndrh"
+                    )
                     draft_line = draft_line.split(") of the ", maxsplit=1)[1]
                     draft_year, draft_type = draft_line.split(" ", maxsplit=1)
                 except ValueError:
@@ -499,11 +525,13 @@ class Player:
                     draft_line = draft_line.split("round of the ", maxsplit=1)[1]
                     draft_year, draft_type = draft_line.split(" ", maxsplit=1)
                 self.info.loc[:, "Draft Year"] = draft_year
-                self.info.loc[:, "Draft Type"] = draft_type.split(" from ", maxsplit=1)[0].strip(".")
+                self.info.loc[:, "Draft Type"] = draft_type.split(" from ", maxsplit=1)[0].strip(
+                    "."
+                )
 
             elif "School:" in line_str:
                 school_type, school_name = line_str.split(": ", maxsplit=1)
-                self.info.loc[:, school_type+"s"] = f'"{school_name}"'
+                self.info.loc[:, f"{school_type}s"] = f'"{school_name}"'
 
             elif "Schools" in line_str:
                 col, school_list = line_str.split(": ", maxsplit=1)
@@ -528,7 +556,9 @@ class Player:
 
                 debut_game_link = line.find_all("a", href=True)[-1]["href"]
                 if "/boxes/" in debut_game_link:
-                    self.info.loc[:, "Debut Game ID"] = str_between(debut_game_link, "/", ".", anchor="end")
+                    self.info.loc[:, "Debut Game ID"] = str_between(
+                        debut_game_link, "/", ".", anchor="end"
+                    )
 
                 debut_rank = str_between(line_str, " ", " in major league history", anchor="end")
                 # "(" is at the start if age is not listed
@@ -546,16 +576,20 @@ class Player:
                     last_game_datetime = datetime.strptime(last_game, "%B %d, %Y")
                     age = relativedelta(last_game_datetime, birth_datetime)
                     self.info.loc[:, "Last Game Age"] = f"{age.years}y-{age.months}m-{age.days}d"
-                    self.info.loc[:, "Last Game Age (Days)"] = (last_game_datetime - birth_datetime).days
+                    self.info.loc[:, "Last Game Age (Days)"] = (
+                        last_game_datetime - birth_datetime
+                    ).days
                 except (
-                    ValueError, # incomplete last game date
-                    UnboundLocalError # birth_datetime has improper format, was not defined
-                    ):
+                    ValueError,  # incomplete last game date
+                    UnboundLocalError,  # birth_datetime has improper format, was not defined
+                ):
                     continue
 
                 last_game_link = line.find_all("a", href=True)[-1]["href"]
                 if "/boxes/" in last_game_link:
-                    self.info.loc[:, "Last Game ID"] = str_between(last_game_link, "/", ".", anchor="end")
+                    self.info.loc[:, "Last Game ID"] = str_between(
+                        last_game_link, "/", ".", anchor="end"
+                    )
 
             elif line_str.startswith("Hall of Fame"):
                 hof_type, hof_year = line_str.split(" in ", maxsplit=1)
@@ -613,7 +647,7 @@ class Player:
             elif "World Series" in bling:
                 # if a player has just one ring, the year is included in the bling
                 self.bling.loc[:, "WS Wins"] = 1
-            elif "Hall of Fame" not in bling: # HOF is handled in the bio
+            elif "Hall of Fame" not in bling:  # HOF is handled in the bio
                 dev_alert(f'{self.id}: unexpected bling element "{bling}"')
 
     def _find_career_earnings(self, table: Tag) -> None:
@@ -625,7 +659,7 @@ class Player:
             record = [ele.text.strip() for ele in row.find_all()]
             records.append(record)
         num_columns = len(records[0])
-        del records[0] # delete header row
+        del records[0]  # delete header row
 
         for record in records:
             # if the # of columns is right and the salary column has a value
@@ -653,15 +687,15 @@ class Player:
         df["Salary"] = df["Season"].apply(lambda x: self._yearly_salaries.get(x, None))
 
         df.loc[
-            (~df["Team"].isna()) &
-            (df["Season"] != "Career Totals"),
-            "Team ID"
-        ] = df["Team"] + df["Season"]
+            ((~df["Team"].isna()) & (df["Season"] != "Career Totals")),
+            "Team ID",
+        ] = (
+            df["Team"] + df["Season"]
+        )
         # remove team ids from multi-team season summary rows, e.g. 2TM
         df.loc[
-            (~df["Team ID"].isna()) &
-            (df["Team"].str.fullmatch(MULTI_TEAM_REGEX)),
-            "Team ID"
+            ((~df["Team ID"].isna()) & (df["Team"].str.fullmatch(MULTI_TEAM_REGEX))),
+            "Team ID",
         ] = None
 
         df = convert_numeric_cols(df)
@@ -678,7 +712,8 @@ class Player:
             columns={
                 "WAR": "Batting bWAR",
                 "Lg": "League",
-            }, inplace=True
+            },
+            inplace=True,
         )
         h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
@@ -686,23 +721,18 @@ class Player:
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = h_df_1.loc[
-            (h_df_1["Season"] == "Career Totals") &
-            (h_df_1["Game Type"] == "Regular Season") &
-            ((~h_df_1["Team"].isna()) | (~h_df_1["League"].isna()))
+            (h_df_1["Season"] == "Career Totals")
+            & (h_df_1["Game Type"] == "Regular Season")
+            & ((~h_df_1["Team"].isna()) | (~h_df_1["League"].isna()))
         ]
-        advanced_batting_buffer = len(summary_rows) + 1 # add one for 162 game average row
+        advanced_batting_buffer = len(summary_rows) + 1  # add one for 162 game average row
         return h_df_1, advanced_batting_buffer
 
     @staticmethod
     def _scrape_standard_pitching(table: Tag) -> tuple[pd.DataFrame, int]:
         """Scrapes standard pitching stats from `table`."""
         p_df_1 = Player._table_to_df(table, add_game_type=True)
-        p_df_1.rename(
-            columns={
-                "WAR": "Pitching bWAR",
-                "Lg": "League"
-            }, inplace=True
-        )
+        p_df_1.rename(columns={"WAR": "Pitching bWAR", "Lg": "League"}, inplace=True)
 
         p_df_1 = Player._process_awards_column(p_df_1)
         p_df_1 = Player._process_career_totals(p_df_1)
@@ -710,22 +740,17 @@ class Player:
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = p_df_1.loc[
-            (p_df_1["Season"] == "Career Totals") &
-            (p_df_1["Game Type"] == "Regular Season") &
-            ((~p_df_1["Team"].isna()) | (~p_df_1["League"].isna()))
+            (p_df_1["Season"] == "Career Totals")
+            & (p_df_1["Game Type"] == "Regular Season")
+            & ((~p_df_1["Team"].isna()) | (~p_df_1["League"].isna()))
         ]
-        advanced_pitching_buffer = len(summary_rows) + 1 # add one for 162 game average row
+        advanced_pitching_buffer = len(summary_rows) + 1  # add one for 162 game average row
         return p_df_1, advanced_pitching_buffer
 
     def _scrape_standard_fielding(self, table: Tag) -> None:
         """Scrapes standard fielding stats from `table`."""
         self.fielding = Player._table_to_df(table, add_game_type=True)
-        self.fielding.rename(
-            columns={
-                "Lg": "League",
-                "Pos": "Position"
-            }, inplace=True
-        )
+        self.fielding.rename(columns={"Lg": "League", "Pos": "Position"}, inplace=True)
 
         self.fielding = Player._process_awards_column(self.fielding)
         self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
@@ -774,7 +799,7 @@ class Player:
         # find franchise and league career total rows
         abbreviations = df_1["Season"].str.split(" (", regex=False, n=1).str[0]
         is_league_mask = abbreviations.isin(LEAGUE_ABVS)
-        is_total_mask = df_1["Season"].str.contains("(", regex=False) # can be team or league
+        is_total_mask = df_1["Season"].str.contains("(", regex=False)  # can be team or league
         league_summary_mask = is_total_mask & is_league_mask
         team_summary_mask = is_total_mask & (~is_league_mask)
 
@@ -790,8 +815,21 @@ class Player:
         df_2 = Player._table_to_df(table, add_game_type=False)
         df_2.drop(
             columns=[
-                "Season", "Age", "Team", "Lg", "PA", "IP", "G", "GS", "R", "WAR", "Pos", "Awards"
-            ], inplace=True, errors="ignore"
+                "Season",
+                "Age",
+                "Team",
+                "Lg",
+                "PA",
+                "IP",
+                "G",
+                "GS",
+                "R",
+                "WAR",
+                "Pos",
+                "Awards",
+            ],
+            inplace=True,
+            errors="ignore",
         )
         return df_2
 
@@ -801,7 +839,8 @@ class Player:
         df_3 = Player._table_to_df(table, add_game_type=False, buffer=buffer)
         df_3.drop(
             columns=["Season", "Age", "Team", "Lg", "PA", "IP", "rOBA", "Rbat+", "Pos", "Awards"],
-            inplace=True, errors="ignore"
+            inplace=True,
+            errors="ignore",
         )
 
         # convert cWPA from percentage to float
@@ -840,9 +879,9 @@ class Player:
             if "_post." in row.get("id", ""):
                 postseason_included = True
 
-            if tables == 1: # on the first table (presumably regular season)
+            if tables == 1:  # on the first table (presumably regular season)
                 reg_records.append(record)
-            elif tables == 2: # on the second table (postseason)
+            elif tables == 2:  # on the second table (postseason)
                 post_records.append(record)
 
         reg_column_names = reg_records.pop(0)
@@ -856,7 +895,7 @@ class Player:
                 reg_df.loc[:, "Game Type"] = "Regular Season"
                 post_df.loc[:, "Game Type"] = "Postseason"
             if buffer > 0:
-                empty_cols = [[None]*len(reg_df.columns)]*buffer
+                empty_cols = [[None] * len(reg_df.columns)] * buffer
                 blank_rows = pd.DataFrame(empty_cols, columns=reg_df.columns)
                 reg_df = pd.concat((reg_df, blank_rows))
             df = pd.concat((reg_df, post_df), ignore_index=True)
@@ -881,8 +920,9 @@ class Player:
 
         # shift career totals and 162 game avg rows which are misaligned by default
         original_seasons_column = df["Season"].copy()
-        shift_rows_mask = ((df["Season"].str.contains(" Yr", regex=False)) |
-                           (df["Season"] == "162 Game Avg"))
+        shift_rows_mask = (df["Season"].str.contains(" Yr", regex=False)) | (
+            df["Season"] == "162 Game Avg"
+        )
         df.loc[shift_rows_mask] = df.loc[shift_rows_mask].shift(3, axis="columns")
         # restore season column, which should not be shifted
         df.loc[:, "Season"] = original_seasons_column
@@ -924,6 +964,6 @@ class Player:
         season_rows = df.loc[df["Season"].str.fullmatch(SEASON_REGEX)]
         # remove multi-team season summary rows
         season_rows = season_rows[~season_rows["Team"].str.fullmatch(MULTI_TEAM_REGEX)]
-        teams = list(zip(season_rows["Team"], season_rows["Season"])) # ("SEA", 2019)
+        teams = list(zip(season_rows["Team"], season_rows["Season"]))  # ("SEA", 2019)
         teams = list(dict.fromkeys(teams))
         return teams

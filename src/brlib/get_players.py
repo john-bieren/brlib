@@ -12,10 +12,7 @@ from .player import Player
 
 
 @runtime_typecheck
-def get_players(
-        player_list: list[str],
-        add_no_hitters: bool | None = None
-        ) -> list[Player]:
+def get_players(player_list: list[str], add_no_hitters: bool | None = None) -> list[Player]:
     """
     Returns a list of `Player` objects corresponding to the player IDs in `player_list`. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
@@ -55,12 +52,12 @@ def get_players(
 
     results = []
     for player_id in tqdm(
-            iterable=list(dict.fromkeys(player_list)),
-            unit="player",
-            bar_format=options.pb_format,
-            colour=options.pb_color,
-            disable=options.pb_disable
-            ):
+        iterable=list(dict.fromkeys(player_list)),
+        unit="player",
+        bar_format=options.pb_format,
+        colour=options.pb_color,
+        disable=options.pb_disable,
+    ):
         endpoint = f"/players/{player_id[0]}/{player_id}.shtml"
 
         page = req_man.get_page(endpoint)

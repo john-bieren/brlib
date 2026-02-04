@@ -15,6 +15,7 @@ class RequestsManager(Singleton):
     Manages web requests while observing Baseball Reference's
     [rate limit](https://www.sports-reference.com/429.html).
     """
+
     def __init__(self) -> None:
         self._last_request = 0
         self._session = requests.Session()
@@ -30,7 +31,7 @@ class RequestsManager(Singleton):
         retries = 0
 
         while True:
-            self.pause() # won't do anything if it has been long enough
+            self.pause()  # won't do anything if it has been long enough
             self._last_request = time.perf_counter_ns()
             try:
                 page = self._session.get(url, timeout=options.timeout_limit)
@@ -44,7 +45,9 @@ class RequestsManager(Singleton):
 
         if not page.ok:
             if page.status_code == 429:
-                raise ConnectionRefusedError("429 error: rate limit exceeded, Baseball Reference access temporarily blocked")
+                raise ConnectionRefusedError(
+                    "429 error: rate limit exceeded, Baseball Reference access temporarily blocked"
+                )
             if page.status_code == 404:
                 raise ConnectionError(f"404 error: {url} does not exist")
             raise ConnectionError(f"{url} returned {page.status_code} status code")
@@ -55,8 +58,9 @@ class RequestsManager(Singleton):
         Pauses execution until `options.request_buffer` seconds have passed since
         the previous request was made.
         """
-        ns_delta = (time.perf_counter_ns()-self._last_request) / 1e9
+        ns_delta = (time.perf_counter_ns() - self._last_request) / 1e9
         pause_length = max(options.request_buffer - ns_delta, 0)
         time.sleep(pause_length)
+
 
 req_man = RequestsManager()

@@ -10,10 +10,17 @@ from curl_cffi.requests import Response
 from tqdm import tqdm
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import (BML_TEAM_ABVS, CURRENT_YEAR, CY_BASEBALL,
-                                 FIRST_GAMES_YEAR, NO_POSTSEASON_YEARS,
-                                 SCHEDULE_TAG_REGEX, SEASON_RANGE_REGEX,
-                                 SEASON_REGEX, TEAM_ALIASES)
+from ._helpers.constants import (
+    BML_TEAM_ABVS,
+    CURRENT_YEAR,
+    CY_BASEBALL,
+    FIRST_GAMES_YEAR,
+    NO_POSTSEASON_YEARS,
+    SCHEDULE_TAG_REGEX,
+    SEASON_RANGE_REGEX,
+    SEASON_REGEX,
+    TEAM_ALIASES,
+)
 from ._helpers.inputs import validate_date_list
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import report_on_exc, runtime_typecheck
@@ -22,13 +29,13 @@ from .options import options, print_page, write
 
 @runtime_typecheck
 def find_games(
-        teams: str | list[str] = "all",
-        seasons: str | list[str] = "all",
-        opponents: str | list[str] = "all",
-        dates: str | list[str] = "all",
-        home_away: str = "all",
-        game_type: str = "all"
-        ) -> list[tuple[str, str, str]]:
+    teams: str | list[str] = "all",
+    seasons: str | list[str] = "all",
+    opponents: str | list[str] = "all",
+    dates: str | list[str] = "all",
+    home_away: str = "all",
+    game_type: str = "all",
+) -> list[tuple[str, str, str]]:
     """
     Returns a list of game tuples which can be an input to `get_games`.
 
@@ -112,10 +119,12 @@ def find_games(
 
     game_list = []
     for year in tqdm(
-            iterable=year_list, unit="season",
-            bar_format=options.pb_format, colour=options.pb_color,
-            disable=options.pb_disable
-            ):
+        iterable=year_list,
+        unit="season",
+        bar_format=options.pb_format,
+        colour=options.pb_color,
+        disable=options.pb_disable,
+    ):
         # correct abbreviations for given year
         if teams == ["ALL"]:
             year_teams = ["ALL"]
@@ -139,6 +148,7 @@ def find_games(
         req_man.pause()
     return game_list
 
+
 def _process_abbreviation_list(abv_list: list[str]) -> list[str]:
     """
     Returns a list including only the valid team abbreviations for teams with box scores
@@ -158,6 +168,7 @@ def _process_abbreviation_list(abv_list: list[str]) -> list[str]:
         result.append(abv)
     return result
 
+
 def _check_other_inputs(home_away: str, game_type: str) -> bool:
     """
     Indicates whether the `home_away` and `game_type` inputs have valid values.
@@ -171,12 +182,13 @@ def _check_other_inputs(home_away: str, game_type: str) -> bool:
         return False
     return True
 
+
 def _find_year_list(
-        teams: list[str],
-        seasons: list[str],
-        opponents: list[str],
-        game_type: str
-        ) -> list[int]:
+    teams: list[str],
+    seasons: list[str],
+    opponents: list[str],
+    game_type: str,
+) -> list[int]:
     """
     Returns the list of years within `seasons` in which `game_type` games between
     `teams` and `opponents` are possible. Inputs must be uppercase.
@@ -226,6 +238,7 @@ def _find_year_list(
     year_list.sort()
     return year_list
 
+
 def _all_franchise_seasons(abbreviations: list[str]) -> set[int]:
     """
     Returns the set of years in which any team associated with listed abbreviations played.
@@ -242,15 +255,16 @@ def _all_franchise_seasons(abbreviations: list[str]) -> set[int]:
         result = result.union(years)
     return result
 
+
 @report_on_exc(0)
 def _find_season_games(
-        page: Response,
-        teams: list[str],
-        opponents: list[str],
-        dates: list[str],
-        home_away: str,
-        game_type: str
-        ) -> list[tuple[str, str, str]]:
+    page: Response,
+    teams: list[str],
+    opponents: list[str],
+    dates: list[str],
+    home_away: str,
+    game_type: str,
+) -> list[tuple[str, str, str]]:
     """
     Scrapes an MLB schedule page, and returns the games from that season which
     match all the other input parameters. Inputs must be uppercase.
@@ -308,21 +322,21 @@ def _find_season_games(
             append = False
             if home_away == "ALL":
                 append = (
-                    not team_set.isdisjoint({away_team, home_team, "ALL"}) and
-                    not opponent_set.isdisjoint({away_team, home_team, "ALL"}) and
-                    int(date[4:]) in date_set
+                    not team_set.isdisjoint({away_team, home_team, "ALL"})
+                    and not opponent_set.isdisjoint({away_team, home_team, "ALL"})
+                    and int(date[4:]) in date_set
                 )
             elif home_away == "HOME":
                 append = (
-                    not team_set.isdisjoint({home_team, "ALL"}) and
-                    not opponent_set.isdisjoint({away_team, "ALL"}) and
-                    int(date[4:]) in date_set
+                    not team_set.isdisjoint({home_team, "ALL"})
+                    and not opponent_set.isdisjoint({away_team, "ALL"})
+                    and int(date[4:]) in date_set
                 )
             elif home_away == "AWAY":
                 append = (
-                    not team_set.isdisjoint({away_team, "ALL"}) and
-                    not opponent_set.isdisjoint({home_team, "ALL"}) and
-                    int(date[4:]) in date_set
+                    not team_set.isdisjoint({away_team, "ALL"})
+                    and not opponent_set.isdisjoint({home_team, "ALL"})
+                    and int(date[4:]) in date_set
                 )
 
             if append:

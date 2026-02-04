@@ -2,8 +2,10 @@
 
 """Defines Singleton class."""
 
+
 class Singleton:
     """Parent for singleton classes."""
+
     _instance = None
 
     def __new__(cls):

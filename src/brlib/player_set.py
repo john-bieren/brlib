@@ -78,6 +78,7 @@ class PlayerSet:
     * [`PlayerSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/PlayerSet.add_no_hitters)
     * [`PlayerSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/PlayerSet.update_team_names)
     """
+
     @runtime_typecheck
     def __init__(self, players: list[Player]) -> None:
         self._contents = tuple(player.id for player in players)
@@ -101,7 +102,7 @@ class PlayerSet:
 
     def __repr__(self) -> str:
         players = [f"Player({p})" for p in self._contents]
-        return f'PlayerSet({", ".join(players)})' # single quotes for <3.12 support
+        return f'PlayerSet({", ".join(players)})'  # single quotes for <3.12 support
 
     def add_no_hitters(self) -> None:
         """
@@ -152,10 +153,9 @@ class PlayerSet:
             return
         # set zeros for calculable rows
         self.pitching.loc[
-            (self.pitching["Season"] != "162 Game Avg") &
-            ~((self.pitching["Season"] == "Career Totals") &
-              (~self.pitching["League"].isna())),
-            ["NH", "PG", "CNH"]
+            (self.pitching["Season"] != "162 Game Avg")
+            & ~((self.pitching["Season"] == "Career Totals") & (~self.pitching["League"].isna())),
+            ["NH", "PG", "CNH"],
         ] = 0
 
         # find the players who've pitched in no-hitters
@@ -172,32 +172,38 @@ class PlayerSet:
             player_mask = self.pitching["Player ID"] == player_id
 
             # add no-hitters to season stats
-            for col, nh_list in (
-                ("NH", inh_list),
-                ("PG", pg_list),
-                ("CNH", cnh_list)
-                ):
+            for col, nh_list in (("NH", inh_list), ("PG", pg_list), ("CNH", cnh_list)):
                 for year, team, game_type in nh_list:
                     # spahnwa01 threw no-hitters for MLN, but the applicable total row is for BSN
                     # not only are these different, but BSN isn't even the franchise abv (ATL is)
                     # so we check for career rows for any of the franchise's abbreviations
                     all_team_abvs = abv_man.all_team_abvs(team, int(year))
                     self.pitching.loc[
-                        player_mask &
-                        # team and season row
-                        (((self.pitching["Season"] == year) &
-                          (self.pitching["Team"] == team) &
-                          (self.pitching["Game Type"].str.startswith(game_type))) |
-                        # multi-team season row
-                         ((self.pitching["Season"] == year) &
-                          (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))) |
-                        # career totals row, team career totals row
-                         ((self.pitching["Season"] == "Career Totals") &
-                          ((self.pitching["Team"].isna()) |
-                           (self.pitching["Team"].isin(all_team_abvs))) &
-                          (self.pitching["League"].isna()) &
-                          (self.pitching["Game Type"].str.startswith(game_type)))),
-                        col
+                        player_mask
+                        & (
+                            (
+                                # team and season row
+                                (self.pitching["Season"] == year)
+                                & (self.pitching["Team"] == team)
+                                & (self.pitching["Game Type"].str.startswith(game_type))
+                            )
+                            | (
+                                # multi-team season row
+                                (self.pitching["Season"] == year)
+                                & (self.pitching["Team"].str.fullmatch(MULTI_TEAM_REGEX))
+                            )
+                            | (
+                                # career totals row, team career totals row
+                                (self.pitching["Season"] == "Career Totals")
+                                & (
+                                    (self.pitching["Team"].isna())
+                                    | (self.pitching["Team"].isin(all_team_abvs))
+                                )
+                                & (self.pitching["League"].isna())
+                                & (self.pitching["Game Type"].str.startswith(game_type))
+                            )
+                        ),
+                        col,
                     ] += 1
 
     def update_team_names(self) -> None:

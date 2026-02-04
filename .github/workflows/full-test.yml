@@ -16,18 +16,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
-        resolution: ["highest"]
+        resolution: ['highest']
         include:
           - os: ubuntu-latest
             python-version: "3.10"
-            resolution: "lowest-direct"
+            resolution: 'lowest-direct'
           - os: windows-latest
             python-version: "3.10"
-            resolution: "lowest-direct"
+            resolution: 'lowest-direct'
           - os: macos-latest
-            # there's no 3.10 wheel for lxml on ARM64 macos
+            # there's no 3.10 wheel for lxml on ARM64 macOS
             python-version: "3.11"
-            resolution: "lowest-direct"
+            resolution: 'lowest-direct'
 
     steps:
       - name: Checkout code

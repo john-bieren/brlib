@@ -6,8 +6,7 @@ from typing import Any
 
 import pytest
 
-from brlib._helpers.utils import (clean_spaces, is_type, reformat_date,
-                                  str_between, str_remove)
+from brlib._helpers.utils import clean_spaces, is_type, reformat_date, str_between, str_remove
 
 
 def test_is_type() -> None:
@@ -27,6 +26,7 @@ def test_is_type() -> None:
     assert is_type([1, 2, 3], int | list[int])
     assert not is_type([1, 2, "3"], int | list[int])
 
+
 def test_str_between() -> None:
     """Tests the outputs of the str_between function."""
     assert str_between("first.second.last", ".", ".") == "second"
@@ -41,15 +41,18 @@ def test_str_between() -> None:
     with pytest.raises(ValueError):
         str_between("foo", "o", "f", anchor="last")
 
+
 def test_str_remove() -> None:
     """Tests the outputs of the str_remove function."""
     assert str_remove("f.o.o.b.a.z", ".") == "foobaz"
     assert str_remove("f.o/o,b`a'z", ".", "/", ",", "`", "'") == "foobaz"
 
+
 def test_clean_spaces() -> None:
     """Tests the outputs of the clean_spaces function."""
     assert clean_spaces(" foo bar baz ") == "foo bar baz"
     assert clean_spaces("     foo         bar  baz  ") == "foo bar baz"
+
 
 def test_reformat_date() -> None:
     """Tests the outputs of the reformat_date function."""

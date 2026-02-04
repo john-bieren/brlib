@@ -41,6 +41,7 @@ def test_cache() -> None:
     # some game ids are np.nan which does not equal itself, so numpy tooling is required
     np.testing.assert_equal(nhd.team_cnh_dict, expected_tc)
 
+
 def test_game_dicts() -> None:
     """Tests the contents of the game dictionaries."""
     assert nhd.game_inh_dict["CIN202408020"] == "snellbl01"
@@ -51,9 +52,15 @@ def test_game_dicts() -> None:
 
     assert nhd.game_cnh_dict.get("NYA195610080") is None
     assert nhd.game_cnh_dict["SEA201206080"] == [
-        "millwke01", "pryorst01", "furbuch01", "luetglu01", "leagubr01", "wilheto01"
+        "millwke01",
+        "pryorst01",
+        "furbuch01",
+        "luetglu01",
+        "leagubr01",
+        "wilheto01",
     ]
     assert nhd.game_cnh_dict["DET202307080"] == ["mannima02", "foleyja01", "langeal01"]
+
 
 def test_player_dicts() -> None:
     """Tests the contents of the player dictionaries."""
@@ -72,6 +79,7 @@ def test_player_dicts() -> None:
     assert nhd.player_cnh_dict["sanchaa01"] == [["2019", "HOU", "R"]]
     assert nhd.player_cnh_dict["pressry01"] == [["2022", "HOU", "P"], ["2022", "HOU", "R"]]
 
+
 def test_team_dicts() -> None:
     """Tests the contents of the team dictionaries."""
     assert nhd.team_inh_dict.get("LAD2018") is None
@@ -85,16 +93,19 @@ def test_team_dicts() -> None:
 
     assert nhd.team_cnh_dict.get("SEA2018") is None
     assert nhd.team_cnh_dict["LAD2018"] == [
-        ["buehlwa01", "R", "SDN201805040"], ["cingrto01", "R", "SDN201805040"],
-        ["garciyi01", "R", "SDN201805040"], ["liberad01", "R", "SDN201805040"]
+        ["buehlwa01", "R", "SDN201805040"],
+        ["cingrto01", "R", "SDN201805040"],
+        ["garciyi01", "R", "SDN201805040"],
+        ["liberad01", "R", "SDN201805040"],
     ]
     assert nhd.team_cnh_dict["HOU2022"] == [
-        ["javiecr01", "P", "PHI202211020"], ["abreubr01", "P", "PHI202211020"],
-        ["montera01", "P", "PHI202211020"], ["pressry01", "P", "PHI202211020"],
-        ["javiecr01", "R", "NYA202206250"], ["nerishe01", "R", "NYA202206250"],
-        ["pressry01", "R", "NYA202206250"]
+        ["javiecr01", "P", "PHI202211020"],
+        ["abreubr01", "P", "PHI202211020"],
+        ["montera01", "P", "PHI202211020"],
+        ["pressry01", "P", "PHI202211020"],
+        ["javiecr01", "R", "NYA202206250"],
+        ["nerishe01", "R", "NYA202206250"],
+        ["pressry01", "R", "NYA202206250"],
     ]
     # check game id value for combined no-hitters without a box score
-    assert nhd.team_cnh_dict["KCM1923"] == [
-        ["roganbu99", "R", np.nan], ["mendejo99", "R", np.nan]
-    ]
+    assert nhd.team_cnh_dict["KCM1923"] == [["roganbu99", "R", np.nan], ["mendejo99", "R", np.nan]]

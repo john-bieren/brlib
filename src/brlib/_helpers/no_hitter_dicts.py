@@ -11,8 +11,15 @@ from bs4 import Tag
 from curl_cffi import Response
 
 from ..options import write
-from .constants import (BML_TEAM_ABVS, CACHE_DIR, CACHE_TIMEZONE, CURRENT_YEAR,
-                        CY_BASEBALL, FIRST_GAMES_YEAR, SEASON_END_DATE)
+from .constants import (
+    BML_TEAM_ABVS,
+    CACHE_DIR,
+    CACHE_TIMEZONE,
+    CURRENT_YEAR,
+    CY_BASEBALL,
+    FIRST_GAMES_YEAR,
+    SEASON_END_DATE,
+)
 from .requests_manager import req_man
 from .singleton import Singleton
 from .utils import report_on_exc, soup_from_comment, str_between
@@ -25,6 +32,7 @@ class NoHitterDicts(Singleton):
     oriented by game, player, or team. Manages retrieval and caching of the data upon use of the
     `populate` method. Until this method is called, the dictionaries are empty.
     """
+
     def __init__(self) -> None:
         self._cache_file = CACHE_DIR / "nh_data_v1.csv"
         self._populated = False
@@ -65,11 +73,11 @@ class NoHitterDicts(Singleton):
         if CY_BASEBALL:
             season_end = datetime.strptime(f"{CURRENT_YEAR}-{SEASON_END_DATE}", "%Y-%m-%d")
         else:
-            season_end = datetime.strptime(f"{CURRENT_YEAR-1}-{SEASON_END_DATE}", "%Y-%m-%d")
+            season_end = datetime.strptime(f"{CURRENT_YEAR - 1}-{SEASON_END_DATE}", "%Y-%m-%d")
         season_end = season_end.astimezone(CACHE_TIMEZONE)
 
         # check whether the previous refresh was today
-        if (current_time-last_save_time).days == 0 and last_save_time.hour <= current_time.hour:
+        if (current_time - last_save_time).days == 0 and last_save_time.hour <= current_time.hour:
             return True
         # check whether it's the offseason
         if not CY_BASEBALL or last_save_time > season_end:
@@ -117,16 +125,18 @@ class NoHitterDicts(Singleton):
             records.append(record[:9])
         individual_df = pd.DataFrame(
             records,
-            columns=("Rk", "Name", "Perfect", "Gcar", "Gtm", "Year", "Date", "Team", "Home/Away")
+            columns=("Rk", "Name", "Perfect", "Gcar", "Gtm", "Year", "Date", "Team", "Home/Away"),
         )
         # remove the header rows which appear every 25 rows
         individual_df = individual_df.loc[individual_df["Name"] != "Name"].reset_index(drop=True)
         individual_df["Game Type"] = "R"
-        postseason_mask = ((individual_df["Gcar"] == "") &
-                           # before FIRST_GAMES_YEAR, Gcar is always blank
-                           (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR) &
-                           # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
-                           (individual_df["Home/Away"] != "?"))
+        postseason_mask = (
+            (individual_df["Gcar"] == "")
+            # before FIRST_GAMES_YEAR, Gcar is always blank
+            & (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR)
+            # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
+            & (individual_df["Home/Away"] != "?")
+        )
         individual_df.loc[postseason_mask, "Game Type"] = "P"
         individual_df.loc[individual_df["Perfect"] == "", "Perfect"] = "N"
         individual_df = individual_df.reindex(
@@ -151,10 +161,10 @@ class NoHitterDicts(Singleton):
         individual_df["Game ID"] = individual_df["Game ID"].astype("object")
         # filter out games without box scores and IDs
         individual_df.loc[
-            (~individual_df["Team"].isin(BML_TEAM_ABVS)) &
-            (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
+            (~individual_df["Team"].isin(BML_TEAM_ABVS))
+            & (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
             "Game ID",
-            ] = game_id_column
+        ] = game_id_column
         return individual_df
 
     @staticmethod
@@ -166,14 +176,17 @@ class NoHitterDicts(Singleton):
             records.append(record[:9])
         combined_df = pd.DataFrame(
             records,
-            columns=("Rk", "Year", "Date", "Team", "Home/Away", "Opp", "Rslt", "Name", "Gcar")
+            columns=("Rk", "Year", "Date", "Team", "Home/Away", "Opp", "Rslt", "Name", "Gcar"),
         )
         # remove the header rows which appear every 25 rows
         combined_df = combined_df.loc[combined_df["Name"] != "Name"].reset_index(drop=True)
         combined_df["Game Type"] = "R"
-        postseason_mask = ((combined_df["Gcar"] == "") &
-                           # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
-                           (combined_df["Home/Away"] != "?"))
+        postseason_mask = (
+            (combined_df["Gcar"] == "")
+            &
+            # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
+            (combined_df["Home/Away"] != "?")
+        )
         combined_df.loc[postseason_mask, "Game Type"] = "P"
         combined_df = combined_df.reindex(
             columns=["Player ID", "Perfect", "Combined", "Year", "Team", "Game ID", "Game Type"]
@@ -204,12 +217,12 @@ class NoHitterDicts(Singleton):
                     game_id_column.append(game_id)
 
         combined_df["Player ID"] = player_id_column
-        combined_df["Game ID"] = combined_df["Game ID"].astype("object") # cast to nullable dtype
+        combined_df["Game ID"] = combined_df["Game ID"].astype("object")  # cast to nullable dtype
         combined_df.loc[
-            (~combined_df["Team"].isin(BML_TEAM_ABVS)) &
-            (combined_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
+            (~combined_df["Team"].isin(BML_TEAM_ABVS))
+            & (combined_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
             "Game ID",
-            ] = game_id_column
+        ] = game_id_column
         return combined_df
 
     def _generate_dicts(self, data_df: pd.DataFrame) -> None:
@@ -220,34 +233,63 @@ class NoHitterDicts(Singleton):
         pg_df = inh_df[inh_df["Perfect"] == "Y"]
         cnh_df = data_df[data_df["Combined"] == "Y"]
 
-        self.game_inh_dict = inh_df.groupby("Game ID")["Player ID"].apply(lambda x: x.iloc[0]).to_dict()
-        self.game_pg_dict = pg_df.groupby("Game ID")["Player ID"].apply(lambda x: x.iloc[0]).to_dict()
+        self.game_inh_dict = (
+            inh_df.groupby("Game ID")["Player ID"].apply(lambda x: x.iloc[0]).to_dict()
+        )
+        self.game_pg_dict = (
+            pg_df.groupby("Game ID")["Player ID"].apply(lambda x: x.iloc[0]).to_dict()
+        )
         self.game_cnh_dict = cnh_df.groupby("Game ID")["Player ID"].apply(list).to_dict()
 
-        self.player_inh_dict = inh_df.groupby("Player ID").apply(
-            lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
-            include_groups=False
-        ).to_dict()
-        self.player_pg_dict = pg_df.groupby("Player ID").apply(
-            lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
-            include_groups=False
-        ).to_dict()
-        self.player_cnh_dict = cnh_df.groupby("Player ID").apply(
-            lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
-            include_groups=False
-        ).to_dict()
+        self.player_inh_dict = (
+            inh_df.groupby("Player ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
+        self.player_pg_dict = (
+            pg_df.groupby("Player ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
+        self.player_cnh_dict = (
+            cnh_df.groupby("Player ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Year"], x["Team"], x["Game Type"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
 
-        self.team_inh_dict = inh_df.groupby("Team ID").apply(
-            lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"])],
-            include_groups=False
-        ).to_dict()
-        self.team_pg_dict = pg_df.groupby("Team ID").apply(
-            lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"])],
-            include_groups=False
-        ).to_dict()
-        self.team_cnh_dict = cnh_df.groupby("Team ID").apply(
-            lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"], x["Game ID"])],
-            include_groups=False
-        ).to_dict()
+        self.team_inh_dict = (
+            inh_df.groupby("Team ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
+        self.team_pg_dict = (
+            pg_df.groupby("Team ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
+        self.team_cnh_dict = (
+            cnh_df.groupby("Team ID")
+            .apply(
+                lambda x: [list(t) for t in zip(x["Player ID"], x["Game Type"], x["Game ID"])],
+                include_groups=False,
+            )
+            .to_dict()
+        )
+
 
 nhd = NoHitterDicts()

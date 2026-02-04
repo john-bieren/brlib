@@ -15,6 +15,7 @@ def test_cache() -> None:
     compared = abv_man.df.compare(expected_df)
     assert compared.empty
 
+
 def test_correct_abvs() -> None:
     """Tests the outputs of the correct_abvs method."""
     assert abv_man.correct_abvs("OAK", 2025, era_adjustment=True) == ["ATH"]
@@ -25,6 +26,7 @@ def test_correct_abvs() -> None:
     assert abv_man.correct_abvs("LAA", 1907, era_adjustment=False) == []
     assert abv_man.correct_abvs("SER", 2025, era_adjustment=False) == []
 
+
 def test_franchise_abv() -> None:
     """Tests the outputs of the franchise_abv method."""
     assert abv_man.franchise_abv("ATH", 1876) == "ATH"
@@ -32,11 +34,13 @@ def test_franchise_abv() -> None:
     assert abv_man.franchise_abv("OAK", 2025) == ""
     assert abv_man.franchise_abv("SER", 2025) == ""
 
+
 def test_all_team_abvs() -> None:
     """Tests the outputs of the all_team_abvs method."""
     assert abv_man.all_team_abvs("ATH", 2025) == ["ATH", "KCA", "OAK", "PHA"]
     assert abv_man.all_team_abvs("OAK", 2025) == []
     assert abv_man.all_team_abvs("SER", 2025) == []
+
 
 def test_to_alias() -> None:
     """Tests the outputs of the to_alias method."""
@@ -44,6 +48,7 @@ def test_to_alias() -> None:
     assert abv_man.to_alias("KCA", 1963) == "KC1"
     assert abv_man.to_alias("PBS", 2025) == "PBS"
     assert abv_man.to_alias("SER", 2025) == "SER"
+
 
 def test_to_regular() -> None:
     """Tests the outputs of the to_regular method."""

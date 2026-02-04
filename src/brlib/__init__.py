@@ -29,5 +29,5 @@ __all__ = [
     "Player",
     "PlayerSet",
     "Team",
-    "TeamSet"
+    "TeamSet",
 ]

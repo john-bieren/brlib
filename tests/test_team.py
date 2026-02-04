@@ -11,6 +11,7 @@ import brlib as br
 
 teams_data = Path(__file__).parent.resolve() / "expected" / "teams"
 
+
 def test_info(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -> None:
     """Tests the contents of the info DataFrame."""
     for team in teams_list:
@@ -24,6 +25,7 @@ def test_info(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -> N
         expected_df = pd.read_csv(file)
         compared = team.info.compare(expected_df)
         assert compared.empty
+
 
 def test_batting(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -> None:
     """Tests the contents of the batting DataFrame."""
@@ -39,6 +41,7 @@ def test_batting(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -
         compared = team.batting.compare(expected_df)
         assert compared.empty
 
+
 def test_pitching(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -> None:
     """Tests the contents of the pitching DataFrame."""
     for team in teams_list:
@@ -53,6 +56,7 @@ def test_pitching(teams_list: list[br.Team], updated_teams_list: list[br.Team]) 
         compared = team.pitching.compare(expected_df)
         assert compared.empty
 
+
 def test_fielding(teams_list: list[br.Team], updated_teams_list: list[br.Team]) -> None:
     """Tests the contents of the fielding DataFrame."""
     for team in teams_list:
@@ -66,6 +70,7 @@ def test_fielding(teams_list: list[br.Team], updated_teams_list: list[br.Team]) 
         expected_df = pd.read_csv(file)
         compared = team.fielding.compare(expected_df)
         assert compared.empty
+
 
 def test_players(teams_list: list[br.Team]) -> None:
     """Tests the contents of the players list."""

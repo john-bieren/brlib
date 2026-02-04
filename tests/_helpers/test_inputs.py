@@ -2,8 +2,12 @@
 
 """Tests the functions in inputs.py."""
 
-from brlib._helpers.inputs import (validate_date_list, validate_game_list,
-                                   validate_player_list, validate_team_list)
+from brlib._helpers.inputs import (
+    validate_date_list,
+    validate_game_list,
+    validate_player_list,
+    validate_team_list,
+)
 
 
 def test_validate_game_list() -> None:
@@ -38,14 +42,15 @@ def test_validate_game_list() -> None:
         # reject ASG in year when it was canceled
         ("allstar", "2020", "0"),
         # convert allstar to uppercase
-        ("allstar", "1960", "2")
+        ("allstar", "1960", "2"),
     ]
     assert validate_game_list(test_list) == [
         ("SEA", "20150621", "0"),
         ("LAN", "20241031", "0"),
         ("NYA", "20250329", "0"),
-        ("ALLSTAR", "1960", "2")
+        ("ALLSTAR", "1960", "2"),
     ]
+
 
 def test_validate_player_list() -> None:
     """Tests the outputs of the validate_player_list function."""
@@ -63,7 +68,7 @@ def test_validate_player_list() -> None:
         # too many digits
         "players101",
         # not enough digits
-        "invalid0"
+        "invalid0",
     ]
     assert validate_player_list(test_list) == [
         "hernafe02",
@@ -71,8 +76,9 @@ def test_validate_player_list() -> None:
         "colli05",
         "washiu_01",
         "burnea.01",
-        "o'neipa01"
+        "o'neipa01",
     ]
+
 
 def test_validate_team_list() -> None:
     """Tests the outputs of the validate_team_list function."""
@@ -90,11 +96,10 @@ def test_validate_team_list() -> None:
         # reject season in future
         ("MAR", "2099"),
         # reject missing season for team
-        ("HG", "1934")
+        ("HG", "1934"),
     ]
-    assert validate_team_list(test_list) == [
-        ("CIN", "2017")
-    ]
+    assert validate_team_list(test_list) == [("CIN", "2017")]
+
 
 def test_validate_date_list() -> None:
     """Tests the outputs of the validate_date_list function."""
@@ -113,7 +118,7 @@ def test_validate_date_list() -> None:
         # range with full 8 digits
         "1007-1008",
         # reverse backwards range
-        "0529-0527"
+        "0529-0527",
     ]
     assert validate_date_list(test_list) == [
         "0704",
@@ -121,7 +126,7 @@ def test_validate_date_list() -> None:
         "0321-401",
         "930-1001",
         "1007-1008",
-        "0527-0529"
+        "0527-0529",
     ]
 
     # overwrite all inputs if "ALL" is included

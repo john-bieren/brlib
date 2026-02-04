@@ -8,9 +8,14 @@ from itertools import chain
 import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_man
-from ._helpers.constants import (CURRENT_YEAR, CY_BASEBALL, FIRST_TEAMS_YEAR,
-                                 MISSING_SEASONS_DICT, SEASON_RANGE_REGEX,
-                                 SEASON_REGEX)
+from ._helpers.constants import (
+    CURRENT_YEAR,
+    CY_BASEBALL,
+    FIRST_TEAMS_YEAR,
+    MISSING_SEASONS_DICT,
+    SEASON_RANGE_REGEX,
+    SEASON_REGEX,
+)
 from ._helpers.utils import runtime_typecheck
 from .options import write
 
@@ -18,8 +23,8 @@ from .options import write
 @runtime_typecheck
 def find_teams(
     teams: str | list[str] = "all",
-    seasons: str | list[str] = "all"
-    ) -> list[tuple[str, str]]:
+    seasons: str | list[str] = "all",
+) -> list[tuple[str, str]]:
     """
     Returns a list of team tuples which can be an input to `get_teams`.
 
@@ -101,6 +106,7 @@ def find_teams(
         team_list.extend(results)
     return team_list
 
+
 def _process_abbreviation_list(abv_list: list[str], exceptions: set[str]) -> list[str]:
     """
     Returns a list including only the valid team abbreviations, except for those matching
@@ -117,6 +123,7 @@ def _process_abbreviation_list(abv_list: list[str], exceptions: set[str]) -> lis
             continue
         result.append(abv)
     return result
+
 
 def _make_year_list(seasons: list[str]) -> list[int]:
     """
@@ -150,6 +157,7 @@ def _make_year_list(seasons: list[str]) -> list[int]:
     year_list.sort()
     return year_list
 
+
 def _find_season_teams(year: int, year_teams: list[str]) -> list[tuple[str, str]]:
     """
     Returns the list of valid teams in `year` with abbreviations listed in `year_teams`.
@@ -158,8 +166,7 @@ def _find_season_teams(year: int, year_teams: list[str]) -> list[tuple[str, str]
     missing_seasons = MISSING_SEASONS_DICT.get(year, {})
     team_list = []
     for team in year_teams:
-        year_mask = ((abv_man.df["First Year"] <= year) &
-                     (abv_man.df["Last Year"] >= year))
+        year_mask = (abv_man.df["First Year"] <= year) & (abv_man.df["Last Year"] >= year)
         if team == "ALL":
             # identity mask
             team_mask = pd.Series(True, index=abv_man.df.index)
@@ -173,6 +180,6 @@ def _find_season_teams(year: int, year_teams: list[str]) -> list[tuple[str, str]
         match_rows = abv_man.df[year_mask & team_mask]
         teams = match_rows["Team"].values
         results = [(abv, str(year)) for abv in teams if abv not in missing_seasons]
-        results.sort(key=lambda x: x[0]) # sort by team abv instead of franchise abv
+        results.sort(key=lambda x: x[0])  # sort by team abv instead of franchise abv
         team_list.extend(results)
     return team_list

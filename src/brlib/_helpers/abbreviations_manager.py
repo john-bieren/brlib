@@ -11,9 +11,16 @@ from bs4 import BeautifulSoup as bs
 from curl_cffi import Response
 
 from ..options import write
-from .constants import (BML_FRANCHISE_ABVS, CACHE_DIR, CACHE_TIMEZONE,
-                        CURRENT_YEAR, CY_BASEBALL, FIRST_GAMES_YEAR,
-                        SEASON_START_DATE, TEAM_ALIASES)
+from .constants import (
+    BML_FRANCHISE_ABVS,
+    CACHE_DIR,
+    CACHE_TIMEZONE,
+    CURRENT_YEAR,
+    CY_BASEBALL,
+    FIRST_GAMES_YEAR,
+    SEASON_START_DATE,
+    TEAM_ALIASES,
+)
 from .requests_manager import req_man
 from .singleton import Singleton
 from .utils import report_on_exc
@@ -25,6 +32,7 @@ class AbbreviationsManager(Singleton):
     franchise abbreviations used by Baseball Reference. Manages retrieval and caching of the data,
     loads data on import of brlib. Has methods for working with these abbreviations.
     """
+
     def __init__(self) -> None:
         self._cache_file = CACHE_DIR / "abv_data_v1.csv"
         self.df = pd.DataFrame()
@@ -82,7 +90,7 @@ class AbbreviationsManager(Singleton):
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             if record[4] == "Present":
                 record[4] = str(CURRENT_YEAR + CY_BASEBALL - 1)
-            del record[2] # remove the column of full team names
+            del record[2]  # remove the column of full team names
 
             # create indicator column for major Negro League teams
             if i == 0:
@@ -111,11 +119,11 @@ class AbbreviationsManager(Singleton):
 
     @functools.cache
     def _find_correct_teams(
-            self,
-            abbreviation: str,
-            season: int,
-            era_adjustment: bool
-            ) -> pd.DataFrame:
+        self,
+        abbreviation: str,
+        season: int,
+        era_adjustment: bool,
+    ) -> pd.DataFrame:
         """
         Returns the team row associated with `abbreviation` during `season`.
         Can return an empty DataFrame if there is no match.
@@ -133,9 +141,9 @@ class AbbreviationsManager(Singleton):
         if era_adjustment:
             potential_franchises = abv_rows["Franchise"].values
             franchise_rows = self.df.loc[self.df["Franchise"].isin(potential_franchises)]
-            mask = ((franchise_rows["First Year"] <= season) &
-                    (franchise_rows["Last Year"] >= season))
-            matching_franchises = franchise_rows.loc[mask]["Franchise"]
+            matching_franchises = franchise_rows.loc[
+                (franchise_rows["First Year"] <= season) & (franchise_rows["Last Year"] >= season)
+            ]["Franchise"]
             correct_rows = abv_rows.loc[abv_rows["Franchise"].isin(matching_franchises)]
             return self._fix_discontinuities(correct_rows, season)
 
@@ -155,29 +163,20 @@ class AbbreviationsManager(Singleton):
         team_rows.reset_index(drop=True, inplace=True)
         for i, row in team_rows.iterrows():
             franchise_rows = self.df.loc[self.df["Franchise"] == row["Franchise"]]
-            mask = ((franchise_rows["First Year"] <= season) &
-                    (franchise_rows["Last Year"] >= season))
-            franchise_rows = franchise_rows.loc[mask]
+            franchise_rows = franchise_rows.loc[
+                (franchise_rows["First Year"] <= season) & (franchise_rows["Last Year"] >= season)
+            ]
             years_col = franchise_rows["Last Year"] - franchise_rows["First Year"]
             correct_row = franchise_rows.loc[years_col == years_col.min()]
             team_rows.iloc[i] = correct_row.reset_index(drop=True).iloc[0]
         return team_rows
 
-    def correct_abvs(
-            self,
-            abbreviation: str,
-            season: int,
-            era_adjustment: bool
-            ) -> list[str]:
+    def correct_abvs(self, abbreviation: str, season: int, era_adjustment: bool) -> list[str]:
         """Returns the team abbreviations from `self._find_correct_teams`."""
         team_rows = self._find_correct_teams(abbreviation, season, era_adjustment)
         return team_rows["Team"].values.tolist()
 
-    def franchise_abv(
-            self,
-            abbreviation: str,
-            season: int
-            ) -> str:
+    def franchise_abv(self, abbreviation: str, season: int) -> str:
         """Returns the franchise abbreviation for the team at `abbreviation` and `season`."""
         team_row = self._find_correct_teams(abbreviation, season, era_adjustment=False)
         if team_row.empty:
@@ -215,7 +214,7 @@ class AbbreviationsManager(Singleton):
         """
         # some aliases, e.g. KCA, are valid team abvs, these should be left alone
         team_row = self._find_correct_teams(abbreviation, season, era_adjustment=False)
-        if not team_row.empty: # this is a valid team abbreviation for season
+        if not team_row.empty:  # this is a valid team abbreviation for season
             return team_row["Team"].values[0]
 
         # otherwise, convert alias to team abv
@@ -225,5 +224,6 @@ class AbbreviationsManager(Singleton):
         if correct_row.empty:
             return abbreviation
         return correct_row["Team"].values[0]
+
 
 abv_man = AbbreviationsManager()

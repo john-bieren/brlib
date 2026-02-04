@@ -10,21 +10,36 @@ from bs4 import BeautifulSoup as bs
 from bs4 import Tag
 from curl_cffi import Response
 
-from ._helpers.constants import (ALLSTAR_GAME_URL_REGEX,
-                                 FORFEITED_GAME_WINNERS, GAME_BATTING_COLS,
-                                 GAME_FIELDING_COLS, GAME_INFO_COLS,
-                                 GAME_PITCHING_COLS, GAME_TEAM_INFO_COLS,
-                                 GAME_URL_REGEX, PICKOFF_REGEX,
-                                 RANGE_TEAM_REPLACEMENTS, SB_ATTEMPT_REGEX,
-                                 TEAM_REPLACEMENTS, VENUE_REPLACEMENTS)
+from ._helpers.constants import (
+    ALLSTAR_GAME_URL_REGEX,
+    FORFEITED_GAME_WINNERS,
+    GAME_BATTING_COLS,
+    GAME_FIELDING_COLS,
+    GAME_INFO_COLS,
+    GAME_PITCHING_COLS,
+    GAME_TEAM_INFO_COLS,
+    GAME_URL_REGEX,
+    PICKOFF_REGEX,
+    RANGE_TEAM_REPLACEMENTS,
+    SB_ATTEMPT_REGEX,
+    TEAM_REPLACEMENTS,
+    VENUE_REPLACEMENTS,
+)
 from ._helpers.inputs import validate_game_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import (change_innings_notation, clean_spaces,
-                             convert_numeric_cols, reformat_date,
-                             report_on_exc, runtime_typecheck,
-                             scrape_player_ids, soup_from_comment, str_between,
-                             str_remove)
+from ._helpers.utils import (
+    change_innings_notation,
+    clean_spaces,
+    convert_numeric_cols,
+    reformat_date,
+    report_on_exc,
+    runtime_typecheck,
+    scrape_player_ids,
+    soup_from_comment,
+    str_between,
+    str_remove,
+)
 from .options import dev_alert, options, print_page
 
 
@@ -145,17 +160,18 @@ class Game:
     * [`Game.update_team_names`](https://github.com/john-bieren/brlib/wiki/Game.update_team_names)
     * [`Game.update_venue_names`](https://github.com/john-bieren/brlib/wiki/Game.update_venue_names)
     """
+
     @runtime_typecheck
     def __init__(
-            self,
-            home_team: str = "",
-            date: str = "",
-            doubleheader: str = "",
-            page: Response = Response(),
-            add_no_hitters: bool | None = None,
-            update_team_names: bool | None = None,
-            update_venue_names: bool | None = None
-            ) -> None:
+        self,
+        home_team: str = "",
+        date: str = "",
+        doubleheader: str = "",
+        page: Response = Response(),
+        add_no_hitters: bool | None = None,
+        update_team_names: bool | None = None,
+        update_venue_names: bool | None = None,
+    ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
         if update_team_names is None:
@@ -172,8 +188,9 @@ class Game:
                 raise ValueError("invalid arguments")
             page = Game._get_game(games[0])
         else:
-            if (not re.match(GAME_URL_REGEX, page.url) and
-                not re.match(ALLSTAR_GAME_URL_REGEX, page.url)):
+            if not re.match(GAME_URL_REGEX, page.url) and not re.match(
+                ALLSTAR_GAME_URL_REGEX, page.url
+            ):
                 raise ValueError("page does not contain a game")
 
         self.name = ""
@@ -260,19 +277,18 @@ class Game:
         cnh_list = nhd.game_cnh_dict.get(self.id, [])
 
         # add individual no-hitters
-        for col, player_id in (
-            ("NH", inh_player_id),
-            ("PG", pg_player_id)
-            ):
+        for col, player_id in (("NH", inh_player_id), ("PG", pg_player_id)):
             if player_id == "":
                 continue
             player_mask = self.pitching["Player ID"] == player_id
             nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
             self.pitching.loc[
-                player_mask |
-                ((self.pitching["Player"] == "Team Totals") &
-                 (self.pitching["Team ID"] == nh_team_id)),
-                col
+                player_mask
+                | (
+                    (self.pitching["Player"] == "Team Totals")
+                    & (self.pitching["Team ID"] == nh_team_id)
+                ),
+                col,
             ] = 1
 
         # add combined no-hitters
@@ -280,10 +296,12 @@ class Game:
             player_mask = self.pitching["Player ID"] == player_id
             nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
             self.pitching.loc[
-                player_mask |
-                ((self.pitching["Player"] == "Team Totals") &
-                 (self.pitching["Team ID"] == nh_team_id)),
-                "CNH"
+                player_mask
+                | (
+                    (self.pitching["Player"] == "Team Totals")
+                    & (self.pitching["Team ID"] == nh_team_id)
+                ),
+                "CNH",
             ] = 1
 
     def update_team_names(self) -> None:
@@ -318,12 +336,14 @@ class Game:
         self.linescore.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
         self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
-        self.info.replace({
+        self.info.replace(
+            {
                 "Home Team": TEAM_REPLACEMENTS,
                 "Away Team": TEAM_REPLACEMENTS,
                 "Winning Team": TEAM_REPLACEMENTS,
-                "Losing Team": TEAM_REPLACEMENTS
-            }, inplace=True
+                "Losing Team": TEAM_REPLACEMENTS,
+            },
+            inplace=True,
         )
         self.batting.replace(
             {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
@@ -338,29 +358,25 @@ class Game:
         # replace old team names within a certain range
         year = int(self._home_team_id[-4:])
         for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            if year not in range(start_year, end_year+1):
+            if year not in range(start_year, end_year + 1):
                 continue
             name_dict = {old_name: new_name}
 
             self.linescore.replace({"Team": name_dict}, regex=True, inplace=True)
             self.team_info.replace({"Team": name_dict}, regex=True, inplace=True)
             self.info.replace({"Game": name_dict}, regex=True, inplace=True)
-            self.info.replace({
+            self.info.replace(
+                {
                     "Home Team": name_dict,
                     "Away Team": name_dict,
                     "Winning Team": name_dict,
-                    "Losing Team": name_dict
-                }, inplace=True
+                    "Losing Team": name_dict,
+                },
+                inplace=True,
             )
-            self.batting.replace(
-                {"Team": name_dict, "Opponent": name_dict}, inplace=True
-            )
-            self.pitching.replace(
-                {"Team": name_dict, "Opponent": name_dict}, inplace=True
-            )
-            self.fielding.replace(
-                {"Team": name_dict, "Opponent": name_dict}, inplace=True
-            )
+            self.batting.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
+            self.pitching.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
+            self.fielding.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
 
         self.name = self.info["Game"].values[0]
 
@@ -419,7 +435,7 @@ class Game:
             h_df = self._scrape_batting(table)
             self.batting = pd.concat((self.batting, h_df))
 
-        self._scrape_pitching(section_wrappers[other_info_index-1])
+        self._scrape_pitching(section_wrappers[other_info_index - 1])
 
         self.batting = convert_numeric_cols(self.batting)
         self.pitching = convert_numeric_cols(self.pitching)
@@ -447,7 +463,9 @@ class Game:
     def _scrape_info(self, content: Tag, other_info: Tag) -> None:
         """Populates `self.info` with data from `content` and `other_info`."""
         self.info = pd.DataFrame([self.name], columns=["Game"])
-        self.team_info = pd.DataFrame({"Home/Away": ["Away", "Home"], "Game ID": [self.id, self.id]})
+        self.team_info = pd.DataFrame(
+            {"Home/Away": ["Away", "Home"], "Game ID": [self.id, self.id]}
+        )
         heading = clean_spaces(content.find("h1").text)
         linescore = content.find("div", {"class": "linescore_wrap"})
         scorebox = content.find("div", {"class": "scorebox"})
@@ -496,15 +514,15 @@ class Game:
     def _scrape_linescore(self, linescore: Tag) -> None:
         """Scrapes team names and run totals, and populates `self.linescore` from `linescore`."""
         records = []
-        for row in linescore.find_all("tr")[:3]: # only grab column labels and two teams' lines
+        for row in linescore.find_all("tr")[:3]:  # only grab column labels and two teams' lines
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             record = [i for i in record if "Sports Logos.net" not in i]
             # remove the X in the bottom of the ninth, if applicable
             record = [None if i == "X" else i for i in record]
             records.append(record)
-        records[0].pop(0) # extra empty string
+        records[0].pop(0)  # extra empty string
 
-        self.info["Innings"] = len(records[0]) - 4 # don't count Team, R, H, E cols
+        self.info["Innings"] = len(records[0]) - 4  # don't count Team, R, H, E cols
         self.info["Away Score"] = self._away_score = int(records[1][-3])
         self.info["Home Score"] = self._home_score = int(records[2][-3])
         self.info["Away Team"] = self._away_team = records[1][0]
@@ -519,7 +537,7 @@ class Game:
             self.info["Losing Team"] = self._winning_team = None
         self.info["Winning Team"] = self._winning_team
 
-        records[0][0] = "Team" # give the team column a name
+        records[0][0] = "Team"  # give the team column a name
         self.linescore = pd.DataFrame(records[1:3], columns=records[0])
         # convert string numbers to nullable ints (since B9 could be None)
         self.linescore[records[0][1:]] = self.linescore[records[0][1:]].astype("Int64")
@@ -528,7 +546,9 @@ class Game:
         if not self._is_asg:
             tags = linescore.find_all("a", href=True)
             teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
-            teams = [tuple(str_between(team, "/teams/", ".").split("/", maxsplit=1)) for team in teams]
+            teams = [
+                tuple(str_between(team, "/teams/", ".").split("/", maxsplit=1)) for team in teams
+            ]
             assert len(teams) == 2
             self._away_team_id, self._home_team_id = ("".join(team) for team in teams)
             self.teams += teams
@@ -548,7 +568,9 @@ class Game:
 
             # get team's post-game record
             if not self._is_asg:
-                record = [t.text for t in team.find_all("div") if "-" in t.text and "via" not in t.text][0]
+                record = [
+                    t.text for t in team.find_all("div") if "-" in t.text and "via" not in t.text
+                ][0]
                 score = int(team.find("div", {"class": "score"}).text)
                 if is_home:
                     self.team_info.loc[1, "Record"] = record
@@ -582,7 +604,7 @@ class Game:
             elif "Duration:" in line_str:
                 duration = line_str.replace("Game Duration: ", "")
                 hours, minutes = duration.split(":", maxsplit=1)
-                self.info["Duration"] = int(hours)*60 + int(minutes)
+                self.info["Duration"] = int(hours) * 60 + int(minutes)
             elif "Game, on" in line_str:
                 self.info["Surface"] = line_str.split(", on ", maxsplit=1)[1].capitalize()
 
@@ -666,7 +688,9 @@ class Game:
         # separate batter name and position
         original_player_col = h_df["Player"].copy()
         is_player_mask = h_df["Player"] != "Team Totals"
-        h_df[["Player", "Position"]] = h_df.loc[is_player_mask, "Player"].str.rsplit(expand=True, n=1)
+        h_df[["Player", "Position"]] = h_df.loc[is_player_mask, "Player"].str.rsplit(
+            expand=True, n=1
+        )
         # find and fix split-up player names where no position was present, e.g. CHN190306020
         has_pos_mask = is_player_mask & (h_df["Position"].str.isupper())
         # this also renames final "Player" row to "Team Totals" instead of "Team"
@@ -731,7 +755,7 @@ class Game:
                 # "IBB" is the abbreviation for intentional walks used across the rest of the site
                 stat = "IBB" if stat == "IW" else stat
                 h_df.loc[i, stat] = num
-                h_df.loc[len(h_df)-1, stat] += num # team totals row
+                h_df.loc[len(h_df) - 1, stat] += num  # team totals row
 
         # get additional stats from below the table
         player_stats = {
@@ -739,12 +763,9 @@ class Game:
             "2-out RBI": "2-Out RBI",
             "E": "E",
             "Outfield Assists": "OFA",
-            "PB": "PB"
+            "PB": "PB",
         }
-        team_stats = {
-            "Team LOB": "LOB",
-            "With RISP": "RISP"
-        }
+        team_stats = {"Team LOB": "LOB", "With RISP": "RISP"}
         dp_tp = ["DP", "TP"]
         h_df[list(player_stats.values())] = 0
         h_df[dp_tp] = 0
@@ -772,7 +793,9 @@ class Game:
 
             elif team_stats.get(stat) is not None:
                 stat_name = team_stats.get(stat)
-                h_df.loc[h_df["Player"] == "Team Totals", stat_name] = line_str.split(": ", maxsplit=1)[1]
+                h_df.loc[h_df["Player"] == "Team Totals", stat_name] = line_str.split(
+                    ": ", maxsplit=1
+                )[1]
 
             elif stat in dp_tp:
                 total, player_list = players.split(". ", maxsplit=1)
@@ -827,12 +850,12 @@ class Game:
             p_df["IP"].apply(change_innings_notation)
 
             p_df.loc[p_df["Player"] != "Team Totals", "Position"] = "RP"
-            p_df.loc[0, "Position"] = "SP" # the first pitcher to appear for the team
+            p_df.loc[0, "Position"] = "SP"  # the first pitcher to appear for the team
 
             p_df[["GS", "GF", "CG", "SHO"]] = 0
-            p_df.loc[[0, len(p_df)-1], "GS"] = 1 # first pitcher plus team totals
-            p_df.loc[[len(p_df)-2, len(p_df)-1], "GF"] = 1
-            if len(p_df) == 2: # only SP and team totals
+            p_df.loc[[0, len(p_df) - 1], "GS"] = 1  # first pitcher plus team totals
+            p_df.loc[[len(p_df) - 2, len(p_df) - 1], "GF"] = 1
+            if len(p_df) == 2:  # only SP and team totals
                 p_df["CG"] = 1
                 if p_df.loc[0, "R"] == "0":
                     p_df["SHO"] = 1
@@ -840,7 +863,9 @@ class Game:
             # create details column with wins, losses, saves, blown saves, and holds
             p_df[["W", "L", "SV", "BS", "Holds"]] = 0
             try:
-                p_df[["Player", "Details"]] = p_df["Player"].str.split(", ", expand=True, regex=False, n=1)
+                p_df[["Player", "Details"]] = p_df["Player"].str.split(
+                    ", ", expand=True, regex=False, n=1
+                )
                 for i, row in p_df.iterrows():
                     if row["Details"] is None:
                         continue
@@ -851,7 +876,7 @@ class Game:
                         # "SV" is the abbreviation for saves used across the rest of the site
                         stat = "SV" if stat == "S" else stat
                         p_df.loc[i, stat] = 1
-                        p_df.loc[len(p_df)-1, stat] += 1 # team totals row
+                        p_df.loc[len(p_df) - 1, stat] += 1  # team totals row
             except ValueError:
                 # no details present, p_df["Player"].str.split only returned one column
                 pass
@@ -923,9 +948,26 @@ class Game:
         """Copies info and moves fielding stats from `self.batting` to `self.fielding`."""
         self.fielding = self.batting[
             [
-                "Player", "Player ID", "Position", "PO", "A", "E", "DP", "TP", "OFA",
-                "PB", "SB", "CS", "Team", "Team ID", "Opponent", "Opponent Team ID",
-                "Team Score", "Result for Team", "Home/Away", "Game ID"
+                "Player",
+                "Player ID",
+                "Position",
+                "PO",
+                "A",
+                "E",
+                "DP",
+                "TP",
+                "OFA",
+                "PB",
+                "SB",
+                "CS",
+                "Team",
+                "Team ID",
+                "Opponent",
+                "Opponent Team ID",
+                "Team Score",
+                "Result for Team",
+                "Home/Away",
+                "Game ID",
             ]
         ].copy()
 
@@ -948,16 +990,36 @@ class Game:
 
     def _scrape_stolen_base_stats(self, batting_tables: list[Tag]) -> None:
         """Tallies SB attempts and results by catcher, stealer, and base."""
-        self.batting[[
-            "2B SB", "3B SB", "HP SB",
-            "2B CS", "3B CS", "HP CS",
-            "Pick", "1B Pick", "2B Pick", "3B Pick"
-        ]] = 0
-        self.fielding[[
-            "SB", "2B SB", "3B SB", "HP SB",
-            "CS", "2B CS", "3B CS", "HP CS",
-            "Pick", "1B Pick", "2B Pick", "3B Pick"
-        ]] = 0
+        self.batting[
+            [
+                "2B SB",
+                "3B SB",
+                "HP SB",
+                "2B CS",
+                "3B CS",
+                "HP CS",
+                "Pick",
+                "1B Pick",
+                "2B Pick",
+                "3B Pick",
+            ]
+        ] = 0
+        self.fielding[
+            [
+                "SB",
+                "2B SB",
+                "3B SB",
+                "HP SB",
+                "CS",
+                "2B CS",
+                "3B CS",
+                "HP CS",
+                "Pick",
+                "1B Pick",
+                "2B Pick",
+                "3B Pick",
+            ]
+        ] = 0
         base_conversions = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
 
@@ -976,12 +1038,16 @@ class Game:
                         # no info for many old games
                         continue
                     # remove the player's game total, if applicable
-                    stealer = stealer.rsplit(" ", maxsplit=1)[0] if stealer[-1].isdigit() else stealer
+                    stealer = (
+                        stealer.rsplit(" ", maxsplit=1)[0] if stealer[-1].isdigit() else stealer
+                    )
                     for attempt in info.split(", "):
                         # skip the running season total (sometimes empty in older box scores)
                         if attempt.isdigit() or attempt == "":
                             continue
-                        att_match = re.search(SB_ATTEMPT_REGEX, attempt) or re.search(PICKOFF_REGEX, attempt)
+                        att_match = re.search(SB_ATTEMPT_REGEX, attempt) or re.search(
+                            PICKOFF_REGEX, attempt
+                        )
                         assert att_match is not None
                         base = base_conversions[att_match.group("base")]
                         # "pitcher" may be the catcher on some POCS, but it still works correctly
@@ -991,7 +1057,7 @@ class Game:
                         times = int(times) if times != "" else 1
 
                         # increment defensive stats
-                        if len(att_match.groups()) == 4: # match is _SB_ATTEMPT_REGEX
+                        if len(att_match.groups()) == 4:  # match is _SB_ATTEMPT_REGEX
                             # strip() because there's a trailing space if times != 1
                             catcher = att_match.group("catcher").strip()
                             defenders_mask = self.fielding["Player"].isin({pitcher, catcher})
@@ -999,19 +1065,17 @@ class Game:
                             defenders_mask = self.fielding["Player"] == pitcher
 
                         defense_team = self.fielding.loc[defenders_mask, "Team"].values[0]
-                        defense_mask = (
-                            defenders_mask |
-                            ((self.fielding["Player"] == "Team Totals") &
-                             (self.fielding["Team"] == defense_team))
+                        defense_mask = defenders_mask | (
+                            (self.fielding["Player"] == "Team Totals")
+                            & (self.fielding["Team"] == defense_team)
                         )
                         self.fielding.loc[defense_mask, [stat, f"{base} {stat}"]] += times
 
                         # incremenet offensive stats
                         stealer_mask = self.batting["Player"] == stealer
-                        offense_mask = (
-                            stealer_mask |
-                            ((self.batting["Player"] == "Team Totals") &
-                             (self.batting["Team"] != defense_team))
+                        offense_mask = stealer_mask | (
+                            (self.batting["Player"] == "Team Totals")
+                            & (self.batting["Team"] != defense_team)
                         )
                         # no need to increment SB or CS because they're already tallied
                         if stat == "Pick":
@@ -1021,9 +1085,10 @@ class Game:
     def _get_ump_info(self) -> None:
         """Populates `self.ump_info`."""
         self.ump_info = pd.melt(
-            self.info, id_vars=["Game ID"],
-            value_vars=["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"]
-            )
-        self.ump_info.rename(columns={"variable":"Position", "value":"Umpire"}, inplace=True)
+            self.info,
+            id_vars=["Game ID"],
+            value_vars=["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"],
+        )
+        self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"}, inplace=True)
         self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")

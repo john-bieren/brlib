@@ -4,9 +4,15 @@
 
 import re
 
-from ._helpers.constants import (CURRENT_YEAR, CY_ASG, FIRST_ASG_YEAR,
-                                 NO_ASG_YEARS, SEASON_RANGE_REGEX,
-                                 SEASON_REGEX, TWO_ASG_YEARS)
+from ._helpers.constants import (
+    CURRENT_YEAR,
+    CY_ASG,
+    FIRST_ASG_YEAR,
+    NO_ASG_YEARS,
+    SEASON_RANGE_REGEX,
+    SEASON_REGEX,
+    TWO_ASG_YEARS,
+)
 from ._helpers.utils import runtime_typecheck
 from .options import write
 
@@ -74,7 +80,9 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
 
     year_list = [y for y in year_set if y in all_asg_years]
     if len(year_list) == 0:
-        write(f"All-Star Games have only been held from {FIRST_ASG_YEAR} through {year_range_end - 1}")
+        write(
+            f"All-Star Games have only been held from {FIRST_ASG_YEAR} through {year_range_end - 1}"
+        )
     year_list = [y for y in year_list if y not in NO_ASG_YEARS]
     year_list.sort()
 

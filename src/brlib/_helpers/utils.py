@@ -22,6 +22,7 @@ def report_on_exc(resp_index: int = 1) -> Callable[..., Any]:
     `resp_index` is the index of the decorated function's Response argument which
     corresponds to the offending page.
     """
+
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Callable[..., Any]:
@@ -33,8 +34,11 @@ def report_on_exc(resp_index: int = 1) -> Callable[..., Any]:
             except Exception as exc:
                 tqdm.write(f"exception thrown while processing {args[resp_index].url}")
                 raise exc
+
         return wrapper
+
     return decorator
+
 
 def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     """
@@ -53,9 +57,13 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
                 continue
             value = all_args[param]
             if not is_type(value, expected_type):
-                raise TypeError(f"{param} argument must have type {expected_type}, not {type(value)}")
+                raise TypeError(
+                    f"{param} argument must have type {expected_type}, not {type(value)}"
+                )
         return func(*args, **kwargs)
+
     return wrapper
+
 
 def is_type(value: Any, expected_type: type) -> bool:
     """Checks whether `value` is an instance of `expected_type`, including parameterized generics."""
@@ -67,7 +75,7 @@ def is_type(value: Any, expected_type: type) -> bool:
         return isinstance(value, expected_type)
 
     args = typing.get_args(expected_type)
-    if origin is UnionType or origin is typing.Union: # typing.Union for 3.10 support
+    if origin is UnionType or origin is typing.Union:  # typing.Union for 3.10 support
         return any(is_type(value, arg) for arg in args)
 
     if not isinstance(value, origin):
@@ -93,6 +101,7 @@ def is_type(value: Any, expected_type: type) -> bool:
 
     return isinstance(value, origin)
 
+
 def str_between(string: str, start: str, end: str, anchor: str = "start") -> str:
     """
     Returns the substring of `string` which appears between `start` and `end`.
@@ -115,15 +124,18 @@ def str_between(string: str, start: str, end: str, anchor: str = "start") -> str
         return string.rsplit(end, maxsplit=1)[0].rsplit(start, maxsplit=1)[1]
     raise ValueError('anchor value must be "start" or "end"')
 
+
 def str_remove(string: str, *substrings: str) -> str:
     """Removes instances of `substrings` from `string`."""
     for substring in substrings:
         string = string.replace(substring, "")
     return string
 
+
 def clean_spaces(string: str) -> str:
     """Removes consecutive, leading, and trailing spaces from `string`."""
     return " ".join(string.split()).strip()
+
 
 def reformat_date(string_date: str) -> str:
     """
@@ -140,6 +152,7 @@ def reformat_date(string_date: str) -> str:
     day = f"0{day}" if day < 10 else day
     return f"{date.year}-{month}-{day}"
 
+
 def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
     """
     Returns contents from the first comment within `tag`.
@@ -154,6 +167,7 @@ def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
     except (IndexError, ValueError):
         return tag
 
+
 def scrape_player_ids(table: bs | Tag) -> list[str]:
     """Returns player IDs from anchor tags in `table`."""
     player_id_column = []
@@ -166,12 +180,14 @@ def scrape_player_ids(table: bs | Tag) -> list[str]:
         player_id_column.append(player_id.rsplit(".", maxsplit=1)[0])
     return player_id_column
 
+
 def change_innings_notation(innings: str) -> str:
     """Replaces box score notation with the correct numerical value so that they sum correctly."""
     # could be np.nan, leave that alone since the column will eventually be converted to floats
     if not isinstance(innings, str):
         return innings
     return innings.replace(".1", ".333334").replace(".2", ".666667")
+
 
 def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
     """Converts the numeric columns of `df` to correct dtypes using pd.to_numeric."""
