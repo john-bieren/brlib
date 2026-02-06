@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines all_major_leaguers function."""
+"""Defines all_players function."""
 
 from io import StringIO
 
@@ -10,10 +10,10 @@ from ._helpers.requests_manager import req_man
 from .options import print_page
 
 
-def all_major_leaguers() -> pd.DataFrame:
+def all_players() -> pd.DataFrame:
     """
     Returns a DataFrame of basic information about all players in major league history.
-    [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#all_major_leaguers)
+    [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#all_players)
 
     ## Parameters
 
@@ -28,7 +28,7 @@ def all_major_leaguers() -> pd.DataFrame:
     The output (as of 2025-26 offseason):
 
     ```
-    >>> br.all_major_leaguers()
+    >>> br.all_players()
         Player ID             Name  Career Start  Career End  Active
     0      aardsda01    David Aardsma          2004        2015   False
     1      aaronha01      Henry Aaron          1954        1976   False
@@ -48,10 +48,10 @@ def all_major_leaguers() -> pd.DataFrame:
     You can filter results and convert them into a `get_players` input:
 
     ```
-    >>> aml = br.all_major_leaguers()
-    >>> mask = aml["Player ID"].str.startswith("q")
-    >>> aml = aml.loc[mask]
-    >>> aml["Player ID"].values.tolist()
+    >>> ap = br.all_players()
+    >>> mask = ap["Player ID"].str.startswith("q")
+    >>> ap = ap.loc[mask]
+    >>> ap["Player ID"].values.tolist()
     ['quackke01', 'quallch01', 'quallji01', ...]
     ```
     """

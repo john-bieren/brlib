@@ -15,11 +15,11 @@ br.options.update_venue_names = False
 
 
 @pytest.fixture(scope="module")
-def aml_filtered() -> pd.DataFrame:
-    """The output of all_major_leaguers filtered to a stable subset of retired players."""
-    aml = br.all_major_leaguers()
-    aml = aml.loc[aml["Career End"] < 2019]
-    return aml
+def ap_filtered() -> pd.DataFrame:
+    """The output of all_players filtered to a stable subset of retired players."""
+    ap = br.all_players()
+    ap = ap.loc[ap["Career End"] < 2019]
+    return ap
 
 
 @pytest.fixture(scope="session")

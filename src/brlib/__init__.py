@@ -1,4 +1,4 @@
-from .all_major_leaguers import all_major_leaguers
+from .all_players import all_players
 from .find_asg import find_asg
 from .find_games import find_games
 from .find_teams import find_teams
@@ -16,7 +16,7 @@ from .team_set import TeamSet
 __version__ = "0.3.0.dev0"
 
 __all__ = [
-    "all_major_leaguers",
+    "all_players",
     "find_asg",
     "find_games",
     "find_teams",
