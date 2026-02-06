@@ -482,8 +482,10 @@ class Game:
         if "All-Star" in heading:
             self._is_asg = True
             self.info["Game Type"] = "All-Star Game"
-            # name includes date because some years had multiple ASG
-            self.name = heading.replace(" Box Score", "")
+            if self.id[-1].isdigit():
+                self.name = heading.replace("Box Score", self.id[-1])
+            else:
+                self.name = heading.replace(" Box Score", "")
 
         # regular season game
         elif ")" not in heading and "World Series" not in heading:
