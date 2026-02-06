@@ -27,6 +27,8 @@ def games_list() -> list[br.Game]:
     """The Game outputs to be tested, before any public methods are run."""
     return br.get_games(
         [
+            # non-existent page to test ignore_errors
+            ("SEA", "20251027", "0"),
             # ASG, tons of substitutions, tie, illegal(?) substitution with one position and split stats
             ("allstar", "2025", "0"),
             # Ohtani plays DH and SP
@@ -77,6 +79,8 @@ def players_list() -> list[br.Player]:
     """The Player outputs to be tested, before any public methods are run."""
     return br.get_players(
         [
+            # non-existent page to test ignore_errors
+            "odoyltu99",
             # tons of relatives (including a manager), two missing seasons
             "aloumo01",
             # lots of missing data (especially advanced pitching)
@@ -116,6 +120,8 @@ def teams_list() -> list[br.Team]:
     """The Team outputs to be tested, before any public methods are run."""
     return br.get_teams(
         [
+            # non-existent page to test ignore_errors
+            ("ATH", "2024"),
             # WS winner, renamed venue, CNH in regular and postseason
             ("HOU", "2022"),
             # team gold glove, pandemic season

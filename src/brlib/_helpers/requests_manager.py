@@ -48,10 +48,10 @@ class RequestsManager(Singleton):
             if not page.ok:
                 if page.status_code == 429:
                     raise ConnectionRefusedError(
-                        "429 error: rate limit exceeded, Baseball Reference access temporarily blocked"
+                        "rate limit exceeded, Baseball Reference access temporarily blocked (429 error)"
                     )
                 if page.status_code == 404:
-                    raise ConnectionError(f"404 error: {url} does not exist")
+                    raise ConnectionError(f"{url} does not exist (404 error)")
                 if page.status_code >= 500 and retries < options.max_retries:
                     dev_alert(f"{url} returned {page.status_code} status code, retrying")
                     retries += 1

@@ -7,12 +7,16 @@ from tqdm import tqdm
 from ._helpers.inputs import validate_team_list
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import runtime_typecheck
-from .options import options
+from .options import options, write
 from .team import Team
 
 
 @runtime_typecheck
-def get_teams(team_list: list[tuple[str, str]], add_no_hitters: bool | None = None) -> list[Team]:
+def get_teams(
+    team_list: list[tuple[str, str]],
+    add_no_hitters: bool | None = None,
+    ignore_errors: bool = True,
+) -> list[Team]:
     """
     Returns a list of `Team` objects corresponding to the tuples in `team_list`, which mimic the `Team` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
@@ -21,6 +25,14 @@ def get_teams(team_list: list[tuple[str, str]], add_no_hitters: bool | None = No
     * `team_list`: `list[tuple[str, str]]`
 
         A list of tuples containing `team`, and `season` arguments like those for a [`Team`](https://github.com/john-bieren/brlib/wiki/Team) object.
+
+    * `add_no_hitters`: `bool` or `None`, default `None`
+
+        Whether to populate the no-hitter columns in the `Team.pitching` DataFrames, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+
+    * `ignore_errors`: `bool`, default `True`
+
+        Whether to suppress any raised exceptions. If `True`, teams which raise an exception will be omitted from the returned list. If the exception is caused by the [rate limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned as-is.
 
     ## Returns
 
@@ -60,8 +72,21 @@ def get_teams(team_list: list[tuple[str, str]], add_no_hitters: bool | None = No
     ):
         endpoint = f"/teams/{abv}/{season}.shtml"
 
-        page = req_man.get_page(endpoint)
-        result = Team(page=page, add_no_hitters=add_no_hitters)
-        results.append(result)
-        req_man.pause()
+        try:
+            page = req_man.get_page(endpoint)
+            result = Team(page=page, add_no_hitters=add_no_hitters)
+            results.append(result)
+        except ConnectionRefusedError as exc:
+            if not ignore_errors:
+                raise
+            write(f"{type(exc).__name__}: {exc}")
+            return results
+        except Exception as exc:
+            if not ignore_errors:
+                raise
+            write(f"{type(exc).__name__}: {exc}")
+            write(f"skipping ({abv}, {season})")
+            continue
+        finally:
+            req_man.pause()
     return results
