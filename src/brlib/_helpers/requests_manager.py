@@ -6,7 +6,7 @@ import time
 
 from curl_cffi import Response, requests
 
-from ..options import options, write
+from ..options import dev_alert, options
 from .singleton import Singleton
 
 
@@ -26,6 +26,9 @@ class RequestsManager(Singleton):
         `endpoint` is the page's URL excluding the prefix "https://www.baseball-reference.com".
         A request will not be made until `options.request_buffer` seconds have passed since
         the previous request was made.
+        If `options.max_retries` is exceeded, failure to load a page will raise a `ConnectionError`.
+        If the rate limit is exceeded and the user is blocked, a `ConnectionRefusedError` is raised,
+        and no retries are attempted.
         """
         url = "https://www.baseball-reference.com" + endpoint
         retries = 0
@@ -38,20 +41,23 @@ class RequestsManager(Singleton):
             except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as exc:
                 if retries >= options.max_retries:
                     raise ConnectionError("could not load page") from exc
-                write("could not load page, retrying")
+                dev_alert("could not load page, retrying")
                 retries += 1
                 continue
-            break
 
-        if not page.ok:
-            if page.status_code == 429:
-                raise ConnectionRefusedError(
-                    "429 error: rate limit exceeded, Baseball Reference access temporarily blocked"
-                )
-            if page.status_code == 404:
-                raise ConnectionError(f"404 error: {url} does not exist")
-            raise ConnectionError(f"{url} returned {page.status_code} status code")
-        return page
+            if not page.ok:
+                if page.status_code == 429:
+                    raise ConnectionRefusedError(
+                        "429 error: rate limit exceeded, Baseball Reference access temporarily blocked"
+                    )
+                if page.status_code == 404:
+                    raise ConnectionError(f"404 error: {url} does not exist")
+                if page.status_code >= 500 and retries < options.max_retries:
+                    dev_alert(f"{url} returned {page.status_code} status code, retrying")
+                    retries += 1
+                    continue
+                raise ConnectionError(f"{url} returned {page.status_code} status code")
+            return page
 
     def pause(self) -> None:
         """
