@@ -33,7 +33,6 @@ from ._helpers.utils import (
     clean_spaces,
     convert_numeric_cols,
     reformat_date,
-    report_on_exc,
     runtime_typecheck,
     scrape_player_ids,
     soup_from_comment,
@@ -418,7 +417,6 @@ class Game:
             endpoint = f"/boxes/{home_team}/{home_team}{date}{doubleheader}.shtml"
         return req_man.get_page(endpoint)
 
-    @report_on_exc()
     def _scrape_game(self, page: Response) -> None:
         """Scrapes game info and batting, pitching, and fielding stats from `page`."""
         soup = bs(page.content, "lxml")

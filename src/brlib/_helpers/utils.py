@@ -12,32 +12,6 @@ from typing import Any
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
-from curl_cffi.requests import Response
-from tqdm import tqdm
-
-
-def report_on_exc(resp_index: int = 1) -> Callable[..., Any]:
-    """
-    Prints the URL of a page which causes an exception.
-    `resp_index` is the index of the decorated function's Response argument which
-    corresponds to the offending page.
-    """
-
-    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
-        @functools.wraps(func)
-        def wrapper(*args: Any, **kwargs: Any) -> Callable[..., Any]:
-            if not isinstance(args[resp_index], Response):
-                raise TypeError(f"argument at resp_index must have type {repr(Response)}")
-            try:
-                result = func(*args, **kwargs)
-                return result
-            except Exception as exc:
-                tqdm.write(f"exception thrown while processing {args[resp_index].url}")
-                raise exc
-
-        return wrapper
-
-    return decorator
 
 
 def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:

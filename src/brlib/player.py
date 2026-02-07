@@ -36,7 +36,6 @@ from ._helpers.utils import (
     clean_spaces,
     convert_numeric_cols,
     reformat_date,
-    report_on_exc,
     runtime_typecheck,
     soup_from_comment,
     str_between,
@@ -298,7 +297,6 @@ class Player:
         endpoint = f"/players/{player_id[0]}/{player_id}.shtml"
         return req_man.get_page(endpoint)
 
-    @report_on_exc()
     def _scrape_player(self, page: Response) -> None:
         """Scrapes player info and batting, pitching, and fielding stats from `page`."""
         soup = bs(page.content, "lxml")

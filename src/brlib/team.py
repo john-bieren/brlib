@@ -26,7 +26,6 @@ from ._helpers.utils import (
     change_innings_notation,
     clean_spaces,
     convert_numeric_cols,
-    report_on_exc,
     runtime_typecheck,
     scrape_player_ids,
     soup_from_comment,
@@ -333,7 +332,6 @@ class Team:
         endpoint = f"/teams/{abv}/{season}.shtml"
         return req_man.get_page(endpoint)
 
-    @report_on_exc()
     def _scrape_team(self, page: Response) -> None:
         """Scrapes team info and batting, pitching, and fielding stats from `page`."""
         soup = bs(page.content, "lxml")

@@ -23,7 +23,7 @@ from ._helpers.constants import (
 )
 from ._helpers.inputs import validate_date_list
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import report_on_exc, runtime_typecheck
+from ._helpers.utils import runtime_typecheck
 from .options import options, print_page, write
 
 
@@ -256,7 +256,6 @@ def _all_franchise_seasons(abbreviations: list[str]) -> set[int]:
     return result
 
 
-@report_on_exc(0)
 def _find_season_games(
     page: Response,
     teams: list[str],

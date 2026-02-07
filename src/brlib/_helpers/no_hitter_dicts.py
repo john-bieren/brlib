@@ -22,7 +22,7 @@ from .constants import (
 )
 from .requests_manager import req_man
 from .singleton import Singleton
-from .utils import report_on_exc, soup_from_comment, str_between
+from .utils import soup_from_comment, str_between
 
 
 class NoHitterDicts(Singleton):
@@ -98,7 +98,6 @@ class NoHitterDicts(Singleton):
         data_df.to_csv(self._cache_file, index=False)
         return data_df
 
-    @report_on_exc()
     def _gather_data_df(self, page: Response) -> pd.DataFrame:
         """Scrapes no-hitters page and generate `self.data_df`."""
         soup = bs(page.content, "lxml")

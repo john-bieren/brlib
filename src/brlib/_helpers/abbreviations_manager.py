@@ -23,7 +23,6 @@ from .constants import (
 )
 from .requests_manager import req_man
 from .singleton import Singleton
-from .utils import report_on_exc
 
 
 class AbbreviationsManager(Singleton):
@@ -76,7 +75,6 @@ class AbbreviationsManager(Singleton):
         self.df.to_csv(self._cache_file, index=False)
         self.df.rename({"Team ID": "Team", "Franchise ID": "Franchise"}, axis=1, inplace=True)
 
-    @report_on_exc()
     def _gather_abbreviations(self, page: Response) -> None:
         """Scrapes team_IDs page and create `self.df`."""
         soup = bs(page.content, "lxml")
