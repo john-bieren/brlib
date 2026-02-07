@@ -4,7 +4,7 @@
 
 import time
 
-from curl_cffi import Response, requests
+from curl_cffi import requests
 
 from ..options import dev_alert, options
 from .singleton import Singleton
@@ -20,7 +20,7 @@ class RequestsManager(Singleton):
         self._last_request = 0
         self._session = requests.Session()
 
-    def get_page(self, endpoint: str) -> Response:
+    def get_page(self, endpoint: str) -> requests.Response:
         """
         Loads a Baseball Reference page.
         `endpoint` is the page's URL excluding the prefix "https://www.baseball-reference.com".

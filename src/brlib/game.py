@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
-from curl_cffi import Response
+from curl_cffi.requests import Response
 
 from ._helpers.constants import (
     ALLSTAR_GAME_URL_REGEX,

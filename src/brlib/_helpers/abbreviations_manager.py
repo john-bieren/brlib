@@ -8,7 +8,7 @@ from datetime import datetime
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
-from curl_cffi import Response
+from curl_cffi.requests import Response
 
 from ..options import write
 from .constants import (
