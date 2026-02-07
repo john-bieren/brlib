@@ -407,9 +407,9 @@ class Player:
 
             elif line_str.startswith("Born"):
                 if " in " in line_str:
-                    birth_date, birth_place = line_str.split(" in ", maxsplit=1)
-                else:  # no birth place listed
-                    birth_date, birth_place = line_str, ""
+                    birth_date, birthplace = line_str.split(" in ", maxsplit=1)
+                else:  # no birthplace listed
+                    birth_date, birthplace = line_str, ""
 
                 # handle birth dates
                 if "(Date unknown)" not in birth_date:
@@ -424,18 +424,18 @@ class Player:
                     # date is not formatted as expected
                     pass
 
-                # handle birth places
-                if "Ocean" in birth_place:  # handle players born at sea
-                    self.info.loc[:, "Birth Country"] = birth_place.strip()
+                # handle birthplaces
+                if "Ocean" in birthplace:  # handle players born at sea
+                    self.info.loc[:, "Birth Country"] = birthplace.strip()
                 else:
-                    birth_place = birth_place[:-2]  # remove text representation of country flag
-                    birth_place_split = birth_place.split(", ")
-                    if len(birth_place_split) == 1:
+                    birthplace = birthplace[:-2]  # remove text representation of country flag
+                    birthplace_split = birthplace.split(", ")
+                    if len(birthplace_split) == 1:
                         # city and/or state/country could be missing, so there's nothing to do
-                        dev_alert(f'{self.id}: malformed birth place "{birth_place.strip()}"')
+                        dev_alert(f'{self.id}: malformed birthplace "{birthplace.strip()}"')
                         continue
-                    if len(birth_place_split) == 2:
-                        birth_city, birth_state_or_country = birth_place.split(", ", maxsplit=1)
+                    if len(birthplace_split) == 2:
+                        birth_city, birth_state_or_country = birthplace.split(", ", maxsplit=1)
                         self.info.loc[:, "Birth City"] = birth_city
                         # US states are represented by abbreviations
                         if len(birth_state_or_country) == 2:
@@ -443,9 +443,9 @@ class Player:
                             self.info.loc[:, "Birth Country"] = "U.S."
                         else:
                             self.info.loc[:, "Birth Country"] = birth_state_or_country
-                    elif len(birth_place_split) == 3:
+                    elif len(birthplace_split) == 3:
                         # likely Canada with province abbreviation and country name
-                        birth_city, birth_province, birth_country = birth_place.split(
+                        birth_city, birth_province, birth_country = birthplace.split(
                             ", ", maxsplit=2
                         )
                         self.info.loc[:, "Birth City"] = birth_city
@@ -468,7 +468,7 @@ class Player:
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
                 except (
                     ValueError,  # date is not formatted as expected
-                    UnboundLocalError,  # birth_datetime has improper format, was not defined
+                    UnboundLocalError,  # birth date has improper format, was not defined
                 ):
                     pass
                 # remove current age cols, since they are inaccurate
@@ -544,8 +544,10 @@ class Player:
                     age = relativedelta(debut_datetime, birth_datetime)
                     self.info.loc[:, "Debut Age"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Debut Age (Days)"] = (debut_datetime - birth_datetime).days
-                except (ValueError, UnboundLocalError):
-                    # incomplete debut date or missing birth date, respectively
+                except (
+                    ValueError,  # incomplete debut date
+                    UnboundLocalError,  # birth date has improper format, was not defined
+                ):
                     pass
 
                 debut_game_link = line.find_all("a", href=True)[-1]["href"]
@@ -575,7 +577,7 @@ class Player:
                     ).days
                 except (
                     ValueError,  # incomplete last game date
-                    UnboundLocalError,  # birth_datetime has improper format, was not defined
+                    UnboundLocalError,  # birth date has improper format, was not defined
                 ):
                     continue
 
