@@ -421,11 +421,13 @@ class Game:
         """Scrapes game info and batting, pitching, and fielding stats from `page`."""
         soup = bs(page.content, "lxml")
         content = soup.find(id="content")
-
         section_wrappers = content.find_all("div", {"class": "section_wrapper"})
+
+        other_info_index = -1
         for i, tag in enumerate(section_wrappers):
             if tag.text.strip() == "Other Info":
                 other_info_index = i
+        assert other_info_index != -1
         self._scrape_info(content, section_wrappers[other_info_index])
 
         batting_tables = content.find_all("div", {"class": "table_wrapper"})[:2]
@@ -626,6 +628,7 @@ class Game:
         other_info = soup_from_comment(other_info, only_if_table=False)
         other_info_list = other_info.find_all("div")
 
+        umpires = weather_info = ""
         # [1:] because the first tag is the parent of the others
         for line in other_info_list[1:]:
             line_str = line.text.strip(" \n.")

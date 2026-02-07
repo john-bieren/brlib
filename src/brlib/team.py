@@ -360,6 +360,7 @@ class Team:
             return
 
         # gather player stats from the relevant tables
+        h_df_1, h_df_2, p_df_1, p_df_2 = (pd.DataFrame() for _ in range(4))
         page_tables = content.find_all("div", {"class": "table_wrapper"}, recursive=False)
         for table in page_tables:
             table_name = table.get("id")

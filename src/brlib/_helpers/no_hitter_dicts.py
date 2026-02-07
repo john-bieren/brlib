@@ -193,12 +193,14 @@ class NoHitterDicts(Singleton):
         combined_df["Perfect"] = "N"
 
         # extend year column, which is only filled for the first listed pitcher
+        year = team = ""
         for i, row in combined_df.iterrows():
             row_is_new_game = row["Year"].isdigit()
             if row_is_new_game:
                 year = row["Year"]
                 team = row["Team"]
             else:
+                assert i != 0  # first row needs to have info
                 combined_df.loc[i, "Year"] = year
                 combined_df.loc[i, "Team"] = team
 

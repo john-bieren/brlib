@@ -316,44 +316,40 @@ class Player:
                 self.info.loc[:, "Minimum Career Earnings"] = sum(self._yearly_salaries.values())
 
         # then find the rest of the stats
-        has_batted = has_pitched = has_fielded = False
+        h_df_1, h_df_2, h_df_3 = (pd.DataFrame() for _ in range(3))
+        p_df_1, p_df_2, p_df_3 = (pd.DataFrame() for _ in range(3))
+        advanced_batting_buffer = advanced_pitching_buffer = -1
         for table in tables:
             table_id = table.get("id")
 
             if table_id == "all_players_standard_batting":
-                has_batted = True
-                # these tables may be missing, but all three must exist to be merged later
-                h_df_2, h_df_3 = (pd.DataFrame() for _ in range(2))
                 h_df_1, advanced_batting_buffer = Player._scrape_standard_batting(table)
 
             elif table_id == "all_players_value_batting":
                 h_df_2 = Player._scrape_value_table(table)
 
             elif table_id == "all_players_advanced_batting":
+                assert advanced_batting_buffer != -1
                 h_df_3 = Player._scrape_advanced_table(table, advanced_batting_buffer)
 
             elif table_id == "all_players_standard_pitching":
-                has_pitched = True
                 p_df_1, advanced_pitching_buffer = Player._scrape_standard_pitching(table)
 
             elif table_id == "all_players_value_pitching":
                 p_df_2 = Player._scrape_value_table(table)
 
             elif table_id == "all_players_advanced_pitching":
+                assert advanced_pitching_buffer != -1
                 p_df_3 = Player._scrape_advanced_table(table, advanced_pitching_buffer)
 
             elif table_id == "all_players_standard_fielding":
-                has_fielded = True
                 self._scrape_standard_fielding(table)
 
-        if has_batted:
-            self.batting = self._merge_dataframes(h_df_1, h_df_2, h_df_3)
-            self.batting = self._finish_dataframe(self.batting)
-        if has_pitched:
-            self.pitching = self._merge_dataframes(p_df_1, p_df_2, p_df_3)
-            self.pitching = self._finish_dataframe(self.pitching)
-        if has_fielded:
-            self.fielding = self._finish_dataframe(self.fielding)
+        self.batting = self._merge_dataframes(h_df_1, h_df_2, h_df_3)
+        self.batting = self._finish_dataframe(self.batting)
+        self.pitching = self._merge_dataframes(p_df_1, p_df_2, p_df_3)
+        self.pitching = self._finish_dataframe(self.pitching)
+        self.fielding = self._finish_dataframe(self.fielding)
 
         self.info = self.info.reindex(columns=PLAYER_INFO_COLS)
         self.bling = self.bling.reindex(columns=PLAYER_BLING_COLS)
