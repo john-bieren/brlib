@@ -139,37 +139,42 @@ class AbbreviationsManager(Singleton):
         abv_rows = self.df.loc[self.df["Team"] == abbreviation]
 
         if era_adjustment:
+            # handle potential overlap of abbreviations (e.g. BAL, 1915)
             potential_franchises = abv_rows["Franchise"].values
             franchise_rows = self.df.loc[self.df["Franchise"].isin(potential_franchises)]
             matching_franchises = franchise_rows.loc[
                 (franchise_rows["First Year"] <= season) & (franchise_rows["Last Year"] >= season)
             ]["Franchise"]
             correct_rows = abv_rows.loc[abv_rows["Franchise"].isin(matching_franchises)]
-            return self._fix_discontinuities(correct_rows, season)
+            # handle the special case of the 1939 Toledo Crawfords, who changed leagues mid-season
+            # these are treated as separate teams and have different abbreviations (TC and TC2)
+            if season == 1939 and "PC" in matching_franchises.values:
+                correct_rows = correct_rows.loc[correct_rows["Franchise"] != "PC"]
+                tc_rows = self.df.loc[self.df["Team"].isin({"TC", "TC2"})]
+                correct_rows = pd.concat([correct_rows, tc_rows], ignore_index=True)
+        else:
+            # check whether abbreviation is valid for season, if so pass that row forward
+            mask = (abv_rows["First Year"] <= season) & (abv_rows["Last Year"] >= season)
+            correct_rows = abv_rows.loc[mask]
+            assert len(correct_rows) <= 1
 
-        mask = (abv_rows["First Year"] <= season) & (abv_rows["Last Year"] >= season)
-        correct_row = abv_rows.loc[mask]
-        assert len(correct_row) <= 1
-        return self._fix_discontinuities(correct_row, season)
-
-    def _fix_discontinuities(self, team_rows: pd.DataFrame, season: int) -> pd.DataFrame:
-        """
-        For each row in `team_rows`, returns the team row with the shortest year range that
-        includes `season` within the same franchise.
-        For example, `LAA` is listed as 1961-present, but `CAL` and `ANA` were also used
-        during that time. The rows returned should reflect the abbreviation used during `season`.
-        It is assumed that all year ranges in `team_rows` include `season`.
-        """
-        team_rows.reset_index(drop=True, inplace=True)
-        for i, row in team_rows.iterrows():
+        # For each row in correct_rows, find the team row with the shortest year range that
+        # includes season within the same franchise.
+        # This corrects abbreviations for era (if applicable), and also fixes discontinuities.
+        # For example, LAA is listed as 1961-present, but CAL and ANA were also used during
+        # parts of that time. The rows returned should reflect the abbreviations used during season.
+        correct_rows.reset_index(drop=True, inplace=True)
+        for i, row in correct_rows.iterrows():
             franchise_rows = self.df.loc[self.df["Franchise"] == row["Franchise"]]
             franchise_rows = franchise_rows.loc[
                 (franchise_rows["First Year"] <= season) & (franchise_rows["Last Year"] >= season)
             ]
-            years_col = franchise_rows["Last Year"] - franchise_rows["First Year"]
-            correct_row = franchise_rows.loc[years_col == years_col.min()]
-            team_rows.iloc[i] = correct_row.reset_index(drop=True).iloc[0]
-        return team_rows
+            # for the 1939 Crawfords, skip the normal process to enable the prior workaround
+            if not (season == 1939 and row["Franchise"] == "PC"):
+                years_col = franchise_rows["Last Year"] - franchise_rows["First Year"]
+                correct_row = franchise_rows.loc[years_col == years_col.min()]
+                correct_rows.iloc[i] = correct_row.reset_index(drop=True).iloc[0]
+        return correct_rows
 
     def correct_abvs(self, abbreviation: str, season: int, era_adjustment: bool) -> list[str]:
         """Returns the team abbreviations from `self._find_correct_teams`."""

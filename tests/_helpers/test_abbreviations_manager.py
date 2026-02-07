@@ -25,6 +25,11 @@ def test_correct_abvs() -> None:
     assert abv_man.correct_abvs("LAA", 1977, era_adjustment=False) == ["CAL"]
     assert abv_man.correct_abvs("LAA", 1907, era_adjustment=False) == []
     assert abv_man.correct_abvs("SER", 2025, era_adjustment=False) == []
+    assert abv_man.correct_abvs("PC", 1939, era_adjustment=True) == ["TC", "TC2"]
+    assert abv_man.correct_abvs("TC", 1939, era_adjustment=True) == ["TC", "TC2"]
+    assert abv_man.correct_abvs("TC2", 1939, era_adjustment=True) == ["TC", "TC2"]
+    assert abv_man.correct_abvs("TC", 1939, era_adjustment=False) == ["TC"]
+    assert abv_man.correct_abvs("TC2", 1939, era_adjustment=False) == ["TC2"]
 
 
 def test_franchise_abv() -> None:
