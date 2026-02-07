@@ -119,7 +119,7 @@ def _process_abbreviation_list(abv_list: list[str], exceptions: set[str]) -> lis
         if abv == "ALL":
             return ["ALL"]
         if not abv_man.is_valid(abv) and abv not in exceptions:
-            write(f'skipping invalid team "{abv}"')
+            write(f'skipping invalid teams input "{abv}"')
             continue
         result.append(abv)
     return result

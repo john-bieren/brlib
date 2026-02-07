@@ -160,7 +160,7 @@ def _process_abbreviation_list(abv_list: list[str]) -> list[str]:
         if abv == "ALL":
             return ["ALL"]
         if not abv_man.is_valid(abv) or abv in TEAM_ALIASES.values():
-            write(f'skipping invalid team "{abv}"')
+            write(f'skipping invalid teams input "{abv}"')
             continue
         if abv in BML_TEAM_ABVS:
             write(f"skipping {abv}: no box scores available")

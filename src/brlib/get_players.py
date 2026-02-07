@@ -85,7 +85,7 @@ def get_players(
             if not ignore_errors:
                 raise
             write(f"{type(exc).__name__}: {exc}")
-            write(f"skipping {player_id}")
+            write(f"cannot get {player_id}")
             continue
         finally:
             req_man.pause()

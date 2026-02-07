@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from ._helpers.inputs import validate_game_list
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import runtime_typecheck
+from ._helpers.utils import runtime_typecheck, str_between
 from .game import Game
 from .options import options, write
 
@@ -89,7 +89,8 @@ def get_games(
             if not ignore_errors:
                 raise
             write(f"{type(exc).__name__}: {exc}")
-            write(f"skipping ({home_team}, {date}, {doubleheader})")
+            game_id = str_between(endpoint, "/", ".", anchor="end")
+            write(f"cannot get {game_id}")
             continue
         finally:
             req_man.pause()

@@ -85,7 +85,7 @@ def get_teams(
             if not ignore_errors:
                 raise
             write(f"{type(exc).__name__}: {exc}")
-            write(f"skipping ({abv}, {season})")
+            write(f"cannot get {abv}{season}")
             continue
         finally:
             req_man.pause()

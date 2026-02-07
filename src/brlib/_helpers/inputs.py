@@ -36,7 +36,7 @@ def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str,
         home_team = home_team.upper()
         message = _validate_game_input(home_team, date, doubleheader)
         if message != "":
-            write(f'cannot get "({home_team}, {date}, {doubleheader})": {message}')
+            write(f'cannot get ("{home_team}", "{date}", "{doubleheader}"): {message}')
             continue
 
         # check home team abbreviation
@@ -48,7 +48,7 @@ def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str,
         correct_abv = abv_man.correct_abvs(home_team, year, era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
             write(
-                f'cannot get "({home_team}, {date}, {doubleheader})": {home_team} did not play in {year}'
+                f'cannot get ("{home_team}", "{date}", "{doubleheader}"): {home_team} did not play in {year}'
             )
             continue
         # use correct_abv moving forward to account for discontinuities
@@ -119,13 +119,13 @@ def validate_team_list(team_list: list[tuple[str, str]]) -> list[tuple[str, str]
         abv = abv.upper()
         message = _validate_team_input(abv, season)
         if message != "":
-            write(f'cannot get "({abv}, {season})": {message}')
+            write(f'cannot get ("{abv}", "{season}"): {message}')
             continue
 
         # check home team abbreviation
         correct_abv = abv_man.correct_abvs(abv, int(season), era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
-            write(f'cannot get "({abv}, {season})": {abv} did not play in {season}')
+            write(f'cannot get ("{abv}", "{season}"): {abv} did not play in {season}')
             continue
         result.append((*correct_abv, season))
     return result
