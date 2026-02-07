@@ -58,6 +58,7 @@ class RequestsManager(Singleton):
                     continue
                 raise ConnectionError(f"{url} returned {page.status_code} status code")
             return page
+        assert False  # the loop should not end without reaching the return or raising an exception
 
     def pause(self) -> None:
         """
