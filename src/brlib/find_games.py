@@ -88,8 +88,8 @@ def find_games(
     Abbreviations can match multiple teams due to era adjustment:
 
     ```
-    >>> br.find_games(teams="BAL", seasons="1915", dates="825-826", home_away="home")
-    [('BAL', '19150825', '1'), ('BAL', '19150825', '2'), ('SLB', '19150825', '0'), ('BAL', '19150826', '0'), ('SLB', '19150826', '0')]
+    >>> br.find_games(teams="BAL", seasons="1915", dates="825", home_away="home")
+    [('BAL', '19150825', '1'), ('BAL', '19150825', '2'), ('SLB', '19150825', '0')]
     ```
     """
     # make sure all possible list inputs are lists

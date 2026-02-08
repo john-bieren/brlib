@@ -29,7 +29,7 @@ def all_players() -> pd.DataFrame:
 
     ```
     >>> br.all_players()
-        Player ID             Name  Career Start  Career End  Active
+           Player ID             Name  Career Start  Career End  Active
     0      aardsda01    David Aardsma          2004        2015   False
     1      aaronha01      Henry Aaron          1954        1976   False
     2      aaronto01     Tommie Aaron          1962        1971   False

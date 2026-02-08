@@ -15,7 +15,7 @@ from ._helpers.utils import is_type
 
 class Options(Singleton):
     """
-    Options to change brlib's behavior. The options' values can be read or set using attributes. The type of an assigned value must match that of the option's default value, unless the assigned value is `None`, which removes a previous assignment.
+    Options to change brlib's behavior which can be read or set using attributes. When setting an option's value, the type must match that of the option's default value, unless the assigned value is `None`, which removes a previous assignment.
 
     ## Attributes
 

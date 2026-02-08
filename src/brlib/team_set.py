@@ -148,7 +148,7 @@ class TeamSet:
         >>> t2 = br.Team("PRO", "1883")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
-                    Player  NH  PG  CNH
+                       Player  NH  PG  CNH
         0      Weldon Wyckoff NaN NaN  NaN
         1         Ernie Shore NaN NaN  NaN
         2           Babe Ruth NaN NaN  NaN
@@ -165,7 +165,7 @@ class TeamSet:
         13        Team Totals NaN NaN  NaN
         >>> ts.add_no_hitters()
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
-                    Player   NH   PG  CNH
+                       Player   NH   PG  CNH
         0      Weldon Wyckoff  0.0  0.0  0.0
         1         Ernie Shore  0.0  0.0  1.0
         2           Babe Ruth  0.0  0.0  1.0

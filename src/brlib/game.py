@@ -127,7 +127,7 @@ class Game:
 
     * `linescore`: `pandas.DataFrame`
 
-        Contains the game's linescore, a box score fixture which displays the teams' run totals by inning, and their total runs, hits, and errors.
+        Contains the game's linescore, a box score fixture which displays the teams' run totals by inning, as well as their total runs, hits, and errors.
 
     * `players`: `list[str]`
 
@@ -244,7 +244,7 @@ class Game:
         ```
         >>> g = br.Game("TOR", "20180508", "0")
         >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                Player               Team  NH  PG  CNH
+                   Player               Team  NH  PG  CNH
         0    James Paxton   Seattle Mariners NaN NaN  NaN
         1     Team Totals   Seattle Mariners NaN NaN  NaN
         2  Marcus Stroman  Toronto Blue Jays NaN NaN  NaN
@@ -255,7 +255,7 @@ class Game:
         7     Team Totals  Toronto Blue Jays NaN NaN  NaN
         >>> g.add_no_hitters()
         >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                Player               Team   NH   PG  CNH
+                   Player               Team   NH   PG  CNH
         0    James Paxton   Seattle Mariners  1.0  0.0  0.0
         1     Team Totals   Seattle Mariners  1.0  0.0  0.0
         2  Marcus Stroman  Toronto Blue Jays  0.0  0.0  0.0

@@ -182,7 +182,7 @@ class GameSet:
         >>> g2 = br.Game("SEA", "20120608", "0")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                    Player                 Team  NH  PG  CNH
+                       Player                 Team  NH  PG  CNH
         0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN
         1     Kyle Farnsworth       Tampa Bay Rays NaN NaN  NaN
         2         Team Totals       Tampa Bay Rays NaN NaN  NaN
@@ -196,7 +196,7 @@ class GameSet:
         15        Team Totals     Seattle Mariners NaN NaN  NaN
         >>> gs.add_no_hitters()
         >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                    Player                 Team   NH   PG  CNH
+                       Player                 Team   NH   PG  CNH
         0   Jeremy Hellickson       Tampa Bay Rays  0.0  0.0  0.0
         1     Kyle Farnsworth       Tampa Bay Rays  0.0  0.0  0.0
         2         Team Totals       Tampa Bay Rays  0.0  0.0  0.0
@@ -277,12 +277,12 @@ class GameSet:
         >>> g2 = br.Game("TBA", "20050828", "0")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.info[["Away Team", "Home Team"]]
-                            Away Team              Home Team
+                               Away Team              Home Team
         0           Washington Nationals  Kansas City Athletics
         1  Los Angeles Angels of Anaheim   Tampa Bay Devil Rays
         >>> gs.update_team_names()
         >>> gs.info[["Away Team", "Home Team"]]
-                                Away Team              Home Team
+                                  Away Team              Home Team
         0  Washington Nationals (1901-1960)  Kansas City Athletics
         1                Los Angeles Angels         Tampa Bay Rays
         ```

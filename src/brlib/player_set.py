@@ -124,7 +124,7 @@ class PlayerSet:
         >>> ps = br.PlayerSet([p1, p2])
         >>> mask = ps.pitching["Season"].str.len() == 4
         >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
-                Player Season  NH  PG  CNH
+                 Player Season  NH  PG  CNH
         0   Taylor Cole   2017 NaN NaN  NaN
         1   Taylor Cole   2018 NaN NaN  NaN
         2   Taylor Cole   2019 NaN NaN  NaN
@@ -136,7 +136,7 @@ class PlayerSet:
         12   Félix Peña   2021 NaN NaN  NaN
         >>> ps.add_no_hitters()
         >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
-                Player Season   NH   PG  CNH
+                 Player Season   NH   PG  CNH
         0   Taylor Cole   2017  0.0  0.0  0.0
         1   Taylor Cole   2018  0.0  0.0  0.0
         2   Taylor Cole   2019  0.0  0.0  1.0
