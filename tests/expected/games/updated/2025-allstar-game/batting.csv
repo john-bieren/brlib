@@ -1,42 +1,42 @@
 Player,Player ID,Position,AB,R,H,RBI,BB,SO,PA,BA,OBP,SLG,OPS,Pit,Str,WPA,aLI,WPA+,WPA-,cWPA,acLI,RE24,2B,3B,HR,TB,SF,SH,HBP,GDP,IBB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,2-Out RBI,LOB,RISP,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
-Gleyber Torres,torregl01,2B,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Jazz Chisholm Jr.,chishja01,2B,3.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Riley Greene,greenri03,LF,3.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Steven Kwan,kwanst01,LF,2.0,0.0,1.0,1.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Aaron Judge,judgeaa01,RF,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Randy Arozarena,arozara01,RF,3.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Cal Raleigh,raleica01,C,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Alejandro Kirk,kirkal01,C,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Vladimir Guerrero Jr.,guerrvl02,1B,2.0,0.0,1.0,0.0,0.0,1.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Jonathan Aranda,arandjo01,1B,1.0,1.0,1.0,0.0,1.0,0.0,,1.0,1.0,1.0,2.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Ryan O'Hearn,ohearry01,DH,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Brent Rooker,rookebr01,PH-DH-DH,1.0,1.0,1.0,3.0,0.0,0.0,,1.0,1.0,4.0,5.0,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Zach McKinstry,mckinza01,PH-DH-DH,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Junior Caminero,caminju01,3B,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Maikel Garcia,garcima01,3B,1.0,1.0,0.0,0.0,1.0,0.0,,0.0,0.5,0.0,0.5,,,,,,,,,,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Javier Báez,baezja01,CF,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Byron Buxton,buxtoby01,CF,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Jacob Wilson,wilsoja05,SS,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Bobby Witt Jr.,wittbo02,SS,2.0,1.0,1.0,2.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Team Totals,,,37.0,6.0,9.0,6.0,2.0,6.0,0.0,0.243,,,,0.0,0.0,0.0,0.0,0.0,0.0,,,0.0,2,0,1,14,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,1,6.0,3 for 9,AL All-Stars,,NL All-Stars,,6,Tie,Away,2025-allstar-game
-Shohei Ohtani,ohtansh01,DH,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Kyle Schwarber,schwaky01,PH-DH-DH,2.0,0.0,0.0,0.0,1.0,0.0,,0.0,0.333,0.0,0.333,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Ronald Acuña Jr.,acunaro01,RF,2.0,1.0,1.0,0.0,0.0,1.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Fernando Tatis Jr.,tatisfe02,RF,2.0,1.0,0.0,0.0,1.0,2.0,,0.0,0.333,0.0,0.333,,,,,,,,,,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Ketel Marte,marteke01,2B,2.0,0.0,1.0,2.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Brendan Donovan,donovbr01,2B,3.0,1.0,2.0,0.0,0.0,0.0,,0.667,0.667,0.667,1.333,,,,,,,,,,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Freddie Freeman,freemfr01,1B,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Pete Alonso,alonspe01,1B,2.0,1.0,1.0,3.0,0.0,0.0,,0.5,0.5,2.0,2.5,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Matt Olson,olsonma02,1B,1.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Manny Machado,machama01,3B,2.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Eugenio Suárez,suareeu01,3B,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.5,0.0,0.5,,,,,,,,,,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Will Smith,smithwi05,C,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Hunter Goodman,goodmhu01,C,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-James Wood,woodja03,PH,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Kyle Tucker,tuckeky01,LF,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Corbin Carroll,carroco02,LF-CF,1.0,1.0,1.0,1.0,1.0,0.0,,1.0,1.0,4.0,5.0,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Francisco Lindor,lindofr01,SS,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Elly De La Cruz,delacel01,SS,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Pete Crow-Armstrong,crowape01,CF,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Kyle Stowers,stoweky01,LF,2.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
-Team Totals,,,35.0,6.0,8.0,6.0,3.0,12.0,0.0,0.229,,,,0.0,0.0,0.0,0.0,0.0,0.0,,,0.0,2,0,2,16,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,6.0,3 for 10,NL All-Stars,,AL All-Stars,,6,Tie,Home,2025-allstar-game
+Gleyber Torres,torregl01,2B,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Jazz Chisholm Jr.,chishja01,2B,3.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Riley Greene,greenri03,LF,3.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Steven Kwan,kwanst01,LF,2.0,0.0,1.0,1.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Aaron Judge,judgeaa01,RF,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Randy Arozarena,arozara01,RF,3.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Cal Raleigh,raleica01,C,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Alejandro Kirk,kirkal01,C,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Vladimir Guerrero Jr.,guerrvl02,1B,2.0,0.0,1.0,0.0,0.0,1.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Jonathan Aranda,arandjo01,1B,1.0,1.0,1.0,0.0,1.0,0.0,,1.0,1.0,1.0,2.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Ryan O'Hearn,ohearry01,DH,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Brent Rooker,rookebr01,PH-DH-DH,1.0,1.0,1.0,3.0,0.0,0.0,,1.0,1.0,4.0,5.0,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Zach McKinstry,mckinza01,PH-DH-DH,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Junior Caminero,caminju01,3B,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Maikel Garcia,garcima01,3B,1.0,1.0,0.0,0.0,1.0,0.0,,0.0,0.5,0.0,0.5,,,,,,,,,,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Javier Báez,baezja01,CF,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Byron Buxton,buxtoby01,CF,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Jacob Wilson,wilsoja05,SS,2.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Bobby Witt Jr.,wittbo02,SS,2.0,1.0,1.0,2.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Team Totals,,,37.0,6.0,9.0,6.0,2.0,6.0,0.0,0.243,,,,0.0,0.0,0.0,0.0,0.0,0.0,,,0.0,2,0,1,14,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,1,6.0,3 for 9,AL All-Stars,,NL All-Stars,,6,Loss,Away,2025-allstar-game
+Shohei Ohtani,ohtansh01,DH,2.0,1.0,1.0,0.0,0.0,0.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Kyle Schwarber,schwaky01,PH-DH-DH,2.0,0.0,0.0,0.0,1.0,0.0,,0.0,0.333,0.0,0.333,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Ronald Acuña Jr.,acunaro01,RF,2.0,1.0,1.0,0.0,0.0,1.0,,0.5,0.5,0.5,1.0,,,,,,,,,,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Fernando Tatis Jr.,tatisfe02,RF,2.0,1.0,0.0,0.0,1.0,2.0,,0.0,0.333,0.0,0.333,,,,,,,,,,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Ketel Marte,marteke01,2B,2.0,0.0,1.0,2.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Brendan Donovan,donovbr01,2B,3.0,1.0,2.0,0.0,0.0,0.0,,0.667,0.667,0.667,1.333,,,,,,,,,,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Freddie Freeman,freemfr01,1B,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Pete Alonso,alonspe01,1B,2.0,1.0,1.0,3.0,0.0,0.0,,0.5,0.5,2.0,2.5,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Matt Olson,olsonma02,1B,1.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Manny Machado,machama01,3B,2.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Eugenio Suárez,suareeu01,3B,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.5,0.0,0.5,,,,,,,,,,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Will Smith,smithwi05,C,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Hunter Goodman,goodmhu01,C,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+James Wood,woodja03,PH,1.0,0.0,0.0,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Kyle Tucker,tuckeky01,LF,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Corbin Carroll,carroco02,LF-CF,1.0,1.0,1.0,1.0,1.0,0.0,,1.0,1.0,4.0,5.0,,,,,,,,,,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Francisco Lindor,lindofr01,SS,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Elly De La Cruz,delacel01,SS,2.0,0.0,0.0,0.0,0.0,1.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Pete Crow-Armstrong,crowape01,CF,2.0,0.0,1.0,0.0,0.0,0.0,,0.5,0.5,1.0,1.5,,,,,,,,,,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Kyle Stowers,stoweky01,LF,2.0,0.0,0.0,0.0,0.0,2.0,,0.0,0.0,0.0,0.0,,,,,,,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game
+Team Totals,,,35.0,6.0,8.0,6.0,3.0,12.0,0.0,0.229,,,,0.0,0.0,0.0,0.0,0.0,0.0,,,0.0,2,0,2,16,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,6.0,3 for 10,NL All-Stars,,AL All-Stars,,6,Win,Home,2025-allstar-game

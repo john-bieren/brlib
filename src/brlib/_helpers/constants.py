@@ -394,6 +394,7 @@ FORFEITED_GAME_WINNERS = {
     "NY1194209262": "Boston Braves",
     "WS2197109300": "New York Yankees",
     "CLE197406040": "Texas Rangers",
+    "2025-allstar-game": "NL All-Stars",
 }
 
 # for distinguishing between league and team abbreviations when processing player career totals
