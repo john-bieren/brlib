@@ -15,6 +15,8 @@ from .options import options, write
 def get_games(
     game_list: list[tuple[str, str, str]],
     add_no_hitters: bool | None = None,
+    update_team_names: bool | None = None,
+    update_venue_names: bool | None = None,
     ignore_errors: bool = True,
 ) -> list[Game]:
     """
@@ -29,6 +31,14 @@ def get_games(
     * `add_no_hitters`: `bool` or `None`, default `None`
 
         Whether to populate the no-hitter columns in the `Game.pitching` DataFrames, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+
+    * `update_team_names`: `bool` or `None`, default `None`
+
+        Whether to standardize team names such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+
+    * `update_venue_names`: `bool` or `None`, default `None`
+
+        Whether to standardize venue names such that venues are identified by one name. If no value is passed, the value of `options.update_venue_names` is used.
 
     * `ignore_errors`: `bool`, default `True`
 
@@ -57,6 +67,10 @@ def get_games(
     """
     if add_no_hitters is None:
         add_no_hitters = options.add_no_hitters
+    if update_team_names is None:
+        update_team_names = options.update_team_names
+    if update_venue_names is None:
+        update_venue_names = options.update_venue_names
 
     game_list = validate_game_list(game_list)
     if len(game_list) == 0:
@@ -78,7 +92,12 @@ def get_games(
 
         try:
             page = req_man.get_page(endpoint)
-            result = Game(page=page, add_no_hitters=add_no_hitters)
+            result = Game(
+                page=page,
+                add_no_hitters=add_no_hitters,
+                update_team_names=update_team_names,
+                update_venue_names=update_venue_names,
+            )
             results.append(result)
         except ConnectionRefusedError as exc:
             if not ignore_errors:
