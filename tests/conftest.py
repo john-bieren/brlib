@@ -3,6 +3,7 @@
 """Sets reusable objects for testing."""
 
 import copy
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -23,42 +24,48 @@ def ap_filtered() -> pd.DataFrame:
 
 
 @pytest.fixture(scope="session")
+def expected_game_data() -> Path:
+    """The directory containing of the expected game data."""
+    return Path(__file__).parent.resolve() / "expected" / "games"
+
+
+@pytest.fixture(scope="session")
 def games_list() -> list[br.Game]:
     """The Game outputs to be tested, before any public methods are run."""
     return br.get_games(
         [
             # non-existent page to test ignore_errors
             ("SEA", "20251027", "0"),
-            # ASG, tons of substitutions, tie, illegal(?) substitution with one position and split stats
+            # ASG with dh != 0, 10 innings
+            ("allstar", "1961", "1"),
+            # ASG, essentially a forfeit, illegal(?) substitution with 1 position and split stats
             ("allstar", "2025", "0"),
             # Ohtani plays DH and SP
             ("ANA", "20230509", "0"),
-            # combined no-hitter, WS game (matters for name)
-            ("PHI", "20221102", "0"),
-            # non-WS postseason game (matters for name), 18 innings
-            ("SEA", "20221015", "0"),
-            # SB cycle with multiple pitcher/catcher combos, a balk
-            ("SEA", "20190527", "0"),
-            # triple play, renamed venue, outfield assists
-            ("SEA", "20180419", "0"),
-            # illegal substitution with two positions and split stats, error by pitcher who did not hit
+            # illegal substitution with 2 positions and split stats, error by pitcher who didn't hit
             ("BOS", "20170825", "0"),
-            # perfect game, renamed venue
-            ("SEA", "20120815", "0"),
-            # unassisted triple play
-            ("NYN", "20090823", "0"),
             # renamed venue, renamed team, relocated team
             ("FLO", "19940729", "0"),
-            # player with 2 DPs, U L Washington tests parsing, 2 identical POCS, renamed venue, dh != 0
-            ("SEA", "19780523", "1"),
-            # ASG with dh != 0, 10 innings
-            ("allstar", "1961", "1"),
-            # dh = 3, 6 innings, 2 CGs with IP<9
-            ("PIT", "19201002", "3"),
-            # forfeited by team which finished with the lead, 4 innings, dh != 0
-            ("SLN", "19071005", "1"),
             # both teams share names with later ones, limited stats (especially SB info), dh != 0
             ("MLA", "19010530", "1"),
+            # unassisted triple play
+            ("NYN", "20090823", "0"),
+            # combined no-hitter, WS game (matters for name)
+            ("PHI", "20221102", "0"),
+            # dh = 3, 6 innings, 2 CGs with IP<9
+            ("PIT", "19201002", "3"),
+            # player with 2 DP, U L Washington tests parsing, 2 identical POCS, renamed venue, dh != 0
+            ("SEA", "19780523", "1"),
+            # perfect game, renamed venue
+            ("SEA", "20120815", "0"),
+            # triple play, renamed venue, outfield assists
+            ("SEA", "20180419", "0"),
+            # SB cycle with multiple pitcher/catcher combos, a balk
+            ("SEA", "20190527", "0"),
+            # non-WS postseason game (matters for name), 18 innings
+            ("SEA", "20221015", "0"),
+            # forfeited by team which finished with the lead, 4 innings, dh != 0
+            ("SLN", "19071005", "1"),
         ]
     )
 
@@ -72,6 +79,24 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
         game.update_team_names()
         game.update_venue_names()
     return games_list_copy
+
+
+@pytest.fixture(scope="session")
+def game_set(games_list: list[br.Game]) -> br.GameSet:
+    """A GameSet made from the contents of games_list."""
+    return br.GameSet(games_list)
+
+
+@pytest.fixture(scope="session")
+def updated_game_set(updated_games_list: list[br.Game]) -> br.GameSet:
+    """A GameSet made from the contents of updated_games_list."""
+    return br.GameSet(updated_games_list)
+
+
+@pytest.fixture(scope="session")
+def expected_player_data() -> Path:
+    """The directory containing of the expected player data."""
+    return Path(__file__).parent.resolve() / "expected" / "players"
 
 
 @pytest.fixture(scope="session")
@@ -116,26 +141,44 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
 
 
 @pytest.fixture(scope="session")
+def player_set(players_list: list[br.Player]) -> br.PlayerSet:
+    """A PlayerSet made from the contents of players_list."""
+    return br.PlayerSet(players_list)
+
+
+@pytest.fixture(scope="session")
+def updated_player_set(updated_players_list: list[br.Player]) -> br.PlayerSet:
+    """A PlayerSet made from the contents of updated_players_list."""
+    return br.PlayerSet(updated_players_list)
+
+
+@pytest.fixture(scope="session")
+def expected_team_data() -> Path:
+    """The directory containing of the expected team data."""
+    return Path(__file__).parent.resolve() / "expected" / "teams"
+
+
+@pytest.fixture(scope="session")
 def teams_list() -> list[br.Team]:
     """The Team outputs to be tested, before any public methods are run."""
     return br.get_teams(
         [
             # non-existent page to test ignore_errors
             ("ATH", "2024"),
-            # WS winner, renamed venue, CNH in regular and postseason
-            ("HOU", "2022"),
+            # four managers, limited data, partial park factors
+            ("BBB", "1924"),
+            # non-AL/NL pennant winner, players with multiple AS
+            ("BEG", "1939"),
             # team gold glove, pandemic season
             ("CHC", "2020"),
+            # no player stats available
+            ("COT", "1932"),
+            # WS winner, renamed venue, CNH in regular and postseason
+            ("HOU", "2022"),
             # renamed team
             ("LAA", "2012"),
             # perfect game and CNH, renamed venue
             ("SEA", "2012"),
-            # non-AL/NL pennant winner, players with multiple AS
-            ("BEG", "1939"),
-            # no player stats available
-            ("COT", "1932"),
-            # four managers, limited data, partial park factors
-            ("BBB", "1924"),
             # team shares name with later one
             ("WSH", "1904"),
         ]
@@ -151,3 +194,15 @@ def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
         team.update_team_names()
         team.update_venue_names()
     return teams_list_copy
+
+
+@pytest.fixture(scope="session")
+def team_set(teams_list: list[br.Team]) -> br.TeamSet:
+    """A TeamSet made from the contents of teams_list."""
+    return br.TeamSet(teams_list)
+
+
+@pytest.fixture(scope="session")
+def updated_team_set(updated_teams_list: list[br.Team]) -> br.TeamSet:
+    """A TeamSet made from the contents of updated_teams_list."""
+    return br.TeamSet(updated_teams_list)
