@@ -678,6 +678,8 @@ class Player:
 
     def _finish_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         """Adds player name, player ID, salary, and team IDs to `df`, and corrects dtypes."""
+        if len(df) == 0:
+            return df
         df.loc[:, "Player ID"] = self.id
         df.loc[:, "Player"] = self.name
         df["Salary"] = df["Season"].apply(lambda x: self._yearly_salaries.get(x, None))
