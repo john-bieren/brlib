@@ -87,17 +87,18 @@ def get_players(
                 update_team_names=update_team_names,
             )
             results.append(result)
-        except ConnectionRefusedError as exc:
-            if not ignore_errors:
-                raise
-            write(f"{type(exc).__name__}: {exc}")
-            return results
+            req_man.pause()
         except Exception as exc:
             if not ignore_errors:
                 raise
-            write(f"{type(exc).__name__}: {exc}")
-            write(f"cannot get {player_id}")
-            continue
-        finally:
+            exception_type = type(exc).__name__
+            write(f"{exception_type}: {exc}")
+
+            message = f"cannot get {player_id}"
+            if exception_type == "ConnectionRefusedError":  # 429 error
+                write(message + " or subsequent players")
+                return results
+            write(message)
             req_man.pause()
+            continue
     return results

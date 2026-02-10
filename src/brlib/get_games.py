@@ -99,18 +99,19 @@ def get_games(
                 update_venue_names=update_venue_names,
             )
             results.append(result)
-        except ConnectionRefusedError as exc:
-            if not ignore_errors:
-                raise
-            write(f"{type(exc).__name__}: {exc}")
-            return results
+            req_man.pause()
         except Exception as exc:
             if not ignore_errors:
                 raise
-            write(f"{type(exc).__name__}: {exc}")
+            exception_type = type(exc).__name__
+            write(f"{exception_type}: {exc}")
+
             game_id = str_between(endpoint, "/", ".", anchor="end")
-            write(f"cannot get {game_id}")
-            continue
-        finally:
+            message = f"cannot get {game_id}"
+            if exception_type == "ConnectionRefusedError":  # 429 error
+                write(message + " or subsequent games")
+                return results
+            write(message)
             req_man.pause()
+            continue
     return results
