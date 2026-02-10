@@ -2,6 +2,7 @@
 
 """Tests the functions in inputs.py."""
 
+# noinspection PyProtectedMember
 from brlib._helpers.inputs import (
     validate_date_list,
     validate_game_list,

@@ -2,6 +2,7 @@
 
 """Tests the output of the find_games function."""
 
+# noinspection PyProtectedMember
 from brlib.find_games import _find_year_list, find_games
 
 

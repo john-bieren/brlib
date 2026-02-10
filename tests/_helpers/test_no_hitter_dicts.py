@@ -6,6 +6,7 @@ import copy
 
 import numpy as np
 
+# noinspection PyProtectedMember
 from brlib._helpers.no_hitter_dicts import nhd
 
 

@@ -24,6 +24,7 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         # combine args and kwargs into one dictionary
+        # noinspection PyUnresolvedReferences
         all_args = {**dict(zip(func.__code__.co_varnames, args)), **kwargs}
 
         for param, expected_type in hints.items():
@@ -39,6 +40,7 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     return wrapper
 
 
+# noinspection PyTypeChecker
 def is_type(value: Any, expected_type: type | UnionType) -> bool:
     """Checks whether `value` is an instance of `expected_type`, including parameterized generics."""
     if expected_type == Any:
@@ -71,6 +73,7 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
 
     if origin is dict:
         key_type, value_type = args
+        # noinspection PyUnresolvedReferences
         return all(is_type(k, key_type) and is_type(v, value_type) for k, v in value.items())
 
     return isinstance(value, origin)
