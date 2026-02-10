@@ -2,9 +2,6 @@
 
 """Tests the attributes and methods of the PlayerSet class."""
 
-from pathlib import Path
-
-import pandas as pd
 from get_expected import get_expected_df, get_expected_list
 
 import brlib as br
