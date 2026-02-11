@@ -766,16 +766,21 @@ class Game:
             "2-out RBI": "2-Out RBI",
             "E": "E",
             "Outfield Assists": "OFA",
+            # TODO are these both still used (e.g. SEA202510100, 1961-allstar-game-1)
             "PB": "PB",
+            "Passed Balls": "PB",
         }
         team_stats = {"Team LOB": "LOB", "With RISP": "RISP"}
         dp_tp = ["DP", "TP"]
-        h_df[list(player_stats.values())] = 0
+        h_df[list(dict.fromkeys(player_stats.values()))] = 0
         h_df[dp_tp] = 0
 
         footer = table.find("div", {"class": "footer no_hide_long"})
         # [1:] because the first tag is the parent of the others
         for line in footer.find_all("div")[1:]:
+            # skip the divs which contain the fielding and baserunning divs
+            if "\n" in line.text:
+                continue
             line_str = line.text.replace("\xa0", " ")
             # can't use line_str.strip(".") because "Jr." ends with a period
             line_str = line_str[:-1] if line_str[-1] == "." else line_str
@@ -784,11 +789,11 @@ class Game:
             if player_stats.get(stat) is not None:
                 stat_name = player_stats.get(stat)
                 for player in players.split("; "):
-                    if player.split(" (")[0].rsplit(maxsplit=1)[1].isnumeric():
-                        player, number = player.split(" (")[0].rsplit(maxsplit=1)
+                    player = player.split(" (", maxsplit=1)[0]
+                    if player[-1].isnumeric():
+                        player, number = player.rsplit(maxsplit=1)
                         number = int(number)
                     else:
-                        player = player.split(" (")[0]
                         number = 1
                     # += because players can be listed twice, e.g. BOS201708250
                     h_df.loc[h_df["Player"] == player, stat_name] += number
@@ -887,29 +892,38 @@ class Game:
             self.pitching = pd.concat((self.pitching, p_df))
 
         # add extra info found below the tables
-        events = ["Balks", "WP", "HBP", "IBB"]
-        self.pitching[events] = 0
+        stats = {
+            "Balks": "Balks",
+            # TODO are these both still used (e.g. SEA202510100, 1961-allstar-game-1)
+            "WP": "WP",
+            "Wild Pitches": "WP",
+            "HBP": "HBP",
+            "IBB": "IBB",
+        }
+        self.pitching[list(dict.fromkeys(stats))] = 0
         events_section = pitching_section.find("div", {"class": "indiv_events"})
         both_team_totals_mask = self.pitching["Player"] == "Team Totals"
         # [1:] because the first tag is the parent of the others
         for line in events_section.find_all("div")[1:]:
             line_str = line.text.strip("\n .")
-            event, value = line_str.split(": ", maxsplit=1)
-            if event not in events or value == "None":
+            stat, value = line_str.split(": ", maxsplit=1)
+            stat_name = stats.get(stat)
+            if stat_name is None or value == "None":
                 continue
 
             for player in value.split("); "):
-                number = "1"
                 player = player.split(" (", maxsplit=1)[0].replace("\xa0", " ")
                 if player[-1].isnumeric():
                     player, number = player.rsplit(maxsplit=1)
-                number = int(number)
+                    number = int(number)
+                else:
+                    number = 1
 
                 player_mask = self.pitching["Player"] == player
                 team_name = self.pitching.loc[player_mask, "Team"].values[0]
                 team_totals_mask = both_team_totals_mask & (self.pitching["Team"] == team_name)
-                self.pitching.loc[player_mask, event] = number
-                self.pitching.loc[team_totals_mask, event] += number
+                self.pitching.loc[player_mask, stat_name] = number
+                self.pitching.loc[team_totals_mask, stat_name] += number
 
         # convert cWPA from percentage to a float
         if "cWPA" in self.pitching.columns:
