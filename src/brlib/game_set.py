@@ -26,7 +26,7 @@ class GameSet:
 
     * `games`: `list[Game]`
 
-        The list of the games to aggregate.
+        The non-empty list of the Games to aggregate.
 
     ## Attributes
 
@@ -103,7 +103,7 @@ class GameSet:
     def __init__(self, games: list[Game]) -> None:
         self._contents = tuple(game.id for game in games)
         if len(self._contents) == 0:
-            return
+            raise ValueError("no Games to aggregate")
 
         self.info = pd.concat([g.info for g in games], ignore_index=True)
         self.batting = pd.concat([g.batting for g in games], ignore_index=True)

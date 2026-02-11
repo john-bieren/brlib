@@ -21,7 +21,7 @@ class PlayerSet:
 
     * `players`: `list[Player]`
 
-        The list of the players to aggregate.
+        The non-empty list of the Players to aggregate.
 
     ## Attributes
 
@@ -83,7 +83,7 @@ class PlayerSet:
     def __init__(self, players: list[Player]) -> None:
         self._contents = tuple(player.id for player in players)
         if len(self._contents) == 0:
-            return
+            raise ValueError("no Players to aggregate")
 
         self.info = pd.concat([p.info for p in players], ignore_index=True)
         self.bling = pd.concat([p.bling for p in players], ignore_index=True)

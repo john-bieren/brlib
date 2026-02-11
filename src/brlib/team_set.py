@@ -26,7 +26,7 @@ class TeamSet:
 
     * `teams`: `list[Team]`
 
-        The list of the teams to aggregate.
+        The non-empty list of the Teams to aggregate.
 
     ## Attributes
 
@@ -89,7 +89,7 @@ class TeamSet:
     def __init__(self, teams: list[Team]) -> None:
         self._contents = tuple(team.id for team in teams)
         if len(self._contents) == 0:
-            return
+            raise ValueError("no Teams to aggregate")
 
         self.info = pd.concat([t.info for t in teams], ignore_index=True)
         self.batting = pd.concat([t.batting for t in teams], ignore_index=True)
