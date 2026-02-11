@@ -34,8 +34,6 @@ def games_list() -> list[br.Game]:
     """The Game outputs to be tested, before any public methods are run."""
     return br.get_games(
         [
-            # non-existent page to test ignore_errors
-            ("SEA", "20251027", "0"),
             # ASG with dh != 0, 10 innings
             ("allstar", "1961", "1"),
             # ASG, essentially a forfeit, illegal(?) substitution with 1 position and split stats
@@ -66,7 +64,8 @@ def games_list() -> list[br.Game]:
             ("SEA", "20221015", "0"),
             # forfeited by team which finished with the lead, 4 innings, dh != 0
             ("SLN", "19071005", "1"),
-        ]
+        ],
+        ignore_errors=False,
     )
 
 
@@ -104,8 +103,6 @@ def players_list() -> list[br.Player]:
     """The Player outputs to be tested, before any public methods are run."""
     return br.get_players(
         [
-            # non-existent page to test ignore_errors
-            "odoyltu99",
             # tons of relatives (including a manager), two missing seasons
             "aloumo01",
             # lots of missing data (especially advanced pitching)
@@ -126,7 +123,8 @@ def players_list() -> list[br.Player]:
             "pressry01",
             # catcher (with modern fielding stats), renamed draft team
             "vogtst01",
-        ]
+        ],
+        ignore_errors=False,
     )
 
 
@@ -163,8 +161,6 @@ def teams_list() -> list[br.Team]:
     """The Team outputs to be tested, before any public methods are run."""
     return br.get_teams(
         [
-            # non-existent page to test ignore_errors
-            ("ATH", "2024"),
             # four managers, limited data, partial park factors
             ("BBB", "1924"),
             # non-AL/NL pennant winner, players with multiple AS
@@ -181,7 +177,8 @@ def teams_list() -> list[br.Team]:
             ("SEA", "2012"),
             # team shares name with later one
             ("WSH", "1904"),
-        ]
+        ],
+        ignore_errors=False,
     )
 
 
