@@ -354,6 +354,8 @@ class Team:
             "No stats are currently available for this team." in content.text  # e.g. COT1932
             or "These stats are for the players to appear in spring training games" in content.text
         ):
+            self.info = self.info.reindex(columns=TEAM_INFO_COLS)
+            self.info = convert_numeric_cols(self.info)
             self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
             self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
             self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
@@ -394,6 +396,9 @@ class Team:
                 if "Inn" in self.fielding.columns:
                     self.fielding["Inn"].apply(change_innings_notation)
 
+        self.info = self.info.reindex(columns=TEAM_INFO_COLS)
+        self.info = convert_numeric_cols(self.info)
+
         # merge sorted dfs on index
         self.batting = h_df_1.merge(h_df_2, how="left", left_index=True, right_index=True)
         self.batting.loc[:, "Season"] = season
@@ -416,6 +421,10 @@ class Team:
         self.fielding = convert_numeric_cols(self.fielding)
 
         self.players = list(dict.fromkeys(self.players))
+
+        self.info.loc[:, "Number of Players"] = len(self.players)
+        pitchers = {p for p in self.pitching["Player ID"].values if p is not None}
+        self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
     def _scrape_info(self, info: Tag, bling: Tag | None) -> None:
         """Populates `self.info` with data from `info` and `bling`."""
@@ -509,9 +518,6 @@ class Team:
                     self.info.loc[:, "Pennant"] = 1
                 else:
                     dev_alert(f'{self.id}: unexpected bling element "{bling_name}"')
-
-        self.info = self.info.reindex(columns=TEAM_INFO_COLS)
-        self.info = convert_numeric_cols(self.info)
 
     def _scrape_standard_table(self, table: bs) -> pd.DataFrame:
         """Gathers team standard batting/pitching/fielding stats from `table`."""

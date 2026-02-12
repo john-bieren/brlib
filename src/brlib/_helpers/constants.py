@@ -965,6 +965,8 @@ TEAM_INFO_COLS = (
     "Team Gold Glove",
     "Pennant",
     "World Series",
+    "Number of Players",
+    "Number of Pitchers",
 )
 
 TEAM_BATTING_COLS = (
