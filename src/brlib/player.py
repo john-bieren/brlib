@@ -595,7 +595,7 @@ class Player:
                 if "BBWAA" in line_str:
                     yes, total = line_str.split(" on ", maxsplit=1)[1].split("/", maxsplit=1)
                     percentage = int(yes) / int(total.split(" ballots", maxsplit=1)[0])
-                    self.info.loc[:, "HOF %"] = round(percentage, 4)
+                    self.info.loc[:, "HOF%"] = round(percentage, 4)
 
             elif line_str.startswith("Rookie Status") and "Still Intact" not in line_str:
                 season = str_between(line_str, "Exceeded rookie limits during ", " season")

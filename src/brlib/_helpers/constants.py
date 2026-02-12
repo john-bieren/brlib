@@ -687,7 +687,7 @@ PLAYER_INFO_COLS = (
     "Last Game Age (Days)",
     "HOF Year",
     "HOF Type",
-    "HOF %",
+    "HOF%",
     "Exceeded Rookie Limits",
     "Full Name",
     "bWAR",
