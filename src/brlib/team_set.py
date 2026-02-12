@@ -124,8 +124,8 @@ class TeamSet:
 
         self.records.reset_index(inplace=True)
         self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype(int)
-        self.records["Win %"] = self.records["Wins"] / (
-            self.records["Games"] - self.records["Ties"]
+        self.records["W-L%"] = self.records["Wins"] / (
+            self.records["Wins"] + self.records["Losses"]
         )
         self.records = self.records.reindex(columns=RECORDS_COLS)
 

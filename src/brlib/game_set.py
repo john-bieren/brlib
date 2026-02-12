@@ -157,11 +157,11 @@ class GameSet:
         if "Ties" not in self.records.columns:
             self.records["Ties"] = 0
 
-        self.records = self.records.reindex(columns=RECORDS_COLS)
         self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype(int)
-        self.records["Win %"] = self.records["Wins"] / (
+        self.records["W-L%"] = self.records["Wins"] / (
             self.records["Wins"] + self.records["Losses"]
         )
+        self.records = self.records.reindex(columns=RECORDS_COLS)
 
     def add_no_hitters(self) -> None:
         """

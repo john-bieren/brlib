@@ -463,7 +463,7 @@ RELATIVES_DICT = {
     "Brother-In-Law": "Brother-In-Law",
 }
 
-RECORDS_COLS = ("Franchise", "Games", "Wins", "Losses", "Ties", "Win %")
+RECORDS_COLS = ("Franchise", "Games", "Wins", "Losses", "Ties", "W-L%")
 
 GAME_INFO_COLS = (
     "Game",
