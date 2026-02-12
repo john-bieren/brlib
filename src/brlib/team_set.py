@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines TeamSet class."""
+"""Defines `TeamSet` class."""
 
 from itertools import chain
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-"""Tests the methods of the AbbreviationsManager singleton."""
+"""Tests the methods of the `AbbreviationsManager` singleton."""
 
 # noinspection PyProtectedMember
 from brlib._helpers.abbreviations_manager import abv_man
 
 
 def test_cache() -> None:
-    """Tests that contents are the same when loaded from cache and the web."""
+    """Tests that the contents are the same when loaded from cache and the web."""
     # on the CI runner, the DataFrame has already been loaded from the web and cached
     # locally, you'll have to delete the cache file to replicate this behavior
     expected_df = abv_man.df.copy()
@@ -18,7 +18,7 @@ def test_cache() -> None:
 
 
 def test_correct_abvs() -> None:
-    """Tests the outputs of the correct_abvs method."""
+    """Tests the outputs of the `correct_abvs` method."""
     assert abv_man.correct_abvs("OAK", 2025, era_adjustment=True) == ["ATH"]
     assert abv_man.correct_abvs("OAK", 2025, era_adjustment=False) == []
     assert abv_man.correct_abvs("BAL", 1915, era_adjustment=True) == ["SLB", "BAL"]
@@ -34,7 +34,7 @@ def test_correct_abvs() -> None:
 
 
 def test_franchise_abv() -> None:
-    """Tests the outputs of the franchise_abv method."""
+    """Tests the outputs of the `franchise_abv` method."""
     assert abv_man.franchise_abv("ATH", 1876) == "ATH"
     assert abv_man.franchise_abv("BAL", 1915) == "BLT"
     assert abv_man.franchise_abv("OAK", 2025) == ""
@@ -42,14 +42,14 @@ def test_franchise_abv() -> None:
 
 
 def test_all_team_abvs() -> None:
-    """Tests the outputs of the all_team_abvs method."""
+    """Tests the outputs of the `all_team_abvs` method."""
     assert abv_man.all_team_abvs("ATH", 2025) == ["ATH", "KCA", "OAK", "PHA"]
     assert abv_man.all_team_abvs("OAK", 2025) == []
     assert abv_man.all_team_abvs("SER", 2025) == []
 
 
 def test_to_alias() -> None:
-    """Tests the outputs of the to_alias method."""
+    """Tests the outputs of the `to_alias` method."""
     assert abv_man.to_alias("SEA", 2025) == "SEA"
     assert abv_man.to_alias("KCA", 1963) == "KC1"
     assert abv_man.to_alias("PBS", 2025) == "PBS"
@@ -57,7 +57,7 @@ def test_to_alias() -> None:
 
 
 def test_to_regular() -> None:
-    """Tests the outputs of the to_regular method."""
+    """Tests the outputs of the `to_regular` method."""
     assert abv_man.to_regular("SEA", 2025) == "SEA"
     assert abv_man.to_regular("KCA", 1999) == "KCR"
     assert abv_man.to_regular("KC1", 2025) == "KC1"

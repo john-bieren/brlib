@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Team class."""
+"""Defines `Team` class."""
 
 import re
 

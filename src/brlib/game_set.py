@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines GameSet class."""
+"""Defines `GameSet` class."""
 
 from itertools import chain
 

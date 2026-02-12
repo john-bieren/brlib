@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines get_teams function."""
+"""Defines `get_teams` function."""
 
 from tqdm import tqdm
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines and instantiates RequestsManager singleton."""
+"""Defines and instantiates `RequestsManager` singleton."""
 
 import time
 

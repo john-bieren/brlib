@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines get_games function."""
+"""Defines `get_games` function."""
 
 from tqdm import tqdm
 

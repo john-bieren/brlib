@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines and instantiates AbbreviationsManager singleton."""
+"""Defines and instantiates `AbbreviationsManager` singleton."""
 
 import functools
 import os
@@ -127,13 +127,13 @@ class AbbreviationsManager(Singleton):
         Returns the team row associated with `abbreviation` during `season`.
         Can return an empty DataFrame if there is no match.
 
-        If `era_adjustment` is True, the return DataFrame will contain the row associated with
+        If `era_adjustment` is `True`, the return DataFrame will contain the row associated with
         `abbreviation`'s franchise during `season` even if the abbreviation is not correct.
-        For example, `self._find_correct_teams("FLA", 2025, True)` returns the `MIA` team row.
-        There can be multiple rows in the return DataFrame if an abbreviation, e.g. `BAL`,
+        For example, `self._find_correct_teams("FLA", 2025, True)` returns the MIA team row.
+        There can be multiple rows in the return DataFrame if an abbreviation, e.g. BAL,
         is valid during a season, e.g. 1915, and is also associated with a franchise that
-        is active during that year, e.g. `SLB` which uses `BAL` in later years. In this case,
-        `self._find_correct_teams("BAL", 1915, True)`, the `BAL` and `SLB` team rows are returned.
+        is active during that year, e.g. SLB which uses BAL in later years. In this case,
+        `self._find_correct_teams("BAL", 1915, True)`, the BAL and SLB team rows are returned.
         """
         abv_rows = self.df.loc[self.df["Team"] == abbreviation]
 
@@ -190,7 +190,7 @@ class AbbreviationsManager(Singleton):
     def all_team_abvs(self, abbreviation: str, season: int) -> list[str]:
         """
         Returns all team abbreviations used by the franchise which is associated with the team at
-        `abbreviation` and `season`, e.g. ("ATH", 2025) returns ["PHA", "KCA", "OAK", "ATH"].
+        `abbreviation` and `season`, e.g. `("ATH", 2025)` returns `["PHA", "KCA", "OAK", "ATH"]`.
         """
         franchise_abv = self.franchise_abv(abbreviation, season)
         franchise_df = self.df.loc[self.df["Franchise"] == franchise_abv]

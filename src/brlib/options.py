@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines and instantiates Options singleton."""
+"""Defines and instantiates `Options` singleton."""
 
 import json
 from collections import ChainMap
@@ -481,18 +481,18 @@ options = Options()
 
 
 def write(message: str) -> None:
-    """Prints something if options.quiet is False."""
+    """Prints something if `options.quiet` is `False`."""
     if not options.quiet:
         tqdm.write(message)
 
 
 def print_page(message: str) -> None:
-    """Prints something if options.print_pages is True."""
+    """Prints something if `options.print_pages` is `True`."""
     if options.print_pages:
         tqdm.write(message)
 
 
 def dev_alert(message: str) -> None:
-    """Prints something if options.dev_alerts is True."""
+    """Prints something if `options.dev_alerts` is `True`."""
     if options.dev_alerts:
         tqdm.write(message)

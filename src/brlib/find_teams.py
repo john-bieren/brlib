@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines find_teams function."""
+"""Defines `find_teams` function."""
 
 import re
 from itertools import chain
@@ -110,9 +110,9 @@ def find_teams(
 def _process_abbreviation_list(abv_list: list[str], exceptions: set[str]) -> list[str]:
     """
     Returns a list including only the valid team abbreviations, except for those matching
-    the contents of `exceptions`, alerts user of removed inputs if `options.quiet` is False.
+    the contents of `exceptions`, alerts user of removed inputs if `options.quiet` is `False`.
     `abv_list` and `exceptions` contents must be uppercase.
-    If "ALL" is in `abv_list`, return value will be ["ALL"].
+    If `"ALL"` is in `abv_list`, return value will be `["ALL"]`.
     """
     result = []
     for abv in abv_list:

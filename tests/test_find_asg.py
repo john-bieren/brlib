@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-"""Tests the output of the find_asg function."""
+"""Tests the output of the `find_asg` function."""
 
 from brlib import find_asg
 
 
 def test_seasons():
-    """Tests that seasons argument is handled correctly."""
+    """Tests that the `seasons` argument is handled correctly."""
     # standard usage
     assert find_asg("2025") == [("allstar", "2025", "0")]
     # missing season

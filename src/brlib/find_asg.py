@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines find_asg function."""
+"""Defines `find_asg` function."""
 
 import re
 

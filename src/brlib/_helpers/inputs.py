@@ -28,7 +28,7 @@ from .constants import (
 def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str, str, str]]:
     """
     Returns list including only the valid games, alerts user of removed inputs if
-    `options.quiet` is False. Will change `home_team` args to uppercase.
+    `options.quiet` is `False`. Will change `home_team` args to uppercase.
     """
     result = []
     for home_team, date, doubleheader in game_list:
@@ -89,7 +89,7 @@ def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
 def validate_player_list(player_list: list[str]) -> list[str]:
     """
     Returns list including only the valid player ids, alerts user of removed inputs if
-    `options.quiet` is False. Will change player ids to lowercase.
+    `options.quiet` is `False`. Will change player ids to lowercase.
     """
     result = []
     for player_id in player_list:
@@ -112,7 +112,7 @@ def _validate_player_input(player_id: str) -> str:
 def validate_team_list(team_list: list[tuple[str, str]]) -> list[tuple[str, str]]:
     """
     Returns list including only the valid teams, alerts user of removed inputs if
-    `options.quiet` is False. Will change `team` args to uppercase.
+    `options.quiet` is `False`. Will change `team` args to uppercase.
     """
     result = []
     for abv, season in team_list:
@@ -150,7 +150,7 @@ def _validate_team_input(team: str, season: str) -> str:
 def validate_date_list(date_list: list[str]) -> list[str]:
     """
     Returns list including only the valid dates, alerts user of removed inputs if
-    `options.quiet` is False. Dates must be uppercase.
+    `options.quiet` is `False`. Dates must be uppercase.
     """
     result = []
     for date in date_list:

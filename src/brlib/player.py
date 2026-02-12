@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Player class."""
+"""Defines `Player` class."""
 
 import re
 from collections import Counter, defaultdict
@@ -853,7 +853,7 @@ class Player:
     def _table_to_df(table: Tag, add_game_type: bool, buffer: int = 0) -> pd.DataFrame:
         """
         Turns a player stats table into a DataFrame.
-        If `add_game_type` == True, the `Game Type` column will be added to the DataFrame.
+        If `add_game_type` is `True`, the `Game Type` column will be added to the DataFrame.
         `buffer` is the number of blank rows to add after regular season stats to correct
         for the lack franchise/league summary rows which other DataFrames have.
         """
@@ -933,7 +933,7 @@ class Player:
         return df
 
     def _count_years_played(self) -> None:
-        """Adds `"Years Played"` to `self.info`."""
+        """Adds `Years Played` column to `self.info`."""
         years_played = set()
         years_played.update(self.batting["Season"].values.tolist())
         years_played.update(self.pitching["Season"].values.tolist())
@@ -943,7 +943,7 @@ class Player:
         self.info["Years Played"] = len(years_played)
 
     def _find_teams_info(self) -> None:
-        """Adds `"Teams Played For"` and `"Most Teams in a Year"` to `self.info`."""
+        """Adds `Teams Played For` and `Most Teams in a Year` columns to `self.info`."""
         bat_teams = Player._scrape_teams_from_df(self.batting) if not self.batting.empty else []
         pit_teams = Player._scrape_teams_from_df(self.pitching) if not self.pitching.empty else []
         fld_teams = Player._scrape_teams_from_df(self.fielding) if not self.fielding.empty else []

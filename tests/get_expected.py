@@ -11,7 +11,7 @@ import pandas as pd
 def get_expected_df(category_dir: str, target_table: str, updated: bool = False) -> pd.DataFrame:
     """
     Returns the expected value of a Set's `target_table` attribute by combining the relevant
-    contents of `category_dir`. If `updated` is True, the returned value is for the updated Set.
+    contents of `category_dir`. If `updated` is `True`, the returned value is for the updated Set.
     """
     updated_original = "updated" if updated else "original"
     cases_dir = Path(__file__).parent / "expected" / category_dir / updated_original

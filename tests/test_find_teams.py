@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-"""Tests the output of the find_teams function."""
+"""Tests the output of the `find_teams` function."""
 
 from brlib import find_teams
 
 
 def test_teams():
-    """Tests that teams argument is handled correctly."""
+    """Tests that the `teams` argument is handled correctly."""
     # reject alias
     assert len(find_teams("KC1", "ALL")) == 0
     # list, test case insensitivity
@@ -63,7 +63,7 @@ def test_teams():
 
 
 def test_seasons():
-    """Tests that seasons argument is handled correctly."""
+    """Tests that the `seasons` argument is handled correctly."""
     # range
     assert find_teams("LAA", "2017-2019") == [("LAA", "2017"), ("LAA", "2018"), ("LAA", "2019")]
     # reversed range

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests the attributes and methods of the Player class."""
+"""Tests the attributes and methods of the `Player` class."""
 
 import json
 from pathlib import Path
@@ -15,7 +15,7 @@ def test_info(
     players_list: list[br.Player],
     updated_players_list: list[br.Player],
 ) -> None:
-    """Tests the contents of the info DataFrame."""
+    """Tests the contents of the `info` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "info.csv"
         expected_df = pd.read_csv(file)
@@ -30,7 +30,7 @@ def test_info(
 
 
 def test_batting(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the batting DataFrame."""
+    """Tests the contents of the `batting` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "batting.csv"
         expected_df = pd.read_csv(file)
@@ -43,7 +43,7 @@ def test_pitching(
     players_list: list[br.Player],
     updated_players_list: list[br.Player],
 ) -> None:
-    """Tests the contents of the pitching DataFrame."""
+    """Tests the contents of the `pitching` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "pitching.csv"
         expected_df = pd.read_csv(file)
@@ -58,7 +58,7 @@ def test_pitching(
 
 
 def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the fielding DataFrame."""
+    """Tests the contents of the `fielding` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "fielding.csv"
         expected_df = pd.read_csv(file)
@@ -67,7 +67,7 @@ def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> 
 
 
 def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the bling DataFrame."""
+    """Tests the contents of the `bling` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "bling.csv"
         expected_df = pd.read_csv(file)
@@ -76,7 +76,7 @@ def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> Non
 
 
 def test_relatives(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the relatives dictionary."""
+    """Tests the contents of the `relatives` dictionary."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "relatives.json"
         expected_dict = json.loads(file.read_bytes())
@@ -84,7 +84,7 @@ def test_relatives(expected_player_data: Path, players_list: list[br.Player]) ->
 
 
 def test_teams(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the teams list."""
+    """Tests the contents of the `teams` list."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "teams.json"
         expected_list = json.loads(file.read_bytes())

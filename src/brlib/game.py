@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines Game class."""
+"""Defines `Game` class."""
 
 import re
 
@@ -1006,7 +1006,7 @@ class Game:
         self.batting.reset_index(drop=True, inplace=True)
 
     def _scrape_stolen_base_stats(self, batting_tables: list[Tag]) -> None:
-        """Tallies SB attempts and results by catcher, stealer, and base."""
+        """Tallies SB attempts and results by catcher, stealer, and base from `batting_tables`."""
         self.batting[
             [
                 "2B SB",

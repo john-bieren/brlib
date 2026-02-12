@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines find_games function."""
+"""Defines `find_games` function."""
 
 import re
 from itertools import chain
@@ -152,8 +152,9 @@ def find_games(
 def _process_abbreviation_list(abv_list: list[str]) -> list[str]:
     """
     Returns a list including only the valid team abbreviations for teams with box scores
-    (not including aliases), alerts user of removed inputs if `options.quiet` is False.
-    `abv_list` contents must be uppercase. If "ALL" is in `abv_list`, return value will be ["ALL"].
+    (not including aliases), alerts user of removed inputs if `options.quiet` is `False`.
+    `abv_list` contents must be uppercase.
+    If `"ALL"` is in `abv_list`, return value will be `["ALL"]`.
     """
     result = []
     for abv in abv_list:

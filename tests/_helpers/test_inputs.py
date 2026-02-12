@@ -12,7 +12,7 @@ from brlib._helpers.inputs import (
 
 
 def test_validate_game_list() -> None:
-    """Tests the outputs of the validate_game_list function."""
+    """Tests the outputs of the `validate_game_list` function."""
     test_list = [
         # convert team to uppercase
         ("sea", "20150621", "0"),
@@ -54,7 +54,7 @@ def test_validate_game_list() -> None:
 
 
 def test_validate_player_list() -> None:
-    """Tests the outputs of the validate_player_list function."""
+    """Tests the outputs of the `validate_player_list` function."""
     test_list = [
         # convert to lowercase
         "HERNAFE02",
@@ -82,7 +82,7 @@ def test_validate_player_list() -> None:
 
 
 def test_validate_team_list() -> None:
-    """Tests the outputs of the validate_team_list function."""
+    """Tests the outputs of the `validate_team_list` function."""
     test_list = [
         # convert to uppercase
         ("cin", "2017"),
@@ -103,7 +103,7 @@ def test_validate_team_list() -> None:
 
 
 def test_validate_date_list() -> None:
-    """Tests the outputs of the validate_date_list function."""
+    """Tests the outputs of the `validate_date_list` function."""
     test_list = [
         # approve with leading 0
         "0704",

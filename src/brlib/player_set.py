@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines PlayerSet class."""
+"""Defines `PlayerSet` class."""
 
 from itertools import chain
 

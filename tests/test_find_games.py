@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-"""Tests the output of the find_games function."""
+"""Tests the output of the `find_games` function."""
 
 # noinspection PyProtectedMember
 from brlib.find_games import _find_year_list, find_games
 
 
 def test_teams():
-    """Tests that teams argument is handled correctly."""
+    """Tests that the `teams` argument is handled correctly."""
     # reject alias
     assert len(find_games("KC1", "1957")) == 0
     # list, test case insensitivity
@@ -17,7 +17,7 @@ def test_teams():
 
 
 def test_seasons():
-    """Tests that seasons argument is handled correctly."""
+    """Tests that the `seasons` argument is handled correctly."""
     # range
     assert len(find_games("LAA", "2017-2019")) == 162 * 3
     # reversed range
@@ -29,7 +29,7 @@ def test_seasons():
 
 
 def test_opponents():
-    """Tests that opponents argument is handled correctly."""
+    """Tests that the `opponents` argument is handled correctly."""
     # reject alias
     assert len(find_games(seasons="1957", opponents="KC1")) == 0
     # with a teams argument (the expected use case)
@@ -53,7 +53,7 @@ def test_opponents():
 
 def test_dates():
     """
-    Tests that dates argument (presumed valid) is handled correctly.
+    Tests that the `dates` argument (presumed valid) is handled correctly.
     Validation of dates is tested in test_inputs.py.
     """
     # single date
@@ -83,7 +83,7 @@ def test_dates():
 
 
 def test_home_away():
-    """Tests that home_away argument is handled correctly."""
+    """Tests that the `home_away` argument is handled correctly."""
     # away
     assert len(find_games("BOS", "2020", home_away="away")) == 29
     # home, test case insensitivity
@@ -91,7 +91,7 @@ def test_home_away():
 
 
 def test_game_type():
-    """Tests that game_type argument is handled correctly."""
+    """Tests that the `game_type` argument is handled correctly."""
     # reg
     assert len(find_games("SEA", "2022", game_type="reg")) == 162
     # post, test case insensitivity
@@ -105,7 +105,7 @@ def test_game_type():
 
 
 def test_find_year_list():
-    """Tests that _find_year_list filters seasons based on other arguments."""
+    """Tests that the  `_find_year_list` method filters seasons based on other arguments."""
     # trim based on teams
     assert len(_find_year_list(["SEA"], ["1901-2016"], ["ALL"], "ALL")) == 40
     # trim based on teams + opponents

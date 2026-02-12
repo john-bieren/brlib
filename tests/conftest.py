@@ -17,7 +17,7 @@ br.options.update_venue_names = False
 
 @pytest.fixture(scope="module")
 def ap_filtered() -> pd.DataFrame:
-    """The output of all_players filtered to a stable subset of retired players."""
+    """The output of `all_players`, filtered to a stable subset of retired players."""
     ap = br.all_players()
     ap = ap.loc[ap["Career End"] < 2019]
     return ap
@@ -25,13 +25,13 @@ def ap_filtered() -> pd.DataFrame:
 
 @pytest.fixture(scope="session")
 def expected_game_data() -> Path:
-    """The directory containing of the expected game data."""
+    """The directory containing the expected game data."""
     return Path(__file__).parent.resolve() / "expected" / "games"
 
 
 @pytest.fixture(scope="session")
 def games_list() -> list[br.Game]:
-    """The Game outputs to be tested, before any public methods are run."""
+    """The `Game` outputs to be tested, before any public methods are run."""
     return br.get_games(
         [
             # ASG with dh != 0, 10 innings
@@ -71,7 +71,7 @@ def games_list() -> list[br.Game]:
 
 @pytest.fixture(scope="session")
 def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
-    """The Game outputs to be tested, after all public methods are run."""
+    """The `Game` outputs to be tested, after all public methods are run."""
     games_list_copy = copy.deepcopy(games_list)
     for game in games_list_copy:
         game.add_no_hitters()
@@ -82,25 +82,25 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
 
 @pytest.fixture(scope="session")
 def game_set(games_list: list[br.Game]) -> br.GameSet:
-    """A GameSet made from the contents of games_list."""
+    """A `GameSet` made from the contents of `games_list`."""
     return br.GameSet(games_list)
 
 
 @pytest.fixture(scope="session")
 def updated_game_set(updated_games_list: list[br.Game]) -> br.GameSet:
-    """A GameSet made from the contents of updated_games_list."""
+    """A `GameSet` made from the contents of `updated_games_list`."""
     return br.GameSet(updated_games_list)
 
 
 @pytest.fixture(scope="session")
 def expected_player_data() -> Path:
-    """The directory containing of the expected player data."""
+    """The directory containing the expected player data."""
     return Path(__file__).parent.resolve() / "expected" / "players"
 
 
 @pytest.fixture(scope="session")
 def players_list() -> list[br.Player]:
-    """The Player outputs to be tested, before any public methods are run."""
+    """The `Player` outputs to be tested, before any public methods are run."""
     return br.get_players(
         [
             # tons of relatives (including a manager), two missing seasons
@@ -130,7 +130,7 @@ def players_list() -> list[br.Player]:
 
 @pytest.fixture(scope="session")
 def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
-    """The Player outputs to be tested, after all public methods are run."""
+    """The `Player` outputs to be tested, after all public methods are run."""
     players_list_copy = copy.deepcopy(players_list)
     for player in players_list_copy:
         player.add_no_hitters()
@@ -140,25 +140,25 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
 
 @pytest.fixture(scope="session")
 def player_set(players_list: list[br.Player]) -> br.PlayerSet:
-    """A PlayerSet made from the contents of players_list."""
+    """A `PlayerSet` made from the contents of `players_list`."""
     return br.PlayerSet(players_list)
 
 
 @pytest.fixture(scope="session")
 def updated_player_set(updated_players_list: list[br.Player]) -> br.PlayerSet:
-    """A PlayerSet made from the contents of updated_players_list."""
+    """A `PlayerSet` made from the contents of `updated_players_list`."""
     return br.PlayerSet(updated_players_list)
 
 
 @pytest.fixture(scope="session")
 def expected_team_data() -> Path:
-    """The directory containing of the expected team data."""
+    """The directory containing the expected team data."""
     return Path(__file__).parent.resolve() / "expected" / "teams"
 
 
 @pytest.fixture(scope="session")
 def teams_list() -> list[br.Team]:
-    """The Team outputs to be tested, before any public methods are run."""
+    """The `Team` outputs to be tested, before any public methods are run."""
     return br.get_teams(
         [
             # four managers, limited data, partial park factors
@@ -184,7 +184,7 @@ def teams_list() -> list[br.Team]:
 
 @pytest.fixture(scope="session")
 def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
-    """The Team outputs to be tested, after all public methods are run."""
+    """The `Team` outputs to be tested, after all public methods are run."""
     teams_list_copy = copy.deepcopy(teams_list)
     for team in teams_list_copy:
         team.add_no_hitters()
@@ -195,11 +195,11 @@ def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
 
 @pytest.fixture(scope="session")
 def team_set(teams_list: list[br.Team]) -> br.TeamSet:
-    """A TeamSet made from the contents of teams_list."""
+    """A `TeamSet` made from the contents of `teams_list`."""
     return br.TeamSet(teams_list)
 
 
 @pytest.fixture(scope="session")
 def updated_team_set(updated_teams_list: list[br.Team]) -> br.TeamSet:
-    """A TeamSet made from the contents of updated_teams_list."""
+    """A `TeamSet` made from the contents of `updated_teams_list`."""
     return br.TeamSet(updated_teams_list)

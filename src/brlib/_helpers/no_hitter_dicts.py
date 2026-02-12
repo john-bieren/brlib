@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Defines and instantiates NoHitterDicts singleton."""
+"""Defines and instantiates `NoHitterDicts` singleton."""
 
 import os
 from datetime import datetime
@@ -42,7 +42,7 @@ class NoHitterDicts(Singleton):
         self.team_inh_dict, self.team_pg_dict, self.team_cnh_dict = ({} for _ in range(3))
 
     def populate(self) -> bool:
-        """Loads no-hitter dicts from cache or web, returns True if successful."""
+        """Loads no-hitter dicts from cache or the web, returns `True` if successful."""
         if self._populated:
             return True
         if self._has_valid_cache:

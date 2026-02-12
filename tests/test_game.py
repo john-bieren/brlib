@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Tests the attributes and methods of the Game class."""
+"""Tests the attributes and methods of the `Game` class."""
 
 import json
 from pathlib import Path
@@ -15,7 +15,7 @@ def test_info(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the info DataFrame."""
+    """Tests the contents of the `info` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "info.csv"
         expected_df = pd.read_csv(file)
@@ -34,7 +34,7 @@ def test_batting(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the batting DataFrame."""
+    """Tests the contents of the `batting` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "batting.csv"
         expected_df = pd.read_csv(file)
@@ -53,7 +53,7 @@ def test_pitching(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the pitching DataFrame."""
+    """Tests the contents of the `pitching` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "pitching.csv"
         expected_df = pd.read_csv(file)
@@ -72,7 +72,7 @@ def test_fielding(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the fielding DataFrame."""
+    """Tests the contents of the `fielding` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "fielding.csv"
         expected_df = pd.read_csv(file)
@@ -91,7 +91,7 @@ def test_linescore(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the linescore DataFrame."""
+    """Tests the contents of the `linescore` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "linescore.csv"
         expected_df = pd.read_csv(file)
@@ -110,7 +110,7 @@ def test_team_info(
     games_list: list[br.Game],
     updated_games_list: list[br.Game],
 ) -> None:
-    """Tests the contents of the team_info DataFrame."""
+    """Tests the contents of the `team_info` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "team_info.csv"
         expected_df = pd.read_csv(file)
@@ -125,7 +125,7 @@ def test_team_info(
 
 
 def test_ump_info(expected_game_data: Path, games_list: list[br.Game]) -> None:
-    """Tests the contents of the ump_info DataFrame."""
+    """Tests the contents of the `ump_info` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "ump_info.csv"
         expected_df = pd.read_csv(file)
@@ -134,7 +134,7 @@ def test_ump_info(expected_game_data: Path, games_list: list[br.Game]) -> None:
 
 
 def test_players(expected_game_data: Path, games_list: list[br.Game]) -> None:
-    """Tests the contents of the players list."""
+    """Tests the contents of the `players` list."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "players.json"
         expected_list = json.loads(file.read_bytes())
@@ -142,7 +142,7 @@ def test_players(expected_game_data: Path, games_list: list[br.Game]) -> None:
 
 
 def test_teams(expected_game_data: Path, games_list: list[br.Game]) -> None:
-    """Tests the contents of the teams list."""
+    """Tests the contents of the `teams` list."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "teams.json"
         expected_list = json.loads(file.read_bytes())

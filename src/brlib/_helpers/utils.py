@@ -16,13 +16,14 @@ from bs4 import Tag
 
 def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     """
-    Raises a TypeError at runtime if values passed to the function
+    Raises a `TypeError` at runtime if values passed to the function
     do not match its type annotations.
     """
     hints = typing.get_type_hints(func)
 
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
+        """Internal wrapper for the typechecking logic."""
         # combine args and kwargs into one dictionary
         # noinspection PyUnresolvedReferences
         all_args = {**dict(zip(func.__code__.co_varnames, args)), **kwargs}
@@ -84,10 +85,10 @@ def str_between(string: str, start: str, end: str, anchor: str = "start") -> str
     Returns the substring of `string` which appears between `start` and `end`.
     `string` must contain `start` and `end`.
 
-    If `anchor` == `"start"`, the substring between the first occurrence of `start`
+    If `anchor` is `"start"`, the substring between the first occurrence of `start`
     and the first subsequent occurrence of `end` will be returned.
 
-    If `anchor` == `"end"`, the substring between the final occurrence of `end`
+    If `anchor` is `"end"`, the substring between the final occurrence of `end`
     and the final prior occurrence of `start` will be returned.
     """
     if start not in string:
@@ -116,7 +117,7 @@ def clean_spaces(string: str) -> str:
 
 def reformat_date(string_date: str) -> str:
     """
-    Converts `string_date` of "Month DD, YYYY" to "YY-MM-DD" for formatting consistency.
+    Converts `string_date` from "Month DD, YYYY" to YYYY-MM-DD for formatting consistency.
     If `string_date` does not match this format, an empty string will be returned.
     """
     try:
@@ -133,7 +134,7 @@ def reformat_date(string_date: str) -> str:
 def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
     """
     Returns contents from the first comment within `tag`.
-    If `tag` does not include a table and `only_if_table` == True, returns `tag`.
+    If `tag` does not include a table and `only_if_table` is `True`, returns `tag`.
     """
     try:
         comment_contents = str_between(tag.decode_contents(), "<!--", "-->").strip()
@@ -167,7 +168,7 @@ def change_innings_notation(innings: str) -> str:
 
 
 def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
-    """Converts the numeric columns of `df` to correct dtypes using pd.to_numeric."""
+    """Converts the numeric columns of `df` to correct dtypes using `pd.to_numeric`."""
     for col in df.columns:
         try:
             df[col] = pd.to_numeric(df[col], errors="raise")
