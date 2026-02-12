@@ -470,7 +470,8 @@ class Team:
                 self.info.loc[:, col] = clean_spaces(value)
 
             elif line_str.startswith("Attendance"):
-                self.info.loc[:, "Attendance"] = str_between(line_str, "Attendance:", "(").strip()
+                attendance_str = str_between(line_str, "Attendance:", "(")
+                self.info.loc[:, "Attendance"] = int(attendance_str.replace(",", ""))
                 self.info.loc[:, "Attendance Rank"] = str_between(line_str, "(", ")")
 
             elif line_str.startswith("Park Factors"):
