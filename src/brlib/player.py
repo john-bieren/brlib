@@ -438,6 +438,7 @@ class Player:
                     if len(birthplace_split) == 2:
                         birth_city, birth_state_or_country = birthplace.split(", ", maxsplit=1)
                         self.info.loc[:, "Birth City"] = birth_city
+                        birth_state_or_country = birth_state_or_country.strip()
                         # US states are represented by abbreviations
                         if len(birth_state_or_country) == 2:
                             self.info.loc[:, "Birth State/Province"] = birth_state_or_country
