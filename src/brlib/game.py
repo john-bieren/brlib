@@ -194,9 +194,9 @@ class Game:
 
         self.name = ""
         self.id = str_between(page.url, "/", ".", anchor="end")
-        self.info, self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(4))
-        self.team_info, self.ump_info, self.linescore = (pd.DataFrame() for _ in range(3))
-        self.players, self.teams = ([] for _ in range(2))
+        self.info, self.batting, self.pitching, self.fielding = [pd.DataFrame() for _ in range(4)]
+        self.team_info, self.ump_info, self.linescore = [pd.DataFrame() for _ in range(3)]
+        self.players, self.teams = [[] for _ in range(2)]
         self._home_score = self._away_score = 0
         self._home_team = self._away_team = self._winning_team = ""
         self._home_team_id = self._away_team_id = None
@@ -552,7 +552,7 @@ class Game:
                 tuple(str_between(team, "/teams/", ".").split("/", maxsplit=1)) for team in teams
             ]
             assert len(teams) == 2
-            self._away_team_id, self._home_team_id = ("".join(team) for team in teams)
+            self._away_team_id, self._home_team_id = ["".join(team) for team in teams]
             self.teams += teams
 
     def _scrape_scorebox(self, scorebox: Tag) -> None:
@@ -746,8 +746,7 @@ class Game:
         # extract stats from details column
         h_df[["2B", "3B", "HR", "SB", "CS", "SF", "SH", "HBP", "GDP", "IBB"]] = 0
         for i, row in h_df.iterrows():
-            details = row["Details"].split(",")
-            for stat in details:
+            for stat in row["Details"].split(","):
                 if stat == "":
                     continue
                 if "·" in stat:
@@ -775,6 +774,7 @@ class Game:
         h_df[list(dict.fromkeys(player_stats.values()))] = 0
         h_df[dp_tp] = 0
 
+        team_totals_mask = h_df["Player"] == "Team Totals"
         footer = table.find("div", {"class": "footer no_hide_long"})
         # [1:] because the first tag is the parent of the others
         for line in footer.find_all("div")[1:]:
@@ -797,17 +797,15 @@ class Game:
                         number = 1
                     # += because players can be listed twice, e.g. BOS201708250
                     h_df.loc[h_df["Player"] == player, stat_name] += number
-                    h_df.loc[h_df["Player"] == "Team Totals", stat_name] += number
+                    h_df.loc[team_totals_mask, stat_name] += number
 
             elif team_stats.get(stat) is not None:
                 stat_name = team_stats.get(stat)
-                h_df.loc[h_df["Player"] == "Team Totals", stat_name] = line_str.split(
-                    ": ", maxsplit=1
-                )[1]
+                h_df.loc[team_totals_mask, stat_name] = line_str.split(": ", maxsplit=1)[1]
 
             elif stat in dp_tp:
                 total, player_list = players.split(". ", maxsplit=1)
-                h_df.loc[h_df["Player"] == "Team Totals", stat] = int(total)
+                h_df.loc[team_totals_mask, stat] = int(total)
 
                 for dp_players in player_list.split("; "):
                     if dp_players.rsplit(maxsplit=1)[1].isnumeric():
@@ -877,7 +875,7 @@ class Game:
                 for i, row in p_df.iterrows():
                     if row["Details"] is None:
                         continue
-                    details = (d.split(" ", maxsplit=1)[0] for d in row["Details"].split(", "))
+                    details = [d.split(" ", maxsplit=1)[0] for d in row["Details"].split(", ")]
                     for stat in details:
                         # "H" is also the name of the hits allowed column
                         stat = "Holds" if stat == "H" else stat

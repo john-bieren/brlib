@@ -37,9 +37,9 @@ class NoHitterDicts(Singleton):
         self._cache_file = CACHE_DIR / "nh_data_v1.csv"
         self._populated = False
 
-        self.game_inh_dict, self.game_pg_dict, self.game_cnh_dict = ({} for _ in range(3))
-        self.player_inh_dict, self.player_pg_dict, self.player_cnh_dict = ({} for _ in range(3))
-        self.team_inh_dict, self.team_pg_dict, self.team_cnh_dict = ({} for _ in range(3))
+        self.game_inh_dict, self.game_pg_dict, self.game_cnh_dict = [{} for _ in range(3)]
+        self.player_inh_dict, self.player_pg_dict, self.player_cnh_dict = [{} for _ in range(3)]
+        self.team_inh_dict, self.team_pg_dict, self.team_cnh_dict = [{} for _ in range(3)]
 
     def populate(self) -> bool:
         """Loads no-hitter dicts from cache or the web, returns `True` if successful."""
@@ -143,7 +143,7 @@ class NoHitterDicts(Singleton):
         )
 
         # create player id, game id columns
-        player_id_column, game_id_column = ([] for _ in range(2))
+        player_id_column, game_id_column = [[] for _ in range(2)]
         for row in individual_table.find_all("a", href=True):
             href = row.get("href", "")
             if href.startswith("/players"):
@@ -205,7 +205,7 @@ class NoHitterDicts(Singleton):
                 combined_df.loc[i, "Team"] = team
 
         # create player id, game id columns
-        player_id_column, game_id_column = ([] for _ in range(2))
+        player_id_column, game_id_column = [[] for _ in range(2)]
         for row in combined_table.find_all("a", href=True):
             href = row.get("href", "")
             if href.startswith("/players"):

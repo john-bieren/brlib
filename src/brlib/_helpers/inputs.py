@@ -160,7 +160,7 @@ def validate_date_list(date_list: list[str]) -> list[str]:
             write(f'ignoring invalid dates input "{date}"')
             continue
         if "-" in date:
-            start, end = date.split("-")
+            start, end = date.split("-", maxsplit=1)
             if int(start) > int(end):
                 result.append(f"{end}-{start}")
                 continue

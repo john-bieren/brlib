@@ -145,7 +145,7 @@ class Team:
 
         self.name = ""
         self.id = str_between(page.url, "teams/", ".shtml").replace("/", "")
-        self.info, self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(4))
+        self.info, self.batting, self.pitching, self.fielding = [pd.DataFrame() for _ in range(4)]
         self.players = []
         self._url = page.url
 
@@ -362,7 +362,7 @@ class Team:
             return
 
         # gather player stats from the relevant tables
-        h_df_1, h_df_2, p_df_1, p_df_2 = (pd.DataFrame() for _ in range(4))
+        h_df_1, h_df_2, p_df_1, p_df_2 = [pd.DataFrame() for _ in range(4)]
         page_tables = content.find_all("div", {"class": "table_wrapper"}, recursive=False)
         for table in page_tables:
             table_name = table.get("id")
@@ -440,7 +440,9 @@ class Team:
                 if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
                 else:
-                    division_finish = str_between(line_str, ",", "place").strip().split()[0]
+                    division_finish = (
+                        str_between(line_str, ",", "place").strip().split(maxsplit=1)[0]
+                    )
                 self.info.loc[:, "Division Finish"] = division_finish.strip("stndrh")
 
                 if "(Schedule" in line_str:
@@ -481,19 +483,19 @@ class Team:
                 if "Multi-year:" in line_str:
                     if "One-year" in line_str:
                         multi_year = str_between(line_str, "Multi-year:", "One-year:")
-                        one_year = line_str.split("One-year:")[1]
+                        one_year = line_str.split("One-year:", maxsplit=1)[1]
                     else:
-                        multi_year = line_str.split("Multi-year:")[1]
+                        multi_year = line_str.split("Multi-year:", maxsplit=1)[1]
                 else:
-                    one_year = line_str.split("One-year:")[1]
+                    one_year = line_str.split("One-year:", maxsplit=1)[1]
 
                 my_bat = my_pit = oy_bat = oy_pit = ""
                 if multi_year != "":
-                    my_bat, my_pit = multi_year.strip().split(", ")
+                    my_bat, my_pit = multi_year.strip().split(", ", maxsplit=1)
                     my_bat = my_bat.split(" - ", maxsplit=1)[1]
                     my_pit = my_pit.split(" - ", maxsplit=1)[1]
                 if one_year != "":
-                    oy_bat, oy_pit = one_year.strip().split(", ")
+                    oy_bat, oy_pit = one_year.strip().split(", ", maxsplit=1)
                     oy_bat = oy_bat.split(" - ", maxsplit=1)[1]
                     oy_pit = oy_pit.split(" - ", maxsplit=1)[1]
                 self.info.loc[:, "Multi-Year Batting Park Factor"] = my_bat
@@ -525,7 +527,7 @@ class Team:
     def _scrape_standard_table(self, table: bs) -> pd.DataFrame:
         """Gathers team standard batting/pitching/fielding stats from `table`."""
         # scrape regular season and postseason tabs
-        reg_records, post_records = ([] for _ in range(2))
+        reg_records, post_records = [[] for _ in range(2)]
         end_of_reg_table = found_postseason_table = False
 
         for row in table.find_all("tr"):
@@ -595,9 +597,8 @@ class Team:
         df_1.loc[df_1["Player ID"].isna(), ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = None
 
         for _, row in df_1.iterrows():
-            awards = row["Awards"].split(",")
             player_mask = df_1["Player ID"] == row["Player ID"]
-            for award in awards:
+            for award in row["Awards"].split(","):
                 if award in {"AS", "GG", "SS", "WS MVP"}:
                     df_1.loc[player_mask, award] += 1
                 elif award in {"ALCS MVP", "NLCS MVP"}:

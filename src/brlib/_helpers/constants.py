@@ -32,7 +32,7 @@ SEASON_START_DATE = "03-17"
 SEASON_END_DATE = "11-08"
 
 # determine if there's been baseball played in the current year
-SEASON_START_MONTH, SEASON_START_DAY = (int(s) for s in SEASON_START_DATE.split("-"))
+SEASON_START_MONTH, SEASON_START_DAY = [int(s) for s in SEASON_START_DATE.split("-", maxsplit=1)]
 if (
     CURRENT_MONTH < SEASON_START_MONTH
     or CURRENT_MONTH == SEASON_START_MONTH

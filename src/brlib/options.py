@@ -118,7 +118,7 @@ class Options(Singleton):
             "quiet": False,
         }
         self._preferences_file = CONFIG_DIR / "preferences_v1.json"
-        self._changes, self._preferences = ({} for _ in range(2))
+        self._changes, self._preferences = [{} for _ in range(2)]
         self._settings = ChainMap(self._changes, self._preferences, self._defaults)
         self._load_preferences()
 

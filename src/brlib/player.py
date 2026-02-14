@@ -148,8 +148,8 @@ class Player:
 
         self.name = ""
         self.id = str_between(page.url, "/", ".shtml", anchor="end")
-        self.info, self.bling = (pd.DataFrame({"Player ID": [self.id]}) for _ in range(2))
-        self.batting, self.pitching, self.fielding = (pd.DataFrame() for _ in range(3))
+        self.info, self.bling = [pd.DataFrame({"Player ID": [self.id]}) for _ in range(2)]
+        self.batting, self.pitching, self.fielding = [pd.DataFrame() for _ in range(3)]
         self.teams = []
         self.relatives = defaultdict(list)
         self._yearly_salaries = defaultdict(int)
@@ -316,8 +316,8 @@ class Player:
                 self.info.loc[:, "Minimum Career Earnings"] = sum(self._yearly_salaries.values())
 
         # then find the rest of the stats
-        h_df_1, h_df_2, h_df_3 = (pd.DataFrame() for _ in range(3))
-        p_df_1, p_df_2, p_df_3 = (pd.DataFrame() for _ in range(3))
+        h_df_1, h_df_2, h_df_3 = [pd.DataFrame() for _ in range(3)]
+        p_df_1, p_df_2, p_df_3 = [pd.DataFrame() for _ in range(3)]
         advanced_batting_buffer = advanced_pitching_buffer = -1
         for table in tables:
             table_id = table.get("id")
@@ -375,7 +375,7 @@ class Player:
         # find career wins above replacement
         major_totals_summary = wrap.find("div", {"class": "p1"})
         if major_totals_summary is not None:
-            self.info.loc[:, "bWAR"] = major_totals_summary.text.split("\n")[3]
+            self.info.loc[:, "bWAR"] = major_totals_summary.text.split("\n", maxsplit=4)[3]
         else:
             # player has played in postseason but not regular season
             self.info.loc[:, "bWAR"] = ""
@@ -387,7 +387,8 @@ class Player:
 
             if line_str.startswith("Bats"):
                 # no maxsplit so that easter eggs are excluded, e.g. youngja03, graype01
-                bats, throws = (s.split(":", maxsplit=1)[1] for s in line_str.split("\t")[:2])
+                bats, throws = line_str.split("\t", maxsplit=2)[:2]
+                bats, throws = [s.split(":", maxsplit=1)[1] for s in (bats, throws)]
                 self.info.loc[:, "Batting Hand"] = bats.strip()
                 self.info.loc[:, "Throwing Hand"] = throws.strip()
 
@@ -860,7 +861,7 @@ class Player:
         table = soup_from_comment(table, only_if_table=True)
 
         # scrape regular season and postseason tabs
-        reg_records, post_records = ([] for _ in range(2))
+        reg_records, post_records = [[] for _ in range(2)]
         tables = 0
         postseason_included = False
 
