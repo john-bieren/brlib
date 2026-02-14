@@ -502,9 +502,11 @@ class Team:
                 self.info.loc[:, "One-Year Pitching Park Factor"] = oy_pit
 
             elif line_str.startswith("Pythagorean"):
-                pyth_w, pyth_l = str_between(line_str, "Pythagorean W-L: ", ", ").split("-")
-                self.info.loc[:, "Pythagorean Wins"] = pyth_w
-                self.info.loc[:, "Pythagorean Losses"] = pyth_l
+                py_record, runs, runs_allowed = line_str.split(",", maxsplit=2)
+                py_w, py_l = py_record.replace("Pythagorean W-L: ", "").split("-", maxsplit=1)
+                runs, runs_allowed = [r.split(maxsplit=1)[0] for r in (runs, runs_allowed)]
+                self.info.loc[:, ["Pythagorean Wins", "Pythagorean Losses"]] = py_w, py_l
+                self.info.loc[:, ["Runs", "Runs Allowed"]] = runs, runs_allowed
 
         # scrape bling section
         self.info.loc[:, ["Team Gold Glove", "Pennant", "World Series"]] = 0

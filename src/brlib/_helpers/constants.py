@@ -962,6 +962,8 @@ TEAM_INFO_COLS = (
     "One-Year Pitching Park Factor",
     "Pythagorean Wins",
     "Pythagorean Losses",
+    "Runs",
+    "Runs Allowed",
     "Team Gold Glove",
     "Pennant",
     "World Series",
