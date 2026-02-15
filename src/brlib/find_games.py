@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines `find_games` function."""
 
 import re

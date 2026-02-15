@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines get_expected functions."""
 
 import json

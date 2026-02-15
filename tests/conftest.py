@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Sets reusable objects for testing."""
 
 import copy

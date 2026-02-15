@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the attributes and methods of the `PlayerSet` class."""
 
 from get_expected import get_expected_df, get_expected_list

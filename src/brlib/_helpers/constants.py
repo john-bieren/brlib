@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines constants used throughout the codebase."""
 
 import re

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the attributes of the `NoHitterDicts` singleton."""
 
 import copy

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the output of the `all_players` function."""
 
 import pandas as pd

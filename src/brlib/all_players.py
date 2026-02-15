@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines `all_players` function."""
 
 from io import StringIO

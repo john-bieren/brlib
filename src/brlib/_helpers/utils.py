@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines utility functions used throughout the codebase."""
 
 import functools

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the functions in inputs.py."""
 
 # noinspection PyProtectedMember

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the output of the `find_asg` function."""
 
 from brlib import find_asg

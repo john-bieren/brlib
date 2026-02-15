@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Defines functions for processing and validating inputs."""
 
 import re

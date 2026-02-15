@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the output of the `find_teams` function."""
 
 from brlib import find_teams

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests some of the functions in utils.py; the rest are covered by the end-to-end tests."""
 
 from typing import Any

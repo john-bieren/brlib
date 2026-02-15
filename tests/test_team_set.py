@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the attributes and methods of the `TeamSet` class."""
 
 from pathlib import Path

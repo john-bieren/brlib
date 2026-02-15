@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tests the methods of the `AbbreviationsManager` singleton."""
 
 # noinspection PyProtectedMember
