@@ -36,10 +36,6 @@ def main() -> None:
                 file_path = wiki_dir / f"{member_name}.{method_name}.md"
                 file_path.write_text(clean_docstring(method.__doc__), encoding="UTF-8")
 
-    # copy module docstring in __init__.py into Home.md
-    file_path = wiki_dir / "Home.md"
-    file_path.write_text(clean_docstring(brlib.__doc__), encoding="UTF-8")
-
 
 def clean_docstring(docstring: str) -> str:
     """Reformat whitespace in `docstring`."""
