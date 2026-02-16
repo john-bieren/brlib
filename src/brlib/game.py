@@ -42,17 +42,23 @@ from .options import dev_alert, options, print_page
 
 class Game:
     """
-    Statistics and information from a game. Can be initialized by specifying `home_team`, `date`, and `doubleheader`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded box score page. If neither of these sets of parameters are given, an exception is raised.
+    Statistics and information from a game. Can be initialized by specifying `home_team`, `date`,
+    and `doubleheader`, and the associated page will be loaded automatically. Can also be
+    initialized with a previously loaded box score page. If neither of these sets of parameters are
+    given, an exception is raised.
 
     ## Parameters
 
     * `home_team`: `str`, default `""`
 
-        The home team's abbreviation (e.g. `"sea"`), or, if the game is an All-Star Game, `"allstar"`. Era adjustment is not used, and aliases are accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+        The home team's abbreviation (e.g. `"sea"`), or, if the game is an All-Star Game,
+        `"allstar"`. Era adjustment is not used, and aliases are accepted. [Read more about team
+        abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
     * `date`: `str`, default `""`
 
-        The date of the game in YYYYMMDD format (e.g. `"20230830"`). Or, if the game is an All-Star Game, the year in YYYY format.
+        The date of the game in YYYYMMDD format (e.g. `"20230830"`). Or, if the game is an All-Star
+        Game, the year in YYYY format.
 
     * `doubleheader`: `str`, default `""`
 
@@ -60,7 +66,8 @@ class Game:
         * `"0"` if not part of a doubleheader.
         * `"1"` if first game of a doubleheader.
         * `"2"` if second game of a doubleheader.
-        * `"3"` if third game of a tripleheader (i.e. [PIT192010023](https://www.baseball-reference.com/boxes/PIT/PIT192010023.shtml)).
+        * `"3"` if third game of a tripleheader (i.e.
+        [PIT192010023](https://www.baseball-reference.com/boxes/PIT/PIT192010023.shtml)).
 
         Or, if the game is an All-Star Game:
         * `"0"` if only ASG of the year.
@@ -73,15 +80,19 @@ class Game:
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
-        Whether to populate the no-hitter columns in the `Game.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+        Whether to populate the no-hitter columns in the `Game.pitching` DataFrame, which are empty
+        by default (may require an additional request). If no value is passed, the value of
+        `options.add_no_hitters` is used.
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team names such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+        Whether to standardize team names such that teams are identified by one name, excluding
+        relocations. If no value is passed, the value of `options.update_team_names` is used.
 
     * `update_venue_names`: `bool` or `None`, default `None`
 
-        Whether to standardize venue name such that venues are identified by one name. If no value is passed, the value of `options.update_venue_names` is used.
+        Whether to standardize venue name such that venues are identified by one name. If no value
+        is passed, the value of `options.update_venue_names` is used.
 
     ## Attributes
 
@@ -91,41 +102,44 @@ class Game:
 
     * `name`: `str`
 
-        The unique, pretty name of the game (e.g. "May 2, 2018, Oakland Athletics vs Seattle Mariners").
+        The unique, pretty name of the game (e.g. "May 2, 2018, Oakland Athletics vs Seattle
+        Mariners").
 
     * `info`: `pandas.DataFrame`
 
-        Contains information about the game and its circumstances.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameinfo-and-gamesetinfo)
+        Contains information about the game and its circumstances. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameinfo-and-gamesetinfo)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains batting and baserunning stats from the batting tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamebatting-and-gamesetbatting)
+        Contains batting and baserunning stats from the batting tables and the information beneath
+        them. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamebatting-and-gamesetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains pitching stats from the pitching tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamepitching-and-gamesetpitching)
+        Contains pitching stats from the pitching tables and the information beneath them. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamepitching-and-gamesetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains fielding stats from the batting tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamefielding-and-gamesetfielding)
+        Contains fielding stats from the batting tables and the information beneath them. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamefielding-and-gamesetfielding)
 
     * `team_info`: `pandas.DataFrame`
 
-        Contains information about the teams involved in the game.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameteam_info-and-gamesetteam_info)
+        Contains information about the teams involved in the game. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameteam_info-and-gamesetteam_info)
 
     * `ump_info`: `pandas.DataFrame`
 
-        Contains the names and positions of the game's umpires.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameump_info-and-gamesetump_info)
+        Contains the names and positions of the game's umpires. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameump_info-and-gamesetump_info)
 
     * `linescore`: `pandas.DataFrame`
 
-        Contains the game's linescore, a box score fixture which displays the teams' run totals by inning, as well as their total runs, hits, and errors.
+        Contains the game's linescore, a box score fixture which displays the teams' run totals by
+        inning, as well as their total runs, hits, and errors.
 
     * `players`: `list[str]`
 
@@ -227,7 +241,9 @@ class Game:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Game.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `Game.pitching` DataFrame, which are empty by default
+        (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 

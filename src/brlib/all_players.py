@@ -10,8 +10,8 @@ from .options import print_page
 
 def all_players() -> pd.DataFrame:
     """
-    Returns a DataFrame of basic information about all players in major league history.
-    [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#all_players)
+    Returns a DataFrame of basic information about all players in major league history. [See
+    DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#all_players)
 
     ## Parameters
 

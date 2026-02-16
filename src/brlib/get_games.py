@@ -18,29 +18,40 @@ def get_games(
     ignore_errors: bool = True,
 ) -> list[Game]:
     """
-    Returns a list of `Game` objects corresponding to the tuples in `game_list`, which mimic the `Game` initialization parameters. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+    Returns a list of `Game` objects corresponding to the tuples in `game_list`, which mimic the
+    `Game` initialization parameters. By default, a progress bar will appear in the terminal. You
+    can change this behavior with
+    [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 
     * `game_list`: `list[tuple[str, str, str]]`
 
-        A list of tuples containing `home_team`, `date`, and `doubleheader` arguments like those for a [`Game`](https://github.com/john-bieren/brlib/wiki/Game) object.
+        A list of tuples containing `home_team`, `date`, and `doubleheader` arguments like those for
+        a [`Game`](https://github.com/john-bieren/brlib/wiki/Game) object.
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
-        Whether to populate the no-hitter columns in the `Game.pitching` DataFrames, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+        Whether to populate the no-hitter columns in the `Game.pitching` DataFrames, which are empty
+        by default (may require an additional request). If no value is passed, the value of
+        `options.add_no_hitters` is used.
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team names such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+        Whether to standardize team names such that teams are identified by one name, excluding
+        relocations. If no value is passed, the value of `options.update_team_names` is used.
 
     * `update_venue_names`: `bool` or `None`, default `None`
 
-        Whether to standardize venue names such that venues are identified by one name. If no value is passed, the value of `options.update_venue_names` is used.
+        Whether to standardize venue names such that venues are identified by one name. If no value
+        is passed, the value of `options.update_venue_names` is used.
 
     * `ignore_errors`: `bool`, default `True`
 
-        Whether to suppress any raised exceptions. If `True`, games which raise an exception will be omitted from the returned list. If the exception is caused by the [rate limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned as-is.
+        Whether to suppress any raised exceptions. If `True`, games which raise an exception will be
+        omitted from the returned list. If the exception is caused by the [rate
+        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
+        as-is.
 
     ## Returns
 

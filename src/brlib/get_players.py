@@ -17,25 +17,35 @@ def get_players(
     ignore_errors: bool = True,
 ) -> list[Player]:
     """
-    Returns a list of `Player` objects corresponding to the player IDs in `player_list`. By default, a progress bar will appear in the terminal. You can change this behavior with [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
+    Returns a list of `Player` objects corresponding to the player IDs in `player_list`. By default,
+    a progress bar will appear in the terminal. You can change this behavior with
+    [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 
     * `player_list`: `list[str]`
 
-        A list of player ID arguments like those for a [`Player`](https://github.com/john-bieren/brlib/wiki/Player) object.
+        A list of player ID arguments like those for a
+        [`Player`](https://github.com/john-bieren/brlib/wiki/Player) object.
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
-        Whether to populate the no-hitter columns in the `Player.pitching` DataFrames, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+        Whether to populate the no-hitter columns in the `Player.pitching` DataFrames, which are
+        empty by default (may require an additional request). If no value is passed, the value of
+        `options.add_no_hitters` is used.
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team names in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+        Whether to standardize team names in `Player.info["Draft Team"]` such that teams are
+        identified by one name, excluding relocations. If no value is passed, the value of
+        `options.update_team_names` is used.
 
     * `ignore_errors`: `bool`, default `True`
 
-        Whether to suppress any raised exceptions. If `True`, players which raise an exception will be omitted from the returned list. If the exception is caused by the [rate limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned as-is.
+        Whether to suppress any raised exceptions. If `True`, players which raise an exception will
+        be omitted from the returned list. If the exception is caused by the [rate
+        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
+        as-is.
 
     ## Returns
 

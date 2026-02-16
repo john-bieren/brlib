@@ -44,13 +44,17 @@ from .options import dev_alert, options, print_page
 
 class Player:
     """
-    Statistics and information from a player. Can be initialized by specifying `player_id`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded player page. If neither of these parameters are given, an exception is raised.
+    Statistics and information from a player. Can be initialized by specifying `player_id`, and the
+    associated page will be loaded automatically. Can also be initialized with a previously loaded
+    player page. If neither of these parameters are given, an exception is raised.
 
     ## Parameters
 
     * `player_id`: `str`, default `""`
 
-        The first 5 letters of the player's last name, followed by the first two letters of their first name, and two digits as a unique identifier. This ID can be found in the URL of the player's page.
+        The first 5 letters of the player's last name, followed by the first two letters of their
+        first name, and two digits as a unique identifier. This ID can be found in the URL of the
+        player's page.
 
     * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
 
@@ -58,11 +62,15 @@ class Player:
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
-        Whether to populate the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+        Whether to populate the no-hitter columns in the `Player.pitching` DataFrame, which are
+        empty by default (may require an additional request). If no value is passed, the value of
+        `options.add_no_hitters` is used.
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+        Whether to standardize team name in `Player.info["Draft Team"]` such that teams are
+        identified by one name, excluding relocations. If no value is passed, the value of
+        `options.update_team_names` is used.
 
     ## Attributes
 
@@ -76,32 +84,34 @@ class Player:
 
     * `info`: `pandas.DataFrame`
 
-        Contains biographical information about the player.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerinfo-and-playersetinfo)
+        Contains biographical information about the player. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerinfo-and-playersetinfo)
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the player's career accolades as displayed by the banners in the upper right-hand corner of their page.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
+        Contains the player's career accolades as displayed by the banners in the upper right-hand
+        corner of their page. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains the player's batting and baserunning stats from the three batting tables.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbatting-and-playersetbatting)
+        Contains the player's batting and baserunning stats from the three batting tables. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbatting-and-playersetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains the player's pitching stats from the three pitching tables.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerpitching-and-playersetpitching)
+        Contains the player's pitching stats from the three pitching tables. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerpitching-and-playersetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains the player's fielding stats from the standard fielding table.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
+        Contains the player's fielding stats from the standard fielding table. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
 
     * `relatives`: `dict[str: list[str]]`
 
-        The player's relationships with other major-leaguers. The relationships are they keys, and the values list the players. These values can be inputs to `get_players`.
+        The player's relationships with other major-leaguers. The relationships are they keys, and
+        the values list the players. These values can be inputs to `get_players`.
 
     * `teams`: `list[tuple[str, str]]`
 
@@ -171,7 +181,9 @@ class Player:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Player.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `Player.pitching` DataFrame, which are empty by
+        default (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 
@@ -264,7 +276,8 @@ class Player:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one
+        name, excluding relocations.
 
         ## Parameters
 
@@ -761,7 +774,7 @@ class Player:
 
     @staticmethod
     def _process_awards_column(df_1: pd.DataFrame) -> pd.DataFrame:
-        """Adds stats that are found in `df_1`'s awards column as their own columns."""
+        """Adds stats that are found in `df_1["Awards"]` as their own columns."""
         df_1.loc[:, ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = 0
         df_1.loc[:, ["MVP Finish", "CYA Finish", "ROY Finish"]] = None
 

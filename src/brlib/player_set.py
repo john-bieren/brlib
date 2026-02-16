@@ -25,28 +25,29 @@ class PlayerSet:
 
     * `info`: `pandas.DataFrame`
 
-        Contains biographical information about the players.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerinfo-and-playersetinfo)
+        Contains biographical information about the players. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerinfo-and-playersetinfo)
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the players' career accolades as displayed by the banners in the upper right-hand corner of their pages.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
+        Contains the players' career accolades as displayed by the banners in the upper right-hand
+        corner of their pages. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains the players' batting and baserunning stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbatting-and-playersetbatting)
+        Contains the players' batting and baserunning stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbatting-and-playersetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains the players' pitching stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerpitching-and-playersetpitching)
+        Contains the players' pitching stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerpitching-and-playersetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains the players' fielding stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
+        Contains the players' fielding stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
 
     * `teams`: `list[tuple[str, str]]`
 
@@ -104,7 +105,9 @@ class PlayerSet:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `PlayerSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `PlayerSet.pitching` DataFrame, which are empty by
+        default (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 
@@ -206,7 +209,8 @@ class PlayerSet:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by one name, excluding relocations.
+        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by
+        one name, excluding relocations.
 
         ## Parameters
 

@@ -41,7 +41,9 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
 
 # noinspection PyTypeChecker
 def is_type(value: Any, expected_type: type | UnionType) -> bool:
-    """Checks whether `value` is an instance of `expected_type`, including parameterized generics."""
+    """
+    Checks whether `value` is an instance of `expected_type`, including parameterized generics.
+    """
     if expected_type == Any:
         return True
 

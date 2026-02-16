@@ -13,25 +13,31 @@ from ._helpers.utils import is_type
 
 class Options(Singleton):
     """
-    Options to change brlib's behavior which can be read or set using attributes. When setting an option's value, the type must match that of the option's default value, unless the assigned value is `None`, which removes a previous assignment.
+    Options to change brlib's behavior which can be read or set using attributes. When setting an
+    option's value, the type must match that of the option's default value, unless the assigned
+    value is `None`, which removes a previous assignment.
 
     ## Attributes
 
     * `add_no_hitters`, default `False`
 
-        Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team` objects.
+        Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team`
+        objects.
 
     * `update_team_names`, default `False`
 
-        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and `Team` objects.
+        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and
+        `Team` objects.
 
     * `update_venue_names`, default `False`
 
-        Default value for `update_venue_names` arguments when initializing `Game`, `Player`, and `Team` objects.
+        Default value for `update_venue_names` arguments when initializing `Game`, `Player`, and
+        `Team` objects.
 
     * `request_buffer`, default `2.015`
 
-        Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate limit](https://www.sports-reference.com/429.html).
+        Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate
+        limit](https://www.sports-reference.com/429.html).
 
     * `timeout_limit`, default `10`
 
@@ -43,11 +49,13 @@ class Options(Singleton):
 
     * `pb_format`, default `"{percentage:3.2f}%|{bar}{r_bar}"`
 
-        The format of the progress bar. The value is passed to the tqdm `bar_format` argument. For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument. For
+        more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
 
     * `pb_color`, default `"#cccccc"`
 
-        The color of the progress bar. The value is passed to the tqdm `colour` argument. For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        The color of the progress bar. The value is passed to the tqdm `colour` argument. For more,
+        read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
 
     * `pb_disable`, default `False`
 
@@ -154,7 +162,8 @@ class Options(Singleton):
 
         * `value`: `Any`
 
-            The new default value. Must use the correct type for the given option. Use `None` to remove a preference.
+            The new default value. Must use the correct type for the given option. Use `None` to
+            remove a preference.
 
         ## Returns
 
@@ -206,7 +215,8 @@ class Options(Singleton):
     @staticmethod
     def clear_cache() -> None:
         """
-        Deletes all files in the cache directory. The cache will be replenished when necessary in a future session, but the deleted data will persist for the duration of the current session.
+        Deletes all files in the cache directory. The cache will be replenished when necessary in a
+        future session, but the deleted data will persist for the duration of the current session.
 
         ## Parameters
 
@@ -325,7 +335,8 @@ class Options(Singleton):
     def request_buffer(self) -> float:
         """
         Buffer, in seconds, between requests.
-        Necessary to obey Baseball Reference's [rate limit](https://www.sports-reference.com/429.html).
+        Necessary to obey Baseball Reference's [rate
+        limit](https://www.sports-reference.com/429.html).
         """
         return self._settings["request_buffer"]
 

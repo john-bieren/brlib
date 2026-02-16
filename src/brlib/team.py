@@ -34,13 +34,16 @@ from .options import dev_alert, options, print_page
 
 class Team:
     """
-    Statistics and information from a team. Can be initialized by specifying `team`, and `season`, and the associated page will be loaded automatically. Can also be initialized with a previously loaded team page. If neither of these sets of parameters are given, an exception is raised.
+    Statistics and information from a team. Can be initialized by specifying `team`, and `season`,
+    and the associated page will be loaded automatically. Can also be initialized with a previously
+    loaded team page. If neither of these sets of parameters are given, an exception is raised.
 
     ## Parameters
 
     * `team`: `str`, default `""`
 
-        The team's abbreviation. Era adjustment is not used, and aliases are not accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+        The team's abbreviation. Era adjustment is not used, and aliases are not accepted. [Read
+        more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
     * `season`: `str`, default `""`
 
@@ -52,21 +55,26 @@ class Team:
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
-        Whether to populate the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default (may require an additional request). If no value is passed, the value of `options.add_no_hitters` is used.
+        Whether to populate the no-hitter columns in the `Team.pitching` DataFrame, which are empty
+        by default (may require an additional request). If no value is passed, the value of
+        `options.add_no_hitters` is used.
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team names such that teams are identified by one name, excluding relocations. If no value is passed, the value of `options.update_team_names` is used.
+        Whether to standardize team names such that teams are identified by one name, excluding
+        relocations. If no value is passed, the value of `options.update_team_names` is used.
 
     * `update_venue_names`: `bool` or `None`, default `None`
 
-        Whether to standardize venue name such that venues are identified by one name. If no value is passed, the value of `options.update_venue_names` is used.
+        Whether to standardize venue name such that venues are identified by one name. If no value
+        is passed, the value of `options.update_venue_names` is used.
 
     ## Attributes
 
     * `id`: `str`
 
-        The unique identifier for the team made up of its abbreviation and season (e.g. `"SEA2017"`).
+        The unique identifier for the team made up of its abbreviation and season (e.g.
+        `"SEA2017"`).
 
     * `name`: `str`
 
@@ -74,23 +82,23 @@ class Team:
 
     * `info`: `pandas.DataFrame`
 
-        Contains information about the team, its results, and its personnel.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
+        Contains information about the team, its results, and its personnel. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains the team's batting and baserunning stats from the two batting tables.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
+        Contains the team's batting and baserunning stats from the two batting tables. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains the team's pitching stats from the two pitching tables.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
+        Contains the team's pitching stats from the two pitching tables. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains the team's fielding stats from the standard fielding table.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
+        Contains the team's fielding stats from the standard fielding table. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
 
     * `players`: `list[str]`
 
@@ -169,7 +177,9 @@ class Team:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `Team.pitching` DataFrame, which are empty by default
+        (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 

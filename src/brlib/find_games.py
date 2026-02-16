@@ -41,27 +41,36 @@ def find_games(
 
     * `teams`: `str` or `list[str]`, default `"all"`
 
-        A team abbreviation (e.g. `"sea"`), `"all"`, or a list of team abbreviations to specify which teams' games should be found. Abbreviations are subject to era adjustment, and aliases are not accepted. [Read more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
+        A team abbreviation (e.g. `"sea"`), `"all"`, or a list of team abbreviations to specify
+        which teams' games should be found. Abbreviations are subject to era adjustment, and aliases
+        are not accepted. [Read more about team abbreviation
+        handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
     * `seasons`: `str` or `list[str]`, default `"all"`
 
-        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such inputs which specify the seasons from which to find games.
+        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such
+        inputs which specify the seasons from which to find games.
 
     * `opponents`: `str` or `list[str]`, default `"all"`
 
-        A valid `teams` input specifying the opponents which `teams` must be facing in returned games.
+        A valid `teams` input specifying the opponents which `teams` must be facing in returned
+        games.
 
     * `dates`: `str` or `list[str]`, default `"all"`
 
-        A string representing a date in MMDD format as a number (e.g. `"1005"` or `"704"`), an inclusive range of such numbers (e.g. `"927-1002"`), `"all"`, or a list of multiple such inputs which specify the dates from which games should be found.
+        A string representing a date in MMDD format as a number (e.g. `"1005"` or `"704"`), an
+        inclusive range of such numbers (e.g. `"927-1002"`), `"all"`, or a list of multiple such
+        inputs which specify the dates from which games should be found.
 
     * `home_away`: `str`, default `"all"`
 
-        `"home"`, `"away"`, or `"all"` to specify the role which `teams` should have in returned games.
+        `"home"`, `"away"`, or `"all"` to specify the role which `teams` should have in returned
+        games.
 
     * `game_type`: `str`, default `"all"`
 
-        `"reg"`, `"post"`, or `"all"` to specify whether to find regular season and/or postseason games.
+        `"reg"`, `"post"`, or `"all"` to specify whether to find regular season and/or postseason
+        games.
 
     ## Returns
 

@@ -30,38 +30,39 @@ class GameSet:
 
     * `info`: `pandas.DataFrame`
 
-        Contains information about the games and their circumstances.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameinfo-and-gamesetinfo)
+        Contains information about the games and their circumstances. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameinfo-and-gamesetinfo)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains batting and baserunning stats from the batting tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamebatting-and-gamesetbatting)
+        Contains batting and baserunning stats from the batting tables and the information beneath
+        them. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamebatting-and-gamesetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains pitching stats from the pitching tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamepitching-and-gamesetpitching)
+        Contains pitching stats from the pitching tables and the information beneath them. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamepitching-and-gamesetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains fielding stats from the batting tables and the information beneath them.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamefielding-and-gamesetfielding)
+        Contains fielding stats from the batting tables and the information beneath them. [See
+        DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamefielding-and-gamesetfielding)
 
     * `team_info`: `pandas.DataFrame`
 
-        Contains information about the teams involved in the games.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameteam_info-and-gamesetteam_info)
+        Contains information about the teams involved in the games. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameteam_info-and-gamesetteam_info)
 
     * `ump_info`: `pandas.DataFrame`
 
-        Contains the names and positions of the games' umpires.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameump_info-and-gamesetump_info)
+        Contains the names and positions of the games' umpires. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gameump_info-and-gamesetump_info)
 
     * `records`: `pandas.DataFrame`
 
-        Contains team records in the games by franchise.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
+        Contains team records in the games by franchise. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
 
     * `players`: `list[str]`
 
@@ -163,7 +164,9 @@ class GameSet:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `GameSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `GameSet.pitching` DataFrame, which are empty by
+        default (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 

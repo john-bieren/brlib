@@ -30,28 +30,28 @@ class TeamSet:
 
     * `info`: `pandas.DataFrame`
 
-        Contains information about the teams, their results, and their personnel.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
+        Contains information about the teams, their results, and their personnel. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
     * `batting`: `pandas.DataFrame`
 
-        Contains the teams' batting and baserunning stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
+        Contains the teams' batting and baserunning stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambatting-and-teamsetbatting)
 
     * `pitching`: `pandas.DataFrame`
 
-        Contains the teams' pitching stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
+        Contains the teams' pitching stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teampitching-and-teamsetpitching)
 
     * `fielding`: `pandas.DataFrame`
 
-        Contains the teams' fielding stats.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
+        Contains the teams' fielding stats. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teamfielding-and-teamsetfielding)
 
     * `records`: `pandas.DataFrame`
 
-        Contains the teams' cumulative regular season records by franchise.
-        [See DataFrame info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
+        Contains the teams' cumulative regular season records by franchise. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamesetrecords-and-teamsetrecords)
 
     * `players`: `list[str]`
 
@@ -129,7 +129,9 @@ class TeamSet:
 
     def add_no_hitters(self) -> None:
         """
-        Populates the no-hitter columns in the `TeamSet.pitching` DataFrame, which are empty by default (may require an additional request). You can change this behavior with [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
+        Populates the no-hitter columns in the `TeamSet.pitching` DataFrame, which are empty by
+        default (may require an additional request). You can change this behavior with
+        [`options.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/options).
 
         ## Parameters
 

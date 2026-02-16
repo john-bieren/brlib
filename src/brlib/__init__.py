@@ -19,7 +19,8 @@ Collections of statistics and information about their subject.
 
 ### `get` Functions
 
-Convert a list of inputs to the constructors of the above classes into a list of instances of the classes.
+Convert a list of inputs to the constructors of the above classes into a list of instances of the
+classes.
 
 * [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games)
 * [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players)
@@ -32,11 +33,14 @@ Find inputs to the `get` functions based on search parameters.
 * [`find_asg`](https://github.com/john-bieren/brlib/wiki/find_asg)
 * [`find_games`](https://github.com/john-bieren/brlib/wiki/find_games)
 * [`find_teams`](https://github.com/john-bieren/brlib/wiki/find_teams)
-* In most cases, the best way to find players of interest is to use the `players` attribute of a `Game` or `Team`. The `all_players` function can also be used, but you must handle filtering of the results and conversion into a valid `get_players` input.
+* In most cases, the best way to find players of interest is to use the `players` attribute of a
+`Game` or `Team`. The `all_players` function can also be used, but you must handle filtering of the
+results and conversion into a valid `get_players` input.
 
 ### `Set` Classes
 
-Aggregate the contents of multiple data class objects into a single object for easy analysis of larger samples.
+Aggregate the contents of multiple data class objects into a single object for easy analysis of
+larger samples.
 
 * [`GameSet`](https://github.com/john-bieren/brlib/wiki/GameSet)
     * [`GameSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/GameSet.add_no_hitters)
