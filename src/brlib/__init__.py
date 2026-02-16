@@ -20,7 +20,7 @@ from .player_set import PlayerSet
 from .team import Team
 from .team_set import TeamSet
 
-__version__ = "0.3.0.dev0"
+__version__ = "0.3.0"
 
 __all__ = [
     "all_players",
