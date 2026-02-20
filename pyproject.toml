@@ -42,8 +42,8 @@ keywords = ["baseball reference", "baseball", "baseball stats", "mlb", "mlb stat
 [project.optional-dependencies]
 dev = [
     "black==26.1.0",
-    "isort==7.0.0",
-    "pytest>=7.0.0"
+    "isort==8.0.0",
+    "pytest>=7.0.0,<10.0.0"
 ]
 
 [project.urls]
