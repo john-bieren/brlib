@@ -211,8 +211,7 @@ class GameSet:
         15        Team Totals     Seattle Mariners  0.0  0.0  1.0
         ```
         """
-        success = nhd.populate()
-        if not success:
+        if not nhd.populate():
             return
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 

@@ -149,8 +149,7 @@ class PlayerSet:
         12   Félix Peña   2021  0.0  0.0  0.0
         ```
         """
-        success = nhd.populate()
-        if not success:
+        if not nhd.populate():
             return
         # set zeros for calculable rows
         self.pitching.loc[

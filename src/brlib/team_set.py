@@ -182,8 +182,7 @@ class TeamSet:
         13        Team Totals  0.0  0.0  0.0
         ```
         """
-        success = nhd.populate()
-        if not success:
+        if not nhd.populate():
             return
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 

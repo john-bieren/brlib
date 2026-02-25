@@ -228,8 +228,7 @@ class Player:
         11  None  Career Totals  NaN  NaN  NaN
         ```
         """
-        success = nhd.populate()
-        if not success:
+        if not nhd.populate():
             return
         # set zeros for calculable rows
         self.pitching.loc[

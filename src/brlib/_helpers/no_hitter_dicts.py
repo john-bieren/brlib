@@ -39,10 +39,18 @@ class NoHitterDicts(Singleton):
         self.player_inh_dict, self.player_pg_dict, self.player_cnh_dict = [{} for _ in range(3)]
         self.team_inh_dict, self.team_pg_dict, self.team_cnh_dict = [{} for _ in range(3)]
 
+    def reset(self) -> None:
+        """Re-initializes `NoHitterDicts`, resulting in an unpopulated state."""
+        self.__init__()
+
     def populate(self) -> bool:
-        """Loads no-hitter dicts from cache or the web, returns `True` if successful."""
+        """
+        Populates no-hitter dictionaries from cache or the web, returns `True` if the operation is
+        successful or if the dictionaries are already populated.
+        """
         if self._populated:
             return True
+
         if self._has_valid_cache:
             data_df = self._load()
         else:

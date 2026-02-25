@@ -5,12 +5,14 @@ from brlib._helpers.abbreviations_manager import abv_man
 
 
 def test_cache() -> None:
-    """Tests that the contents are the same when loaded from cache and the web."""
-    # on the CI runner, the DataFrame has already been loaded from the web and cached
+    """Tests that the contents are the same whether loaded from cache or the web."""
+    # on the CI runner, abv_man.df has already been loaded from the web and cached
     # locally, you'll have to delete the cache file to replicate this behavior
     expected_df = abv_man.df.copy()
     assert abv_man._has_valid_cache
-    abv_man._load()
+
+    # reset contents and load data from cache
+    abv_man.reset()
     compared = abv_man.df.compare(expected_df)
     assert compared.empty
 

@@ -32,12 +32,33 @@ class AbbreviationsManager(Singleton):
 
     def __init__(self) -> None:
         self._cache_file = CACHE_DIR / "abv_data_v1.csv"
+        self._populated = False
+
         self.df = pd.DataFrame()
+
+        self.populate()
+
+    def reset(self) -> None:
+        """Re-initializes `AbbreviationsManager`, resulting in `self.df` being reloaded."""
+        self.__init__()
+
+    def populate(self) -> bool:
+        """
+        Populates `self.df` from cache or the web, returns `True` if the operation is successful or
+        if `self.df` is already populated.
+        """
+        if self._populated:
+            return True
 
         if self._has_valid_cache:
             self._load()
         else:
             self._get()
+
+        if self.df.empty:
+            return False
+        self._populated = True
+        return True
 
     @property
     def _has_valid_cache(self) -> bool:

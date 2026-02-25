@@ -9,10 +9,10 @@ from brlib._helpers.no_hitter_dicts import nhd
 
 
 def test_cache() -> None:
-    """Tests that the contents are the same when loaded from cache and the web."""
-    # make sure the data has been loaded from the web by the CI runner
-    # locally, you'll have to delete the cache file to replicate this behavior
+    """Tests that the contents are the same whether loaded from cache or the web."""
+    # load data from the web (locally, you'll have to delete the cache file to test this)
     assert nhd.populate()
+    assert nhd._has_valid_cache
 
     expected_gi = copy.deepcopy(nhd.game_inh_dict)
     expected_gp = copy.deepcopy(nhd.game_pg_dict)
@@ -25,8 +25,7 @@ def test_cache() -> None:
     expected_tc = copy.deepcopy(nhd.team_cnh_dict)
 
     # reset contents and load data from cache
-    assert nhd._has_valid_cache
-    nhd.__init__()
+    nhd.reset()
     assert nhd.populate()
 
     assert nhd.game_inh_dict == expected_gi
