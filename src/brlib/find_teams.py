@@ -141,7 +141,7 @@ def _make_year_list(seasons: list[str]) -> list[int]:
             year_set = set(all_team_years)
             break
         if "-" in seasons_input:
-            if not re.match(SEASON_RANGE_REGEX, seasons_input):
+            if not re.fullmatch(SEASON_RANGE_REGEX, seasons_input):
                 write(f'skipping invalid seasons input "{seasons_input}"')
                 continue
             start, end = [int(s) for s in seasons_input.split("-", maxsplit=1)]
@@ -149,7 +149,7 @@ def _make_year_list(seasons: list[str]) -> list[int]:
                 start, end = end, start
             year_set = year_set.union(range(start, end + 1))
         else:
-            if not re.match(SEASON_REGEX, seasons_input):
+            if not re.fullmatch(SEASON_REGEX, seasons_input):
                 write(f'skipping invalid seasons input "{seasons_input}"')
                 continue
             year_set.add(int(seasons_input))

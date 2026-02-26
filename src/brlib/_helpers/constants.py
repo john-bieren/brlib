@@ -50,14 +50,14 @@ else:
 CACHE_TIMEZONE = pytz.timezone("US/Aleutian")
 
 # pre-compiled regular expressions
-MULTI_TEAM_REGEX = re.compile("^[1-9]TM$")
-SEASON_REGEX = re.compile("^[1-2][0-9]{3}$")
-SEASON_RANGE_REGEX = re.compile("^[1-2][0-9]{3}-[1-2][0-9]{3}$")
-GAME_DATE_REGEX = re.compile("^[0-9]{4}[0-1][0-9][0-3][0-9]$")
-DOUBLEHEADER_REGEX = re.compile("^[0-3]$")
-DATE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]$")
-DATE_RANGE_REGEX = re.compile("^[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]$")
-PLAYER_ID_REGEX = re.compile("^[a-z.'_]{3,7}[0-9]{2}$")
+MULTI_TEAM_REGEX = re.compile("[1-9]TM")
+SEASON_REGEX = re.compile("[1-2][0-9]{3}")
+SEASON_RANGE_REGEX = re.compile("[1-2][0-9]{3}-[1-2][0-9]{3}")
+GAME_DATE_REGEX = re.compile("[0-9]{4}[0-1][0-9][0-3][0-9]")
+DOUBLEHEADER_REGEX = re.compile("[0-3]")
+DATE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]")
+DATE_RANGE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]")
+PLAYER_ID_REGEX = re.compile("[a-z.'_]{3,7}[0-9]{2}")
 SCHEDULE_TAG_REGEX = re.compile("^all_[0-9]")
 GAME_URL_REGEX = re.compile(
     r"https://www\.baseball-reference\.com/boxes/[A-Z1-2]{2,3}/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml"
@@ -72,10 +72,10 @@ TEAM_URL_REGEX = re.compile(
     r"https://www\.baseball-reference\.com/teams/[A-Z1-4]{2,3}/[1-2][0-9]{3}\.shtml"
 )
 SB_ATTEMPT_REGEX = re.compile(
-    r"^(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)$"
+    r"(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)"
 )
 PICKOFF_REGEX = re.compile(
-    r"^(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)$"
+    r"(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)"
 )
 
 # old names for teams (which have box scores) that didn't relocate

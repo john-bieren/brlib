@@ -199,7 +199,7 @@ class Game:
                 raise ValueError("invalid arguments")
             page = Game._get_game(games[0])
         else:
-            if not re.match(GAME_URL_REGEX, page.url) and not re.match(
+            if not re.fullmatch(GAME_URL_REGEX, page.url) and not re.fullmatch(
                 ALLSTAR_GAME_URL_REGEX, page.url
             ):
                 raise ValueError("page does not contain a game")

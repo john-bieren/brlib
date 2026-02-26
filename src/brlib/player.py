@@ -151,7 +151,7 @@ class Player:
                 raise ValueError("invalid arguments")
             page = Player._get_player(player_ids[0])
         else:
-            if not re.match(PLAYER_URL_REGEX, page.url):
+            if not re.fullmatch(PLAYER_URL_REGEX, page.url):
                 raise ValueError("page does not contain a player")
 
         self.name = ""

@@ -146,7 +146,7 @@ class Team:
                 raise ValueError("invalid arguments")
             page = Team._get_team(teams[0])
         else:
-            if not re.match(TEAM_URL_REGEX, page.url):
+            if not re.fullmatch(TEAM_URL_REGEX, page.url):
                 raise ValueError("page does not contain a team")
 
         self.name = ""

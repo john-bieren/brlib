@@ -60,7 +60,7 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
             year_set = set(all_asg_years)
             break
         if "-" in seasons_input:
-            if not re.match(SEASON_RANGE_REGEX, seasons_input):
+            if not re.fullmatch(SEASON_RANGE_REGEX, seasons_input):
                 write(f'skipping invalid seasons input "{seasons_input}"')
                 continue
             start, end = [int(s) for s in seasons_input.split("-", maxsplit=1)]
@@ -68,7 +68,7 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
                 start, end = end, start
             year_set = year_set.union(range(start, end + 1))
         else:
-            if not re.match(SEASON_REGEX, seasons_input):
+            if not re.fullmatch(SEASON_REGEX, seasons_input):
                 write(f'skipping invalid seasons input "{seasons_input}"')
                 continue
             seasons_input = int(seasons_input)

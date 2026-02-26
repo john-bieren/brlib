@@ -58,7 +58,7 @@ def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str,
 def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
     """Returns reason that input is invalid, or empty string. `home_team` must be uppercase."""
     if home_team == "ALLSTAR":
-        if not re.match(SEASON_REGEX, date):
+        if not re.fullmatch(SEASON_REGEX, date):
             return f'date "{date}" is invalid, must be YYYY for All-Star Games'
         year = int(date)
         if year < FIRST_ASG_YEAR:
@@ -72,9 +72,9 @@ def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
             return f'home_team "{home_team}" is invalid'
         if home_team in BML_TEAM_ABVS:
             return f"box scores for {home_team} are not available"
-        if not re.match(GAME_DATE_REGEX, date):
+        if not re.fullmatch(GAME_DATE_REGEX, date):
             return f'date "{date}" is invalid, must be YYYYMMDD'
-        if not re.match(DOUBLEHEADER_REGEX, doubleheader):
+        if not re.fullmatch(DOUBLEHEADER_REGEX, doubleheader):
             return f'doubleheader "{doubleheader}" is invalid, must be 0-3'
         year = int(date[:4])
         if year < FIRST_GAMES_YEAR:
@@ -102,7 +102,7 @@ def validate_player_list(player_list: list[str]) -> list[str]:
 
 def _validate_player_input(player_id: str) -> str:
     """Returns reason that input is invalid, or empty string. `player_id` must be lowercase."""
-    if not re.match(PLAYER_ID_REGEX, player_id):
+    if not re.fullmatch(PLAYER_ID_REGEX, player_id):
         return "not a valid player id"
     return ""
 
@@ -133,7 +133,7 @@ def _validate_team_input(team: str, season: str) -> str:
     """Returns reason that input is invalid, or empty string. `team` must be uppercase."""
     if not abv_man.is_valid(team):
         return f'team "{team}" is invalid'
-    if not re.match(SEASON_REGEX, season):
+    if not re.fullmatch(SEASON_REGEX, season):
         return f'season "{season}" is invalid'
     year = int(season)
     if year < FIRST_TEAMS_YEAR:
@@ -154,7 +154,7 @@ def validate_date_list(date_list: list[str]) -> list[str]:
     for date in date_list:
         if date == "ALL":
             return ["ALL"]
-        if not (re.match(DATE_RANGE_REGEX, date) or re.match(DATE_REGEX, date)):
+        if not (re.fullmatch(DATE_RANGE_REGEX, date) or re.fullmatch(DATE_REGEX, date)):
             write(f'ignoring invalid dates input "{date}"')
             continue
         if "-" in date:
