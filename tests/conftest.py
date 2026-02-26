@@ -171,6 +171,8 @@ def teams_list() -> list[br.Team]:
             ("HOU", "2022"),
             # renamed team
             ("LAA", "2012"),
+            # same franchise ID as WSH1904 but different team ID (tests TeamSet.records)
+            ("MIN", "2019"),
             # perfect game and CNH, renamed venue
             ("SEA", "2012"),
             # team shares name with later one
