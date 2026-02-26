@@ -26,8 +26,8 @@ from .singleton import Singleton
 class AbbreviationsManager(Singleton):
     """
     A wrapper for a DataFrame which contains information on all historical team and
-    franchise abbreviations used by Baseball Reference. Manages retrieval and caching of the data,
-    loads data on import of brlib. Has methods for working with these abbreviations.
+    franchise abbreviations used by Baseball Reference. Has methods for working with these
+    abbreviations. Manages retrieval and caching of the data, loads data on import of brlib.
     """
 
     def __init__(self) -> None:

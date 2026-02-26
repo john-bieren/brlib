@@ -42,9 +42,8 @@ from .options import dev_alert, options, print_page
 
 class Game:
     """
-    Statistics and information from a game. Can be initialized by specifying `home_team`, `date`,
-    and `doubleheader`, and the associated page will be loaded automatically. Can also be
-    initialized with a previously loaded box score page. If neither of these sets of parameters are
+    Statistics and information from a game. Can be initialized with `home_team`, `date`, and
+    `doubleheader` arguments, or with a `page` argument. If neither of these sets of arguments are
     given, an exception is raised.
 
     ## Parameters

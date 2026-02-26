@@ -44,9 +44,8 @@ from .options import dev_alert, options, print_page
 
 class Player:
     """
-    Statistics and information from a player. Can be initialized by specifying `player_id`, and the
-    associated page will be loaded automatically. Can also be initialized with a previously loaded
-    player page. If neither of these parameters are given, an exception is raised.
+    Statistics and information from a player. Can be initialized with a `player_id` argument, or
+    with a `page` argument. If neither of these arguments are given, an exception is raised.
 
     ## Parameters
 

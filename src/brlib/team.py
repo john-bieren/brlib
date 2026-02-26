@@ -34,9 +34,9 @@ from .options import dev_alert, options, print_page
 
 class Team:
     """
-    Statistics and information from a team. Can be initialized by specifying `team`, and `season`,
-    and the associated page will be loaded automatically. Can also be initialized with a previously
-    loaded team page. If neither of these sets of parameters are given, an exception is raised.
+    Statistics and information from a team. Can be initialized with `team` and `season` arguments,
+    or with a `page` argument. If neither of these sets of arguments are given, an exception is
+    raised.
 
     ## Parameters
 
