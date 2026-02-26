@@ -31,20 +31,15 @@ SEASON_END_DATE = "11-08"
 
 # determine if there's been baseball played in the current year
 SEASON_START_MONTH, SEASON_START_DAY = [int(s) for s in SEASON_START_DATE.split("-", maxsplit=1)]
-if (
-    CURRENT_MONTH < SEASON_START_MONTH
+CY_BASEBALL = (
+    CURRENT_MONTH >= SEASON_START_MONTH
     or CURRENT_MONTH == SEASON_START_MONTH
-    and CURRENT_DAY < SEASON_START_DAY
-):
-    CY_BASEBALL = False
-else:
-    CY_BASEBALL = True
-
+    and CURRENT_DAY >= SEASON_START_DAY
+)
 # best safe guess at earliest plausible ASG date
-if CURRENT_YEAR in NO_ASG_YEARS:
-    CY_ASG = False
-else:
-    CY_ASG = CURRENT_MONTH > 7 or CURRENT_MONTH == 7 and CURRENT_DAY > 7
+CY_ASG = CURRENT_YEAR not in NO_ASG_YEARS and (
+    CURRENT_MONTH > 7 or CURRENT_MONTH == 7 and CURRENT_DAY > 7
+)
 
 # selected so that hour 0 lines up with when BR should have posted the previous day's results
 CACHE_TIMEZONE = pytz.timezone("US/Aleutian")
