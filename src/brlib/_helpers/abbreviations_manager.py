@@ -37,6 +37,7 @@ class AbbreviationsManager(Singleton):
         self.df = pd.DataFrame()
 
         self.populate()
+        assert self._populated
 
     def reset(self) -> None:
         """Re-initializes `AbbreviationsManager`, resulting in `self.df` being reloaded."""
