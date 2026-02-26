@@ -27,8 +27,8 @@ from ._helpers.inputs import validate_game_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import (
-    convert_innings_notation,
     clean_spaces,
+    convert_innings_notation,
     convert_numeric_cols,
     reformat_date,
     runtime_typecheck,
