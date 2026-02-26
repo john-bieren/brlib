@@ -1,5 +1,5 @@
 Player,Player ID,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
-Orval Overall,overaor01,SP,3,2,0,0.0,0,2,0,0.0,11,,,,,,,,,,57.0,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,0.0,0.0,0.0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
-Team Totals,,,3,2,0,0.0,0,2,0,0.0,11,,,,,,,,,,57.0,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,0.0,0.0,0.0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
-Ed Karger,kargeed01,SP,4,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,0.0,0.0,0.0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
-Team Totals,,,4,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,0.0,0.0,0.0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Orval Overall,overaor01,SP,3.0,2,0,0.0,0,2,0,0.0,11,,,,,,,,,,57.0,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,0.0,0.0,0.0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Team Totals,,,3.0,2,0,0.0,0,2,0,0.0,11,,,,,,,,,,57.0,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,0.0,0.0,0.0,Chicago Cubs,CHC1907,St. Louis Cardinals,STL1907,2,Loss,Away,SLN190710051
+Ed Karger,kargeed01,SP,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,0.0,0.0,0.0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051
+Team Totals,,,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,0.0,0.0,0.0,St. Louis Cardinals,STL1907,Chicago Cubs,CHC1907,0,Win,Home,SLN190710051

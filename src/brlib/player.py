@@ -30,8 +30,8 @@ from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import (
-    change_innings_notation,
     clean_spaces,
+    convert_innings_notation,
     convert_numeric_cols,
     reformat_date,
     runtime_typecheck,
@@ -746,7 +746,7 @@ class Player:
 
         p_df_1 = Player._process_awards_column(p_df_1)
         p_df_1 = Player._process_career_totals(p_df_1)
-        p_df_1["IP"].apply(change_innings_notation)
+        p_df_1["IP"] = p_df_1["IP"].apply(convert_innings_notation)
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = p_df_1.loc[
@@ -768,7 +768,7 @@ class Player:
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
         self.fielding.loc[career_position_totals_mask, "Season"] = "Career Totals"
         if "Inn" in self.fielding.columns:
-            self.fielding["Inn"].apply(change_innings_notation)
+            self.fielding["Inn"] = self.fielding["Inn"].apply(convert_innings_notation)
 
     @staticmethod
     def _process_awards_column(df_1: pd.DataFrame) -> pd.DataFrame:

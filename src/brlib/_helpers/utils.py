@@ -159,12 +159,15 @@ def scrape_player_ids(table: bs | Tag) -> list[str]:
     return player_id_column
 
 
-def change_innings_notation(innings: str) -> str:
-    """Replaces box score notation with the correct numerical value so that they sum correctly."""
+def convert_innings_notation(innings: str | float) -> float | None:
+    """Converts box score notation to correct numerical value so that values sum correctly."""
     # could be np.nan, leave that alone since the column will eventually be converted to floats
     if not isinstance(innings, str):
-        return innings
-    return innings.replace(".1", ".333334").replace(".2", ".666667")
+        innings = str(innings)
+    innings = innings.replace(".1", ".333334").replace(".2", ".666667")
+    if innings == "":
+        return None
+    return float(innings)
 
 
 def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:

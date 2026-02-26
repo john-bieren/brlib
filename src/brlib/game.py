@@ -27,7 +27,7 @@ from ._helpers.inputs import validate_game_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import (
-    change_innings_notation,
+    convert_innings_notation,
     clean_spaces,
     convert_numeric_cols,
     reformat_date,
@@ -865,7 +865,7 @@ class Game:
 
             # replace potential infinite season ERA, which would make column non-numeric
             p_df.loc[p_df["ERA"] == "inf", "ERA"] = None
-            p_df["IP"].apply(change_innings_notation)
+            p_df["IP"] = p_df["IP"].apply(convert_innings_notation)
 
             p_df.loc[p_df["Player"] != "Team Totals", "Position"] = "RP"
             p_df.loc[0, "Position"] = "SP"  # the first pitcher to appear for the team

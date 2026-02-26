@@ -21,8 +21,8 @@ from ._helpers.inputs import validate_team_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
 from ._helpers.utils import (
-    change_innings_notation,
     clean_spaces,
+    convert_innings_notation,
     convert_numeric_cols,
     runtime_typecheck,
     scrape_player_ids,
@@ -390,7 +390,7 @@ class Team:
                 p_df_1 = self._scrape_standard_table(table)
 
                 p_df_1.rename(columns={"WAR": "Pitching bWAR"}, inplace=True)
-                p_df_1["IP"].apply(change_innings_notation)
+                p_df_1["IP"] = p_df_1["IP"].apply(convert_innings_notation)
 
             elif table_name == "all_players_value_pitching":
                 table = soup_from_comment(table, only_if_table=True)
@@ -401,7 +401,7 @@ class Team:
                 self.fielding = self._scrape_standard_table(table)
 
                 if "Inn" in self.fielding.columns:
-                    self.fielding["Inn"].apply(change_innings_notation)
+                    self.fielding["Inn"] = self.fielding["Inn"].apply(convert_innings_notation)
 
         self.info = self.info.reindex(columns=TEAM_INFO_COLS)
         self.info = convert_numeric_cols(self.info)
