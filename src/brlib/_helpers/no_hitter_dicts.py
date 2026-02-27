@@ -16,7 +16,8 @@ from .constants import (
     CURRENT_YEAR,
     CY_BASEBALL,
     FIRST_GAMES_YEAR,
-    SEASON_END_DATE,
+    SEASON_END_DAY,
+    SEASON_END_MONTH,
 )
 from .requests_manager import req_man
 from .singleton import Singleton
@@ -73,10 +74,8 @@ class NoHitterDicts(Singleton):
         last_save_time = datetime.fromtimestamp(last_save).astimezone(CACHE_TIMEZONE)
         current_time = datetime.now(CACHE_TIMEZONE)
 
-        if CY_BASEBALL:
-            season_end = datetime.strptime(f"{CURRENT_YEAR}-{SEASON_END_DATE}", "%Y-%m-%d")
-        else:
-            season_end = datetime.strptime(f"{CURRENT_YEAR - 1}-{SEASON_END_DATE}", "%Y-%m-%d")
+        year = CURRENT_YEAR + CY_BASEBALL - 1
+        season_end = datetime.strptime(f"{year}-{SEASON_END_MONTH}-{SEASON_END_DAY}", "%Y-%m-%d")
         season_end = season_end.astimezone(CACHE_TIMEZONE)
 
         # check whether the previous refresh was today

@@ -16,7 +16,8 @@ from .constants import (
     CURRENT_YEAR,
     CY_BASEBALL,
     FIRST_GAMES_YEAR,
-    SEASON_START_DATE,
+    SEASON_START_DAY,
+    SEASON_START_MONTH,
     TEAM_ALIASES,
 )
 from .requests_manager import req_man
@@ -67,7 +68,7 @@ class AbbreviationsManager(Singleton):
         last_save = os.path.getmtime(self._cache_file)
         last_save_time = datetime.fromtimestamp(last_save).astimezone(CACHE_TIMEZONE)
 
-        cy_refresh_date = f"{CURRENT_YEAR}-{SEASON_START_DATE}"
+        cy_refresh_date = f"{CURRENT_YEAR}-{SEASON_START_MONTH}-{SEASON_START_DAY}"
         refresh_time = datetime.strptime(cy_refresh_date, "%Y-%m-%d").astimezone(CACHE_TIMEZONE)
 
         current_time = datetime.now(CACHE_TIMEZONE)

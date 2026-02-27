@@ -26,15 +26,14 @@ NO_POSTSEASON_YEARS = {1901, 1902, 1904, 1994}
 
 # the day after (that's when the stats are posted) the expected earliest/latest possible game dates
 # these dates allow for games that are two days earlier/later than the most extreme past examples
-SEASON_START_DATE = "03-17"
-SEASON_END_DATE = "11-08"
+SEASON_START_MONTH, SEASON_START_DAY = "03", "17"
+SEASON_END_MONTH, SEASON_END_DAY = "11", "08"
 
 # determine if there's been baseball played in the current year
-SEASON_START_MONTH, SEASON_START_DAY = [int(s) for s in SEASON_START_DATE.split("-", maxsplit=1)]
 CY_BASEBALL = (
-    CURRENT_MONTH >= SEASON_START_MONTH
-    or CURRENT_MONTH == SEASON_START_MONTH
-    and CURRENT_DAY >= SEASON_START_DAY
+    CURRENT_MONTH > int(SEASON_START_MONTH)
+    or CURRENT_MONTH == int(SEASON_START_MONTH)
+    and CURRENT_DAY >= int(SEASON_START_DAY)
 )
 # best safe guess at earliest plausible ASG date
 CY_ASG = CURRENT_YEAR not in NO_ASG_YEARS and (
