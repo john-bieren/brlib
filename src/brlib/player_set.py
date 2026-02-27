@@ -149,8 +149,7 @@ class PlayerSet:
         12   Félix Peña   2021  0.0  0.0  0.0
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         # set zeros for calculable rows
         self.pitching.loc[
             (self.pitching["Season"] != "162 Game Avg")

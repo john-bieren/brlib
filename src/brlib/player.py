@@ -227,8 +227,7 @@ class Player:
         11  None  Career Totals  NaN  NaN  NaN
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         # set zeros for calculable rows
         self.pitching.loc[
             (self.pitching["Season"] != "162 Game Avg")

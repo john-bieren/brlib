@@ -279,8 +279,7 @@ class Game:
         7     Team Totals  Toronto Blue Jays  0.0  0.0  0.0
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 
         inh_player_id = nhd.game_inh_dict.get(self.id, "")

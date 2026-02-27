@@ -211,8 +211,7 @@ class GameSet:
         15        Team Totals     Seattle Mariners  0.0  0.0  1.0
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 
         # find the games which include no-hitters

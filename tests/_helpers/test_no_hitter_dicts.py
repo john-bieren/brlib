@@ -11,7 +11,7 @@ from brlib._helpers.no_hitter_dicts import nhd
 def test_cache() -> None:
     """Tests that the contents are the same whether loaded from cache or the web."""
     # load data from the web (locally, you'll have to delete the cache file to test this)
-    assert nhd.populate()
+    nhd.populate()
     assert nhd._has_valid_cache
 
     expected_gi = copy.deepcopy(nhd.game_inh_dict)
@@ -26,7 +26,7 @@ def test_cache() -> None:
 
     # reset contents and load data from cache
     nhd.reset()
-    assert nhd.populate()
+    nhd.populate()
 
     assert nhd.game_inh_dict == expected_gi
     assert nhd.game_pg_dict == expected_gp

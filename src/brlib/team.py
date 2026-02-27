@@ -212,8 +212,7 @@ class Team:
         5      Team Totals  2.0  1.0  0.0
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 
         inh_list = nhd.team_inh_dict.get(self.id, [])

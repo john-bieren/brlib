@@ -43,24 +43,21 @@ class NoHitterDicts(Singleton):
         """Re-initializes `NoHitterDicts`, resulting in an unpopulated state."""
         self.__init__()
 
-    def populate(self) -> bool:
+    def populate(self) -> None:
         """
-        Populates no-hitter dictionaries from cache or the web, returns `True` if the operation is
-        successful or if the dictionaries are already populated.
+        Populates no-hitter dictionaries from cache or the web if they are not already populated.
         """
         if self._populated:
-            return True
+            return
 
         if self._has_valid_cache:
             data_df = self._load()
         else:
             data_df = self._get()
 
-        if data_df.empty:
-            return False
+        assert not data_df.empty
         self._generate_dicts(data_df)
         self._populated = True
-        return True
 
     @property
     def _has_valid_cache(self) -> bool:

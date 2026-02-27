@@ -182,8 +182,7 @@ class TeamSet:
         13        Team Totals  0.0  0.0  0.0
         ```
         """
-        if not nhd.populate():
-            return
+        nhd.populate()
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 
         # find the team with no-hitters
