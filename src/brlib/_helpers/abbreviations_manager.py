@@ -88,12 +88,11 @@ class AbbreviationsManager(Singleton):
         self.df.loc[self.df["Alias"].isna(), "Alias"] = ""
 
     def _get(self) -> None:
-        """Gets abbreviations data from Baseball Reference."""
+        """Gets abbreviations data from Baseball Reference, save to cache."""
         write("brlib: gathering team abbreviations")
         page = req_man.get_page("/about/team_IDs.shtml")
         self._gather_abbreviations(page)
         self.df.to_csv(self._cache_file, index=False)
-        self.df.rename({"Team ID": "Team", "Franchise ID": "Franchise"}, axis=1, inplace=True)
 
     def _gather_abbreviations(self, page: Response) -> None:
         """Scrapes team_IDs page and create `self.df`."""

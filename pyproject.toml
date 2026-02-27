@@ -14,7 +14,7 @@ dependencies = [
     "lxml>=5.0.0,<7.0.0",
     "pandas>=2.2.0,<3.0.0",
     "platformdirs>=4.0.0,<5.0.0",
-    "tqdm>=4.66.0,<5.0.0"
+    "tqdm>=4.66.0,<5.0.0",
 ]
 readme = "README.md"
 license = "MIT"
@@ -33,6 +33,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -43,7 +44,7 @@ keywords = ["baseball reference", "baseball", "baseball stats", "mlb", "mlb stat
 dev = [
     "black==26.1.0",
     "isort==8.0.0",
-    "pytest>=7.0.0,<10.0.0"
+    "pytest>=7.0.0,<10.0.0",
 ]
 
 [project.urls]

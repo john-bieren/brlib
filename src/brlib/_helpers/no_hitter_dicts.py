@@ -97,7 +97,7 @@ class NoHitterDicts(Singleton):
         return data_df
 
     def _get(self) -> pd.DataFrame:
-        """Gets no-hitter data from Baseball Reference."""
+        """Gets no-hitter data from Baseball Reference, save to cache."""
         write("gathering no-hitters")
         page = req_man.get_page("/friv/no-hitters-and-perfect-games.shtml")
         data_df = self._gather_data_df(page)
