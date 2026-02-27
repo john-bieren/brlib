@@ -67,3 +67,6 @@ target-version = ["py310", "py311", "py312", "py313", "py314"]
 profile = "black"
 line_length = 100
 known_first_party = ["brlib"]
+
+[tool.uv]
+package = true
