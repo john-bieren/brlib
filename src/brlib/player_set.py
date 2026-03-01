@@ -100,7 +100,7 @@ class PlayerSet:
         return f"{len(self)} players"
 
     def __repr__(self) -> str:
-        players = [f"Player({p})" for p in self._contents]
+        players = [f"Player('{player_id}')" for player_id in self._contents]
         return f'PlayerSet({", ".join(players)})'  # single quotes for <3.12 support
 
     def add_no_hitters(self) -> None:

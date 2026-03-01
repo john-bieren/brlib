@@ -54,7 +54,7 @@ def test_validate_game_list() -> None:
 def test_validate_player_list() -> None:
     """Tests the outputs of the `validate_player_list` function."""
     test_list = [
-        # convert to lowercase
+        # convert ID to lowercase
         "HERNAFE02",
         # several weird but valid player IDs
         "ohse01",

@@ -582,7 +582,7 @@ class Team:
         if "Position" in df_1.columns:
             df_1.loc[df_1["Position"] == "", "Position"] = None
 
-        # add player ids to table, excluding non-player rows
+        # add player IDs to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_1.loc[df_1["Rk"] != "", "Player ID"] = player_id_column
         df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = None
@@ -629,7 +629,7 @@ class Team:
         # remove column label rows
         df_2 = df_2.loc[df_2["Rk"] != "Rk"]
 
-        # add player ids to table, excluding non-player rows
+        # add player IDs to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_2.loc[df_2["Rk"] != "", "Player ID"] = player_id_column
         df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = None

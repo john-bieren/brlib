@@ -66,7 +66,7 @@ class GameSet:
 
     * `players`: `list[str]`
 
-        A list of the players who appeared in the games. Can be an input to `get_players`.
+        A list of the IDs of the players who appeared in the games. Can be an input to `get_players`.
 
     * `teams`: `list[tuple[str, str]]`
 

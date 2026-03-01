@@ -144,7 +144,7 @@ class NoHitterDicts(Singleton):
             columns=["Player ID", "Perfect", "Combined", "Year", "Team", "Game ID", "Game Type"]
         )
 
-        # create player id, game id columns
+        # create player ID, game ID columns
         player_id_column, game_id_column = [[] for _ in range(2)]
         for row in individual_table.find_all("a", href=True):
             href = row.get("href", "")
@@ -206,7 +206,7 @@ class NoHitterDicts(Singleton):
                 combined_df.loc[i, "Year"] = year
                 combined_df.loc[i, "Team"] = team
 
-        # create player id, game id columns
+        # create player ID, game ID columns
         player_id_column, game_id_column = [[] for _ in range(2)]
         for row in combined_table.find_all("a", href=True):
             href = row.get("href", "")

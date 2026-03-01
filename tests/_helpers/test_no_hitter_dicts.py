@@ -36,7 +36,7 @@ def test_cache() -> None:
     assert nhd.player_cnh_dict == expected_pc
     assert nhd.team_inh_dict == expected_ti
     assert nhd.team_pg_dict == expected_tp
-    # some game ids are np.nan which does not equal itself, so numpy tooling is required
+    # some game IDs are np.nan which does not equal itself, so numpy tooling is required
     np.testing.assert_equal(nhd.team_cnh_dict, expected_tc)
 
 
@@ -105,5 +105,5 @@ def test_team_dicts() -> None:
         ["nerishe01", "R", "NYA202206250"],
         ["pressry01", "R", "NYA202206250"],
     ]
-    # check game id value for combined no-hitters without a box score
+    # check game ID value for combined no-hitters without a box score
     assert nhd.team_cnh_dict["KCM1923"] == [["roganbu99", "R", np.nan], ["mendejo99", "R", np.nan]]

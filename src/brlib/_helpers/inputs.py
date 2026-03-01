@@ -86,8 +86,8 @@ def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
 
 def validate_player_list(player_list: list[str]) -> list[str]:
     """
-    Returns list including only the valid player ids, alerts user of removed inputs if
-    `options.quiet` is `False`. Will change player ids to lowercase.
+    Returns list including only the valid player IDs, alerts user of removed inputs if
+    `options.quiet` is `False`. Will change player IDs to lowercase.
     """
     result = []
     for player_id in player_list:
@@ -103,7 +103,7 @@ def validate_player_list(player_list: list[str]) -> list[str]:
 def _validate_player_input(player_id: str) -> str:
     """Returns reason that input is invalid, or empty string. `player_id` must be lowercase."""
     if not re.fullmatch(PLAYER_ID_REGEX, player_id):
-        return "not a valid player id"
+        return "not a valid player ID"
     return ""
 
 

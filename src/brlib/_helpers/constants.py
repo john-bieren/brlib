@@ -45,8 +45,8 @@ CACHE_TIMEZONE = pytz.timezone("US/Aleutian")
 
 # pre-compiled regular expressions
 MULTI_TEAM_REGEX = re.compile("[1-9]TM")
-SEASON_REGEX = re.compile("[1-2][0-9]{3}")
-SEASON_RANGE_REGEX = re.compile("[1-2][0-9]{3}-[1-2][0-9]{3}")
+SEASON_REGEX = re.compile("[0-9]{4}")
+SEASON_RANGE_REGEX = re.compile("[0-9]{4}-[0-9]{4}")
 GAME_DATE_REGEX = re.compile("[0-9]{4}[0-1][0-9][0-3][0-9]")
 DOUBLEHEADER_REGEX = re.compile("[0-3]")
 DATE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]")

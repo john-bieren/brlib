@@ -51,9 +51,9 @@ class Player:
 
     * `player_id`: `str`, default `""`
 
-        The first 5 letters of the player's last name, followed by the first two letters of their
-        first name, and two digits as a unique identifier. This ID can be found in the URL of the
-        player's page.
+        The unique identifier which can be found in the URL of the player's page. It consists of the
+        first 5 letters of the player's last name followed by the first two letters of their first
+        name and two digits to distinguish between otherwise identical IDs (e.g. `"brownse01"`).
 
     * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
 
@@ -147,7 +147,7 @@ class Player:
         if page.url == "":
             player_ids = validate_player_list([player_id])
             if len(player_ids) == 0:
-                raise ValueError("invalid arguments")
+                raise ValueError("invalid arguments: must provide a player_id or page argument")
             page = Player._get_player(player_ids[0])
         else:
             if not re.fullmatch(PLAYER_URL_REGEX, page.url):
@@ -620,7 +620,7 @@ class Player:
                 # relatives could also be managers
                 is_player = [str_between(link, "/", "/") == "players" for link in relative_links]
                 relations = line_str.replace("Relatives: ", "").split(";")
-                # associate ids with players using their shared order
+                # associate IDs with players using their shared order
                 for r in relations:
                     relation, players = r.strip().split(" of ", maxsplit=1)
                     player_count = players.count(", ") + 1
@@ -701,7 +701,7 @@ class Player:
         ] = (
             df["Team"] + df["Season"]
         )
-        # remove team ids from multi-team season summary rows, e.g. 2TM
+        # remove team IDs from multi-team season summary rows, e.g. 2TM
         df.loc[
             ((~df["Team ID"].isna()) & (df["Team"].str.fullmatch(MULTI_TEAM_REGEX))),
             "Team ID",
