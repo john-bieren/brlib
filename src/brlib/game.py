@@ -30,6 +30,7 @@ from ._helpers.utils import (
     clean_spaces,
     convert_innings_notation,
     convert_numeric_cols,
+    game_id_to_endpoint,
     reformat_date,
     runtime_typecheck,
     scrape_player_ids,
@@ -42,36 +43,16 @@ from .options import dev_alert, options, print_page
 
 class Game:
     """
-    Statistics and information from a game. Can be initialized with `home_team`, `date`, and
-    `doubleheader` arguments, or with a `page` argument. If neither of these sets of arguments are
-    given, an exception is raised.
+    Statistics and information from a game. Can be initialized with a `game_id` argument, or
+    with a `page` argument. If neither of these arguments are given, an exception is raised.
 
     ## Parameters
 
-    * `home_team`: `str`, default `""`
+    * `game_id`: `str`, default `""`
 
-        The home team's abbreviation (e.g. `"sea"`), or, if the game is an All-Star Game,
-        `"allstar"`. Era adjustment is not used, and aliases are accepted. [Read more about team
-        abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
-
-    * `date`: `str`, default `""`
-
-        The date of the game in YYYYMMDD format (e.g. `"20230830"`). Or, if the game is an All-Star
-        Game, the year in YYYY format.
-
-    * `doubleheader`: `str`, default `""`
-
-        The game's status as part of a doubleheader:
-        * `"0"` if not part of a doubleheader.
-        * `"1"` if first game of a doubleheader.
-        * `"2"` if second game of a doubleheader.
-        * `"3"` if third game of a tripleheader (i.e.
-        [PIT192010023](https://www.baseball-reference.com/boxes/PIT/PIT192010023.shtml)).
-
-        Or, if the game is an All-Star Game:
-        * `"0"` if only ASG of the year.
-        * `"1"` if first ASG of the year.
-        * `"2"` if second ASG of the year.
+        The unique identifier found in the URL of the game's page (e.g.
+        `"SEA201704160"` or `"2001-allstar-game"`). [Read more about game ID
+        structure](https://github.com/john-bieren/brlib/wiki/Game-ID-Structure).
 
     * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
 
@@ -144,23 +125,23 @@ class Game:
 
         A list of the IDs of the players who appeared in the game. Can be an input to `get_players`.
 
-    * `teams`: `list[tuple[str, str]]`
+    * `teams`: `list[str]`
 
-        A list of the teams involved in the game. Can be an input to `get_teams`.
+        A list of the IDs of the teams involved in the game. Can be an input to `get_teams`.
 
     ## Examples
 
     Load a game:
 
     ```
-    >>> br.Game("SEA", "20190926", "0").name
+    >>> br.Game("SEA201909260").name
     'September 26, 2019, Oakland Athletics vs Seattle Mariners'
     ```
 
     Load an All-Star Game:
 
     ```
-    >>> br.Game("allstar", "2024", "0").name
+    >>> br.Game("2024-allstar-game").name
     '2024 All-Star Game, July 16'
     ```
 
@@ -174,9 +155,7 @@ class Game:
     @runtime_typecheck
     def __init__(
         self,
-        home_team: str = "",
-        date: str = "",
-        doubleheader: str = "",
+        game_id: str = "",
         page: Response = Response(),
         add_no_hitters: bool | None = None,
         update_team_names: bool | None = None,
@@ -190,12 +169,9 @@ class Game:
             update_venue_names = options.update_venue_names
 
         if page.url == "":
-            if any(s == "" for s in (home_team, date, doubleheader)):
-                raise ValueError("insufficient arguments")
-
-            games = validate_game_list([(home_team, date, doubleheader)])
+            games = validate_game_list([game_id])
             if len(games) == 0:
-                raise ValueError("invalid arguments")
+                raise ValueError("invalid arguments: must provide a game_id or page argument")
             page = Game._get_game(games[0])
         else:
             if not re.fullmatch(GAME_URL_REGEX, page.url) and not re.fullmatch(
@@ -230,13 +206,7 @@ class Game:
     def __repr__(self) -> str:
         if self._url == "":
             return "Game()"
-        home_team = self._url[45:48] if not self._is_asg else "allstar"
-        date = self._url[48:56] if not self._is_asg else self._url[43:47]
-        if self._is_asg:
-            doubleheader = self._url[61] if self._url[61].isnumeric() else "0"
-        else:
-            doubleheader = self._url[56]
-        return f"Game('{home_team}', '{date}', '{doubleheader}')"
+        return f"Game('{self.id}')"
 
     def add_no_hitters(self) -> None:
         """
@@ -255,7 +225,7 @@ class Game:
         ## Example
 
         ```
-        >>> g = br.Game("TOR", "20180508", "0")
+        >>> g = br.Game("TOR201805080")
         >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
                    Player               Team  NH  PG  CNH
         0    James Paxton   Seattle Mariners NaN NaN  NaN
@@ -329,7 +299,7 @@ class Game:
         ## Example
 
         ```
-        >>> g = br.Game("FLO", "19940729", "0")
+        >>> g = br.Game("FLO199407290")
         >>> g.info[["Away Team", "Home Team"]]
                 Away Team        Home Team
         0  Montreal Expos  Florida Marlins
@@ -405,7 +375,7 @@ class Game:
         ## Example
 
         ```
-        >>> g = br.Game("FLO", "19940729", "0")
+        >>> g = br.Game("FLO199407290")
         >>> g.info["Venue"]
         0    Joe Robbie Stadium
         Name: Venue, dtype: object
@@ -418,14 +388,9 @@ class Game:
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
 
     @staticmethod
-    def _get_game(game: tuple[str, str, str]) -> Response:
-        """Returns the page associated with a game."""
-        home_team, date, doubleheader = game
-        if home_team == "ALLSTAR":
-            game_number = f"-{doubleheader}" if doubleheader != "0" else ""
-            endpoint = f"/allstar/{date}-allstar-game{game_number}.shtml"
-        else:
-            endpoint = f"/boxes/{home_team}/{home_team}{date}{doubleheader}.shtml"
+    def _get_game(game_id: str) -> Response:
+        """Returns the page associated with `game_id`."""
+        endpoint = game_id_to_endpoint(game_id)
         return req_man.get_page(endpoint)
 
     def _scrape_game(self, page: Response) -> None:
@@ -559,11 +524,9 @@ class Game:
         if not self._is_asg:
             tags = linescore.find_all("a", href=True)
             teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
-            teams = [
-                tuple(str_between(team, "/teams/", ".").split("/", maxsplit=1)) for team in teams
-            ]
+            teams = [str_between(team, "/teams/", ".").replace("/", "") for team in teams]
             assert len(teams) == 2
-            self._away_team_id, self._home_team_id = ["".join(team) for team in teams]
+            self._away_team_id, self._home_team_id = teams
             self.teams += teams
 
     def _scrape_scorebox(self, scorebox: Tag) -> None:

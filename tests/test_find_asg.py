@@ -6,36 +6,36 @@ from brlib import find_asg
 def test_seasons():
     """Tests that the `seasons` argument is handled correctly."""
     # standard usage
-    assert find_asg("2025") == [("allstar", "2025", "0")]
+    assert find_asg("2025") == ["2025-allstar-game"]
     # missing season
     assert len(find_asg("1945")) == 0
     # before first ASG
     assert len(find_asg("1932")) == 0
     # two-ASG season
-    assert find_asg("1962") == [("allstar", "1962", "1"), ("allstar", "1962", "2")]
+    assert find_asg("1962") == ["1962-allstar-game-1", "1962-allstar-game-2"]
     # range
     assert find_asg("1977-1979") == [
-        ("allstar", "1977", "0"),
-        ("allstar", "1978", "0"),
-        ("allstar", "1979", "0"),
+        "1977-allstar-game",
+        "1978-allstar-game",
+        "1979-allstar-game",
     ]
     # reversed range
     assert find_asg("1971-1973") == find_asg("1973-1971")
     # range with two-ASG
     assert find_asg("1958-1959") == [
-        ("allstar", "1958", "0"),
-        ("allstar", "1959", "1"),
-        ("allstar", "1959", "2"),
+        "1958-allstar-game",
+        "1959-allstar-game-1",
+        "1959-allstar-game-2",
     ]
     # range with missing season
     assert find_asg("2019-2022") == [
-        ("allstar", "2019", "0"),
-        ("allstar", "2021", "0"),
-        ("allstar", "2022", "0"),
+        "2019-allstar-game",
+        "2021-allstar-game",
+        "2022-allstar-game",
     ]
     # range including years before first ASG
     assert find_asg("1930-1935") == [
-        ("allstar", "1933", "0"),
-        ("allstar", "1934", "0"),
-        ("allstar", "1935", "0"),
+        "1933-allstar-game",
+        "1934-allstar-game",
+        "1935-allstar-game",
     ]

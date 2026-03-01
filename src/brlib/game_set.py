@@ -68,27 +68,27 @@ class GameSet:
 
         A list of the IDs of the players who appeared in the games. Can be an input to `get_players`.
 
-    * `teams`: `list[tuple[str, str]]`
+    * `teams`: `list[str]`
 
-        A list of the teams involved in the games. Can be an input to `get_teams`.
+        A list of the IDs of the teams involved in the games. Can be an input to `get_teams`.
 
     ## Examples
 
     Aggregate a list of `Game` objects:
 
     ```
-    >>> g1 = br.Game("SEA", "20180930", "0")
-    >>> g2 = br.Game("SEA", "20190929", "0")
+    >>> g1 = br.Game("SEA201809300")
+    >>> g2 = br.Game("SEA201909290")
     >>> br.GameSet([g1, g2])
-    GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    GameSet(Game('SEA201809300'), Game('SEA201909290'))
     ```
 
     Directly pass `get_games` results:
 
     ```
-    >>> gl = br.get_games([("SEA", "20180930", "0"), ("SEA", "20190929", "0")])
+    >>> gl = br.get_games([("SEA201809300"), ("SEA201909290")])
     >>> br.GameSet(gl)
-    GameSet(Game('SEA', '20180930', '0'), Game('SEA', '20190929', '0'))
+    GameSet(Game('SEA201809300'), Game('SEA201909290'))
     ```
 
     ## Methods
@@ -125,17 +125,7 @@ class GameSet:
         return f"{len(self)} games"
 
     def __repr__(self) -> str:
-        games = []
-        for game in self._contents:
-            if "allstar" in game:
-                team = "allstar"
-                date = game[:4]
-                dh = game[-1] if game[-1] != "e" else "0"
-            else:
-                team = game[:3]
-                date = game[3:-1]
-                dh = game[-1]
-            games.append(f"Game('{team}', '{date}', '{dh}')")
+        games = [f"Game('{game_id}')" for game_id in self._contents]
         return f'GameSet({", ".join(games)})'  # single quotes for <3.12 support
 
     def _gather_records(self) -> None:
@@ -179,8 +169,8 @@ class GameSet:
         ## Example
 
         ```
-        >>> g1 = br.Game("SEA", "20120815", "0")
-        >>> g2 = br.Game("SEA", "20120608", "0")
+        >>> g1 = br.Game("SEA201208150")
+        >>> g2 = br.Game("SEA201206080")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
                        Player                 Team  NH  PG  CNH
@@ -272,8 +262,8 @@ class GameSet:
         ## Example
 
         ```
-        >>> g1 = br.Game("KC1", "19550824", "0")
-        >>> g2 = br.Game("TBA", "20050828", "0")
+        >>> g1 = br.Game("KC1195508240")
+        >>> g2 = br.Game("TBA200508280")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.info[["Away Team", "Home Team"]]
                                Away Team              Home Team
@@ -362,8 +352,8 @@ class GameSet:
         ## Example
 
         ```
-        >>> g1 = br.Game("SEA", "20180401", "0")
-        >>> g2 = br.Game("TBA", "20050828", "0")
+        >>> g1 = br.Game("SEA201804010")
+        >>> g2 = br.Game("TBA200508280")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.info["Venue"]
         0       Safeco Field

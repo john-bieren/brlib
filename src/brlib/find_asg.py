@@ -16,9 +16,9 @@ from .options import write
 
 
 @runtime_typecheck
-def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
+def find_asg(seasons: str | list[str] = "all") -> list[str]:
     """
-    Returns a list of All-Star Game tuples which can be an input to `get_games`.
+    Returns a list of All-Star Game IDs which can be an input to `get_games`.
 
     ## Parameters
 
@@ -29,7 +29,7 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
 
     ## Returns
 
-    `list[tuple[str, str, str]]`
+    `list[str]`
 
     ## Examples
 
@@ -37,14 +37,14 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
 
     ```
     >>> br.find_asg("2019-2022")
-    [('allstar', '2019', '0'), ('allstar', '2021', '0'), ('allstar', '2022', '0')]
+    ['2019-allstar-game', '2021-allstar-game', '2022-allstar-game']
     ```
 
     Seasons with two All-Star Games are also accounted for:
 
     ```
     >>> br.find_asg("1962")
-    [('allstar', '1962', '1'), ('allstar', '1962', '2')]
+    ['1962-allstar-game-1', '1962-allstar-game-2']
     ```
     """
     # process input
@@ -88,7 +88,7 @@ def find_asg(seasons: str | list[str] = "all") -> list[tuple[str, str, str]]:
     result = []
     for year in year_list:
         if year in TWO_ASG_YEARS:
-            result.extend((("allstar", str(year), "1"), ("allstar", str(year), "2")))
+            result.extend([f"{year}-allstar-game-1", f"{year}-allstar-game-2"])
         else:
-            result.append(("allstar", str(year), "0"))
+            result.append(f"{year}-allstar-game")
     return result

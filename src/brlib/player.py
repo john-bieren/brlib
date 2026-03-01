@@ -51,7 +51,7 @@ class Player:
 
     * `player_id`: `str`, default `""`
 
-        The unique identifier which can be found in the URL of the player's page. It consists of the
+        The unique identifier found in the URL of the player's page. It consists of the
         first 5 letters of the player's last name followed by the first two letters of their first
         name and two digits to distinguish between otherwise identical IDs (e.g. `"brownse01"`).
 
@@ -112,9 +112,9 @@ class Player:
         The player's relationships with other major-leaguers. The relationships are they keys, and
         the values list the players. These values can be inputs to `get_players`.
 
-    * `teams`: `list[tuple[str, str]]`
+    * `teams`: `list[str]`
 
-        A list of the teams on which the player appeared. Can be an input to `get_teams`.
+        A list of the IDs of the teams on which the player appeared. Can be an input to `get_teams`.
 
     ## Example
 
@@ -958,21 +958,23 @@ class Player:
         pit_teams = Player._scrape_teams_from_df(self.pitching) if not self.pitching.empty else []
         fld_teams = Player._scrape_teams_from_df(self.fielding) if not self.fielding.empty else []
         self.teams = list(dict.fromkeys(bat_teams + pit_teams + fld_teams))
-        self.teams = sorted(self.teams, key=lambda x: (x[1], x[0]))
+        self.teams.sort(key=lambda x: (x[-4:], x[:-4]))
 
         if len(self.teams) == 0:
             return
-        seasons = [x[1] for x in self.teams]
+        seasons = [x[-4:] for x in self.teams]
         self.info["Most Teams in a Year"] = Counter(seasons).most_common(1)[0][1]
-        franchises = [abv_man.franchise_abv(abv, int(year)) for abv, year in self.teams]
+        franchises = [
+            abv_man.franchise_abv(team_id[:-4], int(team_id[-4:])) for team_id in self.teams
+        ]
         self.info["Teams Played For"] = len(dict.fromkeys(franchises))
 
     @staticmethod
-    def _scrape_teams_from_df(df: pd.DataFrame) -> list[tuple[str, str]]:
-        """Returns a list of the teams which appear in `df`."""
+    def _scrape_teams_from_df(df: pd.DataFrame) -> list[str]:
+        """Returns a list of the IDs of the teams which appear in `df`."""
         season_rows = df.loc[df["Season"].str.fullmatch(SEASON_REGEX)]
         # remove multi-team season summary rows
         season_rows = season_rows[~season_rows["Team"].str.fullmatch(MULTI_TEAM_REGEX)]
-        teams = list(zip(season_rows["Team"], season_rows["Season"]))  # ("SEA", 2019)
+        teams = list(season_rows["Team"] + season_rows["Season"])  # "SEA2019"
         teams = list(dict.fromkeys(teams))
         return teams

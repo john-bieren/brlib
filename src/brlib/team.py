@@ -34,20 +34,17 @@ from .options import dev_alert, options, print_page
 
 class Team:
     """
-    Statistics and information from a team. Can be initialized with `team` and `season` arguments,
-    or with a `page` argument. If neither of these sets of arguments are given, an exception is
-    raised.
+    Statistics and information from a team. Can be initialized with a `team_id` argument, or
+    with a `page` argument. If neither of these arguments are given, an exception is raised.
 
     ## Parameters
 
-    * `team`: `str`, default `""`
+    * `team_id`: `str`, default `""`
 
-        The team's abbreviation. Era adjustment is not used, and aliases are not accepted. [Read
-        more about team abbreviation handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
-
-    * `season`: `str`, default `""`
-
-        The year in which the team played in YYYY format (e.g. `"2022"`).
+        The unique identifier found in the URL of the team's page. It consists of the team's
+        abbreviation and the year in YYYY format (e.g. `"SEA2022"`). Era adjustment
+        is not used, and aliases are not accepted. [Read more about team abbreviation
+        handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
     * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
 
@@ -109,7 +106,7 @@ class Team:
     Load a team:
 
     ```
-    >>> br.Team("SDP", "2022").name
+    >>> br.Team("SDP2022").name
     '2022 San Diego Padres'
     ```
 
@@ -123,8 +120,7 @@ class Team:
     @runtime_typecheck
     def __init__(
         self,
-        team: str = "",
-        season: str = "",
+        team_id: str = "",
         page: Response = Response(),
         add_no_hitters: bool | None = None,
         update_team_names: bool | None = None,
@@ -138,12 +134,9 @@ class Team:
             update_venue_names = options.update_venue_names
 
         if page.url == "":
-            if any(s == "" for s in (team, season)):
-                raise ValueError("insufficient arguments")
-
-            teams = validate_team_list([(team, season)])
+            teams = validate_team_list([team_id])
             if len(teams) == 0:
-                raise ValueError("invalid arguments")
+                raise ValueError("invalid arguments: must provide a team_id or page argument")
             page = Team._get_team(teams[0])
         else:
             if not re.fullmatch(TEAM_URL_REGEX, page.url):
@@ -171,9 +164,7 @@ class Team:
     def __repr__(self) -> str:
         if self._url == "":
             return "Team()"
-        team = self.id[:-4]
-        season = self.id[-4:]
-        return f"Team('{team}', '{season}')"
+        return f"Team('{self.id}')"
 
     def add_no_hitters(self) -> None:
         """
@@ -192,7 +183,7 @@ class Team:
         ## Example
 
         ```
-        >>> t = br.Team("BOS", "1904")
+        >>> t = br.Team("BOS1904")
         >>> t.pitching[["Player", "NH", "PG", "CNH"]]
                     Player  NH  PG  CNH
         0         Cy Young NaN NaN  NaN
@@ -274,7 +265,7 @@ class Team:
         ## Example
 
         ```
-        >>> t = br.Team("LAA", "2015")
+        >>> t = br.Team("LAA2015")
         >>> t.info["Team"]
         0    Los Angeles Angels of Anaheim
         Name: Team, dtype: object
@@ -319,7 +310,7 @@ class Team:
         ## Example
 
         ```
-        >>> t = br.Team("OAK", "2021")
+        >>> t = br.Team("OAK2021")
         >>> t.info["Venue"]
         0    RingCentral Coliseum
         Name: Venue, dtype: object
@@ -332,10 +323,9 @@ class Team:
         self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
 
     @staticmethod
-    def _get_team(team: tuple[str, str]) -> Response:
-        """Returns the page associated with a team and season."""
-        abv, season = team
-        endpoint = f"/teams/{abv}/{season}.shtml"
+    def _get_team(team_id: str) -> Response:
+        """Returns the page associated with `team_id`."""
+        endpoint = f"/teams/{team_id[:-4]}/{team_id[-4:]}.shtml"
         return req_man.get_page(endpoint)
 
     def _scrape_team(self, page: Response) -> None:

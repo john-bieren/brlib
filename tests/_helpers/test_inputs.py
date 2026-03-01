@@ -12,42 +12,42 @@ from brlib._helpers.inputs import (
 def test_validate_game_list() -> None:
     """Tests the outputs of the `validate_game_list` function."""
     test_list = [
-        # convert team to uppercase
-        ("sea", "20150621", "0"),
+        # convert ID to uppercase
+        "sea201506210",
         # accept aliases
-        ("LAN", "20241031", "0"),
+        "LAN202410310",
         # accept, correct missing aliases
-        ("NYY", "20250329", "0"),
+        "NYY202503290",
         # reject impossible team/season combination
-        ("SEP", "19700401", "0"),
+        "SEP197004010",
         # reject incorrect abbreviation
-        ("MLB", "19941020", "0"),
+        "MLB199410200",
         # reject teams without box scores
-        ("KCM", "19230805", "0"),
+        "KCM192308050",
         # reject invalid date
-        ("TOR", "201805080", "0"),
+        "TOR2018050800",
         # reject invalid doubleheader
-        ("BRO", "19210704", "4"),
+        "BRO192107044",
         # reject game before 1901
-        ("PHI", "19000712", "0"),
+        "PHI190007120",
         # reject game in future
-        ("OAK", "20990321", "0"),
+        "OAK209903210",
         # reject malformed ASG input
-        ("allstar", "19600713", "0"),
+        "allstar196007130",
         # reject ASG before 1933
-        ("allstar", "1932", "0"),
+        "1932-allstar-game",
         # reject ASG in future
-        ("allstar", "2099", "0"),
+        "2099-allstar-game",
         # reject ASG in year when it was canceled
-        ("allstar", "2020", "0"),
-        # convert allstar to uppercase
-        ("allstar", "1960", "2"),
+        "2020-allstar-game",
+        # convert ASG ID to lowercase
+        "1962-ALLSTAR-GAME-2",
     ]
     assert validate_game_list(test_list) == [
-        ("SEA", "20150621", "0"),
-        ("LAN", "20241031", "0"),
-        ("NYA", "20250329", "0"),
-        ("ALLSTAR", "1960", "2"),
+        "SEA201506210",
+        "LAN202410310",
+        "NYA202503290",
+        "1962-allstar-game-2",
     ]
 
 
@@ -82,22 +82,22 @@ def test_validate_player_list() -> None:
 def test_validate_team_list() -> None:
     """Tests the outputs of the `validate_team_list` function."""
     test_list = [
-        # convert to uppercase
-        ("cin", "2017"),
+        # convert ID to uppercase
+        "cin2017",
         # reject impossible team/season combination
-        ("SEP", "1970"),
+        "SEP1970",
         # reject invalid abbreviation
-        ("NO", "2019"),
+        "NO2019",
         # reject invalid season
-        ("PIT", "123456"),
+        "PIT123456",
         # reject season before 1871
-        ("TRO", "1870"),
+        "TRO1870",
         # reject season in future
-        ("MAR", "2099"),
+        "MAR2099",
         # reject missing season for team
-        ("HG", "1934"),
+        "HG1934",
     ]
-    assert validate_team_list(test_list) == [("CIN", "2017")]
+    assert validate_team_list(test_list) == ["CIN2017"]
 
 
 def test_validate_date_list() -> None:

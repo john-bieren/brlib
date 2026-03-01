@@ -4,31 +4,29 @@ from tqdm import tqdm
 
 from ._helpers.inputs import validate_game_list
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import runtime_typecheck, str_between
+from ._helpers.utils import game_id_to_endpoint, runtime_typecheck
 from .game import Game
 from .options import options, write
 
 
 @runtime_typecheck
 def get_games(
-    game_list: list[tuple[str, str, str]],
+    game_list: list[str],
     add_no_hitters: bool | None = None,
     update_team_names: bool | None = None,
     update_venue_names: bool | None = None,
     ignore_errors: bool = True,
 ) -> list[Game]:
     """
-    Returns a list of `Game` objects corresponding to the tuples in `game_list`, which mimic the
-    `Game` initialization parameters. By default, a progress bar will appear in the terminal. You
-    can change this behavior with
+    Returns a list of `Game` objects corresponding to the game IDs in `game_list`. By default, a
+    progress bar will appear in the terminal. You can change this behavior with
     [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 
-    * `game_list`: `list[tuple[str, str, str]]`
+    * `game_list`: `list[str]`
 
-        A list of tuples containing `home_team`, `date`, and `doubleheader` arguments like those for
-        a [`Game`](https://github.com/john-bieren/brlib/wiki/Game) object.
+        A list of game IDs.
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
@@ -62,8 +60,8 @@ def get_games(
     Gather some games of interest:
 
     ```
-    >>> br.get_games([("SEA", "20110624", "0"), ("SEA", "20230522", "0")])
-    [Game('SEA', '20110624', '0'), Game('SEA', '20230522', '0')]
+    >>> br.get_games(["SEA201106240", "SEA202305220"])
+    [Game('SEA201106240'), Game('SEA202305220')]
     ```
 
     Directly pass `find_games` results:
@@ -71,7 +69,7 @@ def get_games(
     ```
     >>> fg = br.find_games("SEA", "2025", dates="1015-1031", home_away="HOME", game_type="POST")
     >>> br.get_games(fg)
-    [Game('SEA', '20251015', '0'), Game('SEA', '20251016', '0'), Game('SEA', '20251017', '0')]
+    [Game('SEA202510150'), Game('SEA202510160'), Game('SEA202510170')]
     ```
     """
     if add_no_hitters is None:
@@ -86,18 +84,14 @@ def get_games(
         return []
 
     results = []
-    for home_team, date, doubleheader in tqdm(
+    for game_id in tqdm(
         iterable=list(dict.fromkeys(game_list)),
         unit="game",
         bar_format=options.pb_format,
         colour=options.pb_color,
         disable=options.pb_disable,
     ):
-        if home_team == "ALLSTAR":
-            game_number = f"-{doubleheader}" if doubleheader != "0" else ""
-            endpoint = f"/allstar/{date}-allstar-game{game_number}.shtml"
-        else:
-            endpoint = f"/boxes/{home_team}/{home_team}{date}{doubleheader}.shtml"
+        endpoint = game_id_to_endpoint(game_id)
 
         try:
             page = req_man.get_page(endpoint)
@@ -115,7 +109,6 @@ def get_games(
             exception_type = type(exc).__name__
             write(f"{exception_type}: {exc}")
 
-            game_id = str_between(endpoint, "/", ".", anchor="end")
             message = f"cannot get {game_id}"
             if exception_type == "ConnectionRefusedError":  # 429 error
                 write(message + " or subsequent games")

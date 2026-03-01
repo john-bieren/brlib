@@ -5,61 +5,74 @@ import re
 from ..options import write
 from .abbreviations_manager import abv_man
 from .constants import (
+    ASG_ID_REGEX,
     BML_TEAM_ABVS,
     CURRENT_YEAR,
     CY_BASEBALL,
     DATE_RANGE_REGEX,
     DATE_REGEX,
-    DOUBLEHEADER_REGEX,
     FIRST_ASG_YEAR,
     FIRST_GAMES_YEAR,
     FIRST_TEAMS_YEAR,
-    GAME_DATE_REGEX,
+    GAME_ID_REGEX,
     MISSING_SEASONS_DICT,
     NO_ASG_YEARS,
     PLAYER_ID_REGEX,
-    SEASON_REGEX,
     TEAM_ALIASES,
+    TEAM_ID_REGEX,
 )
 
 
-def validate_game_list(game_list: list[tuple[str, str, str]]) -> list[tuple[str, str, str]]:
+def validate_game_list(game_list: list[str]) -> list[str]:
     """
-    Returns list including only the valid games, alerts user of removed inputs if
-    `options.quiet` is `False`. Will change `home_team` args to uppercase.
+    Returns list including only the valid game IDs, alerts user of removed inputs if
+    `options.quiet` is `False`. Will change IDs to correct case for URLs.
     """
     result = []
-    for home_team, date, doubleheader in game_list:
-        # validate arguments
-        home_team = home_team.upper()
+    for game_id in game_list:
+        # parse game ID
+        if re.fullmatch(GAME_ID_REGEX, game_id):
+            home_team = game_id[:-9].upper()
+            date = game_id[-9:-1]
+            doubleheader = game_id[-1]
+        elif re.fullmatch(ASG_ID_REGEX, game_id):
+            home_team = "allstar"
+            date = game_id[:4]
+            last_fragment = game_id.rsplit("-", maxsplit=1)[1]
+            if last_fragment in {"1", "2"}:
+                doubleheader = last_fragment
+            else:
+                doubleheader = "0"
+        else:
+            write(f'cannot get "{game_id}": not a valid game ID')
+            continue
+
+        # validate game ID
         message = _validate_game_input(home_team, date, doubleheader)
         if message != "":
-            write(f'cannot get ("{home_team}", "{date}", "{doubleheader}"): {message}')
+            write(f'cannot get "{game_id}": {message}')
             continue
 
         # check home team abbreviation
-        if home_team == "ALLSTAR":
-            result.append((home_team, date, doubleheader))
+        if home_team == "allstar":
+            game_number = f"-{doubleheader}" if doubleheader != "0" else ""
+            result.append(f"{date}-allstar-game{game_number}")
             continue
         year = int(date[:4])
         home_team = abv_man.to_regular(home_team, year)
         correct_abv = abv_man.correct_abvs(home_team, year, era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
-            write(
-                f'cannot get ("{home_team}", "{date}", "{doubleheader}"): {home_team} did not play in {year}'
-            )
+            write(f'cannot get "{game_id}": {home_team} did not play in {year}')
             continue
-        # use correct_abv moving forward to account for discontinuities
-        correct_abv = abv_man.to_alias(*correct_abv, year)
-        result.append((correct_abv, date, doubleheader))
+        # use correct_abv to account for discontinuities, guarantee all-caps abbreviation
+        correct_abv = abv_man.to_alias(correct_abv[0], year)
+        result.append(f"{correct_abv}{date}{doubleheader}")
     return result
 
 
 def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
     """Returns reason that input is invalid, or empty string. `home_team` must be uppercase."""
-    if home_team == "ALLSTAR":
-        if not re.fullmatch(SEASON_REGEX, date):
-            return f'date "{date}" is invalid, must be YYYY for All-Star Games'
+    if home_team == "allstar":
         year = int(date)
         if year < FIRST_ASG_YEAR:
             return f"there were no All-Star Games held until {FIRST_ASG_YEAR}"
@@ -69,18 +82,16 @@ def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
             return f"there was no All-Star Game in {year}"
     else:
         if not (abv_man.is_valid(home_team) or home_team in TEAM_ALIASES.values()):
-            return f'home_team "{home_team}" is invalid'
+            return f'abbreviation "{home_team}" is not associated with any teams'
         if home_team in BML_TEAM_ABVS:
-            return f"box scores for {home_team} are not available"
-        if not re.fullmatch(GAME_DATE_REGEX, date):
-            return f'date "{date}" is invalid, must be YYYYMMDD'
-        if not re.fullmatch(DOUBLEHEADER_REGEX, doubleheader):
+            return f"box scores are not available for {home_team}"
+        if not 0 <= int(doubleheader) <= 3:
             return f'doubleheader "{doubleheader}" is invalid, must be 0-3'
         year = int(date[:4])
         if year < FIRST_GAMES_YEAR:
-            return f'date "{date}" is too early, must be at least {FIRST_GAMES_YEAR}'
+            return f"{year} is too early, must be at least {FIRST_GAMES_YEAR}"
         if year > CURRENT_YEAR + CY_BASEBALL - 1:
-            return f'date "{date}" is in the future'
+            return f"{year} is in the future"
     return ""
 
 
@@ -107,39 +118,43 @@ def _validate_player_input(player_id: str) -> str:
     return ""
 
 
-def validate_team_list(team_list: list[tuple[str, str]]) -> list[tuple[str, str]]:
+def validate_team_list(team_list: list[str]) -> list[str]:
     """
-    Returns list including only the valid teams, alerts user of removed inputs if
-    `options.quiet` is `False`. Will change `team` args to uppercase.
+    Returns list including only the valid team IDs, alerts user of removed inputs if
+    `options.quiet` is `False`. Will change IDs to uppercase.
     """
     result = []
-    for abv, season in team_list:
+    for team_id in team_list:
+        # parse team ID
+        if not re.fullmatch(TEAM_ID_REGEX, team_id):
+            write(f'cannot get "{team_id}": not a valid team ID')
+            continue
+        abv = team_id[:-4]
+        season = team_id[-4:]
         abv = abv.upper()
         message = _validate_team_input(abv, season)
         if message != "":
-            write(f'cannot get ("{abv}", "{season}"): {message}')
+            write(f'cannot get "{team_id}": {message}')
             continue
 
         # check home team abbreviation
         correct_abv = abv_man.correct_abvs(abv, int(season), era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
-            write(f'cannot get ("{abv}", "{season}"): {abv} did not play in {season}')
+            write(f'cannot get "{team_id}": {abv} did not play in {season}')
             continue
-        result.append((*correct_abv, season))
+        result.append(f"{correct_abv[0]}{season}")
     return result
 
 
 def _validate_team_input(team: str, season: str) -> str:
     """Returns reason that input is invalid, or empty string. `team` must be uppercase."""
     if not abv_man.is_valid(team):
-        return f'team "{team}" is invalid'
-    if not re.fullmatch(SEASON_REGEX, season):
-        return f'season "{season}" is invalid'
+        return f'abbreviation "{team}" is not associated with any teams'
     year = int(season)
     if year < FIRST_TEAMS_YEAR:
-        return f'season "{season}" is too early, must be at least {FIRST_TEAMS_YEAR}'
+        return f"{season} is too early, must be at least {FIRST_TEAMS_YEAR}"
     if year > CURRENT_YEAR + CY_BASEBALL - 1:
-        return f'season "{season}" is in the future'
+        return f"{season} is in the future"
     if team in MISSING_SEASONS_DICT.get(year, {}):
         return f"{team} did not play in {season}"
     return ""

@@ -11,24 +11,22 @@ from .team import Team
 
 @runtime_typecheck
 def get_teams(
-    team_list: list[tuple[str, str]],
+    team_list: list[str],
     add_no_hitters: bool | None = None,
     update_team_names: bool | None = None,
     update_venue_names: bool | None = None,
     ignore_errors: bool = True,
 ) -> list[Team]:
     """
-    Returns a list of `Team` objects corresponding to the tuples in `team_list`, which mimic the
-    `Team` initialization parameters. By default, a progress bar will appear in the terminal. You
-    can change this behavior with
+    Returns a list of `Team` objects corresponding to the team IDs in `team_list`. By default, a
+    progress bar will appear in the terminal. You can change this behavior with
     [`options.pb_disable`](https://github.com/john-bieren/brlib/wiki/options).
 
     ## Parameters
 
-    * `team_list`: `list[tuple[str, str]]`
+    * `team_list`: `list[str]`
 
-        A list of tuples containing `team`, and `season` arguments like those for a
-        [`Team`](https://github.com/john-bieren/brlib/wiki/Team) object.
+        A list of team IDs.
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
@@ -62,8 +60,8 @@ def get_teams(
     Gather some teams of interest:
 
     ```
-    >>> br.get_teams([("HOU", "2019"), ("SEA", "2021"), ("WSN", "2022")])
-    [Team('HOU', '2019'), Team('SEA', '2021'), Team('WSN', '2022')]
+    >>> br.get_teams(["HOU2019", "SEA2021", "WSN2022"])
+    [Team('HOU2019'), Team('SEA2021'), Team('WSN2022')]
     ```
 
     Directly pass `find_teams` results or `teams` attributes:
@@ -71,7 +69,7 @@ def get_teams(
     ```
     >>> ft = br.find_teams(["SEA", "TBR"], ["2008", "2010"])
     >>> br.get_teams(ft)
-    [Team('SEA', '2008'), Team('TBR', '2008'), Team('SEA', '2010'), Team('TBR', '2010')]
+    [Team('SEA2008'), Team('TBR2008'), Team('SEA2010'), Team('TBR2010')]
     ```
     """
     if add_no_hitters is None:
@@ -86,14 +84,14 @@ def get_teams(
         return []
 
     results = []
-    for abv, season in tqdm(
+    for team_id in tqdm(
         iterable=list(dict.fromkeys(team_list)),
         unit="team",
         bar_format=options.pb_format,
         colour=options.pb_color,
         disable=options.pb_disable,
     ):
-        endpoint = f"/teams/{abv}/{season}.shtml"
+        endpoint = f"/teams/{team_id[:-4]}/{team_id[-4:]}.shtml"
 
         try:
             page = req_man.get_page(endpoint)
@@ -111,7 +109,7 @@ def get_teams(
             exception_type = type(exc).__name__
             write(f"{exception_type}: {exc}")
 
-            message = f"cannot get {abv}{season}"
+            message = f"cannot get {team_id}"
             if exception_type == "ConnectionRefusedError":  # 429 error
                 write(message + " or subsequent teams")
                 return results

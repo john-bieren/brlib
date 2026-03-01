@@ -63,7 +63,7 @@ def get_players(
     Directly pass `players` attributes:
 
     ```
-    >>> t = br.Team("OAK", "2023")
+    >>> t = br.Team("OAK2023")
     >>> pl = br.get_players(t.players)
     [Player('wadety01'), Player('thomaco01'), Player('soderty01'), ...]
     ```

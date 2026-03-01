@@ -144,5 +144,4 @@ def test_teams(expected_game_data: Path, games_list: list[br.Game]) -> None:
     for game in games_list:
         file = expected_game_data / "original" / game.id / "teams.json"
         expected_list = json.loads(file.read_bytes())
-        expected_list = [tuple(t) for t in expected_list]
         assert game.teams == expected_list

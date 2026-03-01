@@ -179,3 +179,13 @@ def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
             # skip columns which cannot be converted
             pass
     return df
+
+
+def game_id_to_endpoint(game_id: str) -> str:
+    """Converts `game_id` to the associated URL endpoint."""
+    is_asg = len(game_id) != 12
+    if is_asg:
+        endpoint = f"/allstar/{game_id}.shtml"
+    else:
+        endpoint = f"/boxes/{game_id[:-9]}/{game_id}.shtml"
+    return endpoint

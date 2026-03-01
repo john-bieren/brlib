@@ -8,69 +8,69 @@ def test_teams():
     # reject alias
     assert len(find_teams("KC1", "ALL")) == 0
     # list, test case insensitivity
-    assert find_teams(["col", "BAL"], "2020") == [("COL", "2020"), ("BAL", "2020")]
+    assert find_teams(["col", "BAL"], "2020") == ["COL2020", "BAL2020"]
     # "all"
     assert find_teams(seasons="1901") == [
-        ("BLA", "1901"),
-        ("BOS", "1901"),
-        ("BRO", "1901"),
-        ("BSN", "1901"),
-        ("CHC", "1901"),
-        ("CHW", "1901"),
-        ("CIN", "1901"),
-        ("CLE", "1901"),
-        ("DET", "1901"),
-        ("MLA", "1901"),
-        ("NYG", "1901"),
-        ("PHA", "1901"),
-        ("PHI", "1901"),
-        ("PIT", "1901"),
-        ("STL", "1901"),
-        ("WSH", "1901"),
+        "BLA1901",
+        "BOS1901",
+        "BRO1901",
+        "BSN1901",
+        "CHC1901",
+        "CHW1901",
+        "CIN1901",
+        "CLE1901",
+        "DET1901",
+        "MLA1901",
+        "NYG1901",
+        "PHA1901",
+        "PHI1901",
+        "PIT1901",
+        "STL1901",
+        "WSH1901",
     ]
     # segregation-era identifiers, further test case insensitivity
     assert find_teams(["BML", "WML"]) == find_teams("ALL")
     assert find_teams("bml", "1920") == [
-        ("ABC", "1920"),
-        ("CAG", "1920"),
-        ("COG", "1920"),
-        ("CSW", "1920"),
-        ("DM", "1920"),
-        ("DS", "1920"),
-        ("KCM", "1920"),
-        ("SLG", "1920"),
+        "ABC1920",
+        "CAG1920",
+        "COG1920",
+        "CSW1920",
+        "DM1920",
+        "DS1920",
+        "KCM1920",
+        "SLG1920",
     ]
     assert find_teams("wml", "1920") == [
-        ("BOS", "1920"),
-        ("BRO", "1920"),
-        ("BSN", "1920"),
-        ("CHC", "1920"),
-        ("CHW", "1920"),
-        ("CIN", "1920"),
-        ("CLE", "1920"),
-        ("DET", "1920"),
-        ("NYG", "1920"),
-        ("NYY", "1920"),
-        ("PHA", "1920"),
-        ("PHI", "1920"),
-        ("PIT", "1920"),
-        ("SLB", "1920"),
-        ("STL", "1920"),
-        ("WSH", "1920"),
+        "BOS1920",
+        "BRO1920",
+        "BSN1920",
+        "CHC1920",
+        "CHW1920",
+        "CIN1920",
+        "CLE1920",
+        "DET1920",
+        "NYG1920",
+        "NYY1920",
+        "PHA1920",
+        "PHI1920",
+        "PIT1920",
+        "SLB1920",
+        "STL1920",
+        "WSH1920",
     ]
 
 
 def test_seasons():
     """Tests that the `seasons` argument is handled correctly."""
     # range
-    assert find_teams("LAA", "2017-2019") == [("LAA", "2017"), ("LAA", "2018"), ("LAA", "2019")]
+    assert find_teams("LAA", "2017-2019") == ["LAA2017", "LAA2018", "LAA2019"]
     # reversed range
-    assert find_teams("LAA", "2019-2017") == [("LAA", "2017"), ("LAA", "2018"), ("LAA", "2019")]
+    assert find_teams("LAA", "2019-2017") == ["LAA2017", "LAA2018", "LAA2019"]
     # list
     assert find_teams("CIN", ["2017", "2018-2019"]) == [
-        ("CIN", "2017"),
-        ("CIN", "2018"),
-        ("CIN", "2019"),
+        "CIN2017",
+        "CIN2018",
+        "CIN2019",
     ]
     # "all"
-    assert find_teams("BLA") == [("BLA", "1901"), ("BLA", "1902")]
+    assert find_teams("BLA") == ["BLA1901", "BLA1902"]

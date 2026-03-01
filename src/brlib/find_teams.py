@@ -22,9 +22,9 @@ from .options import write
 def find_teams(
     teams: str | list[str] = "all",
     seasons: str | list[str] = "all",
-) -> list[tuple[str, str]]:
+) -> list[str]:
     """
-    Returns a list of team tuples which can be an input to `get_teams`.
+    Returns a list of team IDs which can be an input to `get_teams`.
 
     ## Parameters
 
@@ -43,7 +43,7 @@ def find_teams(
 
     ## Returns
 
-    `list[tuple[str, str]]`
+    `list[str]`
 
     ## Examples
 
@@ -51,21 +51,21 @@ def find_teams(
 
     ```
     >>> br.find_teams("OAK", "2022-2025")
-    [('OAK', '2022'), ('OAK', '2023'), ('OAK', '2024'), ('ATH', '2025')]
+    ['OAK2022', 'OAK2023', 'OAK2024', 'ATH2025']
     ```
 
     Survey entire seasons:
 
     ```
     >>> br.find_teams("BML", "1948")
-    [('BBB', '1948'), ('BEG', '1948'), ('CAG', '1948'), ('CBE', '1948'), ...]
+    ['BBB1948', 'BEG1948', 'CAG1948', 'CBE1948', ...]
     ```
 
     Abbreviations can match multiple teams due to era adjustment:
 
     ```
     >>> br.find_teams("BAL", "1914")
-    [('SLB', '1914'), ('BAL', '1914')]
+    ['SLB1914', 'BAL1914']
     ```
     """
     # make sure all possible list inputs are lists
@@ -161,7 +161,7 @@ def _make_year_list(seasons: list[str]) -> list[int]:
     return year_list
 
 
-def _find_season_teams(year: int, year_teams: list[str]) -> list[tuple[str, str]]:
+def _find_season_teams(year: int, year_teams: list[str]) -> list[str]:
     """
     Returns the list of valid teams in `year` with abbreviations listed in `year_teams`.
     `year_teams` must be uppercase. Handles missing seasons.
@@ -182,7 +182,7 @@ def _find_season_teams(year: int, year_teams: list[str]) -> list[tuple[str, str]
 
         match_rows = abv_man.df[year_mask & team_mask]
         teams = match_rows["Team"].values
-        results = [(abv, str(year)) for abv in teams if abv not in missing_seasons]
-        results.sort(key=lambda x: x[0])  # sort by team abv instead of franchise abv
+        results = [f"{abv}{year}" for abv in teams if abv not in missing_seasons]
+        results.sort(key=lambda x: x)  # sort by team abv instead of franchise abv
         team_list.extend(results)
     return team_list

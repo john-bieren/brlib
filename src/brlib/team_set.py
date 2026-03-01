@@ -62,18 +62,18 @@ class TeamSet:
     Aggregate a list of `Team` objects:
 
     ```
-    >>> t1 = br.Team("SEP", "1969")
-    >>> t2 = br.Team("MLA", "1901")
+    >>> t1 = br.Team("SEP1969")
+    >>> t2 = br.Team("MLA1901")
     >>> br.TeamSet([t1, t2])
-    TeamSet(Team('SEP', '1969'), Team('MLA', '1901'))
+    TeamSet(Team('SEP1969'), Team('MLA1901'))
     ```
 
     Directly pass `get_teams` results:
 
     ```
-    >>> tl = br.get_teams([("SEP", "1969"), ("MLA", "1901")])
+    >>> tl = br.get_teams([("SEP1969"), ("MLA1901")])
     >>> br.TeamSet(tl)
-    TeamSet(Team('SEP', '1969'), Team('MLA', '1901'))
+    TeamSet(Team('SEP1969'), Team('MLA1901'))
     ```
 
     ## Methods
@@ -106,7 +106,7 @@ class TeamSet:
         return f"{len(self)} teams"
 
     def __repr__(self) -> str:
-        teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
+        teams = [f"Team('{team_id}')" for team_id in self._contents]
         return f'TeamSet({", ".join(teams)})'  # single quotes for <3.12 support
 
     def _gather_records(self) -> None:
@@ -144,8 +144,8 @@ class TeamSet:
         ## Example
 
         ```
-        >>> t1 = br.Team("BOS", "1917")
-        >>> t2 = br.Team("PRO", "1883")
+        >>> t1 = br.Team("BOS1917")
+        >>> t2 = br.Team("PRO1883")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
                        Player  NH  PG  CNH
@@ -257,8 +257,8 @@ class TeamSet:
         ## Example
 
         ```
-        >>> t1 = br.Team("BRO", "1920")
-        >>> t2 = br.Team("NYY", "1920")
+        >>> t1 = br.Team("BRO1920")
+        >>> t2 = br.Team("NYY1920")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.info["Team"]
         0     Brooklyn Robins
@@ -317,8 +317,8 @@ class TeamSet:
         ## Example
 
         ```
-        >>> t1 = br.Team("PHA", "1954")
-        >>> t2 = br.Team("SFG", "2017")
+        >>> t1 = br.Team("PHA1954")
+        >>> t2 = br.Team("SFG2017")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.info["Venue"]
         0    Connie Mack Stadium

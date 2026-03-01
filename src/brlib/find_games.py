@@ -33,9 +33,9 @@ def find_games(
     dates: str | list[str] = "all",
     home_away: str = "all",
     game_type: str = "all",
-) -> list[tuple[str, str, str]]:
+) -> list[str]:
     """
-    Returns a list of game tuples which can be an input to `get_games`.
+    Returns a list of game IDs which can be an input to `get_games`.
 
     ## Parameters
 
@@ -74,7 +74,7 @@ def find_games(
 
     ## Returns
 
-    `list[tuple[str, str, str]]`
+    `list[str]`
 
     ## Examples
 
@@ -82,21 +82,21 @@ def find_games(
 
     ```
     >>> br.find_games("SEA", "2020")
-    [('HOU', '20200724', '0'), ('HOU', '20200725', '0'), ...]
+    ['HOU202007240', 'HOU202007250', ...]
     ```
 
     Find matchups between teams:
 
     ```
     >>> br.find_games("SEA", "2019", "STL")
-    [('SEA', '20190702', '0'), ('SEA', '20190703', '0'), ('SEA', '20190704', '0')]
+    ['SEA201907020', 'SEA201907030', 'SEA201907040']
     ```
 
     Abbreviations can match multiple teams due to era adjustment:
 
     ```
     >>> br.find_games(teams="BAL", seasons="1915", dates="825", home_away="home")
-    [('BAL', '19150825', '1'), ('BAL', '19150825', '2'), ('SLB', '19150825', '0')]
+    ['BAL191508251', 'BAL191508252', 'SLB191508250']
     ```
     """
     # make sure all possible list inputs are lists
@@ -271,7 +271,7 @@ def _find_season_games(
     dates: list[str],
     home_away: str,
     game_type: str,
-) -> list[tuple[str, str, str]]:
+) -> list[str]:
     """
     Scrapes an MLB schedule page, and returns the games from that season which
     match all the other input parameters. Inputs must be uppercase.
@@ -347,5 +347,5 @@ def _find_season_games(
                 )
 
             if append:
-                game_list.append((home_team, date, doubleheader))
+                game_list.append(f"{home_team}{date}{doubleheader}")
     return game_list

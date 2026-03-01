@@ -13,9 +13,9 @@ def get_expected_df(category_dir: str, target_table: str, updated: bool = False)
     """
     updated_original = "updated" if updated else "original"
     cases_dir = Path(__file__).parent / "expected" / category_dir / updated_original
+    case_dirs = sorted(cases_dir.iterdir())
 
     tables = []
-    case_dirs = sorted(cases_dir.iterdir())
     for case_dir in case_dirs:
         data_file = case_dir / f"{target_table}.csv"
         df = pd.read_csv(data_file)
@@ -32,14 +32,12 @@ def get_expected_list(category_dir: str, target_list: str) -> list[str] | list[t
     contents of `category_dir`.
     """
     cases_dir = Path(__file__).parent / "expected" / category_dir / "original"
+    case_dirs = sorted(cases_dir.iterdir())
 
     expected_list = []
-    case_dirs = sorted(cases_dir.iterdir())
     for case_dir in case_dirs:
         data_file = case_dir / f"{target_list}.json"
         expected_list.extend(json.loads(data_file.read_bytes()))
 
-    if target_list == "teams":
-        expected_list = [tuple(t) for t in expected_list]
     expected_list = list(dict.fromkeys(expected_list))
     return expected_list

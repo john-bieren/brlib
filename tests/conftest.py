@@ -33,35 +33,35 @@ def games_list() -> list[br.Game]:
     return br.get_games(
         [
             # ASG with dh != 0, 10 innings
-            ("allstar", "1961", "1"),
+            "1961-allstar-game-1",
             # ASG, essentially a forfeit, illegal(?) substitution with 1 position and split stats
-            ("allstar", "2025", "0"),
+            "2025-allstar-game",
             # Ohtani plays DH and SP
-            ("ANA", "20230509", "0"),
+            "ANA202305090",
             # illegal substitution with 2 positions and split stats, error by pitcher who didn't hit
-            ("BOS", "20170825", "0"),
+            "BOS201708250",
             # renamed venue, renamed team, relocated team
-            ("FLO", "19940729", "0"),
+            "FLO199407290",
             # both teams share names with later ones, limited stats (especially SB info), dh != 0
-            ("MLA", "19010530", "1"),
+            "MLA190105301",
             # unassisted triple play
-            ("NYN", "20090823", "0"),
+            "NYN200908230",
             # combined no-hitter, WS game (matters for name)
-            ("PHI", "20221102", "0"),
+            "PHI202211020",
             # dh = 3, 6 innings, 2 CGs with IP<9
-            ("PIT", "19201002", "3"),
+            "PIT192010023",
             # player with 2 DP, U L Washington tests parsing, 2 identical POCS, renamed venue, dh != 0
-            ("SEA", "19780523", "1"),
+            "SEA197805231",
             # perfect game, renamed venue
-            ("SEA", "20120815", "0"),
+            "SEA201208150",
             # triple play, renamed venue, outfield assists
-            ("SEA", "20180419", "0"),
+            "SEA201804190",
             # SB cycle with multiple pitcher/catcher combos, a balk
-            ("SEA", "20190527", "0"),
+            "SEA201905270",
             # non-WS postseason game (matters for name), 18 innings
-            ("SEA", "20221015", "0"),
+            "SEA202210150",
             # forfeited by team which finished with the lead, 4 innings, dh != 0
-            ("SLN", "19071005", "1"),
+            "SLN190710051",
         ],
         ignore_errors=False,
     )
@@ -160,23 +160,23 @@ def teams_list() -> list[br.Team]:
     return br.get_teams(
         [
             # four managers, limited data, partial park factors
-            ("BBB", "1924"),
+            "BBB1924",
             # non-AL/NL pennant winner, players with multiple AS
-            ("BEG", "1939"),
+            "BEG1939",
             # team gold glove, pandemic season
-            ("CHC", "2020"),
+            "CHC2020",
             # no player stats available
-            ("COT", "1932"),
+            "COT1932",
             # WS winner, renamed venue, CNH in regular and postseason
-            ("HOU", "2022"),
+            "HOU2022",
             # renamed team
-            ("LAA", "2012"),
+            "LAA2012",
             # same franchise ID as WSH1904 but different team ID (tests TeamSet.records)
-            ("MIN", "2019"),
+            "MIN2019",
             # perfect game and CNH, renamed venue
-            ("SEA", "2012"),
+            "SEA2012",
             # team shares name with later one
-            ("WSH", "1904"),
+            "WSH1904",
         ],
         ignore_errors=False,
     )

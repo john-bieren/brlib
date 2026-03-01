@@ -32,20 +32,20 @@ def test_opponents():
     assert len(find_games(seasons="1957", opponents="KC1")) == 0
     # with a teams argument (the expected use case)
     assert find_games("SEA", "2019", "STL") == [
-        ("SEA", "20190702", "0"),
-        ("SEA", "20190703", "0"),
-        ("SEA", "20190704", "0"),
+        "SEA201907020",
+        "SEA201907030",
+        "SEA201907040",
     ]
     # should work without a teams argument as well (though this usage is dubious)
     assert find_games(seasons="2020", opponents="BOS") == find_games(teams="BOS", seasons="2020")
     # list, test case insensitivity
     assert find_games("LAD", seasons="2020", opponents=["oak", "TEX"]) == [
-        ("TEX", "20200828", "0"),
-        ("TEX", "20200829", "0"),
-        ("TEX", "20200830", "0"),
-        ("LAD", "20200922", "0"),
-        ("LAD", "20200923", "0"),
-        ("LAD", "20200924", "0"),
+        "TEX202008280",
+        "TEX202008290",
+        "TEX202008300",
+        "LAD202009220",
+        "LAD202009230",
+        "LAD202009240",
     ]
 
 
@@ -55,28 +55,28 @@ def test_dates():
     Validation of dates is tested in test_inputs.py.
     """
     # single date
-    assert find_games(seasons="2024", dates="321") == [("LAD", "20240321", "0")]
+    assert find_games(seasons="2024", dates="321") == ["LAD202403210"]
     # range
     assert find_games(teams="BAL", seasons="1915", dates="825-826") == [
-        ("BAL", "19150825", "1"),
-        ("BAL", "19150825", "2"),
-        ("SLB", "19150825", "0"),
-        ("BAL", "19150826", "0"),
-        ("SLB", "19150826", "0"),
+        "BAL191508251",
+        "BAL191508252",
+        "SLB191508250",
+        "BAL191508260",
+        "SLB191508260",
     ]
     # reversed range
     assert find_games(teams="BAL", seasons="1915", dates="826-825") == [
-        ("BAL", "19150825", "1"),
-        ("BAL", "19150825", "2"),
-        ("SLB", "19150825", "0"),
-        ("BAL", "19150826", "0"),
-        ("SLB", "19150826", "0"),
+        "BAL191508251",
+        "BAL191508252",
+        "SLB191508250",
+        "BAL191508260",
+        "SLB191508260",
     ]
     # list
     assert find_games(teams="SEA", seasons="2018", dates=["501-502", "508"]) == [
-        ("SEA", "20180501", "0"),
-        ("SEA", "20180502", "0"),
-        ("TOR", "20180508", "0"),
+        "SEA201805010",
+        "SEA201805020",
+        "TOR201805080",
     ]
 
 
@@ -94,11 +94,11 @@ def test_game_type():
     assert len(find_games("SEA", "2022", game_type="reg")) == 162
     # post, test case insensitivity
     assert find_games("SEA", "2022", game_type="POST") == [
-        ("TOR", "20221007", "0"),
-        ("TOR", "20221008", "0"),
-        ("HOU", "20221011", "0"),
-        ("HOU", "20221013", "0"),
-        ("SEA", "20221015", "0"),
+        "TOR202210070",
+        "TOR202210080",
+        "HOU202210110",
+        "HOU202210130",
+        "SEA202210150",
     ]
 
 

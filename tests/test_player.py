@@ -86,5 +86,4 @@ def test_teams(expected_player_data: Path, players_list: list[br.Player]) -> Non
     for player in players_list:
         file = expected_player_data / "original" / player.id / "teams.json"
         expected_list = json.loads(file.read_bytes())
-        expected_list = [tuple(t) for t in expected_list]
         assert player.teams == expected_list
