@@ -97,7 +97,7 @@ class PlayerSet:
         return len(self._contents)
 
     def __str__(self) -> str:
-        return f"{self.__len__()} players"
+        return f"{len(self)} players"
 
     def __repr__(self) -> str:
         players = [f"Player({p})" for p in self._contents]

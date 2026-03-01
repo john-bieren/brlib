@@ -122,7 +122,7 @@ class GameSet:
         return len(self._contents)
 
     def __str__(self) -> str:
-        return f"{self.__len__()} games"
+        return f"{len(self)} games"
 
     def __repr__(self) -> str:
         games = []

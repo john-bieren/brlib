@@ -103,7 +103,7 @@ class TeamSet:
         return len(self._contents)
 
     def __str__(self) -> str:
-        return f"{self.__len__()} teams"
+        return f"{len(self)} teams"
 
     def __repr__(self) -> str:
         teams = [f"Team('{t[:-4]}', '{t[-4:]}')" for t in self._contents]
