@@ -9,7 +9,7 @@ def test_teams():
     assert len(find_teams("KC1", "ALL")) == 0
     # list, test case insensitivity
     assert find_teams(["col", "BAL"], "2020") == ["COL2020", "BAL2020"]
-    # "all"
+    # "ALL"
     assert find_teams(seasons="1901") == [
         "BLA1901",
         "BOS1901",
@@ -72,5 +72,5 @@ def test_seasons():
         "CIN2018",
         "CIN2019",
     ]
-    # "all"
+    # "ALL"
     assert find_teams("BLA") == ["BLA1901", "BLA1902"]

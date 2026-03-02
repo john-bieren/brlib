@@ -10,7 +10,7 @@ def test_teams():
     assert len(find_games("KC1", "1957")) == 0
     # list, test case insensitivity
     assert len(find_games(["col", "BAL"], "2020")) == 120
-    # "all"
+    # "ALL"
     assert len(find_games(seasons="1901")) == 1109
 
 
@@ -22,7 +22,7 @@ def test_seasons():
     assert find_games(seasons="1929-1930") == find_games(seasons="1930-1929")
     # list
     assert len(find_games("CIN", ["2017", "2018-2019"])) == 162 * 3
-    # "all"
+    # "ALL"
     assert len(find_games("BLA")) == 274
 
 

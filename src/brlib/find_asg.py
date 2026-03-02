@@ -16,15 +16,15 @@ from .options import write
 
 
 @runtime_typecheck
-def find_asg(seasons: str | list[str] = "all") -> list[str]:
+def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
     """
     Returns a list of All-Star Game IDs which can be an input to `get_games`.
 
     ## Parameters
 
-    * `seasons`: `str` or `list[str]`, default `"all"`
+    * `seasons`: `str` or `list[str]`, default `"ALL"`
 
-        A year, inclusive range of years (e.g. `"2017-2019"`), `"all"`, or a list of multiple such
+        A year, inclusive range of years (e.g. `"2017-2019"`), `"ALL"`, or a list of multiple such
         inputs which specify the seasons from which to find All-Star Games.
 
     ## Returns
