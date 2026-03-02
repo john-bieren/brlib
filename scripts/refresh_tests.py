@@ -17,13 +17,18 @@ import brlib as br
 
 def main():
     """Refreshes the expected data for games, players, and teams to match their current outputs."""
-    br.options.add_no_hitters = False
     expected_dir = Path(__file__).parent.parent / "tests" / "expected"
-    tqdm.write("refreshing games")
+    br.options.add_no_hitters = False
+    br.options.update_team_names = False
+    br.options.update_venue_names = False
+
+    tqdm.write("Refreshing expected game data")
     refresh_games(expected_dir / "games")
-    tqdm.write("refreshing players")
+
+    tqdm.write("Refreshing expected player data")
     refresh_players(expected_dir / "players")
-    tqdm.write("refreshing teams")
+
+    tqdm.write("Refreshing expected team data")
     refresh_teams(expected_dir / "teams")
 
 

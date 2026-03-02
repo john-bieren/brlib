@@ -8,6 +8,8 @@ presumably a clone of brlib's GitHub wiki repo. This is used to refresh the wiki
 import inspect
 from pathlib import Path
 
+from tqdm import tqdm
+
 import brlib
 
 
@@ -16,12 +18,13 @@ def main() -> None:
     Copies public member docstrings into Markdown files in an adjacent "wiki" directory,
     presumably a clone of brlib's GitHub wiki repo. This is used to refresh the wiki's contents.
     """
+    tqdm.write("Refreshing wiki files")
     wiki_dir = Path(__file__).parent.parent / "wiki"
     public_members = {
         name: mem for name, mem in inspect.getmembers(brlib) if not name.startswith("_")
     }
 
-    for member_name, member in public_members.items():
+    for member_name, member in tqdm(public_members.items(), unit="files"):
         if inspect.ismodule(member):
             continue
         file_path = wiki_dir / f"{member_name}.md"
@@ -40,7 +43,7 @@ def main() -> None:
 def clean_docstring(docstring: str) -> str:
     """Reformat whitespace in `docstring`."""
     # remove leading newline
-    if docstring[0] == "\n":
+    if docstring.startswith("\n"):
         docstring = docstring[1:]
     return docstring
 

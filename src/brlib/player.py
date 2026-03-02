@@ -672,7 +672,7 @@ class Player:
             # if the # of columns is right and the salary column has a value
             if len(record) == num_columns and record[3]:
                 # skip future option years, indicated by a leading asterisk
-                if record[3][0] == "*":
+                if record[3].startswith("*"):
                     continue
                 # trailing asterisk indicates inconsistent reports, but I'll allow it
                 record[3] = record[3].strip("$*")
