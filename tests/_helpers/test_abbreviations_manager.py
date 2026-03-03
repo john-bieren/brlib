@@ -54,6 +54,8 @@ def test_to_alias() -> None:
     assert abv_man.to_alias("KCA", 1963) == "KC1"
     assert abv_man.to_alias("PBS", 2025) == "PBS"
     assert abv_man.to_alias("SER", 2025) == "SER"
+    assert abv_man.to_alias("LAA", 2014) == "ANA"
+    assert abv_man.to_alias("LAA", 1963) == "LAA"  # an exception to the normal logic
 
 
 def test_to_regular() -> None:

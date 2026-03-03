@@ -220,7 +220,8 @@ class AbbreviationsManager(Singleton):
         team_row = self._find_correct_teams(abbreviation, season, era_adjustment=False)
         if not team_row.empty:
             alias = team_row["Alias"].values[0]
-            if alias != "":
+            # the Angels have used LAA in two stints, the first stint did not use an alias
+            if alias != "" and not (alias == "ANA" and season in range(1961, 1965)):
                 return alias
         return abbreviation
 
