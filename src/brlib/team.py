@@ -8,6 +8,7 @@ from bs4 import Tag
 from curl_cffi.requests import Response
 
 from ._helpers.constants import (
+    PYTHAGOREAN_EXPONENT,
     RANGE_TEAM_REPLACEMENTS,
     TEAM_BATTING_COLS,
     TEAM_FIELDING_COLS,
@@ -429,9 +430,12 @@ class Team:
 
             if "Record" in line_str:
                 team_record = str_between(line_str, "Record:", ",").strip().split("-")
-                self.info.loc[:, "Wins"] = team_record[0]
-                self.info.loc[:, "Losses"] = team_record[1]
-                self.info.loc[:, "Ties"] = team_record[2] if len(team_record) > 2 else 0
+                self.info.loc[:, "Wins"] = int(team_record[0])
+                self.info.loc[:, "Losses"] = int(team_record[1])
+                self.info.loc[:, "Ties"] = int(team_record[2]) if len(team_record) > 2 else 0
+                self.info.loc[:, "W-L%"] = self.info["Wins"] / (
+                    self.info["Wins"] + self.info["Losses"]
+                )
 
                 if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
@@ -502,9 +506,12 @@ class Team:
             elif line_str.startswith("Pythagorean"):
                 py_record, runs, runs_allowed = line_str.split(",", maxsplit=2)
                 py_w, py_l = py_record.replace("Pythagorean W-L: ", "").split("-", maxsplit=1)
-                runs, runs_allowed = [r.split(maxsplit=1)[0] for r in (runs, runs_allowed)]
-                self.info.loc[:, ["Pythagorean Wins", "Pythagorean Losses"]] = py_w, py_l
+                runs, runs_allowed = [int(r.split(maxsplit=1)[0]) for r in (runs, runs_allowed)]
+                self.info.loc[:, ["Pythagorean Wins", "Pythagorean Losses"]] = int(py_w), int(py_l)
                 self.info.loc[:, ["Runs", "Runs Allowed"]] = runs, runs_allowed
+                self.info.loc[:, "Pythagorean W-L%"] = runs**PYTHAGOREAN_EXPONENT / (
+                    runs**PYTHAGOREAN_EXPONENT + runs_allowed**PYTHAGOREAN_EXPONENT
+                )
 
         # scrape bling section
         self.info.loc[:, ["Team Gold Glove", "Pennant", "World Series"]] = 0

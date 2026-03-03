@@ -11,12 +11,10 @@ import brlib as br
 def test_info(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `info` DataFrame."""
     expected_df = get_expected_df("teams", "info", False)
-    compared = team_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(team_set.info, expected_df)  # to handle win % precision
 
     expected_df = get_expected_df("teams", "info", True)
-    compared = updated_team_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_team_set.info, expected_df)  # to handle win % precision
 
 
 def test_batting(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:

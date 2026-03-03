@@ -73,6 +73,10 @@ PICKOFF_REGEX = re.compile(
     r"(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)"
 )
 
+# exponent used when calculating team Pythagorean W-L%
+# see https://www.sports-reference.com/blog/baseball-reference-faqs/
+PYTHAGOREAN_EXPONENT = 1.83
+
 # old names for teams (which have box scores) that didn't relocate
 TEAM_REPLACEMENTS = {
     "Boston Americans": "Boston Red Sox",
@@ -938,6 +942,7 @@ TEAM_INFO_COLS = (
     "Wins",
     "Losses",
     "Ties",
+    "W-L%",
     "Division Finish",
     "Division",
     "Postseason Finish",
@@ -955,6 +960,7 @@ TEAM_INFO_COLS = (
     "One-Year Pitching Park Factor",
     "Pythagorean Wins",
     "Pythagorean Losses",
+    "Pythagorean W-L%",
     "Runs",
     "Runs Allowed",
     "Team Gold Glove",
