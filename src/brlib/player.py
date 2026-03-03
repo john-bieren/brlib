@@ -536,7 +536,7 @@ class Player:
 
             elif "School:" in line_str:
                 school_type, school_name = line_str.split(": ", maxsplit=1)
-                self.info.loc[:, f"{school_type}s"] = f'"{school_name}"'
+                self.info.loc[:, f"{school_type}s"] = school_name
 
             elif "Schools" in line_str:
                 col, school_list = line_str.split(": ", maxsplit=1)
@@ -544,8 +544,7 @@ class Player:
                 schools = [school.strip() for school in school_list.split("),")]
                 # restore ")" where necessary
                 schools = [school + ")" if school[-1] != ")" else school for school in schools]
-                schools_str = '", "'.join(schools)
-                self.info.loc[:, col] = f'"{schools_str}"'
+                self.info.loc[:, col] = "; ".join(schools)
 
             elif line_str.startswith("Debut") and "AL/NL" not in line_str:
                 debut_date = str_between(line_str, "Debut:", "(").strip()
