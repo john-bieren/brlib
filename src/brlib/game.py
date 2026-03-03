@@ -709,10 +709,18 @@ class Game:
                     h_df.loc[player_mask, "Position"] = positions
             h_df.reset_index(drop=True, inplace=True)
 
-        # determine home team
-        if str_remove(self._home_team, " ", "-", ".") in table_id:
+        # determine home team (Colt .45s are named HoustonColts in table IDs)
+        if (
+            str_remove(self._home_team, " ", "-", ".") in table_id
+            or self._home_team == "Houston Colt .45s"
+            and "HoustonColts" in table_id
+        ):
             h_df = self._set_home_team(h_df, True)
-        elif str_remove(self._away_team, " ", "-", ".") in table_id:
+        elif (
+            str_remove(self._away_team, " ", "-", ".") in table_id
+            or self._away_team == "Houston Colt .45s"
+            and "HoustonColts" in table_id
+        ):
             h_df = self._set_home_team(h_df, False)
         else:
             raise ValueError("home and away teams cannot be found from batting tables")
@@ -817,10 +825,19 @@ class Game:
             p_df.loc[p_df["Player"] == "Team Totals", "Player ID"] = None
             self.players += player_id_column
 
-            # determine home team
-            if str_remove(self._home_team, " ", "-", ".") in table.get("id"):
+            # determine home team (Colt .45s are named HoustonColts in table IDs)
+            table_id = table.get("id")
+            if (
+                str_remove(self._home_team, " ", "-", ".") in table_id
+                or self._home_team == "Houston Colt .45s"
+                and "HoustonColts" in table_id
+            ):
                 p_df = self._set_home_team(p_df, True)
-            elif str_remove(self._away_team, " ", "-", ".") in table.get("id"):
+            elif (
+                str_remove(self._away_team, " ", "-", ".") in table_id
+                or self._away_team == "Houston Colt .45s"
+                and "HoustonColts" in table_id
+            ):
                 p_df = self._set_home_team(p_df, False)
             else:
                 raise ValueError("home and away teams cannot be found from pitching tables")
