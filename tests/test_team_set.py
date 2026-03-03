@@ -45,8 +45,8 @@ def test_fielding(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     compared = team_set.fielding.compare(expected_df)
     assert compared.empty
 
-    expected_df = get_expected_df("teams", "info", True)
-    compared = updated_team_set.info.compare(expected_df)
+    expected_df = get_expected_df("teams", "fielding", True)
+    compared = updated_team_set.fielding.compare(expected_df)
     assert compared.empty
 
 
