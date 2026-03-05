@@ -108,7 +108,7 @@ class AbbreviationsManager(Singleton):
             if i == 0:
                 record.append("BML")
             else:
-                # noinspection PyTypeChecker
+                # noinspection PyTypeChecker TODO
                 record.append(record[0] in BML_FRANCHISE_ABVS)
             records.append(record)
 

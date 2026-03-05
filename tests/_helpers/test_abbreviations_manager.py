@@ -1,6 +1,5 @@
 """Tests the methods of the `AbbreviationsManager` singleton."""
 
-# noinspection PyProtectedMember
 from brlib._helpers.abbreviations_manager import abv_man
 
 

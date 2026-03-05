@@ -4,7 +4,6 @@ from typing import Any
 
 import pytest
 
-# noinspection PyProtectedMember
 from brlib._helpers.utils import clean_spaces, is_type, reformat_date, str_between, str_remove
 
 

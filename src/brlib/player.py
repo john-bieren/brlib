@@ -473,7 +473,7 @@ class Player:
                 self.info.loc[:, "Death Date"] = reformat_date(death_date)
                 try:
                     death_datetime = datetime.strptime(death_date, "%B %d, %Y")
-                    # noinspection PyUnboundLocalVariable
+                    # noinspection PyUnboundLocalVariable TODO
                     age = relativedelta(death_datetime, birth_datetime)
                     self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
