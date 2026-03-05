@@ -32,6 +32,8 @@ def test_validate_game_list() -> None:
         "PHI190007120",
         # reject game in future
         "OAK209903210",
+        # accept digit in team abbreviation
+        "NY1195409290",
         # reject malformed ASG input
         "allstar196007130",
         # reject ASG before 1933
@@ -47,6 +49,7 @@ def test_validate_game_list() -> None:
         "SEA201506210",
         "LAN202410310",
         "NYA202503290",
+        "NY1195409290",
         "1962-allstar-game-2",
     ]
 
@@ -96,8 +99,10 @@ def test_validate_team_list() -> None:
         "MAR2099",
         # reject missing season for team
         "HG1934",
+        # accept digit in team abbreviation
+        "SL31939",
     ]
-    assert validate_team_list(test_list) == ["CIN2017"]
+    assert validate_team_list(test_list) == ["CIN2017", "SL31939"]
 
 
 def test_validate_date_list() -> None:

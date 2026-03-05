@@ -49,13 +49,13 @@ SEASON_REGEX = re.compile("[0-9]{4}")
 SEASON_RANGE_REGEX = re.compile("[0-9]{4}-[0-9]{4}")
 DATE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]")
 DATE_RANGE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]")
-GAME_ID_REGEX = re.compile("[A-Z]{2,3}[0-9]{9}", re.IGNORECASE)
+GAME_ID_REGEX = re.compile("[A-Z1-4]{2,3}[0-9]{9}", re.IGNORECASE)
 ASG_ID_REGEX = re.compile("[0-9]{4}-allstar-game(?P<doubleheader>-[12])?", re.IGNORECASE)
 PLAYER_ID_REGEX = re.compile("[a-z.'_]{3,7}[0-9]{2}")
-TEAM_ID_REGEX = re.compile("[A-Z]{2,3}[0-9]{4}", re.IGNORECASE)
+TEAM_ID_REGEX = re.compile("[A-Z1-4]{2,3}[0-9]{4}", re.IGNORECASE)
 SCHEDULE_TAG_REGEX = re.compile("^all_[0-9]")
 GAME_URL_REGEX = re.compile(
-    r"https://www\.baseball-reference\.com/boxes/[A-Z1-2]{2,3}/[A-Z1-2]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml"
+    r"https://www\.baseball-reference\.com/boxes/[A-Z1-4]{2,3}/[A-Z1-4]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml"
 )
 ALLSTAR_GAME_URL_REGEX = re.compile(
     r"https://www\.baseball-reference\.com/allstar/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml"
