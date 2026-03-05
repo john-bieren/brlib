@@ -19,13 +19,18 @@ def test_cache() -> None:
 
 def test_correct_abvs() -> None:
     """Tests the outputs of the `correct_abvs` method."""
+    # abbreviation not used during given season
     assert abv_man.correct_abvs("OAK", 2025, era_adjustment=True) == ["ATH"]
     assert abv_man.correct_abvs("OAK", 2025, era_adjustment=False) == []
+    # abbreviation used by different franchises over the years
     assert abv_man.correct_abvs("BAL", 1915, era_adjustment=True) == ["SLB", "BAL"]
     assert abv_man.correct_abvs("BAL", 1915, era_adjustment=False) == ["BAL"]
+    # abbreviation used discontinuously, not during given season
     assert abv_man.correct_abvs("LAA", 1977, era_adjustment=False) == ["CAL"]
     assert abv_man.correct_abvs("LAA", 1907, era_adjustment=False) == []
+    # abbreviation never used
     assert abv_man.correct_abvs("SER", 2025, era_adjustment=False) == []
+    # special case
     assert abv_man.correct_abvs("PC", 1939, era_adjustment=True) == ["TC", "TC2"]
     assert abv_man.correct_abvs("TC", 1939, era_adjustment=True) == ["TC", "TC2"]
     assert abv_man.correct_abvs("TC2", 1939, era_adjustment=True) == ["TC", "TC2"]
@@ -35,32 +40,51 @@ def test_correct_abvs() -> None:
 
 def test_franchise_abv() -> None:
     """Tests the outputs of the `franchise_abv` method."""
+    # correct abbreviation
     assert abv_man.franchise_abv("ATH", 1876) == "ATH"
+    # abbreviation used by different franchises over the years
     assert abv_man.franchise_abv("BAL", 1915) == "BLT"
+    # abbreviation not used during given season
     assert abv_man.franchise_abv("OAK", 2025) == ""
+    # abbreviation never used
     assert abv_man.franchise_abv("SER", 2025) == ""
 
 
 def test_all_team_abvs() -> None:
     """Tests the outputs of the `all_team_abvs` method."""
+    # correct abbreviation
     assert abv_man.all_team_abvs("ATH", 2025) == ["ATH", "KCA", "OAK", "PHA"]
+    # abbreviation not used during given season
     assert abv_man.all_team_abvs("OAK", 2025) == []
+    # abbreviation never used
     assert abv_man.all_team_abvs("SER", 2025) == []
 
 
 def test_to_alias() -> None:
     """Tests the outputs of the `to_alias` method."""
+    # correct abbreviation, has no alias
     assert abv_man.to_alias("SEA", 2025) == "SEA"
+    # correct abbreviation (that's also a later team's alias), has an alias
     assert abv_man.to_alias("KCA", 1963) == "KC1"
+    # correct alias never used as an abbreviation
+    assert abv_man.to_alias("NY1", 1954) == "NY1"
+    # abbreviation not used during given season
     assert abv_man.to_alias("PBS", 2025) == "PBS"
+    # abbreviation never used
     assert abv_man.to_alias("SER", 2025) == "SER"
+    # correct abbreviation, has an alias
     assert abv_man.to_alias("LAA", 2014) == "ANA"
-    assert abv_man.to_alias("LAA", 1963) == "LAA"  # an exception to the normal logic
+    # same correct abbreviation, has no alias in this era (special case)
+    assert abv_man.to_alias("LAA", 1963) == "LAA"
 
 
 def test_to_regular() -> None:
     """Tests the outputs of the `to_regular` method."""
+    # correct abbreviation, has no alias
     assert abv_man.to_regular("SEA", 2025) == "SEA"
+    # correct alias (that's also an earlier team's abbreviation)
     assert abv_man.to_regular("KCA", 1999) == "KCR"
+    # alias not used during given season
     assert abv_man.to_regular("KC1", 2025) == "KC1"
+    # alias never used
     assert abv_man.to_regular("SER", 2025) == "SER"

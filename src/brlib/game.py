@@ -749,8 +749,7 @@ class Game:
             "2-out RBI": "2-Out RBI",
             "E": "E",
             "Outfield Assists": "OFA",
-            # TODO are these both still used (e.g. SEA202510100, 1961-allstar-game-1)
-            "PB": "PB",
+            "PB": "PB",  # TODO thought to have been phased out
             "Passed Balls": "PB",
         }
         team_stats = {"Team LOB": "LOB", "With RISP": "RISP"}
@@ -885,8 +884,7 @@ class Game:
         # add extra info found below the tables
         stats = {
             "Balks": "Balks",
-            # TODO are these both still used (e.g. SEA202510100, 1961-allstar-game-1)
-            "WP": "WP",
+            "WP": "WP",  # TODO thought to have been phased out
             "Wild Pitches": "WP",
             "HBP": "HBP",
             "IBB": "IBB",

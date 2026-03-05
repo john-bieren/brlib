@@ -43,10 +43,10 @@ def test_cache() -> None:
 def test_game_dicts() -> None:
     """Tests the contents of the game dictionaries."""
     assert nhd.game_inh_dict["CIN202408020"] == "snellbl01"
-    assert nhd.game_inh_dict["NYA195610080"] == "larsedo01"
+    assert nhd.game_inh_dict["NYA195610080"] == "larsedo01"  # postseason
 
     assert nhd.game_pg_dict.get("CIN202408020") is None
-    assert nhd.game_pg_dict["NYA195610080"] == "larsedo01"
+    assert nhd.game_pg_dict["NYA195610080"] == "larsedo01"  # postseason
 
     assert nhd.game_cnh_dict.get("NYA195610080") is None
     assert nhd.game_cnh_dict["SEA201206080"] == [
