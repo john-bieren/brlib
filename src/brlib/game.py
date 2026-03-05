@@ -624,7 +624,7 @@ class Game:
             self.info[f"{spot} Ump"] = ump
 
         for info in weather_info.strip(".").split(", "):
-            if "Unknown" in info:
+            if info == "Unknown":  # no info given
                 continue
             if "°" in info:
                 self.info["Temperature"] = info.split("°", maxsplit=1)[0]
@@ -635,7 +635,9 @@ class Game:
                 self.info["Wind Speed"] = wind_speed = str_between(info, "Wind ", "mph")
                 if wind_speed != "0":
                     try:
-                        self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
+                        direction = info.split("mph ", maxsplit=1)[1]
+                        direction = "unknown" if direction == "in unknown direction" else direction
+                        self.info["Wind Direction"] = direction
                     except IndexError:
                         pass
             elif info in {"Sunny", "Night", "Overcast", "Cloudy"}:
