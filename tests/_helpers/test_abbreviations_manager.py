@@ -73,7 +73,7 @@ def test_to_alias() -> None:
     assert abv_man.to_alias("SER", 2025) == "SER"
     # correct abbreviation, has an alias
     assert abv_man.to_alias("LAA", 2014) == "ANA"
-    # same correct abbreviation, has no alias in this era (special case)
+    # same correct abbreviation, has no alias during this era (special case)
     assert abv_man.to_alias("LAA", 1963) == "LAA"
 
 
@@ -87,3 +87,7 @@ def test_to_regular() -> None:
     assert abv_man.to_regular("KC1", 2025) == "KC1"
     # alias never used
     assert abv_man.to_regular("SER", 2025) == "SER"
+    # correct alias
+    assert abv_man.to_regular("ANA", 2014) == "LAA"
+    # same alias, not used during this era (special case)
+    assert abv_man.to_regular("ANA", 1963) == "ANA"

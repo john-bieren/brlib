@@ -240,7 +240,8 @@ class AbbreviationsManager(Singleton):
         alias_rows = self.df.loc[self.df["Alias"] == abbreviation]
         years_mask = (alias_rows["First Year"] <= season) & (alias_rows["Last Year"] >= season)
         correct_row = alias_rows.loc[years_mask]
-        if correct_row.empty:
+        # the Angels have used LAA in two stints, the first stint did not use an alias
+        if correct_row.empty or (abbreviation == "ANA" and season in range(1961, 1965)):
             return abbreviation
         return correct_row["Team"].values[0]
 
