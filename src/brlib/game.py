@@ -10,6 +10,7 @@ from curl_cffi.requests import Response
 
 from ._helpers.constants import (
     ALLSTAR_GAME_URL_REGEX,
+    ASG_ID_REGEX,
     FORFEITED_GAME_WINNERS,
     GAME_BATTING_COLS,
     GAME_FIELDING_COLS,
@@ -187,7 +188,7 @@ class Game:
         self._home_score = self._away_score = 0
         self._home_team = self._away_team = self._winning_team = ""
         self._home_team_id = self._away_team_id = None
-        self._is_asg = False
+        self._is_asg = re.fullmatch(ASG_ID_REGEX, self.id)
         self._url = page.url
 
         self._scrape_game(page)
@@ -496,7 +497,6 @@ class Game:
     def _scrape_heading(self, heading: str) -> None:
         """Scrapes game type and name from `heading`."""
         if "All-Star" in heading:
-            self._is_asg = True
             self.info["Game Type"] = "All-Star Game"
             if self.id[-1].isdigit():
                 self.name = heading.replace("Box Score", self.id[-1])
