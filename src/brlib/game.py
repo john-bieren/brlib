@@ -446,8 +446,8 @@ class Game:
         linescore = content.find("div", {"class": "linescore_wrap"})
         scorebox = content.find("div", {"class": "scorebox"})
 
-        self._scrape_heading(heading)
         self._scrape_linescore(linescore)
+        self._scrape_heading(heading)
         self._scrape_scorebox(scorebox)
         self._gather_team_info()
         self._scrape_other_info(other_info)
@@ -476,8 +476,13 @@ class Game:
 
         # postseason game
         else:
-            year_series_game, matchup, month_day = heading.rsplit(", ", maxsplit=2)
+            year_series_game, _, month_day = heading.rsplit(", ", maxsplit=2)
             year, series_game = year_series_game.split(" ", maxsplit=1)
+
+            # postseason game headings include teams' names but not their cities
+            # use team names from the linescore so that cities are included
+            assert self._away_team != "" and self._home_team != ""
+            matchup = f"{self._away_team} vs {self._home_team}"
 
             # print the series abbreviation instead of the full name, except for the World Series
             if "(" in series_game:
