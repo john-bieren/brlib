@@ -453,6 +453,46 @@ class Game:
         self._scrape_other_info(other_info)
         self.info = convert_numeric_cols(self.info)
 
+    def _scrape_linescore(self, linescore: Tag) -> None:
+        """Scrapes team names and run totals, and populates `self.linescore` from `linescore`."""
+        records = []
+        for row in linescore.find_all("tr")[:3]:  # only grab column labels and two teams' lines
+            record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
+            record = [i for i in record if "Sports Logos.net" not in i]
+            # remove the X in the bottom of the ninth, if applicable
+            record = [None if i == "X" else i for i in record]
+            records.append(record)
+        records[0].pop(0)  # extra empty string
+
+        self.info["Innings"] = len(records[0]) - 4  # don't count Team, R, H, E cols
+        self.info["Away Score"] = self._away_score = int(records[1][-3])
+        self.info["Home Score"] = self._home_score = int(records[2][-3])
+        self.info["Away Team"] = self._away_team = records[1][0]
+        self.info["Home Team"] = self._home_team = records[2][0]
+
+        changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
+        if self._home_score > self._away_score or changed_winner == self._home_team:
+            self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
+        elif self._away_score > self._home_score or changed_winner == self._away_team:
+            self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
+        else:
+            self.info["Losing Team"] = self._winning_team = None
+        self.info["Winning Team"] = self._winning_team
+
+        records[0][0] = "Team"  # give the team column a name
+        self.linescore = pd.DataFrame(records[1:3], columns=records[0])
+        # convert string numbers to nullable ints (since B9 could be None)
+        self.linescore[records[0][1:]] = self.linescore[records[0][1:]].astype("Int64")
+
+        # record the teams by using the links to their pages
+        if not self._is_asg:
+            tags = linescore.find_all("a", href=True)
+            teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
+            teams = [str_between(team, "/teams/", ".").replace("/", "") for team in teams]
+            assert len(teams) == 2
+            self._away_team_id, self._home_team_id = teams
+            self.teams += teams
+
     def _scrape_heading(self, heading: str) -> None:
         """Scrapes game type and name from `heading`."""
         if "All-Star" in heading:
@@ -493,46 +533,6 @@ class Game:
                 self.info["Game Type"] = "World Series"
             else:
                 self.info["Game Type"] = str_between(heading, "League ", " (")
-
-    def _scrape_linescore(self, linescore: Tag) -> None:
-        """Scrapes team names and run totals, and populates `self.linescore` from `linescore`."""
-        records = []
-        for row in linescore.find_all("tr")[:3]:  # only grab column labels and two teams' lines
-            record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
-            record = [i for i in record if "Sports Logos.net" not in i]
-            # remove the X in the bottom of the ninth, if applicable
-            record = [None if i == "X" else i for i in record]
-            records.append(record)
-        records[0].pop(0)  # extra empty string
-
-        self.info["Innings"] = len(records[0]) - 4  # don't count Team, R, H, E cols
-        self.info["Away Score"] = self._away_score = int(records[1][-3])
-        self.info["Home Score"] = self._home_score = int(records[2][-3])
-        self.info["Away Team"] = self._away_team = records[1][0]
-        self.info["Home Team"] = self._home_team = records[2][0]
-
-        changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
-        if self._home_score > self._away_score or changed_winner == self._home_team:
-            self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
-        elif self._away_score > self._home_score or changed_winner == self._away_team:
-            self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
-        else:
-            self.info["Losing Team"] = self._winning_team = None
-        self.info["Winning Team"] = self._winning_team
-
-        records[0][0] = "Team"  # give the team column a name
-        self.linescore = pd.DataFrame(records[1:3], columns=records[0])
-        # convert string numbers to nullable ints (since B9 could be None)
-        self.linescore[records[0][1:]] = self.linescore[records[0][1:]].astype("Int64")
-
-        # record the teams by using the links to their pages
-        if not self._is_asg:
-            tags = linescore.find_all("a", href=True)
-            teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
-            teams = [str_between(team, "/teams/", ".").replace("/", "") for team in teams]
-            assert len(teams) == 2
-            self._away_team_id, self._home_team_id = teams
-            self.teams += teams
 
     def _scrape_scorebox(self, scorebox: Tag) -> None:
         """Scrapes several pieces of game info from `scorebox`."""
