@@ -40,6 +40,8 @@ def games_list() -> list[br.Game]:
             "ANA202305090",
             # illegal substitution with 2 positions and split stats, error by pitcher who didn't hit
             "BOS201708250",
+            # renamed team, wind "in unknown direction", Colt .45s table id special case
+            "CHN196207291",
             # renamed venue, renamed team, relocated team
             "FLO199407290",
             # both teams share names with later ones, limited stats (especially SB info), dh != 0
