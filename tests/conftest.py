@@ -54,6 +54,8 @@ def games_list() -> list[br.Game]:
             "PIT192010023",
             # player with 2 DP, U L Washington tests parsing, 2 identical POCS, renamed venue, dh != 0
             "SEA197805231",
+            # renamed team, renamed venue, game played at away team's venue
+            "SEA201106250",
             # perfect game, renamed venue
             "SEA201208150",
             # triple play, renamed venue, outfield assists
