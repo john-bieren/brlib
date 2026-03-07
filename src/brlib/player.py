@@ -29,12 +29,12 @@ from ._helpers.constants import (
 from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.requests_manager import req_man
+from ._helpers.typechecking import runtime_typecheck
 from ._helpers.utils import (
     clean_spaces,
     convert_innings_notation,
     convert_numeric_cols,
     reformat_date,
-    runtime_typecheck,
     soup_from_comment,
     str_between,
     str_remove,

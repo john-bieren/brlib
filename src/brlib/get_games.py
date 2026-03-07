@@ -4,7 +4,8 @@ from tqdm import tqdm
 
 from ._helpers.inputs import validate_game_list
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import game_id_to_endpoint, runtime_typecheck
+from ._helpers.typechecking import runtime_typecheck
+from ._helpers.utils import game_id_to_endpoint
 from .game import Game
 from .options import options, write
 

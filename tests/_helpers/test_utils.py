@@ -1,28 +1,8 @@
 """Tests some of the functions in utils.py; the rest are covered by the end-to-end tests."""
 
-from typing import Any
-
 import pytest
 
-from brlib._helpers.utils import clean_spaces, is_type, reformat_date, str_between, str_remove
-
-
-def test_is_type() -> None:
-    """Tests the outputs of the `is_type` function."""
-    assert is_type("foo", Any)
-    assert is_type("bar", str)
-    assert not is_type("baz", int)
-    assert not is_type(3.14, int)
-    assert is_type(["foo", "bar", "baz"], list[str])
-    assert not is_type(["foo", "bar", 3], list[str])
-    assert is_type(("foo", "bar", "baz"), tuple[str, str, str])
-    assert not is_type(("foo", "bar", "baz"), tuple[str])
-    assert is_type({"a": 1, "b": 2, "c": 3}, dict[str, int])
-    assert not is_type({"a": 1, "b": 2, "c": "3"}, dict[str, int])
-    assert is_type(None, str | None)
-    assert is_type(1, int | list[int])
-    assert is_type([1, 2, 3], int | list[int])
-    assert not is_type([1, 2, "3"], int | list[int])
+from brlib._helpers.utils import clean_spaces, reformat_date, str_between, str_remove
 
 
 def test_str_between() -> None:

@@ -7,7 +7,7 @@ import pandas as pd
 from ._helpers.abbreviations_manager import abv_man
 from ._helpers.constants import MULTI_TEAM_REGEX, TEAM_REPLACEMENTS
 from ._helpers.no_hitter_dicts import nhd
-from ._helpers.utils import runtime_typecheck
+from ._helpers.typechecking import runtime_typecheck
 from .player import Player
 
 

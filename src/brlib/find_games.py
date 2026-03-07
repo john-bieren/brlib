@@ -21,7 +21,7 @@ from ._helpers.constants import (
 )
 from ._helpers.inputs import validate_date_list
 from ._helpers.requests_manager import req_man
-from ._helpers.utils import runtime_typecheck
+from ._helpers.typechecking import runtime_typecheck
 from .options import options, print_page, write
 
 

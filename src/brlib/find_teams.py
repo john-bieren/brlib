@@ -14,7 +14,7 @@ from ._helpers.constants import (
     SEASON_RANGE_REGEX,
     SEASON_REGEX,
 )
-from ._helpers.utils import runtime_typecheck
+from ._helpers.typechecking import runtime_typecheck
 from .options import write
 
 
