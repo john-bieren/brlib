@@ -227,27 +227,27 @@ class Game:
 
         ```
         >>> g = br.Game("TOR201805080")
-        >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                   Player               Team  NH  PG  CNH
-        0    James Paxton   Seattle Mariners NaN NaN  NaN
-        1     Team Totals   Seattle Mariners NaN NaN  NaN
-        2  Marcus Stroman  Toronto Blue Jays NaN NaN  NaN
-        3       Tim Mayza  Toronto Blue Jays NaN NaN  NaN
-        4   Jake Petricka  Toronto Blue Jays NaN NaN  NaN
-        5      Aaron Loup  Toronto Blue Jays NaN NaN  NaN
-        6     John Axford  Toronto Blue Jays NaN NaN  NaN
-        7     Team Totals  Toronto Blue Jays NaN NaN  NaN
+        >>> g.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
+                   Player  Team ID  NH  PG  CNH
+        0    James Paxton  SEA2018 NaN NaN  NaN
+        1     Team Totals  SEA2018 NaN NaN  NaN
+        2  Marcus Stroman  TOR2018 NaN NaN  NaN
+        3       Tim Mayza  TOR2018 NaN NaN  NaN
+        4   Jake Petricka  TOR2018 NaN NaN  NaN
+        5      Aaron Loup  TOR2018 NaN NaN  NaN
+        6     John Axford  TOR2018 NaN NaN  NaN
+        7     Team Totals  TOR2018 NaN NaN  NaN
         >>> g.add_no_hitters()
-        >>> g.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                   Player               Team   NH   PG  CNH
-        0    James Paxton   Seattle Mariners  1.0  0.0  0.0
-        1     Team Totals   Seattle Mariners  1.0  0.0  0.0
-        2  Marcus Stroman  Toronto Blue Jays  0.0  0.0  0.0
-        3       Tim Mayza  Toronto Blue Jays  0.0  0.0  0.0
-        4   Jake Petricka  Toronto Blue Jays  0.0  0.0  0.0
-        5      Aaron Loup  Toronto Blue Jays  0.0  0.0  0.0
-        6     John Axford  Toronto Blue Jays  0.0  0.0  0.0
-        7     Team Totals  Toronto Blue Jays  0.0  0.0  0.0
+        >>> g.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
+                   Player  Team ID   NH   PG  CNH
+        0    James Paxton  SEA2018  1.0  0.0  0.0
+        1     Team Totals  SEA2018  1.0  0.0  0.0
+        2  Marcus Stroman  TOR2018  0.0  0.0  0.0
+        3       Tim Mayza  TOR2018  0.0  0.0  0.0
+        4   Jake Petricka  TOR2018  0.0  0.0  0.0
+        5      Aaron Loup  TOR2018  0.0  0.0  0.0
+        6     John Axford  TOR2018  0.0  0.0  0.0
+        7     Team Totals  TOR2018  0.0  0.0  0.0
         ```
         """
         nhd.populate()
@@ -326,15 +326,6 @@ class Game:
             },
             inplace=True,
         )
-        self.batting.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
-        self.pitching.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
-        self.fielding.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
 
         # replace old team names within a certain range
         year = int(self._home_team_id[-4:])
@@ -355,9 +346,6 @@ class Game:
                 },
                 inplace=True,
             )
-            self.batting.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
-            self.pitching.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
-            self.fielding.replace({"Team": name_dict, "Opponent": name_dict}, inplace=True)
 
         self.name = self.info["Game"].values[0]
 
@@ -716,21 +704,7 @@ class Game:
                     h_df.loc[player_mask, "Position"] = positions
             h_df.reset_index(drop=True, inplace=True)
 
-        # determine home team (Colt .45s are named HoustonColts in table IDs)
-        if (
-            str_remove(self._home_team, " ", "-", ".") in table_id
-            or self._home_team == "Houston Colt .45s"
-            and "HoustonColts" in table_id
-        ):
-            h_df = self._set_home_team(h_df, True)
-        elif (
-            str_remove(self._away_team, " ", "-", ".") in table_id
-            or self._away_team == "Houston Colt .45s"
-            and "HoustonColts" in table_id
-        ):
-            h_df = self._set_home_team(h_df, False)
-        else:
-            raise ValueError("home and away teams cannot be found from batting tables")
+        self._set_team_ids(h_df, table_id)
 
         # extract stats from details column
         h_df[["2B", "3B", "HR", "SB", "CS", "SF", "SH", "HBP", "GDP", "IBB"]] = 0
@@ -831,22 +805,7 @@ class Game:
             p_df.loc[p_df["Player"] == "Team Totals", "Player ID"] = None
             self.players += player_id_column
 
-            # determine home team (Colt .45s are named HoustonColts in table IDs)
-            table_id = table.get("id")
-            if (
-                str_remove(self._home_team, " ", "-", ".") in table_id
-                or self._home_team == "Houston Colt .45s"
-                and "HoustonColts" in table_id
-            ):
-                p_df = self._set_home_team(p_df, True)
-            elif (
-                str_remove(self._away_team, " ", "-", ".") in table_id
-                or self._away_team == "Houston Colt .45s"
-                and "HoustonColts" in table_id
-            ):
-                p_df = self._set_home_team(p_df, False)
-            else:
-                raise ValueError("home and away teams cannot be found from pitching tables")
+            self._set_team_ids(p_df, table.get("id"))
 
             # replace potential infinite season ERA, which would make column non-numeric
             p_df.loc[p_df["ERA"] == "inf", "ERA"] = None
@@ -914,8 +873,8 @@ class Game:
                     number = 1
 
                 player_mask = self.pitching["Player"] == player
-                team_name = self.pitching.loc[player_mask, "Team"].values[0]
-                team_totals_mask = both_team_totals_mask & (self.pitching["Team"] == team_name)
+                team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                team_totals_mask = both_team_totals_mask & (self.pitching["Team ID"] == team_id)
                 self.pitching.loc[player_mask, stat_name] = number
                 self.pitching.loc[team_totals_mask, stat_name] += number
 
@@ -925,34 +884,23 @@ class Game:
             self.pitching["cWPA"] = pd.to_numeric(self.pitching["cWPA"], errors="coerce") / 100
             self.pitching["cWPA"] = self.pitching["cWPA"].round(4)
 
-    def _set_home_team(self, df: pd.DataFrame, team_is_home: bool) -> pd.DataFrame:
-        """Sets variables and `df` columns related to which team is at home."""
-        if team_is_home:
-            df["Home/Away"] = "Home"
-            df["Team Score"] = self._home_score
-            team = self._home_team
-            opponent = self._away_team
-            team_id = self._home_team_id
-            opponent_id = self._away_team_id
+    def _set_team_ids(self, df: pd.DataFrame, table_id: str) -> pd.DataFrame:
+        """Sets team and opponent IDs in `df` using `table id`."""
+        if (
+            str_remove(self._home_team, " ", "-", ".") in table_id
+            # the Colt .45s are named HoustonColts in table IDs
+            or self._home_team == "Houston Colt .45s"
+            and "HoustonColts" in table_id
+        ):
+            df[["Team ID", "Opponent Team ID"]] = self._home_team_id, self._away_team_id
+        elif (
+            str_remove(self._away_team, " ", "-", ".") in table_id
+            or self._away_team == "Houston Colt .45s"
+            and "HoustonColts" in table_id
+        ):
+            df[["Team ID", "Opponent Team ID"]] = self._away_team_id, self._home_team_id
         else:
-            df["Home/Away"] = "Away"
-            df["Team Score"] = self._away_score
-            team = self._away_team
-            opponent = self._home_team
-            team_id = self._away_team_id
-            opponent_id = self._home_team_id
-
-        df["Team"] = team
-        df["Opponent"] = opponent
-        df["Team ID"] = team_id
-        df["Opponent Team ID"] = opponent_id
-
-        if self._winning_team == team:
-            df["Result for Team"] = "Win"
-        elif self._winning_team == opponent:
-            df["Result for Team"] = "Loss"
-        elif self._winning_team is None:
-            df["Result for Team"] = "Tie"
+            raise ValueError("home and away teams cannot be found from batting tables")
         return df
 
     def _get_fielding_dataframe(self) -> None:
@@ -971,13 +919,8 @@ class Game:
                 "PB",
                 "SB",
                 "CS",
-                "Team",
                 "Team ID",
-                "Opponent",
                 "Opponent Team ID",
-                "Team Score",
-                "Result for Team",
-                "Home/Away",
                 "Game ID",
             ]
         ].copy()
@@ -1075,10 +1018,10 @@ class Game:
                         else:
                             defenders_mask = self.fielding["Player"] == pitcher
 
-                        defense_team = self.fielding.loc[defenders_mask, "Team"].values[0]
+                        defense_team_id = self.fielding.loc[defenders_mask, "Team ID"].values[0]
                         defense_mask = defenders_mask | (
                             (self.fielding["Player"] == "Team Totals")
-                            & (self.fielding["Team"] == defense_team)
+                            & (self.fielding["Team ID"] == defense_team_id)
                         )
                         self.fielding.loc[defense_mask, [stat, f"{base} {stat}"]] += times
 
@@ -1086,7 +1029,7 @@ class Game:
                         stealer_mask = self.batting["Player"] == stealer
                         offense_mask = stealer_mask | (
                             (self.batting["Player"] == "Team Totals")
-                            & (self.batting["Team"] != defense_team)
+                            & (self.batting["Team ID"] != defense_team_id)
                         )
                         # no need to increment SB or CS because they're already tallied
                         if stat == "Pick":

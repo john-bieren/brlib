@@ -1,26 +1,26 @@
-Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
-Bob Lillis,lillibo01,2B,1.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-George Brunet,brunege01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Al Spangler,spangal01,LF,0.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Román Mejías,mejiaro01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Norm Larker,larkeno01,1B,12.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Bob Aspromonte,asprobo01,3B,0.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Carl Warwick,warwica01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Jim Campbell,campbji01,C,7.0,1,1,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-J C Hartman,hartmj_01,SS,0.0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Bob Bruce,brucebo01,P,0.0,0,0,0,0,0,0,1,1,0,1,0,0,1,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Jim Golden,goldeji01,P,0.0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Don McMahon,mcmahdo02,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Billy Goodman,goodmbi01,PH-2B,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Team Totals,,,24.0,13,2,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Houston Colt .45s,HOU1962,Chicago Cubs,CHC1962,2,Loss,Away,CHN196207291
-Don Landrum,landrdo01,CF,6.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Ken Hubbs,hubbske01,2B,3.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Ron Santo,santoro01,3B,1.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-George Altman,altmage01,RF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Ernie Banks,bankser01,1B,9.0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Billy Williams,willibi01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Andre Rodgers,rodgean01,SS,2.0,4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Cuno Barragan,barracu01,C,1.0,3,0,0,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Cal Koonce,kooncca01,P,0.0,0,0,0,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Don Cardwell,cardwdo01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
-Team Totals,,,27.0,12,0,1,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,Chicago Cubs,CHC1962,Houston Colt .45s,HOU1962,4,Win,Home,CHN196207291
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team ID,Opponent Team ID,Game ID
+Bob Lillis,lillibo01,2B,1.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+George Brunet,brunege01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Al Spangler,spangal01,LF,0.0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Román Mejías,mejiaro01,RF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Norm Larker,larkeno01,1B,12.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Bob Aspromonte,asprobo01,3B,0.0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Carl Warwick,warwica01,CF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Jim Campbell,campbji01,C,7.0,1,1,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+J C Hartman,hartmj_01,SS,0.0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Bob Bruce,brucebo01,P,0.0,0,0,0,0,0,0,1,1,0,1,0,0,1,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Jim Golden,goldeji01,P,0.0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Don McMahon,mcmahdo02,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Billy Goodman,goodmbi01,PH-2B,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Team Totals,,,24.0,13,2,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,HOU1962,CHC1962,CHN196207291
+Don Landrum,landrdo01,CF,6.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Ken Hubbs,hubbske01,2B,3.0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Ron Santo,santoro01,3B,1.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+George Altman,altmage01,RF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Ernie Banks,bankser01,1B,9.0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Billy Williams,willibi01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Andre Rodgers,rodgean01,SS,2.0,4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Cuno Barragan,barracu01,C,1.0,3,0,0,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Cal Koonce,kooncca01,P,0.0,0,0,0,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Don Cardwell,cardwdo01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,CHC1962,HOU1962,CHN196207291
+Team Totals,,,27.0,12,0,1,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,CHC1962,HOU1962,CHN196207291

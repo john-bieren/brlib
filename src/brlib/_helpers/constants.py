@@ -538,13 +538,8 @@ GAME_BATTING_COLS = (
     "2-Out RBI",
     "LOB",
     "RISP",
-    "Team",
     "Team ID",
-    "Opponent",
     "Opponent Team ID",
-    "Team Score",
-    "Result for Team",
-    "Home/Away",
     "Game ID",
 )
 
@@ -594,13 +589,8 @@ GAME_PITCHING_COLS = (
     "NH",
     "PG",
     "CNH",
-    "Team",
     "Team ID",
-    "Opponent",
     "Opponent Team ID",
-    "Team Score",
-    "Result for Team",
-    "Home/Away",
     "Game ID",
 )
 
@@ -627,13 +617,8 @@ GAME_FIELDING_COLS = (
     "1B Pick",
     "2B Pick",
     "3B Pick",
-    "Team",
     "Team ID",
-    "Opponent",
     "Opponent Team ID",
-    "Team Score",
-    "Result for Team",
-    "Home/Away",
     "Game ID",
 )
 

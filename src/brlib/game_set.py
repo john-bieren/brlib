@@ -172,33 +172,33 @@ class GameSet:
         >>> g1 = br.Game("SEA201208150")
         >>> g2 = br.Game("SEA201206080")
         >>> gs = br.GameSet([g1, g2])
-        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                       Player                 Team  NH  PG  CNH
-        0   Jeremy Hellickson       Tampa Bay Rays NaN NaN  NaN
-        1     Kyle Farnsworth       Tampa Bay Rays NaN NaN  NaN
-        2         Team Totals       Tampa Bay Rays NaN NaN  NaN
-        3     Félix Hernández     Seattle Mariners NaN NaN  NaN
-        4         Team Totals     Seattle Mariners NaN NaN  NaN
-        ...               ...                  ... ... ...  ...
-        11      Stephen Pryor     Seattle Mariners NaN NaN  NaN
-        12       Lucas Luetge     Seattle Mariners NaN NaN  NaN
-        13     Brandon League     Seattle Mariners NaN NaN  NaN
-        14     Tom Wilhelmsen     Seattle Mariners NaN NaN  NaN
-        15        Team Totals     Seattle Mariners NaN NaN  NaN
+            >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
+                       Player  Team ID  NH  PG  CNH
+        0   Jeremy Hellickson  TBR2012 NaN NaN  NaN
+        1     Kyle Farnsworth  TBR2012 NaN NaN  NaN
+        2         Team Totals  TBR2012 NaN NaN  NaN
+        3     Félix Hernández  SEA2012 NaN NaN  NaN
+        4         Team Totals  SEA2012 NaN NaN  NaN
+        ...               ...      ... ... ...  ...
+        11      Stephen Pryor  SEA2012 NaN NaN  NaN
+        12       Lucas Luetge  SEA2012 NaN NaN  NaN
+        13     Brandon League  SEA2012 NaN NaN  NaN
+        14     Tom Wilhelmsen  SEA2012 NaN NaN  NaN
+        15        Team Totals  SEA2012 NaN NaN  NaN
         >>> gs.add_no_hitters()
-        >>> gs.pitching[["Player", "Team", "NH", "PG", "CNH"]]
-                       Player                 Team   NH   PG  CNH
-        0   Jeremy Hellickson       Tampa Bay Rays  0.0  0.0  0.0
-        1     Kyle Farnsworth       Tampa Bay Rays  0.0  0.0  0.0
-        2         Team Totals       Tampa Bay Rays  0.0  0.0  0.0
-        3     Félix Hernández     Seattle Mariners  1.0  1.0  0.0
-        4         Team Totals     Seattle Mariners  1.0  1.0  0.0
-        ...               ...                  ...  ...  ...  ...
-        11      Stephen Pryor     Seattle Mariners  0.0  0.0  1.0
-        12       Lucas Luetge     Seattle Mariners  0.0  0.0  1.0
-        13     Brandon League     Seattle Mariners  0.0  0.0  1.0
-        14     Tom Wilhelmsen     Seattle Mariners  0.0  0.0  1.0
-        15        Team Totals     Seattle Mariners  0.0  0.0  1.0
+        >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
+                       Player  Team ID   NH   PG  CNH
+        0   Jeremy Hellickson  TBR2012  0.0  0.0  0.0
+        1     Kyle Farnsworth  TBR2012  0.0  0.0  0.0
+        2         Team Totals  TBR2012  0.0  0.0  0.0
+        3     Félix Hernández  SEA2012  1.0  1.0  0.0
+        4         Team Totals  SEA2012  1.0  1.0  0.0
+        ...               ...      ...  ...  ...  ...
+        11      Stephen Pryor  SEA2012  0.0  0.0  1.0
+        12       Lucas Luetge  SEA2012  0.0  0.0  1.0
+        13     Brandon League  SEA2012  0.0  0.0  1.0
+        14     Tom Wilhelmsen  SEA2012  0.0  0.0  1.0
+        15        Team Totals  SEA2012  0.0  0.0  1.0
         ```
         """
         nhd.populate()
@@ -288,15 +288,6 @@ class GameSet:
             },
             inplace=True,
         )
-        self.batting.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
-        self.pitching.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
-        self.fielding.replace(
-            {"Team": TEAM_REPLACEMENTS, "Opponent": TEAM_REPLACEMENTS}, inplace=True
-        )
 
         # if all the games are All-Star Games, the Team ID column is all NaN, so .str doesn't work
         info_year_col = self.info["Home Team ID"].astype("object").str[-4:].astype("float64")
@@ -319,17 +310,6 @@ class GameSet:
             self.info.loc[info_mask, cols] = self.info.loc[info_mask, cols].replace(name_dict)
             self.info.loc[info_mask, "Game"] = self.info.loc[info_mask, "Game"].replace(
                 name_dict, regex=True
-            )
-
-            cols = ["Team", "Opponent"]
-            self.batting.loc[batting_mask, cols] = self.batting.loc[batting_mask, cols].replace(
-                name_dict
-            )
-            self.pitching.loc[pitching_mask, cols] = self.pitching.loc[pitching_mask, cols].replace(
-                name_dict
-            )
-            self.fielding.loc[fielding_mask, cols] = self.fielding.loc[fielding_mask, cols].replace(
-                name_dict
             )
 
             cols = ["Team"]

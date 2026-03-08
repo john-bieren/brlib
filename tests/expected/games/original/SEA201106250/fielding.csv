@@ -1,25 +1,25 @@
-Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Team ID,Opponent,Opponent Team ID,Team Score,Result for Team,Home/Away,Game ID
-Ichiro Suzuki,suzukic01,RF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Brendan Ryan,ryanbr01,SS,0.0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Adam Kennedy,kennead01,1B,9.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Miguel Olivo,olivomi01,C,7.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Dustin Ackley,ackledu01,2B,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Franklin Gutiérrez,gutiefr01,CF,5.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Carlos Peguero,pegueca01,LF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Chone Figgins,figgich01,3B,2.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Jason Vargas,vargaja01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Jamey Wright,wrighja01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Team Totals,,,24.0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,SEA2011,Florida Marlins,FLA2011,2,Loss,Away,SEA201106250
-Emilio Bonifácio,bonifem01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Omar Infante,infanom01,2B,1.0,5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Gaby Sánchez,sanchga01,1B,16.0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Hanley Ramírez,ramirha01,SS,0.0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Giancarlo Stanton,stantmi03,RF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-John Buck,buckjo01,C,4.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Wes Helms,helmswe01,3B,0.0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Dewayne Wise,wisede01,CF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Chris Volstad,volstch01,P,1.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Randy Choate,choatra01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Edward Mujica,mujiced01,P,0.0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Juan Carlos Oviedo,nunezle01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
-Team Totals,,,27.0,16,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,FLA2011,Seattle Mariners,SEA2011,4,Win,Home,SEA201106250
+Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team ID,Opponent Team ID,Game ID
+Ichiro Suzuki,suzukic01,RF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Brendan Ryan,ryanbr01,SS,0.0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Adam Kennedy,kennead01,1B,9.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Miguel Olivo,olivomi01,C,7.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Dustin Ackley,ackledu01,2B,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Franklin Gutiérrez,gutiefr01,CF,5.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Carlos Peguero,pegueca01,LF,1.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Chone Figgins,figgich01,3B,2.0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Jason Vargas,vargaja01,P,0.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Jamey Wright,wrighja01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Team Totals,,,24.0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,SEA2011,FLA2011,SEA201106250
+Emilio Bonifácio,bonifem01,LF,2.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Omar Infante,infanom01,2B,1.0,5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Gaby Sánchez,sanchga01,1B,16.0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Hanley Ramírez,ramirha01,SS,0.0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Giancarlo Stanton,stantmi03,RF,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+John Buck,buckjo01,C,4.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Wes Helms,helmswe01,3B,0.0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Dewayne Wise,wisede01,CF,3.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Chris Volstad,volstch01,P,1.0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Randy Choate,choatra01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Edward Mujica,mujiced01,P,0.0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Juan Carlos Oviedo,nunezle01,P,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
+Team Totals,,,27.0,16,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLA2011,SEA2011,SEA201106250
