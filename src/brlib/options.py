@@ -234,7 +234,7 @@ class Options(Singleton):
         >>> br.options.clear_cache()
         ```
         """
-        for file in CACHE_DIR.iterdir():
+        for file in (f for f in CACHE_DIR.iterdir() if f.is_file()):
             file.unlink()
 
     def clear_preferences(self) -> None:

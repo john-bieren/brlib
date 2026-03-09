@@ -3,12 +3,12 @@
 from brlib._helpers.abbreviations_manager import abv_man
 
 
-def test_cache() -> None:
+def test_cache(reset_cache: bool) -> None:
     """Tests that the contents are the same whether loaded from cache or the web."""
-    # on the CI runner, abv_man.df has already been loaded from the web and cached
-    # locally, you'll have to delete the cache file to replicate this behavior
+    # use data already loaded from the web
     expected_df = abv_man.df.copy()
-    assert abv_man._has_valid_cache
+    if reset_cache:
+        assert abv_man._has_valid_cache
 
     # reset contents and load data from cache
     abv_man.reset()

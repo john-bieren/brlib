@@ -1,16 +1,40 @@
 """Sets reusable objects for testing."""
 
 import copy
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
 import brlib as br
+from brlib._helpers.abbreviations_manager import abv_man
+from brlib._helpers.constants import CACHE_DIR
 
 br.options.add_no_hitters = False
 br.options.update_team_names = False
 br.options.update_venue_names = False
+
+
+@pytest.fixture(scope="session", autouse=True)
+def reset_cache() -> bool:
+    """
+    Tests the clear_cache function and resets `abv_man` if its cache file was more than 10 seconds
+    old. This grace period keeps CI runners from making an extra request. Must run before all other
+    tests so that cached data doesn't affect test results. Returns whether `abv_man` was reset.
+    """
+    abv_cache_file = CACHE_DIR / abv_man._cache_file
+    creation_time = abv_cache_file.stat().st_ctime
+    creation_datetime = datetime.fromtimestamp(creation_time)
+
+    br.options.clear_cache()
+    # test clear_cache
+    assert len([f for f in CACHE_DIR.iterdir() if f.is_file()]) == 0
+
+    if datetime.now() - creation_datetime > timedelta(seconds=10):
+        abv_man.reset()
+        return True
+    return False
 
 
 @pytest.fixture(scope="module")

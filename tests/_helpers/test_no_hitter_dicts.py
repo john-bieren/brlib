@@ -9,7 +9,7 @@ from brlib._helpers.no_hitter_dicts import nhd
 
 def test_cache() -> None:
     """Tests that the contents are the same whether loaded from cache or the web."""
-    # load data from the web (locally, you'll have to delete the cache file to test this)
+    # load data from the web
     nhd.populate()
     assert nhd._has_valid_cache
 
