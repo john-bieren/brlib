@@ -212,7 +212,7 @@ class TeamSet:
                             )
                             | (
                                 # team totals row
-                                (self.pitching["Name"] == "Team Totals")
+                                (self.pitching["Player"] == "Team Totals")
                                 & (self.pitching["Game Type"].str.startswith(game_type))
                             )
                         ),
