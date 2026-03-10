@@ -8,7 +8,7 @@ def test_shape(ap_filtered: pd.DataFrame) -> None:
     assert len(ap_filtered) == 20547
     assert ap_filtered.columns.tolist() == [
         "Player ID",
-        "Name",
+        "Player",
         "Career Start",
         "Career End",
         "Active",
@@ -24,7 +24,7 @@ def test_data(ap_filtered: pd.DataFrame) -> None:
         "aasedo01",
         "abadan01",
     ]
-    assert ap_filtered["Name"].iloc[:5].values.tolist() == [
+    assert ap_filtered["Player"].iloc[:5].values.tolist() == [
         "David Aardsma",
         "Henry Aaron",
         "Tommie Aaron",

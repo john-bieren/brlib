@@ -58,7 +58,7 @@ def all_players() -> pd.DataFrame:
     print_page("All MLB Players")
     csv_lines = str(page.content, "UTF-8").strip()
     # add column names, which are not included in the payload
-    columns = "Player ID,Name,Career Span,Active,1,2,3,4,5\n"
+    columns = "Player ID,Player,Career Span,Active,1,2,3,4,5\n"
     players_df = pd.read_csv(StringIO(columns + csv_lines))
 
     # split career span into start and end (if span is one year, only year is listed, no range)
@@ -67,6 +67,6 @@ def all_players() -> pd.DataFrame:
     # convert active column from 0/1 to boolean
     players_df["Active"] = players_df["Active"].astype(bool)
 
-    columns = ["Player ID", "Name", "Career Start", "Career End", "Active"]
+    columns = ["Player ID", "Player", "Career Start", "Career End", "Active"]
     players_df = players_df.reindex(columns=columns)
     return players_df
