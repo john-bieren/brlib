@@ -24,7 +24,8 @@ def find_teams(
     seasons: str | list[str] = "ALL",
 ) -> list[str]:
     """
-    Returns a list of team IDs which can be an input to `get_teams`.
+    Returns a list of team IDs which can be an input to
+    [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams).
 
     ## Parameters
 

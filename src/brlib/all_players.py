@@ -43,7 +43,8 @@ def all_players() -> pd.DataFrame:
     [23615 rows x 5 columns]
     ```
 
-    You can filter results and convert them into a `get_players` input:
+    You can filter results and convert them into a
+    [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players) input:
 
     ```
     >>> ap = br.all_players()

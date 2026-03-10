@@ -51,7 +51,8 @@ class PlayerSet:
 
     * `teams`: `list[tuple[str, str]]`
 
-        A list of the teams on which the players appeared. Can be an input to `get_teams`.
+        A list of the teams on which the players appeared. Can be an input to
+        [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams).
 
     ## Examples
 
@@ -64,7 +65,7 @@ class PlayerSet:
     PlayerSet(Player(lewisky01), Player(sanchsi01))
     ```
 
-    Directly pass `get_players` results:
+    Directly pass [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players) results:
 
     ```
     >>> pl = br.get_players(["lewisky01", "sanchsi01"])

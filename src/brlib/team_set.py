@@ -55,7 +55,8 @@ class TeamSet:
 
     * `players`: `list[str]`
 
-        A list of the players who played for the teams. Can be an input to `get_players`.
+        A list of the players who played for the teams. Can be an input to
+        [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players).
 
     ## Examples
 
@@ -68,7 +69,7 @@ class TeamSet:
     TeamSet(Team('SEP1969'), Team('MLA1901'))
     ```
 
-    Directly pass `get_teams` results:
+    Directly pass [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams) results:
 
     ```
     >>> tl = br.get_teams([("SEP1969"), ("MLA1901")])

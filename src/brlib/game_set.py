@@ -66,11 +66,13 @@ class GameSet:
 
     * `players`: `list[str]`
 
-        A list of the IDs of the players who appeared in the games. Can be an input to `get_players`.
+        A list of the IDs of the players who appeared in the games. Can be an input to
+        [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players).
 
     * `teams`: `list[str]`
 
-        A list of the IDs of the teams involved in the games. Can be an input to `get_teams`.
+        A list of the IDs of the teams involved in the games. Can be an input to
+        [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams).
 
     ## Examples
 
@@ -83,7 +85,7 @@ class GameSet:
     GameSet(Game('SEA201809300'), Game('SEA201909290'))
     ```
 
-    Directly pass `get_games` results:
+    Directly pass [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games) results:
 
     ```
     >>> gl = br.get_games([("SEA201809300"), ("SEA201909290")])

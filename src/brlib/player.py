@@ -110,11 +110,13 @@ class Player:
     * `relatives`: `dict[str: list[str]]`
 
         The player's relationships with other major-leaguers. The relationships are they keys, and
-        the values list the players. These values can be inputs to `get_players`.
+        the values list the players. These values can be inputs to
+        [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players).
 
     * `teams`: `list[str]`
 
-        A list of the IDs of the teams on which the player appeared. Can be an input to `get_teams`.
+        A list of the IDs of the teams on which the player appeared. Can be an input to
+        [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams).
 
     ## Example
 

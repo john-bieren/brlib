@@ -18,7 +18,8 @@ from .options import write
 @runtime_typecheck
 def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
     """
-    Returns a list of All-Star Game IDs which can be an input to `get_games`.
+    Returns a list of All-Star Game IDs which can be an input to
+    [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games).
 
     ## Parameters
 

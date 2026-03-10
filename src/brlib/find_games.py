@@ -35,7 +35,8 @@ def find_games(
     game_type: str = "ALL",
 ) -> list[str]:
     """
-    Returns a list of game IDs which can be an input to `get_games`.
+    Returns a list of game IDs which can be an input to
+    [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games).
 
     ## Parameters
 

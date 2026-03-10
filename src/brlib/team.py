@@ -100,7 +100,8 @@ class Team:
 
     * `players`: `list[str]`
 
-        A list of the players who played for the team. Can be an input to `get_players`.
+        A list of the players who played for the team. Can be an input to
+        [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players).
 
     ## Example
 
