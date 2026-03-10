@@ -128,6 +128,13 @@ class Options(Singleton):
         self._settings = ChainMap(self._changes, self._preferences, self._defaults)
         self._load_preferences()
 
+    def reset(self) -> None:
+        """
+        Re-initializes `Options`, resulting in preferences being reloaded and session-level
+        changes being reverted.
+        """
+        self.__init__()
+
     def _load_preferences(self) -> None:
         """Validates and loads preferences.json contents into `self._preferences`."""
         if not self._preferences_file.exists():
