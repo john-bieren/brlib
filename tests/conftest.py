@@ -108,14 +108,18 @@ def updated_games_list(games_list: list[br.Game]) -> list[br.Game]:
 
 @pytest.fixture(scope="session")
 def game_set(games_list: list[br.Game]) -> br.GameSet:
-    """A `GameSet` made from the contents of `games_list`."""
+    """A `GameSet` made from the contents of `games_list`, before any public methods are run."""
     return br.GameSet(games_list)
 
 
 @pytest.fixture(scope="session")
-def updated_game_set(updated_games_list: list[br.Game]) -> br.GameSet:
-    """A `GameSet` made from the contents of `updated_games_list`."""
-    return br.GameSet(updated_games_list)
+def updated_game_set(games_list: list[br.Game]) -> br.GameSet:
+    """A `GameSet` made from the contents of `games_list`, after all public methods are run."""
+    gs = br.GameSet(games_list)
+    gs.add_no_hitters()
+    gs.update_team_names()
+    gs.update_venue_names()
+    return gs
 
 
 @pytest.fixture(scope="session")
@@ -166,14 +170,17 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
 
 @pytest.fixture(scope="session")
 def player_set(players_list: list[br.Player]) -> br.PlayerSet:
-    """A `PlayerSet` made from the contents of `players_list`."""
+    """A `PlayerSet` made from the contents of `players_list`, before any public methods are run."""
     return br.PlayerSet(players_list)
 
 
 @pytest.fixture(scope="session")
-def updated_player_set(updated_players_list: list[br.Player]) -> br.PlayerSet:
-    """A `PlayerSet` made from the contents of `updated_players_list`."""
-    return br.PlayerSet(updated_players_list)
+def updated_player_set(players_list: list[br.Player]) -> br.PlayerSet:
+    """A `PlayerSet` made from the contents of `players_list`, after all public methods are run."""
+    ps = br.PlayerSet(players_list)
+    ps.add_no_hitters()
+    ps.update_team_names()
+    return ps
 
 
 @pytest.fixture(scope="session")
@@ -223,11 +230,15 @@ def updated_teams_list(teams_list: list[br.Team]) -> list[br.Team]:
 
 @pytest.fixture(scope="session")
 def team_set(teams_list: list[br.Team]) -> br.TeamSet:
-    """A `TeamSet` made from the contents of `teams_list`."""
+    """A `TeamSet` made from the contents of `teams_list`, before any public methods are run."""
     return br.TeamSet(teams_list)
 
 
 @pytest.fixture(scope="session")
-def updated_team_set(updated_teams_list: list[br.Team]) -> br.TeamSet:
-    """A `TeamSet` made from the contents of `updated_teams_list`."""
-    return br.TeamSet(updated_teams_list)
+def updated_team_set(teams_list: list[br.Team]) -> br.TeamSet:
+    """A `TeamSet` made from the contents of `teams_list`, after all public methods are run."""
+    ts = br.TeamSet(teams_list)
+    ts.add_no_hitters()
+    ts.update_team_names()
+    ts.update_venue_names()
+    return ts
