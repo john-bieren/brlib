@@ -45,5 +45,5 @@ jobs:
       - name: Check formatting with Black
         run: uv run black --check .
 
-      - name: Run pytest
-        run: uv run pytest
+      - name: Run pytest with coverage
+        run: uv run pytest --cov=. --cov-report=term-missing
