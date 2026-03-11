@@ -3,12 +3,11 @@
 from brlib._helpers.abbreviations_manager import abv_man
 
 
-def test_cache(reset_cache: bool) -> None:
+def test_cache() -> None:
     """Tests that the contents are the same whether loaded from cache or the web."""
     # use data already loaded from the web
     expected_df = abv_man.df.copy()
-    if reset_cache:
-        assert abv_man._has_valid_cache
+    assert abv_man._has_valid_cache
 
     # reset abv_man and load data from cache
     abv_man.__init__()

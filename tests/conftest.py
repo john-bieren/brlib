@@ -17,24 +17,17 @@ br.options.update_venue_names = False
 
 
 @pytest.fixture(scope="session", autouse=True)
-def reset_cache() -> bool:
+def test_clear_cache() -> None:
     """
-    Tests the clear_cache function and resets `abv_man` if its cache file was more than 10 seconds
-    old. This grace period keeps CI runners from making an extra request. Must run before all other
-    tests so that cached data doesn't affect test results. Returns whether `abv_man` was reset.
+    Tests the clear_cache function by removing the abv_data cache file, and resets `abv_man` to
+    re-load its data from the web and re-create its cache file for later testing. Must run before
+    all other tests so that the presence or deletion of cached data doesn't affect test results.
     """
-    abv_cache_file = CACHE_DIR / abv_man._cache_file
-    creation_time = abv_cache_file.stat().st_ctime
-    creation_datetime = datetime.fromtimestamp(creation_time)
-
     br.options.clear_cache()
     # test clear_cache
     assert len([f for f in CACHE_DIR.iterdir() if f.is_file()]) == 0
-
-    if datetime.now() - creation_datetime > timedelta(seconds=10):
-        abv_man.__init__()  # reset abv_man and load data from the web
-        return True
-    return False
+    # reset abv_man and load data from the web
+    abv_man.__init__()
 
 
 @pytest.fixture(scope="module")
