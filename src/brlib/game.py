@@ -630,9 +630,7 @@ class Game:
                 self.info["Wind Speed"] = wind_speed = str_between(info, "Wind ", "mph")
                 if wind_speed != "0":
                     try:
-                        direction = info.split("mph ", maxsplit=1)[1]
-                        direction = "unknown" if direction == "in unknown direction" else direction
-                        self.info["Wind Direction"] = direction
+                        self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
                     except IndexError:
                         pass
             elif info in {"Sunny", "Night", "Overcast", "Cloudy"}:
