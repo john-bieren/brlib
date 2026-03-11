@@ -41,7 +41,7 @@ jobs:
         run: uv venv
 
       - name: Install brlib
-        run: uv pip install --resolution ${{ matrix.resolution }} -e .[dev]
+        run: uv sync --resolution ${{ matrix.resolution }} --group dev
 
       - name: Run pytest
         run: uv run pytest

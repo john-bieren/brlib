@@ -31,10 +31,16 @@ brlib can be installed using pip:
 pip install brlib
 ```
 
-or by cloning this repo, in which case you'll want to install the development dependencies as well:
+or by cloning this repo:
 
 ```
-pip install -e .[dev]
+pip install -e .
+```
+
+if you've cloned the repo, you can also install the development dependencies:
+
+```
+pip install --group dev
 ```
 
 Once installed, you can import brlib into your Python scripts:

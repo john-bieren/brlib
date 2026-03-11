@@ -37,7 +37,7 @@ jobs:
         run: uv venv
 
       - name: Install brlib
-        run: uv pip install --resolution highest -e .[dev]
+        run: uv sync --resolution highest --group dev
 
       - name: Check import sorting with isort
         run: uv run isort --check-only .
