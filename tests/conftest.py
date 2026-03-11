@@ -32,7 +32,7 @@ def reset_cache() -> bool:
     assert len([f for f in CACHE_DIR.iterdir() if f.is_file()]) == 0
 
     if datetime.now() - creation_datetime > timedelta(seconds=10):
-        abv_man.reset()
+        abv_man.__init__()  # reset abv_man and load data from the web
         return True
     return False
 

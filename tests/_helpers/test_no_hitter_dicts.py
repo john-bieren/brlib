@@ -23,8 +23,8 @@ def test_cache() -> None:
     expected_tp = copy.deepcopy(nhd.team_pg_dict)
     expected_tc = copy.deepcopy(nhd.team_cnh_dict)
 
-    # reset contents and load data from cache
-    nhd.reset()
+    # reset nhd and load data from cache
+    nhd.__init__()
     nhd.populate()
 
     assert nhd.game_inh_dict == expected_gi

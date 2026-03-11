@@ -39,10 +39,6 @@ class AbbreviationsManager(Singleton):
 
         self.populate()
 
-    def reset(self) -> None:
-        """Re-initializes `AbbreviationsManager`, resulting in `self.df` being reloaded."""
-        self.__init__()
-
     def populate(self) -> None:
         """Populates `self.df` from cache or the web if it is not already populated."""
         if self._populated:

@@ -10,8 +10,8 @@ def test_cache(reset_cache: bool) -> None:
     if reset_cache:
         assert abv_man._has_valid_cache
 
-    # reset contents and load data from cache
-    abv_man.reset()
+    # reset abv_man and load data from cache
+    abv_man.__init__()
     compared = abv_man.df.compare(expected_df)
     assert compared.empty
 
