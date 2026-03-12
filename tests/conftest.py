@@ -8,7 +8,7 @@ import pandas as pd
 import pytest
 
 import brlib as br
-from brlib._helpers.abbreviations_manager import abv_man
+from brlib._helpers.abbreviations_manager import abv_mgr
 from brlib._helpers.constants import CACHE_DIR
 
 br.options.add_no_hitters = False
@@ -19,15 +19,15 @@ br.options.update_venue_names = False
 @pytest.fixture(scope="session", autouse=True)
 def test_clear_cache() -> None:
     """
-    Tests the clear_cache function by removing the abv_data cache file, and resets `abv_man` to
+    Tests the clear_cache function by removing the abv_data cache file, and resets `abv_mgr` to
     re-load its data from the web and re-create its cache file for later testing. Must run before
     all other tests so that the presence or deletion of cached data doesn't affect test results.
     """
     br.options.clear_cache()
     # test clear_cache
     assert len([f for f in CACHE_DIR.iterdir() if f.is_file()]) == 0
-    # reset abv_man and load data from the web
-    abv_man.__init__()
+    # reset abv_mgr and load data from the web
+    abv_mgr.__init__()
 
 
 @pytest.fixture(scope="module")

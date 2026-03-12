@@ -19,7 +19,7 @@ from .constants import (
     SEASON_END_DAY,
     SEASON_END_MONTH,
 )
-from .requests_manager import req_man
+from .requests_manager import req_mgr
 from .singleton import Singleton
 from .utils import soup_from_comment, str_between
 
@@ -91,7 +91,7 @@ class NoHitterDicts(Singleton):
     def _get(self) -> pd.DataFrame:
         """Gets no-hitter data from Baseball Reference, save to cache."""
         write("gathering no-hitters")
-        page = req_man.get_page("/friv/no-hitters-and-perfect-games.shtml")
+        page = req_mgr.get_page("/friv/no-hitters-and-perfect-games.shtml")
         data_df = self._gather_data_df(page)
         data_df.to_csv(self._cache_file, index=False)
         return data_df

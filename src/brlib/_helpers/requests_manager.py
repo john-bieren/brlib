@@ -69,4 +69,4 @@ class RequestsManager(Singleton):
         time.sleep(pause_length)
 
 
-req_man = RequestsManager()
+req_mgr = RequestsManager()

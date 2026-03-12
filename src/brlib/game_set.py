@@ -4,7 +4,7 @@ from itertools import chain
 
 import pandas as pd
 
-from ._helpers.abbreviations_manager import abv_man
+from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
     RANGE_TEAM_REPLACEMENTS,
     RECORDS_COLS,
@@ -136,7 +136,7 @@ class GameSet:
         # All-Star teams have no team ID, so they are excluded
         non_asg_rows = ~prep_df["Team ID"].isna()
         prep_df.loc[non_asg_rows, "Franchise"] = prep_df.loc[non_asg_rows, "Team ID"].apply(
-            lambda x: abv_man.franchise_abv(x[:-4], int(x[-4:]))
+            lambda x: abv_mgr.franchise_abv(x[:-4], int(x[-4:]))
         )
         # fill in All-Star team names
         prep_df.loc[~non_asg_rows, "Franchise"] = prep_df.loc[~non_asg_rows, "Team"]

@@ -20,7 +20,7 @@ from ._helpers.constants import (
 )
 from ._helpers.inputs import validate_team_list
 from ._helpers.no_hitter_dicts import nhd
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from ._helpers.utils import (
     clean_spaces,
@@ -328,7 +328,7 @@ class Team:
     def _get_team(team_id: str) -> Response:
         """Returns the page associated with `team_id`."""
         endpoint = f"/teams/{team_id[:-4]}/{team_id[-4:]}.shtml"
-        return req_man.get_page(endpoint)
+        return req_mgr.get_page(endpoint)
 
     def _scrape_team(self, page: Response) -> None:
         """Scrapes team info and batting, pitching, and fielding stats from `page`."""

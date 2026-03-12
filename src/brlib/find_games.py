@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as bs
 from curl_cffi.requests import Response
 from tqdm import tqdm
 
-from ._helpers.abbreviations_manager import abv_man
+from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
     BML_TEAM_ABVS,
     CURRENT_YEAR,
@@ -20,7 +20,7 @@ from ._helpers.constants import (
     TEAM_ALIASES,
 )
 from ._helpers.inputs import validate_date_list
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from .options import options, print_page, write
 
@@ -138,22 +138,22 @@ def find_games(
             year_teams = ["ALL"]
         else:
             # find all matching abbreviations for year (e.g. (BAL, 1915) returns BAL and SLB)
-            match_lists = [abv_man.correct_abvs(t, year, era_adjustment=True) for t in teams]
+            match_lists = [abv_mgr.correct_abvs(t, year, era_adjustment=True) for t in teams]
             # collapse the lists into one
             year_teams = list(chain(*match_lists))
             year_teams = [t for t in year_teams if t != ""]
         if opponents == ["ALL"]:
             year_opponents = ["ALL"]
         else:
-            match_lists = [abv_man.correct_abvs(o, year, era_adjustment=True) for o in opponents]
+            match_lists = [abv_mgr.correct_abvs(o, year, era_adjustment=True) for o in opponents]
             year_opponents = list(chain(*match_lists))
             year_opponents = [o for o in year_opponents if o != ""]
 
-        page = req_man.get_page(f"/leagues/majors/{year}-schedule.shtml")
+        page = req_mgr.get_page(f"/leagues/majors/{year}-schedule.shtml")
         results = _find_season_games(page, year_teams, year_opponents, dates, home_away, game_type)
         print_page(f"{year} MLB Schedule")
         game_list.extend(results)
-        req_man.pause()
+        req_mgr.pause()
     return game_list
 
 
@@ -168,7 +168,7 @@ def _process_abbreviation_list(abv_list: list[str]) -> list[str]:
     for abv in abv_list:
         if abv == "ALL":
             return ["ALL"]
-        if not abv_man.is_valid(abv) or abv in TEAM_ALIASES.values():
+        if not abv_mgr.is_valid(abv) or abv in TEAM_ALIASES.values():
             write(f'skipping invalid teams input "{abv}"')
             continue
         if abv in BML_TEAM_ABVS:
@@ -254,9 +254,9 @@ def _all_franchise_seasons(abbreviations: list[str]) -> set[int]:
     Does not handle missing seasons because none exist for teams that currently have box scores.
     `abbreviations` must be uppercase.
     """
-    team_matches = abv_man.df.loc[abv_man.df["Team"].isin(abbreviations)]
+    team_matches = abv_mgr.df.loc[abv_mgr.df["Team"].isin(abbreviations)]
     franchise_abvs = team_matches["Franchise"].values
-    franchise_abv_matches = abv_man.df.loc[abv_man.df["Franchise"].isin(franchise_abvs)]
+    franchise_abv_matches = abv_mgr.df.loc[abv_mgr.df["Franchise"].isin(franchise_abvs)]
 
     result = set()
     for _, row in franchise_abv_matches.iterrows():

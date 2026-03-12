@@ -5,7 +5,7 @@ from itertools import chain
 
 import pandas as pd
 
-from ._helpers.abbreviations_manager import abv_man
+from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
     CURRENT_YEAR,
     CY_BASEBALL,
@@ -93,7 +93,7 @@ def find_teams(
             year_teams = teams
         else:
             # find all matching abbreviations for year (e.g. (BAL, 1915) returns BAL and SLB)
-            match_lists = [abv_man.correct_abvs(t, year, era_adjustment=True) for t in teams]
+            match_lists = [abv_mgr.correct_abvs(t, year, era_adjustment=True) for t in teams]
             # collapse the lists into one
             year_teams = list(chain(*match_lists))
             year_teams = [t for t in year_teams if t != ""]
@@ -122,7 +122,7 @@ def _process_abbreviation_list(abv_list: list[str], exceptions: set[str]) -> lis
     for abv in abv_list:
         if abv == "ALL":
             return ["ALL"]
-        if not abv_man.is_valid(abv) and abv not in exceptions:
+        if not abv_mgr.is_valid(abv) and abv not in exceptions:
             write(f'skipping invalid teams input "{abv}"')
             continue
         result.append(abv)
@@ -170,18 +170,18 @@ def _find_season_teams(year: int, year_teams: list[str]) -> list[str]:
     missing_seasons = MISSING_SEASONS_DICT.get(year, {})
     team_list = []
     for team in year_teams:
-        year_mask = (abv_man.df["First Year"] <= year) & (abv_man.df["Last Year"] >= year)
+        year_mask = (abv_mgr.df["First Year"] <= year) & (abv_mgr.df["Last Year"] >= year)
         if team == "ALL":
             # identity mask
-            team_mask = pd.Series(True, index=abv_man.df.index)
+            team_mask = pd.Series(True, index=abv_mgr.df.index)
         elif team == "BML":
-            team_mask = abv_man.df["BML"]
+            team_mask = abv_mgr.df["BML"]
         elif team == "WML":
-            team_mask = ~abv_man.df["BML"]
+            team_mask = ~abv_mgr.df["BML"]
         else:
-            team_mask = abv_man.df["Team"] == team
+            team_mask = abv_mgr.df["Team"] == team
 
-        match_rows = abv_man.df[year_mask & team_mask]
+        match_rows = abv_mgr.df[year_mask & team_mask]
         teams = match_rows["Team"].values
         results = [f"{abv}{year}" for abv in teams if abv not in missing_seasons]
         results.sort(key=lambda x: x)  # sort by team abv instead of franchise abv

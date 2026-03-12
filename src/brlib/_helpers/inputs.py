@@ -3,7 +3,7 @@
 import re
 
 from ..options import write
-from .abbreviations_manager import abv_man
+from .abbreviations_manager import abv_mgr
 from .constants import (
     ASG_ID_REGEX,
     BML_TEAM_ABVS,
@@ -59,13 +59,13 @@ def validate_game_list(game_list: list[str]) -> list[str]:
             result.append(f"{date}-allstar-game{game_number}")
             continue
         year = int(date[:4])
-        home_team = abv_man.to_regular(home_team, year)
-        correct_abv = abv_man.correct_abvs(home_team, year, era_adjustment=False)
+        home_team = abv_mgr.to_regular(home_team, year)
+        correct_abv = abv_mgr.correct_abvs(home_team, year, era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
             write(f'cannot get "{game_id}": {home_team} did not play in {year}')
             continue
         # use correct_abv to account for discontinuities, guarantee all-caps abbreviation
-        correct_abv = abv_man.to_alias(correct_abv[0], year)
+        correct_abv = abv_mgr.to_alias(correct_abv[0], year)
         result.append(f"{correct_abv}{date}{doubleheader}")
     return result
 
@@ -81,7 +81,7 @@ def _validate_game_input(home_team: str, date: str, doubleheader: str) -> str:
         if year not in range(FIRST_ASG_YEAR, CURRENT_YEAR + CY_BASEBALL) or year in NO_ASG_YEARS:
             return f"there was no All-Star Game in {year}"
     else:
-        if not (abv_man.is_valid(home_team) or home_team in TEAM_ALIASES.values()):
+        if not (abv_mgr.is_valid(home_team) or home_team in TEAM_ALIASES.values()):
             return f'abbreviation "{home_team}" is not associated with any teams'
         if home_team in BML_TEAM_ABVS:
             return f"box scores are not available for {home_team}"
@@ -138,7 +138,7 @@ def validate_team_list(team_list: list[str]) -> list[str]:
             continue
 
         # check home team abbreviation
-        correct_abv = abv_man.correct_abvs(abv, int(season), era_adjustment=False)
+        correct_abv = abv_mgr.correct_abvs(abv, int(season), era_adjustment=False)
         if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
             write(f'cannot get "{team_id}": {abv} did not play in {season}')
             continue
@@ -148,7 +148,7 @@ def validate_team_list(team_list: list[str]) -> list[str]:
 
 def _validate_team_input(team: str, season: str) -> str:
     """Returns reason that input is invalid, or empty string. `team` must be uppercase."""
-    if not abv_man.is_valid(team):
+    if not abv_mgr.is_valid(team):
         return f'abbreviation "{team}" is not associated with any teams'
     year = int(season)
     if year < FIRST_TEAMS_YEAR:

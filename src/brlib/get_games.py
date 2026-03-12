@@ -3,7 +3,7 @@
 from tqdm import tqdm
 
 from ._helpers.inputs import validate_game_list
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from ._helpers.utils import game_id_to_endpoint
 from .game import Game
@@ -95,7 +95,7 @@ def get_games(
         endpoint = game_id_to_endpoint(game_id)
 
         try:
-            page = req_man.get_page(endpoint)
+            page = req_mgr.get_page(endpoint)
             result = Game(
                 page=page,
                 add_no_hitters=add_no_hitters,
@@ -103,7 +103,7 @@ def get_games(
                 update_venue_names=update_venue_names,
             )
             results.append(result)
-            req_man.pause()
+            req_mgr.pause()
         except Exception as exc:
             if not ignore_errors:
                 raise
@@ -115,6 +115,6 @@ def get_games(
                 write(message + " or subsequent games")
                 return results
             write(message)
-            req_man.pause()
+            req_mgr.pause()
             continue
     return results

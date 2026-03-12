@@ -4,7 +4,7 @@ from io import StringIO
 
 import pandas as pd
 
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from .options import print_page
 
 
@@ -54,7 +54,7 @@ def all_players() -> pd.DataFrame:
     ['quackke01', 'quallch01', 'quallji01', ...]
     ```
     """
-    page = req_man.get_page("/short/inc/players_search_list.csv")
+    page = req_mgr.get_page("/short/inc/players_search_list.csv")
     print_page("All MLB Players")
     csv_lines = str(page.content, "UTF-8").strip()
     # add column names, which are not included in the payload

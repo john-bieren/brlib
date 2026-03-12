@@ -11,7 +11,7 @@ from bs4 import Tag
 from curl_cffi.requests import Response
 from dateutil.relativedelta import relativedelta
 
-from ._helpers.abbreviations_manager import abv_man
+from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
     BLING_DICT,
     LEAGUE_ABVS,
@@ -28,7 +28,7 @@ from ._helpers.constants import (
 )
 from ._helpers.inputs import validate_player_list
 from ._helpers.no_hitter_dicts import nhd
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from ._helpers.utils import (
     clean_spaces,
@@ -247,7 +247,7 @@ class Player:
                 # spahnwa01 threw his no-hitters for MLN, but the applicable total row is for BSN
                 # not only are these different, but BSN isn't even the franchise abv (ATL is)
                 # check for career rows for any of the franchise's abbreviations
-                all_team_abvs = abv_man.all_team_abvs(team, int(year))
+                all_team_abvs = abv_mgr.all_team_abvs(team, int(year))
                 self.pitching.loc[
                     (
                         # team and season row
@@ -305,7 +305,7 @@ class Player:
     def _get_player(player_id: str) -> Response:
         """Returns the page associated with a player."""
         endpoint = f"/players/{player_id[0]}/{player_id}.shtml"
-        return req_man.get_page(endpoint)
+        return req_mgr.get_page(endpoint)
 
     def _scrape_player(self, page: Response) -> None:
         """Scrapes player info and batting, pitching, and fielding stats from `page`."""
@@ -966,7 +966,7 @@ class Player:
         seasons = [x[-4:] for x in self.teams]
         self.info["Most Teams in a Year"] = Counter(seasons).most_common(1)[0][1]
         franchises = [
-            abv_man.franchise_abv(team_id[:-4], int(team_id[-4:])) for team_id in self.teams
+            abv_mgr.franchise_abv(team_id[:-4], int(team_id[-4:])) for team_id in self.teams
         ]
         self.info["Teams Played For"] = len(dict.fromkeys(franchises))
 

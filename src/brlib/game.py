@@ -26,7 +26,7 @@ from ._helpers.constants import (
 )
 from ._helpers.inputs import validate_game_list
 from ._helpers.no_hitter_dicts import nhd
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from ._helpers.utils import (
     clean_spaces,
@@ -382,7 +382,7 @@ class Game:
     def _get_game(game_id: str) -> Response:
         """Returns the page associated with `game_id`."""
         endpoint = game_id_to_endpoint(game_id)
-        return req_man.get_page(endpoint)
+        return req_mgr.get_page(endpoint)
 
     def _scrape_game(self, page: Response) -> None:
         """Scrapes game info and batting, pitching, and fielding stats from `page`."""

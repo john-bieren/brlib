@@ -4,7 +4,7 @@ from itertools import chain
 
 import pandas as pd
 
-from ._helpers.abbreviations_manager import abv_man
+from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import MULTI_TEAM_REGEX, TEAM_REPLACEMENTS
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.typechecking import runtime_typecheck
@@ -177,7 +177,7 @@ class PlayerSet:
                     # spahnwa01 threw no-hitters for MLN, but the applicable total row is for BSN
                     # not only are these different, but BSN isn't even the franchise abv (ATL is)
                     # so we check for career rows for any of the franchise's abbreviations
-                    all_team_abvs = abv_man.all_team_abvs(team, int(year))
+                    all_team_abvs = abv_mgr.all_team_abvs(team, int(year))
                     self.pitching.loc[
                         player_mask
                         & (

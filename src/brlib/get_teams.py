@@ -3,7 +3,7 @@
 from tqdm import tqdm
 
 from ._helpers.inputs import validate_team_list
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from .options import options, write
 from .team import Team
@@ -94,7 +94,7 @@ def get_teams(
         endpoint = f"/teams/{team_id[:-4]}/{team_id[-4:]}.shtml"
 
         try:
-            page = req_man.get_page(endpoint)
+            page = req_mgr.get_page(endpoint)
             result = Team(
                 page=page,
                 add_no_hitters=add_no_hitters,
@@ -102,7 +102,7 @@ def get_teams(
                 update_venue_names=update_venue_names,
             )
             results.append(result)
-            req_man.pause()
+            req_mgr.pause()
         except Exception as exc:
             if not ignore_errors:
                 raise
@@ -114,6 +114,6 @@ def get_teams(
                 write(message + " or subsequent teams")
                 return results
             write(message)
-            req_man.pause()
+            req_mgr.pause()
             continue
     return results

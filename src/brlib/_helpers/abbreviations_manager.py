@@ -20,7 +20,7 @@ from .constants import (
     SEASON_START_MONTH,
     TEAM_ALIASES,
 )
-from .requests_manager import req_man
+from .requests_manager import req_mgr
 from .singleton import Singleton
 
 
@@ -81,7 +81,7 @@ class AbbreviationsManager(Singleton):
     def _get(self) -> None:
         """Gets abbreviations data from Baseball Reference, save to cache."""
         write("brlib: gathering team abbreviations")
-        page = req_man.get_page("/about/team_IDs.shtml")
+        page = req_mgr.get_page("/about/team_IDs.shtml")
         self._gather_abbreviations(page)
         self.df.to_csv(self._cache_file, index=False)
 
@@ -242,4 +242,4 @@ class AbbreviationsManager(Singleton):
         return correct_row["Team"].values[0]
 
 
-abv_man = AbbreviationsManager()
+abv_mgr = AbbreviationsManager()

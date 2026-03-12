@@ -3,7 +3,7 @@
 from tqdm import tqdm
 
 from ._helpers.inputs import validate_player_list
-from ._helpers.requests_manager import req_man
+from ._helpers.requests_manager import req_mgr
 from ._helpers.typechecking import runtime_typecheck
 from .options import options, write
 from .player import Player
@@ -88,14 +88,14 @@ def get_players(
         endpoint = f"/players/{player_id[0]}/{player_id}.shtml"
 
         try:
-            page = req_man.get_page(endpoint)
+            page = req_mgr.get_page(endpoint)
             result = Player(
                 page=page,
                 add_no_hitters=add_no_hitters,
                 update_team_names=update_team_names,
             )
             results.append(result)
-            req_man.pause()
+            req_mgr.pause()
         except Exception as exc:
             if not ignore_errors:
                 raise
@@ -107,6 +107,6 @@ def get_players(
                 write(message + " or subsequent players")
                 return results
             write(message)
-            req_man.pause()
+            req_mgr.pause()
             continue
     return results
