@@ -1,7 +1,6 @@
 """Sets reusable objects for testing."""
 
 import copy
-from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd

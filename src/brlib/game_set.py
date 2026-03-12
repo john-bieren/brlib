@@ -293,9 +293,6 @@ class GameSet:
 
         # if all the games are All-Star Games, the Team ID column is all NaN, so .str doesn't work
         info_year_col = self.info["Home Team ID"].astype("object").str[-4:].astype("float64")
-        batting_year_col = self.batting["Team ID"].astype("object").str[-4:].astype("float64")
-        pitching_year_col = self.pitching["Team ID"].astype("object").str[-4:].astype("float64")
-        fielding_year_col = self.fielding["Team ID"].astype("object").str[-4:].astype("float64")
         team_info_year_col = self.team_info["Team ID"].astype("object").str[-4:].astype("float64")
 
         # replace old team names within a given range
@@ -303,9 +300,6 @@ class GameSet:
             years = range(start_year, end_year + 1)
             name_dict = {old_name: new_name}
             info_mask = info_year_col.isin(years)
-            batting_mask = batting_year_col.isin(years)
-            pitching_mask = pitching_year_col.isin(years)
-            fielding_mask = fielding_year_col.isin(years)
             team_info_mask = team_info_year_col.isin(years)
 
             cols = ["Home Team", "Away Team", "Winning Team", "Losing Team"]
