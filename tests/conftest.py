@@ -105,9 +105,9 @@ def game_set(games_list: list[br.Game]) -> br.GameSet:
 
 
 @pytest.fixture(scope="session")
-def updated_game_set(games_list: list[br.Game]) -> br.GameSet:
+def updated_game_set(game_set: br.GameSet) -> br.GameSet:
     """A `GameSet` made from the contents of `games_list`, after all public methods are run."""
-    gs = br.GameSet(games_list)
+    gs = copy.deepcopy(game_set)
     gs.add_no_hitters()
     gs.update_team_names()
     gs.update_venue_names()
@@ -167,9 +167,9 @@ def player_set(players_list: list[br.Player]) -> br.PlayerSet:
 
 
 @pytest.fixture(scope="session")
-def updated_player_set(players_list: list[br.Player]) -> br.PlayerSet:
+def updated_player_set(player_set: br.PlayerSet) -> br.PlayerSet:
     """A `PlayerSet` made from the contents of `players_list`, after all public methods are run."""
-    ps = br.PlayerSet(players_list)
+    ps = copy.deepcopy(player_set)
     ps.add_no_hitters()
     ps.update_team_names()
     return ps
@@ -227,9 +227,9 @@ def team_set(teams_list: list[br.Team]) -> br.TeamSet:
 
 
 @pytest.fixture(scope="session")
-def updated_team_set(teams_list: list[br.Team]) -> br.TeamSet:
+def updated_team_set(team_set: br.TeamSet) -> br.TeamSet:
     """A `TeamSet` made from the contents of `teams_list`, after all public methods are run."""
-    ts = br.TeamSet(teams_list)
+    ts = copy.deepcopy(team_set)
     ts.add_no_hitters()
     ts.update_team_names()
     ts.update_venue_names()
