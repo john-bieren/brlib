@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    exclude-paths:
+      - "*.txt"  # keep LICENSE.txt from being treated as a dependency list
+    versioning-strategy: lockfile-only  # block changes to pyproject.toml
+
+    # group all updates into one PR
+    groups:
+      dependencies:
+        patterns:
+          - "*"
