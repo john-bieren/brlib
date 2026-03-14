@@ -16,7 +16,7 @@ class RequestsManager(Singleton):
 
     def __init__(self) -> None:
         self._last_request = 0
-        # noinspection PyArgumentList TODO
+        # noinspection PyArgumentList
         self._session = requests.Session()
 
     def get_page(self, endpoint: str) -> requests.Response:

@@ -34,7 +34,6 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     return wrapper
 
 
-# noinspection PyTypeChecker TODO
 def is_type(value: Any, expected_type: type | UnionType) -> bool:
     """
     Checks whether `value` is an instance of `expected_type`, including parameterized generics.
@@ -54,10 +53,12 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
         return False
 
     if origin is list:
+        value: list
         # args can only have length 1
         return all(is_type(item, *args) for item in value)
 
     if origin is tuple:
+        value: tuple
         # variable-length homogeneous tuple, e.g. Tuple[int, ...]
         if len(args) == 2 and args[1] is Ellipsis:
             return all(is_type(item, args[0]) for item in value)
@@ -68,8 +69,8 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
         return all(is_type(item, typ) for item, typ in zip(value, args))
 
     if origin is dict:
+        value: dict
         key_type, value_type = args
-        # noinspection PyUnresolvedReferences TODO
         return all(is_type(k, key_type) and is_type(v, value_type) for k, v in value.items())
 
     return isinstance(value, origin)

@@ -95,7 +95,7 @@ class AbbreviationsManager(Singleton):
 
         records = []
         for i, row in enumerate(table_soup.find_all("tr")):
-            record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
+            record: list[str | bool] = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             if record[4] == "Present":
                 record[4] = str(CURRENT_YEAR + CY_BASEBALL - 1)
             del record[2]  # remove the column of full team names
@@ -104,7 +104,6 @@ class AbbreviationsManager(Singleton):
             if i == 0:
                 record.append("BML")
             else:
-                # noinspection PyTypeChecker TODO
                 record.append(record[0] in BML_FRANCHISE_ABVS)
             records.append(record)
 
