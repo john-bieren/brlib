@@ -1,7 +1,7 @@
-Game ID,Position,Umpire
-1961-allstar-game-1,HP,Stan Landes
-1961-allstar-game-1,1B,Frank Umont
-1961-allstar-game-1,2B,Shag Crawford
-1961-allstar-game-1,3B,Ed Runge
-1961-allstar-game-1,LF,Ed Vargo
-1961-allstar-game-1,RF,Cal Drummond
+Umpire,Position,Game ID
+Stan Landes,HP,1961-allstar-game-1
+Frank Umont,1B,1961-allstar-game-1
+Shag Crawford,2B,1961-allstar-game-1
+Ed Runge,3B,1961-allstar-game-1
+Ed Vargo,LF,1961-allstar-game-1
+Cal Drummond,RF,1961-allstar-game-1

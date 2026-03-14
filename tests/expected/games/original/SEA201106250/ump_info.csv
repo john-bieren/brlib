@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-SEA201106250,HP,Wally Bell
-SEA201106250,1B,Laz Diaz
-SEA201106250,2B,Cory Blaser
-SEA201106250,3B,Scott Barry
+Umpire,Position,Game ID
+Wally Bell,HP,SEA201106250
+Laz Diaz,1B,SEA201106250
+Cory Blaser,2B,SEA201106250
+Scott Barry,3B,SEA201106250

@@ -1,7 +1,7 @@
-Game ID,Position,Umpire
-2025-allstar-game,HP,Dan Iassogna
-2025-allstar-game,1B,Marvin Hudson
-2025-allstar-game,2B,Chris Segal
-2025-allstar-game,3B,Jansen Visconti
-2025-allstar-game,LF,Jeremie Rehak
-2025-allstar-game,RF,Erich Bacchus
+Umpire,Position,Game ID
+Dan Iassogna,HP,2025-allstar-game
+Marvin Hudson,1B,2025-allstar-game
+Chris Segal,2B,2025-allstar-game
+Jansen Visconti,3B,2025-allstar-game
+Jeremie Rehak,LF,2025-allstar-game
+Erich Bacchus,RF,2025-allstar-game

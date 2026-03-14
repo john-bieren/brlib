@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-SEA201804190,HP,Tripp Gibson
-SEA201804190,1B,Brian Gorman
-SEA201804190,2B,Sean Barber
-SEA201804190,3B,Adrian Johnson
+Umpire,Position,Game ID
+Tripp Gibson,HP,SEA201804190
+Brian Gorman,1B,SEA201804190
+Sean Barber,2B,SEA201804190
+Adrian Johnson,3B,SEA201804190

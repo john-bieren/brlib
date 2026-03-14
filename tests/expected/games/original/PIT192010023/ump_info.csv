@@ -1,3 +1,3 @@
-Game ID,Position,Umpire
-PIT192010023,HP,Pete Harrison
-PIT192010023,1B,Hank O'Day
+Umpire,Position,Game ID
+Pete Harrison,HP,PIT192010023
+Hank O'Day,1B,PIT192010023

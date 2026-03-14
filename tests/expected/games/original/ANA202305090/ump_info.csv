@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-ANA202305090,HP,John Libka
-ANA202305090,1B,Edwin Jimenez
-ANA202305090,2B,James Hoye
-ANA202305090,3B,D.J. Reyburn
+Umpire,Position,Game ID
+John Libka,HP,ANA202305090
+Edwin Jimenez,1B,ANA202305090
+James Hoye,2B,ANA202305090
+D.J. Reyburn,3B,ANA202305090

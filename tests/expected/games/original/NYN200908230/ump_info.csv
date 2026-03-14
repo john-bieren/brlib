@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-NYN200908230,HP,Mark Wegner
-NYN200908230,1B,Rick Reed
-NYN200908230,2B,Rob Drake
-NYN200908230,3B,Tim Timmons
+Umpire,Position,Game ID
+Mark Wegner,HP,NYN200908230
+Rick Reed,1B,NYN200908230
+Rob Drake,2B,NYN200908230
+Tim Timmons,3B,NYN200908230

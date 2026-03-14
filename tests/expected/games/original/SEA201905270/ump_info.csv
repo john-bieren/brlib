@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-SEA201905270,HP,Manny Gonzalez
-SEA201905270,1B,Dan Iassogna
-SEA201905270,2B,Sam Holbrook
-SEA201905270,3B,Jim Wolf
+Umpire,Position,Game ID
+Manny Gonzalez,HP,SEA201905270
+Dan Iassogna,1B,SEA201905270
+Sam Holbrook,2B,SEA201905270
+Jim Wolf,3B,SEA201905270

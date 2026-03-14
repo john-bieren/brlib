@@ -1,5 +1,5 @@
-Game ID,Position,Umpire
-CHN196207291,HP,Al Forman
-CHN196207291,1B,Tom Gorman
-CHN196207291,2B,Bill Jackowski
-CHN196207291,3B,Ed Sudol
+Umpire,Position,Game ID
+Al Forman,HP,CHN196207291
+Tom Gorman,1B,CHN196207291
+Bill Jackowski,2B,CHN196207291
+Ed Sudol,3B,CHN196207291
