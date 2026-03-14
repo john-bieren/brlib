@@ -17,6 +17,7 @@ from ._helpers.constants import (
     GAME_INFO_COLS,
     GAME_PITCHING_COLS,
     GAME_TEAM_INFO_COLS,
+    GAME_UMP_INFO_COLS,
     GAME_URL_REGEX,
     PICKOFF_REGEX,
     RANGE_TEAM_REPLACEMENTS,
@@ -1046,3 +1047,4 @@ class Game:
         self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"}, inplace=True)
         self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")
+        self.ump_info = self.ump_info.reindex(columns=GAME_UMP_INFO_COLS)

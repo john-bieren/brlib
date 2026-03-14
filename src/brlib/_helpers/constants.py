@@ -454,13 +454,28 @@ RELATIVES_DICT = {
     "Greatgrandson": "Greatgrandfather",
     "Greatuncle": "Greatnephew",
     "Greatnephew": "Greatuncle",
-    # include relationships that don't need swapping so that unknown ones can be found
+    # include relationships that don't need swapping so that all known ones are represented
     "Brother": "Brother",
     "Cousin": "Cousin",
     "Brother-In-Law": "Brother-In-Law",
 }
 
-RECORDS_COLS = ("Franchise", "Games", "Wins", "Losses", "Ties", "W-L%")
+ALL_PLAYERS_COLS = (
+    "Player ID",
+    "Player",
+    "Career Start",
+    "Career End",
+    "Active",
+)
+
+RECORDS_COLS = (
+    "Franchise",
+    "Games",
+    "Wins",
+    "Losses",
+    "Ties",
+    "W-L%",
+)
 
 GAME_INFO_COLS = (
     "Game",
@@ -632,6 +647,12 @@ GAME_TEAM_INFO_COLS = (
     "Result",
     "Home/Away",
     "Game ID",
+)
+
+GAME_UMP_INFO_COLS = (
+    "Game ID",
+    "Position",
+    "Umpire",
 )
 
 PLAYER_INFO_COLS = (

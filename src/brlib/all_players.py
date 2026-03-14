@@ -4,6 +4,7 @@ from io import StringIO
 
 import pandas as pd
 
+from ._helpers.constants import ALL_PLAYERS_COLS
 from ._helpers.requests_manager import req_mgr
 from .options import print_page
 
@@ -67,6 +68,5 @@ def all_players() -> pd.DataFrame:
     # convert active column from 0/1 to boolean
     players_df["Active"] = players_df["Active"].astype(bool)
 
-    columns = ["Player ID", "Player", "Career Start", "Career End", "Active"]
-    players_df = players_df.reindex(columns=columns)
+    players_df = players_df.reindex(columns=ALL_PLAYERS_COLS)
     return players_df
