@@ -18,8 +18,9 @@ A library for collecting baseball statistics from
   with attributes for stats tables, information, and more.
 * Aggregate these into `GameSet`, `PlayerSet`, or `TeamSet` classes, which have similar attributes,
   for easy analysis of larger samples.
-* Quickly search for games, players, and teams of interest, and gather their stats without violating
-  the [rate limit](https://www.sports-reference.com/429.html).
+* Easily search for games, players, and teams, and gather their stats.
+* Quickly collect data without violating the
+  [rate limit](https://www.sports-reference.com/429.html).
 
 Learn more by reading the documentation on the [wiki](https://github.com/john-bieren/brlib/wiki).
 
@@ -31,13 +32,13 @@ brlib can be installed using pip:
 pip install brlib
 ```
 
-or by cloning this repo:
+Or by cloning this repo:
 
 ```
 pip install -e .
 ```
 
-if you've cloned the repo, you can also install the development dependencies:
+If you've cloned the repo, you can also install the development dependencies:
 
 ```
 pip install --group dev

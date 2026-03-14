@@ -3,8 +3,8 @@
 """
 Refreshes the expected data for games, players, and teams to match their current outputs. This is
 meant to automate the process of adapting to stat adjustments and other changes on Baseball
-Reference. All changes should be reviewed to make sure that they accurately reflect changes to the
-site, so as not to introduce errors into the test suite.
+Reference. To avoid introducing errors into the test suite, all changes should be manually reviewed
+to make sure that they accurately reflect changes to the site.
 """
 
 import json
