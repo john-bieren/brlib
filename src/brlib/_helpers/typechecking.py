@@ -1,6 +1,7 @@
 """Defines typechecking utilities used throughout the codebase."""
 
 import functools
+import inspect
 import typing
 from collections.abc import Callable
 from types import UnionType
@@ -13,16 +14,17 @@ def runtime_typecheck(func: Callable[..., Any]) -> Callable[..., Any]:
     annotations.
     """
     hints = typing.get_type_hints(func)
+    sig = inspect.signature(func)
 
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         """Internal wrapper for the typechecking logic."""
-        # combine args and kwargs into one dictionary
-        # noinspection PyUnresolvedReferences TODO
-        all_args = {**dict(zip(func.__code__.co_varnames, args)), **kwargs}
+        # bind passed values to the function's arguments
+        bound = sig.bind(*args, **kwargs)
+        all_args = bound.arguments
 
         for param, expected_type in hints.items():
-            if param not in all_args:
+            if param not in all_args:  # skip return type and default arguments
                 continue
             value = all_args[param]
             if not is_type(value, expected_type):
