@@ -53,11 +53,10 @@ def test_preferences() -> None:
         assert options._preferences == {"pb_disable": True, "pb_color": "#ffffff"}
         assert options.pb_disable == True
         assert options.pb_color == "#ffffff"
-    except Exception as exc:
+    finally:
         # restore user preferences
         with options._preferences_file.open("w", encoding="UTF-8") as file:
             json.dump(user_preferences, file)
-        raise exc
 
 
 def test_bool_options() -> None:
