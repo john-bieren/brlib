@@ -2,7 +2,21 @@
 
 from typing import Any
 
-from brlib._helpers.typechecking import is_type
+import pytest
+
+from brlib._helpers.typechecking import is_type, runtime_typecheck
+
+
+@runtime_typecheck
+def foo(bar: str) -> None:
+    """Dummy function for testing the `runtime_typecheck` decorator."""
+    pass
+
+
+def test_runtime_typecheck() -> None:
+    """Tests the `runtime_typecheck` decorator."""
+    with pytest.raises(TypeError):
+        foo(0)
 
 
 def test_is_type() -> None:
