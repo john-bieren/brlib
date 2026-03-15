@@ -63,8 +63,10 @@ def test_bool_options() -> None:
     options._preferences.clear()  # overwrite user preferences for controlled environment
     bool_options = [opt for opt, val in options._defaults.items() if type(val) == bool]
     for option in bool_options:
-        set_val = options._changes.get(option, None)
         default_val = options._defaults[option]
+        # save and remove value set at runtime, if applicable
+        set_val = options._changes.get(option, None)
+        setattr(options, option, None)
         # test that value starts with default
         assert getattr(options, option) == default_val
         # test that value can be set
@@ -77,8 +79,7 @@ def test_bool_options() -> None:
         setattr(options, option, None)
         assert getattr(options, option) == default_val
         # restore value set at runtime, if applicable
-        if set_val is not None:
-            setattr(options, option, set_val)
+        setattr(options, option, set_val)
 
 
 def test_numeric_options() -> None:
@@ -86,9 +87,11 @@ def test_numeric_options() -> None:
     options._preferences.clear()  # overwrite user preferences for controlled environment
     numeric_options = [opt for opt, val in options._defaults.items() if type(val) in (int, float)]
     for option in numeric_options:
-        set_val = options._changes.get(option, None)
         default_val = options._defaults[option]
         test_val = 3.141592565 if type(default_val) == float else 1247
+        # save and remove value set at runtime, if applicable
+        set_val = options._changes.get(option, None)
+        setattr(options, option, None)
         # test that value starts with default
         assert getattr(options, option) == default_val
         # test that value can be set
@@ -104,8 +107,7 @@ def test_numeric_options() -> None:
         setattr(options, option, None)
         assert getattr(options, option) == default_val
         # restore value set at runtime, if applicable
-        if set_val is not None:
-            setattr(options, option, set_val)
+        setattr(options, option, set_val)
 
 
 def test_str_options() -> None:
@@ -113,8 +115,10 @@ def test_str_options() -> None:
     options._preferences.clear()  # overwrite user preferences for controlled environment
     str_options = [opt for opt, val in options._defaults.items() if type(val) == str]
     for option in str_options:
-        set_val = options._changes.get(option, None)
         default_val = options._defaults[option]
+        # save and remove value set at runtime, if applicable
+        set_val = options._changes.get(option, None)
+        setattr(options, option, None)
         # test that value starts with default
         assert getattr(options, option) == default_val
         # test that value can be set
@@ -127,5 +131,4 @@ def test_str_options() -> None:
         setattr(options, option, None)
         assert getattr(options, option) == default_val
         # restore value set at runtime, if applicable
-        if set_val is not None:
-            setattr(options, option, set_val)
+        setattr(options, option, set_val)

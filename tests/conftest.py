@@ -11,6 +11,8 @@ from brlib._helpers.abbreviations_manager import abv_mgr
 from brlib._helpers.constants import CACHE_DIR
 
 br.options.add_no_hitters = False
+br.options.dev_alerts = True
+br.options.print_pages = True
 br.options.update_team_names = False
 br.options.update_venue_names = False
 
