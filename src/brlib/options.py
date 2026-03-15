@@ -111,17 +111,17 @@ class Options(Singleton):
     def __init__(self) -> None:
         self._defaults = {
             "add_no_hitters": False,
-            "update_team_names": False,
-            "update_venue_names": False,
-            "request_buffer": 2.015,
-            "timeout_limit": 10,
+            "dev_alerts": False,
             "max_retries": 2,
-            "pb_format": "{percentage:3.2f}%|{bar}{r_bar}",
             "pb_color": "#cccccc",
             "pb_disable": False,
+            "pb_format": "{percentage:3.2f}%|{bar}{r_bar}",
             "print_pages": False,
-            "dev_alerts": False,
             "quiet": False,
+            "request_buffer": 2.015,
+            "timeout_limit": 10,
+            "update_team_names": False,
+            "update_venue_names": False,
         }
         self._preferences_file = CONFIG_DIR / "preferences_v1.json"
         self._changes, self._preferences = [{} for _ in range(2)]
@@ -296,40 +296,118 @@ class Options(Singleton):
         self._changes["add_no_hitters"] = value
 
     @property
-    def update_team_names(self) -> bool:
-        """
-        Default value for `update_team_names` arguments when initializing
-        `Game`, `Player`, and `Team` objects.
-        """
-        return self._settings["update_team_names"]
+    def dev_alerts(self) -> bool:
+        """Whether to print alerts meant for brlib developers."""
+        return self._settings["dev_alerts"]
 
-    @update_team_names.setter
-    def update_team_names(self, value: bool | None) -> None:
+    @dev_alerts.setter
+    def dev_alerts(self, value: bool | None) -> None:
         if value is None:
-            self._changes.pop("update_team_names", None)
+            self._changes.pop("dev_alerts", None)
             return
         if not isinstance(value, bool):
-            write(f"update_team_names value must have type {bool}")
+            write(f"dev_alerts value must have type {bool}")
             return
-        self._changes["update_team_names"] = value
+        self._changes["dev_alerts"] = value
 
     @property
-    def update_venue_names(self) -> bool:
-        """
-        Default value for `update_venue_names` arguments when initializing
-        `Game`, `Player`, and `Team` objects.
-        """
-        return self._settings["update_venue_names"]
+    def max_retries(self) -> int:
+        """Number of retries to attempt on failed requests."""
+        return self._settings["max_retries"]
 
-    @update_venue_names.setter
-    def update_venue_names(self, value: bool | None) -> None:
+    @max_retries.setter
+    def max_retries(self, value: int | None) -> None:
         if value is None:
-            self._changes.pop("update_venue_names", None)
+            self._changes.pop("max_retries", None)
+            return
+        if not isinstance(value, int):
+            write(f"max_retries value must have type {int}")
+            return
+        if value < 0:
+            write("max_retries value cannot be negative")
+            return
+        self._changes["max_retries"] = value
+
+    @property
+    def pb_color(self) -> str:
+        """
+        The color of the progress bar. The value is passed to the tqdm `colour` argument.
+        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        """
+        return self._settings["pb_color"]
+
+    @pb_color.setter
+    def pb_color(self, value: str | None) -> None:
+        if value is None:
+            self._changes.pop("pb_color", None)
+            return
+        if not isinstance(value, str):
+            write(f"pb_color value must have type {str}")
+            return
+        self._changes["pb_color"] = value
+
+    @property
+    def pb_disable(self) -> bool:
+        """Whether to disable the progress bar."""
+        return self._settings["pb_disable"]
+
+    @pb_disable.setter
+    def pb_disable(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("pb_disable", None)
             return
         if not isinstance(value, bool):
-            write(f"update_venue_names value must have type {bool}")
+            write(f"pb_disable value must have type {bool}")
             return
-        self._changes["update_venue_names"] = value
+        self._changes["pb_disable"] = value
+
+    @property
+    def pb_format(self) -> str:
+        """
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument.
+        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        """
+        return self._settings["pb_format"]
+
+    @pb_format.setter
+    def pb_format(self, value: str | None) -> None:
+        if value is None:
+            self._changes.pop("pb_format", None)
+            return
+        if not isinstance(value, str):
+            write(f"pb_format value must have type {str}")
+            return
+        self._changes["pb_format"] = value
+
+    @property
+    def print_pages(self) -> bool:
+        """Whether to print descriptions of visited pages."""
+        return self._settings["print_pages"]
+
+    @print_pages.setter
+    def print_pages(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("print_pages", None)
+            return
+        if not isinstance(value, bool):
+            write(f"print_pages value must have type {bool}")
+            return
+        self._changes["print_pages"] = value
+
+    @property
+    def quiet(self) -> bool:
+        """Whether to mute most printed messages."""
+        return self._settings["quiet"]
+
+    @quiet.setter
+    def quiet(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("quiet", None)
+            return
+        if not isinstance(value, bool):
+            write(f"quiet value must have type {bool}")
+            return
+        self._changes["quiet"] = value
 
     @property
     def request_buffer(self) -> float:
@@ -372,118 +450,40 @@ class Options(Singleton):
         self._changes["timeout_limit"] = value
 
     @property
-    def max_retries(self) -> int:
-        """Number of retries to attempt on failed requests."""
-        return self._settings["max_retries"]
-
-    @max_retries.setter
-    def max_retries(self, value: int | None) -> None:
-        if value is None:
-            self._changes.pop("max_retries", None)
-            return
-        if not isinstance(value, int):
-            write(f"max_retries value must have type {int}")
-            return
-        if value < 0:
-            write("max_retries value cannot be negative")
-            return
-        self._changes["max_retries"] = value
-
-    @property
-    def pb_format(self) -> str:
+    def update_team_names(self) -> bool:
         """
-        The format of the progress bar. The value is passed to the tqdm `bar_format` argument.
-        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+        Default value for `update_team_names` arguments when initializing
+        `Game`, `Player`, and `Team` objects.
         """
-        return self._settings["pb_format"]
+        return self._settings["update_team_names"]
 
-    @pb_format.setter
-    def pb_format(self, value: str | None) -> None:
+    @update_team_names.setter
+    def update_team_names(self, value: bool | None) -> None:
         if value is None:
-            self._changes.pop("pb_format", None)
-            return
-        if not isinstance(value, str):
-            write(f"pb_format value must have type {str}")
-            return
-        self._changes["pb_format"] = value
-
-    @property
-    def pb_color(self) -> str:
-        """
-        The color of the progress bar. The value is passed to the tqdm `colour` argument.
-        For more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
-        """
-        return self._settings["pb_color"]
-
-    @pb_color.setter
-    def pb_color(self, value: str | None) -> None:
-        if value is None:
-            self._changes.pop("pb_color", None)
-            return
-        if not isinstance(value, str):
-            write(f"pb_color value must have type {str}")
-            return
-        self._changes["pb_color"] = value
-
-    @property
-    def pb_disable(self) -> bool:
-        """Whether to disable the progress bar."""
-        return self._settings["pb_disable"]
-
-    @pb_disable.setter
-    def pb_disable(self, value: bool | None) -> None:
-        if value is None:
-            self._changes.pop("pb_disable", None)
+            self._changes.pop("update_team_names", None)
             return
         if not isinstance(value, bool):
-            write(f"pb_disable value must have type {bool}")
+            write(f"update_team_names value must have type {bool}")
             return
-        self._changes["pb_disable"] = value
+        self._changes["update_team_names"] = value
 
     @property
-    def print_pages(self) -> bool:
-        """Whether to print descriptions of visited pages."""
-        return self._settings["print_pages"]
+    def update_venue_names(self) -> bool:
+        """
+        Default value for `update_venue_names` arguments when initializing
+        `Game`, `Player`, and `Team` objects.
+        """
+        return self._settings["update_venue_names"]
 
-    @print_pages.setter
-    def print_pages(self, value: bool | None) -> None:
+    @update_venue_names.setter
+    def update_venue_names(self, value: bool | None) -> None:
         if value is None:
-            self._changes.pop("print_pages", None)
+            self._changes.pop("update_venue_names", None)
             return
         if not isinstance(value, bool):
-            write(f"print_pages value must have type {bool}")
+            write(f"update_venue_names value must have type {bool}")
             return
-        self._changes["print_pages"] = value
-
-    @property
-    def dev_alerts(self) -> bool:
-        """Whether to print alerts meant for brlib developers."""
-        return self._settings["dev_alerts"]
-
-    @dev_alerts.setter
-    def dev_alerts(self, value: bool | None) -> None:
-        if value is None:
-            self._changes.pop("dev_alerts", None)
-            return
-        if not isinstance(value, bool):
-            write(f"dev_alerts value must have type {bool}")
-            return
-        self._changes["dev_alerts"] = value
-
-    @property
-    def quiet(self) -> bool:
-        """Whether to mute most printed messages."""
-        return self._settings["quiet"]
-
-    @quiet.setter
-    def quiet(self, value: bool | None) -> None:
-        if value is None:
-            self._changes.pop("quiet", None)
-            return
-        if not isinstance(value, bool):
-            write(f"quiet value must have type {bool}")
-            return
-        self._changes["quiet"] = value
+        self._changes["update_venue_names"] = value
 
 
 options = Options()
