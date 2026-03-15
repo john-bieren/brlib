@@ -37,7 +37,10 @@ class RequestsManager(Singleton):
             self._last_request = time.perf_counter_ns()
             try:
                 page = self._session.get(url, timeout=options.timeout_limit)
-            except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as exc:
+            except (
+                requests.exceptions.ReadTimeout,
+                requests.exceptions.ConnectionError,
+            ) as exc:
                 if retries >= options.max_retries:
                     raise ConnectionError("could not load page") from exc
                 dev_alert("could not load page, retrying")

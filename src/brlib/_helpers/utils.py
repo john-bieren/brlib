@@ -69,7 +69,10 @@ def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
         if not only_if_table or "<col><col><col>" in comment_contents:
             return bs(comment_contents, "lxml")
         return tag
-    except (IndexError, ValueError):
+    except (
+        IndexError,  # thrown when indexing split functions in str_between
+        ValueError,  # thrown explicitly by str_between
+    ):
         return tag
 
 
@@ -102,7 +105,10 @@ def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.columns:
         try:
             df[col] = pd.to_numeric(df[col], errors="raise")
-        except (ValueError, TypeError):
+        except (
+            ValueError,  # includes a non-convertable value of a compatible type (e.g. "a")
+            TypeError,  # includes a value of an incompatible type (e.g. a list)
+        ):
             # skip columns which cannot be converted
             pass
     return df
