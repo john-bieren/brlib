@@ -133,10 +133,7 @@ class Options(Singleton):
         if not self._preferences_file.exists():
             self._preferences_file.write_text(json.dumps({}), encoding="UTF-8")
             return
-
         self._preferences.update(json.loads(self._preferences_file.read_bytes()))
-        if not is_type(self._preferences, dict[str, Any]):
-            tqdm.write(f"ignoring preferences: preferences.json keys must have type {str}")
 
         keys_to_remove = []
         for option, value in self._preferences.items():

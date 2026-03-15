@@ -45,7 +45,6 @@ def test_preferences() -> None:
             "quiet": 0,
             "request_buffer": 2,
             "not a real option": "idk",
-            123: "keys must be strings",
         }
         with options._preferences_file.open("w", encoding="UTF-8") as file:
             json.dump(mock_preferences_file, file)
