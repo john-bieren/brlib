@@ -8,19 +8,19 @@ def test_teams():
     # reject alias
     assert len(find_games("KC1", "1957")) == 0
     # list, test case insensitivity
-    assert len(find_games(["col", "BAL"], "2020")) == 120
+    assert len(find_games(["col", "BAL"], "1993")) == 324
     # "ALL"
-    assert len(find_games(seasons="1901")) == 1109
+    assert len(find_games(seasons="1903")) == 1122
 
 
 def test_seasons():
     """Tests that the `seasons` argument is handled correctly."""
     # range
-    assert len(find_games("LAA", "2017-2019")) == 162 * 3
+    assert len(find_games("LAA", "2015-2017")) == 486
     # reversed range
     assert find_games(seasons="1929-1930") == find_games(seasons="1930-1929")
     # list
-    assert len(find_games("CIN", ["2017", "2018-2019"])) == 162 * 3
+    assert len(find_games("WSN", ["2008", "2009-2010"])) == 485
     # "ALL"
     assert len(find_games("BLA")) == 274
 
@@ -30,13 +30,13 @@ def test_opponents():
     # reject alias
     assert len(find_games(seasons="1957", opponents="KC1")) == 0
     # with a teams argument (the expected use case)
-    assert find_games("SEA", "2019", "STL") == [
-        "SEA201907020",
-        "SEA201907030",
-        "SEA201907040",
+    assert find_games("SEA", "2025", "MIL") == [
+        "SEA202507210",
+        "SEA202507220",
+        "SEA202507230",
     ]
     # should work without a teams argument as well (though this usage is dubious)
-    assert find_games(seasons="2020", opponents="BOS") == find_games(teams="BOS", seasons="2020")
+    assert find_games(seasons="1985", opponents="BOS") == find_games(teams="BOS", seasons="1985")
     # list, test case insensitivity
     assert find_games("LAD", seasons="2020", opponents=["oak", "TEX"]) == [
         "TEX202008280",
@@ -55,27 +55,25 @@ def test_dates():
     """
     # single date
     assert find_games(seasons="2024", dates="321") == ["LAD202403210"]
-    # range
-    assert find_games(teams="BAL", seasons="1915", dates="825-826") == [
-        "BAL191508251",
-        "BAL191508252",
-        "SLB191508250",
-        "BAL191508260",
-        "SLB191508260",
-    ]
-    # reversed range
-    assert find_games(teams="BAL", seasons="1915", dates="826-825") == [
-        "BAL191508251",
-        "BAL191508252",
-        "SLB191508250",
-        "BAL191508260",
-        "SLB191508260",
-    ]
+    # range/reversed range
+    forwards = find_games(teams="BAL", seasons="1915", dates="825-826")
+    backwards = find_games(teams="BAL", seasons="1915", dates="826-825")
+    assert (
+        forwards
+        == backwards
+        == [
+            "BAL191508251",
+            "BAL191508252",
+            "SLB191508250",
+            "BAL191508260",
+            "SLB191508260",
+        ]
+    )
     # list
-    assert find_games(teams="SEA", seasons="2018", dates=["501-502", "508"]) == [
-        "SEA201805010",
-        "SEA201805020",
-        "TOR201805080",
+    assert find_games(teams="SEA", seasons="2019", dates=["320-321", "328"]) == [
+        "OAK201903200",
+        "OAK201903210",
+        "SEA201903280",
     ]
 
 
