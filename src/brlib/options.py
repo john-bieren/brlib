@@ -138,17 +138,20 @@ class Options(Singleton):
         if not is_type(self._preferences, dict[str, Any]):
             tqdm.write(f"ignoring preferences: preferences.json keys must have type {str}")
 
+        keys_to_remove = []
         for option, value in self._preferences.items():
             if option not in self._defaults:
                 tqdm.write(f'unknown option "{option}" listed in preferences.json')
-                del self._preferences[option]
+                keys_to_remove.append(option)
                 continue
 
             if not isinstance(value, type(self._defaults[option])):
                 tqdm.write(
                     f"{option} preference in preferences.json must have type {type(self._defaults[option])}"
                 )
-                del self._preferences[option]
+                keys_to_remove.append(option)
+        for key in keys_to_remove:
+            del self._preferences[key]
 
     def set_preference(self, option: str, value: Any) -> None:
         """
