@@ -3,9 +3,24 @@
 from pathlib import Path
 
 import pandas as pd
+import pytest
 from get_expected import get_expected_df, get_expected_list
 
 import brlib as br
+
+
+def test_empty_rejection() -> None:
+    """Tests that empty GameSets cannot be created."""
+    with pytest.raises(ValueError):
+        br.GameSet([])
+
+
+def test_dunders(games_list: list[br.Game], game_set: br.GameSet) -> None:
+    """Tests the outputs of dunder methods."""
+    assert len(game_set) == len(games_list)
+    assert str(game_set) == f"{len(games_list)} games"
+    game_reprs = [repr(game) for game in games_list]
+    assert repr(game_set) == f'GameSet({", ".join(game_reprs)})'  # single quotes for <3.12 support
 
 
 def test_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
