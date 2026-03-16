@@ -630,9 +630,8 @@ class Game:
                 if wind_speed != "0":
                     try:
                         self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
-                    except IndexError:
-                        # TODO no documented instances
-                        dev_alert(f"{self.id}: found wind speed but not wind direction")
+                    except IndexError:  # TODO examples?
+                        dev_alert(f"{self.id}: wind speed but no direction; potential test case")
                         pass
             elif info in {"Sunny", "Night", "Overcast", "Cloudy"}:
                 self.info["Weather"] = info
@@ -772,6 +771,7 @@ class Game:
 
                 for dp_players in player_list.split("; "):
                     if dp_players.rsplit(maxsplit=1)[1].isnumeric():
+                        dev_alert(f"{self.id}: multiple DP with same sequence; potential test case")
                         dp_players, number = dp_players.rsplit(maxsplit=1)
                         number = int(number)
                     else:
@@ -990,7 +990,8 @@ class Game:
                 for player in players.split("; "):
                     stealer, info = player.strip(")").split(" (", maxsplit=1)
                     if info == "":
-                        # no info for many old games
+                        # no info for many old games TODO examples?
+                        dev_alert(f"{self.id}: no SB/CS info; potential test case")
                         continue
                     # remove the player's game total, if applicable
                     stealer = (

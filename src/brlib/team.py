@@ -486,6 +486,7 @@ class Team:
                     else:
                         multi_year = line_str.split("Multi-year:", maxsplit=1)[1]
                 else:
+                    dev_alert(f"{self.id}: only one-year park factors; potential test case")
                     one_year = line_str.split("One-year:", maxsplit=1)[1]
 
                 my_bat = my_pit = oy_bat = oy_pit = ""

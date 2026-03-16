@@ -430,7 +430,7 @@ class Player:
                 try:
                     birth_datetime = datetime.strptime(birth_date, "%B %d, %Y")
                 except ValueError:
-                    # date is not formatted as expected
+                    # birth date is incomplete
                     pass
 
                 # handle birthplaces
@@ -466,6 +466,7 @@ class Player:
                 if "in" in line_str:
                     death_date, death_place = line_str.split(" in ", maxsplit=1)
                 else:  # no death place listed, e.g. valenfe01 right after his death
+                    dev_alert(f"{self.id}: no death place listed; potential test case")
                     death_date, death_place = line_str, ""
 
                 # handle death dates
@@ -478,8 +479,8 @@ class Player:
                     self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
                 except (
-                    ValueError,  # date is not formatted as expected
-                    UnboundLocalError,  # birth date has improper format, was not defined
+                    ValueError,  # death date is incomplete, e.g. cabreal01
+                    UnboundLocalError,  # birth date is incomplete, was not defined
                 ):
                     pass
                 # remove current age cols, since they are inaccurate
@@ -555,8 +556,8 @@ class Player:
                     self.info.loc[:, "Debut Age"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Debut Age (Days)"] = (debut_datetime - birth_datetime).days
                 except (
-                    ValueError,  # incomplete debut date
-                    UnboundLocalError,  # birth date has improper format, was not defined
+                    ValueError,  # debut date is incomplete
+                    UnboundLocalError,  # birth date is incomplete, was not defined
                 ):
                     pass
 
@@ -585,10 +586,8 @@ class Player:
                     self.info.loc[:, "Last Game Age (Days)"] = (
                         last_game_datetime - birth_datetime
                     ).days
-                except (
-                    ValueError,  # incomplete last game date
-                    UnboundLocalError,  # birth date has improper format, was not defined
-                ):
+                except UnboundLocalError:  # birth date is incomplete, was not defined
+                    # no ValueError handling because no incomplete last game dates have been found
                     continue
 
                 last_game_link = line.find_all("a", href=True)[-1]["href"]
