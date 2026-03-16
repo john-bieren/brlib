@@ -11,18 +11,35 @@ def test_teams():
     assert len(find_games(["col", "BAL"], "1993")) == 324
     # "ALL"
     assert len(find_games(seasons="1903")) == 1122
+    # skip Negro League teams, which lack box score coverage
+    assert len(find_games("BBB")) == 0
+    # era adjustment
+    assert find_games("BAL", "1915", dates="825-826") == [
+        "BAL191508251",
+        "BAL191508252",
+        "SLB191508250",
+        "BAL191508260",
+        "SLB191508260",
+    ]
 
 
 def test_seasons():
     """Tests that the `seasons` argument is handled correctly."""
     # range
-    assert len(find_games("LAA", "2015-2017")) == 486
+    assert len(find_games("LAA", "2016-2017")) == 324
     # reversed range
     assert find_games(seasons="1929-1930") == find_games(seasons="1930-1929")
     # list
     assert len(find_games("WSN", ["2008", "2009-2010"])) == 485
     # "ALL"
     assert len(find_games("BLA")) == 274
+    # invalid inputs
+    assert len(find_games(seasons="year")) == 0
+    assert len(find_games(seasons="1-9")) == 0  # triggers check for range arguments containing "-"
+    # impossible team and season combo
+    assert len(find_games("SEA", "1970")) == 0
+    # before first year with box scores
+    assert len(find_games("CLV", "1899")) == 0
 
 
 def test_opponents():
@@ -38,7 +55,7 @@ def test_opponents():
     # should work without a teams argument as well (though this usage is dubious)
     assert find_games(seasons="1985", opponents="BOS") == find_games(teams="BOS", seasons="1985")
     # list, test case insensitivity
-    assert find_games("LAD", seasons="2020", opponents=["oak", "TEX"]) == [
+    assert find_games("LAD", "2020", opponents=["oak", "TEX"]) == [
         "TEX202008280",
         "TEX202008290",
         "TEX202008300",
@@ -56,21 +73,9 @@ def test_dates():
     # single date
     assert find_games(seasons="2024", dates="321") == ["LAD202403210"]
     # range/reversed range
-    forwards = find_games(teams="BAL", seasons="1915", dates="825-826")
-    backwards = find_games(teams="BAL", seasons="1915", dates="826-825")
-    assert (
-        forwards
-        == backwards
-        == [
-            "BAL191508251",
-            "BAL191508252",
-            "SLB191508250",
-            "BAL191508260",
-            "SLB191508260",
-        ]
-    )
+    assert find_games("BAL", "2015", dates="501-503") == find_games("BAL", "2015", dates="503-501")
     # list
-    assert find_games(teams="SEA", seasons="2019", dates=["320-321", "328"]) == [
+    assert find_games("SEA", "2019", dates=["320-321", "328"]) == [
         "OAK201903200",
         "OAK201903210",
         "SEA201903280",
@@ -83,6 +88,8 @@ def test_home_away():
     assert len(find_games("BOS", "2020", home_away="away")) == 29
     # home, test case insensitivity
     assert len(find_games("BOS", "2020", home_away="HOME")) == 31
+    # invalid input
+    assert len(find_games("BOS", "2020", home_away="both")) == 0
 
 
 def test_game_type():
@@ -97,6 +104,10 @@ def test_game_type():
         "HOU202210130",
         "SEA202210150",
     ]
+    # invalid input
+    assert len(find_games("SEA", "2022", game_type="both")) == 0
+    # season with no postseason
+    assert len(find_games(seasons="1994", game_type="post")) == 0
 
 
 def test_find_year_list():

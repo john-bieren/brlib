@@ -9,6 +9,8 @@ def test_teams():
     assert len(find_teams("KC1", "ALL")) == 0
     # list, test case insensitivity
     assert find_teams(["col", "BAL"], "2020") == ["COL2020", "BAL2020"]
+    # era adjustment
+    assert find_teams("BAL", "1914") == ["SLB1914", "BAL1914"]
     # "ALL"
     assert find_teams(seasons="1901") == [
         "BLA1901",
@@ -58,6 +60,39 @@ def test_teams():
         "STL1920",
         "WSH1920",
     ]
+    # segregation-era identifiers mixed with abbreviations (and era adjustment)
+    assert find_teams(["BML", "KCA", "PHI"], "1920") == [
+        "PHA1920",
+        "PHI1920",
+        "ABC1920",
+        "CAG1920",
+        "COG1920",
+        "CSW1920",
+        "DM1920",
+        "DS1920",
+        "KCM1920",
+        "SLG1920",
+    ]
+    assert find_teams(["WML", "ABC", "DS"], "1920") == [
+        "ABC1920",
+        "DS1920",
+        "BOS1920",
+        "BRO1920",
+        "BSN1920",
+        "CHC1920",
+        "CHW1920",
+        "CIN1920",
+        "CLE1920",
+        "DET1920",
+        "NYG1920",
+        "NYY1920",
+        "PHA1920",
+        "PHI1920",
+        "PIT1920",
+        "SLB1920",
+        "STL1920",
+        "WSH1920",
+    ]
 
 
 def test_seasons():
@@ -74,3 +109,8 @@ def test_seasons():
     ]
     # "ALL"
     assert find_teams("BLA") == ["BLA1901", "BLA1902"]
+    # invalid inputs
+    assert len(find_teams(seasons="year")) == 0
+    assert len(find_teams(seasons="1-9")) == 0  # triggers check for range arguments containing "-"
+    # impossible team and season combo
+    assert len(find_teams("SEA", "1970")) == 0

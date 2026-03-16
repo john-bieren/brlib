@@ -1,12 +1,26 @@
 """Tests the output of the `find_asg` function."""
 
 from brlib import find_asg
+from brlib._helpers.constants import (
+    CURRENT_YEAR,
+    CY_ASG,
+    FIRST_ASG_YEAR,
+    NO_ASG_YEARS,
+    TWO_ASG_YEARS,
+)
 
 
 def test_seasons():
     """Tests that the `seasons` argument is handled correctly."""
     # standard usage
     assert find_asg("2025") == ["2025-allstar-game"]
+    # "ALL"
+    assert len(find_asg()) == (
+        CURRENT_YEAR + CY_ASG - FIRST_ASG_YEAR - len(NO_ASG_YEARS) + len(TWO_ASG_YEARS)
+    )
+    # invalid inputs
+    assert len(find_asg("year")) == 0
+    assert len(find_asg("1-9")) == 0  # triggers check for range arguments containing "-"
     # missing season
     assert len(find_asg("1945")) == 0
     # before first ASG
