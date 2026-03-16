@@ -8,7 +8,6 @@ from tqdm import tqdm
 
 from ._helpers.constants import CACHE_DIR, CONFIG_DIR
 from ._helpers.singleton import Singleton
-from ._helpers.typechecking import is_type
 
 
 class Options(Singleton):

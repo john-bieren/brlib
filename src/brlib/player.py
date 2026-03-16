@@ -434,7 +434,7 @@ class Player:
                     pass
 
                 # handle birthplaces
-                if "Ocean" in birthplace:  # handle players born at sea
+                if " Ocean" in birthplace or " Sea" in birthplace:  # born at sea
                     self.info.loc[:, "Birth Country"] = birthplace.strip()
                 else:
                     birthplace = birthplace[:-2]  # remove text representation of country flag
@@ -488,7 +488,7 @@ class Player:
                 self.info.loc[:, "Age (Days)"] = np.nan
 
                 # handle death places
-                if "Ocean" in death_place:  # handle players who died at sea differently
+                if " Ocean" in death_place or " Sea" in death_place:  # died at sea
                     self.info.loc[:, "Death Country"] = death_place.strip()
                 elif ", " in death_place:
                     death_city, death_state_or_country = death_place.split(", ", maxsplit=1)

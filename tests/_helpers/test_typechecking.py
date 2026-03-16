@@ -9,9 +9,9 @@ from brlib._helpers.typechecking import is_type, runtime_typecheck
 
 
 @runtime_typecheck
-def foo(bar: str) -> None:
+def foo(bar: str) -> str:
     """Dummy function for testing the `runtime_typecheck` decorator."""
-    pass
+    return bar
 
 
 def test_runtime_typecheck() -> None:
