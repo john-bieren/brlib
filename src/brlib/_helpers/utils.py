@@ -65,10 +65,9 @@ def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
     """
     try:
         comment_contents = str_between(tag.decode_contents(), "<!--", "-->").strip()
-        # check that there is a table in the comment
-        if not only_if_table or "<col><col><col>" in comment_contents:
-            return bs(comment_contents, "lxml")
-        return tag
+        if only_if_table and not "<col><col><col>" in comment_contents:
+            return tag
+        return bs(comment_contents, "lxml")
     except (
         IndexError,  # thrown when indexing split functions in str_between
         ValueError,  # thrown explicitly by str_between

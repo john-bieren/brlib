@@ -164,8 +164,6 @@ class Team:
         return self.name
 
     def __repr__(self) -> str:
-        if self._url == "":
-            return "Team()"
         return f"Team('{self.id}')"
 
     def add_no_hitters(self) -> None:

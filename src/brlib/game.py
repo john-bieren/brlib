@@ -208,8 +208,6 @@ class Game:
         return self.name
 
     def __repr__(self) -> str:
-        if self._url == "":
-            return "Game()"
         return f"Game('{self.id}')"
 
     def add_no_hitters(self) -> None:
@@ -633,6 +631,8 @@ class Game:
                     try:
                         self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
                     except IndexError:
+                        # TODO no documented instances
+                        dev_alert(f"{self.id}: found wind speed but not wind direction")
                         pass
             elif info in {"Sunny", "Night", "Overcast", "Cloudy"}:
                 self.info["Weather"] = info

@@ -176,8 +176,6 @@ class Player:
         return self.id
 
     def __repr__(self) -> str:
-        if self._url == "":
-            return "Player()"
         return f"Player('{self.id}')"
 
     def add_no_hitters(self) -> None:
@@ -467,7 +465,7 @@ class Player:
             elif line_str.startswith("Died"):
                 if "in" in line_str:
                     death_date, death_place = line_str.split(" in ", maxsplit=1)
-                else:  # no death place listed
+                else:  # no death place listed, e.g. valenfe01 right after his death
                     death_date, death_place = line_str, ""
 
                 # handle death dates
@@ -489,7 +487,7 @@ class Player:
                 self.info.loc[:, "Age (Days)"] = np.nan
 
                 # handle death places
-                if "Ocean" in death_place:  # handle players born at sea differently
+                if "Ocean" in death_place:  # handle players who died at sea differently
                     self.info.loc[:, "Death Country"] = death_place.strip()
                 elif ", " in death_place:
                     death_city, death_state_or_country = death_place.split(", ", maxsplit=1)
