@@ -54,8 +54,8 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
     if not isinstance(value, origin):
         return False
 
-    if origin is list:
-        value: list
+    if origin in (list, set):
+        value: list | set
         # args can only have length 1
         return all(is_type(item, *args) for item in value)
 
@@ -75,4 +75,4 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
         key_type, value_type = args
         return all(is_type(k, key_type) and is_type(v, value_type) for k, v in value.items())
 
-    return isinstance(value, origin)
+    raise TypeError(f"cannot evaluate type hint {expected_type}")
