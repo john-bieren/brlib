@@ -23,33 +23,13 @@ class Options(Singleton):
         Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team`
         objects.
 
-    * `update_team_names`, default `False`
+    * `dev_alerts`, default `False`
 
-        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and
-        `Team` objects.
-
-    * `update_venue_names`, default `False`
-
-        Default value for `update_venue_names` arguments when initializing `Game`, `Player`, and
-        `Team` objects.
-
-    * `request_buffer`, default `2.015`
-
-        Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate
-        limit](https://www.sports-reference.com/429.html).
-
-    * `timeout_limit`, default `10`
-
-        Timeout parameter for requests.
+        Whether to print alerts meant for brlib developers.
 
     * `max_retries`, default `2`
 
         Number of retries to attempt on failed requests.
-
-    * `pb_format`, default `"{percentage:3.2f}%|{bar}{r_bar}"`
-
-        The format of the progress bar. The value is passed to the tqdm `bar_format` argument. For
-        more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
 
     * `pb_color`, default `"#cccccc"`
 
@@ -60,17 +40,37 @@ class Options(Singleton):
 
         Whether to disable the progress bar.
 
+    * `pb_format`, default `"{percentage:3.2f}%|{bar}{r_bar}"`
+
+        The format of the progress bar. The value is passed to the tqdm `bar_format` argument. For
+        more, read the tqdm [docs](https://tqdm.github.io/docs/tqdm).
+
     * `print_pages`, default `False`
 
         Whether to print descriptions of visited pages.
 
-    * `dev_alerts`, default `False`
-
-        Whether to print alerts meant for brlib developers.
-
     * `quiet`, default `False`
 
         Whether to mute most printed messages.
+
+    * `request_buffer`, default `2.015`
+
+        Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate
+        limit](https://www.sports-reference.com/429.html).
+
+    * `timeout_limit`, default `10`
+
+        Timeout parameter for requests.
+
+    * `update_team_names`, default `False`
+
+        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and
+        `Team` objects.
+
+    * `update_venue_names`, default `False`
+
+        Default value for `update_venue_names` arguments when initializing `Game`, `Player`, and
+        `Team` objects.
 
     ## Examples
 
