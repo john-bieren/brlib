@@ -17,12 +17,39 @@ CURRENT_YEAR = int(CURRENT_DATE[20:24])
 CURRENT_MONTH = int(time.strftime("%m"))
 CURRENT_DAY = int(CURRENT_DATE[8:10])
 
-FIRST_GAMES_YEAR = 1901  # the first year from which box scores are available
-FIRST_TEAMS_YEAR = 1871
+FIRST_GAMES_YEAR = 1898  # the first year from which box scores are available
+FIRST_TEAMS_YEAR = 1871  # the first year from which team pages are available
 FIRST_ASG_YEAR = 1933
 TWO_ASG_YEARS = {1959, 1960, 1961, 1962}  # years in which two All-Star Games were held
 NO_ASG_YEARS = {1945, 2020}
-NO_POSTSEASON_YEARS = {1901, 1902, 1904, 1994}
+NO_POSTSEASON_YEARS = {
+    1871,
+    1872,
+    1873,
+    1874,
+    1875,
+    1876,
+    1877,
+    1878,
+    1879,
+    1880,
+    1881,
+    1882,
+    1883,
+    1891,
+    1893,
+    1894,
+    1895,
+    1896,
+    1897,
+    1898,
+    1899,
+    1900,
+    1901,
+    1902,
+    1904,
+    1994,
+}
 
 # the day after (that's when the stats are posted) the expected earliest/latest possible game dates
 # these dates allow for games that are two days earlier/later than the most extreme past examples
