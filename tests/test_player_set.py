@@ -33,6 +33,13 @@ def test_info(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> Non
     assert compared.empty
 
 
+def test_bling(player_set: br.PlayerSet) -> None:
+    """Tests the contents of the `bling` DataFrame."""
+    expected_df = get_expected_df("players", "bling")
+    compared = player_set.bling.compare(expected_df)
+    assert compared.empty
+
+
 def test_batting(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("players", "batting", False)
@@ -58,10 +65,14 @@ def test_fielding(player_set: br.PlayerSet) -> None:
     assert compared.empty
 
 
-def test_bling(player_set: br.PlayerSet) -> None:
-    """Tests the contents of the `bling` DataFrame."""
-    expected_df = get_expected_df("players", "bling")
-    compared = player_set.bling.compare(expected_df)
+def test_salaries(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
+    """Tests the contents of the `salaries` DataFrame."""
+    expected_df = get_expected_df("players", "salaries", False)
+    compared = player_set.salaries.compare(expected_df)
+    assert compared.empty
+
+    expected_df = get_expected_df("players", "salaries", True)
+    compared = updated_player_set.salaries.compare(expected_df)
     assert compared.empty
 
 

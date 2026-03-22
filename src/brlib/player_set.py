@@ -49,6 +49,11 @@ class PlayerSet:
         Contains the players' fielding stats. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
 
+    * `salaries`: `pandas.DataFrame`
+
+        Contains the players' salary information. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playersalaries-and-playersetsalaries)
+
     * `teams`: `list[tuple[str, str]]`
 
         A list of the teams on which the players appeared. Can be an input to
@@ -90,6 +95,7 @@ class PlayerSet:
         self.batting = pd.concat([p.batting for p in players], ignore_index=True)
         self.pitching = pd.concat([p.pitching for p in players], ignore_index=True)
         self.fielding = pd.concat([p.fielding for p in players], ignore_index=True)
+        self.salaries = pd.concat([p.salaries for p in players], ignore_index=True)
 
         self.teams = list(chain.from_iterable(p.teams for p in players))
         self.teams = list(dict.fromkeys(self.teams))
@@ -208,8 +214,8 @@ class PlayerSet:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by
-        one name, excluding relocations.
+        Standardizes team names in `PlayerSet.info["Draft Team"]` and `PlayerSet.salaries["Team"]`
+        such that teams are identified by one name, excluding relocations.
 
         ## Parameters
 
@@ -238,3 +244,4 @@ class PlayerSet:
         ```
         """
         self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.salaries.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)

@@ -15,7 +15,7 @@ from tqdm import tqdm
 import brlib as br
 
 
-def main():
+def main() -> None:
     """Refreshes the expected data for games, players, and teams to match their current outputs."""
     expected_dir = Path(__file__).parent.parent / "tests" / "expected"
     br.options.add_no_hitters = False
@@ -82,6 +82,7 @@ def refresh_players(players_dir: Path) -> None:
         player.batting.to_csv(original_dir / "batting.csv", index=False)
         player.pitching.to_csv(original_dir / "pitching.csv", index=False)
         player.fielding.to_csv(original_dir / "fielding.csv", index=False)
+        player.salaries.to_csv(original_dir / "salaries.csv", index=False)
         (original_dir / "relatives.json").write_text(json.dumps(player.relatives))
         (original_dir / "teams.json").write_text(json.dumps(player.teams))
 
@@ -91,6 +92,7 @@ def refresh_players(players_dir: Path) -> None:
         updated_dir = players_dir / "updated" / player_dir.name
         player.info.to_csv(updated_dir / "info.csv", index=False)
         player.pitching.to_csv(updated_dir / "pitching.csv", index=False)
+        player.salaries.to_csv(updated_dir / "salaries.csv", index=False)
 
 
 def refresh_teams(teams_dir: Path) -> None:

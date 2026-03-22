@@ -27,6 +27,15 @@ def test_info(
         assert compared.empty
 
 
+def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> None:
+    """Tests the contents of the `bling` DataFrame."""
+    for player in players_list:
+        file = expected_player_data / "original" / player.id / "bling.csv"
+        expected_df = pd.read_csv(file)
+        compared = player.bling.compare(expected_df)
+        assert compared.empty
+
+
 def test_batting(expected_player_data: Path, players_list: list[br.Player]) -> None:
     """Tests the contents of the `batting` DataFrame."""
     for player in players_list:
@@ -64,12 +73,22 @@ def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> 
         assert compared.empty
 
 
-def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> None:
-    """Tests the contents of the `bling` DataFrame."""
+def test_salaries(
+    expected_player_data: Path,
+    players_list: list[br.Player],
+    updated_players_list: list[br.Player],
+) -> None:
+    """Tests the contents of the `salaries` DataFrame."""
     for player in players_list:
-        file = expected_player_data / "original" / player.id / "bling.csv"
+        file = expected_player_data / "original" / player.id / "salaries.csv"
         expected_df = pd.read_csv(file)
-        compared = player.bling.compare(expected_df)
+        compared = player.salaries.compare(expected_df)
+        assert compared.empty
+
+    for player in updated_players_list:
+        file = expected_player_data / "updated" / player.id / "salaries.csv"
+        expected_df = pd.read_csv(file)
+        compared = player.salaries.compare(expected_df)
         assert compared.empty
 
 

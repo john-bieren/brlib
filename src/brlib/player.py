@@ -21,6 +21,7 @@ from ._helpers.constants import (
     PLAYER_FIELDING_COLS,
     PLAYER_INFO_COLS,
     PLAYER_PITCHING_COLS,
+    PLAYER_SALARIES_COLS,
     PLAYER_URL_REGEX,
     RELATIVES_DICT,
     SEASON_REGEX,
@@ -107,6 +108,11 @@ class Player:
         Contains the player's fielding stats from the standard fielding table. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerfielding-and-playersetfielding)
 
+    * `salaries`: `pandas.DataFrame`
+
+        Contains the player's salary information from the salaries table. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playersalaries-and-playersetsalaries)
+
     * `relatives`: `dict[str: list[str]]`
 
         The player's relationships with other major-leaguers. The relationships are they keys, and
@@ -158,10 +164,11 @@ class Player:
         self.name = ""
         self.id = str_between(page.url, "/", ".shtml", anchor="end")
         self.info, self.bling = [pd.DataFrame({"Player ID": [self.id]}) for _ in range(2)]
-        self.batting, self.pitching, self.fielding = [pd.DataFrame() for _ in range(3)]
+        self.batting, self.pitching, self.fielding, self.salaries = [
+            pd.DataFrame() for _ in range(4)
+        ]
         self.teams = []
         self.relatives = defaultdict(list)
-        self._yearly_salaries = defaultdict(int)
         self._url = page.url
 
         self._scrape_player(page)
@@ -273,8 +280,8 @@ class Player:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team name in `Player.info["Draft Team"]` such that teams are identified by one
-        name, excluding relocations.
+        Standardizes team names in `Player.info["Draft Team"]` and `Player.salaries["Team"]` such
+        that teams are identified by one name, excluding relocations.
 
         ## Parameters
 
@@ -298,6 +305,7 @@ class Player:
         ```
         """
         self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.salaries.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
 
     @staticmethod
     def _get_player(player_id: str) -> Response:
@@ -316,12 +324,6 @@ class Player:
         wrap = soup.find(id="wrap")
         self._scrape_info(info, wrap)
         self.info = convert_numeric_cols(self.info)
-
-        # find salary data first to add it to value tables
-        for table in tables:
-            if table.get("id") == "all_br-salaries":
-                self._find_career_earnings(table)
-                self.info.loc[:, "Minimum Career Earnings"] = sum(self._yearly_salaries.values())
 
         # then find the rest of the stats
         h_df_1, h_df_2, h_df_3 = [pd.DataFrame() for _ in range(3)]
@@ -353,6 +355,9 @@ class Player:
             elif table_id == "all_players_standard_fielding":
                 self._scrape_standard_fielding(table)
 
+            elif table_id == "all_br-salaries":
+                self._scrape_salaries(table)
+
         self.batting = self._merge_dataframes(h_df_1, h_df_2, h_df_3)
         self.batting = self._finish_dataframe(self.batting)
         self.pitching = self._merge_dataframes(p_df_1, p_df_2, p_df_3)
@@ -364,9 +369,10 @@ class Player:
         self.batting = self.batting.reindex(columns=PLAYER_BATTING_COLS)
         self.pitching = self.pitching.reindex(columns=PLAYER_PITCHING_COLS)
         self.fielding = self.fielding.reindex(columns=PLAYER_FIELDING_COLS)
+        self.salaries = self.salaries.reindex(columns=PLAYER_SALARIES_COLS)
         self.relatives = dict(self.relatives)
 
-        # get final pieces of info which require the above DataFrames
+        # get final pieces of info which require the above reindexing
         self._count_years_played()
         self._find_teams_info()
 
@@ -655,27 +661,86 @@ class Player:
             elif "Hall of Fame" not in bling:  # HOF is handled in the bio
                 dev_alert(f'{self.id}: unexpected bling element "{bling}"')
 
-    def _find_career_earnings(self, table: Tag) -> None:
-        """Populates `self._yearly_salaries` from salaries table."""
+    def _scrape_salaries(self, table: Tag) -> None:
+        """Populates `self.salaries` from salaries table."""
         table = soup_from_comment(table, only_if_table=True)
         records = []
 
         for row in table.find_all("tr"):
             record = [ele.text.strip() for ele in row.find_all()]
             records.append(record)
-        num_columns = len(records[0])
-        del records[0]  # delete header row
 
-        for record in records:
-            # if the # of columns is right and the salary column has a value
-            if len(record) == num_columns and record[3]:
-                # skip future option years, indicated by a leading asterisk
-                if record[3].startswith("*"):
-                    continue
-                # trailing asterisk indicates inconsistent reports, but I'll allow it
-                record[3] = record[3].strip("$*")
-                # += because years can have multiple rows, like salary and a paid buyout
-                self._yearly_salaries[record[0]] += int(record[3].replace(",", ""))
+        self.salaries = pd.DataFrame(records[1:], columns=records[0])
+        self.salaries.rename(columns={"Tm": "Team", "SrvTm": "Service Time"}, inplace=True)
+        self.salaries.replace(r"\xa0", " ", regex=True, inplace=True)
+
+        # rename and shift career totals row
+        career_totals_mask = self.salaries["Year"] == "Career to date (may be incomplete)"
+        self.salaries.loc[career_totals_mask] = self.salaries.loc[career_totals_mask].shift(
+            1, axis="columns"
+        )
+        # move disclaimer to notes
+        self.salaries.loc[career_totals_mask, "Notes/Other Sources"] = "May be incomplete"
+        # remove drifting "career to date" values
+        self.salaries.loc[career_totals_mask, ["Age", "Team"]] = None
+        self.salaries.loc[career_totals_mask, "Year"] = "Career Totals"
+        # add identifying columns
+        self.salaries.loc[:, ["Player", "Player ID"]] = self.name, self.id
+
+        # add future earnings row
+        future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].values[0]
+        self.salaries.loc[career_totals_mask, "Service Time"] = None
+        if future_earnings != "":
+            future_earnings = str_between(future_earnings, "(", ")")
+        if "M" in future_earnings:
+            future_earnings = str(float(str_between(future_earnings, "$", "M")) * 1e6)
+        elif "K" in future_earnings:
+            future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
+        future_earnings_row = pd.DataFrame(
+            {
+                "Player": [self.name],
+                "Player ID": [self.id],
+                "Year": ["Future Earnings"],
+                "Age": [None],
+                "Team": [None],
+                "Salary": [future_earnings],
+                "Service Time": [None],
+                "Sources": [None],
+                "Notes/Other Sources": [None],
+            }
+        )
+        self.salaries = pd.concat([self.salaries, future_earnings_row]).reset_index(drop=True)
+
+        # remove empty row
+        self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
+        # remove any "status not updated" rows (found shortly before season for current free agent)
+        self.salaries = self.salaries.loc[~self.salaries["Year"].str.contains("Status")]
+        # remove unknown service time, denoted "?"
+        self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = None
+        # skip future option years, indicated by a leading asterisk
+        self.salaries = self.salaries.loc[~self.salaries["Salary"].astype(str).str.startswith("*")]
+        # trailing asterisk indicates inconsistent reports, but I'll allow it
+        self.salaries["Salary"] = self.salaries["Salary"].str.strip("$*")
+        # remove thousands separators
+        self.salaries["Salary"] = self.salaries["Salary"].str.replace(",", "")
+        # set empty string values to None
+        self.salaries.replace("", None, regex=True, inplace=True)
+
+        # a year can have a row for salary and one for a paid buyout, combine such rows
+        self.salaries = convert_numeric_cols(self.salaries)
+        self.salaries = self.salaries.groupby("Year", as_index=False).agg(
+            {
+                "Player": "first",
+                "Player ID": "first",
+                "Year": "first",
+                "Age": "first",
+                "Team": "first",
+                "Salary": "sum",
+                "Service Time": "first",
+                "Sources": "first",
+                "Notes/Other Sources": "first",
+            }
+        )
 
     @staticmethod
     def _merge_dataframes(*to_merge: pd.DataFrame) -> pd.DataFrame:
@@ -686,12 +751,10 @@ class Player:
         return merged_df
 
     def _finish_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Adds player name, player ID, salary, and team IDs to `df`, and corrects dtypes."""
+        """Adds player name, player ID, and team IDs to `df`, and corrects dtypes."""
         if len(df) == 0:
             return df
-        df.loc[:, "Player ID"] = self.id
-        df.loc[:, "Player"] = self.name
-        df["Salary"] = df["Season"].apply(lambda x: self._yearly_salaries.get(x, None))
+        df.loc[:, ["Player", "Player ID"]] = self.name, self.id
 
         df.loc[
             ((~df["Team"].isna()) & (df["Season"] != "Career Totals")),

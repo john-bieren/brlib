@@ -722,7 +722,6 @@ PLAYER_INFO_COLS = (
     "Full Name",
     "bWAR",
     "Years Played",
-    "Minimum Career Earnings",
     "Teams Played For",
     "Most Teams in a Year",
 )
@@ -825,7 +824,6 @@ PLAYER_BATTING_COLS = (
     "RS%",
     "SB%",
     "XBT%",
-    "Salary",
     "AS",
     "GG",
     "SS",
@@ -907,7 +905,6 @@ PLAYER_PITCHING_COLS = (
     "WPA",
     "cWPA",
     "RE24",
-    "Salary",
     "AS",
     "GG",
     "SS",
@@ -957,7 +954,6 @@ PLAYER_FIELDING_COLS = (
     "CS%",
     "lgCS%",
     "Pick",
-    "Salary",
     "AS",
     "GG",
     "SS",
@@ -966,6 +962,18 @@ PLAYER_FIELDING_COLS = (
     "ROY Finish",
     "LCS MVP",
     "WS MVP",
+)
+
+PLAYER_SALARIES_COLS = (
+    "Player",
+    "Player ID",
+    "Year",
+    "Age",
+    "Team",
+    "Salary",
+    "Service Time",
+    "Sources",
+    "Notes/Other Sources",
 )
 
 TEAM_INFO_COLS = (
