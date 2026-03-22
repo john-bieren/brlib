@@ -27,8 +27,8 @@ def test_validate_game_list() -> None:
         "TOR2018050800",
         # reject invalid doubleheader
         "BRO192107044",
-        # reject game before 1901
-        "PHI190007120",
+        # reject game before FIRST_GAMES_YEAR
+        "NAN187007040",
         # reject game in future
         "OAK209903210",
         # accept digit in team abbreviation

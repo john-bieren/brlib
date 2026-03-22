@@ -38,8 +38,8 @@ def test_seasons():
     assert len(find_games(seasons="1-9")) == 0  # triggers check for range arguments containing "-"
     # impossible team and season combo
     assert len(find_games("SEA", "1970")) == 0
-    # before first year with box scores
-    assert len(find_games("CLV", "1899")) == 0
+    # before FIRST_GAMES_YEAR
+    assert len(find_games("NAN", "1870")) == 0
 
 
 def test_opponents():
@@ -113,8 +113,8 @@ def test_game_type():
 def test_find_year_list():
     """Tests that the  `_find_year_list` method filters seasons based on other arguments."""
     # trim based on teams
-    assert len(_find_year_list(["SEA"], ["1901-2016"], ["ALL"], "ALL")) == 40
+    assert len(_find_year_list(["SEA"], ["1800-2016"], ["ALL"], "ALL")) == 40
     # trim based on teams + opponents
-    assert len(_find_year_list(["SEA"], ["1901-2016"], ["TBD"], "ALL")) == 19
+    assert len(_find_year_list(["SEA"], ["1800-2016"], ["TBD"], "ALL")) == 19
     # trim seasons without postseasons
-    assert len(_find_year_list(["SEA"], ["1901-2016"], ["ALL"], "POST")) == 39
+    assert len(_find_year_list(["SEA"], ["1800-2016"], ["ALL"], "POST")) == 39
