@@ -481,6 +481,8 @@ RELATIVES_DICT = {
     "Greatgrandson": "Greatgrandfather",
     "Greatuncle": "Greatnephew",
     "Greatnephew": "Greatuncle",
+    "Stepfather": "Stepson",
+    "Stepson": "Stepfather",
     # include relationships that don't need swapping so that all known ones are represented
     "Brother": "Brother",
     "Cousin": "Cousin",
