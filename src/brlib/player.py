@@ -686,35 +686,36 @@ class Player:
         self.salaries.loc[career_totals_mask, "Year"] = "Career Totals"
         # add identifying columns
         self.salaries.loc[:, ["Player", "Player ID"]] = self.name, self.id
+        # remove empty rows
+        self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
+        # remove any "status" rows, which aren't part of the normal table format
+        self.salaries = self.salaries.loc[~self.salaries["Year"].str.contains("Status")]
 
         # add future earnings row
-        future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].values[0]
-        self.salaries.loc[career_totals_mask, "Service Time"] = None
-        if future_earnings != "":
-            future_earnings = str_between(future_earnings, "(", ")")
-        if "M" in future_earnings:
-            future_earnings = str(float(str_between(future_earnings, "$", "M")) * 1e6)
-        elif "K" in future_earnings:
-            future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
-        future_earnings_row = pd.DataFrame(
-            {
-                "Player": [self.name],
-                "Player ID": [self.id],
-                "Year": ["Future Earnings"],
-                "Age": [None],
-                "Team": [None],
-                "Salary": [future_earnings],
-                "Service Time": [None],
-                "Sources": [None],
-                "Notes/Other Sources": [None],
-            }
-        )
-        self.salaries = pd.concat([self.salaries, future_earnings_row]).reset_index(drop=True)
+        if career_totals_mask.any():  # if career totals are missing, so are future earnings
+            future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].values[0]
+            self.salaries.loc[career_totals_mask, "Service Time"] = None
+            if future_earnings != "":
+                future_earnings = str_between(future_earnings, "(", ")")
+            if "M" in future_earnings:
+                future_earnings = str(float(str_between(future_earnings, "$", "M")) * 1e6)
+            elif "K" in future_earnings:
+                future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
+            future_earnings_row = pd.DataFrame(
+                {
+                    "Player": [self.name],
+                    "Player ID": [self.id],
+                    "Year": ["Future Earnings"],
+                    "Age": [None],
+                    "Team": [None],
+                    "Salary": [future_earnings],
+                    "Service Time": [None],
+                    "Sources": [None],
+                    "Notes/Other Sources": [None],
+                }
+            )
+            self.salaries = pd.concat([self.salaries, future_earnings_row]).reset_index(drop=True)
 
-        # remove empty row
-        self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
-        # remove any "status not updated" rows (found shortly before season for current free agent)
-        self.salaries = self.salaries.loc[~self.salaries["Year"].str.contains("Status")]
         # remove unknown service time, denoted "?"
         self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = None
         # skip future option years, indicated by a leading asterisk
