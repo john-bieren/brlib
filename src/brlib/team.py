@@ -471,9 +471,12 @@ class Team:
                 self.info.loc[:, col] = clean_spaces(value)
 
             elif line_str.startswith("Attendance"):
-                attendance_str = str_between(line_str, "Attendance:", "(")
+                attendance_line = line_str.split(":", maxsplit=1)[1]
+                if "(" in attendance_line:  # TODO seems to have been removed
+                    self.info.loc[:, "Attendance Rank"] = str_between(attendance_line, "(", ")")
+                    attendance_line = attendance_line.split("(", maxsplit=1)[0]
+                attendance_str = attendance_line.strip().split(maxsplit=1)[0]
                 self.info.loc[:, "Attendance"] = int(attendance_str.replace(",", ""))
-                self.info.loc[:, "Attendance Rank"] = str_between(line_str, "(", ")")
 
             elif line_str.startswith("Park Factors"):
                 # if park factors are last info item, this may be included in line_str
