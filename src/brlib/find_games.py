@@ -14,10 +14,8 @@ from ._helpers.constants import (
     CY_BASEBALL,
     FIRST_GAMES_YEAR,
     NO_POSTSEASON_YEARS,
-    SCHEDULE_TAG_REGEX,
     SEASON_RANGE_REGEX,
     SEASON_REGEX,
-    TEAM_ALIASES,
 )
 from ._helpers.inputs import validate_date_list
 from ._helpers.requests_manager import req_mgr
@@ -294,7 +292,7 @@ def _find_season_games(
 
     soup = bs(page.content, "lxml")
     content = soup.find(id="content")
-    schedules = content.find_all("div", {"class": "section_wrapper", "id": SCHEDULE_TAG_REGEX})
+    schedules = content.find_all("div", {"class": "section_wrapper", "id": re.compile(r"^all_\d")})
     # there's a regular season schedule and probably a postseason one as well
     assert len(schedules) in {1, 2}
 

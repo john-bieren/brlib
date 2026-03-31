@@ -71,33 +71,32 @@ CY_ASG = CURRENT_YEAR not in NO_ASG_YEARS and (
 CACHE_TIMEZONE = pytz.timezone("US/Aleutian")
 
 # pre-compiled regular expressions
-MULTI_TEAM_REGEX = re.compile("[1-9]TM")
-SEASON_REGEX = re.compile("[0-9]{4}")
-SEASON_RANGE_REGEX = re.compile("[0-9]{4}-[0-9]{4}")
-DATE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]")
-DATE_RANGE_REGEX = re.compile("[0-1]?[0-9][0-3][0-9]-[0-1]?[0-9][0-3][0-9]")
-GAME_ID_REGEX = re.compile("[A-Z1-4]{2,3}[0-9]{9}", re.IGNORECASE)
-ASG_ID_REGEX = re.compile("[0-9]{4}-allstar-game(?P<doubleheader>-[12])?", re.IGNORECASE)
-PLAYER_ID_REGEX = re.compile("[a-z.'_]{3,7}[0-9]{2}")
-TEAM_ID_REGEX = re.compile("[A-Z1-4]{2,3}[0-9]{4}", re.IGNORECASE)
-SCHEDULE_TAG_REGEX = re.compile("^all_[0-9]")
+MULTI_TEAM_REGEX = re.compile(r"\dTM")
+SEASON_REGEX = re.compile(r"\d{4}")
+SEASON_RANGE_REGEX = re.compile(r"\d{4}-\d{4}")
+DATE_REGEX = re.compile(r"[0-1]?\d[0-3]\d")
+DATE_RANGE_REGEX = re.compile(r"[0-1]?\d[0-3]\d-[0-1]?\d[0-3]\d")
+GAME_ID_REGEX = re.compile(r"[A-Z0-9]{2,3}\d{9}", re.IGNORECASE)
+ASG_ID_REGEX = re.compile(r"\d{4}-allstar-game(?P<doubleheader>-[12])?", re.IGNORECASE)
+PLAYER_ID_REGEX = re.compile(r"[a-z.'_]{3,7}\d{2}")
+TEAM_ID_REGEX = re.compile(r"[A-Z0-9]{2,3}\d{4}", re.IGNORECASE)
 GAME_URL_REGEX = re.compile(
-    r"https://www\.baseball-reference\.com/boxes/[A-Z1-4]{2,3}/[A-Z1-4]{2,3}[0-9]{4}[0-1][0-9][0-3][0-9][0-3]\.shtml"
+    r"https://www\.baseball-reference\.com/boxes/[A-Z0-9]{2,3}/[A-Z0-9]{2,3}\d{4}[0-1]\d[0-3]\d[0-3]\.shtml"
 )
 ALLSTAR_GAME_URL_REGEX = re.compile(
-    r"https://www\.baseball-reference\.com/allstar/[1-2][0-9]{3}-allstar-game-?[1-2]?\.shtml"
+    r"https://www\.baseball-reference\.com/allstar/[1-2]\d{3}-allstar-game-?[1-2]?\.shtml"
 )
 PLAYER_URL_REGEX = re.compile(
-    r"https://www\.baseball-reference\.com/players/[a-z]/[a-z.'_]{3,7}[0-9]{2}\.shtml"
+    r"https://www\.baseball-reference\.com/players/[a-z]/[a-z.'_]{3,7}\d{2}\.shtml"
 )
 TEAM_URL_REGEX = re.compile(
-    r"https://www\.baseball-reference\.com/teams/[A-Z1-4]{2,3}/[1-2][0-9]{3}\.shtml"
+    r"https://www\.baseball-reference\.com/teams/[A-Z0-9]{2,3}/[1-2]\d{3}\.shtml"
 )
 SB_ATTEMPT_REGEX = re.compile(
-    r"(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>[0-9]?)"
+    r"(?P<base>2nd base|3rd base|Home) (?:off|by) (?P<pitcher>\D+)/(?P<catcher>\D+)(?P<times>\d?)"
 )
 PICKOFF_REGEX = re.compile(
-    r"(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>[0-9]?)"
+    r"(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>\d?)"
 )
 
 # exponent used when calculating team Pythagorean W-L%
