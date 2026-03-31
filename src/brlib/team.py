@@ -472,7 +472,8 @@ class Team:
 
             elif line_str.startswith("Attendance"):
                 attendance_line = line_str.split(":", maxsplit=1)[1]
-                if "(" in attendance_line:  # TODO seems to have been removed
+                # attendance rank has gone missing before, e.g. very beginning of 2026 season
+                if "(" in attendance_line:
                     self.info.loc[:, "Attendance Rank"] = str_between(attendance_line, "(", ")")
                     attendance_line = attendance_line.split("(", maxsplit=1)[0]
                 attendance_str = attendance_line.strip().split(maxsplit=1)[0]

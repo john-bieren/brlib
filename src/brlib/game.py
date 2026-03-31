@@ -771,7 +771,6 @@ class Game:
 
                 for dp_players in player_list.split("; "):
                     if dp_players.rsplit(maxsplit=1)[1].isnumeric():
-                        dev_alert(f"{self.id}: multiple DP with same sequence; potential test case")
                         dp_players, number = dp_players.rsplit(maxsplit=1)
                         number = int(number)
                     else:

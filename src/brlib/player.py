@@ -447,7 +447,7 @@ class Player:
                     birthplace_split = birthplace.split(", ")
                     if len(birthplace_split) == 1:
                         # city and/or state/country could be missing, so there's nothing to do
-                        dev_alert(f'{self.id}: malformed birthplace "{birthplace.strip()}"')
+                        dev_alert(f'{self.id}: incomplete birthplace "{birthplace.strip()}"')
                         continue
                     if len(birthplace_split) == 2:
                         birth_city, birth_state_or_country = birthplace.split(", ", maxsplit=1)
