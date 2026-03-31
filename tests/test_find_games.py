@@ -7,6 +7,8 @@ def test_teams():
     """Tests that the `teams` argument is handled correctly."""
     # reject alias
     assert len(find_games("KC1", "1957")) == 0
+    # accept abbreviation that is also an alias
+    assert len(find_games("KCA", "1957")) == 154
     # list, test case insensitivity
     assert len(find_games(["col", "BAL"], "1993")) == 324
     # "ALL"
