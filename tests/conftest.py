@@ -10,12 +10,11 @@ import brlib as br
 from brlib._helpers.abbreviations_manager import abv_mgr
 from brlib._helpers.constants import CACHE_DIR
 
-br.options.add_no_hitters = False
+# standardize options configuration
+br.options._preferences.clear()
+br.options._changes.clear()
 br.options.dev_alerts = True
 br.options.print_pages = True
-br.options.update_team_names = False
-br.options.update_venue_names = False
-
 
 @pytest.fixture(scope="session", autouse=True)
 def test_clear_cache() -> None:
