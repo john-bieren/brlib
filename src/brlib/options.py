@@ -117,7 +117,7 @@ class Options(Singleton):
             "pb_format": "{percentage:3.2f}%|{bar}{r_bar}",
             "print_pages": False,
             "quiet": False,
-            "request_buffer": 2.015,
+            "request_buffer": 2.03,
             "timeout_limit": 10,
             "update_team_names": False,
             "update_venue_names": False,
