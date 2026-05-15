@@ -42,8 +42,8 @@ class RequestsManager(Singleton):
                 requests.exceptions.ConnectionError,
             ) as exc:
                 if retries >= options.max_retries:
-                    raise ConnectionError("could not load page") from exc
-                dev_alert("could not load page, retrying")
+                    raise ConnectionError(f"could not load {url}") from exc
+                dev_alert(f"could not load {url}, retrying")
                 retries += 1
                 continue
 
