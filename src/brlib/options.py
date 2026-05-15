@@ -77,8 +77,8 @@ class Options(Singleton):
     Read the value of an option:
 
     ```
-    >>> br.options.request_buffer
-    2.015
+    >>> br.options.max_retries
+    2
     ```
 
     Change an option's value for the duration of the session:
@@ -117,7 +117,7 @@ class Options(Singleton):
             "pb_format": "{percentage:3.2f}%|{bar}{r_bar}",
             "print_pages": False,
             "quiet": False,
-            "request_buffer": 2.03,
+            "request_buffer": 2.035,
             "timeout_limit": 10,
             "update_team_names": False,
             "update_venue_names": False,
