@@ -16,6 +16,8 @@ br.options._changes.clear()
 br.options.dev_alerts = True
 br.options.print_pages = True
 
+assert br.test_connection()
+
 
 @pytest.fixture(scope="session", autouse=True)
 def test_clear_cache() -> None:

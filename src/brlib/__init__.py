@@ -19,6 +19,7 @@ from .player import Player
 from .player_set import PlayerSet
 from .team import Team
 from .team_set import TeamSet
+from .test_connection import test_connection
 
 __version__ = "0.5.0.dev0"
 
@@ -37,4 +38,5 @@ __all__ = [
     "PlayerSet",
     "Team",
     "TeamSet",
+    "test_connection",
 ]
