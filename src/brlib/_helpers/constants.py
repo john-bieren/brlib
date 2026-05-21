@@ -996,7 +996,7 @@ TEAM_INFO_COLS = (
     "General Manager",
     "Farm Director",
     "Scouting Director",
-    "Venue",
+    "Venues",
     "Attendance",
     "Attendance Rank",
     "Multi-Year Batting Park Factor",

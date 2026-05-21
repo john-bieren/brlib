@@ -321,15 +321,15 @@ class TeamSet:
         >>> t1 = br.Team("PHA1954")
         >>> t2 = br.Team("SFG2017")
         >>> ts = br.TeamSet([t1, t2])
-        >>> ts.info["Venue"]
+        >>> ts.info["Venues"]
         0    Connie Mack Stadium
         1              AT&T Park
         Name: Venue, dtype: object
         >>> ts.update_venue_names()
-        >>> ts.info["Venue"]
+        >>> ts.info["Venues"]
         0     Shibe Park
         1    Oracle Park
         Name: Venue, dtype: object
         ```
         """
-        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
+        self.info.replace({"Venues": VENUE_REPLACEMENTS}, inplace=True)

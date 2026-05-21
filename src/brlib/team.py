@@ -311,16 +311,16 @@ class Team:
 
         ```
         >>> t = br.Team("OAK2021")
-        >>> t.info["Venue"]
+        >>> t.info["Venues"]
         0    RingCentral Coliseum
         Name: Venue, dtype: object
         >>> t.update_venue_names()
-        >>> t.info["Venue"]
+        >>> t.info["Venues"]
         0    Oakland-Alameda County Coliseum
         Name: Venue, dtype: object
         ```
         """
-        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
+        self.info.replace({"Venues": VENUE_REPLACEMENTS}, inplace=True)
 
     @staticmethod
     def _get_team(team_id: str) -> Response:
@@ -455,20 +455,24 @@ class Team:
                 self.info.loc[:, "Postseason Finish"] = clean_spaces(latest_series_result)
 
             # switching to startswith; nested p tags result in overlapping matches for "if str in"
-            elif line_str.startswith("Manager"):
-                managers = line_str.split(":", maxsplit=1)[1]
-                self.info.loc[:, "Managers"] = clean_spaces(managers).replace(" , ", ", ")
-
             elif line_str.split(":", maxsplit=1)[0] in {
                 "President",
                 "General Manager",
                 "Farm Director",
                 "Scouting Director",
-                "Ballpark",
             }:
                 col, value = line_str.split(":", maxsplit=1)
-                col = "Venue" if col == "Ballpark" else col  # for consistency across library
                 self.info.loc[:, col] = clean_spaces(value)
+
+            elif line_str.startswith("Manager"):
+                managers = clean_spaces(line_str.split(":", maxsplit=1)[1])
+                managers = managers.replace(" , ", ";").replace(" and ", ";")
+                self.info.loc[:, "Managers"] = managers
+
+            elif line_str.startswith("Ballpark"):
+                venues = clean_spaces(line_str.split(":", maxsplit=1)[1])
+                venues = venues.replace(", ", ";").replace(" and ", ";")
+                self.info.loc[:, "Venues"] = venues
 
             elif line_str.startswith("Attendance"):
                 attendance_line = line_str.split(":", maxsplit=1)[1]
