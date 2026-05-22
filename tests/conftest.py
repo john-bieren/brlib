@@ -206,6 +206,8 @@ def teams_list() -> list[br.Team]:
             "MIN2019",
             # perfect game and CNH, renamed venue
             "SEA2012",
+            # multiple ballparks
+            "TOR2021",
             # team shares name with later one
             "WSH1904",
         ],
