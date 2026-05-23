@@ -13,6 +13,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 import brlib as br
+from tests.test_cases import game_test_cases, player_test_cases, team_test_cases
 
 
 def main() -> None:
@@ -34,15 +35,13 @@ def main() -> None:
 
 def refresh_games(games_dir: Path) -> None:
     """Refreshes expected data for games in `games_dir`."""
-    ids_dir = games_dir / "original"
-    total = sum(1 for entry in ids_dir.iterdir() if entry.is_dir())
-    for game_dir in tqdm(ids_dir.iterdir(), total=total, unit="game"):
-        if not game_dir.is_dir():
-            continue
+    for game_id in tqdm(game_test_cases, unit="game"):
+        # locate, create target directories
+        (original_dir := games_dir / "original" / game_id).mkdir(exist_ok=True)
+        (updated_dir := games_dir / "updated" / game_id).mkdir(exist_ok=True)
 
         # refresh original data
-        game = br.Game(game_dir.name)
-        original_dir = games_dir / "original" / game_dir.name
+        game = br.Game(game_id)
         game.info.to_csv(original_dir / "info.csv", index=False)
         game.batting.to_csv(original_dir / "batting.csv", index=False)
         game.pitching.to_csv(original_dir / "pitching.csv", index=False)
@@ -57,7 +56,6 @@ def refresh_games(games_dir: Path) -> None:
         game.add_no_hitters()
         game.update_team_names()
         game.update_venue_names()
-        updated_dir = games_dir / "updated" / game_dir.name
         game.info.to_csv(updated_dir / "info.csv", index=False)
         game.batting.to_csv(updated_dir / "batting.csv", index=False)
         game.pitching.to_csv(updated_dir / "pitching.csv", index=False)
@@ -68,15 +66,13 @@ def refresh_games(games_dir: Path) -> None:
 
 def refresh_players(players_dir: Path) -> None:
     """Refreshes expected data for players in `players_dir`."""
-    ids_dir = players_dir / "original"
-    total = sum(1 for entry in ids_dir.iterdir() if entry.is_dir())
-    for player_dir in tqdm(ids_dir.iterdir(), total=total, unit="player"):
-        if not player_dir.is_dir():
-            continue
+    for player_id in tqdm(player_test_cases, unit="player"):
+        # locate, create target directories
+        (original_dir := players_dir / "original" / player_id).mkdir(exist_ok=True)
+        (updated_dir := players_dir / "updated" / player_id).mkdir(exist_ok=True)
 
         # refresh original data
-        player = br.Player(player_dir.name)
-        original_dir = players_dir / "original" / player_dir.name
+        player = br.Player(player_id)
         player.info.to_csv(original_dir / "info.csv", index=False)
         player.bling.to_csv(original_dir / "bling.csv", index=False)
         player.batting.to_csv(original_dir / "batting.csv", index=False)
@@ -89,7 +85,6 @@ def refresh_players(players_dir: Path) -> None:
         # refresh updated data
         player.add_no_hitters()
         player.update_team_names()
-        updated_dir = players_dir / "updated" / player_dir.name
         player.info.to_csv(updated_dir / "info.csv", index=False)
         player.pitching.to_csv(updated_dir / "pitching.csv", index=False)
         player.salaries.to_csv(updated_dir / "salaries.csv", index=False)
@@ -97,15 +92,13 @@ def refresh_players(players_dir: Path) -> None:
 
 def refresh_teams(teams_dir: Path) -> None:
     """Refreshes expected data for the teams in `teams_dir`."""
-    ids_dir = teams_dir / "original"
-    total = sum(1 for entry in ids_dir.iterdir() if entry.is_dir())
-    for team_dir in tqdm(ids_dir.iterdir(), total=total, unit="team"):
-        if not team_dir.is_dir():
-            continue
+    for team_id in tqdm(team_test_cases, unit="team"):
+        # locate, create target directories
+        (original_dir := teams_dir / "original" / team_id).mkdir(exist_ok=True)
+        (updated_dir := teams_dir / "updated" / team_id).mkdir(exist_ok=True)
 
         # refresh original data
-        team = br.Team(team_dir.name)
-        original_dir = teams_dir / "original" / team_dir.name
+        team = br.Team(team_id)
         team.info.to_csv(original_dir / "info.csv", index=False)
         team.batting.to_csv(original_dir / "batting.csv", index=False)
         team.pitching.to_csv(original_dir / "pitching.csv", index=False)
@@ -116,7 +109,6 @@ def refresh_teams(teams_dir: Path) -> None:
         team.add_no_hitters()
         team.update_team_names()
         team.update_venue_names()
-        updated_dir = teams_dir / "updated" / team_dir.name
         team.info.to_csv(updated_dir / "info.csv", index=False)
         team.batting.to_csv(updated_dir / "batting.csv", index=False)
         team.pitching.to_csv(updated_dir / "pitching.csv", index=False)
