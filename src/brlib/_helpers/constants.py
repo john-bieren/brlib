@@ -12,11 +12,13 @@ CONFIG_DIR = platformdirs.user_config_path("brlib")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
+# current date information
 CURRENT_DATE = time.asctime()
 CURRENT_YEAR = int(CURRENT_DATE[20:24])
 CURRENT_MONTH = int(time.strftime("%m"))
 CURRENT_DAY = int(CURRENT_DATE[8:10])
 
+# hints for input validation
 FIRST_GAMES_YEAR = 1898  # the first year from which box scores are available
 FIRST_TEAMS_YEAR = 1871  # the first year from which team pages are available
 FIRST_ASG_YEAR = 1933
@@ -103,29 +105,41 @@ PICKOFF_REGEX = re.compile(
 # see https://www.sports-reference.com/blog/baseball-reference-faqs/
 PYTHAGOREAN_EXPONENT = 1.83
 
-# old names for teams (which have box scores) that didn't relocate
+# old names for teams that didn't relocate (split seasons count as relocations)
 TEAM_REPLACEMENTS = {
-    "Boston Americans": "Boston Red Sox",
+    "Indianapolis ABCs/Atlanta Black Crackers": "Atlanta Black Crackers",
+    "Baltimore Sox": "Baltimore Black Sox",
     "Boston Beaneaters": "Boston Braves",
     "Boston Bees": "Boston Braves",
     "Boston Doves": "Boston Braves",
     "Boston Nationals": "Boston Braves",
+    "Boston Reds": "Boston Braves",
+    "Boston Red Stockings": "Boston Braves",
     "Boston Rustlers": "Boston Braves",
+    "Boston Americans": "Boston Red Sox",
+    "Brooklyn Bridegrooms": "Brooklyn Dodgers",
+    "Brooklyn Grooms": "Brooklyn Dodgers",
     "Brooklyn Robins": "Brooklyn Dodgers",
     "Brooklyn Superbas": "Brooklyn Dodgers",
     "Buffalo Buffeds": "Buffalo Blues",
+    "Chicago Columbia Giants": "Chicago American Giants",
+    "Chicago Colts": "Chicago Cubs",
     "Chicago Orphans": "Chicago Cubs",
-    "Cincinnati Redlegs": "Cincinnati Reds",
+    "Chicago White Stockings": "Chicago Cubs",
     "Chicago Chi-Feds": "Chicago Whales",
-    "Cleveland Blues": "Cleveland Guardians",
+    "Cincinnati Redlegs": "Cincinnati Reds",
+    "Cincinnati-Cleveland Buckeyes": "Cleveland Buckeyes",
     "Cleveland Bronchos": "Cleveland Guardians",
     "Cleveland Indians": "Cleveland Guardians",
     "Cleveland Napoleons": "Cleveland Guardians",
     "Cleveland Naps": "Cleveland Guardians",
+    "Cincinnati Cuban Stars": "Cuban Stars West",
     "Houston Colt .45s": "Houston Astros",
     "Anaheim Angels": "Los Angeles Angels",
     "California Angels": "Los Angeles Angels",
     "Los Angeles Angels of Anaheim": "Los Angeles Angels",
+    "Louisville White Sox": "Louisville Black Caps",
+    "Louisville Eclipse": "Louisville Colonels",
     "Florida Marlins": "Miami Marlins",
     "New York Highlanders": "New York Yankees",
     "Philadelphia Phils": "Philadelphia Phillies",
@@ -134,14 +148,61 @@ TEAM_REPLACEMENTS = {
 
 # team's that should be renamed within the given inclusive range
 RANGE_TEAM_REPLACEMENTS = (
-    (1911, 1911, "Boston", "Boston Rustlers"),
-    (1902, 1902, "Chicago", "Chicago Orphans"),
-    (1903, 1903, "Chicago", "Chicago Cubs"),
-    (1901, 1901, "Cleveland", "Cleveland Blues"),
+    (1882, 1899, "Baltimore Orioles", "Baltimore Orioles (1882-1899)"),
     (1901, 1902, "Baltimore Orioles", "Baltimore Orioles (1901-1902)"),
+    (1877, 1911, "Boston", "Boston Braves"),
+    (1884, 1884, "Boston Reds", "Boston Reds (1884)"),
+    (1890, 1891, "Boston Reds", "Boston Reds (1890-1891)"),
+    (1884, 1894, "Brooklyn", "Brooklyn Dodgers"),
+    (1879, 1885, "Buffalo Bisons", "Buffalo Bisons (1879-1885)"),
+    (1890, 1890, "Buffalo Bisons", "Buffalo Bisons (1890)"),
+    (1888, 1903, "Chicago", "Chicago Cubs"),
+    (1882, 1886, "Cincinnati", "Cincinnati Reds"),
+    (1876, 1879, "Cincinnati Reds", "Cincinnati Reds (1876-1879)"),
+    (1901, 1901, "Cleveland", "Cleveland Guardians"),
+    (1902, 1902, "Cleveland Blues", "Cleveland Guardians"),
+    (1887, 1888, "Cleveland Blues", "Cleveland Spiders"),
+    (1883, 1884, "Columbus Buckeyes", "Columbus Buckeyes (1883-1884)"),
+    (1921, 1921, "Columbus Buckeyes", "Columbus Buckeyes (1921)"),
+    (1920, 1931, "Detroit Stars", "Detroit Stars (1920-1931)"),
+    (1933, 1933, "Indianapolis ABCs/Detroit Stars", "Detroit Stars (1933)"),
+    (1937, 1937, "Detroit Stars", "Detroit Stars (1937)"),
+    (1920, 1926, "Indianapolis ABCs", "Indianapolis ABCs (1920-1926)"),
+    (1931, 1932, "Indianapolis ABCs", "Indianapolis ABCs (1931-1932)"),
+    (1938, 1938, "Indianapolis ABCs", "Indianapolis ABCs (1938)"),
+    (1884, 1884, "Indianapolis Hoosiers", "Indianapolis Hoosiers (1884)"),
+    (1887, 1889, "Indianapolis Hoosiers", "Indianapolis Hoosiers (1887-1889)"),
+    (1884, 1884, "Kansas City Cowboys", "Kansas City Cowboys (1884)"),
+    (1886, 1886, "Kansas City Cowboys", "Kansas City Cowboys (1886)"),
+    (1888, 1889, "Kansas City Cowboys", "Kansas City Cowboys (1888-1889)"),
     (1901, 1901, "Milwaukee Brewers", "Milwaukee Brewers (1901)"),
-    (1901, 1956, "Washington Nationals", "Washington Nationals (1901-1960)"),
+    (1891, 1891, "Milwaukee Brewers", "Milwaukee Brewers (1891)"),
+    (1884, 1884, "Milwaukee Brewers", "Milwaukee Brewers (1884)"),
+    (1890, 1890, "New York Giants", "New York Giants (1890)"),
+    (1883, 1884, "New York", "New York Giants"),
+    (1871, 1876, "Philadelphia Athletics", "Philadelphia Athletics (1871-1876)"),
+    (1882, 1890, "Philadelphia Athletics", "Philadelphia Athletics (1882-1890)"),
+    (1890, 1891, "Philadelphia Athletics", "Philadelphia Athletics (1890-1891)"),
+    (1883, 1885, "Philadelphia", "Philadelphia Phillies"),
+    (1882, 1890, "Allegheny City", "Pittsburgh Pirates"),
+    (1891, 1894, "Pittsburgh", "Pittsburgh Pirates"),
+    (1883, 1899, "St. Louis", "St. Louis Cardinals"),
+    (1882, 1898, "St. Louis Browns", "St. Louis Cardinals"),
+    (1920, 1921, "St. Louis Giants", "St. Louis Stars (1920-1931)"),
+    (1922, 1931, "St. Louis Stars", "St. Louis Stars (1920-1931)"),
+    (1937, 1937, "St. Louis Stars", "St. Louis Stars (1937)"),
+    (1939, 1939, "St. Louis Stars", "St. Louis Stars (1939)"),
+    (1890, 1890, "Syracuse Stars", "Syracuse Stars (1890)"),
+    (1879, 1879, "Syracuse Stars", "Syracuse Stars (1879)"),
+    (1905, 1956, "Washington Nationals", "Washington Nationals (1901-1960)"),
     (1901, 1960, "Washington Senators", "Washington Nationals (1901-1960)"),
+    (1886, 1889, "Washington Nationals", "Washington Nationals (1886-1889)"),
+    # TODO there are two of them (WHS, WAS)
+    (1884, 1884, "Washington Nationals", "Washington Nationals (1884)"),
+    (1875, 1875, "Washington Nationals", "Washington Nationals (1875)"),
+    (1872, 1872, "Washington Nationals", "Washington Nationals (1872)"),
+    (1891, 1891, "Washington Statesmen", "Washington Senators (1891-1899)"),
+    (1892, 1899, "Washington Senators", "Washington Senators (1891-1899)"),
 )
 
 # map all names of a venue to its best known name, or current name, if applicable
