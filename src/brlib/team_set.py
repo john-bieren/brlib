@@ -332,4 +332,10 @@ class TeamSet:
         Name: Venue, dtype: object
         ```
         """
-        self.info.replace({"Venues": VENUE_REPLACEMENTS}, inplace=True)
+        self.info["Venues"] = self.info["Venues"].apply(
+            lambda x: (
+                ";".join([VENUE_REPLACEMENTS.get(item, item) for item in x.split(";")])
+                if isinstance(x, str)
+                else x
+            )
+        )
