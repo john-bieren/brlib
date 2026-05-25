@@ -105,7 +105,8 @@ PICKOFF_REGEX = re.compile(
 # see https://www.sports-reference.com/blog/baseball-reference-faqs/
 PYTHAGOREAN_EXPONENT = 1.83
 
-# old names for teams that didn't relocate (split seasons count as relocations)
+# replace old names for teams that didn't relocate (split seasons count as relocations)
+# sorted alphabetically by value and then by key
 TEAM_REPLACEMENTS = {
     "Indianapolis ABCs/Atlanta Black Crackers": "Atlanta Black Crackers",
     "Baltimore Sox": "Baltimore Black Sox",
@@ -113,8 +114,8 @@ TEAM_REPLACEMENTS = {
     "Boston Bees": "Boston Braves",
     "Boston Doves": "Boston Braves",
     "Boston Nationals": "Boston Braves",
-    "Boston Reds": "Boston Braves",
     "Boston Red Stockings": "Boston Braves",
+    "Boston Reds": "Boston Braves",
     "Boston Rustlers": "Boston Braves",
     "Boston Americans": "Boston Red Sox",
     "Brooklyn Bridegrooms": "Brooklyn Dodgers",
@@ -146,7 +147,8 @@ TEAM_REPLACEMENTS = {
     "Tampa Bay Devil Rays": "Tampa Bay Rays",
 }
 
-# team's that should be renamed within the given inclusive range
+# teams that should be renamed within the given inclusive range
+# sorted alphabetically by fourth value, and then by first value, ascending
 RANGE_TEAM_REPLACEMENTS = (
     (1882, 1899, "Baltimore Orioles", "Baltimore Orioles (1882-1899)"),
     (1901, 1902, "Baltimore Orioles", "Baltimore Orioles (1901-1902)"),
@@ -175,37 +177,38 @@ RANGE_TEAM_REPLACEMENTS = (
     (1884, 1884, "Kansas City Cowboys", "Kansas City Cowboys (1884)"),
     (1886, 1886, "Kansas City Cowboys", "Kansas City Cowboys (1886)"),
     (1888, 1889, "Kansas City Cowboys", "Kansas City Cowboys (1888-1889)"),
-    (1901, 1901, "Milwaukee Brewers", "Milwaukee Brewers (1901)"),
-    (1891, 1891, "Milwaukee Brewers", "Milwaukee Brewers (1891)"),
     (1884, 1884, "Milwaukee Brewers", "Milwaukee Brewers (1884)"),
-    (1890, 1890, "New York Giants", "New York Giants (1890)"),
+    (1891, 1891, "Milwaukee Brewers", "Milwaukee Brewers (1891)"),
+    (1901, 1901, "Milwaukee Brewers", "Milwaukee Brewers (1901)"),
     (1883, 1884, "New York", "New York Giants"),
+    (1890, 1890, "New York Giants", "New York Giants (1890)"),
     (1871, 1876, "Philadelphia Athletics", "Philadelphia Athletics (1871-1876)"),
     (1882, 1890, "Philadelphia Athletics", "Philadelphia Athletics (1882-1890)"),
     (1890, 1891, "Philadelphia Athletics", "Philadelphia Athletics (1890-1891)"),
     (1883, 1885, "Philadelphia", "Philadelphia Phillies"),
     (1882, 1890, "Allegheny City", "Pittsburgh Pirates"),
     (1891, 1894, "Pittsburgh", "Pittsburgh Pirates"),
-    (1883, 1899, "St. Louis", "St. Louis Cardinals"),
     (1882, 1898, "St. Louis Browns", "St. Louis Cardinals"),
+    (1883, 1899, "St. Louis", "St. Louis Cardinals"),
     (1920, 1921, "St. Louis Giants", "St. Louis Stars (1920-1931)"),
     (1922, 1931, "St. Louis Stars", "St. Louis Stars (1920-1931)"),
     (1937, 1937, "St. Louis Stars", "St. Louis Stars (1937)"),
     (1939, 1939, "St. Louis Stars", "St. Louis Stars (1939)"),
-    (1890, 1890, "Syracuse Stars", "Syracuse Stars (1890)"),
     (1879, 1879, "Syracuse Stars", "Syracuse Stars (1879)"),
-    (1905, 1956, "Washington Nationals", "Washington Nationals (1901-1960)"),
-    (1901, 1960, "Washington Senators", "Washington Nationals (1901-1960)"),
-    (1886, 1889, "Washington Nationals", "Washington Nationals (1886-1889)"),
+    (1890, 1890, "Syracuse Stars", "Syracuse Stars (1890)"),
+    (1872, 1872, "Washington Nationals", "Washington Nationals (1872)"),
+    (1875, 1875, "Washington Nationals", "Washington Nationals (1875)"),
     # TODO there are two of them (WHS, WAS)
     (1884, 1884, "Washington Nationals", "Washington Nationals (1884)"),
-    (1875, 1875, "Washington Nationals", "Washington Nationals (1875)"),
-    (1872, 1872, "Washington Nationals", "Washington Nationals (1872)"),
+    (1886, 1889, "Washington Nationals", "Washington Nationals (1886-1889)"),
+    (1901, 1960, "Washington Senators", "Washington Nationals (1901-1960)"),
+    (1905, 1956, "Washington Nationals", "Washington Nationals (1901-1960)"),
     (1891, 1891, "Washington Statesmen", "Washington Senators (1891-1899)"),
     (1892, 1899, "Washington Senators", "Washington Senators (1891-1899)"),
 )
 
-# map all names of a venue to its best known name, or current name, if applicable
+# replace all names of a venue to its best-known name, or current name, if applicable
+# sorted alphabetically by value and then chronologically by key, oldest-to-newest
 VENUE_REPLACEMENTS = {
     "Miller Park": "American Family Field",
     "Anaheim Stadium": "Angel Stadium of Anaheim",
@@ -225,33 +228,33 @@ VENUE_REPLACEMENTS = {
     "The Ballpark in Arlington": "Globe Life Park in Arlington",
     "Ameriquest Field": "Globe Life Park in Arlington",
     "Rangers Ballpark in Arlington": "Globe Life Park in Arlington",
-    "Comiskey Park II": "Rate Field",
-    "U.S. Cellular Field": "Rate Field",
-    "Guaranteed Rate Field": "Rate Field",
     "Joe Robbie Stadium": "Hard Rock Stadium",
     "Pro Player Stadium": "Hard Rock Stadium",
     "Dolphins Stadium": "Hard Rock Stadium",
     "Dolphin Stadium": "Hard Rock Stadium",
     "Land Shark Stadium": "Hard Rock Stadium",
     "Sun Life Stadium": "Hard Rock Stadium",
+    "San Diego Stadium": "Jack Murphy Stadium",
+    "Qualcomm Stadium": "Jack Murphy Stadium",
     "Royals Stadium": "Kauffman Stadium",
     "Dunn Field": "League Park II",
     "Marlins Park": "loanDepot park",
-    "Oakland Coliseum": "Oakland-Alameda County Coliseum",
     "Network Associates Coliseum": "Oakland-Alameda County Coliseum",
     "McAfee Coliseum": "Oakland-Alameda County Coliseum",
     "O.co Coliseum": "Oakland-Alameda County Coliseum",
     "RingCentral Coliseum": "Oakland-Alameda County Coliseum",
+    "Oakland Coliseum": "Oakland-Alameda County Coliseum",
     "Pacific Bell Park": "Oracle Park",
     "SBC Park": "Oracle Park",
     "AT&T Park": "Oracle Park",
     "Jacobs Field": "Progressive Field",
+    "Comiskey Park II": "Rate Field",
+    "U.S. Cellular Field": "Rate Field",
+    "Guaranteed Rate Field": "Rate Field",
     "Union Park": "Recreation Park",
     "Cinergy Field": "Riverfront Stadium",
     "D.C. Stadium": "Robert F. Kennedy Stadium",
     "SkyDome": "Rogers Centre",
-    "San Diego Stadium": "Jack Murphy Stadium",
-    "Qualcomm Stadium": "Jack Murphy Stadium",
     "Connie Mack Stadium": "Shibe Park",
     "Safeco Field": "T-Mobile Park",
     "Navin Field": "Tiger Stadium",
