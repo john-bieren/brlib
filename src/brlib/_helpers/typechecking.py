@@ -61,11 +61,11 @@ def is_type(value: Any, expected_type: type | UnionType) -> bool:
 
     if origin is tuple:
         value: tuple
-        # variable-length homogeneous tuple, e.g. Tuple[int, ...]
+        # variable-length homogeneous tuple, e.g., Tuple[int, ...]
         if len(args) == 2 and args[1] is Ellipsis:
             return all(is_type(item, args[0]) for item in value)
 
-        # fixed-length potentially heterogeneous tuple, e.g. Tuple[str, int, float]
+        # fixed-length potentially heterogeneous tuple, e.g., Tuple[str, int, float]
         if len(value) != len(args):
             return False
         return all(is_type(item, typ) for item, typ in zip(value, args))

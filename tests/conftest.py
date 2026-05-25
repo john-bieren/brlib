@@ -23,7 +23,7 @@ assert br.test_connection()
 @pytest.fixture(scope="session", autouse=True)
 def test_clear_cache() -> None:
     """
-    Tests the clear_cache function by removing the abv_data cache file, and resets `abv_mgr` to
+    Tests the clear_cache function by removing the abv_data cache file and resets `abv_mgr` to
     re-load its data from the web and re-create its cache file for later testing. Must run before
     all other tests so that the presence or deletion of cached data doesn't affect test results.
     """

@@ -181,7 +181,7 @@ class PlayerSet:
             for col, nh_list in (("NH", inh_list), ("PG", pg_list), ("CNH", cnh_list)):
                 for year, team, game_type in nh_list:
                     # spahnwa01 threw no-hitters for MLN, but the applicable total row is for BSN
-                    # not only are these different, but BSN isn't even the franchise abv (ATL is)
+                    # not only are these different, but BSN isn't even the franchise abv (ATL is),
                     # so we check for career rows for any of the franchise's abbreviations
                     all_team_abvs = abv_mgr.all_team_abvs(team, int(year))
                     self.pitching.loc[

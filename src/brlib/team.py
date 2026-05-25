@@ -36,14 +36,14 @@ from .options import dev_alert, options, print_page
 class Team:
     """
     Statistics and information from a team. Can be initialized with a `team_id` argument, or
-    with a `page` argument. If neither of these arguments are given, an exception is raised.
+    with a `page` argument. If neither of these arguments is given, an exception is raised.
 
     ## Parameters
 
     * `team_id`: `str`, default `""`
 
         The unique identifier found in the URL of the team's page. It consists of the team's
-        abbreviation and the year in YYYY format (e.g. `"SEA2022"`). Era adjustment
+        abbreviation and the year in YYYY format (e.g., `"SEA2022"`). Era adjustment
         is not used, and aliases are not accepted. [Read more about team abbreviation
         handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
@@ -64,19 +64,19 @@ class Team:
 
     * `update_venue_names`: `bool` or `None`, default `None`
 
-        Whether to standardize venue name such that venues are identified by one name. If no value
-        is passed, the value of `options.update_venue_names` is used.
+        Whether to standardize the venue name such that venues are identified by one name. If no
+        value is passed, the value of `options.update_venue_names` is used.
 
     ## Attributes
 
     * `id`: `str`
 
-        The unique identifier for the team made up of its abbreviation and season (e.g.
+        The unique identifier for the team made up of its abbreviation and season (e.g.,
         `"SEA2017"`).
 
     * `name`: `str`
 
-        The team's name (e.g. `"2017 Seattle Mariners"`).
+        The team's name (e.g., `"2017 Seattle Mariners"`).
 
     * `info`: `pandas.DataFrame`
 
@@ -297,7 +297,7 @@ class Team:
 
     def update_venue_names(self) -> None:
         """
-        Standardizes venue name such that venues are identified by one name.
+        Standardizes the venue name such that venues are identified by one name.
 
         ## Parameters
 
@@ -347,7 +347,7 @@ class Team:
         # check that the page has player stats
         content = soup.find(id="content")
         if (
-            "No stats are currently available for this team." in content.text  # e.g. COT1932
+            "No stats are currently available for this team." in content.text  # e.g., COT1932
             or "These stats are for the players to appear in spring training games" in content.text
         ):
             self.info = self.info.reindex(columns=TEAM_INFO_COLS)
@@ -476,7 +476,7 @@ class Team:
 
             elif line_str.startswith("Attendance"):
                 attendance_line = line_str.split(":", maxsplit=1)[1]
-                # attendance rank has gone missing before, e.g. very beginning of 2026 season
+                # attendance rank has gone missing before, e.g., the beginning of the 2026 season
                 if "(" in attendance_line:
                     self.info.loc[:, "Attendance Rank"] = str_between(attendance_line, "(", ")")
                     attendance_line = attendance_line.split("(", maxsplit=1)[0]

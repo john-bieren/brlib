@@ -40,7 +40,7 @@ class AbbreviationsManager(Singleton):
         self.populate()
 
     def populate(self) -> None:
-        """Populates `self.df` from cache or the web if it is not already populated."""
+        """Populates `self.df` from the cache or the web if it is not already populated."""
         if self._populated:
             return
 
@@ -74,12 +74,12 @@ class AbbreviationsManager(Singleton):
         return True
 
     def _load(self) -> None:
-        """Loads abbreviations data from cache."""
+        """Loads abbreviation data from the cache."""
         self.df = pd.read_csv(self._cache_file)
         self.df.loc[self.df["Alias"].isna(), "Alias"] = ""
 
     def _get(self) -> None:
-        """Gets abbreviations data from Baseball Reference, save to cache."""
+        """Gets abbreviation data from Baseball Reference, saves it to the cache."""
         write("brlib: gathering team abbreviations")
         page = req_mgr.get_page("/about/team_IDs.shtml")
         self._gather_abbreviations(page)
@@ -115,7 +115,7 @@ class AbbreviationsManager(Singleton):
 
         # create alias column
         self.df["Alias"] = self.df["Team"].apply(lambda x: TEAM_ALIASES.get(x, ""))
-        # Baltimore Terrapins have abv BAL and alias but the Orioles are also BAL and have no alias
+        # the Terrapins have abv BAL and an alias, but the Orioles are also BAL and have no alias
         self.df.loc[self.df["Franchise"] == "BLT", "Alias"] = "BLF"
         # some teams with aliases overlap with earlier teams with same team abv, but in all cases
         # (excluding the above) these earlier teams existed before box scores, so this is tidier
@@ -139,15 +139,15 @@ class AbbreviationsManager(Singleton):
         If `era_adjustment` is `True`, the return DataFrame will contain the row associated with
         `abbreviation`'s franchise during `season` even if the abbreviation is not correct.
         For example, `self._find_correct_teams("FLA", 2025, True)` returns the MIA team row.
-        There can be multiple rows in the return DataFrame if an abbreviation, e.g. BAL,
-        is valid during a season, e.g. 1915, and is also associated with a franchise that
-        is active during that year, e.g. SLB which uses BAL in later years. In this case,
+        There can be multiple rows in the return DataFrame if an abbreviation, e.g., BAL,
+        is valid during a season, e.g., 1915, and is also associated with a franchise that
+        is active during that year, e.g., SLB, which uses BAL in later years. In this case,
         `self._find_correct_teams("BAL", 1915, True)`, the BAL and SLB team rows are returned.
         """
         abv_rows = self.df.loc[self.df["Team"] == abbreviation]
 
         if era_adjustment:
-            # handle potential overlap of abbreviations (e.g. BAL, 1915)
+            # handle potential overlap of abbreviations (e.g., BAL, 1915)
             potential_franchises = abv_rows["Franchise"].values
             franchise_rows = self.df.loc[self.df["Franchise"].isin(potential_franchises)]
             matching_franchises = franchise_rows.loc[
@@ -161,14 +161,14 @@ class AbbreviationsManager(Singleton):
                 tc_rows = self.df.loc[self.df["Team"].isin({"TC", "TC2"})]
                 correct_rows = pd.concat([correct_rows, tc_rows], ignore_index=True)
         else:
-            # check whether abbreviation is valid for season, if so pass that row forward
+            # check whether abbreviation is valid for season, if so, pass that row forward
             mask = (abv_rows["First Year"] <= season) & (abv_rows["Last Year"] >= season)
             correct_rows = abv_rows.loc[mask]
             assert len(correct_rows) <= 1
 
         # For each row in correct_rows, find the team row with the shortest year range that
         # includes season within the same franchise.
-        # This corrects abbreviations for era (if applicable), and also fixes discontinuities.
+        # This corrects abbreviations for era (if applicable) and also fixes discontinuities.
         # For example, LAA is listed as 1961-present, but CAL and ANA were also used during
         # parts of that time. The rows returned should reflect the abbreviations used during season.
         correct_rows.reset_index(drop=True, inplace=True)
@@ -199,7 +199,7 @@ class AbbreviationsManager(Singleton):
     def all_team_abvs(self, abbreviation: str, season: int) -> list[str]:
         """
         Returns all team abbreviations used by the franchise which is associated with the team at
-        `abbreviation` and `season`, e.g. `("ATH", 2025)` returns `["PHA", "KCA", "OAK", "ATH"]`.
+        `abbreviation` and `season`, e.g., `("ATH", 2025)` returns `["PHA", "KCA", "OAK", "ATH"]`.
         """
         franchise_abv = self.franchise_abv(abbreviation, season)
         franchise_df = self.df.loc[self.df["Franchise"] == franchise_abv]
@@ -207,11 +207,11 @@ class AbbreviationsManager(Singleton):
 
     def to_alias(self, abbreviation: str, season: int) -> str:
         """
-        Returns the abbreviation that is used in box score URLs for home games of the team at
-        `abbreviation` and `season`, as this will not always match the team's usual abbreviation.
-        Will return `abbreviation` if there is no team at `abbreviation` and `season`.
+        Returns the abbreviation used in box score URLs for home games of the team at `abbreviation`
+        and `season`, as this will not always match the team's usual abbreviation. Will return
+        `abbreviation` if there is no team at `abbreviation` and `season`.
         """
-        # some team abvs, e.g. KCA, are also valid aliases, but should be converted to their alias
+        # some team abvs, e.g., KCA, are also valid aliases but should be converted to their alias
         team_row = self._find_correct_teams(abbreviation, season, era_adjustment=False)
         if not team_row.empty:
             alias = team_row["Alias"].values[0]
@@ -226,7 +226,7 @@ class AbbreviationsManager(Singleton):
         use `abbreviation`. Will return `abbreviation` if no alias is applicable or if there is no
         team at `abbreviation` and `season`.
         """
-        # some aliases, e.g. KCA, are valid team abvs, these should be left alone
+        # some aliases, e.g., KCA, are valid team abvs; these should be left alone
         team_row = self._find_correct_teams(abbreviation, season, era_adjustment=False)
         if not team_row.empty:  # this is a valid team abbreviation for season
             return team_row["Team"].values[0]

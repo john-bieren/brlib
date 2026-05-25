@@ -25,7 +25,7 @@ def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
 
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
-        A year, inclusive range of years (e.g. `"2017-2019"`), `"ALL"`, or a list of multiple such
+        A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
         inputs which specify the seasons from which to find All-Star Games.
 
     ## Returns

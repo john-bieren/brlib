@@ -105,8 +105,8 @@ def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
         try:
             df[col] = pd.to_numeric(df[col], errors="raise")
         except (
-            ValueError,  # includes a non-convertable value of a compatible type (e.g. "a")
-            TypeError,  # includes a value of an incompatible type (e.g. a list)
+            ValueError,  # includes a non-convertable value of a compatible type (e.g., "a")
+            TypeError,  # includes a value of an incompatible type (e.g., a list)
         ):
             # skip columns which cannot be converted
             pass

@@ -24,14 +24,14 @@ def find_teams(
     seasons: str | list[str] = "ALL",
 ) -> list[str]:
     """
-    Returns a list of team IDs which can be an input to
+    Returns a list of team IDs, which can be an input to
     [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams).
 
     ## Parameters
 
     * `teams`: `str` or `list[str]`, default `"ALL"`
 
-        A team abbreviation (e.g. `"SEA"`), segregation-era league identifier (i.e. `"BML"` for
+        A team abbreviation (e.g., `"SEA"`), segregation-era league identifier (i.e. `"BML"` for
         Black major league teams or `"WML"` for White major league teams), `"ALL"`, or a list of
         multiple such inputs to specify which teams' games should be found. Abbreviations are
         subject to era adjustment, and aliases are not accepted. [Read more about team abbreviation
@@ -39,7 +39,7 @@ def find_teams(
 
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
-        A year, inclusive range of years (e.g. `"2017-2019"`), `"ALL"`, or a list of multiple such
+        A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
         inputs which specify the years from which to find games.
 
     ## Returns
@@ -92,7 +92,7 @@ def find_teams(
         elif set(teams).issubset({"WML", "BML"}):
             year_teams = teams
         else:
-            # find all matching abbreviations for year (e.g. (BAL, 1915) returns BAL and SLB)
+            # find all matching abbreviations for year (e.g., (BAL, 1915) returns BAL and SLB)
             match_lists = [abv_mgr.correct_abvs(t, year, era_adjustment=True) for t in teams]
             # collapse the lists into one
             year_teams = list(chain(*match_lists))

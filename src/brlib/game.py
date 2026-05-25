@@ -46,13 +46,13 @@ from .options import dev_alert, options, print_page
 class Game:
     """
     Statistics and information from a game. Can be initialized with a `game_id` argument, or
-    with a `page` argument. If neither of these arguments are given, an exception is raised.
+    with a `page` argument. If neither of these arguments is given, an exception is raised.
 
     ## Parameters
 
     * `game_id`: `str`, default `""`
 
-        The unique identifier found in the URL of the game's page (e.g.
+        The unique identifier found in the URL of the game's page (e.g.,
         `"SEA201704160"` or `"2001-allstar-game"`). [Read more about game ID
         structure](https://github.com/john-bieren/brlib/wiki/Game-ID-Structure).
 
@@ -73,18 +73,18 @@ class Game:
 
     * `update_venue_names`: `bool` or `None`, default `None`
 
-        Whether to standardize venue name such that venues are identified by one name. If no value
-        is passed, the value of `options.update_venue_names` is used.
+        Whether to standardize the venue name such that venues are identified by one name. If no
+        value is passed, the value of `options.update_venue_names` is used.
 
     ## Attributes
 
     * `id`: `str`
 
-        The unique identifier for the game used in the URL (e.g. "SEA201805020").
+        The unique identifier for the game used in the URL (e.g., "SEA201805020").
 
     * `name`: `str`
 
-        The unique, pretty name of the game (e.g. "May 2, 2018, Oakland Athletics vs Seattle
+        The unique, pretty name of the game (e.g., "May 2, 2018, Oakland Athletics vs Seattle
         Mariners").
 
     * `info`: `pandas.DataFrame`
@@ -352,7 +352,7 @@ class Game:
 
     def update_venue_names(self) -> None:
         """
-        Standardizes venue name such that venues are identified by one name.
+        Standardizes the venue name such that venues are identified by one name.
 
         ## Parameters
 
@@ -663,7 +663,7 @@ class Game:
         h_df[["Player", "Position"]] = h_df.loc[is_player_mask, "Player"].str.rsplit(
             expand=True, n=1
         )
-        # find and fix split-up player names where no position was present, e.g. CHN190306020
+        # find and fix split-up player names where no position was present, e.g., CHN190306020
         has_pos_mask = is_player_mask & (h_df["Position"].str.isupper())
         # this also renames final "Player" row to "Team Totals" instead of "Team"
         h_df.loc[~has_pos_mask, "Player"] = original_player_col.loc[~has_pos_mask]
@@ -757,7 +757,7 @@ class Game:
                         number = int(number)
                     else:
                         number = 1
-                    # += because players can be listed twice, e.g. BOS201708250
+                    # += because players can be listed twice, e.g., BOS201708250
                     h_df.loc[h_df["Player"] == player, stat_name] += number
                     h_df.loc[team_totals_mask, stat_name] += number
 
@@ -935,7 +935,7 @@ class Game:
         self.fielding = self.fielding[played_defense_mask]
         self.fielding.reset_index(drop=True, inplace=True)
 
-        # some old games have an asterisk in PO team total rows (e.g. SLN190106150)
+        # some old games have an asterisk in PO team total rows (e.g., SLN190106150)
         self.fielding.loc[self.fielding["PO"] == "*", "PO"] = None
 
         # remove pitchers who did not hit

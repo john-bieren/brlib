@@ -42,7 +42,8 @@ class NoHitterDicts(Singleton):
 
     def populate(self) -> None:
         """
-        Populates no-hitter dictionaries from cache or the web if they are not already populated.
+        Populates no-hitter dictionaries from the cache or the web if they are not already
+        populated.
         """
         if self._populated:
             return
@@ -84,12 +85,12 @@ class NoHitterDicts(Singleton):
         return False
 
     def _load(self) -> pd.DataFrame:
-        """Loads no-hitter data from cache."""
+        """Loads no-hitter data from the cache."""
         data_df = pd.read_csv(self._cache_file)
         return data_df
 
     def _get(self) -> pd.DataFrame:
-        """Gets no-hitter data from Baseball Reference, save to cache."""
+        """Gets no-hitter data from Baseball Reference, saves it to the cache."""
         write("gathering no-hitters")
         page = req_mgr.get_page("/friv/no-hitters-and-perfect-games.shtml")
         data_df = self._gather_data_df(page)

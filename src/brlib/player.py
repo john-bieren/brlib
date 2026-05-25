@@ -46,7 +46,7 @@ from .options import dev_alert, options, print_page
 class Player:
     """
     Statistics and information from a player. Can be initialized with a `player_id` argument, or
-    with a `page` argument. If neither of these arguments are given, an exception is raised.
+    with a `page` argument. If neither of these arguments is given, an exception is raised.
 
     ## Parameters
 
@@ -54,7 +54,7 @@ class Player:
 
         The unique identifier found in the URL of the player's page. It consists of the
         first 5 letters of the player's last name followed by the first two letters of their first
-        name and two digits to distinguish between otherwise identical IDs (e.g. `"brownse01"`).
+        name and two digits to distinguish between otherwise identical IDs (e.g., `"brownse01"`).
 
     * `page`: `curl_cffi.requests.Response`, default `curl_cffi.requests.Response()`
 
@@ -76,11 +76,11 @@ class Player:
 
     * `id`: `str`
 
-        The unique identifier for the player used in the URL (e.g. `"vogelda01"`).
+        The unique identifier for the player used in the URL (e.g., `"vogelda01"`).
 
     * `name`: `str`
 
-        The player's name (e.g. `"Daniel Vogelbach"`).
+        The player's name (e.g., `"Daniel Vogelbach"`).
 
     * `info`: `pandas.DataFrame`
 
@@ -400,7 +400,7 @@ class Player:
             line_str = str_remove(line.text, "\n", "•").replace("\xa0", " ")
 
             if line_str.startswith("Bats"):
-                # no maxsplit so that easter eggs are excluded, e.g. youngja03, graype01
+                # no maxsplit so that easter eggs are excluded, e.g., youngja03, graype01
                 bats, throws = line_str.split("\t", maxsplit=2)[:2]
                 bats, throws = [s.split(":", maxsplit=1)[1] for s in (bats, throws)]
                 self.info.loc[:, "Batting Hand"] = bats.strip()
@@ -471,7 +471,7 @@ class Player:
             elif line_str.startswith("Died"):
                 if "in" in line_str:
                     death_date, death_place = line_str.split(" in ", maxsplit=1)
-                else:  # no death place listed, e.g. valenfe01 right after his death
+                else:  # no death place listed, e.g., valenfe01 right after his death
                     dev_alert(f"{self.id}: no death place listed; potential test case")
                     death_date, death_place = line_str, ""
 
@@ -485,7 +485,7 @@ class Player:
                     self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
                 except (
-                    ValueError,  # death date is incomplete, e.g. cabreal01
+                    ValueError,  # death date is incomplete, e.g., cabreal01
                     UnboundLocalError,  # birth date is incomplete, was not defined
                 ):
                     pass
@@ -628,7 +628,7 @@ class Player:
                 for r in relations:
                     relation, players = r.strip().split(" of ", maxsplit=1)
                     player_count = players.count(", ") + 1
-                    # swap the direction of some relationships, e.g. "Father of" refers to his Son
+                    # swap the direction of some relationships, e.g., "Father of" refers to his Son
                     relation = RELATIVES_DICT.get(relation, None)
                     if relation is not None:
                         for _ in range(player_count):
@@ -763,14 +763,14 @@ class Player:
         ] = (
             df["Team"] + df["Season"]
         )
-        # remove team IDs from multi-team season summary rows, e.g. 2TM
+        # remove team IDs from multi-team season summary rows, e.g., 2TM
         df.loc[
             ((~df["Team ID"].isna()) & (df["Team"].str.fullmatch(MULTI_TEAM_REGEX))),
             "Team ID",
         ] = None
 
         df = convert_numeric_cols(df)
-        # season could be int64 if total rows are missing, e.g. hawkiro01, johns11
+        # season could be int64 if total rows are missing, e.g., hawkiro01, johns11
         if df["Season"].dtype == "int64":
             df["Season"] = df["Season"].astype(str)
         return df
@@ -974,7 +974,7 @@ class Player:
             df = pd.DataFrame(reg_records, columns=reg_column_names)
             df = Player._clean_dataframe(df)
             if add_game_type:
-                # this could be a player who's only appeared in the postseason, e.g. kigerma01
+                # this could be a player who's only appeared in the postseason, e.g., kigerma01
                 if postseason_included:
                     df.loc[:, "Game Type"] = "Postseason"
                 else:
