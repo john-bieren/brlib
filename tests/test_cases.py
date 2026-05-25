@@ -75,10 +75,10 @@ team_test_cases = [
     "LAA2012",
     # same franchise ID as WSH1904 but different team ID (tests TeamSet.records)
     "MIN2019",
+    # multiple venues (including a renamed one)
+    "PHI1894",
     # perfect game and CNH, renamed venue
     "SEA2012",
-    # multiple ballparks
-    "TOR2021",
     # team shares name with later one
     "WSH1904",
 ]
