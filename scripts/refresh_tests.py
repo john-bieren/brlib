@@ -13,7 +13,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 import brlib as br
-from tests.test_cases import game_test_cases, player_test_cases, team_test_cases
+from tests.case_ids import game_test_cases, player_test_cases, team_test_cases
 
 
 def main() -> None:

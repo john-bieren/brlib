@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
-from test_cases import game_test_cases, player_test_cases, team_test_cases
+from case_ids import game_test_cases, player_test_cases, team_test_cases
 
 import brlib as br
 from brlib._helpers.abbreviations_manager import abv_mgr
