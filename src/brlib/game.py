@@ -460,15 +460,6 @@ class Game:
         self.info["Away Team"] = self._away_team = records[1][0]
         self.info["Home Team"] = self._home_team = records[2][0]
 
-        changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
-        if self._home_score > self._away_score or changed_winner == self._home_team:
-            self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
-        elif self._away_score > self._home_score or changed_winner == self._away_team:
-            self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
-        else:
-            self.info["Losing Team"] = self._winning_team = None
-        self.info["Winning Team"] = self._winning_team
-
         records[0][0] = "Team"  # give the team column a name
         self.linescore = pd.DataFrame(records[1:3], columns=records[0])
         # convert string numbers to nullable ints (since B9 could be None)
@@ -482,6 +473,24 @@ class Game:
             assert len(teams) == 2
             self._away_team_id, self._home_team_id = teams
             self.teams += teams
+
+        changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
+        if self._home_score > self._away_score or changed_winner == self._home_team:
+            self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
+            self.info["Winning Team ID"], self.info["Losing Team ID"] = (
+                self._home_team_id,
+                self._away_team_id,
+            )
+        elif self._away_score > self._home_score or changed_winner == self._away_team:
+            self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
+            self.info["Winning Team ID"], self.info["Losing Team ID"] = (
+                self._away_team_id,
+                self._home_team_id,
+            )
+        else:
+            self._winning_team, self.info["Losing Team"] = None, None
+            self.info["Winning Team ID"], self.info["Losing Team ID"] = None, None
+        self.info["Winning Team"] = self._winning_team
 
     def _scrape_heading(self, heading: str) -> None:
         """Scrapes game type and name from `heading`."""
