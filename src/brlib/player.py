@@ -526,6 +526,14 @@ class Player:
                 self.info.loc[:, "Draft Team"] = draft_team.strip()
                 self.info.loc[:, "Draft Round"] = draft_round
 
+                links = line.find_all("a", href=True)
+                links = [l["href"] for l in links if "team_ID=" in l["href"]]
+                year = str_between(links[-1], "year_ID=", "&")
+                franchise_id = str_between(links[-1], "team_ID=", "&")
+                # TODO abv_mgr.franchise_to_team()
+                team_abv = abv_mgr.correct_abvs(franchise_id, int(year), era_adjustment=True)[0]
+                self.info.loc[:, "Draft Team ID"] = f"{team_abv}{year}"
+
                 try:
                     self.info.loc[:, "Draft Pick"] = str_between(draft_line, "round (", ")").strip(
                         "stndrh"

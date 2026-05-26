@@ -773,6 +773,7 @@ PLAYER_INFO_COLS = (
     "Death State/Province",
     "Death Country",
     "Draft Team",
+    "Draft Team ID",
     "Draft Round",
     "Draft Pick",
     "Draft Year",
