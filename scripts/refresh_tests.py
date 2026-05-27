@@ -92,6 +92,7 @@ def refresh_players(players_dir: Path) -> None:
 
 def refresh_teams(teams_dir: Path) -> None:
     """Refreshes expected data for the teams in `teams_dir`."""
+    teams_list = []
     for team_id in tqdm(team_test_cases, unit="team"):
         # locate, create target directories
         (original_dir := teams_dir / "original" / team_id).mkdir(exist_ok=True)
@@ -113,6 +114,10 @@ def refresh_teams(teams_dir: Path) -> None:
         team.batting.to_csv(updated_dir / "batting.csv", index=False)
         team.pitching.to_csv(updated_dir / "pitching.csv", index=False)
         team.fielding.to_csv(updated_dir / "fielding.csv", index=False)
+
+        teams_list.append(team)
+    team_set = br.TeamSet(teams_list)
+    team_set.records.to_csv(teams_dir / "records.csv", index=False)
 
 
 if __name__ == "__main__":
