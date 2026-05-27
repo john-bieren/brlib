@@ -6,13 +6,13 @@ import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
-    RANGE_TEAM_REPLACEMENTS,
     RECORDS_COLS,
     TEAM_REPLACEMENTS,
     VENUE_REPLACEMENTS,
 )
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.typechecking import runtime_typecheck
+from ._helpers.utils import update_game_col
 from .game import Game
 
 
@@ -278,40 +278,15 @@ class GameSet:
         1                Los Angeles Angels         Tampa Bay Rays
         ```
         """
-        # replace old team names
-        self.team_info.replace({"Team": TEAM_REPLACEMENTS}, regex=True, inplace=True)
-        self.info.replace({"Game": TEAM_REPLACEMENTS}, regex=True, inplace=True)
-        self.info.replace(
-            {
-                "Home Team": TEAM_REPLACEMENTS,
-                "Away Team": TEAM_REPLACEMENTS,
-                "Winning Team": TEAM_REPLACEMENTS,
-                "Losing Team": TEAM_REPLACEMENTS,
-            },
-            inplace=True,
+        self.team_info["Team"] = self.team_info.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
         )
-
-        # if all the games are All-Star Games, the Team ID column is all NaN, so .str doesn't work
-        info_year_col = self.info["Home Team ID"].astype("object").str[-4:].astype("float64")
-        team_info_year_col = self.team_info["Team ID"].astype("object").str[-4:].astype("float64")
-
-        # replace old team names within a given range
-        for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            years = range(start_year, end_year + 1)
-            name_dict = {old_name: new_name}
-            info_mask = info_year_col.isin(years)
-            team_info_mask = team_info_year_col.isin(years)
-
-            cols = ["Home Team", "Away Team", "Winning Team", "Losing Team"]
-            self.info.loc[info_mask, cols] = self.info.loc[info_mask, cols].replace(name_dict)
-            self.info.loc[info_mask, "Game"] = self.info.loc[info_mask, "Game"].replace(
-                name_dict, regex=True
+        self.info["Game"] = self.info.apply(update_game_col, axis=1)
+        for prefix in ("Home", "Away", "Winning", "Losing"):
+            self.info[f"{prefix} Team"] = self.info.apply(
+                lambda row: TEAM_REPLACEMENTS.get(row[f"{prefix} Team ID"], row[f"{prefix} Team"]),
+                axis=1,
             )
-
-            cols = ["Team"]
-            self.team_info.loc[team_info_mask, cols] = self.team_info.loc[
-                team_info_mask, cols
-            ].replace(name_dict)
 
     def update_venue_names(self) -> None:
         """

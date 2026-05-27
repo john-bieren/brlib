@@ -9,7 +9,6 @@ from curl_cffi.requests import Response
 
 from ._helpers.constants import (
     PYTHAGOREAN_EXPONENT,
-    RANGE_TEAM_REPLACEMENTS,
     TEAM_BATTING_COLS,
     TEAM_FIELDING_COLS,
     TEAM_INFO_COLS,
@@ -275,25 +274,20 @@ class Team:
         Name: Team, dtype: object
         ```
         """
-        # replace old team names
-        self.info.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.batting.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.pitching.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.fielding.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-
-        # replace old team names within a certain range
-        year = int(self.id[-4:])
-        for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            if year not in range(start_year, end_year + 1):
-                continue
-            name_dict = {old_name: new_name}
-            self.info.replace({"Team": name_dict}, inplace=True)
-            self.batting.replace({"Team": name_dict}, inplace=True)
-            self.pitching.replace({"Team": name_dict}, inplace=True)
-            self.fielding.replace({"Team": name_dict}, inplace=True)
-
-        # single quotes for <3.12 support
-        self.name = f'{self.id[-4:]} {self.info["Team"].values[0]}'
+        self.info["Team"] = self.info.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.batting["Team"] = self.batting.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.pitching["Team"] = self.pitching.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.fielding["Team"] = self.fielding.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        if (new_name := TEAM_REPLACEMENTS.get(self.id)) is not None:
+            self.name = f"{self.id[-4:]} {new_name}"
 
     def update_venue_names(self) -> None:
         """

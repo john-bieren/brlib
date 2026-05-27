@@ -6,6 +6,8 @@ import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
 
+from .constants import TEAM_REPLACEMENTS
+
 
 def str_between(string: str, start: str, end: str, anchor: str = "start") -> str:
     """
@@ -121,3 +123,15 @@ def game_id_to_endpoint(game_id: str) -> str:
     else:
         endpoint = f"/boxes/{game_id[:-9]}/{game_id}.shtml"
     return endpoint
+
+
+def update_game_col(row: pd.Series) -> str:
+    """
+    Returns the value of 'Game.info["Game"]' with updated team names for a given 'row'. Intended to
+    be used for 'Game.info.apply(update_game_col, axis=1)'.
+    """
+    away = row["Away Team"]
+    home = row["Home Team"]
+    mapped_away = TEAM_REPLACEMENTS.get(row["Away Team ID"], away)
+    mapped_home = TEAM_REPLACEMENTS.get(row["Home Team ID"], home)
+    return row["Game"].replace(away, mapped_away, 1).replace(home, mapped_home, 1)

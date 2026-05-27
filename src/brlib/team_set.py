@@ -6,7 +6,6 @@ import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
-    RANGE_TEAM_REPLACEMENTS,
     RECORDS_COLS,
     TEAM_REPLACEMENTS,
     VENUE_REPLACEMENTS,
@@ -272,36 +271,18 @@ class TeamSet:
         Name: Team, dtype: object
         ```
         """
-        # replace old team names
-        self.info.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.batting.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.pitching.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.fielding.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
-
-        # replace old team names within a certain range
-        info_year_col = self.info["Team ID"].str[-4:].astype("float64")
-        batting_year_col = self.batting["Team ID"].str[-4:].astype("float64")
-        pitching_year_col = self.pitching["Team ID"].str[-4:].astype("float64")
-        fielding_year_col = self.fielding["Team ID"].str[-4:].astype("float64")
-
-        for start_year, end_year, old_name, new_name in RANGE_TEAM_REPLACEMENTS:
-            years = range(start_year, end_year + 1)
-            name_dict = {old_name: new_name}
-            info_mask = info_year_col.isin(years)
-            batting_mask = batting_year_col.isin(years)
-            pitching_mask = pitching_year_col.isin(years)
-            fielding_mask = fielding_year_col.isin(years)
-
-            self.info.loc[info_mask, "Team"] = self.info.loc[info_mask, "Team"].replace(name_dict)
-            self.batting.loc[batting_mask, "Team"] = self.batting.loc[batting_mask, "Team"].replace(
-                name_dict
-            )
-            self.pitching.loc[pitching_mask, "Team"] = self.pitching.loc[
-                pitching_mask, "Team"
-            ].replace(name_dict)
-            self.fielding.loc[fielding_mask, "Team"] = self.fielding.loc[
-                fielding_mask, "Team"
-            ].replace(name_dict)
+        self.info["Team"] = self.info.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.batting["Team"] = self.batting.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.pitching["Team"] = self.pitching.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.fielding["Team"] = self.fielding.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
 
     def update_venue_names(self) -> None:
         """

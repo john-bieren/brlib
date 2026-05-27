@@ -214,8 +214,8 @@ class PlayerSet:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team names in `PlayerSet.info["Draft Team"]` and `PlayerSet.salaries["Team"]`
-        such that teams are identified by one name, excluding relocations.
+        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by
+        one name, excluding relocations. `PlayerSet.salaries["Team"]` is not updated.
 
         ## Parameters
 
@@ -243,5 +243,6 @@ class PlayerSet:
         Name: Draft Team, dtype: object
         ```
         """
-        self.info.replace({"Draft Team": TEAM_REPLACEMENTS}, inplace=True)
-        self.salaries.replace({"Team": TEAM_REPLACEMENTS}, inplace=True)
+        self.info["Draft Team"] = self.info.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Draft Team ID"], row["Draft Team"]), axis=1
+        )
