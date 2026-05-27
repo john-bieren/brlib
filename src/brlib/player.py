@@ -115,8 +115,8 @@ class Player:
 
     * `relatives`: `dict[str: list[str]]`
 
-        The player's relationships with other major-leaguers. The relationships are they keys, and
-        the values list the players. These values can be inputs to
+        The player's relationships with other major-leaguers. The keys are relationships, and
+        the values list the relatives' player IDs. These values can be inputs to
         [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players).
 
     * `teams`: `list[str]`
@@ -805,7 +805,7 @@ class Player:
             & (h_df_1["Game Type"] == "Regular Season")
             & ((~h_df_1["Team"].isna()) | (~h_df_1["League"].isna()))
         ]
-        advanced_batting_buffer = len(summary_rows) + 1  # add one for 162 game average row
+        advanced_batting_buffer = len(summary_rows) + 1  # add one for 162-game average row
         return h_df_1, advanced_batting_buffer
 
     @staticmethod
@@ -824,7 +824,7 @@ class Player:
             & (p_df_1["Game Type"] == "Regular Season")
             & ((~p_df_1["Team"].isna()) | (~p_df_1["League"].isna()))
         ]
-        advanced_pitching_buffer = len(summary_rows) + 1  # add one for 162 game average row
+        advanced_pitching_buffer = len(summary_rows) + 1  # add one for 162-game average row
         return p_df_1, advanced_pitching_buffer
 
     def _scrape_standard_fielding(self, table: Tag) -> None:
@@ -834,7 +834,7 @@ class Player:
 
         self.fielding = Player._process_awards_column(self.fielding)
         self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
-        # set by-position totals rows to be labeled as such, the "Positions" column already exists
+        # set by-position totals rows to be labeled as such; the "Positions" column already exists
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
         self.fielding.loc[career_position_totals_mask, "Season"] = "Career Totals"
         if "Inn" in self.fielding.columns:
@@ -936,7 +936,7 @@ class Player:
         Turns a player stats table into a DataFrame.
         If `add_game_type` is `True`, the `Game Type` column will be added to the DataFrame.
         `buffer` is the number of blank rows to add after regular season stats to correct
-        for the lack franchise/league summary rows which other DataFrames have.
+        for the lack of franchise/league summary rows which other DataFrames have.
         """
         table = soup_from_comment(table, only_if_table=True)
 
@@ -983,7 +983,7 @@ class Player:
             df = pd.DataFrame(reg_records, columns=reg_column_names)
             df = Player._clean_dataframe(df)
             if add_game_type:
-                # this could be a player who's only appeared in the postseason, e.g., kigerma01
+                # this could be a player who has only appeared in the postseason, e.g., kigerma01
                 if postseason_included:
                     df.loc[:, "Game Type"] = "Postseason"
                 else:

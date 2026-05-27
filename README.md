@@ -15,7 +15,7 @@ A library for collecting baseball statistics from
 ## Key Features
 
 * `Game`, `Player`, and `Team` classes give you easy access to all associated data in one place,
-  with attributes for stats tables, information, and more.
+  with attributes for stat tables and other information.
 * Aggregate these into `GameSet`, `PlayerSet`, or `TeamSet` classes, which have similar attributes,
   for easy analysis of larger samples.
 * Easily search for games, players, and teams, and gather their stats.

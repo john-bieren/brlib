@@ -65,10 +65,10 @@ def test_player_dicts() -> None:
     assert nhd.player_inh_dict["hallaro01"] == [["2010", "PHI", "P"], ["2010", "PHI", "R"]]
     # checks that Negro League no-hitters aren't all marked as postseason
     assert nhd.player_inh_dict["dayle99"] == [["1946", "NE", "R"]]
-    # ...except for Red Grier's no-hitter
+    # ...except for Red Grier's World Series no-hitter
     assert nhd.player_inh_dict["griercl01"] == [["1926", "AC", "P"]]
 
-    assert nhd.player_pg_dict.get("paxtoja01") is None
+    assert nhd.player_pg_dict.get("leakemi01") is None
     assert nhd.player_pg_dict["hernafe02"] == [["2012", "SEA", "R"]]
     assert nhd.player_pg_dict["larsedo01"] == [["1956", "NYY", "P"]]
 

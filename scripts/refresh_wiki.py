@@ -59,7 +59,7 @@ def refresh_files(wiki_dir: Path) -> None:
         file_path = wiki_dir / f"{member_name}.md"
         file_path.write_text(clean_docstring(member.__doc__), encoding="UTF-8")
 
-        # for classes or variables which are the instantiation of a singleton class
+        # for classes or variables that are the instantiation of a singleton class
         if not inspect.isfunction(member):
             # create files for each of the class's public methods
             methods = inspect.getmembers(member, predicate=is_function_or_method)

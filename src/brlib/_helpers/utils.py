@@ -21,9 +21,9 @@ def str_between(string: str, start: str, end: str, anchor: str = "start") -> str
     and the final prior occurrence of `start` will be returned.
     """
     if start not in string:
-        raise ValueError("start value not in string")
+        raise ValueError(f'start value "{start}" not in string')
     if end not in string:
-        raise ValueError("end value not in string")
+        raise ValueError(f'end value "{end}" not in string')
 
     if anchor == "start":
         return string.split(start, maxsplit=1)[1].split(end, maxsplit=1)[0]
@@ -91,7 +91,7 @@ def scrape_player_ids(table: bs | Tag) -> list[str]:
 
 
 def convert_innings_notation(innings: str | float) -> float | None:
-    """Converts box score notation to correct numerical value so that values sum correctly."""
+    """Converts box score notation to the correct numerical value so that values sum correctly."""
     # could be np.nan, leave that alone since the column will eventually be converted to floats
     if not isinstance(innings, str):
         innings = str(innings)
