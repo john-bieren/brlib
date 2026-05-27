@@ -15,8 +15,18 @@ updates:
       - dependency-type: "all"
 
     groups:
-      # group transitive dependency updates into one PR
-      indirect-dependencies:
-        dependency-type: "indirect"
+      # group patch updates into one PR
+      patch-updates:
+        update-types:
+          - "patch"
         patterns:
           - "*"
+      # do the same with most minor updates
+      safe-minor-updates:
+        update-types:
+          - "minor"
+        # exclude packages that could ship breaking changes or noisy deprecations in minor updates
+        exclude-patterns:
+          - "beautifulsoup4"
+          - "curl-cffi"
+          - "pandas"
