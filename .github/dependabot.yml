@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    versioning-strategy: widen
+
+    cooldown:
+      default-days: 2
+
+    allow:
+      # ensure that transitive dependencies are updated
+      - dependency-type: "all"
+
+    groups:
+      # group transitive dependency updates into one PR
+      indirect-dependencies:
+        dependency-type: "indirect"
+        patterns:
+          - "*"
