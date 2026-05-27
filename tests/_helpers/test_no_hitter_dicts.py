@@ -50,10 +50,10 @@ def test_game_dicts() -> None:
     assert nhd.game_cnh_dict.get("NYA195610080") is None
     assert nhd.game_cnh_dict["SEA201206080"] == [
         "millwke01",
-        "pryorst01",
         "furbuch01",
-        "luetglu01",
+        "pryorst01",
         "leagubr01",
+        "luetglu01",
         "wilheto01",
     ]
     assert nhd.game_cnh_dict["DET202307080"] == ["mannima02", "foleyja01", "langeal01"]
