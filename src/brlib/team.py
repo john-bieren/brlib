@@ -427,8 +427,10 @@ class Team:
         for line in info.find_all("p"):
             line_str = line.text.replace("\n", "").replace("\t", " ").replace("\xa0", " ")
 
-            if "Record" in line_str:
-                team_record = str_between(line_str, "Record:", ",").strip().split("-")
+            # parse record, using overall record for Negro League teams
+            if line_str.startswith("Record") or line_str.startswith("Overall Record"):
+                # e.g., "Record: 90-72,  Finished..." or "Overall Record: 31-32  (includes..."
+                team_record = str_between(line_str, "Record: ", "  ").strip(",").split("-")
                 self.info.loc[:, "Wins"] = int(team_record[0])
                 self.info.loc[:, "Losses"] = int(team_record[1])
                 self.info.loc[:, "Ties"] = int(team_record[2]) if len(team_record) > 2 else 0
@@ -436,6 +438,8 @@ class Team:
                     self.info["Wins"] + self.info["Losses"]
                 )
 
+            # parse division and division finish
+            if line_str.startswith("Record") or line_str.startswith("League Record"):
                 if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
                 else:
@@ -450,11 +454,10 @@ class Team:
                     division = line_str.rsplit(" in ", maxsplit=1)[1]
                 self.info.loc[:, "Division"] = division.strip().replace("_", " ")
 
-            elif "Postseason" in line_str:
+            elif line_str.startswith("Postseason"):
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
                 self.info.loc[:, "Postseason Finish"] = clean_spaces(latest_series_result)
 
-            # switching to startswith; nested p tags result in overlapping matches for "if str in"
             elif line_str.split(":", maxsplit=1)[0] in {
                 "President",
                 "General Manager",
