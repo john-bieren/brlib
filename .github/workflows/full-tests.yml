@@ -1,7 +1,7 @@
 name: Full Tests
 
 on:
-  # to be run before releases
+  # to be run manually before releases
   workflow_dispatch:
 
 jobs:

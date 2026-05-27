@@ -6,7 +6,7 @@ on:
       - '**'
   schedule:
     # run at 12 UTC, hopefully after BR's daily in-season updates
-    # run weekly, because anything more would be overkill
+    # run weekly (on Saturday), because anything more would be overkill
     - cron: '0 12 * * 6'
 
 jobs:
