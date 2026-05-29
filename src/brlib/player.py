@@ -680,8 +680,8 @@ class Player:
             records.append(record)
 
         self.salaries = pd.DataFrame(records[1:], columns=records[0])
-        self.salaries.rename(columns={"Tm": "Team", "SrvTm": "Service Time"}, inplace=True)
-        self.salaries.replace(r"\xa0", " ", regex=True, inplace=True)
+        self.salaries = self.salaries.rename(columns={"Tm": "Team", "SrvTm": "Service Time"})
+        self.salaries = self.salaries.replace(r"\xa0", " ", regex=True)
 
         # rename and shift career totals row
         career_totals_mask = self.salaries["Year"] == "Career to date (may be incomplete)"
@@ -734,7 +734,7 @@ class Player:
         # remove thousands separators
         self.salaries["Salary"] = self.salaries["Salary"].str.replace(",", "")
         # set empty string values to None
-        self.salaries.replace("", None, regex=True, inplace=True)
+        self.salaries = self.salaries.replace("", None, regex=True)
 
         # a year can have a row for salary and one for a paid buyout, combine such rows
         self.salaries = convert_numeric_cols(self.salaries)
@@ -788,13 +788,7 @@ class Player:
     def _scrape_standard_batting(table: Tag) -> tuple[pd.DataFrame, int]:
         """Scrapes standard batting stats from `table`."""
         h_df_1 = Player._table_to_df(table, add_game_type=True)
-        h_df_1.rename(
-            columns={
-                "WAR": "Batting bWAR",
-                "Lg": "League",
-            },
-            inplace=True,
-        )
+        h_df_1 = h_df_1.rename(columns={"WAR": "Batting bWAR", "Lg": "League"})
         h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
         h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = None
@@ -812,7 +806,7 @@ class Player:
     def _scrape_standard_pitching(table: Tag) -> tuple[pd.DataFrame, int]:
         """Scrapes standard pitching stats from `table`."""
         p_df_1 = Player._table_to_df(table, add_game_type=True)
-        p_df_1.rename(columns={"WAR": "Pitching bWAR", "Lg": "League"}, inplace=True)
+        p_df_1 = p_df_1.rename(columns={"WAR": "Pitching bWAR", "Lg": "League"})
 
         p_df_1 = Player._process_awards_column(p_df_1)
         p_df_1 = Player._process_career_totals(p_df_1)
@@ -830,7 +824,7 @@ class Player:
     def _scrape_standard_fielding(self, table: Tag) -> None:
         """Scrapes standard fielding stats from `table`."""
         self.fielding = Player._table_to_df(table, add_game_type=True)
-        self.fielding.rename(columns={"Lg": "League", "Pos": "Position"}, inplace=True)
+        self.fielding = self.fielding.rename(columns={"Lg": "League", "Pos": "Position"})
 
         self.fielding = Player._process_awards_column(self.fielding)
         self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
@@ -893,7 +887,7 @@ class Player:
     def _scrape_value_table(table) -> pd.DataFrame:
         """Scrapes value batting/pitching stats from `table`."""
         df_2 = Player._table_to_df(table, add_game_type=False)
-        df_2.drop(
+        df_2 = df_2.drop(
             columns=[
                 "Season",
                 "Age",
@@ -908,7 +902,6 @@ class Player:
                 "Pos",
                 "Awards",
             ],
-            inplace=True,
             errors="ignore",
         )
         return df_2
@@ -917,9 +910,8 @@ class Player:
     def _scrape_advanced_table(table, buffer: int) -> pd.DataFrame:
         """Scrapes advanced batting/pitching stats from `table`."""
         df_3 = Player._table_to_df(table, add_game_type=False, buffer=buffer)
-        df_3.drop(
+        df_3 = df_3.drop(
             columns=["Season", "Age", "Team", "Lg", "PA", "IP", "rOBA", "Rbat+", "Pos", "Awards"],
-            inplace=True,
             errors="ignore",
         )
 

@@ -367,7 +367,7 @@ class Team:
                 table = bs(table_text, "lxml")
                 h_df_1 = self._scrape_standard_table(table)
 
-                h_df_1.rename(columns={"WAR": "Batting bWAR"}, inplace=True)
+                h_df_1 = h_df_1.rename(columns={"WAR": "Batting bWAR"})
 
             elif table_name == "all_players_value_batting":
                 table = soup_from_comment(table, only_if_table=True)
@@ -378,7 +378,7 @@ class Team:
                 table = bs(table_text, "lxml")
                 p_df_1 = self._scrape_standard_table(table)
 
-                p_df_1.rename(columns={"WAR": "Pitching bWAR"}, inplace=True)
+                p_df_1 = p_df_1.rename(columns={"WAR": "Pitching bWAR"})
                 p_df_1["IP"] = p_df_1["IP"].apply(convert_innings_notation)
 
             elif table_name == "all_players_value_pitching":
@@ -597,8 +597,8 @@ class Team:
         self.players += player_id_column
 
         # sort table so that it can be joined to the value table with the expected alignment
-        df_1.sort_values(by=["Game Type", "Player ID"], ascending=False, inplace=True)
-        df_1.reset_index(drop=True, inplace=True)
+        df_1 = df_1.sort_values(by=["Game Type", "Player ID"], ascending=False)
+        df_1 = df_1.reset_index(drop=True)
         df_1 = Team._process_awards_column(df_1)
         return df_1
 
@@ -644,9 +644,9 @@ class Team:
         self.players += player_id_column
 
         # sort table so that it can be joined to the standard table with the expected alignment
-        df_2.sort_values(by="Player ID", ascending=False, inplace=True)
+        df_2 = df_2.sort_values(by="Player ID", ascending=False)
         # remove columns also found in standard table
-        df_2.drop(
+        df_2 = df_2.drop(
             columns=[
                 "Rk",
                 "Player",
@@ -661,8 +661,7 @@ class Team:
                 "Pos",
                 "Awards",
             ],
-            inplace=True,
             errors="ignore",
         )
-        df_2.reset_index(drop=True, inplace=True)
+        df_2 = df_2.reset_index(drop=True)
         return df_2

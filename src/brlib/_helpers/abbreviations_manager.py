@@ -109,7 +109,7 @@ class AbbreviationsManager(Singleton):
 
         # set up self.df
         self.df = pd.DataFrame(records[1:], columns=records[0])
-        self.df.rename({"Team ID": "Team", "Franchise ID": "Franchise"}, axis=1, inplace=True)
+        self.df = self.df.rename({"Team ID": "Team", "Franchise ID": "Franchise"}, axis=1)
         self.df["First Year"] = self.df["First Year"].astype(int)
         self.df["Last Year"] = self.df["Last Year"].astype(int)
 
@@ -171,7 +171,7 @@ class AbbreviationsManager(Singleton):
         # This corrects abbreviations for era (if applicable) and also fixes discontinuities.
         # For example, LAA is listed as 1961-present, but CAL and ANA were also used during
         # parts of that time. The rows returned should reflect the abbreviations used during season.
-        correct_rows.reset_index(drop=True, inplace=True)
+        correct_rows = correct_rows.reset_index(drop=True)
         for i, row in correct_rows.iterrows():
             franchise_rows = self.df.loc[self.df["Franchise"] == row["Franchise"]]
             franchise_rows = franchise_rows.loc[

@@ -317,4 +317,4 @@ class GameSet:
         Name: Venue, dtype: object
         ```
         """
-        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
+        self.info = self.info.replace({"Venue": VENUE_REPLACEMENTS})

@@ -354,7 +354,7 @@ class Game:
         Name: Venue, dtype: object
         ```
         """
-        self.info.replace({"Venue": VENUE_REPLACEMENTS}, inplace=True)
+        self.info = self.info.replace({"Venue": VENUE_REPLACEMENTS})
 
     @staticmethod
     def _get_game(game_id: str) -> Response:
@@ -392,8 +392,8 @@ class Game:
         self.info["Away Team ID"] = self._away_team_id
         self.batting["Game ID"] = self.id
         self.pitching["Game ID"] = self.id
-        self.batting.reset_index(drop=True, inplace=True)
-        self.pitching.reset_index(drop=True, inplace=True)
+        self.batting = self.batting.reset_index(drop=True)
+        self.pitching = self.pitching.reset_index(drop=True)
 
         self._get_fielding_dataframe()
         self._scrape_stolen_base_stats(batting_tables)
@@ -639,11 +639,11 @@ class Game:
             records.append(record)
 
         h_df = pd.DataFrame(records[1:], columns=records[0])
-        h_df.rename(columns={"Batting": "Player"}, inplace=True)
+        h_df = h_df.rename(columns={"Batting": "Player"})
 
         # remove blank rows
         h_df = h_df.loc[h_df["Player"] != ""]
-        h_df.reset_index(drop=True, inplace=True)
+        h_df = h_df.reset_index(drop=True)
 
         # separate batter name and position
         original_player_col = h_df["Player"].copy()
@@ -676,7 +676,7 @@ class Game:
                 player_indices = h_df.loc[player_mask].index.to_list()
                 keep_row = h_df.iloc[player_indices[0]]
                 drop_row = h_df.iloc[player_indices[1]]
-                h_df.drop(index=player_indices[1], inplace=True)
+                h_df = h_df.drop(index=player_indices[1])
                 # re-define this after dropping one of the rows
                 player_mask = h_df["Player ID"] == player
 
@@ -690,7 +690,7 @@ class Game:
                 if keep_row["Position"] != drop_row["Position"]:
                     positions = "-".join([keep_row["Position"], drop_row["Position"]])
                     h_df.loc[player_mask, "Position"] = positions
-            h_df.reset_index(drop=True, inplace=True)
+            h_df = h_df.reset_index(drop=True)
 
         self._set_team_ids(h_df, table_id)
 
@@ -785,7 +785,7 @@ class Game:
                 records.append(record)
 
             p_df = pd.DataFrame(records[1:], columns=records[0])
-            p_df.rename(columns={"Pitching": "Player"}, inplace=True)
+            p_df = p_df.rename(columns={"Pitching": "Player"})
 
             # get player IDs
             player_id_column = scrape_player_ids(table)
@@ -921,14 +921,14 @@ class Game:
         positions = positions.str.split("-").apply(lambda pos: set(pos) - {"DH", "PH", "PR"})
         played_defense_mask = positions.apply(lambda x: len(x) > 0)
         self.fielding = self.fielding[played_defense_mask]
-        self.fielding.reset_index(drop=True, inplace=True)
+        self.fielding = self.fielding.reset_index(drop=True)
 
         # some old games have an asterisk in PO team total rows (e.g., SLN190106150)
         self.fielding.loc[self.fielding["PO"] == "*", "PO"] = None
 
         # remove pitchers who did not hit
         self.batting = self.batting.loc[~self.batting["AB"].isna()]
-        self.batting.reset_index(drop=True, inplace=True)
+        self.batting = self.batting.reset_index(drop=True)
 
     def _scrape_stolen_base_stats(self, batting_tables: list[Tag]) -> None:
         """Tallies SB attempts and results by catcher, stealer, and base from `batting_tables`."""
@@ -1032,7 +1032,7 @@ class Game:
             id_vars=["Game ID"],
             value_vars=["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"],
         )
-        self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"}, inplace=True)
+        self.ump_info = self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"})
         self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")
         self.ump_info = self.ump_info.reindex(columns=GAME_UMP_INFO_COLS)
