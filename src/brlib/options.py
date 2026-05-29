@@ -53,7 +53,7 @@ class Options(Singleton):
 
         Whether to mute most printed messages.
 
-    * `request_buffer`, default `2.015`
+    * `request_buffer`, default `2.035`
 
         Buffer, in seconds, between requests. Necessary to obey Baseball Reference's [rate
         limit](https://www.sports-reference.com/429.html).
