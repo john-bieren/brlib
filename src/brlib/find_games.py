@@ -285,8 +285,8 @@ def _find_season_games(
     else:
         for date in dates:
             if "-" in date:
-                int_dates = [int(d) for d in date.split("-", maxsplit=1)]
-                date_set = date_set.union(range(int_dates[0], int_dates[1] + 1))
+                start, end = (int(d) for d in date.split("-", maxsplit=1))
+                date_set.update(range(start, end + 1))
             else:
                 date_set.add(int(date))
 
@@ -321,30 +321,25 @@ def _find_season_games(
                 continue
 
             date = endpoint[-15:-7]
-            doubleheader = endpoint[-7]
+            if int(date[4:]) not in date_set:
+                continue
+
             away_team = away_link.split("/")[2]
             home_team = home_link.split("/")[2]
+            all_teams = "ALL" in team_set
+            all_opponents = "ALL" in opponent_set
 
-            append = False
             if home_away == "ALL":
-                append = (
-                    not team_set.isdisjoint({away_team, home_team, "ALL"})
-                    and not opponent_set.isdisjoint({away_team, home_team, "ALL"})
-                    and int(date[4:]) in date_set
-                )
+                team_match = all_teams or away_team in team_set or home_team in team_set
+                opponent_match = all_opponents or away_team in opponent_set or home_team in opponent_set
             elif home_away == "HOME":
-                append = (
-                    not team_set.isdisjoint({home_team, "ALL"})
-                    and not opponent_set.isdisjoint({away_team, "ALL"})
-                    and int(date[4:]) in date_set
-                )
-            elif home_away == "AWAY":
-                append = (
-                    not team_set.isdisjoint({away_team, "ALL"})
-                    and not opponent_set.isdisjoint({home_team, "ALL"})
-                    and int(date[4:]) in date_set
-                )
+                team_match = all_teams or home_team in team_set
+                opponent_match = all_opponents or away_team in opponent_set
+            else:  # "AWAY"
+                team_match = all_teams or away_team in team_set
+                opponent_match = all_opponents or home_team in opponent_set
 
-            if append:
+            if team_match and opponent_match:
+                doubleheader = endpoint[-7]
                 game_list.append(f"{home_team}{date}{doubleheader}")
     return game_list
