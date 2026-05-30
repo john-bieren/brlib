@@ -68,9 +68,9 @@ class Player:
 
     * `update_team_names`: `bool` or `None`, default `None`
 
-        Whether to standardize team name in `Player.info["Draft Team"]` such that teams are
+        Whether to standardize the team name in `Player.info["Draft Team"]` such that teams are
         identified by one name, excluding relocations. If no value is passed, the value of
-        `options.update_team_names` is used.
+        `options.update_team_names` is used. `Player.salaries["Team"]` is not updated.
 
     ## Attributes
 
@@ -280,8 +280,8 @@ class Player:
 
     def update_team_names(self) -> None:
         """
-        Standardizes team names in `Player.info["Draft Team"]` such that teams are identified by one
-        name, excluding relocations. `Player.salaries["Team"]` is not updated.
+        Standardizes the team name in `Player.info["Draft Team"]` such that teams are identified by
+        one name, excluding relocations. `Player.salaries["Team"]` is not updated.
 
         ## Parameters
 

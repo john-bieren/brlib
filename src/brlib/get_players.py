@@ -38,7 +38,7 @@ def get_players(
 
         Whether to standardize team names in `Player.info["Draft Team"]` such that teams are
         identified by one name, excluding relocations. If no value is passed, the value of
-        `options.update_team_names` is used.
+        `options.update_team_names` is used. `Player.salaries["Team"]` is not updated.
 
     * `ignore_errors`: `bool`, default `True`
 
