@@ -47,6 +47,12 @@ def main() -> None:
     print("Refreshing column lists in DataFrames-info.md")
     refresh_cols(wiki_dir)
 
+    # update version in footer title
+    file_path = wiki_dir / "_Footer.md"
+    lines = file_path.read_text(encoding="UTF-8").splitlines()
+    lines[0] = f"# brlib v{brlib.__version__}"
+    file_path.write_text("\n".join(lines) + "\n", encoding="UTF-8")
+
 
 def refresh_files(wiki_dir: Path) -> None:
     """Copies all public member docstrings into corresponding Markdown files."""
