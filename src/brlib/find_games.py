@@ -331,7 +331,9 @@ def _find_season_games(
 
             if home_away == "ALL":
                 team_match = all_teams or away_team in team_set or home_team in team_set
-                opponent_match = all_opponents or away_team in opponent_set or home_team in opponent_set
+                opponent_match = (
+                    all_opponents or away_team in opponent_set or home_team in opponent_set
+                )
             elif home_away == "HOME":
                 team_match = all_teams or home_team in team_set
                 opponent_match = all_opponents or away_team in opponent_set
