@@ -62,9 +62,11 @@ def all_players() -> pd.DataFrame:
     columns = "Player ID,Player,Career Span,Active,1,2,3,4,5\n"
     players_df = pd.read_csv(StringIO(columns + csv_lines))
 
-    # split career span into start and end (if span is one year, only year is listed, no range)
-    players_df["Career Start"] = players_df["Career Span"].str.split("-", n=1).str[0].astype(int)
-    players_df["Career End"] = players_df["Career Span"].str.split("-", n=1).str[-1].astype(int)
+    # split career span into start and end (if span is one year, only the year is listed, no range)
+    split_span = players_df["Career Span"].str.split("-", n=1)
+    players_df["Career Start"] = split_span.str[0].astype("int64")
+    players_df["Career End"] = split_span.str[-1].astype("int64")
+
     # convert active column from 0/1 to boolean
     players_df["Active"] = players_df["Active"].astype(bool)
 

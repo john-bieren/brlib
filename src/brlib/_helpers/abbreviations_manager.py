@@ -110,8 +110,8 @@ class AbbreviationsManager(Singleton):
         # set up self.df
         self.df = pd.DataFrame(records[1:], columns=records[0])
         self.df = self.df.rename({"Team ID": "Team", "Franchise ID": "Franchise"}, axis=1)
-        self.df["First Year"] = self.df["First Year"].astype(int)
-        self.df["Last Year"] = self.df["Last Year"].astype(int)
+        self.df["First Year"] = self.df["First Year"].astype("int64")
+        self.df["Last Year"] = self.df["Last Year"].astype("int64")
 
         # create alias column
         self.df["Alias"] = self.df["Team"].apply(lambda x: TEAM_ALIASES.get(x, ""))

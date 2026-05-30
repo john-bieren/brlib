@@ -131,7 +131,7 @@ class NoHitterDicts(Singleton):
         postseason_mask = (
             (individual_df["Gcar"] == "")
             # before FIRST_GAMES_YEAR, Gcar is always blank
-            & (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR)
+            & (individual_df["Year"].astype("int64") >= FIRST_GAMES_YEAR)
             # Gcar is blank and Home/Away is "?" for regular season Negro League NHs
             & (individual_df["Home/Away"] != "?")
         )
@@ -160,7 +160,7 @@ class NoHitterDicts(Singleton):
         # filter out games without box scores and IDs
         individual_df.loc[
             (~individual_df["Team"].isin(BML_TEAM_ABVS))
-            & (individual_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
+            & (individual_df["Year"].astype("int64") >= FIRST_GAMES_YEAR),
             "Game ID",
         ] = game_id_column
         return individual_df
@@ -220,7 +220,7 @@ class NoHitterDicts(Singleton):
         combined_df["Game ID"] = combined_df["Game ID"].astype("object")  # cast to nullable dtype
         combined_df.loc[
             (~combined_df["Team"].isin(BML_TEAM_ABVS))
-            & (combined_df["Year"].astype(int) >= FIRST_GAMES_YEAR),
+            & (combined_df["Year"].astype("int64") >= FIRST_GAMES_YEAR),
             "Game ID",
         ] = game_id_column
         return combined_df
