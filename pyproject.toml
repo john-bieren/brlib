@@ -7,7 +7,7 @@ name = "brlib"
 description = "A library for collecting baseball statistics from Baseball Reference"
 authors = [{ name = "John Bieren", email = "jbieren64@gmail.com" }]
 dynamic = ["version"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "beautifulsoup4>=4.12.0,<4.15.0",
     "curl-cffi>=0.11.1,<0.16.0",
@@ -28,7 +28,6 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -50,8 +49,8 @@ Issues = "https://github.com/john-bieren/brlib/issues"
 dev = [
     "black==26.5.1",
     "isort==8.0.1",
-    "pytest>=7.0.0,<10.0.0",
-    "pytest-cov>=4.0.0,<8.0.0",
+    "pytest>=7.2.1,<10.0.0",
+    "pytest-cov>=4.1.0,<8.0.0",
 ]
 
 [tool.hatch.version]
@@ -63,7 +62,7 @@ pythonpath = ["src"]
 
 [tool.black]
 line-length = 100
-target-version = ["py310", "py311", "py312", "py313", "py314"]
+target-version = ["py311", "py312", "py313", "py314"]
 
 [tool.isort]
 profile = "black"
