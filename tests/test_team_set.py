@@ -32,6 +32,15 @@ def test_info(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     pd.testing.assert_frame_equal(updated_team_set.info, expected_df)  # to handle win % precision
 
 
+def test_bling(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
+    """Tests the contents of the `bling` DataFrame."""
+    expected_df = get_expected_df("teams", "bling", False)
+    pd.testing.assert_frame_equal(team_set.bling, expected_df)  # to handle win % precision
+
+    expected_df = get_expected_df("teams", "bling", True)
+    pd.testing.assert_frame_equal(updated_team_set.bling, expected_df)  # to handle win % precision
+
+
 def test_batting(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("teams", "batting", False)

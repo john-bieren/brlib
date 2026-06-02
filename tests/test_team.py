@@ -25,6 +25,23 @@ def test_info(
         pd.testing.assert_frame_equal(team.info, expected_df)  # to handle win % precision
 
 
+def test_bling(
+    expected_team_data: Path,
+    teams_list: list[br.Team],
+    updated_teams_list: list[br.Team],
+) -> None:
+    """Tests the contents of the `bling` DataFrame."""
+    for team in teams_list:
+        file = expected_team_data / "original" / team.id / "bling.csv"
+        expected_df = pd.read_csv(file)
+        pd.testing.assert_frame_equal(team.bling, expected_df)  # to handle win % precision
+
+    for team in updated_teams_list:
+        file = expected_team_data / "updated" / team.id / "bling.csv"
+        expected_df = pd.read_csv(file)
+        pd.testing.assert_frame_equal(team.bling, expected_df)  # to handle win % precision
+
+
 def test_batting(
     expected_team_data: Path,
     teams_list: list[br.Team],

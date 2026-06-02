@@ -101,6 +101,7 @@ def refresh_teams(teams_dir: Path) -> None:
         # refresh original data
         team = br.Team(team_id)
         team.info.to_csv(original_dir / "info.csv", index=False)
+        team.bling.to_csv(original_dir / "bling.csv", index=False)
         team.batting.to_csv(original_dir / "batting.csv", index=False)
         team.pitching.to_csv(original_dir / "pitching.csv", index=False)
         team.fielding.to_csv(original_dir / "fielding.csv", index=False)
@@ -111,6 +112,7 @@ def refresh_teams(teams_dir: Path) -> None:
         team.update_team_names()
         team.update_venue_names()
         team.info.to_csv(updated_dir / "info.csv", index=False)
+        team.bling.to_csv(updated_dir / "bling.csv", index=False)
         team.batting.to_csv(updated_dir / "batting.csv", index=False)
         team.pitching.to_csv(updated_dir / "pitching.csv", index=False)
         team.fielding.to_csv(updated_dir / "fielding.csv", index=False)

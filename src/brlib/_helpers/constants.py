@@ -1063,11 +1063,17 @@ TEAM_INFO_COLS = (
     "Pythagorean W-L%",
     "Runs",
     "Runs Allowed",
+    "Number of Players",
+    "Number of Pitchers",
+)
+
+TEAM_BLING_COLS = (
+    "Team",
+    "Season",
+    "Team ID",
     "Team Gold Glove",
     "Pennant",
     "World Series",
-    "Number of Players",
-    "Number of Pitchers",
 )
 
 TEAM_BATTING_COLS = (

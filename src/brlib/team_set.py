@@ -32,6 +32,12 @@ class TeamSet:
         Contains information about the teams, their results, and their personnel. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
+    * `bling`: `pandas.DataFrame`
+
+        Contains the teams' accolades as displayed by the banners in the upper right-hand corner of
+        their pages. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambling-and-teamsetbling)
+
     * `batting`: `pandas.DataFrame`
 
         Contains the teams' batting and baserunning stats. [See DataFrame
@@ -90,6 +96,7 @@ class TeamSet:
             raise ValueError("no Teams to aggregate")
 
         self.info = pd.concat([t.info for t in teams], ignore_index=True)
+        self.bling = pd.concat([t.bling for t in teams], ignore_index=True)
         self.batting = pd.concat([t.batting for t in teams], ignore_index=True)
         self.pitching = pd.concat([t.pitching for t in teams], ignore_index=True)
         self.fielding = pd.concat([t.fielding for t in teams], ignore_index=True)
@@ -272,6 +279,9 @@ class TeamSet:
         ```
         """
         self.info["Team"] = self.info.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
+        self.bling["Team"] = self.bling.apply(
             lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
         )
         self.batting["Team"] = self.batting.apply(

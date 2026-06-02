@@ -10,6 +10,7 @@ from curl_cffi.requests import Response
 from ._helpers.constants import (
     PYTHAGOREAN_EXPONENT,
     TEAM_BATTING_COLS,
+    TEAM_BLING_COLS,
     TEAM_FIELDING_COLS,
     TEAM_INFO_COLS,
     TEAM_PITCHING_COLS,
@@ -82,6 +83,12 @@ class Team:
         Contains information about the team, its results, and its personnel. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teaminfo-and-teamsetinfo)
 
+    * `bling`: `pandas.DataFrame`
+
+        Contains the team's accolades as displayed by the banners in the upper right-hand corner of
+        their page. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambling-and-teamsetbling)
+
     * `batting`: `pandas.DataFrame`
 
         Contains the team's batting and baserunning stats from the two batting tables. [See
@@ -145,7 +152,9 @@ class Team:
 
         self.name = ""
         self.id = str_between(page.url, "teams/", ".shtml").replace("/", "")
-        self.info, self.batting, self.pitching, self.fielding = [pd.DataFrame() for _ in range(4)]
+        self.info, self.bling, self.batting, self.pitching, self.fielding = [
+            pd.DataFrame() for _ in range(5)
+        ]
         self.players = []
         self._url = page.url
 
@@ -277,6 +286,9 @@ class Team:
         self.info["Team"] = self.info.apply(
             lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
         )
+        self.bling["Team"] = self.bling.apply(
+            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        )
         self.batting["Team"] = self.batting.apply(
             lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
         )
@@ -341,8 +353,12 @@ class Team:
         # gather team info
         self.info = pd.DataFrame({"Team": [team_name], "Season": [season], "Team ID": [self.id]})
         info = soup.find(id="info")
+        self._scrape_info(info)
+
+        # gather accolades from bling section
+        self.bling = pd.DataFrame({"Team": [team_name], "Season": [season], "Team ID": [self.id]})
         bling = info.find(id="bling")
-        self._scrape_info(info, bling)
+        self._scrape_bling(bling)
 
         # check that the page has player stats
         content = soup.find(id="content")
@@ -352,6 +368,8 @@ class Team:
         ):
             self.info = self.info.reindex(columns=TEAM_INFO_COLS)
             self.info = convert_numeric_cols(self.info)
+            self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
+            self.bling = convert_numeric_cols(self.bling)
             self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
             self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
             self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
@@ -394,6 +412,8 @@ class Team:
 
         self.info = self.info.reindex(columns=TEAM_INFO_COLS)
         self.info = convert_numeric_cols(self.info)
+        self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
+        self.bling = convert_numeric_cols(self.bling)
 
         # merge sorted dfs on index
         self.batting = h_df_1.merge(h_df_2, how="left", left_index=True, right_index=True)
@@ -422,8 +442,8 @@ class Team:
         pitchers = {p for p in self.pitching["Player ID"].values if p is not None}
         self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
-    def _scrape_info(self, info: Tag, bling: Tag | None) -> None:
-        """Populates `self.info` with data from `info` and `bling`."""
+    def _scrape_info(self, info: Tag) -> None:
+        """Populates `self.info` with data from `info`."""
         for line in info.find_all("p"):
             line_str = line.text.replace("\n", "").replace("\t", " ").replace("\xa0", " ")
 
@@ -524,19 +544,21 @@ class Team:
                     runs**PYTHAGOREAN_EXPONENT + runs_allowed**PYTHAGOREAN_EXPONENT
                 )
 
-        # scrape bling section
-        self.info.loc[:, ["Team Gold Glove", "Pennant", "World Series"]] = 0
-        if bling is not None:
-            for line in bling.find_all("a"):
-                bling_name = line.text
-                if bling_name == "Team Gold Glove":
-                    self.info.loc[:, "Team Gold Glove"] = 1
-                elif bling_name == "World Series Champions":
-                    self.info.loc[:, "World Series"] = 1
-                elif bling_name[-7:] == "Pennant":
-                    self.info.loc[:, "Pennant"] = 1
-                else:
-                    dev_alert(f'{self.id}: unexpected bling element "{bling_name}"')
+    def _scrape_bling(self, bling: Tag | None) -> None:
+        """Populates `self.bling` with data from `bling`."""
+        self.bling[["Team Gold Glove", "Pennant", "World Series"]] = 0
+        if bling is None:
+            return
+        for line in bling.find_all("a"):
+            bling_name = line.text
+            if bling_name == "Team Gold Glove":
+                self.bling.loc[:, "Team Gold Glove"] = 1
+            elif bling_name == "World Series Champions":
+                self.bling.loc[:, "World Series"] = 1
+            elif bling_name[-7:] == "Pennant":
+                self.bling.loc[:, "Pennant"] = 1
+            else:
+                dev_alert(f'{self.id}: unexpected bling element "{bling_name}"')
 
     def _scrape_standard_table(self, table: bs) -> pd.DataFrame:
         """Gathers team standard batting/pitching/fielding stats from `table`."""
