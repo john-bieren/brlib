@@ -88,7 +88,7 @@ class GameSet:
     Directly pass [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games) results:
 
     ```
-    >>> gl = br.get_games([("SEA201809300"), ("SEA201909290")])
+    >>> gl = br.get_games(["SEA201809300", "SEA201909290"])
     >>> br.GameSet(gl)
     GameSet(Game('SEA201809300'), Game('SEA201909290'))
     ```
@@ -174,7 +174,7 @@ class GameSet:
         >>> g1 = br.Game("SEA201208150")
         >>> g2 = br.Game("SEA201206080")
         >>> gs = br.GameSet([g1, g2])
-            >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
+        >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
                        Player  Team ID  NH  PG  CNH
         0   Jeremy Hellickson  TBR2012 NaN NaN  NaN
         1     Kyle Farnsworth  TBR2012 NaN NaN  NaN

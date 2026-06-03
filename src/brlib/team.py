@@ -319,11 +319,11 @@ class Team:
         >>> t = br.Team("OAK2021")
         >>> t.info["Venues"]
         0    RingCentral Coliseum
-        Name: Venue, dtype: object
+        Name: Venues, dtype: object
         >>> t.update_venue_names()
         >>> t.info["Venues"]
         0    Oakland-Alameda County Coliseum
-        Name: Venue, dtype: object
+        Name: Venues, dtype: object
         ```
         """
         self.info["Venues"] = self.info["Venues"].apply(

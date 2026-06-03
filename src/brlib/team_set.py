@@ -77,7 +77,7 @@ class TeamSet:
     Directly pass [`get_teams`](https://github.com/john-bieren/brlib/wiki/get_teams) results:
 
     ```
-    >>> tl = br.get_teams([("SEP1969"), ("MLA1901")])
+    >>> tl = br.get_teams(["SEP1969", "MLA1901"])
     >>> br.TeamSet(tl)
     TeamSet(Team('SEP1969'), Team('MLA1901'))
     ```
@@ -315,12 +315,12 @@ class TeamSet:
         >>> ts.info["Venues"]
         0    Connie Mack Stadium
         1              AT&T Park
-        Name: Venue, dtype: object
+        Name: Venues, dtype: object
         >>> ts.update_venue_names()
         >>> ts.info["Venues"]
         0     Shibe Park
         1    Oracle Park
-        Name: Venue, dtype: object
+        Name: Venues, dtype: object
         ```
         """
         self.info["Venues"] = self.info["Venues"].apply(

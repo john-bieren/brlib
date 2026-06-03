@@ -112,7 +112,7 @@ class Player:
         Contains the player's salary information from the salaries table. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playersalaries-and-playersetsalaries)
 
-    * `relatives`: `dict[str: list[str]]`
+    * `relatives`: `dict[str, list[str]]`
 
         The player's relationships with other major-leaguers. The keys are relationships, and
         the values list the relatives' player IDs. These values can be inputs to

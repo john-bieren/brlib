@@ -66,7 +66,7 @@ class PlayerSet:
     >>> p1 = br.Player("lewisky01")
     >>> p2 = br.Player("sanchsi01")
     >>> br.PlayerSet([p1, p2])
-    PlayerSet(Player(lewisky01), Player(sanchsi01))
+    PlayerSet(Player("lewisky01"), Player("sanchsi01"))
     ```
 
     Directly pass [`get_players`](https://github.com/john-bieren/brlib/wiki/get_players) results:
@@ -74,7 +74,7 @@ class PlayerSet:
     ```
     >>> pl = br.get_players(["lewisky01", "sanchsi01"])
     >>> br.PlayerSet(pl)
-    PlayerSet(Player(lewisky01), Player(sanchsi01))
+    PlayerSet(Player("lewisky01"), Player("sanchsi01"))
     ```
 
     ## Methods

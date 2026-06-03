@@ -33,14 +33,14 @@ def find_teams(
 
         A team abbreviation (e.g., `"SEA"`), segregation-era league identifier (i.e. `"BML"` for
         Black major league teams or `"WML"` for White major league teams), `"ALL"`, or a list of
-        multiple such inputs to specify which teams' games should be found. Abbreviations are
+        multiple such inputs to specify which teams should be found. Abbreviations are
         subject to era adjustment, and aliases are not accepted. [Read more about team abbreviation
         handling](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling).
 
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
         A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
-        inputs which specify the years from which to find games.
+        inputs which specify the years from which to find teams.
 
     ## Returns
 

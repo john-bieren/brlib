@@ -6,7 +6,8 @@ from .options import write
 
 def test_connection() -> bool:
     """
-    Indicates whether you can connect to Baseball Reference. Suppresses and prints any exceptions.
+    Indicates whether you can connect to Baseball Reference. Raised exceptions are caught and
+    printed.
 
     ## Parameters
 

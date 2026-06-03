@@ -215,7 +215,7 @@ class Options(Singleton):
     def clear_cache() -> None:
         """
         Deletes all files in the cache directory. The cache will be replenished when necessary in a
-        future session, but the deleted data will persist for the duration of the current session.
+        future session, but the deleted data will persist in the current session.
 
         ## Parameters
 
