@@ -788,9 +788,13 @@ PLAYER_INFO_COLS = (
 PLAYER_BLING_COLS = (
     "Player",
     "Player ID",
+    "Season",
     "MVP",
+    "MVP Finish",
     "CYA",
+    "CYA Finish",
     "ROY",
+    "ROY Finish",
     "AS",
     "ASG MVP",
     "HR Derby Champ",
@@ -883,14 +887,6 @@ PLAYER_BATTING_COLS = (
     "RS%",
     "SB%",
     "XBT%",
-    "AS",
-    "GG",
-    "SS",
-    "MVP Finish",
-    "CYA Finish",
-    "ROY Finish",
-    "LCS MVP",
-    "WS MVP",
 )
 
 PLAYER_PITCHING_COLS = (
@@ -964,14 +960,6 @@ PLAYER_PITCHING_COLS = (
     "WPA",
     "cWPA",
     "RE24",
-    "AS",
-    "GG",
-    "SS",
-    "MVP Finish",
-    "CYA Finish",
-    "ROY Finish",
-    "LCS MVP",
-    "WS MVP",
     "NH",
     "PG",
     "CNH",
@@ -1013,14 +1001,6 @@ PLAYER_FIELDING_COLS = (
     "CS%",
     "lgCS%",
     "Pick",
-    "AS",
-    "GG",
-    "SS",
-    "MVP Finish",
-    "CYA Finish",
-    "ROY Finish",
-    "LCS MVP",
-    "WS MVP",
 )
 
 PLAYER_SALARIES_COLS = (

@@ -30,8 +30,7 @@ class PlayerSet:
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the players' career accolades as displayed by the banners in the upper right-hand
-        corner of their pages. [See DataFrame
+        Contains the players' career accolades. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
 
     * `batting`: `pandas.DataFrame`

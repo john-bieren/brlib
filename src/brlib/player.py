@@ -89,8 +89,7 @@ class Player:
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the player's career accolades as displayed by the banners in the upper right-hand
-        corner of their page. [See DataFrame
+        Contains the player's career accolades. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#playerbling-and-playersetbling)
 
     * `batting`: `pandas.DataFrame`
@@ -364,6 +363,9 @@ class Player:
         self.pitching = self._merge_dataframes(p_df_1, p_df_2, p_df_3)
         self.pitching = self._finish_dataframe(self.pitching)
         self.fielding = self._finish_dataframe(self.fielding)
+
+        # add stats from soon-to-be-deleted awards columns into self.bling
+        self._process_awards_columns()
 
         self.info = self.info.reindex(columns=PLAYER_INFO_COLS)
         self.bling = self.bling.reindex(columns=PLAYER_BLING_COLS)
@@ -648,8 +650,8 @@ class Player:
                         dev_alert(f'{self.id}: unexpected relation "{r.strip()}"')
 
     def _scrape_bling(self, player_bling: Tag) -> None:
-        """Populates `self.bling`."""
-        self.bling.loc[:, "Player"] = self.name
+        """Populates the career totals row of `self.bling`."""
+        self.bling[["Player", "Season"]] = self.name, "Career Totals"
         self.bling[[*BLING_DICT.values()]] = 0
 
         if player_bling is None:
@@ -789,7 +791,6 @@ class Player:
         """Scrapes standard batting stats from `table`."""
         h_df_1 = Player._table_to_df(table, add_game_type=True)
         h_df_1 = h_df_1.rename(columns={"WAR": "Batting bWAR", "Lg": "League"})
-        h_df_1 = Player._process_awards_column(h_df_1)
         h_df_1 = Player._process_career_totals(h_df_1)
         h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = None
 
@@ -808,7 +809,6 @@ class Player:
         p_df_1 = Player._table_to_df(table, add_game_type=True)
         p_df_1 = p_df_1.rename(columns={"WAR": "Pitching bWAR", "Lg": "League"})
 
-        p_df_1 = Player._process_awards_column(p_df_1)
         p_df_1 = Player._process_career_totals(p_df_1)
         p_df_1["IP"] = p_df_1["IP"].apply(convert_innings_notation)
 
@@ -826,7 +826,6 @@ class Player:
         self.fielding = Player._table_to_df(table, add_game_type=True)
         self.fielding = self.fielding.rename(columns={"Lg": "League", "Pos": "Position"})
 
-        self.fielding = Player._process_awards_column(self.fielding)
         self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
         # set by-position totals rows to be labeled as such; the "Positions" column already exists
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
@@ -834,35 +833,67 @@ class Player:
         if "Inn" in self.fielding.columns:
             self.fielding["Inn"] = self.fielding["Inn"].apply(convert_innings_notation)
 
-    @staticmethod
-    def _process_awards_column(df_1: pd.DataFrame) -> pd.DataFrame:
-        """Adds stats that are found in `df_1["Awards"]` as their own columns."""
-        df_1.loc[:, ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = 0
-        df_1.loc[:, ["MVP Finish", "CYA Finish", "ROY Finish"]] = None
+    def _process_awards_columns(self) -> None:
+        """Adds season-level stats that are found in `"Awards"` columns to `self.bling`."""
+        # extract the awards from the dataframes
+        prep_df = (
+            # these columns will not be present in empty dataframes, hence the concat before reindexing
+            pd.concat([self.batting, self.pitching, self.fielding], ignore_index=True)
+            .reindex(columns=["Season", "Game Type", "Awards"])
+            .drop_duplicates(subset=["Season", "Game Type"])
+        )
+        prep_df["Awards"] = prep_df["Awards"].fillna("")
+        prep_df = prep_df.loc[prep_df["Season"].str.fullmatch(r"\d{4}")]
+        prep_df = prep_df.groupby("Season")["Awards"].apply(lambda x: ",".join(x)).reset_index()
 
-        last_season = ""
-        for _, row in df_1.iterrows():
-            # in standard fielding, one season can be listed multiple times (one per position)
-            # we want to skip these duplicate awards entries
-            if last_season == row["Season"]:
-                continue
-            last_season = row["Season"]
+        # the season rows to be added to self.bling
+        season_rows = pd.DataFrame(
+            {
+                "Season": prep_df["Season"].to_numpy(),
+                "Player": self.name,
+                "Player ID": self.id,
+                "MVP": 0,
+                "MVP Finish": pd.NA,
+                "CYA": 0,
+                "CYA Finish": pd.NA,
+                "ROY": 0,
+                "ROY Finish": pd.NA,
+                "AS": 0,
+                "WS MVP": 0,
+                "LCS MVP": 0,
+                "SS": 0,
+                "GG": 0,
+            },
+            index=range(len(prep_df)),
+        )
 
-            awards = row["Awards"].split(",")
-            season_mask = df_1["Season"] == row["Season"]
-            for award in awards:
-                if award in {"AS", "GG", "SS", "WS MVP"}:
-                    df_1.loc[season_mask, award] += 1
-                elif award in {"ALCS MVP", "NLCS MVP"}:
-                    df_1.loc[season_mask, "LCS MVP"] += 1
-                else:
-                    for col in ("MVP", "CYA", "ROY"):
-                        if col in award:
-                            df_1.loc[season_mask, f"{col} Finish"] = int(award[4:])
+        # tally and log awards totals
+        prep_df = (
+            prep_df.assign(Award=prep_df["Awards"].str.split(","))
+            .explode("Award")
+            .reindex(columns=["Season", "Award"])
+        )
+        prep_df = prep_df.loc[prep_df["Award"] != ""]
 
-        # summary rows should have missing values; totals can be found in Player.bling
-        df_1.loc[df_1["Team"].isna(), ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = None
-        return df_1
+        if not prep_df.empty:
+            count_cols = ("AS", "GG", "SS", "WS MVP")
+            finish_cols = ("MVP", "CYA", "ROY")
+            by_season = {s: i for i, s in enumerate(season_rows["Season"])}
+            for row in prep_df.itertuples(index=False):
+                i = by_season[row.Season]
+                award = row.Award
+                if award in count_cols:
+                    season_rows.at[i, award] += 1
+                if "LCS MVP" in award:
+                    season_rows.at[i, "LCS MVP"] = 1
+                if award.startswith(finish_cols):
+                    col, finish = award.split("-", maxsplit=1)
+                    season_rows.at[i, f"{col} Finish"] = int(finish)
+                    if finish == "1":
+                        season_rows.at[i, col] = 1
+
+        self.bling = pd.concat([season_rows, self.bling], ignore_index=True)
+        self.bling = convert_numeric_cols(self.bling)
 
     @staticmethod
     def _process_career_totals(df_1: pd.DataFrame) -> pd.DataFrame:

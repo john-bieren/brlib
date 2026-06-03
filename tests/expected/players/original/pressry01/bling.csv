@@ -1,2 +1,15 @@
-Player,Player ID,MVP,CYA,ROY,AS,ASG MVP,HR Derby Champ,WS Wins,WS MVP,LCS MVP,SS,GG,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year
-Ryan Pressly,pressry01,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Player,Player ID,Season,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,AS,ASG MVP,HR Derby Champ,WS Wins,WS MVP,LCS MVP,SS,GG,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year
+Ryan Pressly,pressry01,2013,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2014,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2015,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2016,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2017,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2018,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2019,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2020,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2021,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2022,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2023,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2024,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,2025,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Ryan Pressly,pressry01,Career Totals,0,,0,,0,,2,0.0,0.0,1.0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

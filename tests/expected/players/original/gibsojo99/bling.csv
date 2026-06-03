@@ -1,2 +1,16 @@
-Player,Player ID,MVP,CYA,ROY,AS,ASG MVP,HR Derby Champ,WS Wins,WS MVP,LCS MVP,SS,GG,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year
-Josh Gibson,gibsojo99,0,0,0,12,0,0,2,0,0,0,0,0,0,0,0,3,0,2,0,0,0,0
+Player,Player ID,Season,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,AS,ASG MVP,HR Derby Champ,WS Wins,WS MVP,LCS MVP,SS,GG,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year
+Josh Gibson,gibsojo99,1930,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1933,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1934,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1935,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1936,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1937,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1938,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1939,0,,0,,0,,2,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1940,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1942,0,,0,,0,,2,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1943,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1944,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1945,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,1946,0,,0,,0,,2,,,,0,0,0,0,,,,,,,,,,,
+Josh Gibson,gibsojo99,Career Totals,0,,0,,0,,12,0.0,0.0,2.0,0,0,0,0,0.0,0.0,0.0,0.0,3.0,0.0,2.0,0.0,0.0,0.0,0.0
