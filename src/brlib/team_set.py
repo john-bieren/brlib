@@ -34,8 +34,7 @@ class TeamSet:
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the teams' accolades as displayed by the banners in the upper right-hand corner of
-        their pages. [See DataFrame
+        Contains the teams' accolades and those of their players. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambling-and-teamsetbling)
 
     * `batting`: `pandas.DataFrame`

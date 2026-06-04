@@ -1,2 +1,2 @@
-Team,Season,Team ID,Team Gold Glove,Pennant,World Series
-Columbus Turf Club,1932,COT1932,0,0,0
+Player,Player ID,Team,Season,Team ID,AS,GG,SS,MVP Finish,CYA Finish,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series
+Team Totals,,Columbus Turf Club,1932,COT1932,,,,,,,,,0,0,0

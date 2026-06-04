@@ -73,7 +73,7 @@ team_test_cases = [
     "HOU2022",
     # renamed team
     "LAA2012",
-    # same franchise ID as WSH1904 but different team ID (tests TeamSet.records)
+    # same franchise ID as WSH1904 but different team ID (tests TeamSet.records), DH never fielded
     "MIN2019",
     # multiple venues (including a renamed one)
     "PHI1894",

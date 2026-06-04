@@ -879,9 +879,9 @@ class Player:
             count_cols = ("AS", "GG", "SS", "WS MVP")
             finish_cols = ("MVP", "CYA", "ROY")
             by_season = {s: i for i, s in enumerate(season_rows["Season"])}
-            for row in prep_df.itertuples(index=False):
-                i = by_season[row.Season]
-                award = row.Award
+            for row in prep_df.itertuples(index=False, name=None):
+                i = by_season[row[0]]  # "Season"
+                award = row[1]  # "Award"
                 if award in count_cols:
                     season_rows.at[i, award] += 1
                 if "LCS MVP" in award:

@@ -8,6 +8,7 @@ from bs4 import Tag
 from curl_cffi.requests import Response
 
 from ._helpers.constants import (
+    PLAYER_ID_REGEX,
     PYTHAGOREAN_EXPONENT,
     TEAM_BATTING_COLS,
     TEAM_BLING_COLS,
@@ -85,8 +86,7 @@ class Team:
 
     * `bling`: `pandas.DataFrame`
 
-        Contains the team's accolades as displayed by the banners in the upper right-hand corner of
-        their page. [See DataFrame
+        Contains the team's accolades and those of its players. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#teambling-and-teamsetbling)
 
     * `batting`: `pandas.DataFrame`
@@ -356,7 +356,14 @@ class Team:
         self._scrape_info(info)
 
         # gather accolades from bling section
-        self.bling = pd.DataFrame({"Team": [team_name], "Season": [season], "Team ID": [self.id]})
+        self.bling = pd.DataFrame(
+            {
+                "Player": ["Team Totals"],
+                "Team": [team_name],
+                "Season": [season],
+                "Team ID": [self.id],
+            }
+        )
         bling = info.find(id="bling")
         self._scrape_bling(bling)
 
@@ -410,33 +417,32 @@ class Team:
                 if "Inn" in self.fielding.columns:
                     self.fielding["Inn"] = self.fielding["Inn"].apply(convert_innings_notation)
 
-        self.info = self.info.reindex(columns=TEAM_INFO_COLS)
-        self.info = convert_numeric_cols(self.info)
-        self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
-        self.bling = convert_numeric_cols(self.bling)
-
         # merge sorted dfs on index
         self.batting = h_df_1.merge(h_df_2, how="left", left_index=True, right_index=True)
-        self.batting.loc[:, "Season"] = season
-        self.batting.loc[:, "Team"] = team_name
-        self.batting.loc[:, "Team ID"] = self.id
-        self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
-        self.batting = convert_numeric_cols(self.batting)
-
         self.pitching = p_df_1.merge(p_df_2, how="left", left_index=True, right_index=True)
-        self.pitching.loc[:, "Season"] = season
-        self.pitching.loc[:, "Team"] = team_name
-        self.pitching.loc[:, "Team ID"] = self.id
-        self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
-        self.pitching = convert_numeric_cols(self.pitching)
 
-        self.fielding.loc[:, "Season"] = season
-        self.fielding.loc[:, "Team"] = team_name
-        self.fielding.loc[:, "Team ID"] = self.id
+        # add stats from soon-to-be-deleted awards columns into self.bling
+        self._process_awards_columns()
+
+        self.batting[["Season", "Team", "Team ID"]] = season, team_name, self.id
+        self.pitching[["Season", "Team", "Team ID"]] = season, team_name, self.id
+        self.fielding[["Season", "Team", "Team ID"]] = season, team_name, self.id
+
+        self.info = self.info.reindex(columns=TEAM_INFO_COLS)
+        self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
+        self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
+        self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
         self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
+
+        self.info = convert_numeric_cols(self.info)
+        self.bling = convert_numeric_cols(self.bling)
+        self.batting = convert_numeric_cols(self.batting)
+        self.pitching = convert_numeric_cols(self.pitching)
         self.fielding = convert_numeric_cols(self.fielding)
 
         self.players = list(dict.fromkeys(self.players))
+        if len(self.bling) != len(self.players) + 1:
+            dev_alert(f"{self.id} self.bling is not the proper length")
 
         self.info.loc[:, "Number of Players"] = len(self.players)
         pitchers = {p for p in self.pitching["Player ID"].values if p is not None}
@@ -621,29 +627,75 @@ class Team:
         # sort table so that it can be joined to the value table with the expected alignment
         df_1 = df_1.sort_values(by=["Game Type", "Player ID"], ascending=False)
         df_1 = df_1.reset_index(drop=True)
-        df_1 = Team._process_awards_column(df_1)
         return df_1
 
-    @staticmethod
-    def _process_awards_column(df_1: pd.DataFrame) -> pd.DataFrame:
-        """Adds stats that are found in the awards column as their own columns in `df_1`."""
-        df_1.loc[:, ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = 0
-        df_1.loc[:, ["MVP Finish", "CYA Finish", "ROY Finish"]] = None
-        # null out awards columns for totals rows
-        df_1.loc[df_1["Player ID"].isna(), ["AS", "GG", "SS", "LCS MVP", "WS MVP"]] = None
+    def _process_awards_columns(self) -> None:
+        """Adds season-level stats that are found in `"Awards"` columns to `self.bling`."""
+        # extract the awards from the dataframes
+        prep_df = (
+            # these columns will not be present in empty dataframes, hence the concat before reindexing
+            pd.concat([self.batting, self.pitching, self.fielding], ignore_index=True)
+            .reindex(columns=["Player", "Player ID", "Game Type", "Awards"])
+            .drop_duplicates(subset=["Player ID", "Game Type"])
+        )
+        prep_df[["Awards", "Player ID"]] = prep_df[["Awards", "Player ID"]].fillna("")
+        prep_df = prep_df.loc[prep_df["Player ID"].str.fullmatch(PLAYER_ID_REGEX)]
+        prep_df = (
+            prep_df.groupby(["Player", "Player ID"])["Awards"]
+            .apply(lambda x: ",".join(x))
+            .reset_index()
+        )
 
-        for _, row in df_1.iterrows():
-            player_mask = df_1["Player ID"] == row["Player ID"]
-            for award in row["Awards"].split(","):
-                if award in {"AS", "GG", "SS", "WS MVP"}:
-                    df_1.loc[player_mask, award] += 1
-                elif award in {"ALCS MVP", "NLCS MVP"}:
-                    df_1.loc[player_mask, "LCS MVP"] = 1
-                else:
-                    for col in ("MVP", "CYA", "ROY"):
-                        if col in award:
-                            df_1.loc[player_mask, f"{col} Finish"] = int(award[4:])
-        return df_1
+        # the season rows to be added to self.bling
+        season, team = self.name.split(maxsplit=1)
+        season_rows = pd.DataFrame(
+            {
+                "Player": prep_df["Player"].to_numpy(),
+                "Player ID": prep_df["Player ID"].to_numpy(),
+                "Team": team,
+                "Season": season,
+                "Team ID": self.id,
+                "MVP": 0,
+                "MVP Finish": pd.NA,
+                "CYA": 0,
+                "CYA Finish": pd.NA,
+                "ROY": 0,
+                "ROY Finish": pd.NA,
+                "AS": 0,
+                "WS MVP": 0,
+                "LCS MVP": 0,
+                "SS": 0,
+                "GG": 0,
+            },
+            index=range(len(prep_df)),
+        )
+
+        # tally and log awards totals
+        prep_df = (
+            prep_df.assign(Award=prep_df["Awards"].str.split(","))
+            .explode("Award")
+            .reindex(columns=["Player ID", "Award"])
+        )
+        prep_df = prep_df.loc[prep_df["Award"] != ""]
+
+        if not prep_df.empty:
+            count_cols = ("AS", "GG", "SS", "WS MVP")
+            finish_cols = ("MVP", "CYA", "ROY")
+            by_player = {s: i for i, s in enumerate(season_rows["Player ID"])}
+            for row in prep_df.itertuples(index=False, name=None):
+                i = by_player[row[0]]  # "Player ID"
+                award = row[1]  # "Award"
+                if award in count_cols:
+                    season_rows.at[i, award] += 1
+                if "LCS MVP" in award:
+                    season_rows.at[i, "LCS MVP"] = 1
+                if award.startswith(finish_cols):
+                    col, finish = award.split("-", maxsplit=1)
+                    season_rows.at[i, f"{col} Finish"] = int(finish)
+                    if finish == "1":
+                        season_rows.at[i, col] = 1
+
+        self.bling = pd.concat([season_rows, self.bling], ignore_index=True)
 
     def _scrape_value_table(self, table: bs) -> pd.DataFrame:
         """Gathers team value batting/pitching stats from `table`."""
