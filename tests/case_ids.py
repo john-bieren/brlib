@@ -61,7 +61,7 @@ player_test_cases = [
 ]
 
 team_test_cases = [
-    # four managers, limited data, partial park factors
+    # four managers, limited data, partial park factors, no awards
     "BBB1924",
     # non-AL/NL pennant winner, players with multiple AS
     "BEG1939",

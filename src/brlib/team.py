@@ -678,6 +678,22 @@ class Team:
         )
         prep_df = prep_df.loc[prep_df["Award"] != ""]
 
+        self.bling[
+            [
+                "AS",
+                "GG",
+                "SS",
+                "MVP Finish",
+                "MVP",
+                "CYA Finish",
+                "CYA",
+                "ROY",
+                "ROY Finish",
+                "LCS MVP",
+                "WS MVP",
+            ]
+        ] = 0
+
         if not prep_df.empty:
             count_cols = ("AS", "GG", "SS", "WS MVP")
             finish_cols = ("MVP", "CYA", "ROY")
@@ -687,34 +703,19 @@ class Team:
                 award = row[1]  # "Award"
                 if award in count_cols:
                     season_rows.at[i, award] += 1
+                    self.bling.loc[:, award] += 1
                 if "LCS MVP" in award:
                     season_rows.at[i, "LCS MVP"] = 1
+                    self.bling.loc[:, "LCS MVP"] = 1
                 if award.startswith(finish_cols):
                     col, finish = award.split("-", maxsplit=1)
                     season_rows.at[i, f"{col} Finish"] = int(finish)
+                    self.bling.loc[:, f"{col} Finish"] += 1
                     if finish == "1":
                         season_rows.at[i, col] = 1
+                        self.bling.loc[:, col] = 1
 
         self.bling = pd.concat([season_rows, self.bling], ignore_index=True)
-
-        # add player award totals to team totals row
-        sum_cols = [
-            "AS",
-            "GG",
-            "SS",
-            "MVP",
-            "CYA",
-            "ROY",
-            "LCS MVP",
-            "WS MVP",
-        ]
-        self.bling.loc[len(self.bling) - 1, sum_cols] = self.bling.loc[:, sum_cols].sum()
-        count_cols = [
-            "MVP Finish",
-            "CYA Finish",
-            "ROY Finish",
-        ]
-        self.bling.loc[len(self.bling) - 1, count_cols] = self.bling.loc[:, count_cols].count()
 
     def _scrape_value_table(self, table: bs) -> pd.DataFrame:
         """Gathers team value batting/pitching stats from `table`."""
