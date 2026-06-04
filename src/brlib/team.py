@@ -625,7 +625,7 @@ class Team:
         self.players += player_id_column
 
         # sort table so that it can be joined to the value table with the expected alignment
-        df_1 = df_1.sort_values(by=["Game Type", "Player ID"], ascending=False)
+        df_1 = df_1.sort_values(["Game Type", "Player ID"], ascending=False)
         df_1 = df_1.reset_index(drop=True)
         return df_1
 
@@ -645,6 +645,7 @@ class Team:
             .apply(lambda x: ",".join(x))
             .reset_index()
         )
+        prep_df = prep_df.sort_values("Player ID", ascending=False)
 
         # the season rows to be added to self.bling
         season, team = self.name.split(maxsplit=1)
@@ -737,7 +738,7 @@ class Team:
         self.players += player_id_column
 
         # sort table so that it can be joined to the standard table with the expected alignment
-        df_2 = df_2.sort_values(by="Player ID", ascending=False)
+        df_2 = df_2.sort_values("Player ID", ascending=False)
         # remove columns also found in standard table
         df_2 = df_2.drop(
             columns=[
