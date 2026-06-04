@@ -866,6 +866,21 @@ class Player:
             },
             index=range(len(prep_df)),
         )
+        self.bling[
+            [
+                "AS",
+                "GG",
+                "SS",
+                "MVP Finish",
+                "MVP",
+                "CYA Finish",
+                "CYA",
+                "ROY",
+                "ROY Finish",
+                "LCS MVP",
+                "WS MVP",
+            ]
+        ] = 0
 
         # tally and log awards totals
         prep_df = (
@@ -884,13 +899,17 @@ class Player:
                 award = row[1]  # "Award"
                 if award in count_cols:
                     season_rows.at[i, award] += 1
+                    self.bling.loc[:, award] += 1
                 if "LCS MVP" in award:
                     season_rows.at[i, "LCS MVP"] = 1
+                    self.bling.loc[:, "LCS MVP"] += 1
                 if award.startswith(finish_cols):
                     col, finish = award.split("-", maxsplit=1)
                     season_rows.at[i, f"{col} Finish"] = int(finish)
+                    self.bling.loc[:, f"{col} Finish"] += 1
                     if finish == "1":
                         season_rows.at[i, col] = 1
+                        self.bling.loc[:, col] += 1
 
         self.bling = pd.concat([season_rows, self.bling], ignore_index=True)
         self.bling = convert_numeric_cols(self.bling)

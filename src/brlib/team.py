@@ -669,15 +669,6 @@ class Team:
             },
             index=range(len(prep_df)),
         )
-
-        # tally and log awards totals
-        prep_df = (
-            prep_df.assign(Award=prep_df["Awards"].str.split(","))
-            .explode("Award")
-            .reindex(columns=["Player ID", "Award"])
-        )
-        prep_df = prep_df.loc[prep_df["Award"] != ""]
-
         self.bling[
             [
                 "AS",
@@ -693,6 +684,14 @@ class Team:
                 "WS MVP",
             ]
         ] = 0
+
+        # tally and log awards totals
+        prep_df = (
+            prep_df.assign(Award=prep_df["Awards"].str.split(","))
+            .explode("Award")
+            .reindex(columns=["Player ID", "Award"])
+        )
+        prep_df = prep_df.loc[prep_df["Award"] != ""]
 
         if not prep_df.empty:
             count_cols = ("AS", "GG", "SS", "WS MVP")
