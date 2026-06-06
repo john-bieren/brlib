@@ -698,8 +698,8 @@ class Game:
 
         # extract stats from details column
         h_df[["2B", "3B", "HR", "SB", "CS", "SF", "SH", "HBP", "GDP", "IBB"]] = 0
-        for i, row in h_df.iterrows():
-            for stat in row["Details"].split(","):
+        for i, details in enumerate(h_df["Details"].to_numpy()):
+            for stat in details.split(","):
                 if stat == "":
                     continue
                 if "·" in stat:
@@ -818,11 +818,11 @@ class Game:
                 p_df[["Player", "Details"]] = p_df["Player"].str.split(
                     ", ", expand=True, regex=False, n=1
                 )
-                for i, row in p_df.iterrows():
-                    if row["Details"] is None:
+                for i, details in enumerate(p_df["Details"].to_numpy()):
+                    if details is None:
                         continue
-                    details = [d.split(" ", maxsplit=1)[0] for d in row["Details"].split(", ")]
-                    for stat in details:
+                    split_details = [d.split(" ", maxsplit=1)[0] for d in details.split(", ")]
+                    for stat in split_details:
                         # "H" is also the name of the hits allowed column
                         stat = "Holds" if stat == "H" else stat
                         # "SV" is the abbreviation for saves used across the rest of the site

@@ -172,13 +172,13 @@ class AbbreviationsManager(Singleton):
         # For example, LAA is listed as 1961-present, but CAL and ANA were also used during
         # parts of that time. The rows returned should reflect the abbreviations used during season.
         correct_rows = correct_rows.reset_index(drop=True)
-        for i, row in correct_rows.iterrows():
-            franchise_rows = self.df.loc[self.df["Franchise"] == row["Franchise"]]
+        for i, franchise in enumerate(correct_rows["Franchise"].to_numpy()):
+            franchise_rows = self.df.loc[self.df["Franchise"] == franchise]
             franchise_rows = franchise_rows.loc[
                 (franchise_rows["First Year"] <= season) & (franchise_rows["Last Year"] >= season)
             ]
             # for the 1939 Crawfords, skip the normal process to enable the prior workaround
-            if not (season == 1939 and row["Franchise"] == "PC"):
+            if not (season == 1939 and franchise == "PC"):
                 years_col = franchise_rows["Last Year"] - franchise_rows["First Year"]
                 correct_row = franchise_rows.loc[years_col == years_col.min()]
                 correct_rows.iloc[i] = correct_row.reset_index(drop=True).iloc[0]
