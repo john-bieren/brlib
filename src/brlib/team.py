@@ -445,7 +445,7 @@ class Team:
             dev_alert(f"{self.id} self.bling is not the proper length")
 
         self.info.loc[:, "Number of Players"] = len(self.players)
-        pitchers = {p for p in self.pitching["Player ID"].values if p is not None}
+        pitchers = {p for p in self.pitching["Player ID"].values if p is not pd.NA}
         self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
     def _scrape_info(self, info: Tag) -> None:
@@ -613,15 +613,15 @@ class Team:
 
         # missing position values should not be an empty string
         if "Pos" in df_1.columns:
-            df_1.loc[df_1["Pos"] == "", "Pos"] = None
+            df_1.loc[df_1["Pos"] == "", "Pos"] = pd.NA
         # not elif because batting DataFrame has both columns
         if "Position" in df_1.columns:
-            df_1.loc[df_1["Position"] == "", "Position"] = None
+            df_1.loc[df_1["Position"] == "", "Position"] = pd.NA
 
         # add player IDs to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_1.loc[df_1["Rk"] != "", "Player ID"] = player_id_column
-        df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = None
+        df_1.loc[df_1["Player ID"] == "nan", "Player ID"] = pd.NA
         self.players += player_id_column
 
         # sort table so that it can be joined to the value table with the expected alignment
@@ -734,7 +734,7 @@ class Team:
         # add player IDs to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
         df_2.loc[df_2["Rk"] != "", "Player ID"] = player_id_column
-        df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = None
+        df_2.loc[df_2["Player ID"] == "nan", "Player ID"] = pd.NA
         self.players += player_id_column
 
         # sort table so that it can be joined to the standard table with the expected alignment

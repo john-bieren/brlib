@@ -429,7 +429,7 @@ class Game:
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             record = [i for i in record if "Sports Logos.net" not in i]
             # remove the X in the bottom of the ninth, if applicable
-            record = [None if i == "X" else i for i in record]
+            record = [pd.NA if i == "X" else i for i in record]
             records.append(record)
         records[0].pop(0)  # extra empty string
 
@@ -455,21 +455,23 @@ class Game:
 
         changed_winner = FORFEITED_GAME_WINNERS.get(self.id)
         if self._home_score > self._away_score or changed_winner == self._home_team:
-            self._winning_team, self.info["Losing Team"] = self._home_team, self._away_team
+            self._winning_team = self._home_team
+            self.info["Winning Team"], self.info["Losing Team"] = self._home_team, self._away_team
             self.info["Winning Team ID"], self.info["Losing Team ID"] = (
                 self._home_team_id,
                 self._away_team_id,
             )
         elif self._away_score > self._home_score or changed_winner == self._away_team:
-            self._winning_team, self.info["Losing Team"] = self._away_team, self._home_team
+            self._winning_team = self._away_team
+            self.info["Winning Team"], self.info["Losing Team"] = self._away_team, self._home_team
             self.info["Winning Team ID"], self.info["Losing Team ID"] = (
                 self._away_team_id,
                 self._home_team_id,
             )
         else:
-            self._winning_team, self.info["Losing Team"] = None, None
-            self.info["Winning Team ID"], self.info["Losing Team ID"] = None, None
-        self.info["Winning Team"] = self._winning_team
+            self._winning_team = None
+            self.info["Winning Team"], self.info["Losing Team"] = pd.NA, pd.NA
+            self.info["Winning Team ID"], self.info["Losing Team ID"] = pd.NA, pd.NA
 
     def _scrape_heading(self, heading: str) -> None:
         """Scrapes game type and name from `heading`."""
@@ -660,7 +662,7 @@ class Game:
         # get player IDs
         player_id_column = scrape_player_ids(table)
         h_df.loc[is_player_mask, "Player ID"] = player_id_column
-        h_df.loc[~is_player_mask, "Player ID"] = None
+        h_df.loc[~is_player_mask, "Player ID"] = pd.NA
         self.players += player_id_column
 
         # make sure all batters have only one row, combine their stats if not
@@ -790,13 +792,13 @@ class Game:
             # get player IDs
             player_id_column = scrape_player_ids(table)
             p_df.loc[p_df["Player"] != "Team Totals", "Player ID"] = player_id_column
-            p_df.loc[p_df["Player"] == "Team Totals", "Player ID"] = None
+            p_df.loc[p_df["Player"] == "Team Totals", "Player ID"] = pd.NA
             self.players += player_id_column
 
             self._set_team_ids(p_df, table.get("id"))
 
             # replace potential infinite season ERA, which would make column non-numeric
-            p_df.loc[p_df["ERA"] == "inf", "ERA"] = None
+            p_df.loc[p_df["ERA"] == "inf", "ERA"] = pd.NA
             p_df["IP"] = p_df["IP"].apply(convert_innings_notation)
 
             p_df.loc[p_df["Player"] != "Team Totals", "Position"] = "RP"
@@ -924,7 +926,7 @@ class Game:
         self.fielding = self.fielding.reset_index(drop=True)
 
         # some old games have an asterisk in PO team total rows (e.g., SLN190106150)
-        self.fielding.loc[self.fielding["PO"] == "*", "PO"] = None
+        self.fielding.loc[self.fielding["PO"] == "*", "PO"] = pd.NA
 
         # remove pitchers who did not hit
         self.batting = self.batting.loc[~self.batting["AB"].isna()]

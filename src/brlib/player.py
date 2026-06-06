@@ -493,8 +493,7 @@ class Player:
                 ):
                     pass
                 # remove current age cols, since they are inaccurate
-                self.info.loc[:, "Age"] = None
-                self.info.loc[:, "Age (Days)"] = np.nan
+                self.info.loc[:, ["Age", "Age (Days)"]] = pd.NA
 
                 # handle death places
                 if " Ocean" in death_place or " Sea" in death_place:  # died at sea
@@ -693,7 +692,7 @@ class Player:
         # move disclaimer to notes
         self.salaries.loc[career_totals_mask, "Notes/Other Sources"] = "May be incomplete"
         # remove drifting "career to date" values
-        self.salaries.loc[career_totals_mask, ["Age", "Team"]] = None
+        self.salaries.loc[career_totals_mask, ["Age", "Team"]] = pd.NA
         self.salaries.loc[career_totals_mask, "Year"] = "Career Totals"
         # add identifying columns
         self.salaries.loc[:, ["Player", "Player ID"]] = self.name, self.id
@@ -705,7 +704,7 @@ class Player:
         # add future earnings row
         if career_totals_mask.any():  # if career totals are missing, so are future earnings
             future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].values[0]
-            self.salaries.loc[career_totals_mask, "Service Time"] = None
+            self.salaries.loc[career_totals_mask, "Service Time"] = pd.NA
             if future_earnings != "":
                 future_earnings = str_between(future_earnings, "(", ")")
             if "M" in future_earnings:
@@ -717,26 +716,25 @@ class Player:
                     "Player": [self.name],
                     "Player ID": [self.id],
                     "Year": ["Future Earnings"],
-                    "Age": [None],
-                    "Team": [None],
+                    "Age": [pd.NA],
+                    "Team": [pd.NA],
                     "Salary": [future_earnings],
-                    "Service Time": [None],
-                    "Sources": [None],
-                    "Notes/Other Sources": [None],
+                    "Service Time": [pd.NA],
+                    "Sources": [pd.NA],
+                    "Notes/Other Sources": [pd.NA],
                 }
             )
             self.salaries = pd.concat([self.salaries, future_earnings_row]).reset_index(drop=True)
 
         # remove unknown service time, denoted "?"
-        self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = None
+        self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = pd.NA
         # skip future option years, indicated by a leading asterisk
         self.salaries = self.salaries.loc[~self.salaries["Salary"].astype(str).str.startswith("*")]
         # trailing asterisk indicates inconsistent reports, but I'll allow it
         self.salaries["Salary"] = self.salaries["Salary"].str.strip("$*")
         # remove thousands separators
         self.salaries["Salary"] = self.salaries["Salary"].str.replace(",", "")
-        # set empty string values to None
-        self.salaries = self.salaries.replace("", None, regex=True)
+        self.salaries = self.salaries.replace("", pd.NA, regex=True)
 
         # a year can have a row for salary and one for a paid buyout, combine such rows
         self.salaries = convert_numeric_cols(self.salaries)
@@ -792,7 +790,7 @@ class Player:
         h_df_1 = Player._table_to_df(table, add_game_type=True)
         h_df_1 = h_df_1.rename(columns={"WAR": "Batting bWAR", "Lg": "League"})
         h_df_1 = Player._process_career_totals(h_df_1)
-        h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = None
+        h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = pd.NA
 
         # count the team/league summary rows which won't be under the advanced table
         summary_rows = h_df_1.loc[
@@ -826,7 +824,7 @@ class Player:
         self.fielding = Player._table_to_df(table, add_game_type=True)
         self.fielding = self.fielding.rename(columns={"Lg": "League", "Pos": "Position"})
 
-        self.fielding.loc[self.fielding["Position"] == "", "Position"] = None
+        self.fielding.loc[self.fielding["Position"] == "", "Position"] = pd.NA
         # set by-position totals rows to be labeled as such; the "Positions" column already exists
         career_position_totals_mask = self.fielding["Season"].str.contains("(", regex=False)
         self.fielding.loc[career_position_totals_mask, "Season"] = "Career Totals"
@@ -1017,7 +1015,7 @@ class Player:
                 reg_df.loc[:, "Game Type"] = "Regular Season"
                 post_df.loc[:, "Game Type"] = "Postseason"
             if buffer > 0:
-                empty_cols = [[None] * len(reg_df.columns)] * buffer
+                empty_cols = [[pd.NA] * len(reg_df.columns)] * buffer
                 blank_rows = pd.DataFrame(empty_cols, columns=reg_df.columns)
                 reg_df = pd.concat((reg_df, blank_rows))
             df = pd.concat((reg_df, post_df), ignore_index=True)
@@ -1049,7 +1047,7 @@ class Player:
         # restore season column, which should not be shifted
         df.loc[:, "Season"] = original_seasons_column
         # remove the shifted season values from the league column
-        df.loc[shift_rows_mask, "Lg"] = None
+        df.loc[shift_rows_mask, "Lg"] = pd.NA
 
         # properly label the overall career totals row
         df.loc[df["Season"].str.contains("Yrs*$", na=False), "Season"] = "Career Totals"

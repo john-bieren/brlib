@@ -142,8 +142,7 @@ class GameSet:
         prep_df.loc[~non_asg_rows, "Franchise"] = prep_df.loc[~non_asg_rows, "Team"]
 
         self.records = prep_df.groupby("Franchise")["Result"].value_counts()
-        self.records = self.records.unstack(fill_value=0).reset_index()
-        self.records.columns.name = None
+        self.records = self.records.unstack(fill_value=0).rename_axis(columns=None).reset_index()
         self.records = self.records.rename({"Win": "Wins", "Loss": "Losses", "Tie": "Ties"}, axis=1)
         if "Ties" not in self.records.columns:
             self.records["Ties"] = 0
