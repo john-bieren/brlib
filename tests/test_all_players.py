@@ -17,20 +17,20 @@ def test_shape(ap_filtered: pd.DataFrame) -> None:
 
 def test_data(ap_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame contains the expected data."""
-    assert ap_filtered["Player ID"].iloc[:5].values.tolist() == [
+    assert ap_filtered["Player ID"].iloc[:5].tolist() == [
         "aardsda01",
         "aaronha01",
         "aaronto01",
         "aasedo01",
         "abadan01",
     ]
-    assert ap_filtered["Player"].iloc[:5].values.tolist() == [
+    assert ap_filtered["Player"].iloc[:5].tolist() == [
         "David Aardsma",
         "Henry Aaron",
         "Tommie Aaron",
         "Don Aase",
         "Andy Abad",
     ]
-    assert ap_filtered["Career Start"].iloc[:5].values.tolist() == [2004, 1954, 1962, 1977, 2001]
-    assert ap_filtered["Career End"].iloc[:5].values.tolist() == [2015, 1976, 1971, 1990, 2006]
-    assert ap_filtered["Active"].iloc[:5].values.tolist() == [False, False, False, False, False]
+    assert ap_filtered["Career Start"].iloc[:5].tolist() == [2004, 1954, 1962, 1977, 2001]
+    assert ap_filtered["Career End"].iloc[:5].tolist() == [2015, 1976, 1971, 1990, 2006]
+    assert ap_filtered["Active"].iloc[:5].tolist() == [False, False, False, False, False]

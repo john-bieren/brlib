@@ -51,7 +51,7 @@ def all_players() -> pd.DataFrame:
     >>> ap = br.all_players()
     >>> mask = ap["Player ID"].str.startswith("q")
     >>> ap = ap.loc[mask]
-    >>> ap["Player ID"].values.tolist()
+    >>> ap["Player ID"].tolist()
     ['quackke01', 'quallch01', 'quallji01', ...]
     ```
     """

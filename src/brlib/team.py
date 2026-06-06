@@ -445,7 +445,7 @@ class Team:
             dev_alert(f"{self.id} self.bling is not the proper length")
 
         self.info.loc[:, "Number of Players"] = len(self.players)
-        pitchers = {p for p in self.pitching["Player ID"].values if p is not pd.NA}
+        pitchers = {p for p in self.pitching["Player ID"].to_numpy() if p is not pd.NA}
         self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
     def _scrape_info(self, info: Tag) -> None:

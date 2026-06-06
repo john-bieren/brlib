@@ -182,7 +182,7 @@ def _find_season_teams(year: int, year_teams: list[str]) -> list[str]:
             team_mask = abv_mgr.df["Team"] == team
 
         match_rows = abv_mgr.df[year_mask & team_mask]
-        teams = match_rows["Team"].values
+        teams = match_rows["Team"].to_numpy()
         results = [f"{abv}{year}" for abv in teams if abv not in missing_seasons]
         results.sort(key=lambda x: x)  # sort by team abv instead of franchise abv
         team_list.extend(results)

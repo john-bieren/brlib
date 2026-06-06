@@ -223,7 +223,7 @@ class GameSet:
                 if player_id == "":
                     continue
                 player_mask = (self.pitching["Player ID"] == player_id) & game_mask
-                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                nh_team_id = self.pitching.loc[player_mask, "Team ID"].iloc[0]
                 self.pitching.loc[
                     player_mask
                     | (
@@ -237,7 +237,7 @@ class GameSet:
             # add combined no-hitters
             for player_id in cnh_list:
                 player_mask = (self.pitching["Player ID"] == player_id) & game_mask
-                nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                nh_team_id = self.pitching.loc[player_mask, "Team ID"].iloc[0]
                 self.pitching.loc[
                     player_mask
                     | (

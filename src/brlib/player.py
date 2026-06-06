@@ -703,7 +703,7 @@ class Player:
 
         # add future earnings row
         if career_totals_mask.any():  # if career totals are missing, so are future earnings
-            future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].values[0]
+            future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].iloc[0]
             self.salaries.loc[career_totals_mask, "Service Time"] = pd.NA
             if future_earnings != "":
                 future_earnings = str_between(future_earnings, "(", ")")
@@ -1056,9 +1056,9 @@ class Player:
     def _count_years_played(self) -> None:
         """Adds `Years Played` column to `self.info`."""
         years_played = set()
-        years_played.update(self.batting["Season"].values.tolist())
-        years_played.update(self.pitching["Season"].values.tolist())
-        years_played.update(self.fielding["Season"].values.tolist())
+        years_played.update(self.batting["Season"].to_numpy())
+        years_played.update(self.pitching["Season"].to_numpy())
+        years_played.update(self.fielding["Season"].to_numpy())
         # filter out "Career Totals", "162 Game Avg", and anything else that isn't a year
         years_played = set(filter(lambda x: x.isnumeric(), years_played))
         self.info["Years Played"] = len(years_played)

@@ -263,7 +263,7 @@ class Game:
             if player_id == "":
                 continue
             player_mask = self.pitching["Player ID"] == player_id
-            nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+            nh_team_id = self.pitching.loc[player_mask, "Team ID"].iloc[0]
             self.pitching.loc[
                 player_mask
                 | (
@@ -276,7 +276,7 @@ class Game:
         # add combined no-hitters
         for player_id in cnh_list:
             player_mask = self.pitching["Player ID"] == player_id
-            nh_team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+            nh_team_id = self.pitching.loc[player_mask, "Team ID"].iloc[0]
             self.pitching.loc[
                 player_mask
                 | (
@@ -327,7 +327,7 @@ class Game:
                 lambda row: TEAM_REPLACEMENTS.get(row[f"{prefix} Team ID"], row[f"{prefix} Team"]),
                 axis=1,
             )
-        self.name = self.info["Game"].values[0]
+        self.name = self.info["Game"].iloc[0]
 
     def update_venue_names(self) -> None:
         """
@@ -863,7 +863,7 @@ class Game:
                     number = 1
 
                 player_mask = self.pitching["Player"] == player
-                team_id = self.pitching.loc[player_mask, "Team ID"].values[0]
+                team_id = self.pitching.loc[player_mask, "Team ID"].iloc[0]
                 team_totals_mask = both_team_totals_mask & (self.pitching["Team ID"] == team_id)
                 self.pitching.loc[player_mask, stat_name] = number
                 self.pitching.loc[team_totals_mask, stat_name] += number
@@ -1009,7 +1009,7 @@ class Game:
                         else:
                             defenders_mask = self.fielding["Player"] == pitcher
 
-                        defense_team_id = self.fielding.loc[defenders_mask, "Team ID"].values[0]
+                        defense_team_id = self.fielding.loc[defenders_mask, "Team ID"].iloc[0]
                         defense_mask = defenders_mask | (
                             (self.fielding["Player"] == "Team Totals")
                             & (self.fielding["Team ID"] == defense_team_id)

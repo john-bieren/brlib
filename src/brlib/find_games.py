@@ -253,7 +253,7 @@ def _all_franchise_seasons(abbreviations: list[str]) -> set[int]:
     `abbreviations` must be uppercase.
     """
     team_matches = abv_mgr.df.loc[abv_mgr.df["Team"].isin(abbreviations)]
-    franchise_abvs = team_matches["Franchise"].values
+    franchise_abvs = team_matches["Franchise"].to_numpy()
     # get the year ranges for every team abv used by the franchises in franchise_abvs
     year_ranges = abv_mgr.df.loc[
         abv_mgr.df["Franchise"].isin(franchise_abvs), ["First Year", "Last Year"]
