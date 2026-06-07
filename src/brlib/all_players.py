@@ -58,9 +58,11 @@ def all_players() -> pd.DataFrame:
     page = req_mgr.get_page("/short/inc/players_search_list.csv")
     print_page("All MLB Players")
     csv_lines = str(page.content, "UTF-8").strip()
-    # add column names, which are not included in the payload
-    columns = "Player ID,Player,Career Span,Active,1,2,3,4,5\n"
-    players_df = pd.read_csv(StringIO(columns + csv_lines))
+    players_df = pd.read_csv(
+        StringIO(csv_lines),
+        names=["Player ID", "Player", "Career Span", "Active"],
+        usecols=range(4),
+    )
 
     # split career span into start and end (if span is one year, only the year is listed, no range)
     split_span = players_df["Career Span"].str.split("-", n=1)
