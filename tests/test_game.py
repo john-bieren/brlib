@@ -17,14 +17,12 @@ def test_info(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "info.csv"
         expected_df = pd.read_csv(file)
-        compared = game.info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.info, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "info.csv"
         expected_df = pd.read_csv(file)
-        compared = game.info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.info, expected_df)
 
 
 def test_batting(
@@ -36,14 +34,12 @@ def test_batting(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "batting.csv"
         expected_df = pd.read_csv(file)
-        compared = game.batting.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.batting, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "batting.csv"
         expected_df = pd.read_csv(file)
-        compared = game.batting.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.batting, expected_df)
 
 
 def test_pitching(
@@ -55,14 +51,12 @@ def test_pitching(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = game.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.pitching, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = game.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.pitching, expected_df)
 
 
 def test_fielding(
@@ -74,14 +68,12 @@ def test_fielding(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "fielding.csv"
         expected_df = pd.read_csv(file)
-        compared = game.fielding.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.fielding, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "fielding.csv"
         expected_df = pd.read_csv(file)
-        compared = game.fielding.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.fielding, expected_df)
 
 
 def test_linescore(
@@ -93,14 +85,12 @@ def test_linescore(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "linescore.csv"
         expected_df = pd.read_csv(file)
-        compared = game.linescore.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.linescore, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "linescore.csv"
         expected_df = pd.read_csv(file)
-        compared = game.linescore.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.linescore, expected_df)
 
 
 def test_team_info(
@@ -112,14 +102,12 @@ def test_team_info(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "team_info.csv"
         expected_df = pd.read_csv(file)
-        compared = game.team_info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.team_info, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "team_info.csv"
         expected_df = pd.read_csv(file)
-        compared = game.team_info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.team_info, expected_df)
 
 
 def test_ump_info(expected_game_data: Path, games_list: list[br.Game]) -> None:
@@ -127,8 +115,7 @@ def test_ump_info(expected_game_data: Path, games_list: list[br.Game]) -> None:
     for game in games_list:
         file = expected_game_data / "original" / game.id / "ump_info.csv"
         expected_df = pd.read_csv(file)
-        compared = game.ump_info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(game.ump_info, expected_df)
 
 
 def test_players(expected_game_data: Path, games_list: list[br.Game]) -> None:

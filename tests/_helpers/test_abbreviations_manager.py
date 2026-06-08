@@ -1,5 +1,7 @@
 """Tests the methods of the `AbbreviationsManager` singleton."""
 
+import pandas as pd
+
 from brlib._helpers.abbreviations_manager import abv_mgr
 
 
@@ -11,8 +13,7 @@ def test_cache() -> None:
 
     # reset abv_mgr and load data from cache
     abv_mgr.__init__()
-    compared = abv_mgr.df.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(abv_mgr.df, expected_df)
 
 
 def test_correct_abvs() -> None:

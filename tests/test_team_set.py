@@ -44,34 +44,28 @@ def test_bling(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
 def test_batting(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("teams", "batting", False)
-    compared = team_set.batting.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(team_set.batting, expected_df)
 
     expected_df = get_expected_df("teams", "batting", True)
-    compared = updated_team_set.batting.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_team_set.batting, expected_df)
 
 
 def test_pitching(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
     expected_df = get_expected_df("teams", "pitching", False)
-    compared = team_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(team_set.pitching, expected_df)
 
     expected_df = get_expected_df("teams", "pitching", True)
-    compared = updated_team_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_team_set.pitching, expected_df)
 
 
 def test_fielding(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
     expected_df = get_expected_df("teams", "fielding", False)
-    compared = team_set.fielding.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(team_set.fielding, expected_df)
 
     expected_df = get_expected_df("teams", "fielding", True)
-    compared = updated_team_set.fielding.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_team_set.fielding, expected_df)
 
 
 def test_records(expected_team_data: Path, team_set: br.TeamSet) -> None:

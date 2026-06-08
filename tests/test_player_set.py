@@ -1,5 +1,6 @@
 """Tests the attributes and methods of the `PlayerSet` class."""
 
+import pandas as pd
 import pytest
 from get_expected import get_expected_df, get_expected_list
 
@@ -25,55 +26,46 @@ def test_dunders(players_list: list[br.Player], player_set: br.PlayerSet) -> Non
 def test_info(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `info` DataFrame."""
     expected_df = get_expected_df("players", "info", False)
-    compared = player_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.info, expected_df)
 
     expected_df = get_expected_df("players", "info", True)
-    compared = updated_player_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_player_set.info, expected_df)
 
 
 def test_bling(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `bling` DataFrame."""
     expected_df = get_expected_df("players", "bling")
-    compared = player_set.bling.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.bling, expected_df)
 
 
 def test_batting(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("players", "batting", False)
-    compared = player_set.batting.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.batting, expected_df)
 
 
 def test_pitching(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
     expected_df = get_expected_df("players", "pitching", False)
-    compared = player_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.pitching, expected_df)
 
     expected_df = get_expected_df("players", "pitching", True)
-    compared = updated_player_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_player_set.pitching, expected_df)
 
 
 def test_fielding(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
     expected_df = get_expected_df("players", "fielding", False)
-    compared = player_set.fielding.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.fielding, expected_df)
 
 
 def test_salaries(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `salaries` DataFrame."""
     expected_df = get_expected_df("players", "salaries", False)
-    compared = player_set.salaries.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(player_set.salaries, expected_df)
 
     expected_df = get_expected_df("players", "salaries", True)
-    compared = updated_player_set.salaries.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_player_set.salaries, expected_df)
 
 
 def test_teams(player_set: br.PlayerSet) -> None:

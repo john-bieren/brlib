@@ -26,63 +26,52 @@ def test_dunders(games_list: list[br.Game], game_set: br.GameSet) -> None:
 def test_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `info` DataFrame."""
     expected_df = get_expected_df("games", "info", False)
-    compared = game_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.info, expected_df)
 
     expected_df = get_expected_df("games", "info", True)
-    compared = updated_game_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_game_set.info, expected_df)
 
 
 def test_batting(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("games", "batting", False)
-    compared = game_set.batting.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.batting, expected_df)
 
     expected_df = get_expected_df("games", "batting", True)
-    compared = updated_game_set.batting.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_game_set.batting, expected_df)
 
 
 def test_pitching(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
     expected_df = get_expected_df("games", "pitching", False)
-    compared = game_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.pitching, expected_df)
 
     expected_df = get_expected_df("games", "pitching", True)
-    compared = updated_game_set.pitching.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_game_set.pitching, expected_df)
 
 
 def test_fielding(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
     expected_df = get_expected_df("games", "fielding", False)
-    compared = game_set.fielding.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.fielding, expected_df)
 
     expected_df = get_expected_df("games", "info", True)
-    compared = updated_game_set.info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_game_set.info, expected_df)
 
 
 def test_team_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `team_info` DataFrame."""
     expected_df = get_expected_df("games", "team_info", False)
-    compared = game_set.team_info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.team_info, expected_df)
 
     expected_df = get_expected_df("games", "team_info", True)
-    compared = updated_game_set.team_info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(updated_game_set.team_info, expected_df)
 
 
 def test_ump_info(game_set: br.GameSet) -> None:
     """Tests the contents of the `ump_info` DataFrame."""
     expected_df = get_expected_df("games", "ump_info")
-    compared = game_set.ump_info.compare(expected_df)
-    assert compared.empty
+    pd.testing.assert_frame_equal(game_set.ump_info, expected_df)
 
 
 def test_records(expected_game_data: Path, game_set: br.GameSet) -> None:

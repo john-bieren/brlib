@@ -17,14 +17,12 @@ def test_info(
     for player in players_list:
         file = expected_player_data / "original" / player.id / "info.csv"
         expected_df = pd.read_csv(file)
-        compared = player.info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.info, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "info.csv"
         expected_df = pd.read_csv(file)
-        compared = player.info.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.info, expected_df)
 
 
 def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> None:
@@ -32,8 +30,7 @@ def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> Non
     for player in players_list:
         file = expected_player_data / "original" / player.id / "bling.csv"
         expected_df = pd.read_csv(file)
-        compared = player.bling.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.bling, expected_df)
 
 
 def test_batting(expected_player_data: Path, players_list: list[br.Player]) -> None:
@@ -41,8 +38,7 @@ def test_batting(expected_player_data: Path, players_list: list[br.Player]) -> N
     for player in players_list:
         file = expected_player_data / "original" / player.id / "batting.csv"
         expected_df = pd.read_csv(file)
-        compared = player.batting.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.batting, expected_df)
 
 
 def test_pitching(
@@ -54,14 +50,12 @@ def test_pitching(
     for player in players_list:
         file = expected_player_data / "original" / player.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = player.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.pitching, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = player.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.pitching, expected_df)
 
 
 def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> None:
@@ -69,8 +63,7 @@ def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> 
     for player in players_list:
         file = expected_player_data / "original" / player.id / "fielding.csv"
         expected_df = pd.read_csv(file)
-        compared = player.fielding.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.fielding, expected_df)
 
 
 def test_salaries(
@@ -82,14 +75,12 @@ def test_salaries(
     for player in players_list:
         file = expected_player_data / "original" / player.id / "salaries.csv"
         expected_df = pd.read_csv(file)
-        compared = player.salaries.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.salaries, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "salaries.csv"
         expected_df = pd.read_csv(file)
-        compared = player.salaries.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(player.salaries, expected_df)
 
 
 def test_relatives(expected_player_data: Path, players_list: list[br.Player]) -> None:

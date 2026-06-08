@@ -51,14 +51,12 @@ def test_batting(
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "batting.csv"
         expected_df = pd.read_csv(file)
-        compared = team.batting.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.batting, expected_df)
 
     for team in updated_teams_list:
         file = expected_team_data / "updated" / team.id / "batting.csv"
         expected_df = pd.read_csv(file)
-        compared = team.batting.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.batting, expected_df)
 
 
 def test_pitching(
@@ -70,14 +68,12 @@ def test_pitching(
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = team.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.pitching, expected_df)
 
     for team in updated_teams_list:
         file = expected_team_data / "updated" / team.id / "pitching.csv"
         expected_df = pd.read_csv(file)
-        compared = team.pitching.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.pitching, expected_df)
 
 
 def test_fielding(
@@ -89,14 +85,12 @@ def test_fielding(
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "fielding.csv"
         expected_df = pd.read_csv(file)
-        compared = team.fielding.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.fielding, expected_df)
 
     for team in updated_teams_list:
         file = expected_team_data / "updated" / team.id / "fielding.csv"
         expected_df = pd.read_csv(file)
-        compared = team.fielding.compare(expected_df)
-        assert compared.empty
+        pd.testing.assert_frame_equal(team.fielding, expected_df)
 
 
 def test_players(expected_team_data: Path, teams_list: list[br.Team]) -> None:
