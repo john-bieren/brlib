@@ -1,6 +1,7 @@
 """Sets reusable objects for testing."""
 
 import copy
+import warnings
 from pathlib import Path
 
 import pandas as pd
@@ -11,13 +12,24 @@ import brlib as br
 from brlib._helpers.abbreviations_manager import abv_mgr
 from brlib._helpers.constants import CACHE_DIR
 
-# standardize options configuration
-br.options._preferences.clear()
-br.options._changes.clear()
-br.options.dev_alerts = True
-br.options.print_pages = True
 
-assert br.test_connection()
+@pytest.fixture(scope="session", autouse=True)
+def set_options() -> None:
+    """Standardizes options for consistency and maximum transparency during tests."""
+    warnings.simplefilter("default")
+    br.options._preferences.clear()
+    br.options._changes.clear()
+    br.options.dev_alerts = True
+    br.options.print_pages = True
+
+
+@pytest.fixture(scope="session", autouse=True)
+def test_connection() -> None:
+    """
+    Tests the test_connection function. Must run before all other tests to ensure that Baseball
+    Reference can be reached.
+    """
+    assert br.test_connection()
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -25,7 +37,7 @@ def test_clear_cache() -> None:
     """
     Tests the clear_cache function by removing the abv_data cache file and resets `abv_mgr` to
     re-load its data from the web and re-create its cache file for later testing. Must run before
-    all other tests so that the presence or deletion of cached data doesn't affect test results.
+    other tests so that the presence or deletion of cached data doesn't affect test results.
     """
     br.options.clear_cache()
     # test clear_cache
