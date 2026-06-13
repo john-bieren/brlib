@@ -66,9 +66,10 @@ def all_players() -> pd.DataFrame:
     )
 
     # split career span into start and end (if span is one year, only the year is listed, no range)
-    split_span = players_df["Career Span"].str.split("-", n=1)
-    players_df["Career Start"] = split_span.str[0].astype("Int64")
-    players_df["Career End"] = split_span.str[-1].astype("Int64")
+    players_df[["Career Start", "Career End"]] = (
+        players_df["Career Span"].str.split("-", n=1, expand=True).astype("Int64")
+    )
+    players_df["Career End"] = players_df["Career End"].fillna(players_df["Career Start"])
 
     players_df = players_df.reindex(columns=list(ALL_PLAYERS_DTYPES))
     players_df = players_df.astype(ALL_PLAYERS_DTYPES)

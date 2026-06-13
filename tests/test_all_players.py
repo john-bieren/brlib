@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from brlib._helpers.constants import ALL_PLAYERS_DTYPES
+
 
 def test_shape(ap_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame has the right shape."""
@@ -17,6 +19,8 @@ def test_shape(ap_filtered: pd.DataFrame) -> None:
 
 def test_data(ap_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame contains the expected data."""
+    for col, expected_dtype in ALL_PLAYERS_DTYPES.items():
+        assert ap_filtered[col].dtype == expected_dtype
     assert ap_filtered["Player ID"].iloc[:5].tolist() == [
         "aardsda01",
         "aaronha01",
