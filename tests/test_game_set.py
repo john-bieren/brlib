@@ -7,6 +7,15 @@ import pytest
 from get_expected import get_expected_df, get_expected_list
 
 import brlib as br
+from brlib._helpers.constants import (
+    GAME_BATTING_DTYPES,
+    GAME_FIELDING_DTYPES,
+    GAME_INFO_DTYPES,
+    GAME_PITCHING_DTYPES,
+    GAME_TEAM_INFO_DTYPES,
+    GAME_UMP_INFO_DTYPES,
+    RECORDS_DTYPES,
+)
 
 
 def test_empty_rejection() -> None:
@@ -25,59 +34,59 @@ def test_dunders(games_list: list[br.Game], game_set: br.GameSet) -> None:
 
 def test_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `info` DataFrame."""
-    expected_df = get_expected_df("games", "info", False)
+    expected_df = get_expected_df("games", "info", False, GAME_INFO_DTYPES)
     pd.testing.assert_frame_equal(game_set.info, expected_df)
 
-    expected_df = get_expected_df("games", "info", True)
+    expected_df = get_expected_df("games", "info", True, GAME_INFO_DTYPES)
     pd.testing.assert_frame_equal(updated_game_set.info, expected_df)
 
 
 def test_batting(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
-    expected_df = get_expected_df("games", "batting", False)
+    expected_df = get_expected_df("games", "batting", False, GAME_BATTING_DTYPES)
     pd.testing.assert_frame_equal(game_set.batting, expected_df)
 
-    expected_df = get_expected_df("games", "batting", True)
+    expected_df = get_expected_df("games", "batting", True, GAME_BATTING_DTYPES)
     pd.testing.assert_frame_equal(updated_game_set.batting, expected_df)
 
 
 def test_pitching(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
-    expected_df = get_expected_df("games", "pitching", False)
+    expected_df = get_expected_df("games", "pitching", False, GAME_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(game_set.pitching, expected_df)
 
-    expected_df = get_expected_df("games", "pitching", True)
+    expected_df = get_expected_df("games", "pitching", True, GAME_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(updated_game_set.pitching, expected_df)
 
 
 def test_fielding(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
-    expected_df = get_expected_df("games", "fielding", False)
+    expected_df = get_expected_df("games", "fielding", False, GAME_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(game_set.fielding, expected_df)
 
-    expected_df = get_expected_df("games", "info", True)
-    pd.testing.assert_frame_equal(updated_game_set.info, expected_df)
+    expected_df = get_expected_df("games", "fielding", True, GAME_FIELDING_DTYPES)
+    pd.testing.assert_frame_equal(updated_game_set.fielding, expected_df)
 
 
 def test_team_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `team_info` DataFrame."""
-    expected_df = get_expected_df("games", "team_info", False)
+    expected_df = get_expected_df("games", "team_info", False, GAME_TEAM_INFO_DTYPES)
     pd.testing.assert_frame_equal(game_set.team_info, expected_df)
 
-    expected_df = get_expected_df("games", "team_info", True)
+    expected_df = get_expected_df("games", "team_info", True, GAME_TEAM_INFO_DTYPES)
     pd.testing.assert_frame_equal(updated_game_set.team_info, expected_df)
 
 
 def test_ump_info(game_set: br.GameSet) -> None:
     """Tests the contents of the `ump_info` DataFrame."""
-    expected_df = get_expected_df("games", "ump_info")
+    expected_df = get_expected_df("games", "ump_info", False, GAME_UMP_INFO_DTYPES)
     pd.testing.assert_frame_equal(game_set.ump_info, expected_df)
 
 
 def test_records(expected_game_data: Path, game_set: br.GameSet) -> None:
     """Tests the contents of the `records` DataFrame."""
     file = expected_game_data / "records.csv"
-    expected_df = pd.read_csv(file)
+    expected_df = pd.read_csv(file, dtype=RECORDS_DTYPES)
     pd.testing.assert_frame_equal(game_set.records, expected_df)  # to handle win % precision
 
 

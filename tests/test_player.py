@@ -6,6 +6,14 @@ from pathlib import Path
 import pandas as pd
 
 import brlib as br
+from brlib._helpers.constants import (
+    PLAYER_BATTING_DTYPES,
+    PLAYER_BLING_DTYPES,
+    PLAYER_FIELDING_DTYPES,
+    PLAYER_INFO_DTYPES,
+    PLAYER_PITCHING_DTYPES,
+    PLAYER_SALARIES_DTYPES,
+)
 
 
 def test_info(
@@ -16,12 +24,12 @@ def test_info(
     """Tests the contents of the `info` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "info.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_INFO_DTYPES)
         pd.testing.assert_frame_equal(player.info, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "info.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_INFO_DTYPES)
         pd.testing.assert_frame_equal(player.info, expected_df)
 
 
@@ -29,7 +37,7 @@ def test_bling(expected_player_data: Path, players_list: list[br.Player]) -> Non
     """Tests the contents of the `bling` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "bling.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_BLING_DTYPES)
         pd.testing.assert_frame_equal(player.bling, expected_df)
 
 
@@ -37,7 +45,7 @@ def test_batting(expected_player_data: Path, players_list: list[br.Player]) -> N
     """Tests the contents of the `batting` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "batting.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_BATTING_DTYPES)
         pd.testing.assert_frame_equal(player.batting, expected_df)
 
 
@@ -49,12 +57,12 @@ def test_pitching(
     """Tests the contents of the `pitching` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "pitching.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_PITCHING_DTYPES)
         pd.testing.assert_frame_equal(player.pitching, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "pitching.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_PITCHING_DTYPES)
         pd.testing.assert_frame_equal(player.pitching, expected_df)
 
 
@@ -62,7 +70,7 @@ def test_fielding(expected_player_data: Path, players_list: list[br.Player]) -> 
     """Tests the contents of the `fielding` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "fielding.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_FIELDING_DTYPES)
         pd.testing.assert_frame_equal(player.fielding, expected_df)
 
 
@@ -74,12 +82,12 @@ def test_salaries(
     """Tests the contents of the `salaries` DataFrame."""
     for player in players_list:
         file = expected_player_data / "original" / player.id / "salaries.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_SALARIES_DTYPES)
         pd.testing.assert_frame_equal(player.salaries, expected_df)
 
     for player in updated_players_list:
         file = expected_player_data / "updated" / player.id / "salaries.csv"
-        expected_df = pd.read_csv(file)
+        expected_df = pd.read_csv(file, dtype=PLAYER_SALARIES_DTYPES)
         pd.testing.assert_frame_equal(player.salaries, expected_df)
 
 

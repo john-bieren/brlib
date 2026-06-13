@@ -7,6 +7,14 @@ import pytest
 from get_expected import get_expected_df, get_expected_list
 
 import brlib as br
+from brlib._helpers.constants import (
+    RECORDS_DTYPES,
+    TEAM_BATTING_DTYPES,
+    TEAM_BLING_DTYPES,
+    TEAM_FIELDING_DTYPES,
+    TEAM_INFO_DTYPES,
+    TEAM_PITCHING_DTYPES,
+)
 
 
 def test_empty_rejection() -> None:
@@ -25,53 +33,53 @@ def test_dunders(teams_list: list[br.Team], team_set: br.TeamSet) -> None:
 
 def test_info(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `info` DataFrame."""
-    expected_df = get_expected_df("teams", "info", False)
+    expected_df = get_expected_df("teams", "info", False, TEAM_INFO_DTYPES)
     pd.testing.assert_frame_equal(team_set.info, expected_df)  # to handle win % precision
 
-    expected_df = get_expected_df("teams", "info", True)
+    expected_df = get_expected_df("teams", "info", True, TEAM_INFO_DTYPES)
     pd.testing.assert_frame_equal(updated_team_set.info, expected_df)  # to handle win % precision
 
 
 def test_bling(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `bling` DataFrame."""
-    expected_df = get_expected_df("teams", "bling", False)
+    expected_df = get_expected_df("teams", "bling", False, TEAM_BLING_DTYPES)
     pd.testing.assert_frame_equal(team_set.bling, expected_df)  # to handle win % precision
 
-    expected_df = get_expected_df("teams", "bling", True)
+    expected_df = get_expected_df("teams", "bling", True, TEAM_BLING_DTYPES)
     pd.testing.assert_frame_equal(updated_team_set.bling, expected_df)  # to handle win % precision
 
 
 def test_batting(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
-    expected_df = get_expected_df("teams", "batting", False)
+    expected_df = get_expected_df("teams", "batting", False, TEAM_BATTING_DTYPES)
     pd.testing.assert_frame_equal(team_set.batting, expected_df)
 
-    expected_df = get_expected_df("teams", "batting", True)
+    expected_df = get_expected_df("teams", "batting", True, TEAM_BATTING_DTYPES)
     pd.testing.assert_frame_equal(updated_team_set.batting, expected_df)
 
 
 def test_pitching(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
-    expected_df = get_expected_df("teams", "pitching", False)
+    expected_df = get_expected_df("teams", "pitching", False, TEAM_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(team_set.pitching, expected_df)
 
-    expected_df = get_expected_df("teams", "pitching", True)
+    expected_df = get_expected_df("teams", "pitching", True, TEAM_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(updated_team_set.pitching, expected_df)
 
 
 def test_fielding(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
-    expected_df = get_expected_df("teams", "fielding", False)
+    expected_df = get_expected_df("teams", "fielding", False, TEAM_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(team_set.fielding, expected_df)
 
-    expected_df = get_expected_df("teams", "fielding", True)
+    expected_df = get_expected_df("teams", "fielding", True, TEAM_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(updated_team_set.fielding, expected_df)
 
 
 def test_records(expected_team_data: Path, team_set: br.TeamSet) -> None:
     """Tests the contents of the `records` DataFrame."""
     file = expected_team_data / "records.csv"
-    expected_df = pd.read_csv(file)
+    expected_df = pd.read_csv(file, dtype=RECORDS_DTYPES)
     pd.testing.assert_frame_equal(team_set.records, expected_df)  # to handle win % precision
 
 

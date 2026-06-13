@@ -6,7 +6,7 @@ import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_mgr
 from ._helpers.constants import (
-    RECORDS_COLS,
+    RECORDS_DTYPES,
     TEAM_REPLACEMENTS,
     VENUE_REPLACEMENTS,
 )
@@ -151,7 +151,8 @@ class GameSet:
         self.records["W-L%"] = self.records["Wins"] / (
             self.records["Wins"] + self.records["Losses"]
         )
-        self.records = self.records.reindex(columns=RECORDS_COLS)
+        self.records = self.records.reindex(columns=list(RECORDS_DTYPES))
+        self.records = self.records.astype(RECORDS_DTYPES)
 
     def add_no_hitters(self) -> None:
         """

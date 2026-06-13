@@ -2,6 +2,7 @@
 
 import re
 
+import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
@@ -10,11 +11,11 @@ from curl_cffi.requests import Response
 from ._helpers.constants import (
     PLAYER_ID_REGEX,
     PYTHAGOREAN_EXPONENT,
-    TEAM_BATTING_COLS,
-    TEAM_BLING_COLS,
-    TEAM_FIELDING_COLS,
-    TEAM_INFO_COLS,
-    TEAM_PITCHING_COLS,
+    TEAM_BATTING_DTYPES,
+    TEAM_BLING_DTYPES,
+    TEAM_FIELDING_DTYPES,
+    TEAM_INFO_DTYPES,
+    TEAM_PITCHING_DTYPES,
     TEAM_REPLACEMENTS,
     TEAM_URL_REGEX,
     VENUE_REPLACEMENTS,
@@ -373,13 +374,17 @@ class Team:
             "No stats are currently available for this team." in content.text  # e.g., COT1932
             or "These stats are for the players to appear in spring training games" in content.text
         ):
-            self.info = self.info.reindex(columns=TEAM_INFO_COLS)
-            self.info = convert_numeric_cols(self.info)
-            self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
-            self.bling = convert_numeric_cols(self.bling)
-            self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
-            self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
-            self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
+            self.info = self.info.reindex(columns=list(TEAM_INFO_DTYPES))
+            self.bling = self.bling.reindex(columns=list(TEAM_BLING_DTYPES))
+            self.batting = self.batting.reindex(columns=list(TEAM_BATTING_DTYPES))
+            self.pitching = self.pitching.reindex(columns=list(TEAM_PITCHING_DTYPES))
+            self.fielding = self.fielding.reindex(columns=list(TEAM_FIELDING_DTYPES))
+
+            self.info = self.info.astype(TEAM_INFO_DTYPES)
+            self.bling = self.bling.astype(TEAM_BLING_DTYPES)
+            self.batting = self.batting.astype(TEAM_BATTING_DTYPES)
+            self.pitching = self.pitching.astype(TEAM_PITCHING_DTYPES)
+            self.fielding = self.fielding.astype(TEAM_FIELDING_DTYPES)
             return
 
         # gather player stats from the relevant tables
@@ -428,24 +433,24 @@ class Team:
         self.pitching[["Season", "Team", "Team ID"]] = season, team_name, self.id
         self.fielding[["Season", "Team", "Team ID"]] = season, team_name, self.id
 
-        self.info = self.info.reindex(columns=TEAM_INFO_COLS)
-        self.bling = self.bling.reindex(columns=TEAM_BLING_COLS)
-        self.batting = self.batting.reindex(columns=TEAM_BATTING_COLS)
-        self.pitching = self.pitching.reindex(columns=TEAM_PITCHING_COLS)
-        self.fielding = self.fielding.reindex(columns=TEAM_FIELDING_COLS)
+        self.info = self.info.reindex(columns=list(TEAM_INFO_DTYPES))
+        self.bling = self.bling.reindex(columns=list(TEAM_BLING_DTYPES))
+        self.batting = self.batting.reindex(columns=list(TEAM_BATTING_DTYPES))
+        self.pitching = self.pitching.reindex(columns=list(TEAM_PITCHING_DTYPES))
+        self.fielding = self.fielding.reindex(columns=list(TEAM_FIELDING_DTYPES))
 
-        self.info = convert_numeric_cols(self.info)
-        self.bling = convert_numeric_cols(self.bling)
-        self.batting = convert_numeric_cols(self.batting)
-        self.pitching = convert_numeric_cols(self.pitching)
-        self.fielding = convert_numeric_cols(self.fielding)
+        self.info = convert_numeric_cols(self.info).astype(TEAM_INFO_DTYPES)
+        self.bling = convert_numeric_cols(self.bling).astype(TEAM_BLING_DTYPES)
+        self.batting = convert_numeric_cols(self.batting).astype(TEAM_BATTING_DTYPES)
+        self.pitching = convert_numeric_cols(self.pitching).astype(TEAM_PITCHING_DTYPES)
+        self.fielding = convert_numeric_cols(self.fielding).astype(TEAM_FIELDING_DTYPES)
 
         self.players = list(dict.fromkeys(self.players))
         if len(self.bling) != len(self.players) + 1:
             dev_alert(f"{self.id} self.bling is not the proper length")
 
         self.info.loc[:, "Number of Players"] = len(self.players)
-        pitchers = {p for p in self.pitching["Player ID"].to_numpy() if p is not pd.NA}
+        pitchers = {p for p in self.pitching["Player ID"].to_numpy() if p is not np.nan}
         self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
     def _scrape_info(self, info: Tag) -> None:
@@ -526,7 +531,7 @@ class Team:
                     dev_alert(f"{self.id}: only one-year park factors; potential test case")
                     one_year = line_str.split("One-year:", maxsplit=1)[1]
 
-                my_bat = my_pit = oy_bat = oy_pit = ""
+                my_bat = my_pit = oy_bat = oy_pit = np.nan
                 if multi_year != "":
                     my_bat, my_pit = multi_year.strip().split(", ", maxsplit=1)
                     my_bat = my_bat.split(" - ", maxsplit=1)[1]

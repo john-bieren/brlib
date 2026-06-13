@@ -4,7 +4,6 @@ import re
 from collections import Counter, defaultdict
 from datetime import datetime
 
-import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
@@ -16,12 +15,12 @@ from ._helpers.constants import (
     BLING_DICT,
     LEAGUE_ABVS,
     MULTI_TEAM_REGEX,
-    PLAYER_BATTING_COLS,
-    PLAYER_BLING_COLS,
-    PLAYER_FIELDING_COLS,
-    PLAYER_INFO_COLS,
-    PLAYER_PITCHING_COLS,
-    PLAYER_SALARIES_COLS,
+    PLAYER_BATTING_DTYPES,
+    PLAYER_BLING_DTYPES,
+    PLAYER_FIELDING_DTYPES,
+    PLAYER_INFO_DTYPES,
+    PLAYER_PITCHING_DTYPES,
+    PLAYER_SALARIES_DTYPES,
     PLAYER_URL_REGEX,
     RELATIVES_DICT,
     SEASON_REGEX,
@@ -367,17 +366,24 @@ class Player:
         # add stats from soon-to-be-deleted awards columns into self.bling
         self._process_awards_columns()
 
-        self.info = self.info.reindex(columns=PLAYER_INFO_COLS)
-        self.bling = self.bling.reindex(columns=PLAYER_BLING_COLS)
-        self.batting = self.batting.reindex(columns=PLAYER_BATTING_COLS)
-        self.pitching = self.pitching.reindex(columns=PLAYER_PITCHING_COLS)
-        self.fielding = self.fielding.reindex(columns=PLAYER_FIELDING_COLS)
-        self.salaries = self.salaries.reindex(columns=PLAYER_SALARIES_COLS)
         self.relatives = dict(self.relatives)
+        self.info = self.info.reindex(columns=list(PLAYER_INFO_DTYPES))
+        self.bling = self.bling.reindex(columns=list(PLAYER_BLING_DTYPES))
+        self.batting = self.batting.reindex(columns=list(PLAYER_BATTING_DTYPES))
+        self.pitching = self.pitching.reindex(columns=list(PLAYER_PITCHING_DTYPES))
+        self.fielding = self.fielding.reindex(columns=list(PLAYER_FIELDING_DTYPES))
+        self.salaries = self.salaries.reindex(columns=list(PLAYER_SALARIES_DTYPES))
 
         # get final pieces of info which require the above reindexing
         self._count_years_played()
         self._find_teams_info()
+
+        self.info = self.info.astype(PLAYER_INFO_DTYPES)
+        self.bling = self.bling.astype(PLAYER_BLING_DTYPES)
+        self.batting = self.batting.astype(PLAYER_BATTING_DTYPES)
+        self.pitching = self.pitching.astype(PLAYER_PITCHING_DTYPES)
+        self.fielding = self.fielding.astype(PLAYER_FIELDING_DTYPES)
+        self.salaries = self.salaries.astype(PLAYER_SALARIES_DTYPES)
 
     def _scrape_info(self, info: Tag, wrap: Tag) -> None:
         """Populates `self.info` with data from `info` and `wrap`."""
@@ -966,8 +972,7 @@ class Player:
         # convert cWPA from percentage to float
         if "cWPA" in df_3.columns:
             df_3.loc[:, "cWPA"] = df_3["cWPA"].str.strip("%")
-            df_3.loc[:, "cWPA"] = pd.to_numeric(df_3["cWPA"], errors="coerce") / 100
-            df_3.loc[:, "cWPA"] = df_3["cWPA"].astype(float).round(4)
+            df_3["cWPA"] = (pd.to_numeric(df_3["cWPA"], errors="coerce") / 100).round(4)
         return df_3
 
     @staticmethod

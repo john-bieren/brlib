@@ -5,6 +5,14 @@ import pytest
 from get_expected import get_expected_df, get_expected_list
 
 import brlib as br
+from brlib._helpers.constants import (
+    PLAYER_BATTING_DTYPES,
+    PLAYER_BLING_DTYPES,
+    PLAYER_FIELDING_DTYPES,
+    PLAYER_INFO_DTYPES,
+    PLAYER_PITCHING_DTYPES,
+    PLAYER_SALARIES_DTYPES,
+)
 
 
 def test_empty_rejection() -> None:
@@ -25,46 +33,46 @@ def test_dunders(players_list: list[br.Player], player_set: br.PlayerSet) -> Non
 
 def test_info(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `info` DataFrame."""
-    expected_df = get_expected_df("players", "info", False)
+    expected_df = get_expected_df("players", "info", False, PLAYER_INFO_DTYPES)
     pd.testing.assert_frame_equal(player_set.info, expected_df)
 
-    expected_df = get_expected_df("players", "info", True)
+    expected_df = get_expected_df("players", "info", True, PLAYER_INFO_DTYPES)
     pd.testing.assert_frame_equal(updated_player_set.info, expected_df)
 
 
 def test_bling(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `bling` DataFrame."""
-    expected_df = get_expected_df("players", "bling")
+    expected_df = get_expected_df("players", "bling", False, PLAYER_BLING_DTYPES)
     pd.testing.assert_frame_equal(player_set.bling, expected_df)
 
 
 def test_batting(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
-    expected_df = get_expected_df("players", "batting", False)
+    expected_df = get_expected_df("players", "batting", False, PLAYER_BATTING_DTYPES)
     pd.testing.assert_frame_equal(player_set.batting, expected_df)
 
 
 def test_pitching(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
-    expected_df = get_expected_df("players", "pitching", False)
+    expected_df = get_expected_df("players", "pitching", False, PLAYER_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(player_set.pitching, expected_df)
 
-    expected_df = get_expected_df("players", "pitching", True)
+    expected_df = get_expected_df("players", "pitching", True, PLAYER_PITCHING_DTYPES)
     pd.testing.assert_frame_equal(updated_player_set.pitching, expected_df)
 
 
 def test_fielding(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
-    expected_df = get_expected_df("players", "fielding", False)
+    expected_df = get_expected_df("players", "fielding", False, PLAYER_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(player_set.fielding, expected_df)
 
 
 def test_salaries(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) -> None:
     """Tests the contents of the `salaries` DataFrame."""
-    expected_df = get_expected_df("players", "salaries", False)
+    expected_df = get_expected_df("players", "salaries", False, PLAYER_SALARIES_DTYPES)
     pd.testing.assert_frame_equal(player_set.salaries, expected_df)
 
-    expected_df = get_expected_df("players", "salaries", True)
+    expected_df = get_expected_df("players", "salaries", True, PLAYER_SALARIES_DTYPES)
     pd.testing.assert_frame_equal(updated_player_set.salaries, expected_df)
 
 

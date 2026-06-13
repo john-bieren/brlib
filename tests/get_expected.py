@@ -6,7 +6,12 @@ from pathlib import Path
 import pandas as pd
 
 
-def get_expected_df(category_dir: str, target_table: str, updated: bool = False) -> pd.DataFrame:
+def get_expected_df(
+    category_dir: str,
+    target_table: str,
+    updated: bool,
+    dtypes_dict: dict[str, str],
+) -> pd.DataFrame:
     """
     Returns the expected value of a Set's `target_table` attribute by combining the relevant
     contents of `category_dir`. If `updated` is `True`, the returned value is for the updated Set.
@@ -18,7 +23,7 @@ def get_expected_df(category_dir: str, target_table: str, updated: bool = False)
     tables = []
     for case_dir in case_dirs:
         data_file = case_dir / f"{target_table}.csv"
-        df = pd.read_csv(data_file)
+        df = pd.read_csv(data_file, dtype=dtypes_dict)
         if not df.empty:
             tables.append(df)
 

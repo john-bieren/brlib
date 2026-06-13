@@ -11,25 +11,25 @@ from pathlib import Path
 
 import brlib
 from brlib._helpers.constants import (
-    ALL_PLAYERS_COLS,
-    GAME_BATTING_COLS,
-    GAME_FIELDING_COLS,
-    GAME_INFO_COLS,
-    GAME_PITCHING_COLS,
-    GAME_TEAM_INFO_COLS,
-    GAME_UMP_INFO_COLS,
-    PLAYER_BATTING_COLS,
-    PLAYER_BLING_COLS,
-    PLAYER_FIELDING_COLS,
-    PLAYER_INFO_COLS,
-    PLAYER_PITCHING_COLS,
-    PLAYER_SALARIES_COLS,
-    RECORDS_COLS,
-    TEAM_BATTING_COLS,
-    TEAM_BLING_COLS,
-    TEAM_FIELDING_COLS,
-    TEAM_INFO_COLS,
-    TEAM_PITCHING_COLS,
+    ALL_PLAYERS_DTYPES,
+    GAME_BATTING_DTYPES,
+    GAME_FIELDING_DTYPES,
+    GAME_INFO_DTYPES,
+    GAME_PITCHING_DTYPES,
+    GAME_TEAM_INFO_DTYPES,
+    GAME_UMP_INFO_DTYPES,
+    PLAYER_BATTING_DTYPES,
+    PLAYER_BLING_DTYPES,
+    PLAYER_FIELDING_DTYPES,
+    PLAYER_INFO_DTYPES,
+    PLAYER_PITCHING_DTYPES,
+    PLAYER_SALARIES_DTYPES,
+    RECORDS_DTYPES,
+    TEAM_BATTING_DTYPES,
+    TEAM_BLING_DTYPES,
+    TEAM_FIELDING_DTYPES,
+    TEAM_INFO_DTYPES,
+    TEAM_PITCHING_DTYPES,
 )
 from brlib._helpers.utils import str_between
 
@@ -96,26 +96,26 @@ def refresh_cols(wiki_dir: Path) -> None:
     """Refreshes the column lists in DataFrames-Info.md."""
     df_info_file = wiki_dir / "DataFrames-Info.md"
     # the current column lists, in the same order as DataFrames-Info.md
-    cols_lists = [
-        ALL_PLAYERS_COLS,
-        RECORDS_COLS,
-        GAME_INFO_COLS,
-        GAME_BATTING_COLS,
-        GAME_PITCHING_COLS,
-        GAME_FIELDING_COLS,
-        GAME_TEAM_INFO_COLS,
-        GAME_UMP_INFO_COLS,
-        PLAYER_INFO_COLS,
-        PLAYER_BLING_COLS,
-        PLAYER_BATTING_COLS,
-        PLAYER_PITCHING_COLS,
-        PLAYER_FIELDING_COLS,
-        PLAYER_SALARIES_COLS,
-        TEAM_INFO_COLS,
-        TEAM_BLING_COLS,
-        TEAM_BATTING_COLS,
-        TEAM_PITCHING_COLS,
-        TEAM_FIELDING_COLS,
+    dtype_dicts = [
+        ALL_PLAYERS_DTYPES,
+        RECORDS_DTYPES,
+        GAME_INFO_DTYPES,
+        GAME_BATTING_DTYPES,
+        GAME_PITCHING_DTYPES,
+        GAME_FIELDING_DTYPES,
+        GAME_TEAM_INFO_DTYPES,
+        GAME_UMP_INFO_DTYPES,
+        PLAYER_INFO_DTYPES,
+        PLAYER_BLING_DTYPES,
+        PLAYER_BATTING_DTYPES,
+        PLAYER_PITCHING_DTYPES,
+        PLAYER_FIELDING_DTYPES,
+        PLAYER_SALARIES_DTYPES,
+        TEAM_INFO_DTYPES,
+        TEAM_BLING_DTYPES,
+        TEAM_BATTING_DTYPES,
+        TEAM_PITCHING_DTYPES,
+        TEAM_FIELDING_DTYPES,
     ]
 
     # first pass: gather the line(s) for each column (including the name and any additional notes)
@@ -135,7 +135,7 @@ def refresh_cols(wiki_dir: Path) -> None:
             if current_col_lines != "":
                 col_lines[f"{df_name}::{current_col_name}"] = current_col_lines
             current_col_name = str_between(line, "`", "`")
-            current_col_lines = line
+            current_col_lines = line.split(":", maxsplit=1)[0]  # exclude type; re-written later
         # additional note about a column
         elif line.startswith(" "):
             current_col_lines += f"\n{line}"
@@ -157,13 +157,18 @@ def refresh_cols(wiki_dir: Path) -> None:
             if df_cols_written:
                 # all of a DataFrame's columns are written at once, so skip to the next DataFrame
                 continue
-            for col_name in cols_lists[i]:
+            for col_name, col_dtype in dtype_dicts[i].items():
                 col_info = col_lines.get(f"{df_name}::{col_name}", "")
                 if col_info != "":
+                    # add dtype to line
+                    if "\n" in col_info:
+                        col_info = col_info.replace(f"`\n", f'`: `"{col_dtype}"`\n')
+                    else:
+                        col_info = f'{col_info}: `"{col_dtype}"`'
                     file_lines.append(col_info)
                 # if the column is new (or renamed, in which case info must be manually restored)
                 else:
-                    file_lines.append(f"* `{col_name}`")
+                    file_lines.append(f'* `{col_name}`: `"{col_dtype}"`')
             df_cols_written = True
         # skip column notes, as they have already been added
         elif line.startswith("    *"):

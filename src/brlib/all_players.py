@@ -4,7 +4,7 @@ from io import StringIO
 
 import pandas as pd
 
-from ._helpers.constants import ALL_PLAYERS_COLS
+from ._helpers.constants import ALL_PLAYERS_DTYPES
 from ._helpers.requests_manager import req_mgr
 from .options import print_page
 
@@ -62,15 +62,14 @@ def all_players() -> pd.DataFrame:
         StringIO(csv_lines),
         names=["Player ID", "Player", "Career Span", "Active"],
         usecols=range(4),
+        dtype=ALL_PLAYERS_DTYPES,
     )
 
     # split career span into start and end (if span is one year, only the year is listed, no range)
     split_span = players_df["Career Span"].str.split("-", n=1)
-    players_df["Career Start"] = split_span.str[0].astype("int64")
-    players_df["Career End"] = split_span.str[-1].astype("int64")
+    players_df["Career Start"] = split_span.str[0].astype("Int64")
+    players_df["Career End"] = split_span.str[-1].astype("Int64")
 
-    # convert active column from 0/1 to boolean
-    players_df["Active"] = players_df["Active"].astype(bool)
-
-    players_df = players_df.reindex(columns=ALL_PLAYERS_COLS)
+    players_df = players_df.reindex(columns=list(ALL_PLAYERS_DTYPES))
+    players_df = players_df.astype(ALL_PLAYERS_DTYPES)
     return players_df

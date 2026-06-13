@@ -12,12 +12,12 @@ from ._helpers.constants import (
     ALLSTAR_GAME_URL_REGEX,
     ASG_ID_REGEX,
     FORFEITED_GAME_WINNERS,
-    GAME_BATTING_COLS,
-    GAME_FIELDING_COLS,
-    GAME_INFO_COLS,
-    GAME_PITCHING_COLS,
-    GAME_TEAM_INFO_COLS,
-    GAME_UMP_INFO_COLS,
+    GAME_BATTING_DTYPES,
+    GAME_FIELDING_DTYPES,
+    GAME_INFO_DTYPES,
+    GAME_PITCHING_DTYPES,
+    GAME_TEAM_INFO_DTYPES,
+    GAME_UMP_INFO_DTYPES,
     GAME_URL_REGEX,
     PICKOFF_REGEX,
     SB_ATTEMPT_REGEX,
@@ -399,11 +399,19 @@ class Game:
         self._scrape_stolen_base_stats(batting_tables)
         self._get_ump_info()
 
-        self.info = self.info.reindex(columns=GAME_INFO_COLS)
-        self.batting = self.batting.reindex(columns=GAME_BATTING_COLS)
-        self.pitching = self.pitching.reindex(columns=GAME_PITCHING_COLS)
-        self.fielding = self.fielding.reindex(columns=GAME_FIELDING_COLS)
-        self.team_info = self.team_info.reindex(columns=GAME_TEAM_INFO_COLS)
+        self.info = self.info.reindex(columns=list(GAME_INFO_DTYPES))
+        self.batting = self.batting.reindex(columns=list(GAME_BATTING_DTYPES))
+        self.pitching = self.pitching.reindex(columns=list(GAME_PITCHING_DTYPES))
+        self.fielding = self.fielding.reindex(columns=list(GAME_FIELDING_DTYPES))
+        self.team_info = self.team_info.reindex(columns=list(GAME_TEAM_INFO_DTYPES))
+        self.ump_info = self.ump_info.reindex(columns=list(GAME_UMP_INFO_DTYPES))
+
+        self.info = self.info.astype(GAME_INFO_DTYPES)
+        self.batting = self.batting.astype(GAME_BATTING_DTYPES)
+        self.pitching = self.pitching.astype(GAME_PITCHING_DTYPES)
+        self.fielding = self.fielding.astype(GAME_FIELDING_DTYPES)
+        self.team_info = self.team_info.astype(GAME_TEAM_INFO_DTYPES)
+        self.ump_info = self.ump_info.astype(GAME_UMP_INFO_DTYPES)
 
     def _scrape_info(self, content: Tag, other_info: Tag) -> None:
         """Populates `self.info` with data from `content` and `other_info`."""
@@ -429,7 +437,7 @@ class Game:
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             record = [i for i in record if "Sports Logos.net" not in i]
             # remove the X in the bottom of the ninth, if applicable
-            record = [pd.NA if i == "X" else i for i in record]
+            record = [np.nan if i == "X" else i for i in record]
             records.append(record)
         records[0].pop(0)  # extra empty string
 
@@ -819,7 +827,7 @@ class Game:
                     ", ", expand=True, regex=False, n=1
                 )
                 for i, details in enumerate(p_df["Details"].to_numpy()):
-                    if details is None:
+                    if details is np.nan:
                         continue
                     split_details = [d.split(" ", maxsplit=1)[0] for d in details.split(", ")]
                     for stat in split_details:
@@ -1037,4 +1045,3 @@ class Game:
         self.ump_info = self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"})
         self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")
-        self.ump_info = self.ump_info.reindex(columns=GAME_UMP_INFO_COLS)
