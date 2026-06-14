@@ -2,9 +2,9 @@
 
 import re
 import time
+from datetime import timedelta, timezone
 
 import platformdirs
-import pytz
 
 # paths to important directories
 CACHE_DIR = platformdirs.user_cache_path("brlib")
@@ -69,8 +69,8 @@ CY_ASG = CURRENT_YEAR not in NO_ASG_YEARS and (
     CURRENT_MONTH > 7 or CURRENT_MONTH == 7 and CURRENT_DAY > 7
 )
 
-# selected so that hour 0 lines up with when BR should have posted the previous day's results
-CACHE_TIMEZONE = pytz.timezone("US/Aleutian")
+# selected such that BR has likely posted the previous day's results by hour 0
+CACHE_TIMEZONE = timezone(timedelta(hours=-9))
 
 # pre-compiled regular expressions
 MULTI_TEAM_REGEX = re.compile(r"\dTM")
