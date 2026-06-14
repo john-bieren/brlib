@@ -284,20 +284,29 @@ class Team:
         Name: Team, dtype: object
         ```
         """
-        self.info["Team"] = self.info.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.info["Team"] = (
+            self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("str")
         )
-        self.bling["Team"] = self.bling.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.bling["Team"] = (
+            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("str")
         )
-        self.batting["Team"] = self.batting.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.batting["Team"] = (
+            self.batting["Team ID"]
+            .map(TEAM_REPLACEMENTS)
+            .fillna(self.batting["Team"])
+            .astype("str")
         )
-        self.pitching["Team"] = self.pitching.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.pitching["Team"] = (
+            self.pitching["Team ID"]
+            .map(TEAM_REPLACEMENTS)
+            .fillna(self.pitching["Team"])
+            .astype("str")
         )
-        self.fielding["Team"] = self.fielding.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.fielding["Team"] = (
+            self.fielding["Team ID"]
+            .map(TEAM_REPLACEMENTS)
+            .fillna(self.fielding["Team"])
+            .astype("str")
         )
         if (new_name := TEAM_REPLACEMENTS.get(self.id)) is not None:
             self.name = f"{self.id[-4:]} {new_name}"
@@ -327,12 +336,16 @@ class Team:
         Name: Venues, dtype: object
         ```
         """
-        self.info["Venues"] = self.info["Venues"].apply(
-            lambda x: (
-                ";".join([VENUE_REPLACEMENTS.get(item, item) for item in x.split(";")])
-                if isinstance(x, str)
-                else x
+        self.info["Venues"] = (
+            self.info["Venues"]
+            .apply(
+                lambda x: (
+                    ";".join([VENUE_REPLACEMENTS.get(item, item) for item in x.split(";")])
+                    if isinstance(x, str)
+                    else x
+                )
             )
+            .astype("str")
         )
 
     @staticmethod

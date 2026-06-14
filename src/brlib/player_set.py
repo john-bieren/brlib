@@ -242,6 +242,9 @@ class PlayerSet:
         Name: Draft Team, dtype: object
         ```
         """
-        self.info["Draft Team"] = self.info.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Draft Team ID"], row["Draft Team"]), axis=1
+        self.info["Draft Team"] = (
+            self.info["Draft Team ID"]
+            .map(TEAM_REPLACEMENTS)
+            .fillna(self.info["Draft Team"])
+            .astype("str")
         )

@@ -318,14 +318,19 @@ class Game:
             TEAM_REPLACEMENTS.get(self._away_team_id, self._away_team),
             TEAM_REPLACEMENTS.get(self._home_team_id, self._home_team),
         ]
-        self.team_info["Team"] = self.team_info.apply(
-            lambda row: TEAM_REPLACEMENTS.get(row["Team ID"], row["Team"]), axis=1
+        self.team_info["Team"] = (
+            self.team_info["Team ID"]
+            .map(TEAM_REPLACEMENTS)
+            .fillna(self.team_info["Team"])
+            .astype("str")
         )
         self.info["Game"] = self.info.apply(update_game_col, axis=1)
         for prefix in ("Home", "Away", "Winning", "Losing"):
-            self.info[f"{prefix} Team"] = self.info.apply(
-                lambda row: TEAM_REPLACEMENTS.get(row[f"{prefix} Team ID"], row[f"{prefix} Team"]),
-                axis=1,
+            self.info[f"{prefix} Team"] = (
+                self.info[f"{prefix} Team ID"]
+                .map(TEAM_REPLACEMENTS)
+                .fillna(self.info[f"{prefix} Team"])
+                .astype("str")
             )
         self.name = self.info["Game"].iloc[0]
 
@@ -354,7 +359,9 @@ class Game:
         Name: Venue, dtype: object
         ```
         """
-        self.info = self.info.replace({"Venue": VENUE_REPLACEMENTS})
+        self.info["Venue"] = (
+            self.info["Venue"].map(VENUE_REPLACEMENTS).fillna(self.info["Venue"]).astype("str")
+        )
 
     @staticmethod
     def _get_game(game_id: str) -> Response:
