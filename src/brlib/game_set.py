@@ -147,7 +147,7 @@ class GameSet:
         if "Ties" not in self.records.columns:
             self.records["Ties"] = 0
 
-        self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype("int64")
+        self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype("Int64")
         self.records["W-L%"] = self.records["Wins"] / (
             self.records["Wins"] + self.records["Losses"]
         )

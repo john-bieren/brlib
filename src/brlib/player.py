@@ -738,7 +738,9 @@ class Player:
         # remove unknown service time, denoted "?"
         self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = pd.NA
         # skip future option years, indicated by a leading asterisk
-        self.salaries = self.salaries.loc[~self.salaries["Salary"].astype(str).str.startswith("*")]
+        self.salaries = self.salaries.loc[
+            ~self.salaries["Salary"].astype("str").str.startswith("*")
+        ]
         # trailing asterisk indicates inconsistent reports, but I'll allow it
         self.salaries["Salary"] = self.salaries["Salary"].str.strip("$*")
         # remove thousands separators
@@ -789,8 +791,7 @@ class Player:
 
         df = convert_numeric_cols(df)
         # season could be int64 if total rows are missing, e.g., hawkiro01, johns11
-        if df["Season"].dtype == "int64":
-            df["Season"] = df["Season"].astype(str)
+        df["Season"] = df["Season"].astype("str")
         return df
 
     @staticmethod
@@ -849,7 +850,7 @@ class Player:
             .reindex(columns=["Season", "Game Type", "Awards"])
             .drop_duplicates(subset=["Season", "Game Type"])
         )
-        prep_df["Awards"] = prep_df["Awards"].fillna("")
+        prep_df["Awards"] = prep_df["Awards"].fillna("")  # column is all-na if empty
         prep_df = prep_df.loc[prep_df["Season"].str.fullmatch(r"\d{4}")]
         prep_df = prep_df.groupby("Season")["Awards"].apply(lambda x: ",".join(x)).reset_index()
 

@@ -127,7 +127,7 @@ class TeamSet:
         self.records = prep_df.groupby("Franchise")[["Wins", "Losses", "Ties"]].sum()
 
         self.records = self.records.reset_index()
-        self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype("int64")
+        self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype("Int64")
         self.records["W-L%"] = self.records["Wins"] / (
             self.records["Wins"] + self.records["Losses"]
         )

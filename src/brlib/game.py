@@ -548,10 +548,10 @@ class Game:
                 ][0]
                 score = int(team.find("div", {"class": "score"}).text)
                 if is_home:
-                    self.team_info.loc[1, "Record"] = record
+                    self.team_info.at[1, "Record"] = record
                     assert self._home_score == score
                 else:
-                    self.team_info.loc[0, "Record"] = record
+                    self.team_info.at[0, "Record"] = record
                     assert self._away_score == score
 
             # get team's previous and next game IDs
@@ -817,14 +817,14 @@ class Game:
             p_df["IP"] = p_df["IP"].apply(convert_innings_notation)
 
             p_df.loc[p_df["Player"] != "Team Totals", "Position"] = "RP"
-            p_df.loc[0, "Position"] = "SP"  # the first pitcher to appear for the team
+            p_df.at[0, "Position"] = "SP"  # the first pitcher to appear for the team
 
             p_df[["GS", "GF", "CG", "SHO"]] = 0
             p_df.loc[[0, len(p_df) - 1], "GS"] = 1  # first pitcher plus team totals
             p_df.loc[[len(p_df) - 2, len(p_df) - 1], "GF"] = 1
             if len(p_df) == 2:  # only SP and team totals
                 p_df["CG"] = 1
-                if p_df.loc[0, "R"] == "0":
+                if p_df.at[0, "R"] == "0":
                     p_df["SHO"] = 1
 
             # create details column with wins, losses, saves, blown saves, and holds
