@@ -229,26 +229,26 @@ class Game:
         ```
         >>> g = br.Game("TOR201805080")
         >>> g.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
-                   Player  Team ID  NH  PG  CNH
-        0    James Paxton  SEA2018 NaN NaN  NaN
-        1     Team Totals  SEA2018 NaN NaN  NaN
-        2  Marcus Stroman  TOR2018 NaN NaN  NaN
-        3       Tim Mayza  TOR2018 NaN NaN  NaN
-        4   Jake Petricka  TOR2018 NaN NaN  NaN
-        5      Aaron Loup  TOR2018 NaN NaN  NaN
-        6     John Axford  TOR2018 NaN NaN  NaN
-        7     Team Totals  TOR2018 NaN NaN  NaN
+                   Player  Team ID    NH    PG   CNH
+        0    James Paxton  SEA2018  <NA>  <NA>  <NA>
+        1     Team Totals  SEA2018  <NA>  <NA>  <NA>
+        2  Marcus Stroman  TOR2018  <NA>  <NA>  <NA>
+        3       Tim Mayza  TOR2018  <NA>  <NA>  <NA>
+        4   Jake Petricka  TOR2018  <NA>  <NA>  <NA>
+        5      Aaron Loup  TOR2018  <NA>  <NA>  <NA>
+        6     John Axford  TOR2018  <NA>  <NA>  <NA>
+        7     Team Totals  TOR2018  <NA>  <NA>  <NA>
         >>> g.add_no_hitters()
         >>> g.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
-                   Player  Team ID   NH   PG  CNH
-        0    James Paxton  SEA2018  1.0  0.0  0.0
-        1     Team Totals  SEA2018  1.0  0.0  0.0
-        2  Marcus Stroman  TOR2018  0.0  0.0  0.0
-        3       Tim Mayza  TOR2018  0.0  0.0  0.0
-        4   Jake Petricka  TOR2018  0.0  0.0  0.0
-        5      Aaron Loup  TOR2018  0.0  0.0  0.0
-        6     John Axford  TOR2018  0.0  0.0  0.0
-        7     Team Totals  TOR2018  0.0  0.0  0.0
+                   Player  Team ID  NH  PG  CNH
+        0    James Paxton  SEA2018   1   0    0
+        1     Team Totals  SEA2018   1   0    0
+        2  Marcus Stroman  TOR2018   0   0    0
+        3       Tim Mayza  TOR2018   0   0    0
+        4   Jake Petricka  TOR2018   0   0    0
+        5      Aaron Loup  TOR2018   0   0    0
+        6     John Axford  TOR2018   0   0    0
+        7     Team Totals  TOR2018   0   0    0
         ```
         """
         nhd.populate()
@@ -352,11 +352,11 @@ class Game:
         >>> g = br.Game("FLO199407290")
         >>> g.info["Venue"]
         0    Joe Robbie Stadium
-        Name: Venue, dtype: object
+        Name: Venue, dtype: str
         >>> g.update_venue_names()
         >>> g.info["Venue"]
         0    Hard Rock Stadium
-        Name: Venue, dtype: object
+        Name: Venue, dtype: str
         ```
         """
         self.info["Venue"] = (

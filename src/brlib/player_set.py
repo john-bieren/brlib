@@ -131,28 +131,28 @@ class PlayerSet:
         >>> ps = br.PlayerSet([p1, p2])
         >>> mask = ps.pitching["Season"].str.len() == 4
         >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
-                 Player Season  NH  PG  CNH
-        0   Taylor Cole   2017 NaN NaN  NaN
-        1   Taylor Cole   2018 NaN NaN  NaN
-        2   Taylor Cole   2019 NaN NaN  NaN
-        7    Félix Peña   2016 NaN NaN  NaN
-        8    Félix Peña   2017 NaN NaN  NaN
-        9    Félix Peña   2018 NaN NaN  NaN
-        10   Félix Peña   2019 NaN NaN  NaN
-        11   Félix Peña   2020 NaN NaN  NaN
-        12   Félix Peña   2021 NaN NaN  NaN
+                 Player Season    NH    PG   CNH
+        0   Taylor Cole   2017  <NA>  <NA>  <NA>
+        1   Taylor Cole   2018  <NA>  <NA>  <NA>
+        2   Taylor Cole   2019  <NA>  <NA>  <NA>
+        7    Félix Peña   2016  <NA>  <NA>  <NA>
+        8    Félix Peña   2017  <NA>  <NA>  <NA>
+        9    Félix Peña   2018  <NA>  <NA>  <NA>
+        10   Félix Peña   2019  <NA>  <NA>  <NA>
+        11   Félix Peña   2020  <NA>  <NA>  <NA>
+        12   Félix Peña   2021  <NA>  <NA>  <NA>
         >>> ps.add_no_hitters()
         >>> ps.pitching.loc[mask, ["Player", "Season", "NH", "PG", "CNH"]]
-                 Player Season   NH   PG  CNH
-        0   Taylor Cole   2017  0.0  0.0  0.0
-        1   Taylor Cole   2018  0.0  0.0  0.0
-        2   Taylor Cole   2019  0.0  0.0  1.0
-        7    Félix Peña   2016  0.0  0.0  0.0
-        8    Félix Peña   2017  0.0  0.0  0.0
-        9    Félix Peña   2018  0.0  0.0  0.0
-        10   Félix Peña   2019  0.0  0.0  1.0
-        11   Félix Peña   2020  0.0  0.0  0.0
-        12   Félix Peña   2021  0.0  0.0  0.0
+                 Player Season  NH  PG  CNH
+        0   Taylor Cole   2017   0   0    0
+        1   Taylor Cole   2018   0   0    0
+        2   Taylor Cole   2019   0   0    1
+        7    Félix Peña   2016   0   0    0
+        8    Félix Peña   2017   0   0    0
+        9    Félix Peña   2018   0   0    0
+        10   Félix Peña   2019   0   0    1
+        11   Félix Peña   2020   0   0    0
+        12   Félix Peña   2021   0   0    0
         ```
         """
         nhd.populate()
@@ -233,13 +233,13 @@ class PlayerSet:
         0             Tampa Bay Devil Rays
         1                Milwaukee Brewers
         2    Los Angeles Angels of Anaheim
-        Name: Draft Team, dtype: object
+        Name: Draft Team, dtype: str
         >>> ps.update_team_names()
         >>> ps.info["Draft Team"]
         0        Tampa Bay Rays
         1     Milwaukee Brewers
         2    Los Angeles Angels
-        Name: Draft Team, dtype: object
+        Name: Draft Team, dtype: str
         ```
         """
         self.info["Draft Team"] = (

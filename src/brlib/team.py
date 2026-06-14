@@ -194,22 +194,22 @@ class Team:
         ```
         >>> t = br.Team("BOS1904")
         >>> t.pitching[["Player", "NH", "PG", "CNH"]]
-                    Player  NH  PG  CNH
-        0         Cy Young NaN NaN  NaN
-        1    George Winter NaN NaN  NaN
-        2  Jesse Tannehill NaN NaN  NaN
-        3   Norwood Gibson NaN NaN  NaN
-        4     Bill Dinneen NaN NaN  NaN
-        5      Team Totals NaN NaN  NaN
+                    Player    NH    PG   CNH
+        0         Cy Young  <NA>  <NA>  <NA>
+        1    George Winter  <NA>  <NA>  <NA>
+        2  Jesse Tannehill  <NA>  <NA>  <NA>
+        3   Norwood Gibson  <NA>  <NA>  <NA>
+        4     Bill Dinneen  <NA>  <NA>  <NA>
+        5      Team Totals  <NA>  <NA>  <NA>
         >>> t.add_no_hitters()
         >>> t.pitching[["Player", "NH", "PG", "CNH"]]
-                    Player   NH   PG  CNH
-        0         Cy Young  1.0  1.0  0.0
-        1    George Winter  0.0  0.0  0.0
-        2  Jesse Tannehill  1.0  0.0  0.0
-        3   Norwood Gibson  0.0  0.0  0.0
-        4     Bill Dinneen  0.0  0.0  0.0
-        5      Team Totals  2.0  1.0  0.0
+                    Player  NH  PG  CNH
+        0         Cy Young   1   1    0
+        1    George Winter   0   0    0
+        2  Jesse Tannehill   1   0    0
+        3   Norwood Gibson   0   0    0
+        4     Bill Dinneen   0   0    0
+        5      Team Totals   2   1    0
         ```
         """
         nhd.populate()
@@ -277,11 +277,11 @@ class Team:
         >>> t = br.Team("LAA2015")
         >>> t.info["Team"]
         0    Los Angeles Angels of Anaheim
-        Name: Team, dtype: object
+        Name: Team, dtype: str
         >>> t.update_team_names()
         >>> t.info["Team"]
         0    Los Angeles Angels
-        Name: Team, dtype: object
+        Name: Team, dtype: str
         ```
         """
         self.info["Team"] = (
@@ -329,11 +329,11 @@ class Team:
         >>> t = br.Team("OAK2021")
         >>> t.info["Venues"]
         0    RingCentral Coliseum
-        Name: Venues, dtype: object
+        Name: Venues, dtype: str
         >>> t.update_venue_names()
         >>> t.info["Venues"]
         0    Oakland-Alameda County Coliseum
-        Name: Venues, dtype: object
+        Name: Venues, dtype: str
         ```
         """
         self.info["Venues"] = (

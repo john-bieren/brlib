@@ -155,38 +155,38 @@ class TeamSet:
         >>> t2 = br.Team("PRO1883")
         >>> ts = br.TeamSet([t1, t2])
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
-                       Player  NH  PG  CNH
-        0      Weldon Wyckoff NaN NaN  NaN
-        1         Ernie Shore NaN NaN  NaN
-        2           Babe Ruth NaN NaN  NaN
-        3        Herb Pennock NaN NaN  NaN
-        4           Carl Mays NaN NaN  NaN
-        5       Dutch Leonard NaN NaN  NaN
-        6       Sad Sam Jones NaN NaN  NaN
-        7         Rube Foster NaN NaN  NaN
-        8          Lore Bader NaN NaN  NaN
-        9         Team Totals NaN NaN  NaN
-        10    Charlie Sweeney NaN NaN  NaN
-        11       Lee Richmond NaN NaN  NaN
-        12  Old Hoss Radbourn NaN NaN  NaN
-        13        Team Totals NaN NaN  NaN
+                       Player    NH    PG   CNH
+        0      Weldon Wyckoff  <NA>  <NA>  <NA>
+        1         Ernie Shore  <NA>  <NA>  <NA>
+        2           Babe Ruth  <NA>  <NA>  <NA>
+        3        Herb Pennock  <NA>  <NA>  <NA>
+        4           Carl Mays  <NA>  <NA>  <NA>
+        5       Dutch Leonard  <NA>  <NA>  <NA>
+        6       Sad Sam Jones  <NA>  <NA>  <NA>
+        7         Rube Foster  <NA>  <NA>  <NA>
+        8          Lore Bader  <NA>  <NA>  <NA>
+        9         Team Totals  <NA>  <NA>  <NA>
+        10    Charlie Sweeney  <NA>  <NA>  <NA>
+        11       Lee Richmond  <NA>  <NA>  <NA>
+        12  Old Hoss Radbourn  <NA>  <NA>  <NA>
+        13        Team Totals  <NA>  <NA>  <NA>
         >>> ts.add_no_hitters()
         >>> ts.pitching[["Player", "NH", "PG", "CNH"]]
-                       Player   NH   PG  CNH
-        0      Weldon Wyckoff  0.0  0.0  0.0
-        1         Ernie Shore  0.0  0.0  1.0
-        2           Babe Ruth  0.0  0.0  1.0
-        3        Herb Pennock  0.0  0.0  0.0
-        4           Carl Mays  0.0  0.0  0.0
-        5       Dutch Leonard  0.0  0.0  0.0
-        6       Sad Sam Jones  0.0  0.0  0.0
-        7         Rube Foster  0.0  0.0  0.0
-        8          Lore Bader  0.0  0.0  0.0
-        9         Team Totals  0.0  0.0  1.0
-        10    Charlie Sweeney  0.0  0.0  0.0
-        11       Lee Richmond  0.0  0.0  0.0
-        12  Old Hoss Radbourn  0.0  0.0  0.0
-        13        Team Totals  0.0  0.0  0.0
+                       Player  NH  PG  CNH
+        0      Weldon Wyckoff   0   0    0
+        1         Ernie Shore   0   0    1
+        2           Babe Ruth   0   0    1
+        3        Herb Pennock   0   0    0
+        4           Carl Mays   0   0    0
+        5       Dutch Leonard   0   0    0
+        6       Sad Sam Jones   0   0    0
+        7         Rube Foster   0   0    0
+        8          Lore Bader   0   0    0
+        9         Team Totals   0   0    1
+        10    Charlie Sweeney   0   0    0
+        11       Lee Richmond   0   0    0
+        12  Old Hoss Radbourn   1   0    0
+        13        Team Totals   1   0    0
         ```
         """
         nhd.populate()
@@ -270,12 +270,12 @@ class TeamSet:
         >>> ts.info["Team"]
         0     Brooklyn Robins
         1    New York Yankees
-        Name: Team, dtype: object
+        Name: Team, dtype: str
         >>> ts.update_team_names()
         >>> ts.info["Team"]
         0    Brooklyn Dodgers
         1    New York Yankees
-        Name: Team, dtype: object
+        Name: Team, dtype: str
         ```
         """
         self.info["Team"] = (
@@ -324,12 +324,12 @@ class TeamSet:
         >>> ts.info["Venues"]
         0    Connie Mack Stadium
         1              AT&T Park
-        Name: Venues, dtype: object
+        Name: Venues, dtype: str
         >>> ts.update_venue_names()
         >>> ts.info["Venues"]
         0     Shibe Park
         1    Oracle Park
-        Name: Venues, dtype: object
+        Name: Venues, dtype: str
         ```
         """
         self.info["Venues"] = (

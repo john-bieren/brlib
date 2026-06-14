@@ -202,34 +202,36 @@ class Player:
         ```
         >>> p = br.Player("gilbety01")
         >>> p.pitching[["Team", "Season", "NH", "PG", "CNH"]]
-            Team         Season  NH  PG  CNH
-        0    ARI           2021 NaN NaN  NaN
-        1    ARI           2022 NaN NaN  NaN
-        2    ARI           2023 NaN NaN  NaN
-        3    PHI           2024 NaN NaN  NaN
-        4    CHW           2025 NaN NaN  NaN
-        5   None  Career Totals NaN NaN  NaN
-        6   None   162 Game Avg NaN NaN  NaN
-        7    ARI  Career Totals NaN NaN  NaN
-        8    CHW  Career Totals NaN NaN  NaN
-        9    PHI  Career Totals NaN NaN  NaN
-        10  None  Career Totals NaN NaN  NaN
-        11  None  Career Totals NaN NaN  NaN
+           Team         Season    NH    PG   CNH
+        0   ARI           2021  <NA>  <NA>  <NA>
+        1   ARI           2022  <NA>  <NA>  <NA>
+        2   ARI           2023  <NA>  <NA>  <NA>
+        3   PHI           2024  <NA>  <NA>  <NA>
+        4   CHW           2025  <NA>  <NA>  <NA>
+        5   CHW           2026  <NA>  <NA>  <NA>
+        6   NaN  Career Totals  <NA>  <NA>  <NA>
+        7   NaN   162 Game Avg  <NA>  <NA>  <NA>
+        8   ARI  Career Totals  <NA>  <NA>  <NA>
+        9   CHW  Career Totals  <NA>  <NA>  <NA>
+        10  PHI  Career Totals  <NA>  <NA>  <NA>
+        11  NaN  Career Totals  <NA>  <NA>  <NA>
+        12  NaN  Career Totals  <NA>  <NA>  <NA>
         >>> p.add_no_hitters()
         >>> p.pitching[["Team", "Season", "NH", "PG", "CNH"]]
-            Team         Season   NH   PG  CNH
-        0    ARI           2021  1.0  0.0  0.0
-        1    ARI           2022  0.0  0.0  0.0
-        2    ARI           2023  0.0  0.0  0.0
-        3    PHI           2024  0.0  0.0  0.0
-        4    CHW           2025  0.0  0.0  0.0
-        5   None  Career Totals  1.0  0.0  0.0
-        6   None   162 Game Avg  NaN  NaN  NaN
-        7    ARI  Career Totals  1.0  0.0  0.0
-        8    CHW  Career Totals  0.0  0.0  0.0
-        9    PHI  Career Totals  0.0  0.0  0.0
-        10  None  Career Totals  NaN  NaN  NaN
-        11  None  Career Totals  NaN  NaN  NaN
+           Team         Season    NH    PG   CNH
+        0   ARI           2021     1     0     0
+        1   ARI           2022     0     0     0
+        2   ARI           2023     0     0     0
+        3   PHI           2024     0     0     0
+        4   CHW           2025     0     0     0
+        5   CHW           2026     0     0     0
+        6   NaN  Career Totals     1     0     0
+        7   NaN   162 Game Avg  <NA>  <NA>  <NA>
+        8   ARI  Career Totals     1     0     0
+        9   CHW  Career Totals     0     0     0
+        10  PHI  Career Totals     0     0     0
+        11  NaN  Career Totals  <NA>  <NA>  <NA>
+        12  NaN  Career Totals  <NA>  <NA>  <NA>
         ```
         """
         nhd.populate()
@@ -295,11 +297,11 @@ class Player:
         >>> p = br.Player("beckejo02")
         >>> p.info["Draft Team"]
         0    Florida Marlins
-        Name: Draft Team, dtype: object
+        Name: Draft Team, dtype: str
         >>> p.update_team_names()
         >>> p.info["Draft Team"]
         0    Miami Marlins
-        Name: Draft Team, dtype: object
+        Name: Draft Team, dtype: str
         ```
         """
         self.info["Draft Team"] = (

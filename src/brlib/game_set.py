@@ -175,32 +175,32 @@ class GameSet:
         >>> g2 = br.Game("SEA201206080")
         >>> gs = br.GameSet([g1, g2])
         >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
-                       Player  Team ID  NH  PG  CNH
-        0   Jeremy Hellickson  TBR2012 NaN NaN  NaN
-        1     Kyle Farnsworth  TBR2012 NaN NaN  NaN
-        2         Team Totals  TBR2012 NaN NaN  NaN
-        3     Félix Hernández  SEA2012 NaN NaN  NaN
-        4         Team Totals  SEA2012 NaN NaN  NaN
-        ...               ...      ... ... ...  ...
-        11      Stephen Pryor  SEA2012 NaN NaN  NaN
-        12       Lucas Luetge  SEA2012 NaN NaN  NaN
-        13     Brandon League  SEA2012 NaN NaN  NaN
-        14     Tom Wilhelmsen  SEA2012 NaN NaN  NaN
-        15        Team Totals  SEA2012 NaN NaN  NaN
+                       Player  Team ID    NH    PG   CNH
+        0   Jeremy Hellickson  TBR2012  <NA>  <NA>  <NA>
+        1     Kyle Farnsworth  TBR2012  <NA>  <NA>  <NA>
+        2         Team Totals  TBR2012  <NA>  <NA>  <NA>
+        3     Félix Hernández  SEA2012  <NA>  <NA>  <NA>
+        4         Team Totals  SEA2012  <NA>  <NA>  <NA>
+        ...               ...      ...   ...   ...   ...
+        11      Stephen Pryor  SEA2012  <NA>  <NA>  <NA>
+        12       Lucas Luetge  SEA2012  <NA>  <NA>  <NA>
+        13     Brandon League  SEA2012  <NA>  <NA>  <NA>
+        14     Tom Wilhelmsen  SEA2012  <NA>  <NA>  <NA>
+        15        Team Totals  SEA2012  <NA>  <NA>  <NA>
         >>> gs.add_no_hitters()
         >>> gs.pitching[["Player", "Team ID", "NH", "PG", "CNH"]]
-                       Player  Team ID   NH   PG  CNH
-        0   Jeremy Hellickson  TBR2012  0.0  0.0  0.0
-        1     Kyle Farnsworth  TBR2012  0.0  0.0  0.0
-        2         Team Totals  TBR2012  0.0  0.0  0.0
-        3     Félix Hernández  SEA2012  1.0  1.0  0.0
-        4         Team Totals  SEA2012  1.0  1.0  0.0
-        ...               ...      ...  ...  ...  ...
-        11      Stephen Pryor  SEA2012  0.0  0.0  1.0
-        12       Lucas Luetge  SEA2012  0.0  0.0  1.0
-        13     Brandon League  SEA2012  0.0  0.0  1.0
-        14     Tom Wilhelmsen  SEA2012  0.0  0.0  1.0
-        15        Team Totals  SEA2012  0.0  0.0  1.0
+                       Player  Team ID  NH  PG  CNH
+        0   Jeremy Hellickson  TBR2012   0   0    0
+        1     Kyle Farnsworth  TBR2012   0   0    0
+        2         Team Totals  TBR2012   0   0    0
+        3     Félix Hernández  SEA2012   1   1    0
+        4         Team Totals  SEA2012   1   1    0
+        ...               ...      ... ... ...  ...
+        11      Stephen Pryor  SEA2012   0   0    1
+        12       Lucas Luetge  SEA2012   0   0    1
+        13     Brandon League  SEA2012   0   0    1
+        14     Tom Wilhelmsen  SEA2012   0   0    1
+        15        Team Totals  SEA2012   0   0    1
         ```
         """
         nhd.populate()
@@ -314,12 +314,12 @@ class GameSet:
         >>> gs.info["Venue"]
         0       Safeco Field
         1    Tropicana Field
-        Name: Venue, dtype: object
+        Name: Venue, dtype: str
         >>> gs.update_venue_names()
         >>> gs.info["Venue"]
         0      T-Mobile Park
         1    Tropicana Field
-        Name: Venue, dtype: object
+        Name: Venue, dtype: str
         ```
         """
         self.info["Venue"] = (
