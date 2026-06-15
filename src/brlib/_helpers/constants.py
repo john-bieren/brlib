@@ -1010,6 +1010,7 @@ PLAYER_SALARIES_DTYPES = {
     "Age": "str",
     "Team": "str",
     "Salary": "Int64",
+    "Option Year": "boolean",
     "Service Time": "Float64",
     "Sources": "str",
     "Notes/Other Sources": "str",

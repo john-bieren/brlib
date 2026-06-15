@@ -711,17 +711,23 @@ class Player:
         self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
         # remove any "status" rows, which aren't part of the normal table format
         self.salaries = self.salaries.loc[~self.salaries["Year"].str.contains("Status")]
+        # add indicator column for option years, make it nullable
+        self.salaries["Option Year"] = self.salaries["Salary"].astype("str").str.startswith("*")
+        self.salaries["Option Year"] = self.salaries["Option Year"].astype("boolean")
+        self.salaries.loc[career_totals_mask, "Option Year"] = pd.NA
 
         # add future earnings row
         if career_totals_mask.any():  # if career totals are missing, so are future earnings
             future_earnings = self.salaries.loc[career_totals_mask, "Service Time"].iloc[0]
             self.salaries.loc[career_totals_mask, "Service Time"] = pd.NA
-            if future_earnings != "":
+            if future_earnings == "":
+                future_earnings = pd.NA
+            else:
                 future_earnings = str_between(future_earnings, "(", ")")
-            if "M" in future_earnings:
-                future_earnings = str(float(str_between(future_earnings, "$", "M")) * 1e6)
-            elif "K" in future_earnings:
-                future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
+                if "M" in future_earnings:
+                    future_earnings = str(float(str_between(future_earnings, "$", "M")) * 1e6)
+                elif "K" in future_earnings:
+                    future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
             future_earnings_row = pd.DataFrame(
                 {
                     "Player": [self.name],
@@ -730,6 +736,7 @@ class Player:
                     "Age": [pd.NA],
                     "Team": [pd.NA],
                     "Salary": [future_earnings],
+                    "Option Year": [pd.NA],
                     "Service Time": [pd.NA],
                     "Sources": [pd.NA],
                     "Notes/Other Sources": [pd.NA],
@@ -739,11 +746,7 @@ class Player:
 
         # remove unknown service time, denoted "?"
         self.salaries.loc[self.salaries["Service Time"] == "?", "Service Time"] = pd.NA
-        # skip future option years, indicated by a leading asterisk
-        self.salaries = self.salaries.loc[
-            ~self.salaries["Salary"].astype("str").str.startswith("*")
-        ]
-        # trailing asterisk indicates inconsistent reports, but I'll allow it
+        # remove non-numeric characters from salary figures
         self.salaries["Salary"] = self.salaries["Salary"].str.strip("$*")
         # remove thousands separators
         self.salaries["Salary"] = self.salaries["Salary"].str.replace(",", "")
@@ -759,6 +762,7 @@ class Player:
                 "Age": "first",
                 "Team": "first",
                 "Salary": "sum",
+                "Option Year": "first",
                 "Service Time": "first",
                 "Sources": "first",
                 "Notes/Other Sources": "first",
