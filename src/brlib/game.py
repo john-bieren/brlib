@@ -635,7 +635,7 @@ class Game:
                 if wind_speed != "0":
                     try:
                         self.info["Wind Direction"] = info.split("mph ", maxsplit=1)[1]
-                    except IndexError:  # TODO examples?
+                    except IndexError:
                         dev_alert(f"{self.id}: wind speed but no direction; potential test case")
                         pass
             elif info in {"Sunny", "Night", "Overcast", "Cloudy"}:
@@ -733,12 +733,11 @@ class Game:
             "2-out RBI": "2-Out RBI",
             "E": "E",
             "Outfield Assists": "OFA",
-            "PB": "PB",  # TODO thought to have been phased out
             "Passed Balls": "PB",
         }
         team_stats = {"Team LOB": "LOB", "With RISP": "RISP"}
         dp_tp = ["DP", "TP"]
-        h_df[list(dict.fromkeys(player_stats.values()))] = 0
+        h_df[list(player_stats.values())] = 0
         h_df[dp_tp] = 0
 
         team_totals_mask = h_df["Player"] == "Team Totals"
@@ -853,12 +852,11 @@ class Game:
         # add extra info found below the tables
         stats = {
             "Balks": "Balks",
-            "WP": "WP",  # TODO thought to have been phased out
             "Wild Pitches": "WP",
             "HBP": "HBP",
             "IBB": "IBB",
         }
-        self.pitching[list(dict.fromkeys(stats))] = 0
+        self.pitching[list(stats.values())] = 0
         events_section = pitching_section.find("div", {"class": "indiv_events"})
         both_team_totals_mask = self.pitching["Player"] == "Team Totals"
         # [1:] because the first tag is the parent of the others
@@ -994,7 +992,7 @@ class Game:
                 for player in players.split("; "):
                     stealer, info = player.strip(")").split(" (", maxsplit=1)
                     if info == "":
-                        # no info for many old games TODO examples?
+                        # no info for many old games
                         dev_alert(f"{self.id}: no SB/CS info; potential test case")
                         continue
                     # remove the player's game total, if applicable

@@ -60,12 +60,12 @@ def validate_game_list(game_list: list[str]) -> list[str]:
             continue
         year = int(date[:4])
         home_team = abv_mgr.to_regular(home_team, year)
-        correct_abv = abv_mgr.correct_abvs(home_team, year, era_adjustment=False)
-        if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
+        correct_abvs = abv_mgr.correct_abvs(home_team, year, era_adjustment=False)
+        if len(correct_abvs) == 0:  # correct_abvs is a list of length 0 or 1
             write(f'cannot get "{game_id}": {home_team} did not play in {year}')
             continue
         # use correct_abv to account for discontinuities, guarantee all-caps abbreviation
-        correct_abv = abv_mgr.to_alias(correct_abv[0], year)
+        correct_abv = abv_mgr.to_alias(correct_abvs[0], year)
         result.append(f"{correct_abv}{date}{doubleheader}")
     return result
 
@@ -138,11 +138,11 @@ def validate_team_list(team_list: list[str]) -> list[str]:
             continue
 
         # check home team abbreviation
-        correct_abv = abv_mgr.correct_abvs(abv, int(season), era_adjustment=False)
-        if len(correct_abv) == 0:  # correct_abv is a list of length 0 or 1
+        correct_abvs = abv_mgr.correct_abvs(abv, int(season), era_adjustment=False)
+        if len(correct_abvs) == 0:  # correct_abvs is a list of length 0 or 1
             write(f'cannot get "{team_id}": {abv} did not play in {season}')
             continue
-        result.append(f"{correct_abv[0]}{season}")
+        result.append(f"{correct_abvs[0]}{season}")
     return result
 
 
