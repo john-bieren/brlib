@@ -121,7 +121,8 @@ class Game:
     * `linescore`: `pandas.DataFrame`
 
         Contains the game's linescore, a box score fixture which displays the teams' run totals by
-        inning, as well as their total runs, hits, and errors.
+        inning, as well as their total runs, hits, and errors. [See DataFrame
+        info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamelinescore)
 
     * `players`: `list[str]`
 

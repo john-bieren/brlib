@@ -142,7 +142,7 @@ def refresh_cols(wiki_dir: Path) -> None:
 
     # second pass: refresh column lists (including info) using the current columns in constants.py
     file_lines = []
-    df_cols_written = False
+    df_cols_written = skip_df = False
     df_name = ""
     i = -1
     for line in df_info_file.read_text(encoding="UTF-8").splitlines():
@@ -150,6 +150,9 @@ def refresh_cols(wiki_dir: Path) -> None:
         if line.startswith("###"):
             file_lines.append(line)
             df_name = line[4:].replace("`", "").split(" and", maxsplit=1)[0]
+            # there is no dtype dict for linescore, so just keep its existing lines
+            if skip_df := df_name == "Game.linescore":
+                continue
             df_cols_written = False
             i += 1
         # start of column list
@@ -157,18 +160,20 @@ def refresh_cols(wiki_dir: Path) -> None:
             if df_cols_written:
                 # all of a DataFrame's columns are written at once, so skip to the next DataFrame
                 continue
+            if skip_df:
+                file_lines.append(line)
             for col_name, col_dtype in dtype_dicts[i].items():
                 col_info = col_lines.get(f"{df_name}::{col_name}", "")
                 if col_info != "":
                     # add dtype to line
                     if "\n" in col_info:
-                        col_info = col_info.replace(f"`\n", f'`: `"{col_dtype}"`\n')
+                        col_info = col_info.replace("`\n", f"`: `{col_dtype}`\n")
                     else:
-                        col_info = f'{col_info}: `"{col_dtype}"`'
+                        col_info = f"{col_info}: `{col_dtype}`"
                     file_lines.append(col_info)
                 # if the column is new (or renamed, in which case info must be manually restored)
                 else:
-                    file_lines.append(f'* `{col_name}`: `"{col_dtype}"`')
+                    file_lines.append(f"* `{col_name}`: `{col_dtype}`")
             df_cols_written = True
         # skip column notes, as they have already been added
         elif line.startswith("    *"):
