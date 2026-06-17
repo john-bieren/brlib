@@ -279,28 +279,28 @@ class TeamSet:
         ```
         """
         self.info["Team"] = (
-            self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("str")
+            self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("string")
         )
         self.bling["Team"] = (
-            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("str")
+            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("string")
         )
         self.batting["Team"] = (
             self.batting["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.batting["Team"])
-            .astype("str")
+            .astype("string")
         )
         self.pitching["Team"] = (
             self.pitching["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.pitching["Team"])
-            .astype("str")
+            .astype("string")
         )
         self.fielding["Team"] = (
             self.fielding["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.fielding["Team"])
-            .astype("str")
+            .astype("string")
         )
 
     def update_venue_names(self) -> None:
@@ -341,5 +341,5 @@ class TeamSet:
                     else x
                 )
             )
-            .astype("str")
+            .astype("string")
         )

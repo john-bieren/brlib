@@ -282,15 +282,15 @@ class GameSet:
             self.team_info["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.team_info["Team"])
-            .astype("str")
+            .astype("string")
         )
-        self.info["Game"] = self.info.apply(update_game_col, axis=1)
+        self.info["Game"] = self.info.apply(update_game_col, axis=1).astype("string")
         for prefix in ("Home", "Away", "Winning", "Losing"):
             self.info[f"{prefix} Team"] = (
                 self.info[f"{prefix} Team ID"]
                 .map(TEAM_REPLACEMENTS)
                 .fillna(self.info[f"{prefix} Team"])
-                .astype("str")
+                .astype("string")
             )
 
     def update_venue_names(self) -> None:
@@ -323,5 +323,5 @@ class GameSet:
         ```
         """
         self.info["Venue"] = (
-            self.info["Venue"].map(VENUE_REPLACEMENTS).fillna(self.info["Venue"]).astype("str")
+            self.info["Venue"].map(VENUE_REPLACEMENTS).fillna(self.info["Venue"]).astype("string")
         )

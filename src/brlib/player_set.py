@@ -246,5 +246,5 @@ class PlayerSet:
             self.info["Draft Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.info["Draft Team"])
-            .astype("str")
+            .astype("string")
         )

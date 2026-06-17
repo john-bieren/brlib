@@ -285,28 +285,28 @@ class Team:
         ```
         """
         self.info["Team"] = (
-            self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("str")
+            self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("string")
         )
         self.bling["Team"] = (
-            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("str")
+            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("string")
         )
         self.batting["Team"] = (
             self.batting["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.batting["Team"])
-            .astype("str")
+            .astype("string")
         )
         self.pitching["Team"] = (
             self.pitching["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.pitching["Team"])
-            .astype("str")
+            .astype("string")
         )
         self.fielding["Team"] = (
             self.fielding["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.fielding["Team"])
-            .astype("str")
+            .astype("string")
         )
         if (new_name := TEAM_REPLACEMENTS.get(self.id)) is not None:
             self.name = f"{self.id[-4:]} {new_name}"
@@ -345,7 +345,7 @@ class Team:
                     else x
                 )
             )
-            .astype("str")
+            .astype("string")
         )
 
     @staticmethod
@@ -463,7 +463,7 @@ class Team:
             dev_alert(f"{self.id} self.bling is not the proper length")
 
         self.info.loc[:, "Number of Players"] = len(self.players)
-        pitchers = {p for p in self.pitching["Player ID"].to_numpy() if p is not np.nan}
+        pitchers = {p for p in self.pitching["Player ID"].to_numpy() if p is not pd.NA}
         self.info.loc[:, "Number of Pitchers"] = len(pitchers)
 
     def _scrape_info(self, info: Tag) -> None:
@@ -544,7 +544,7 @@ class Team:
                     dev_alert(f"{self.id}: only one-year park factors; potential test case")
                     one_year = line_str.split("One-year:", maxsplit=1)[1]
 
-                my_bat = my_pit = oy_bat = oy_pit = np.nan
+                my_bat = my_pit = oy_bat = oy_pit = pd.NA
                 if multi_year != "":
                     my_bat, my_pit = multi_year.strip().split(", ", maxsplit=1)
                     my_bat = my_bat.split(" - ", maxsplit=1)[1]

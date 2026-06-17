@@ -156,7 +156,7 @@ class NoHitterDicts(Singleton):
         # fix the only exception to postseason_mask
         individual_df.loc[individual_df["Player ID"] == "griercl01", "Game Type"] = "P"
 
-        individual_df["Game ID"] = individual_df["Game ID"].astype("str")
+        individual_df["Game ID"] = individual_df["Game ID"].astype("string")
         # filter out games without box scores and IDs
         individual_df.loc[
             (~individual_df["Team"].isin(BML_TEAM_ABVS))
@@ -210,7 +210,7 @@ class NoHitterDicts(Singleton):
                     game_id_column.append(game_id)
 
         combined_df["Player ID"] = player_id_column
-        combined_df["Game ID"] = combined_df["Game ID"].astype("str")
+        combined_df["Game ID"] = combined_df["Game ID"].astype("string")
         combined_df.loc[
             (~combined_df["Team"].isin(BML_TEAM_ABVS))
             & (combined_df["Year"].astype("int64") >= FIRST_GAMES_YEAR),
@@ -220,7 +220,7 @@ class NoHitterDicts(Singleton):
 
     def _generate_dicts(self, data_df: pd.DataFrame) -> None:
         """Turns raw data in `data_df` into the final dictionaries."""
-        data_df["Year"] = data_df["Year"].astype("str")
+        data_df = data_df.astype("string")
         data_df["Team ID"] = data_df["Team"] + data_df["Year"]
         inh_df = data_df[data_df["Combined"] == "N"]
         pg_df = inh_df[inh_df["Perfect"] == "Y"]

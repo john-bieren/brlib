@@ -308,7 +308,7 @@ class Player:
             self.info["Draft Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.info["Draft Team"])
-            .astype("str")
+            .astype("string")
         )
 
     @staticmethod
@@ -712,7 +712,7 @@ class Player:
         # remove any "status" rows, which aren't part of the normal table format
         self.salaries = self.salaries.loc[~self.salaries["Year"].str.contains("Status")]
         # add indicator column for option years, make it nullable
-        self.salaries["Option Year"] = self.salaries["Salary"].astype("str").str.startswith("*")
+        self.salaries["Option Year"] = self.salaries["Salary"].astype("string").str.startswith("*")
         self.salaries["Option Year"] = self.salaries["Option Year"].astype("boolean")
         self.salaries.loc[career_totals_mask, "Option Year"] = pd.NA
 
@@ -797,7 +797,7 @@ class Player:
 
         df = convert_numeric_cols(df)
         # season could be int64 if total rows are missing, e.g., hawkiro01, johns11
-        df["Season"] = df["Season"].astype("str")
+        df["Season"] = df["Season"].astype("string")
         return df
 
     @staticmethod

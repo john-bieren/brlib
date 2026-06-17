@@ -2,7 +2,7 @@
 
 import copy
 
-import numpy as np
+import pandas as pd
 
 from brlib._helpers.no_hitter_dicts import nhd
 
@@ -35,8 +35,7 @@ def test_cache() -> None:
     assert nhd.player_cnh_dict == expected_pc
     assert nhd.team_inh_dict == expected_ti
     assert nhd.team_pg_dict == expected_tp
-    # some game IDs are np.nan which does not equal itself, so numpy tooling is required
-    np.testing.assert_equal(nhd.team_cnh_dict, expected_tc)
+    assert nhd.team_cnh_dict == expected_tc
 
 
 def test_game_dicts() -> None:
@@ -105,4 +104,4 @@ def test_team_dicts() -> None:
         ["pressry01", "R", "NYA202206250"],
     ]
     # check game ID value for combined no-hitters without a box score
-    assert nhd.team_cnh_dict["KCM1923"] == [["roganbu99", "R", np.nan], ["mendejo99", "R", np.nan]]
+    assert nhd.team_cnh_dict["KCM1923"] == [["roganbu99", "R", pd.NA], ["mendejo99", "R", pd.NA]]

@@ -93,13 +93,13 @@ def test_linescore(
     for game in games_list:
         file = expected_game_data / "original" / game.id / "linescore.csv"
         expected_df = pd.read_csv(file, dtype_backend="numpy_nullable")
-        expected_df["Team"] = expected_df["Team"].astype("str")
+        expected_df["Team"] = expected_df["Team"].astype("string")
         pd.testing.assert_frame_equal(game.linescore, expected_df)
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "linescore.csv"
         expected_df = pd.read_csv(file, dtype_backend="numpy_nullable")
-        expected_df["Team"] = expected_df["Team"].astype("str")
+        expected_df["Team"] = expected_df["Team"].astype("string")
         pd.testing.assert_frame_equal(game.linescore, expected_df)
 
 

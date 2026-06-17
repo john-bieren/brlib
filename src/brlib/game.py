@@ -315,23 +315,26 @@ class Game:
         if self._is_asg:
             return
 
-        self.linescore["Team"] = [
-            TEAM_REPLACEMENTS.get(self._away_team_id, self._away_team),
-            TEAM_REPLACEMENTS.get(self._home_team_id, self._home_team),
-        ]
+        self.linescore["Team"] = pd.Series(
+            [
+                TEAM_REPLACEMENTS.get(self._away_team_id, self._away_team),
+                TEAM_REPLACEMENTS.get(self._home_team_id, self._home_team),
+            ],
+            dtype="string",
+        )
         self.team_info["Team"] = (
             self.team_info["Team ID"]
             .map(TEAM_REPLACEMENTS)
             .fillna(self.team_info["Team"])
-            .astype("str")
+            .astype("string")
         )
-        self.info["Game"] = self.info.apply(update_game_col, axis=1)
+        self.info["Game"] = self.info.apply(update_game_col, axis=1).astype("string")
         for prefix in ("Home", "Away", "Winning", "Losing"):
             self.info[f"{prefix} Team"] = (
                 self.info[f"{prefix} Team ID"]
                 .map(TEAM_REPLACEMENTS)
                 .fillna(self.info[f"{prefix} Team"])
-                .astype("str")
+                .astype("string")
             )
         self.name = self.info["Game"].iloc[0]
 
@@ -361,7 +364,7 @@ class Game:
         ```
         """
         self.info["Venue"] = (
-            self.info["Venue"].map(VENUE_REPLACEMENTS).fillna(self.info["Venue"]).astype("str")
+            self.info["Venue"].map(VENUE_REPLACEMENTS).fillna(self.info["Venue"]).astype("string")
         )
 
     @staticmethod
@@ -445,7 +448,7 @@ class Game:
             record = [ele.text.strip() for ele in row.find_all(["th", "td"])]
             record = [i for i in record if "Sports Logos.net" not in i]
             # remove the X in the bottom of the ninth, if applicable
-            record = [np.nan if i == "X" else i for i in record]
+            record = [pd.NA if i == "X" else i for i in record]
             records.append(record)
         records[0].pop(0)  # extra empty string
 
@@ -456,7 +459,7 @@ class Game:
         self.info["Home Team"] = self._home_team = records[2][0]
 
         records[0][0] = "Team"  # give the team column a name
-        self.linescore = pd.DataFrame(records[1:3], columns=records[0])
+        self.linescore = pd.DataFrame(records[1:3], columns=records[0], dtype="string")
         # convert string numbers to nullable ints (since B9 could be None)
         self.linescore[records[0][1:]] = self.linescore[records[0][1:]].astype("Int64")
 
@@ -613,7 +616,7 @@ class Game:
             elif "Start Time Weather" in line_str:
                 weather_info = line_str[20:]
 
-        self.info[["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"]] = np.nan
+        self.info[["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"]] = pd.NA
         umpires_list = umpires.split(", ")
         for line in umpires_list:
             # "HP - Pat Hoberg"
@@ -673,7 +676,7 @@ class Game:
         has_pos_mask = is_player_mask & (h_df["Position"].str.isupper())
         # this also renames final "Player" row to "Team Totals" instead of "Team"
         h_df.loc[~has_pos_mask, "Player"] = original_player_col.loc[~has_pos_mask]
-        h_df.loc[~has_pos_mask, "Position"] = np.nan
+        h_df.loc[~has_pos_mask, "Position"] = pd.NA
 
         # get player IDs
         player_id_column = scrape_player_ids(table)
