@@ -764,7 +764,7 @@ PLAYER_INFO_DTYPES = {
     "Draft Type": "string",
     "High Schools": "string",
     "Schools": "string",
-    "Debut Date": "string",
+    "Debut": "string",
     "Debut Age": "string",
     "Debut Age (Days)": "Int64",
     "Debut Rank": "Int64",
