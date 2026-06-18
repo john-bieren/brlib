@@ -1,60 +1,60 @@
-Player,Player ID,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team ID,Opponent Team ID,Game ID
-Gleyber Torres,torregl01,2B,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Jazz Chisholm Jr.,chishja01,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Riley Greene,greenri03,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Steven Kwan,kwanst01,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Aaron Judge,judgeaa01,RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Randy Arozarena,arozara01,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Cal Raleigh,raleica01,C,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Alejandro Kirk,kirkal01,C,7,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Vladimir Guerrero Jr.,guerrvl02,1B,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Jonathan Aranda,arandjo01,1B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Junior Caminero,caminju01,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Maikel Garcia,garcima01,3B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Javier Báez,baezja01,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Byron Buxton,buxtoby01,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Jacob Wilson,wilsoja05,SS,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Bobby Witt Jr.,wittbo02,SS,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Tarik Skubal,skubata01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Carlos Rodón,rodonca01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Bryan Woo,woobr01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Joe Ryan,ryanjo04,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Drew Rasmussen,rasmudr01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Kris Bubic,bubickr01,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Casey Mize,mizeca01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Carlos Estévez,estevca01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Shane Smith,smithsh02,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Andrés Muñoz,munozan01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Aroldis Chapman,chapmar01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Team Totals,,,27,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Ronald Acuña Jr.,acunaro01,RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Fernando Tatis Jr.,tatisfe02,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Ketel Marte,marteke01,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Brendan Donovan,donovbr01,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Freddie Freeman,freemfr01,1B,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Pete Alonso,alonspe01,1B,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Matt Olson,olsonma02,1B,3,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Manny Machado,machama01,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Eugenio Suárez,suareeu01,3B,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Will Smith,smithwi05,C,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Hunter Goodman,goodmhu01,C,1,0,1,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Kyle Tucker,tuckeky01,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Corbin Carroll,carroco02,LF-CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Francisco Lindor,lindofr01,SS,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Elly De La Cruz,delacel01,SS,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Pete Crow-Armstrong,crowape01,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Kyle Stowers,stoweky01,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Paul Skenes,skenepa01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Clayton Kershaw,kershcl01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Jason Adam,adamja01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Logan Webb,webblo01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-David Peterson,peterda01,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-MacKenzie Gore,gorema01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Andrew Abbott,abbotan01,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Adrián Morejón,morejad01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Randy Rodríguez,rodrira02,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Trevor Megill,megiltr01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Jacob Misiorowski,misioja01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Robert Suarez,suarero01,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Edwin Díaz,diazed04,P,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,,,2025-allstar-game
-Team Totals,,,27,12,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,2025-allstar-game
+Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
+Gleyber Torres,2B,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,torregl01,2025-allstar-game,,
+Jazz Chisholm Jr.,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,chishja01,2025-allstar-game,,
+Riley Greene,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,greenri03,2025-allstar-game,,
+Steven Kwan,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,kwanst01,2025-allstar-game,,
+Aaron Judge,RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,judgeaa01,2025-allstar-game,,
+Randy Arozarena,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,arozara01,2025-allstar-game,,
+Cal Raleigh,C,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,raleica01,2025-allstar-game,,
+Alejandro Kirk,C,7,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,kirkal01,2025-allstar-game,,
+Vladimir Guerrero Jr.,1B,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,guerrvl02,2025-allstar-game,,
+Jonathan Aranda,1B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,arandjo01,2025-allstar-game,,
+Junior Caminero,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,caminju01,2025-allstar-game,,
+Maikel Garcia,3B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,garcima01,2025-allstar-game,,
+Javier Báez,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,baezja01,2025-allstar-game,,
+Byron Buxton,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,buxtoby01,2025-allstar-game,,
+Jacob Wilson,SS,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wilsoja05,2025-allstar-game,,
+Bobby Witt Jr.,SS,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wittbo02,2025-allstar-game,,
+Tarik Skubal,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,skubata01,2025-allstar-game,,
+Carlos Rodón,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rodonca01,2025-allstar-game,,
+Bryan Woo,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,woobr01,2025-allstar-game,,
+Joe Ryan,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,ryanjo04,2025-allstar-game,,
+Drew Rasmussen,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rasmudr01,2025-allstar-game,,
+Kris Bubic,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,bubickr01,2025-allstar-game,,
+Casey Mize,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,mizeca01,2025-allstar-game,,
+Carlos Estévez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,estevca01,2025-allstar-game,,
+Shane Smith,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,smithsh02,2025-allstar-game,,
+Andrés Muñoz,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,munozan01,2025-allstar-game,,
+Aroldis Chapman,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,chapmar01,2025-allstar-game,,
+Team Totals,,27,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,2025-allstar-game,,
+Ronald Acuña Jr.,RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,acunaro01,2025-allstar-game,,
+Fernando Tatis Jr.,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,tatisfe02,2025-allstar-game,,
+Ketel Marte,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,marteke01,2025-allstar-game,,
+Brendan Donovan,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,donovbr01,2025-allstar-game,,
+Freddie Freeman,1B,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,freemfr01,2025-allstar-game,,
+Pete Alonso,1B,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,alonspe01,2025-allstar-game,,
+Matt Olson,1B,3,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,olsonma02,2025-allstar-game,,
+Manny Machado,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,machama01,2025-allstar-game,,
+Eugenio Suárez,3B,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,suareeu01,2025-allstar-game,,
+Will Smith,C,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,smithwi05,2025-allstar-game,,
+Hunter Goodman,C,1,0,1,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,goodmhu01,2025-allstar-game,,
+Kyle Tucker,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,tuckeky01,2025-allstar-game,,
+Corbin Carroll,LF-CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,carroco02,2025-allstar-game,,
+Francisco Lindor,SS,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,lindofr01,2025-allstar-game,,
+Elly De La Cruz,SS,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,delacel01,2025-allstar-game,,
+Pete Crow-Armstrong,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,crowape01,2025-allstar-game,,
+Kyle Stowers,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,stoweky01,2025-allstar-game,,
+Paul Skenes,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,skenepa01,2025-allstar-game,,
+Clayton Kershaw,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,kershcl01,2025-allstar-game,,
+Jason Adam,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,adamja01,2025-allstar-game,,
+Logan Webb,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,webblo01,2025-allstar-game,,
+David Peterson,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,peterda01,2025-allstar-game,,
+MacKenzie Gore,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,gorema01,2025-allstar-game,,
+Andrew Abbott,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,abbotan01,2025-allstar-game,,
+Adrián Morejón,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,morejad01,2025-allstar-game,,
+Randy Rodríguez,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,rodrira02,2025-allstar-game,,
+Trevor Megill,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,megiltr01,2025-allstar-game,,
+Jacob Misiorowski,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,misioja01,2025-allstar-game,,
+Robert Suarez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,suarero01,2025-allstar-game,,
+Edwin Díaz,P,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,diazed04,2025-allstar-game,,
+Team Totals,,27,12,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,2025-allstar-game,,

@@ -1,5 +1,5 @@
-Player,Player ID,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team ID,Opponent Team ID,Game ID
-Buddy Napier,napiebu01,SP,6.0,8,6,3,1,8,0,1.47,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,CIN1920,PIT1920,PIT192010023
-Team Totals,,,6.0,8,6,3,1,8,0,4.5,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,CIN1920,PIT1920,PIT192010023
-Johnny Morrison,morrijo04,SP,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,PIT1920,CIN1920,PIT192010023
-Team Totals,,,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,PIT1920,CIN1920,PIT192010023
+Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Player ID,Game ID,Team ID,Opponent Team ID
+Buddy Napier,SP,6.0,8,6,3,1,8,0,1.47,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,napiebu01,PIT192010023,CIN1920,PIT1920
+Team Totals,,6.0,8,6,3,1,8,0,4.5,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,,PIT192010023,CIN1920,PIT1920
+Johnny Morrison,SP,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,morrijo04,PIT192010023,PIT1920,CIN1920
+Team Totals,,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,,PIT192010023,PIT1920,CIN1920

@@ -1,3 +1,3 @@
-Team,Team ID,Score,Record,Previous Game ID,Next Game ID,Result,Home/Away,Game ID
-Kansas City Royals,KCR1978,3,19-19,SEA197805220,SEA197805232,Loss,Away,SEA197805231
-Seattle Mariners,SEA1978,4,16-27,SEA197805220,SEA197805232,Win,Home,SEA197805231
+Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
+Kansas City Royals,3,19-19,Loss,Away,KCR1978,SEA197805231,SEA197805220,SEA197805232
+Seattle Mariners,4,16-27,Win,Home,SEA1978,SEA197805231,SEA197805220,SEA197805232

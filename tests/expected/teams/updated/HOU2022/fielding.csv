@@ -1,75 +1,75 @@
-Player,Player ID,Team,Season,Team ID,Game Type,Age,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,Pick,Pos
-Justin Verlander,verlaju01,Houston Astros,2022,HOU2022,Regular Season,39.0,28,28,0,175.0,20,4,15,1,2,0.95,,,0,0.0,0.98,1.13,0.68,1.12,,,,,,,1
-Christian Vázquez,vazquch01,Houston Astros,2022,HOU2022,Regular Season,31.0,30,23,22,226.666667,262,253,7,2,1,0.992,-1,-5.0,2,11.0,10.32,8.94,8.67,8.82,0,8,14,3,17.6,0,2/HD
-Framber Valdez,valdefr01,Houston Astros,2022,HOU2022,Regular Season,28.0,31,31,3,201.333334,30,6,23,1,0,0.967,,,0,0.0,1.3,1.13,0.94,1.12,,,,,,,1
-José Urquidy,urquijo01,Houston Astros,2022,HOU2022,Regular Season,27.0,29,28,0,164.333334,17,6,11,0,1,1.0,,,-1,-1.0,0.93,1.13,0.59,1.12,,,,,,,1
-Kyle Tucker,tuckeky01,Houston Astros,2022,HOU2022,Regular Season,25.0,147,145,138,1276.333334,298,287,8,3,1,0.99,16,15.0,15,14.0,2.08,2.23,2.01,2.2,,,,,,,*9/DH
-Blake Taylor,taylobl01,Houston Astros,2022,HOU2022,Regular Season,26.0,19,0,0,16.0,1,1,0,0,0,1.0,,,0,0.0,0.56,1.13,0.05,1.12,,,,,,,1
-Ryne Stanek,stanery01,Houston Astros,2022,HOU2022,Regular Season,30.0,59,0,0,54.666667,1,0,1,0,0,1.0,,,-1,-4.0,0.16,1.14,0.02,1.12,,,,,,,1
-Will Smith,smithwi04,Houston Astros,2022,HOU2022,Regular Season,32.0,24,0,0,22.0,1,0,1,0,0,1.0,,,0,0.0,0.41,1.15,0.04,1.12,,,,,,,1
-Jose Siri,sirijo01,Houston Astros,2022,HOU2022,Regular Season,26.0,46,39,36,351.0,115,114,0,1,0,0.991,11,39.0,9,31.0,2.92,2.23,2.48,2.2,,,,,,,8/9H7D
-Ryan Pressly,pressry01,Houston Astros,2022,HOU2022,Regular Season,33.0,50,0,0,48.333334,5,2,3,0,0,1.0,,,0,0.0,0.93,1.14,0.1,1.12,,,,,,,1
-Joe Perez,perezjo02,Houston Astros,2022,HOU2022,Regular Season,22.0,1,0,0,2.0,1,0,1,0,0,1.0,0,-60.0,0,0.0,4.5,2.7,1.0,2.7,,,,,,,/5H
-Jeremy Peña,penaje02,Houston Astros,2022,HOU2022,Regular Season,24.0,134,132,127,1165.0,512,146,347,19,64,0.963,8,8.0,16,16.0,3.81,3.91,3.68,3.86,,,,,,,*6/H
-Enoli Paredes,pareden01,Houston Astros,2022,HOU2022,Regular Season,26.0,3,0,0,3.0,0,0,0,0,0,,,,0,0.0,0.0,1.2,0.0,1.13,,,,,,,/1
-Jake Odorizzi,odorija01,Houston Astros,2022,HOU2022,Regular Season,32.0,12,12,0,60.0,8,2,5,1,0,0.875,,,1,3.0,1.05,1.13,0.58,1.12,,,,,,,1
-Hector Neris,nerishe01,Houston Astros,2022,HOU2022,Regular Season,33.0,70,0,0,65.333334,5,2,2,1,1,0.8,,,0,0.0,0.55,1.13,0.06,1.12,,,,,,,1
-Parker Mushinski,mushipa01,Houston Astros,2022,HOU2022,Regular Season,26.0,7,0,0,7.333334,1,1,0,0,0,1.0,,,0,0.0,1.23,1.1,0.14,1.11,,,,,,,/1
-Rafael Montero,montera01,Houston Astros,2022,HOU2022,Regular Season,31.0,71,0,0,68.333334,9,2,6,1,1,0.889,,,-1,-3.0,1.05,1.13,0.11,1.12,,,,,,,1
-Jake Meyers,meyerja02,Houston Astros,2022,HOU2022,Regular Season,26.0,51,44,39,402.666667,121,119,0,2,0,0.983,7,22.0,5,15.0,2.66,2.23,2.33,2.2,,,,,,,8/HD
-Lance McCullers Jr.,mcculla02,Houston Astros,2022,HOU2022,Regular Season,28.0,8,8,0,47.666667,4,2,2,0,0,1.0,,,-1,-4.0,0.76,1.13,0.5,1.13,,,,,,,/1
-Chas McCormick,mccorch01,Houston Astros,2022,HOU2022,Regular Season,27.0,117,98,73,914.666667,191,187,3,1,0,0.995,0,0.0,1,1.0,1.87,2.23,1.62,2.2,,,,,,,*789/HD
-Phil Maton,matonph01,Houston Astros,2022,HOU2022,Regular Season,29.0,67,0,0,65.666667,9,2,6,1,1,0.889,,,0,0.0,1.1,1.12,0.12,1.12,,,,,,,1
-J.J. Matijevic,matijjj01,Houston Astros,2022,HOU2022,Regular Season,26.0,11,6,3,57.0,37,36,1,0,2,1.0,0,4.0,0,0.0,5.84,8.16,3.36,7.61,,,,,,,HD3/7
-Seth Martinez,martise01,Houston Astros,2022,HOU2022,Regular Season,27.0,29,0,0,38.666667,6,1,5,0,1,1.0,,,0,0.0,1.4,1.14,0.21,1.12,,,,,,,1
-Trey Mancini,mancitr01,Houston Astros,2022,HOU2022,Regular Season,30.0,28,27,16,232.0,90,89,1,0,3,1.0,2,10.0,1,5.0,3.49,4.42,3.21,4.33,,,,,,,D73/H9
-Martín Maldonado,maldoma01,Houston Astros,2022,HOU2022,Regular Season,35.0,113,110,89,948.666667,1076,1025,49,2,3,0.998,3,4.0,2,3.0,10.19,8.94,9.5,8.82,9,31,46,16,25.8,1,*2
-Korey Lee,leeko01,Houston Astros,2022,HOU2022,Regular Season,23.0,12,7,5,67.0,74,73,0,1,0,0.986,-2,-36.0,-4,-72.0,9.81,8.95,6.08,8.82,2,6,4,0,0.0,0,2/H
-Cristian Javier,javiecr01,Houston Astros,2022,HOU2022,Regular Season,25.0,30,25,0,148.666667,5,2,3,0,1,1.0,,,-1,-1.0,0.3,1.13,0.17,1.12,,,,,,,1
-David Hensley,henslda01,Houston Astros,2022,HOU2022,Regular Season,26.0,10,3,3,43.0,11,4,7,0,2,1.0,-1,-31.0,-1,-28.0,2.3,3.5,1.0,3.49,,,,,,,/D45H67
-Yuli Gurriel,gourryu01,Houston Astros,2022,HOU2022,Regular Season,38.0,142,138,133,1226.333334,1106,1057,45,4,106,0.996,-6,-6.0,-2,-2.0,8.09,8.27,7.76,8.15,,,,,,,*3/DH
-Niko Goodrum,goodrni01,Houston Astros,2022,HOU2022,Regular Season,30.0,14,10,9,94.0,58,39,18,1,6,0.983,0,-5.0,1,13.0,5.46,5.64,4.07,5.25,,,,,,,4/3DH
-Luis Garcia,garcilu05,Houston Astros,2022,HOU2022,Regular Season,25.0,28,28,0,157.333334,13,4,8,1,2,0.923,,,-1,-1.0,0.69,1.13,0.43,1.12,,,,,,,1
-Mauricio Dubón,dubonma01,Houston Astros,2022,HOU2022,Regular Season,27.0,82,51,41,508.333334,174,108,61,5,12,0.971,3,7.0,3,7.0,2.99,2.84,1.97,2.88,,,,,,,864/7H9
-Yainer Diaz,diazya02,Houston Astros,2022,HOU2022,Regular Season,23.0,2,0,0,2.0,3,2,1,0,0,1.0,0,0.0,0,0.0,13.5,9.0,1.5,8.8,0,0,0,0,,0,/D2H
-Aledmys Díaz,diazal02,Houston Astros,2022,HOU2022,Regular Season,31.0,78,69,53,617.666667,210,115,92,3,16,0.986,5,10.0,3,6.0,3.02,3.63,2.44,3.52,,,,,,,746H5/D39
-Jason Castro,castrja01,Houston Astros,2022,HOU2022,Regular Season,35.0,30,22,21,201.0,213,200,10,3,2,0.986,-1,-6.0,-3,-18.0,9.4,8.94,7.0,8.82,1,11,12,4,25.0,1,2/H
-Hunter Brown,brownhu01,Houston Astros,2022,HOU2022,Regular Season,23.0,7,2,0,20.333334,3,1,2,0,0,1.0,,,0,0.0,1.33,1.11,0.43,1.11,,,,,,,/1
-Alex Bregman,bregmal01,Houston Astros,2022,HOU2022,Regular Season,28.0,154,153,149,1360.333334,414,144,263,7,39,0.983,1,1.0,-5,-4.0,2.69,2.7,2.64,2.67,,,,,,,*5/H
-Michael Brantley,brantmi02,Houston Astros,2022,HOU2022,Regular Season,35.0,29,29,24,249.0,60,59,1,0,0,1.0,1,4.0,1,5.0,2.17,2.23,2.07,2.2,,,,,,,D7
-Ronel Blanco,blancro01,Houston Astros,2022,HOU2022,Regular Season,28.0,7,0,0,6.333334,1,1,0,0,0,1.0,,,0,0.0,1.42,1.14,0.14,1.11,,,,,,,/1
-Brandon Bielak,bielabr01,Houston Astros,2022,HOU2022,Regular Season,26.0,5,0,0,12.333334,0,0,0,0,0,,,,0,0.0,0.0,1.09,0.0,1.12,,,,,,,/1
-Pedro Báez,baezpe01,Houston Astros,2022,HOU2022,Regular Season,34.0,3,0,0,2.333334,0,0,0,0,0,,,,0,0.0,0.0,1.16,0.0,1.13,,,,,,,/1
-Yordan Alvarez,alvaryo01,Houston Astros,2022,HOU2022,Regular Season,25.0,56,56,44,467.666667,88,79,7,2,1,0.977,4,11.0,5,13.0,1.66,2.23,1.54,2.2,,,,,,,D7/H
-Jose Altuve,altuvjo01,Houston Astros,2022,HOU2022,Regular Season,32.0,135,134,112,1150.333334,437,159,269,9,67,0.979,-3,-3.0,-15,-16.0,3.35,4.15,3.17,4.09,,,,,,,*4/HD
-Bryan Abreu,abreubr01,Houston Astros,2022,HOU2022,Regular Season,25.0,55,0,0,60.333334,8,2,6,0,0,1.0,,,0,0.0,1.19,1.13,0.15,1.12,,,,,,,1
-Infield Shifts,,Houston Astros,2022,HOU2022,Regular Season,,,,,,,,,,,,,,34,,,,,,,,,,,,
-Non-Shift Infield Positioning,,Houston Astros,2022,HOU2022,Regular Season,,,,,,,,,,,,,,-2,,,,,,,,,,,,
-Outfield Positioning,,Houston Astros,2022,HOU2022,Regular Season,,,,,,,,,,,,,,13,,,,,,,,,,,,
-Team Totals,,Houston Astros,2022,HOU2022,Regular Season,,162,162,1140,1445.0,5698,4336,1290,72,335,0.987,47,4.0,67,3.0,3.89,3.98,2.71,3.3,12,56,76,23,23.2,2,
-Justin Verlander,verlaju01,Houston Astros,2022,HOU2022,Postseason,39.0,4,4,0,20.0,3,1,2,0,0,1.0,,,,,1.35,,0.75,,,,,,,,/1
-Christian Vázquez,vazquch01,Houston Astros,2022,HOU2022,Postseason,31.0,5,2,2,33.0,44,42,2,0,0,1.0,,,,,12.0,,8.8,,0,,3,2,40.0,,/2HD
-Framber Valdez,valdefr01,Houston Astros,2022,HOU2022,Postseason,28.0,4,4,0,25.0,3,0,1,2,0,0.333,,,,,0.36,,0.25,,,,,,,,/1
-José Urquidy,urquijo01,Houston Astros,2022,HOU2022,Postseason,27.0,1,0,0,3.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1
-Kyle Tucker,tuckeky01,Houston Astros,2022,HOU2022,Postseason,25.0,13,13,13,126.0,30,30,0,0,0,1.0,,,,,2.14,,2.31,,,,,,,,*9
-Ryne Stanek,stanery01,Houston Astros,2022,HOU2022,Postseason,30.0,4,0,0,3.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1
-Ryan Pressly,pressry01,Houston Astros,2022,HOU2022,Postseason,33.0,10,0,0,11.0,1,0,1,0,0,1.0,,,,,0.82,,0.1,,,,,,,,*1
-Jeremy Peña,penaje02,Houston Astros,2022,HOU2022,Postseason,24.0,13,13,13,126.0,51,22,28,1,4,0.98,,,,,3.57,,3.85,,,,,,,,*6
-Hector Neris,nerishe01,Houston Astros,2022,HOU2022,Postseason,33.0,8,0,0,6.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1
-Rafael Montero,montera01,Houston Astros,2022,HOU2022,Postseason,31.0,10,0,0,9.333334,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,*1
-Jake Meyers,meyerja02,Houston Astros,2022,HOU2022,Postseason,26.0,1,1,0,7.0,1,1,0,0,0,1.0,,,,,1.29,,1.0,,,,,,,,/8H
-Lance McCullers Jr.,mcculla02,Houston Astros,2022,HOU2022,Postseason,28.0,3,3,0,15.333334,4,3,1,0,0,1.0,,,,,2.35,,1.33,,,,,,,,/1
-Chas McCormick,mccorch01,Houston Astros,2022,HOU2022,Postseason,27.0,12,12,7,114.0,19,19,0,0,0,1.0,,,,,1.5,,1.27,,,,,,,,*8/7
-Trey Mancini,mancitr01,Houston Astros,2022,HOU2022,Postseason,30.0,2,1,1,11.0,8,8,0,0,1,1.0,,,,,6.55,,4.0,,,,,,,,/3DH
-Martín Maldonado,maldoma01,Houston Astros,2022,HOU2022,Postseason,35.0,11,11,8,93.0,124,121,3,0,0,1.0,,,,,12.0,,11.27,,1,,1,0,0.0,,*2
-Cristian Javier,javiecr01,Houston Astros,2022,HOU2022,Postseason,25.0,3,2,0,12.666667,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1
-Yuli Gurriel,gourryu01,Houston Astros,2022,HOU2022,Postseason,38.0,12,12,11,115.0,99,92,6,1,5,0.99,,,,,7.67,,8.17,,,,,,,,*3
-Luis Garcia,garcilu05,Houston Astros,2022,HOU2022,Postseason,25.0,2,0,0,5.666667,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1
-Mauricio Dubón,dubonma01,Houston Astros,2022,HOU2022,Postseason,27.0,6,0,0,9.0,1,1,0,0,0,1.0,,,,,1.0,,0.17,,,,,,,,/8
-Aledmys Díaz,diazal02,Houston Astros,2022,HOU2022,Postseason,31.0,3,3,1,24.0,4,4,0,0,0,1.0,,,,,1.5,,1.33,,,,,,,,/7DH
-Hunter Brown,brownhu01,Houston Astros,2022,HOU2022,Postseason,23.0,3,0,0,3.666667,1,0,1,0,0,1.0,,,,,2.45,,0.33,,,,,,,,/1
-Alex Bregman,bregmal01,Houston Astros,2022,HOU2022,Postseason,28.0,13,13,13,126.0,36,11,25,0,1,1.0,,,,,2.57,,2.77,,,,,,,,*5
-Yordan Alvarez,alvaryo01,Houston Astros,2022,HOU2022,Postseason,25.0,10,10,9,98.0,14,13,1,0,0,1.0,,,,,1.29,,1.4,,,,,,,,*7/D
-Jose Altuve,altuvjo01,Houston Astros,2022,HOU2022,Postseason,32.0,13,13,13,126.0,37,10,26,1,4,0.973,,,,,2.57,,2.77,,,,,,,,*4
-Bryan Abreu,abreubr01,Houston Astros,2022,HOU2022,Postseason,25.0,10,0,0,11.333334,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,*1
-Team Totals,,Houston Astros,2022,HOU2022,Postseason,,13,13,91,126.0,480,378,97,5,15,0.99,,,,,3.77,,2.65,,1,,4,2,33.3,,
+Team,Season,Game Type,Player,Age,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,Pick,Pos,Team ID,Player ID
+Houston Astros,2022,Regular Season,Justin Verlander,39.0,28,28,0,175.0,20,4,15,1,2,0.95,,,0,0.0,0.98,1.13,0.68,1.12,,,,,,,1,HOU2022,verlaju01
+Houston Astros,2022,Regular Season,Christian Vázquez,31.0,30,23,22,226.666667,262,253,7,2,1,0.992,-1,-5.0,2,11.0,10.32,8.94,8.67,8.82,0,8,14,3,17.6,0,2/HD,HOU2022,vazquch01
+Houston Astros,2022,Regular Season,Framber Valdez,28.0,31,31,3,201.333334,30,6,23,1,0,0.967,,,0,0.0,1.3,1.13,0.94,1.12,,,,,,,1,HOU2022,valdefr01
+Houston Astros,2022,Regular Season,José Urquidy,27.0,29,28,0,164.333334,17,6,11,0,1,1.0,,,-1,-1.0,0.93,1.13,0.59,1.12,,,,,,,1,HOU2022,urquijo01
+Houston Astros,2022,Regular Season,Kyle Tucker,25.0,147,145,138,1276.333334,298,287,8,3,1,0.99,16,15.0,15,14.0,2.08,2.23,2.01,2.2,,,,,,,*9/DH,HOU2022,tuckeky01
+Houston Astros,2022,Regular Season,Blake Taylor,26.0,19,0,0,16.0,1,1,0,0,0,1.0,,,0,0.0,0.56,1.13,0.05,1.12,,,,,,,1,HOU2022,taylobl01
+Houston Astros,2022,Regular Season,Ryne Stanek,30.0,59,0,0,54.666667,1,0,1,0,0,1.0,,,-1,-4.0,0.16,1.14,0.02,1.12,,,,,,,1,HOU2022,stanery01
+Houston Astros,2022,Regular Season,Will Smith,32.0,24,0,0,22.0,1,0,1,0,0,1.0,,,0,0.0,0.41,1.15,0.04,1.12,,,,,,,1,HOU2022,smithwi04
+Houston Astros,2022,Regular Season,Jose Siri,26.0,46,39,36,351.0,115,114,0,1,0,0.991,11,39.0,9,31.0,2.92,2.23,2.48,2.2,,,,,,,8/9H7D,HOU2022,sirijo01
+Houston Astros,2022,Regular Season,Ryan Pressly,33.0,50,0,0,48.333334,5,2,3,0,0,1.0,,,0,0.0,0.93,1.14,0.1,1.12,,,,,,,1,HOU2022,pressry01
+Houston Astros,2022,Regular Season,Joe Perez,22.0,1,0,0,2.0,1,0,1,0,0,1.0,0,-60.0,0,0.0,4.5,2.7,1.0,2.7,,,,,,,/5H,HOU2022,perezjo02
+Houston Astros,2022,Regular Season,Jeremy Peña,24.0,134,132,127,1165.0,512,146,347,19,64,0.963,8,8.0,16,16.0,3.81,3.91,3.68,3.86,,,,,,,*6/H,HOU2022,penaje02
+Houston Astros,2022,Regular Season,Enoli Paredes,26.0,3,0,0,3.0,0,0,0,0,0,,,,0,0.0,0.0,1.2,0.0,1.13,,,,,,,/1,HOU2022,pareden01
+Houston Astros,2022,Regular Season,Jake Odorizzi,32.0,12,12,0,60.0,8,2,5,1,0,0.875,,,1,3.0,1.05,1.13,0.58,1.12,,,,,,,1,HOU2022,odorija01
+Houston Astros,2022,Regular Season,Hector Neris,33.0,70,0,0,65.333334,5,2,2,1,1,0.8,,,0,0.0,0.55,1.13,0.06,1.12,,,,,,,1,HOU2022,nerishe01
+Houston Astros,2022,Regular Season,Parker Mushinski,26.0,7,0,0,7.333334,1,1,0,0,0,1.0,,,0,0.0,1.23,1.1,0.14,1.11,,,,,,,/1,HOU2022,mushipa01
+Houston Astros,2022,Regular Season,Rafael Montero,31.0,71,0,0,68.333334,9,2,6,1,1,0.889,,,-1,-3.0,1.05,1.13,0.11,1.12,,,,,,,1,HOU2022,montera01
+Houston Astros,2022,Regular Season,Jake Meyers,26.0,51,44,39,402.666667,121,119,0,2,0,0.983,7,22.0,5,15.0,2.66,2.23,2.33,2.2,,,,,,,8/HD,HOU2022,meyerja02
+Houston Astros,2022,Regular Season,Lance McCullers Jr.,28.0,8,8,0,47.666667,4,2,2,0,0,1.0,,,-1,-4.0,0.76,1.13,0.5,1.13,,,,,,,/1,HOU2022,mcculla02
+Houston Astros,2022,Regular Season,Chas McCormick,27.0,117,98,73,914.666667,191,187,3,1,0,0.995,0,0.0,1,1.0,1.87,2.23,1.62,2.2,,,,,,,*789/HD,HOU2022,mccorch01
+Houston Astros,2022,Regular Season,Phil Maton,29.0,67,0,0,65.666667,9,2,6,1,1,0.889,,,0,0.0,1.1,1.12,0.12,1.12,,,,,,,1,HOU2022,matonph01
+Houston Astros,2022,Regular Season,J.J. Matijevic,26.0,11,6,3,57.0,37,36,1,0,2,1.0,0,4.0,0,0.0,5.84,8.16,3.36,7.61,,,,,,,HD3/7,HOU2022,matijjj01
+Houston Astros,2022,Regular Season,Seth Martinez,27.0,29,0,0,38.666667,6,1,5,0,1,1.0,,,0,0.0,1.4,1.14,0.21,1.12,,,,,,,1,HOU2022,martise01
+Houston Astros,2022,Regular Season,Trey Mancini,30.0,28,27,16,232.0,90,89,1,0,3,1.0,2,10.0,1,5.0,3.49,4.42,3.21,4.33,,,,,,,D73/H9,HOU2022,mancitr01
+Houston Astros,2022,Regular Season,Martín Maldonado,35.0,113,110,89,948.666667,1076,1025,49,2,3,0.998,3,4.0,2,3.0,10.19,8.94,9.5,8.82,9,31,46,16,25.8,1,*2,HOU2022,maldoma01
+Houston Astros,2022,Regular Season,Korey Lee,23.0,12,7,5,67.0,74,73,0,1,0,0.986,-2,-36.0,-4,-72.0,9.81,8.95,6.08,8.82,2,6,4,0,0.0,0,2/H,HOU2022,leeko01
+Houston Astros,2022,Regular Season,Cristian Javier,25.0,30,25,0,148.666667,5,2,3,0,1,1.0,,,-1,-1.0,0.3,1.13,0.17,1.12,,,,,,,1,HOU2022,javiecr01
+Houston Astros,2022,Regular Season,David Hensley,26.0,10,3,3,43.0,11,4,7,0,2,1.0,-1,-31.0,-1,-28.0,2.3,3.5,1.0,3.49,,,,,,,/D45H67,HOU2022,henslda01
+Houston Astros,2022,Regular Season,Yuli Gurriel,38.0,142,138,133,1226.333334,1106,1057,45,4,106,0.996,-6,-6.0,-2,-2.0,8.09,8.27,7.76,8.15,,,,,,,*3/DH,HOU2022,gourryu01
+Houston Astros,2022,Regular Season,Niko Goodrum,30.0,14,10,9,94.0,58,39,18,1,6,0.983,0,-5.0,1,13.0,5.46,5.64,4.07,5.25,,,,,,,4/3DH,HOU2022,goodrni01
+Houston Astros,2022,Regular Season,Luis Garcia,25.0,28,28,0,157.333334,13,4,8,1,2,0.923,,,-1,-1.0,0.69,1.13,0.43,1.12,,,,,,,1,HOU2022,garcilu05
+Houston Astros,2022,Regular Season,Mauricio Dubón,27.0,82,51,41,508.333334,174,108,61,5,12,0.971,3,7.0,3,7.0,2.99,2.84,1.97,2.88,,,,,,,864/7H9,HOU2022,dubonma01
+Houston Astros,2022,Regular Season,Yainer Diaz,23.0,2,0,0,2.0,3,2,1,0,0,1.0,0,0.0,0,0.0,13.5,9.0,1.5,8.8,0,0,0,0,,0,/D2H,HOU2022,diazya02
+Houston Astros,2022,Regular Season,Aledmys Díaz,31.0,78,69,53,617.666667,210,115,92,3,16,0.986,5,10.0,3,6.0,3.02,3.63,2.44,3.52,,,,,,,746H5/D39,HOU2022,diazal02
+Houston Astros,2022,Regular Season,Jason Castro,35.0,30,22,21,201.0,213,200,10,3,2,0.986,-1,-6.0,-3,-18.0,9.4,8.94,7.0,8.82,1,11,12,4,25.0,1,2/H,HOU2022,castrja01
+Houston Astros,2022,Regular Season,Hunter Brown,23.0,7,2,0,20.333334,3,1,2,0,0,1.0,,,0,0.0,1.33,1.11,0.43,1.11,,,,,,,/1,HOU2022,brownhu01
+Houston Astros,2022,Regular Season,Alex Bregman,28.0,154,153,149,1360.333334,414,144,263,7,39,0.983,1,1.0,-5,-4.0,2.69,2.7,2.64,2.67,,,,,,,*5/H,HOU2022,bregmal01
+Houston Astros,2022,Regular Season,Michael Brantley,35.0,29,29,24,249.0,60,59,1,0,0,1.0,1,4.0,1,5.0,2.17,2.23,2.07,2.2,,,,,,,D7,HOU2022,brantmi02
+Houston Astros,2022,Regular Season,Ronel Blanco,28.0,7,0,0,6.333334,1,1,0,0,0,1.0,,,0,0.0,1.42,1.14,0.14,1.11,,,,,,,/1,HOU2022,blancro01
+Houston Astros,2022,Regular Season,Brandon Bielak,26.0,5,0,0,12.333334,0,0,0,0,0,,,,0,0.0,0.0,1.09,0.0,1.12,,,,,,,/1,HOU2022,bielabr01
+Houston Astros,2022,Regular Season,Pedro Báez,34.0,3,0,0,2.333334,0,0,0,0,0,,,,0,0.0,0.0,1.16,0.0,1.13,,,,,,,/1,HOU2022,baezpe01
+Houston Astros,2022,Regular Season,Yordan Alvarez,25.0,56,56,44,467.666667,88,79,7,2,1,0.977,4,11.0,5,13.0,1.66,2.23,1.54,2.2,,,,,,,D7/H,HOU2022,alvaryo01
+Houston Astros,2022,Regular Season,Jose Altuve,32.0,135,134,112,1150.333334,437,159,269,9,67,0.979,-3,-3.0,-15,-16.0,3.35,4.15,3.17,4.09,,,,,,,*4/HD,HOU2022,altuvjo01
+Houston Astros,2022,Regular Season,Bryan Abreu,25.0,55,0,0,60.333334,8,2,6,0,0,1.0,,,0,0.0,1.19,1.13,0.15,1.12,,,,,,,1,HOU2022,abreubr01
+Houston Astros,2022,Regular Season,Infield Shifts,,,,,,,,,,,,,,34,,,,,,,,,,,,,HOU2022,
+Houston Astros,2022,Regular Season,Non-Shift Infield Positioning,,,,,,,,,,,,,,-2,,,,,,,,,,,,,HOU2022,
+Houston Astros,2022,Regular Season,Outfield Positioning,,,,,,,,,,,,,,13,,,,,,,,,,,,,HOU2022,
+Houston Astros,2022,Regular Season,Team Totals,,162,162,1140,1445.0,5698,4336,1290,72,335,0.987,47,4.0,67,3.0,3.89,3.98,2.71,3.3,12,56,76,23,23.2,2,,HOU2022,
+Houston Astros,2022,Postseason,Justin Verlander,39.0,4,4,0,20.0,3,1,2,0,0,1.0,,,,,1.35,,0.75,,,,,,,,/1,HOU2022,verlaju01
+Houston Astros,2022,Postseason,Christian Vázquez,31.0,5,2,2,33.0,44,42,2,0,0,1.0,,,,,12.0,,8.8,,0,,3,2,40.0,,/2HD,HOU2022,vazquch01
+Houston Astros,2022,Postseason,Framber Valdez,28.0,4,4,0,25.0,3,0,1,2,0,0.333,,,,,0.36,,0.25,,,,,,,,/1,HOU2022,valdefr01
+Houston Astros,2022,Postseason,José Urquidy,27.0,1,0,0,3.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1,HOU2022,urquijo01
+Houston Astros,2022,Postseason,Kyle Tucker,25.0,13,13,13,126.0,30,30,0,0,0,1.0,,,,,2.14,,2.31,,,,,,,,*9,HOU2022,tuckeky01
+Houston Astros,2022,Postseason,Ryne Stanek,30.0,4,0,0,3.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1,HOU2022,stanery01
+Houston Astros,2022,Postseason,Ryan Pressly,33.0,10,0,0,11.0,1,0,1,0,0,1.0,,,,,0.82,,0.1,,,,,,,,*1,HOU2022,pressry01
+Houston Astros,2022,Postseason,Jeremy Peña,24.0,13,13,13,126.0,51,22,28,1,4,0.98,,,,,3.57,,3.85,,,,,,,,*6,HOU2022,penaje02
+Houston Astros,2022,Postseason,Hector Neris,33.0,8,0,0,6.0,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1,HOU2022,nerishe01
+Houston Astros,2022,Postseason,Rafael Montero,31.0,10,0,0,9.333334,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,*1,HOU2022,montera01
+Houston Astros,2022,Postseason,Jake Meyers,26.0,1,1,0,7.0,1,1,0,0,0,1.0,,,,,1.29,,1.0,,,,,,,,/8H,HOU2022,meyerja02
+Houston Astros,2022,Postseason,Lance McCullers Jr.,28.0,3,3,0,15.333334,4,3,1,0,0,1.0,,,,,2.35,,1.33,,,,,,,,/1,HOU2022,mcculla02
+Houston Astros,2022,Postseason,Chas McCormick,27.0,12,12,7,114.0,19,19,0,0,0,1.0,,,,,1.5,,1.27,,,,,,,,*8/7,HOU2022,mccorch01
+Houston Astros,2022,Postseason,Trey Mancini,30.0,2,1,1,11.0,8,8,0,0,1,1.0,,,,,6.55,,4.0,,,,,,,,/3DH,HOU2022,mancitr01
+Houston Astros,2022,Postseason,Martín Maldonado,35.0,11,11,8,93.0,124,121,3,0,0,1.0,,,,,12.0,,11.27,,1,,1,0,0.0,,*2,HOU2022,maldoma01
+Houston Astros,2022,Postseason,Cristian Javier,25.0,3,2,0,12.666667,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1,HOU2022,javiecr01
+Houston Astros,2022,Postseason,Yuli Gurriel,38.0,12,12,11,115.0,99,92,6,1,5,0.99,,,,,7.67,,8.17,,,,,,,,*3,HOU2022,gourryu01
+Houston Astros,2022,Postseason,Luis Garcia,25.0,2,0,0,5.666667,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,/1,HOU2022,garcilu05
+Houston Astros,2022,Postseason,Mauricio Dubón,27.0,6,0,0,9.0,1,1,0,0,0,1.0,,,,,1.0,,0.17,,,,,,,,/8,HOU2022,dubonma01
+Houston Astros,2022,Postseason,Aledmys Díaz,31.0,3,3,1,24.0,4,4,0,0,0,1.0,,,,,1.5,,1.33,,,,,,,,/7DH,HOU2022,diazal02
+Houston Astros,2022,Postseason,Hunter Brown,23.0,3,0,0,3.666667,1,0,1,0,0,1.0,,,,,2.45,,0.33,,,,,,,,/1,HOU2022,brownhu01
+Houston Astros,2022,Postseason,Alex Bregman,28.0,13,13,13,126.0,36,11,25,0,1,1.0,,,,,2.57,,2.77,,,,,,,,*5,HOU2022,bregmal01
+Houston Astros,2022,Postseason,Yordan Alvarez,25.0,10,10,9,98.0,14,13,1,0,0,1.0,,,,,1.29,,1.4,,,,,,,,*7/D,HOU2022,alvaryo01
+Houston Astros,2022,Postseason,Jose Altuve,32.0,13,13,13,126.0,37,10,26,1,4,0.973,,,,,2.57,,2.77,,,,,,,,*4,HOU2022,altuvjo01
+Houston Astros,2022,Postseason,Bryan Abreu,25.0,10,0,0,11.333334,0,0,0,0,0,,,,,,0.0,,0.0,,,,,,,,*1,HOU2022,abreubr01
+Houston Astros,2022,Postseason,Team Totals,,13,13,91,126.0,480,378,97,5,15,0.99,,,,,3.77,,2.65,,1,,4,2,33.3,,,HOU2022,

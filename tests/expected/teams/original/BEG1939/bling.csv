@@ -1,29 +1,29 @@
-Player,Player ID,Team,Season,Team ID,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series
-Wild Bill Wright,wrighwi01,Baltimore Elite Giants,1939,BEG1939,2,0,0,0,,0,,0,,0,0,,,
-Woody Williams,williwo03,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Jim Willis,williji05,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Clarence Williams,willicl01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Jim West,westji01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Hoss Walker,walkeho01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Felton Snow,snowfe01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Skin Down Robinson,robinsk01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Charlie Rivera,riverch01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Lefty Phillips,phillle01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Red Moore,moorere01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Biz Mackey,mackebi99,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Henry Kimbro,kimbrhe01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Johnny Johnson,johnsjo12,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Sammy Hughes,hughesa01,Baltimore Elite Giants,1939,BEG1939,2,0,0,0,,0,,0,,0,0,,,
-Willie Hubert,huberwi01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Bill Hoskins,hoskibi01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Crush Holloway,hollocr01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Bill Harvey,harvebi01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Tom Glover,gloveto01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Jonas Gaines,gainejo02,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Homer Curry,currygo01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Roy Campanella,camparo01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Bill Byrd,byrdbi01,Baltimore Elite Giants,1939,BEG1939,2,0,0,0,,0,,0,,0,0,,,
-Tommy Butts,buttsto01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Oscar Boone,booneos01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Emery Adams,adamsem01,Baltimore Elite Giants,1939,BEG1939,0,0,0,0,,0,,0,,0,0,,,
-Team Totals,,Baltimore Elite Giants,1939,BEG1939,6,0,0,0,0,0,0,0,0,0,0,0,1,0
+Team,Season,Player,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series,Team ID,Player ID
+Baltimore Elite Giants,1939,Wild Bill Wright,2,0,0,0,,0,,0,,0,0,,,,BEG1939,wrighwi01
+Baltimore Elite Giants,1939,Woody Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williwo03
+Baltimore Elite Giants,1939,Jim Willis,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williji05
+Baltimore Elite Giants,1939,Clarence Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,willicl01
+Baltimore Elite Giants,1939,Jim West,0,0,0,0,,0,,0,,0,0,,,,BEG1939,westji01
+Baltimore Elite Giants,1939,Hoss Walker,0,0,0,0,,0,,0,,0,0,,,,BEG1939,walkeho01
+Baltimore Elite Giants,1939,Felton Snow,0,0,0,0,,0,,0,,0,0,,,,BEG1939,snowfe01
+Baltimore Elite Giants,1939,Skin Down Robinson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,robinsk01
+Baltimore Elite Giants,1939,Charlie Rivera,0,0,0,0,,0,,0,,0,0,,,,BEG1939,riverch01
+Baltimore Elite Giants,1939,Lefty Phillips,0,0,0,0,,0,,0,,0,0,,,,BEG1939,phillle01
+Baltimore Elite Giants,1939,Red Moore,0,0,0,0,,0,,0,,0,0,,,,BEG1939,moorere01
+Baltimore Elite Giants,1939,Biz Mackey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,mackebi99
+Baltimore Elite Giants,1939,Henry Kimbro,0,0,0,0,,0,,0,,0,0,,,,BEG1939,kimbrhe01
+Baltimore Elite Giants,1939,Johnny Johnson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,johnsjo12
+Baltimore Elite Giants,1939,Sammy Hughes,2,0,0,0,,0,,0,,0,0,,,,BEG1939,hughesa01
+Baltimore Elite Giants,1939,Willie Hubert,0,0,0,0,,0,,0,,0,0,,,,BEG1939,huberwi01
+Baltimore Elite Giants,1939,Bill Hoskins,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hoskibi01
+Baltimore Elite Giants,1939,Crush Holloway,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hollocr01
+Baltimore Elite Giants,1939,Bill Harvey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,harvebi01
+Baltimore Elite Giants,1939,Tom Glover,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gloveto01
+Baltimore Elite Giants,1939,Jonas Gaines,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gainejo02
+Baltimore Elite Giants,1939,Homer Curry,0,0,0,0,,0,,0,,0,0,,,,BEG1939,currygo01
+Baltimore Elite Giants,1939,Roy Campanella,0,0,0,0,,0,,0,,0,0,,,,BEG1939,camparo01
+Baltimore Elite Giants,1939,Bill Byrd,2,0,0,0,,0,,0,,0,0,,,,BEG1939,byrdbi01
+Baltimore Elite Giants,1939,Tommy Butts,0,0,0,0,,0,,0,,0,0,,,,BEG1939,buttsto01
+Baltimore Elite Giants,1939,Oscar Boone,0,0,0,0,,0,,0,,0,0,,,,BEG1939,booneos01
+Baltimore Elite Giants,1939,Emery Adams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,adamsem01
+Baltimore Elite Giants,1939,Team Totals,6,0,0,0,0,0,0,0,0,0,0,0,1,0,BEG1939,

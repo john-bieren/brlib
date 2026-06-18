@@ -1,1 +1,1 @@
-Player,Player ID,Team,Season,Team ID,Game Type,Age,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,Pick,Pos
+Team,Season,Game Type,Player,Age,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,Pick,Pos,Team ID,Player ID

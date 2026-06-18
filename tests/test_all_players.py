@@ -9,11 +9,11 @@ def test_shape(ap_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame has the right shape."""
     assert len(ap_filtered) == 20479
     assert ap_filtered.columns.tolist() == [
-        "Player ID",
         "Player",
         "Career Start",
         "Career End",
         "Active",
+        "Player ID",
     ]
 
 

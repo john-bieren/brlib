@@ -1,18 +1,18 @@
-Player,Player ID,Season,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,AS,ASG MVP,HR Derby Champ,WS Wins,WS MVP,LCS MVP,SS,GG,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year
-Roy Halladay,hallaro01,1998,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,1999,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2000,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2001,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2002,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2003,0,,1,1,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2004,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2005,0,,0,,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2006,0,,0,3,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2007,0,,0,5,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2008,0,,0,2,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2009,0,,0,5,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2010,0,6,1,1,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2011,0,9,0,2,0,,1,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2012,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,2013,0,,0,,0,,0,,,,0,0,0,0,,,,,,,,,,,
-Roy Halladay,hallaro01,Career Totals,0,2,2,7,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Player,Season,AS,SS,GG,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,WS Wins,ASG MVP,HR Derby Champ,Platinum Glove,Rivera,Hoffman,Clemente,BA Title,ERA Title,Triple Crown,TSN POY,Wilson ODP,Rolaids,Manager of the Year,Player ID
+Roy Halladay,1998,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,1999,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2000,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2001,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2002,1,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2003,1,0,0,0,,1,1,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2004,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2005,1,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2006,1,0,0,0,,0,3,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2007,0,0,0,0,,0,5,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2008,1,0,0,0,,0,2,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2009,1,0,0,0,,0,5,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2010,1,0,0,0,6,1,1,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2011,1,0,0,0,9,0,2,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2012,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,2013,0,0,0,0,,0,,0,,0,0,,,,,,,,,,,,,,,hallaro01
+Roy Halladay,Career Totals,8,0,0,0,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,hallaro01
