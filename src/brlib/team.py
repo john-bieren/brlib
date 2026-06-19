@@ -471,10 +471,10 @@ class Team:
         for line in info.find_all("p"):
             line_str = line.text.replace("\n", "").replace("\t", " ").replace("\xa0", " ")
 
-            # parse record, using overall record for Negro League teams
-            if line_str.startswith("Record") or line_str.startswith("Overall Record"):
-                # e.g., "Record: 90-72,  Finished..." or "Overall Record: 31-32  (includes..."
-                team_record = str_between(line_str, "Record: ", "  ").strip(",").split("-")
+            # parse record, division, and division finish
+            if line_str.startswith("Record") or line_str.startswith("League Record"):
+                # e.g., "Record: 90-72,  Finished..."
+                team_record = str_between(line_str, "Record:", ",").strip().split("-")
                 self.info.loc[:, "Wins"] = int(team_record[0])
                 self.info.loc[:, "Losses"] = int(team_record[1])
                 self.info.loc[:, "Ties"] = int(team_record[2]) if len(team_record) > 2 else 0
@@ -482,8 +482,6 @@ class Team:
                     self.info["Wins"] + self.info["Losses"]
                 )
 
-            # parse division and division finish
-            if line_str.startswith("Record") or line_str.startswith("League Record"):
                 if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
                 else:
@@ -497,6 +495,18 @@ class Team:
                 else:
                     division = line_str.rsplit(" in ", maxsplit=1)[1]
                 self.info.loc[:, "Division"] = division.strip().replace("_", " ")
+
+            # parse overall record for Negro League teams
+            elif line_str.startswith("Overall Record"):
+                overall_record = str_between(line_str, "Record:", "(").strip().split("-")
+                self.info.loc[:, "Overall Wins"] = int(overall_record[0])
+                self.info.loc[:, "Overall Losses"] = int(overall_record[1])
+                self.info.loc[:, "Overall Ties"] = (
+                    int(overall_record[2]) if len(overall_record) > 2 else 0
+                )
+                self.info.loc[:, "Overall W-L%"] = self.info["Overall Wins"] / (
+                    self.info["Overall Wins"] + self.info["Overall Losses"]
+                )
 
             elif line_str.startswith("Postseason"):
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()

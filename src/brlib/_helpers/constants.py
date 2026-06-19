@@ -1057,6 +1057,10 @@ TEAM_INFO_DTYPES = {
     "Runs Allowed": "Int64",
     "Number of Players": "Int64",
     "Number of Pitchers": "Int64",
+    "Overall Wins": "Int64",
+    "Overall Losses": "Int64",
+    "Overall Ties": "Int64",
+    "Overall W-L%": "Float64",
 }
 
 TEAM_BLING_DTYPES = {
