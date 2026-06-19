@@ -150,10 +150,10 @@ def refresh_cols(wiki_dir: Path) -> None:
         if line.startswith("###"):
             file_lines.append(line)
             df_name = line[4:].replace("`", "").split(" and", maxsplit=1)[0]
+            df_cols_written = False
             # there is no dtype dict for linescore, so just keep its existing lines
             if skip_df := df_name == "Game.linescore":
                 continue
-            df_cols_written = False
             i += 1
         # start of column list
         elif line.startswith("* `"):
@@ -162,6 +162,7 @@ def refresh_cols(wiki_dir: Path) -> None:
                 continue
             if skip_df:
                 file_lines.append(line)
+                continue
             for col_name, col_dtype in dtype_dicts[i].items():
                 col_info = col_lines.get(f"{df_name}::{col_name}", "")
                 if col_info != "":
@@ -176,7 +177,7 @@ def refresh_cols(wiki_dir: Path) -> None:
                     file_lines.append(f"* `{col_name}`: `{col_dtype}`")
             df_cols_written = True
         # skip column notes, as they have already been added
-        elif line.startswith("    *"):
+        elif line.startswith("    "):
             continue
         # pass all other lines through
         else:
