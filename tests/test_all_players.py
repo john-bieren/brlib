@@ -7,7 +7,7 @@ from brlib._helpers.constants import ALL_PLAYERS_DTYPES
 
 def test_shape(ap_filtered: pd.DataFrame) -> None:
     """Tests that the filtered DataFrame has the right shape."""
-    assert len(ap_filtered) == 20479
+    assert len(ap_filtered) == 20705
     assert ap_filtered.columns.tolist() == [
         "Player",
         "Career Start",

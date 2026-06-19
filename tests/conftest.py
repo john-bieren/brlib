@@ -50,7 +50,7 @@ def test_clear_cache() -> None:
 def ap_filtered() -> pd.DataFrame:
     """The output of `all_players`, filtered to a stable subset of retired players."""
     ap = br.all_players()
-    ap = ap.loc[ap["Career End"] < 2019]
+    ap = ap.loc[ap["Career End"] <= 2019]
     return ap
 
 
