@@ -1,3 +1,3 @@
-Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
-Montreal Expos,8,63-38,Win,Away,MON1994,FLO199407290,ATL199407270,FLO199407300
-Florida Marlins,4,45-57,Loss,Home,FLA1994,FLO199407290,FLO199407270,FLO199407300
+Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+"July 29, 1994, Montreal Expos vs Florida Marlins",Montreal Expos,8,63-38,Win,Away,FLO199407290,MON1994,ATL199407270,FLO199407300
+"July 29, 1994, Montreal Expos vs Florida Marlins",Florida Marlins,4,45-57,Loss,Home,FLO199407290,FLA1994,FLO199407270,FLO199407300

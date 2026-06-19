@@ -1,3 +1,3 @@
-Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
-Chicago Cubs,2,106-43,Loss,Away,CHC1907,SLN190710051,SLN190710040,SLN190710052
-St. Louis Cardinals,0,50-100,Win,Home,STL1907,SLN190710051,SLN190710040,SLN190710052
+Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",Chicago Cubs,2,106-43,Loss,Away,SLN190710051,CHC1907,SLN190710040,SLN190710052
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",St. Louis Cardinals,0,50-100,Win,Home,SLN190710051,STL1907,SLN190710040,SLN190710052

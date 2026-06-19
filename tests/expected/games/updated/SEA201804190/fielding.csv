@@ -1,30 +1,30 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
-George Springer,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,springe01,SEA201804190,HOU2018,SEA2018
-Derek Fisher,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,fishede01,SEA201804190,HOU2018,SEA2018
-Jose Altuve,2B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,altuvjo01,SEA201804190,HOU2018,SEA2018
-Carlos Correa,SS,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,correca01,SEA201804190,HOU2018,SEA2018
-Alex Bregman,3B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bregmal01,SEA201804190,HOU2018,SEA2018
-Marwin González,1B,9,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,gonzama01,SEA201804190,HOU2018,SEA2018
-Josh Reddick,LF-RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,reddijo01,SEA201804190,HOU2018,SEA2018
-Max Stassi,C,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,stassma01,SEA201804190,HOU2018,SEA2018
-Jake Marisnick,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,marisja01,SEA201804190,HOU2018,SEA2018
-Charlie Morton,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,mortoch02,SEA201804190,HOU2018,SEA2018
-Tony Sipp,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,sippto01,SEA201804190,HOU2018,SEA2018
-Héctor Rondón,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rondohe01,SEA201804190,HOU2018,SEA2018
-Brad Peacock,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,peacobr01,SEA201804190,HOU2018,SEA2018
-Team Totals,,27,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,SEA201804190,HOU2018,SEA2018
-Dee Strange-Gordon,CF,2,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,gordode01,SEA201804190,SEA2018,HOU2018
-Jean Segura,SS,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,segurje01,SEA201804190,SEA2018,HOU2018
-Robinson Canó,2B,3,2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,canoro01,SEA201804190,SEA2018,HOU2018
-Kyle Seager,3B,1,2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,seageky01,SEA201804190,SEA2018,HOU2018
-Mitch Haniger,RF,2,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,hanigmi01,SEA201804190,SEA2018,HOU2018
-Ben Gamel,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,gamelbe01,SEA201804190,SEA2018,HOU2018
-Guillermo Heredia,PH-LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,heredgu01,SEA201804190,SEA2018,HOU2018
-Daniel Vogelbach,1B,5,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,vogelda01,SEA201804190,SEA2018,HOU2018
-Andrew Romine,PH-1B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rominan01,SEA201804190,SEA2018,HOU2018
-David Freitas,C,11,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,freitda01,SEA201804190,SEA2018,HOU2018
-Marco Gonzales,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,gonzama02,SEA201804190,SEA2018,HOU2018
-Dan Altavilla,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,altavda01,SEA201804190,SEA2018,HOU2018
-Marc Rzepczynski,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rzepcma01,SEA201804190,SEA2018,HOU2018
-Wade LeBlanc,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,leblawa01,SEA201804190,SEA2018,HOU2018
-Team Totals,,27,7,0,1,1,2,0,1,0,0,1,0,0,0,0,0,0,0,0,,SEA201804190,SEA2018,HOU2018
+Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"April 19, 2018, Houston Astros vs Seattle Mariners",George Springer,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,springe01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Derek Fisher,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,fishede01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Jose Altuve,2B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,altuvjo01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Carlos Correa,SS,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,correca01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Alex Bregman,3B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,bregmal01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Marwin González,1B,9,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,gonzama01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Josh Reddick,LF-RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,reddijo01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Max Stassi,C,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,stassma01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Jake Marisnick,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,marisja01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Charlie Morton,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,mortoch02,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Tony Sipp,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,sippto01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Héctor Rondón,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,rondohe01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Brad Peacock,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,peacobr01,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Team Totals,,27,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Seattle Mariners,SEA201804190,,HOU2018,SEA2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Dee Strange-Gordon,CF,2,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,gordode01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Jean Segura,SS,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,segurje01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Robinson Canó,2B,3,2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,canoro01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Kyle Seager,3B,1,2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,seageky01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Mitch Haniger,RF,2,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,hanigmi01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Ben Gamel,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,gamelbe01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Guillermo Heredia,PH-LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,heredgu01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Daniel Vogelbach,1B,5,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,vogelda01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Andrew Romine,PH-1B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,rominan01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",David Freitas,C,11,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,freitda01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Marco Gonzales,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,gonzama02,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Dan Altavilla,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,altavda01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Marc Rzepczynski,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,rzepcma01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Wade LeBlanc,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,leblawa01,SEA2018,HOU2018
+"April 19, 2018, Houston Astros vs Seattle Mariners",Team Totals,,27,7,0,1,1,2,0,1,0,0,1,0,0,0,0,0,0,0,0,Seattle Mariners,Houston Astros,SEA201804190,,SEA2018,HOU2018

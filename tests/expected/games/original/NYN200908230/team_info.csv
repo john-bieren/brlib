@@ -1,3 +1,3 @@
-Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
-Philadelphia Phillies,9,71-50,Win,Away,PHI2009,NYN200908230,NYN200908220,NYN200908240
-New York Mets,7,57-67,Loss,Home,NYM2009,NYN200908230,NYN200908220,NYN200908240
+Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Philadelphia Phillies,9,71-50,Win,Away,NYN200908230,PHI2009,NYN200908220,NYN200908240
+"August 23, 2009, Philadelphia Phillies vs New York Mets",New York Mets,7,57-67,Loss,Home,NYN200908230,NYM2009,NYN200908220,NYN200908240

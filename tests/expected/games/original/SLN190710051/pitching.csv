@@ -1,5 +1,5 @@
-Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Player ID,Game ID,Team ID,Opponent Team ID
-Orval Overall,SP,3.0,2,0,0,0,2,0,0.0,11,,,,,,,,,,57,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,,,,overaor01,SLN190710051,CHC1907,STL1907
-Team Totals,,3.0,2,0,0,0,2,0,0.0,11,,,,,,,,,,57,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,,,,,SLN190710051,CHC1907,STL1907
-Ed Karger,SP,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,,,,kargeed01,SLN190710051,STL1907,CHC1907
-Team Totals,,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,,,,,SLN190710051,STL1907,CHC1907
+Game,Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",Orval Overall,SP,3.0,2,0,0,0,2,0,0.0,11,,,,,,,,,,57,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,,,,Chicago Cubs,St. Louis Cardinals,SLN190710051,overaor01,CHC1907,STL1907
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",Team Totals,,3.0,2,0,0,0,2,0,0.0,11,,,,,,,,,,57,,,,,,,,0,0,1,1,1,1,0,0,0,0,0,0,0,,,,Chicago Cubs,St. Louis Cardinals,SLN190710051,,CHC1907,STL1907
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",Ed Karger,SP,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,,,,St. Louis Cardinals,Chicago Cubs,SLN190710051,kargeed01,STL1907,CHC1907
+"October 5, 1907, Chicago Cubs vs St. Louis Cardinals, Game 1",Team Totals,,4.0,6,2,,1,5,0,0.0,18,,,,,,,,,,,,,,,,,,0,0,1,1,1,0,0,0,0,0,0,0,0,,,,St. Louis Cardinals,Chicago Cubs,SLN190710051,,STL1907,CHC1907

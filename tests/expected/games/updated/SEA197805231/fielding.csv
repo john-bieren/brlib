@@ -1,24 +1,24 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
-Tom Poquette,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,poqueto01,SEA197805231,KCR1978,SEA1978
-Hal McRae,LF,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,mcraeha01,SEA197805231,KCR1978,SEA1978
-Amos Otis,PR-CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,otisam01,SEA197805231,KCR1978,SEA1978
-George Brett,3B,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,brettge01,SEA197805231,KCR1978,SEA1978
-Clint Hurdle,1B,12,3,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,hurdlcl01,SEA197805231,KCR1978,SEA1978
-Darrell Porter,C,4,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,porteda02,SEA197805231,KCR1978,SEA1978
-Frank White,2B,2,4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,whitefr01,SEA197805231,KCR1978,SEA1978
-U L Washington,SS,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,washiu_01,SEA197805231,KCR1978,SEA1978
-Willie Wilson,CF-LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wilsowi02,SEA197805231,KCR1978,SEA1978
-Andy Hassler,P,2,4,0,1,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,hasslan01,SEA197805231,KCR1978,SEA1978
-Team Totals,,24,19,0,2,0,1,1,1,2,0,1,0,0,2,0,0,0,0,0,,SEA197805231,KCR1978,SEA1978
-Julio Cruz,2B,1,7,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,cruzju01,SEA197805231,SEA1978,KCR1978
-Juan Bernhardt,1B,16,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bernhju01,SEA197805231,SEA1978,KCR1978
-Bruce Bochte,LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bochtbr01,SEA197805231,SEA1978,KCR1978
-Leon Roberts,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,roberle01,SEA197805231,SEA1978,KCR1978
-Ruppert Jones,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,jonesru01,SEA197805231,SEA1978,KCR1978
-Larry Milbourne,3B-SS,1,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,milbola01,SEA197805231,SEA1978,KCR1978
-Craig Reynolds,SS,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,reynocr01,SEA197805231,SEA1978,KCR1978
-José Báez,3B,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,baezjo01,SEA197805231,SEA1978,KCR1978
-Bill Plummer,C,4,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,plummbi01,SEA197805231,SEA1978,KCR1978
-Dick Pole,P,1,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,poledi01,SEA197805231,SEA1978,KCR1978
-Jim Todd,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,toddji01,SEA197805231,SEA1978,KCR1978
-Team Totals,,27,16,1,1,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,,SEA197805231,SEA1978,KCR1978
+Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Tom Poquette,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,poqueto01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Hal McRae,LF,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,mcraeha01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Amos Otis,PR-CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,otisam01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",George Brett,3B,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,brettge01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Clint Hurdle,1B,12,3,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,hurdlcl01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Darrell Porter,C,4,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,porteda02,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Frank White,2B,2,4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,whitefr01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",U L Washington,SS,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,washiu_01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Willie Wilson,CF-LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,wilsowi02,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Andy Hassler,P,2,4,0,1,0,0,0,1,2,0,1,0,0,2,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,hasslan01,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Team Totals,,24,19,0,2,0,1,1,1,2,0,1,0,0,2,0,0,0,0,0,Kansas City Royals,Seattle Mariners,SEA197805231,,KCR1978,SEA1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Julio Cruz,2B,1,7,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,cruzju01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Juan Bernhardt,1B,16,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,bernhju01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Bruce Bochte,LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,bochtbr01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Leon Roberts,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,roberle01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Ruppert Jones,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,jonesru01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Larry Milbourne,3B-SS,1,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,milbola01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Craig Reynolds,SS,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,reynocr01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",José Báez,3B,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,baezjo01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Bill Plummer,C,4,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,plummbi01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Dick Pole,P,1,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,poledi01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Jim Todd,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,toddji01,SEA1978,KCR1978
+"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Team Totals,,27,16,1,1,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Seattle Mariners,Kansas City Royals,SEA197805231,,SEA1978,KCR1978

@@ -1,28 +1,28 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
-Jimmy Rollins,SS,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rolliji01,NYN200908230,PHI2009,NYM2009
-Shane Victorino,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,victosh01,NYN200908230,PHI2009,NYM2009
-Jayson Werth,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,werthja01,NYN200908230,PHI2009,NYM2009
-Ryan Howard,1B,6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,howarry01,NYN200908230,PHI2009,NYM2009
-Raúl Ibañez,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,ibanera01,NYN200908230,PHI2009,NYM2009
-Pedro Feliz,3B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,felizpe01,NYN200908230,PHI2009,NYM2009
-Eric Bruntlett,2B,6,2,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,brunter01,NYN200908230,PHI2009,NYM2009
-Carlos Ruiz,C,5,0,0,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,ruizca01,NYN200908230,PHI2009,NYM2009
-Pedro Martínez,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,martipe02,NYN200908230,PHI2009,NYM2009
-Chad Durbin,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,durbich01,NYN200908230,PHI2009,NYM2009
-Ryan Madson,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,madsory01,NYN200908230,PHI2009,NYM2009
-Brad Lidge,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,lidgebr01,NYN200908230,PHI2009,NYM2009
-Team Totals,,27,4,2,0,1,0,0,3,0,0,3,0,0,0,0,0,0,0,0,,NYN200908230,PHI2009,NYM2009
-Ángel Pagán,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,paganan01,NYN200908230,NYM2009,PHI2009
-Luis Castillo,2B,4,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,castilu01,NYN200908230,NYM2009,PHI2009
-Daniel Murphy,1B,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,murphda08,NYN200908230,NYM2009,PHI2009
-Jeff Francoeur,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,francje02,NYN200908230,NYM2009,PHI2009
-Cory Sullivan,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,sullico01,NYN200908230,NYM2009,PHI2009
-Fernando Tatís,3B,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,tatisfe01,NYN200908230,NYM2009,PHI2009
-Brian Schneider,C,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,schnebr01,NYN200908230,NYM2009,PHI2009
-Anderson Hernández,SS,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,hernaan01,NYN200908230,NYM2009,PHI2009
-Óliver Pérez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,perezol01,NYN200908230,NYM2009,PHI2009
-Nelson Figueroa,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,figuene01,NYN200908230,NYM2009,PHI2009
-Pat Misch,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,mischpa01,NYN200908230,NYM2009,PHI2009
-Sean Green,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,greense01,NYN200908230,NYM2009,PHI2009
-Elmer Dessens,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,desseel01,NYN200908230,NYM2009,PHI2009
-Team Totals,,27,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,NYN200908230,NYM2009,PHI2009
+Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Jimmy Rollins,SS,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,rolliji01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Shane Victorino,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,victosh01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Jayson Werth,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,werthja01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Ryan Howard,1B,6,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,howarry01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Raúl Ibañez,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,ibanera01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Pedro Feliz,3B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,felizpe01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Eric Bruntlett,2B,6,2,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,brunter01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Carlos Ruiz,C,5,0,0,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,ruizca01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Pedro Martínez,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,martipe02,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Chad Durbin,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,durbich01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Ryan Madson,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,madsory01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Brad Lidge,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,lidgebr01,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Team Totals,,27,4,2,0,1,0,0,3,0,0,3,0,0,0,0,0,0,0,0,Philadelphia Phillies,New York Mets,NYN200908230,,PHI2009,NYM2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Ángel Pagán,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,paganan01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Luis Castillo,2B,4,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,castilu01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Daniel Murphy,1B,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,murphda08,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Jeff Francoeur,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,francje02,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Cory Sullivan,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,sullico01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Fernando Tatís,3B,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,tatisfe01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Brian Schneider,C,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,schnebr01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Anderson Hernández,SS,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,hernaan01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Óliver Pérez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,perezol01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Nelson Figueroa,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,figuene01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Pat Misch,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,mischpa01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Sean Green,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,greense01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Elmer Dessens,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,desseel01,NYM2009,PHI2009
+"August 23, 2009, Philadelphia Phillies vs New York Mets",Team Totals,,27,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,New York Mets,Philadelphia Phillies,NYN200908230,,NYM2009,PHI2009

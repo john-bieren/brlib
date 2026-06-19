@@ -1,3 +1,3 @@
-Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
-Houston Astros,5,106-56,Win,Away,HOU2022,PHI202211020,PHI202211010,PHI202211030
-Philadelphia Phillies,0,87-75,Loss,Home,PHI2022,PHI202211020,PHI202211010,PHI202211030
+Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Houston Astros,5,106-56,Win,Away,PHI202211020,HOU2022,PHI202211010,PHI202211030
+"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Philadelphia Phillies,0,87-75,Loss,Home,PHI202211020,PHI2022,PHI202211010,PHI202211030

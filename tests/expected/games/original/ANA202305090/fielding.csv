@@ -1,25 +1,25 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
-Mauricio Dubón,2B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dubonma01,ANA202305090,HOU2023,LAA2023
-David Hensley,PR-2B,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,henslda01,ANA202305090,HOU2023,LAA2023
-Alex Bregman,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bregmal01,ANA202305090,HOU2023,LAA2023
-José Abreu,1B,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,abreujo02,ANA202305090,HOU2023,LAA2023
-Kyle Tucker,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,tuckeky01,ANA202305090,HOU2023,LAA2023
-Jeremy Peña,SS,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,penaje02,ANA202305090,HOU2023,LAA2023
-Corey Julks,LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,julksco01,ANA202305090,HOU2023,LAA2023
-Jake Meyers,CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,meyerja02,ANA202305090,HOU2023,LAA2023
-Martín Maldonado,C,14,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,maldoma01,ANA202305090,HOU2023,LAA2023
-Framber Valdez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,valdefr01,ANA202305090,HOU2023,LAA2023
-Ryan Pressly,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,pressry01,ANA202305090,HOU2023,LAA2023
-Team Totals,,27,5,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,ANA202305090,HOU2023,LAA2023
-Taylor Ward,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wardta01,ANA202305090,LAA2023,HOU2023
-Mike Trout,CF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,troutmi01,ANA202305090,LAA2023,HOU2023
-Shohei Ohtani,DH-P,1,2,0,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,ohtansh01,ANA202305090,LAA2023,HOU2023
-Anthony Rendon,3B,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,rendoan01,ANA202305090,LAA2023,HOU2023
-Hunter Renfroe,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,renfrhu01,ANA202305090,LAA2023,HOU2023
-Brandon Drury,2B,4,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,drurybr01,ANA202305090,LAA2023,HOU2023
-Gio Urshela,1B,9,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,urshegi01,ANA202305090,LAA2023,HOU2023
-Chris Okey,C,6,1,1,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,okeych01,ANA202305090,LAA2023,HOU2023
-Matt Thaiss,C,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,thaisma01,ANA202305090,LAA2023,HOU2023
-Zach Neto,SS,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,netoza01,ANA202305090,LAA2023,HOU2023
-Andrew Wantz,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wantzan01,ANA202305090,LAA2023,HOU2023
-Team Totals,,27,14,1,1,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,,ANA202305090,LAA2023,HOU2023
+Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Mauricio Dubón,2B,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,dubonma01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",David Hensley,PR-2B,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,henslda01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Alex Bregman,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,bregmal01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",José Abreu,1B,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,abreujo02,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Kyle Tucker,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,tuckeky01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Jeremy Peña,SS,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,penaje02,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Corey Julks,LF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,julksco01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Jake Meyers,CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,meyerja02,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Martín Maldonado,C,14,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,maldoma01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Framber Valdez,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,valdefr01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Ryan Pressly,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,pressry01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Team Totals,,27,5,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Los Angeles Angels,ANA202305090,,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Taylor Ward,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,wardta01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Mike Trout,CF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,troutmi01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Shohei Ohtani,DH-P,1,2,0,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,ohtansh01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Anthony Rendon,3B,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,rendoan01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Hunter Renfroe,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,renfrhu01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Brandon Drury,2B,4,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,drurybr01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Gio Urshela,1B,9,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,urshegi01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Chris Okey,C,6,1,1,0,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,okeych01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Matt Thaiss,C,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,thaisma01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Zach Neto,SS,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,netoza01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Andrew Wantz,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,wantzan01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Team Totals,,27,14,1,1,0,0,0,2,1,0,2,0,0,1,0,0,0,0,0,Los Angeles Angels,Houston Astros,ANA202305090,,LAA2023,HOU2023

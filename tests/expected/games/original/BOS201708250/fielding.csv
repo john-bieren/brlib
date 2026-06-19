@@ -1,32 +1,32 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Player ID,Game ID,Team ID,Opponent Team ID
-Tim Beckham,SS,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,beckhti01,BOS201708250,BAL2017,BOS2017
-Manny Machado,3B,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,machama01,BOS201708250,BAL2017,BOS2017
-Anthony Santander,PH-RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,santaan02,BOS201708250,BAL2017,BOS2017
-Jonathan Schoop,2B,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,schoojo01,BOS201708250,BAL2017,BOS2017
-Caleb Joseph,PH-3B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,josepca01,BOS201708250,BAL2017,BOS2017
-Adam Jones,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,jonesad01,BOS201708250,BAL2017,BOS2017
-Craig Gentry,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,gentrcr01,BOS201708250,BAL2017,BOS2017
-Trey Mancini,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,mancitr01,BOS201708250,BAL2017,BOS2017
-Chris Davis,1B,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,davisch02,BOS201708250,BAL2017,BOS2017
-Welington Castillo,C,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,castiwe01,BOS201708250,BAL2017,BOS2017
-Seth Smith,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,smithse01,BOS201708250,BAL2017,BOS2017
-Ryan Flaherty,3B-2B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flahery01,BOS201708250,BAL2017,BOS2017
-Jeremy Hellickson,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,hellije01,BOS201708250,BAL2017,BOS2017
-Richard Bleier,P,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bleieri01,BOS201708250,BAL2017,BOS2017
-Mike Wright Jr.,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,wrighmi01,BOS201708250,BAL2017,BOS2017
-Team Totals,,27,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,BOS201708250,BAL2017,BOS2017
-Eduardo Núñez,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nunezed02,BOS201708250,BOS2017,BAL2017
-Brock Holt,2B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,holtbr01,BOS201708250,BOS2017,BAL2017
-Andrew Benintendi,LF,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,beninan01,BOS201708250,BOS2017,BAL2017
-Mookie Betts,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bettsmo01,BOS201708250,BOS2017,BAL2017
-Mitch Moreland,1B-P,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,morelmi01,BOS201708250,BOS2017,BAL2017
-Xander Bogaerts,SS,2,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,bogaexa01,BOS201708250,BOS2017,BAL2017
-Rafael Devers,3B,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,deverra01,BOS201708250,BOS2017,BAL2017
-Hanley Ramírez,1B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,ramirha01,BOS201708250,BOS2017,BAL2017
-Rajai Davis,CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,davisra01,BOS201708250,BOS2017,BAL2017
-Sandy León,C,9,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,leonsa01,BOS201708250,BOS2017,BAL2017
-Rick Porcello,P,1,2,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,porceri01,BOS201708250,BOS2017,BAL2017
-Joe Kelly,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,kellyjo05,BOS201708250,BOS2017,BAL2017
-Blaine Boyer,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,boyerbl01,BOS201708250,BOS2017,BAL2017
-Robby Scott,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,scottro02,BOS201708250,BOS2017,BAL2017
-Team Totals,,27,10,5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,,BOS201708250,BOS2017,BAL2017
+Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Tim Beckham,SS,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,beckhti01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Manny Machado,3B,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,machama01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Anthony Santander,PH-RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,santaan02,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Jonathan Schoop,2B,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,schoojo01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Caleb Joseph,PH-3B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,josepca01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Adam Jones,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,jonesad01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Craig Gentry,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,gentrcr01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Trey Mancini,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,mancitr01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Chris Davis,1B,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,davisch02,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Welington Castillo,C,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,castiwe01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Seth Smith,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,smithse01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Ryan Flaherty,3B-2B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,flahery01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Jeremy Hellickson,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,hellije01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Richard Bleier,P,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,bleieri01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Mike Wright Jr.,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,wrighmi01,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Team Totals,,27,7,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Baltimore Orioles,Boston Red Sox,BOS201708250,,BAL2017,BOS2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Eduardo Núñez,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,nunezed02,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Brock Holt,2B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,holtbr01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Andrew Benintendi,LF,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,beninan01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Mookie Betts,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,bettsmo01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Mitch Moreland,1B-P,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,morelmi01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Xander Bogaerts,SS,2,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,bogaexa01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Rafael Devers,3B,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,deverra01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Hanley Ramírez,1B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,ramirha01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Rajai Davis,CF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,davisra01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Sandy León,C,9,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,leonsa01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Rick Porcello,P,1,2,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,porceri01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Joe Kelly,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,kellyjo05,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Blaine Boyer,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,boyerbl01,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Robby Scott,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,scottro02,BOS2017,BAL2017
+"August 25, 2017, Baltimore Orioles vs Boston Red Sox",Team Totals,,27,10,5,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Boston Red Sox,Baltimore Orioles,BOS201708250,,BOS2017,BAL2017

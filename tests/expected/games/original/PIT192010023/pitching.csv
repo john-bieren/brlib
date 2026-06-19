@@ -1,5 +1,5 @@
-Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Player ID,Game ID,Team ID,Opponent Team ID
-Buddy Napier,SP,6.0,8,6,3,1,8,0,1.47,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,,,,napiebu01,PIT192010023,CIN1920,PIT1920
-Team Totals,,6.0,8,6,3,1,8,0,4.5,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,,,,,PIT192010023,CIN1920,PIT1920
-Johnny Morrison,SP,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,,,,morrijo04,PIT192010023,PIT1920,CIN1920
-Team Totals,,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,,,,,PIT192010023,PIT1920,CIN1920
+Game,Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"October 2, 1920, Cincinnati Reds vs Pittsburgh Pirates, Game 3",Buddy Napier,SP,6.0,8,6,3,1,8,0,1.47,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,,,,Cincinnati Reds,Pittsburgh Pirates,PIT192010023,napiebu01,CIN1920,PIT1920
+"October 2, 1920, Cincinnati Reds vs Pittsburgh Pirates, Game 3",Team Totals,,6.0,8,6,3,1,8,0,4.5,29,,,,,,,,,,45,,,-0.234,0.56,0.0,0.0,-3.3,0,1,1,1,1,0,0,0,0,0,0,1,0,,,,Cincinnati Reds,Pittsburgh Pirates,PIT192010023,,CIN1920,PIT1920
+"October 2, 1920, Cincinnati Reds vs Pittsburgh Pirates, Game 3",Johnny Morrison,SP,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,,,,Pittsburgh Pirates,Cincinnati Reds,PIT192010023,morrijo04,PIT1920,CIN1920
+"October 2, 1920, Cincinnati Reds vs Pittsburgh Pirates, Game 3",Team Totals,,6.0,4,0,0,1,2,0,0.0,21,,,,,,,,,,65,,,0.253,0.86,0.0,0.0,2.7,1,0,1,1,1,1,0,0,0,0,0,0,0,,,,Pittsburgh Pirates,Cincinnati Reds,PIT192010023,,PIT1920,CIN1920

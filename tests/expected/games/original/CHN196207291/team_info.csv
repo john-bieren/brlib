@@ -1,3 +1,3 @@
-Team,Score,Record,Result,Home/Away,Team ID,Game ID,Previous Game ID,Next Game ID
-Houston Colt .45s,2,36-65,Loss,Away,HOU1962,CHN196207291,CHN196207270,CHN196207292
-Chicago Cubs,4,39-65,Win,Home,CHC1962,CHN196207291,CHN196207270,CHN196207292
+Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+"July 29, 1962, Houston Colt .45s vs Chicago Cubs, Game 1",Houston Colt .45s,2,36-65,Loss,Away,CHN196207291,HOU1962,CHN196207270,CHN196207292
+"July 29, 1962, Houston Colt .45s vs Chicago Cubs, Game 1",Chicago Cubs,4,39-65,Win,Home,CHN196207291,CHC1962,CHN196207270,CHN196207292

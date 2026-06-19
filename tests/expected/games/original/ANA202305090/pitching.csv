@@ -1,7 +1,7 @@
-Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Player ID,Game ID,Team ID,Opponent Team ID
-Framber Valdez,SP,8.0,3,1,1,0,12,1,2.38,29,99,75,39,16,19,7,9,3,0,84,,,0.407,0.94,0.0024,0.9,3.2,1,0,1,0,0,0,0,0,0,0,0,0,0,,,,valdefr01,ANA202305090,HOU2023,LAA2023
-Ryan Pressly,RP,1.0,0,0,0,0,2,0,3.14,3,10,9,3,3,3,0,1,1,0,,0,0,0.097,1.25,0.0006,1.2,0.5,0,0,0,1,0,0,1,0,0,0,0,0,0,,,,pressry01,ANA202305090,HOU2023,LAA2023
-Team Totals,,9.0,3,1,1,0,14,1,1.0,32,109,84,42,19,22,7,10,4,0,84,0,0,0.504,0.97,0.0029,0.93,3.7,1,0,1,1,0,0,1,0,0,0,0,0,0,,,,,ANA202305090,HOU2023,LAA2023
-Shohei Ohtani,SP,7.0,6,3,3,2,7,1,2.74,29,103,73,39,12,21,13,6,2,0,58,,,-0.046,0.95,-0.0003,1.17,0.7,0,1,1,0,0,0,0,0,0,0,1,0,0,,,,ohtansh01,ANA202305090,LAA2023,HOU2023
-Andrew Wantz,RP,2.0,1,0,0,0,1,0,0.59,7,27,19,14,2,3,1,5,1,0,,0,0,0.05,0.39,0.0004,0.48,1.1,0,0,0,1,0,0,0,0,0,0,0,0,0,,,,wantzan01,ANA202305090,LAA2023,HOU2023
-Team Totals,,9.0,7,3,3,2,8,1,3.0,36,130,92,53,14,24,14,11,3,0,58,0,0,0.004,0.85,0.0,1.04,1.7,0,1,1,1,0,0,0,0,0,0,1,0,0,,,,,ANA202305090,LAA2023,HOU2023
+Game,Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Framber Valdez,SP,8.0,3,1,1,0,12,1,2.38,29,99,75,39,16,19,7,9,3,0,84,,,0.407,0.94,0.0024,0.9,3.2,1,0,1,0,0,0,0,0,0,0,0,0,0,,,,Houston Astros,Los Angeles Angels,ANA202305090,valdefr01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Ryan Pressly,RP,1.0,0,0,0,0,2,0,3.14,3,10,9,3,3,3,0,1,1,0,,0,0,0.097,1.25,0.0006,1.2,0.5,0,0,0,1,0,0,1,0,0,0,0,0,0,,,,Houston Astros,Los Angeles Angels,ANA202305090,pressry01,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Team Totals,,9.0,3,1,1,0,14,1,1.0,32,109,84,42,19,22,7,10,4,0,84,0,0,0.504,0.97,0.0029,0.93,3.7,1,0,1,1,0,0,1,0,0,0,0,0,0,,,,Houston Astros,Los Angeles Angels,ANA202305090,,HOU2023,LAA2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Shohei Ohtani,SP,7.0,6,3,3,2,7,1,2.74,29,103,73,39,12,21,13,6,2,0,58,,,-0.046,0.95,-0.0003,1.17,0.7,0,1,1,0,0,0,0,0,0,0,1,0,0,,,,Los Angeles Angels,Houston Astros,ANA202305090,ohtansh01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Andrew Wantz,RP,2.0,1,0,0,0,1,0,0.59,7,27,19,14,2,3,1,5,1,0,,0,0,0.05,0.39,0.0004,0.48,1.1,0,0,0,1,0,0,0,0,0,0,0,0,0,,,,Los Angeles Angels,Houston Astros,ANA202305090,wantzan01,LAA2023,HOU2023
+"May 9, 2023, Houston Astros vs Los Angeles Angels",Team Totals,,9.0,7,3,3,2,8,1,3.0,36,130,92,53,14,24,14,11,3,0,58,0,0,0.004,0.85,0.0,1.04,1.7,0,1,1,1,0,0,0,0,0,0,1,0,0,,,,Los Angeles Angels,Houston Astros,ANA202305090,,LAA2023,HOU2023

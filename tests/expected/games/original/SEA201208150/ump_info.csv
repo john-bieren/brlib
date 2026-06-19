@@ -1,5 +1,5 @@
-Umpire,Position,Game ID
-Rob Drake,HP,SEA201208150
-Joe West,1B,SEA201208150
-Sam Holbrook,2B,SEA201208150
-Andy Fletcher,3B,SEA201208150
+Game,Umpire,Position,Game ID
+"August 15, 2012, Tampa Bay Rays vs Seattle Mariners",Rob Drake,HP,SEA201208150
+"August 15, 2012, Tampa Bay Rays vs Seattle Mariners",Joe West,1B,SEA201208150
+"August 15, 2012, Tampa Bay Rays vs Seattle Mariners",Sam Holbrook,2B,SEA201208150
+"August 15, 2012, Tampa Bay Rays vs Seattle Mariners",Andy Fletcher,3B,SEA201208150

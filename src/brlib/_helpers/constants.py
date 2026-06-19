@@ -591,6 +591,7 @@ GAME_INFO_DTYPES = {
 }
 
 GAME_BATTING_DTYPES = {
+    "Game": "string",
     "Player": "string",
     "Position": "string",
     "AB": "Int64",
@@ -637,13 +638,16 @@ GAME_BATTING_DTYPES = {
     "2-Out RBI": "Int64",
     "LOB": "Int64",
     "RISP": "string",
-    "Player ID": "string",
+    "Team": "string",
+    "Opponent": "string",
     "Game ID": "string",
+    "Player ID": "string",
     "Team ID": "string",
     "Opponent Team ID": "string",
 }
 
 GAME_PITCHING_DTYPES = {
+    "Game": "string",
     "Player": "string",
     "Position": "string",
     "IP": "Float64",
@@ -688,13 +692,16 @@ GAME_PITCHING_DTYPES = {
     "NH": "Int64",
     "PG": "Int64",
     "CNH": "Int64",
-    "Player ID": "string",
+    "Team": "string",
+    "Opponent": "string",
     "Game ID": "string",
+    "Player ID": "string",
     "Team ID": "string",
     "Opponent Team ID": "string",
 }
 
 GAME_FIELDING_DTYPES = {
+    "Game": "string",
     "Player": "string",
     "Position": "string",
     "PO": "Int64",
@@ -716,25 +723,29 @@ GAME_FIELDING_DTYPES = {
     "1B Pick": "Int64",
     "2B Pick": "Int64",
     "3B Pick": "Int64",
-    "Player ID": "string",
+    "Team": "string",
+    "Opponent": "string",
     "Game ID": "string",
+    "Player ID": "string",
     "Team ID": "string",
     "Opponent Team ID": "string",
 }
 
 GAME_TEAM_INFO_DTYPES = {
+    "Game": "string",
     "Team": "string",
     "Score": "Int64",
     "Record": "string",
     "Result": "string",
     "Home/Away": "string",
-    "Team ID": "string",
     "Game ID": "string",
+    "Team ID": "string",
     "Previous Game ID": "string",
     "Next Game ID": "string",
 }
 
 GAME_UMP_INFO_DTYPES = {
+    "Game": "string",
     "Umpire": "string",
     "Position": "string",
     "Game ID": "string",
