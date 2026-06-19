@@ -297,11 +297,11 @@ class Player:
         >>> p = br.Player("beckejo02")
         >>> p.info["Draft Team"]
         0    Florida Marlins
-        Name: Draft Team, dtype: str
+        Name: Draft Team, dtype: string
         >>> p.update_team_names()
         >>> p.info["Draft Team"]
         0    Miami Marlins
-        Name: Draft Team, dtype: str
+        Name: Draft Team, dtype: string
         ```
         """
         self.info["Draft Team"] = (

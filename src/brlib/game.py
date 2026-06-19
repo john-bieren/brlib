@@ -356,11 +356,11 @@ class Game:
         >>> g = br.Game("FLO199407290")
         >>> g.info["Venue"]
         0    Joe Robbie Stadium
-        Name: Venue, dtype: str
+        Name: Venue, dtype: string
         >>> g.update_venue_names()
         >>> g.info["Venue"]
         0    Hard Rock Stadium
-        Name: Venue, dtype: str
+        Name: Venue, dtype: string
         ```
         """
         self.info["Venue"] = (

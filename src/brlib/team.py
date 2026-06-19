@@ -277,11 +277,11 @@ class Team:
         >>> t = br.Team("LAA2015")
         >>> t.info["Team"]
         0    Los Angeles Angels of Anaheim
-        Name: Team, dtype: str
+        Name: Team, dtype: string
         >>> t.update_team_names()
         >>> t.info["Team"]
         0    Los Angeles Angels
-        Name: Team, dtype: str
+        Name: Team, dtype: string
         ```
         """
         self.info["Team"] = (
@@ -329,11 +329,11 @@ class Team:
         >>> t = br.Team("OAK2021")
         >>> t.info["Venues"]
         0    RingCentral Coliseum
-        Name: Venues, dtype: str
+        Name: Venues, dtype: string
         >>> t.update_venue_names()
         >>> t.info["Venues"]
         0    Oakland-Alameda County Coliseum
-        Name: Venues, dtype: str
+        Name: Venues, dtype: string
         ```
         """
         self.info["Venues"] = (

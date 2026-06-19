@@ -314,12 +314,12 @@ class GameSet:
         >>> gs.info["Venue"]
         0       Safeco Field
         1    Tropicana Field
-        Name: Venue, dtype: str
+        Name: Venue, dtype: string
         >>> gs.update_venue_names()
         >>> gs.info["Venue"]
         0      T-Mobile Park
         1    Tropicana Field
-        Name: Venue, dtype: str
+        Name: Venue, dtype: string
         ```
         """
         self.info["Venue"] = (

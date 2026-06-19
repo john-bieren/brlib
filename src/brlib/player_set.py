@@ -233,13 +233,13 @@ class PlayerSet:
         0             Tampa Bay Devil Rays
         1                Milwaukee Brewers
         2    Los Angeles Angels of Anaheim
-        Name: Draft Team, dtype: str
+        Name: Draft Team, dtype: string
         >>> ps.update_team_names()
         >>> ps.info["Draft Team"]
         0        Tampa Bay Rays
         1     Milwaukee Brewers
         2    Los Angeles Angels
-        Name: Draft Team, dtype: str
+        Name: Draft Team, dtype: string
         ```
         """
         self.info["Draft Team"] = (

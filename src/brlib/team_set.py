@@ -270,12 +270,12 @@ class TeamSet:
         >>> ts.info["Team"]
         0     Brooklyn Robins
         1    New York Yankees
-        Name: Team, dtype: str
+        Name: Team, dtype: string
         >>> ts.update_team_names()
         >>> ts.info["Team"]
         0    Brooklyn Dodgers
         1    New York Yankees
-        Name: Team, dtype: str
+        Name: Team, dtype: string
         ```
         """
         self.info["Team"] = (
@@ -324,12 +324,12 @@ class TeamSet:
         >>> ts.info["Venues"]
         0    Connie Mack Stadium
         1              AT&T Park
-        Name: Venues, dtype: str
+        Name: Venues, dtype: string
         >>> ts.update_venue_names()
         >>> ts.info["Venues"]
         0     Shibe Park
         1    Oracle Park
-        Name: Venues, dtype: str
+        Name: Venues, dtype: string
         ```
         """
         self.info["Venues"] = (
