@@ -494,7 +494,7 @@ class Player:
                 self.info.loc[:, "Death Date"] = reformat_date(death_date)
                 try:
                     death_datetime = datetime.strptime(death_date, "%B %d, %Y")
-                    # noinspection PyUnboundLocalVariable TODO
+                    # noinspection PyUnboundLocalVariable
                     age = relativedelta(death_datetime, birth_datetime)
                     self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
                     self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
@@ -543,7 +543,6 @@ class Player:
                 links = [l["href"] for l in links if "team_ID=" in l["href"]]
                 year = str_between(links[-1], "year_ID=", "&")
                 franchise_id = str_between(links[-1], "team_ID=", "&")
-                # TODO abv_mgr.franchise_to_team()
                 team_abv = abv_mgr.correct_abvs(franchise_id, int(year), era_adjustment=True)[0]
                 self.info.loc[:, "Draft Team ID"] = f"{team_abv}{year}"
 
