@@ -592,16 +592,16 @@ class Game:
     def _gather_team_info(self) -> None:
         """Generates `self.team_info`."""
         self.team_info["Game"] = self.name
-        self.team_info.loc[:, "Team"] = [self._away_team, self._home_team]
-        self.team_info.loc[:, "Team ID"] = [self._away_team_id, self._home_team_id]
-        self.team_info.loc[:, "Score"] = [self._away_score, self._home_score]
+        self.team_info["Team"] = [self._away_team, self._home_team]
+        self.team_info["Team ID"] = [self._away_team_id, self._home_team_id]
+        self.team_info["Score"] = [self._away_score, self._home_score]
 
         if self._winning_team == self._home_team:
-            self.team_info.loc[:, "Result"] = ["Loss", "Win"]
+            self.team_info["Result"] = ["Loss", "Win"]
         elif self._winning_team == self._away_team:
-            self.team_info.loc[:, "Result"] = ["Win", "Loss"]
+            self.team_info["Result"] = ["Win", "Loss"]
         else:
-            self.team_info.loc[:, "Result"] = "Tie"
+            self.team_info["Result"] = "Tie"
 
     def _scrape_other_info(self, other_info: Tag) -> None:
         """Scrapes weather and umpire info from `other_info`."""

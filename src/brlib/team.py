@@ -475,12 +475,10 @@ class Team:
             if line_str.startswith("Record") or line_str.startswith("League Record"):
                 # e.g., "Record: 90-72,  Finished..."
                 team_record = str_between(line_str, "Record:", ",").strip().split("-")
-                self.info.loc[:, "Wins"] = int(team_record[0])
-                self.info.loc[:, "Losses"] = int(team_record[1])
-                self.info.loc[:, "Ties"] = int(team_record[2]) if len(team_record) > 2 else 0
-                self.info.loc[:, "W-L%"] = self.info["Wins"] / (
-                    self.info["Wins"] + self.info["Losses"]
-                )
+                self.info["Wins"] = int(team_record[0])
+                self.info["Losses"] = int(team_record[1])
+                self.info["Ties"] = int(team_record[2]) if len(team_record) > 2 else 0
+                self.info["W-L%"] = self.info["Wins"] / (self.info["Wins"] + self.info["Losses"])
 
                 if "Finished" in line_str:  # if season is complete
                     division_finish = str_between(line_str, "Finished", "in").strip()
@@ -488,29 +486,27 @@ class Team:
                     division_finish = (
                         str_between(line_str, ",", "place").strip().split(maxsplit=1)[0]
                     )
-                self.info.loc[:, "Division Finish"] = division_finish.strip("stndrh")
+                self.info["Division Finish"] = division_finish.strip("stndrh")
 
                 if "(Schedule" in line_str:
                     division = str_between(line_str, " in ", "(Schedule")
                 else:
                     division = line_str.rsplit(" in ", maxsplit=1)[1]
-                self.info.loc[:, "Division"] = division.strip().replace("_", " ")
+                self.info["Division"] = division.strip().replace("_", " ")
 
             # parse overall record for Negro League teams
             elif line_str.startswith("Overall Record"):
                 overall_record = str_between(line_str, "Record:", "(").strip().split("-")
-                self.info.loc[:, "Overall Wins"] = int(overall_record[0])
-                self.info.loc[:, "Overall Losses"] = int(overall_record[1])
-                self.info.loc[:, "Overall Ties"] = (
-                    int(overall_record[2]) if len(overall_record) > 2 else 0
-                )
-                self.info.loc[:, "Overall W-L%"] = self.info["Overall Wins"] / (
+                self.info["Overall Wins"] = int(overall_record[0])
+                self.info["Overall Losses"] = int(overall_record[1])
+                self.info["Overall Ties"] = int(overall_record[2]) if len(overall_record) > 2 else 0
+                self.info["Overall W-L%"] = self.info["Overall Wins"] / (
                     self.info["Overall Wins"] + self.info["Overall Losses"]
                 )
 
             elif line_str.startswith("Postseason"):
                 latest_series_result = str_between(line_str, "Postseason:", "(").strip()
-                self.info.loc[:, "Postseason Finish"] = clean_spaces(latest_series_result)
+                self.info["Postseason Finish"] = clean_spaces(latest_series_result)
 
             elif line_str.split(":", maxsplit=1)[0] in {
                 "President",
@@ -519,26 +515,26 @@ class Team:
                 "Scouting Director",
             }:
                 col, value = line_str.split(":", maxsplit=1)
-                self.info.loc[:, col] = clean_spaces(value)
+                self.info[col] = clean_spaces(value)
 
             elif line_str.startswith("Manager"):
                 managers = clean_spaces(line_str.split(":", maxsplit=1)[1])
                 managers = managers.replace(" , ", ";").replace(" and ", ";")
-                self.info.loc[:, "Managers"] = managers
+                self.info["Managers"] = managers
 
             elif line_str.startswith("Ballpark"):
                 venues = clean_spaces(line_str.split(":", maxsplit=1)[1])
                 venues = venues.replace(", ", ";").replace(" and ", ";")
-                self.info.loc[:, "Venues"] = venues
+                self.info["Venues"] = venues
 
             elif line_str.startswith("Attendance"):
                 attendance_line = line_str.split(":", maxsplit=1)[1]
                 # attendance rank has gone missing before, e.g., the beginning of the 2026 season
                 if "(" in attendance_line:
-                    self.info.loc[:, "Attendance Rank"] = str_between(attendance_line, "(", ")")
+                    self.info["Attendance Rank"] = str_between(attendance_line, "(", ")")
                     attendance_line = attendance_line.split("(", maxsplit=1)[0]
                 attendance_str = attendance_line.strip().split(maxsplit=1)[0]
-                self.info.loc[:, "Attendance"] = int(attendance_str.replace(",", ""))
+                self.info["Attendance"] = int(attendance_str.replace(",", ""))
 
             elif line_str.startswith("Park Factors"):
                 # if park factors are last info item, this may be included in line_str
@@ -563,18 +559,18 @@ class Team:
                     oy_bat, oy_pit = one_year.strip().split(", ", maxsplit=1)
                     oy_bat = oy_bat.split(" - ", maxsplit=1)[1]
                     oy_pit = oy_pit.split(" - ", maxsplit=1)[1]
-                self.info.loc[:, "Multi-Year Batting Park Factor"] = my_bat
-                self.info.loc[:, "Multi-Year Pitching Park Factor"] = my_pit
-                self.info.loc[:, "One-Year Batting Park Factor"] = oy_bat
-                self.info.loc[:, "One-Year Pitching Park Factor"] = oy_pit
+                self.info["Multi-Year Batting Park Factor"] = my_bat
+                self.info["Multi-Year Pitching Park Factor"] = my_pit
+                self.info["One-Year Batting Park Factor"] = oy_bat
+                self.info["One-Year Pitching Park Factor"] = oy_pit
 
             elif line_str.startswith("Pythagorean"):
                 py_record, runs, runs_allowed = line_str.split(",", maxsplit=2)
                 py_w, py_l = py_record.replace("Pythagorean W-L: ", "").split("-", maxsplit=1)
                 runs, runs_allowed = [int(r.split(maxsplit=1)[0]) for r in (runs, runs_allowed)]
-                self.info.loc[:, ["Pythagorean Wins", "Pythagorean Losses"]] = int(py_w), int(py_l)
-                self.info.loc[:, ["Runs", "Runs Allowed"]] = runs, runs_allowed
-                self.info.loc[:, "Pythagorean W-L%"] = runs**PYTHAGOREAN_EXPONENT / (
+                self.info[["Pythagorean Wins", "Pythagorean Losses"]] = int(py_w), int(py_l)
+                self.info[["Runs", "Runs Allowed"]] = runs, runs_allowed
+                self.info["Pythagorean W-L%"] = runs**PYTHAGOREAN_EXPONENT / (
                     runs**PYTHAGOREAN_EXPONENT + runs_allowed**PYTHAGOREAN_EXPONENT
                 )
 
@@ -627,12 +623,12 @@ class Team:
             post_column_names = post_records.pop(0)
             reg_df = pd.DataFrame(reg_records, columns=reg_column_names)
             post_df = pd.DataFrame(post_records, columns=post_column_names)
-            reg_df.loc[:, "Game Type"] = "Regular Season"
-            post_df.loc[:, "Game Type"] = "Postseason"
+            reg_df["Game Type"] = "Regular Season"
+            post_df["Game Type"] = "Postseason"
             df_1 = pd.concat((reg_df, post_df))
         else:
             df_1 = pd.DataFrame(reg_records, columns=reg_column_names)
-            df_1.loc[:, "Game Type"] = "Regular Season"
+            df_1["Game Type"] = "Regular Season"
 
         # remove column label rows
         df_1 = df_1.loc[(df_1["Rk"] != "Rk") & (df_1["Player"] != "Standard")]

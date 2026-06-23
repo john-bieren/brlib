@@ -392,7 +392,7 @@ class Player:
 
     def _scrape_info(self, info: Tag, wrap: Tag) -> None:
         """Populates `self.info` with data from `info` and `wrap`."""
-        self.info.loc[:, "Player"] = self.name
+        self.info["Player"] = self.name
 
         player_bio = info.find("div", {"id": "meta"})
         self._scrape_bio(player_bio)
@@ -403,10 +403,10 @@ class Player:
         # find career wins above replacement
         major_totals_summary = wrap.find("div", {"class": "p1"})
         if major_totals_summary is not None:
-            self.info.loc[:, "bWAR"] = major_totals_summary.text.split("\n", maxsplit=4)[3]
+            self.info["bWAR"] = major_totals_summary.text.split("\n", maxsplit=4)[3]
         else:
             # player has played in postseason but not regular season
-            self.info.loc[:, "bWAR"] = ""
+            self.info["bWAR"] = ""
 
     def _scrape_bio(self, player_bio: Tag) -> None:
         """Adds biographical information to `self.info`."""
@@ -417,8 +417,8 @@ class Player:
                 # no maxsplit so that easter eggs are excluded, e.g., youngja03, graype01
                 bats, throws = line_str.split("\t", maxsplit=2)[:2]
                 bats, throws = [s.split(":", maxsplit=1)[1] for s in (bats, throws)]
-                self.info.loc[:, "Batting Hand"] = bats.strip()
-                self.info.loc[:, "Throwing Hand"] = throws.strip()
+                self.info["Batting Hand"] = bats.strip()
+                self.info["Throwing Hand"] = throws.strip()
 
             elif (
                 ("kg)" in line_str or "cm," in line_str or "cm)" in line_str)
@@ -430,9 +430,9 @@ class Player:
                 for measurement in line_str.split(",", maxsplit=1):
                     if "-" in measurement:
                         feet, inches = measurement.strip().split("-", maxsplit=1)
-                        self.info.loc[:, "Height (in.)"] = int(feet) * 12 + int(inches)
+                        self.info["Height (in.)"] = int(feet) * 12 + int(inches)
                     elif "lb" in measurement:
-                        self.info.loc[:, "Weight (lbs.)"] = measurement.strip("\xa0 lb")
+                        self.info["Weight (lbs.)"] = measurement.strip("\xa0 lb")
 
             elif line_str.startswith("Born"):
                 if " in " in line_str:
@@ -444,7 +444,7 @@ class Player:
                 if "(Date unknown)" not in birth_date:
                     birth_date = birth_date.split(":", maxsplit=1)[1].strip()
                     # can have two spaces if date is only month and year
-                    self.info.loc[:, "Birth Date"] = reformat_date(birth_date.replace("  ", " "))
+                    self.info["Birth Date"] = reformat_date(birth_date.replace("  ", " "))
 
                 # get birth datetime for later use
                 try:
@@ -455,7 +455,7 @@ class Player:
 
                 # handle birthplaces
                 if " Ocean" in birthplace or " Sea" in birthplace:  # born at sea
-                    self.info.loc[:, "Birth Country"] = birthplace.strip()
+                    self.info["Birth Country"] = birthplace.strip()
                 else:
                     birthplace = birthplace[:-2]  # remove text representation of country flag
                     birthplace_split = birthplace.split(", ")
@@ -465,22 +465,22 @@ class Player:
                         continue
                     if len(birthplace_split) == 2:
                         birth_city, birth_state_or_country = birthplace.split(", ", maxsplit=1)
-                        self.info.loc[:, "Birth City"] = birth_city
+                        self.info["Birth City"] = birth_city
                         birth_state_or_country = birth_state_or_country.strip()
                         # US states are represented by abbreviations
                         if len(birth_state_or_country) == 2:
-                            self.info.loc[:, "Birth State/Province"] = birth_state_or_country
-                            self.info.loc[:, "Birth Country"] = "U.S."
+                            self.info["Birth State/Province"] = birth_state_or_country
+                            self.info["Birth Country"] = "U.S."
                         else:
-                            self.info.loc[:, "Birth Country"] = birth_state_or_country
+                            self.info["Birth Country"] = birth_state_or_country
                     elif len(birthplace_split) == 3:
                         # likely Canada with province abbreviation and country name
                         birth_city, birth_province, birth_country = birthplace.split(
                             ", ", maxsplit=2
                         )
-                        self.info.loc[:, "Birth City"] = birth_city
-                        self.info.loc[:, "Birth State/Province"] = birth_province
-                        self.info.loc[:, "Birth Country"] = birth_country
+                        self.info["Birth City"] = birth_city
+                        self.info["Birth State/Province"] = birth_province
+                        self.info["Birth Country"] = birth_country
 
             elif line_str.startswith("Died"):
                 if "in" in line_str:
@@ -491,13 +491,13 @@ class Player:
 
                 # handle death dates
                 death_date = death_date.split(":", maxsplit=1)[1].strip()
-                self.info.loc[:, "Death Date"] = reformat_date(death_date)
+                self.info["Death Date"] = reformat_date(death_date)
                 try:
                     death_datetime = datetime.strptime(death_date, "%B %d, %Y")
                     # noinspection PyUnboundLocalVariable
                     age = relativedelta(death_datetime, birth_datetime)
-                    self.info.loc[:, "Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
-                    self.info.loc[:, "Age At Death (Days)"] = (death_datetime - birth_datetime).days
+                    self.info["Age At Death"] = f"{age.years}y-{age.months}m-{age.days}d"
+                    self.info["Age At Death (Days)"] = (death_datetime - birth_datetime).days
                 except (
                     ValueError,  # death date is incomplete, e.g., cabreal01
                     UnboundLocalError,  # birth date is incomplete, was not defined
@@ -508,21 +508,21 @@ class Player:
 
                 # handle death places
                 if " Ocean" in death_place or " Sea" in death_place:  # died at sea
-                    self.info.loc[:, "Death Country"] = death_place.strip()
+                    self.info["Death Country"] = death_place.strip()
                 elif ", " in death_place:
                     death_city, death_state_or_country = death_place.split(", ", maxsplit=1)
-                    self.info.loc[:, "Death City"] = death_city
+                    self.info["Death City"] = death_city
                     if len(death_state_or_country) == 2:
-                        self.info.loc[:, "Death State/Province"] = death_state_or_country
-                        self.info.loc[:, "Death Country"] = "U.S."
+                        self.info["Death State/Province"] = death_state_or_country
+                        self.info["Death Country"] = "U.S."
                     else:
-                        self.info.loc[:, "Death Country"] = death_state_or_country
+                        self.info["Death Country"] = death_state_or_country
                 elif death_place != "":  # only state/country listed
                     if len(death_place) == 2:  # states are represented by abbreviations
-                        self.info.loc[:, "Death State/Province"] = death_place
-                        self.info.loc[:, "Death Country"] = "U.S."
+                        self.info["Death State/Province"] = death_place
+                        self.info["Death Country"] = "U.S."
                     else:
-                        self.info.loc[:, "Death Country"] = death_place
+                        self.info["Death Country"] = death_place
 
             elif line_str.startswith("Draft"):
                 # only use final time player was drafted
@@ -536,18 +536,18 @@ class Player:
                 except IndexError:
                     # draft_team is just the team name if drafted multiple times
                     pass
-                self.info.loc[:, "Draft Team"] = draft_team.strip()
-                self.info.loc[:, "Draft Round"] = draft_round
+                self.info["Draft Team"] = draft_team.strip()
+                self.info["Draft Round"] = draft_round
 
                 links = line.find_all("a", href=True)
                 links = [l["href"] for l in links if "team_ID=" in l["href"]]
                 year = str_between(links[-1], "year_ID=", "&")
                 franchise_id = str_between(links[-1], "team_ID=", "&")
                 team_abv = abv_mgr.correct_abvs(franchise_id, int(year), era_adjustment=True)[0]
-                self.info.loc[:, "Draft Team ID"] = f"{team_abv}{year}"
+                self.info["Draft Team ID"] = f"{team_abv}{year}"
 
                 try:
-                    self.info.loc[:, "Draft Pick"] = str_between(draft_line, "round (", ")").strip(
+                    self.info["Draft Pick"] = str_between(draft_line, "round (", ")").strip(
                         "stndrh"
                     )
                     draft_line = draft_line.split(") of the ", maxsplit=1)[1]
@@ -556,14 +556,12 @@ class Player:
                     # if the pick is not listed (after 1st round)
                     draft_line = draft_line.split("round of the ", maxsplit=1)[1]
                     draft_year, draft_type = draft_line.split(" ", maxsplit=1)
-                self.info.loc[:, "Draft Year"] = draft_year
-                self.info.loc[:, "Draft Type"] = draft_type.split(" from ", maxsplit=1)[0].strip(
-                    "."
-                )
+                self.info["Draft Year"] = draft_year
+                self.info["Draft Type"] = draft_type.split(" from ", maxsplit=1)[0].strip(".")
 
             elif "School:" in line_str:
                 school_type, school_name = line_str.split(": ", maxsplit=1)
-                self.info.loc[:, f"{school_type}s"] = school_name
+                self.info[f"{school_type}s"] = school_name
 
             elif "Schools" in line_str:
                 col, school_list = line_str.split(": ", maxsplit=1)
@@ -571,16 +569,16 @@ class Player:
                 schools = [school.strip() for school in school_list.split("),")]
                 # restore ")" where necessary
                 schools = [school + ")" if school[-1] != ")" else school for school in schools]
-                self.info.loc[:, col] = "; ".join(schools)
+                self.info[col] = "; ".join(schools)
 
             elif line_str.startswith("Debut") and "AL/NL" not in line_str:
                 debut_date = str_between(line_str, "Debut:", "(").strip()
-                self.info.loc[:, "Debut"] = reformat_date(debut_date)
+                self.info["Debut"] = reformat_date(debut_date)
                 try:
                     debut_datetime = datetime.strptime(debut_date, "%B %d, %Y")
                     age = relativedelta(debut_datetime, birth_datetime)
-                    self.info.loc[:, "Debut Age"] = f"{age.years}y-{age.months}m-{age.days}d"
-                    self.info.loc[:, "Debut Age (Days)"] = (debut_datetime - birth_datetime).days
+                    self.info["Debut Age"] = f"{age.years}y-{age.months}m-{age.days}d"
+                    self.info["Debut Age (Days)"] = (debut_datetime - birth_datetime).days
                 except (
                     ValueError,  # debut date is incomplete
                     UnboundLocalError,  # birth date is incomplete, was not defined
@@ -589,14 +587,14 @@ class Player:
 
                 debut_game_link = line.find_all("a", href=True)[-1]["href"]
                 if "/boxes/" in debut_game_link:
-                    self.info.loc[:, "Debut Game ID"] = str_between(
+                    self.info["Debut Game ID"] = str_between(
                         debut_game_link, "/", ".", anchor="end"
                     )
 
                 debut_rank = str_between(line_str, " ", " in major league history", anchor="end")
                 # "(" is at the start if age is not listed
                 debut_rank = debut_rank.strip("(stndrh ")
-                self.info.loc[:, "Debut Rank"] = int(debut_rank.replace(",", ""))
+                self.info["Debut Rank"] = int(debut_rank.replace(",", ""))
 
             elif line_str.startswith("Last Game"):
                 if "(" in line_str:
@@ -604,39 +602,35 @@ class Player:
                     last_game = str_between(line_str, "Last Game:", "(").strip()
                 else:
                     last_game = line_str.replace("Last Game:", "").strip()
-                self.info.loc[:, "Last Game"] = reformat_date(last_game)
+                self.info["Last Game"] = reformat_date(last_game)
                 try:
                     last_game_datetime = datetime.strptime(last_game, "%B %d, %Y")
                     age = relativedelta(last_game_datetime, birth_datetime)
-                    self.info.loc[:, "Last Game Age"] = f"{age.years}y-{age.months}m-{age.days}d"
-                    self.info.loc[:, "Last Game Age (Days)"] = (
-                        last_game_datetime - birth_datetime
-                    ).days
+                    self.info["Last Game Age"] = f"{age.years}y-{age.months}m-{age.days}d"
+                    self.info["Last Game Age (Days)"] = (last_game_datetime - birth_datetime).days
                 except UnboundLocalError:  # birth date is incomplete, was not defined
                     # no ValueError handling because no incomplete last game dates have been found
                     continue
 
                 last_game_link = line.find_all("a", href=True)[-1]["href"]
                 if "/boxes/" in last_game_link:
-                    self.info.loc[:, "Last Game ID"] = str_between(
-                        last_game_link, "/", ".", anchor="end"
-                    )
+                    self.info["Last Game ID"] = str_between(last_game_link, "/", ".", anchor="end")
 
             elif line_str.startswith("Hall of Fame"):
                 hof_type, hof_year = line_str.split(" in ", maxsplit=1)
-                self.info.loc[:, "HOF Year"] = hof_year[:4]
-                self.info.loc[:, "HOF Type"] = hof_type.split("as ", maxsplit=1)[1]
+                self.info["HOF Year"] = hof_year[:4]
+                self.info["HOF Type"] = hof_type.split("as ", maxsplit=1)[1]
                 if "BBWAA" in line_str:
                     yes, total = line_str.split(" on ", maxsplit=1)[1].split("/", maxsplit=1)
                     percentage = int(yes) / int(total.split(" ballots", maxsplit=1)[0])
-                    self.info.loc[:, "HOF%"] = round(percentage, 4)
+                    self.info["HOF%"] = round(percentage, 4)
 
             elif line_str.startswith("Rookie Status") and "Still Intact" not in line_str:
                 season = str_between(line_str, "Exceeded rookie limits during ", " season")
-                self.info.loc[:, "Exceeded Rookie Limits"] = season
+                self.info["Exceeded Rookie Limits"] = season
 
             elif line_str.startswith("Full Name"):
-                self.info.loc[:, "Full Name"] = line_str.replace("Full Name: ", "").strip()
+                self.info["Full Name"] = line_str.replace("Full Name: ", "").strip()
 
             elif line_str.startswith("Relatives"):
                 relative_links = [player["href"] for player in line.find_all("a", href=True)]
@@ -705,7 +699,7 @@ class Player:
         self.salaries.loc[career_totals_mask, ["Age", "Team"]] = pd.NA
         self.salaries.loc[career_totals_mask, "Year"] = "Career Totals"
         # add identifying columns
-        self.salaries.loc[:, ["Player", "Player ID"]] = self.name, self.id
+        self.salaries[["Player", "Player ID"]] = self.name, self.id
         # remove empty rows
         self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
         # remove any "status" rows, which aren't part of the normal table format
@@ -780,7 +774,7 @@ class Player:
         """Adds player name, player ID, and team IDs to `df`, and corrects dtypes."""
         if len(df) == 0:
             return df
-        df.loc[:, ["Player", "Player ID"]] = self.name, self.id
+        df[["Player", "Player ID"]] = self.name, self.id
 
         df.loc[
             ((~df["Team"].isna()) & (df["Season"] != "Career Totals")),
@@ -1026,8 +1020,8 @@ class Player:
             reg_df = Player._clean_dataframe(reg_df)
             post_df = Player._clean_dataframe(post_df)
             if add_game_type:
-                reg_df.loc[:, "Game Type"] = "Regular Season"
-                post_df.loc[:, "Game Type"] = "Postseason"
+                reg_df["Game Type"] = "Regular Season"
+                post_df["Game Type"] = "Postseason"
             if buffer > 0:
                 empty_cols = [[pd.NA] * len(reg_df.columns)] * buffer
                 blank_rows = pd.DataFrame(empty_cols, columns=reg_df.columns)
@@ -1039,9 +1033,9 @@ class Player:
             if add_game_type:
                 # this could be a player who has only appeared in the postseason, e.g., kigerma01
                 if postseason_included:
-                    df.loc[:, "Game Type"] = "Postseason"
+                    df["Game Type"] = "Postseason"
                 else:
-                    df.loc[:, "Game Type"] = "Regular Season"
+                    df["Game Type"] = "Regular Season"
         return df
 
     @staticmethod
