@@ -33,7 +33,7 @@ game_test_cases = [
     "SEA201905270",
     # non-WS postseason game (matters for name), 18 innings
     "SEA202210150",
-    # forfeited by team which finished with the lead, 4 innings, dh != 0
+    # forfeited by team that finished with the lead, 4 innings, dh != 0
     "SLN190710051",
 ]
 

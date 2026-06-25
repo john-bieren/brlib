@@ -380,7 +380,7 @@ class Player:
         self.fielding = self.fielding.reindex(columns=list(PLAYER_FIELDING_DTYPES))
         self.salaries = self.salaries.reindex(columns=list(PLAYER_SALARIES_DTYPES))
 
-        # get final pieces of info which require the above reindexing
+        # get final pieces of info that require the above reindexing
         self._count_years_played()
         self._find_teams_info()
 
@@ -805,7 +805,7 @@ class Player:
         h_df_1 = Player._process_career_totals(h_df_1)
         h_df_1.loc[(h_df_1["Season"] == "162 Game Avg") | (h_df_1["Pos"] == ""), "Pos"] = pd.NA
 
-        # count the team/league summary rows which won't be under the advanced table
+        # count the team/league summary rows, which won't be under the advanced table
         summary_rows = h_df_1.loc[
             (h_df_1["Season"] == "Career Totals")
             & (h_df_1["Game Type"] == "Regular Season")
@@ -823,7 +823,7 @@ class Player:
         p_df_1 = Player._process_career_totals(p_df_1)
         p_df_1["IP"] = p_df_1["IP"].apply(convert_innings_notation)
 
-        # count the team/league summary rows which won't be under the advanced table
+        # count the team/league summary rows, which won't be under the advanced table
         summary_rows = p_df_1.loc[
             (p_df_1["Season"] == "Career Totals")
             & (p_df_1["Game Type"] == "Regular Season")
@@ -988,7 +988,7 @@ class Player:
         Turns a player stats table into a DataFrame.
         If `add_game_type` is `True`, the `Game Type` column will be added to the DataFrame.
         `buffer` is the number of blank rows to add after regular season stats to correct
-        for the lack of franchise/league summary rows which other DataFrames have.
+        for the lack of franchise/league summary rows that other DataFrames have.
         """
         table = soup_from_comment(table, only_if_table=True)
 
@@ -1050,7 +1050,7 @@ class Player:
         # remove any spacer rows or MLB average rows
         df = df.loc[~df["Season"].isin({"", "MLB Average"})]
 
-        # shift career totals and 162 game avg rows which are misaligned by default
+        # shift career totals and 162 game avg rows, which are misaligned by default
         original_seasons_column = df["Season"].copy()
         shift_rows_mask = (df["Season"].str.contains(" Yr", regex=False)) | (
             df["Season"] == "162 Game Avg"
@@ -1094,7 +1094,7 @@ class Player:
 
     @staticmethod
     def _scrape_teams_from_df(df: pd.DataFrame) -> list[str]:
-        """Returns a list of the IDs of the teams which appear in `df`."""
+        """Returns a list of the IDs of the teams that appear in `df`."""
         season_rows = df.loc[df["Season"].str.fullmatch(SEASON_REGEX)]
         # remove multi-team season summary rows
         season_rows = season_rows[~season_rows["Team"].str.fullmatch(MULTI_TEAM_REGEX)]

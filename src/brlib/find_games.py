@@ -48,22 +48,22 @@ def find_games(
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
         A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
-        inputs which specify the seasons from which to find games.
+        inputs that specify the seasons from which to find games.
 
     * `opponents`: `str` or `list[str]`, default `"ALL"`
 
-        A valid `teams` input specifying the opponents which `teams` must be facing in returned
+        A valid `teams` input specifying the opponents that `teams` must be facing in returned
         games.
 
     * `dates`: `str` or `list[str]`, default `"ALL"`
 
         A string representing a date in MMDD format as a number (e.g., `"1005"` or `"704"`), an
         inclusive range of such numbers (e.g., `"927-1002"`), `"ALL"`, or a list of multiple such
-        inputs which specify the dates from which games should be found.
+        inputs that specify the dates from which games should be found.
 
     * `home_away`: `str`, default `"ALL"`
 
-        `"HOME"`, `"AWAY"`, or `"ALL"` to specify the role which `teams` should have in returned
+        `"HOME"`, `"AWAY"`, or `"ALL"` to specify the role that `teams` should have in returned
         games.
 
     * `game_type`: `str`, default `"ALL"`
@@ -232,7 +232,7 @@ def _find_year_list(
     if game_type == "POST":
         year_set = {y for y in year_set if y not in NO_POSTSEASON_YEARS}
 
-    # filter years to those which could possibly contain a matchup of the teams and opponents
+    # filter years to those that could possibly contain a matchup of the teams and opponents
     if teams != ["ALL"] or opponents != ["ALL"]:
         valid_years = set(all_game_years)
         if teams != ["ALL"]:
@@ -270,8 +270,8 @@ def _find_season_games(
     game_type: str,
 ) -> list[str]:
     """
-    Scrapes an MLB schedule page, and returns the games from that season which
-    match all the other input parameters. Inputs must be uppercase.
+    Scrapes an MLB schedule page and returns the games from that season that match all the other
+    input parameters. Inputs must be uppercase.
     """
     team_set = set(teams)
     opponent_set = set(opponents)
@@ -312,7 +312,7 @@ def _find_season_games(
             links = game.find_all("a", href=True)
             # there should be links to the pages of the away team, home team, and box score
             if len(links) != 3:
-                # skip games which lack box scores
+                # skip games that lack box scores
                 continue
             away_link, home_link, endpoint = [a["href"] for a in links]
             if "previews" in endpoint:

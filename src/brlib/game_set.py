@@ -206,7 +206,7 @@ class GameSet:
         nhd.populate()
         self.pitching.loc[:, ["NH", "PG", "CNH"]] = 0
 
-        # find the games which include no-hitters
+        # find the games that include no-hitters
         nh_games = set()
         nh_games.update(nhd.game_inh_dict.keys())
         nh_games.update(nhd.game_pg_dict.keys())

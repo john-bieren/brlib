@@ -26,7 +26,7 @@ from .singleton import Singleton
 
 class AbbreviationsManager(Singleton):
     """
-    A wrapper for a DataFrame which contains information on all historical team and
+    A wrapper for a DataFrame that contains information on all historical team and
     franchise abbreviations used by Baseball Reference. Has methods for working with these
     abbreviations. Manages retrieval and caching of the data, loads data on import of brlib.
     """
@@ -198,7 +198,7 @@ class AbbreviationsManager(Singleton):
 
     def all_team_abvs(self, abbreviation: str, season: int) -> list[str]:
         """
-        Returns all team abbreviations used by the franchise which is associated with the team at
+        Returns all team abbreviations used by the franchise that is associated with the team at
         `abbreviation` and `season`, e.g., `("ATH", 2025)` returns `["PHA", "KCA", "OAK", "ATH"]`.
         """
         franchise_abv = self.franchise_abv(abbreviation, season)

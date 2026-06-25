@@ -18,7 +18,7 @@ from .options import write
 @runtime_typecheck
 def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
     """
-    Returns a list of All-Star Game IDs which can be an input to
+    Returns a list of All-Star Game IDs, which can be an input to
     [`get_games`](https://github.com/john-bieren/brlib/wiki/get_games).
 
     ## Parameters
@@ -26,7 +26,7 @@ def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
         A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
-        inputs which specify the seasons from which to find All-Star Games.
+        inputs that specify the seasons from which to find All-Star Games.
 
     ## Returns
 
@@ -34,7 +34,7 @@ def find_asg(seasons: str | list[str] = "ALL") -> list[str]:
 
     ## Examples
 
-    Seasons which did not have All-Star Games are taken into account:
+    Seasons that did not have All-Star Games are taken into account:
 
     ```
     >>> br.find_asg("2019-2022")

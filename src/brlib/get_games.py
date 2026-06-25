@@ -47,7 +47,7 @@ def get_games(
 
     * `ignore_errors`: `bool`, default `True`
 
-        Whether to suppress any raised exceptions. If `True`, games which raise an exception will be
+        Whether to suppress any raised exceptions. If `True`, games that raise an exception will be
         omitted from the returned list. If the exception is caused by the [rate
         limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
         as-is.

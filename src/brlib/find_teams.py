@@ -40,7 +40,7 @@ def find_teams(
     * `seasons`: `str` or `list[str]`, default `"ALL"`
 
         A year, inclusive range of years (e.g., `"2017-2019"`), `"ALL"`, or a list of multiple such
-        inputs which specify the years from which to find teams.
+        inputs that specify the years from which to find teams.
 
     ## Returns
 

@@ -42,7 +42,7 @@ def get_players(
 
     * `ignore_errors`: `bool`, default `True`
 
-        Whether to suppress any raised exceptions. If `True`, players which raise an exception will
+        Whether to suppress any raised exceptions. If `True`, players that raise an exception will
         be omitted from the returned list. If the exception is caused by the [rate
         limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
         as-is.

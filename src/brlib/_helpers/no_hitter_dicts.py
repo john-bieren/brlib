@@ -26,7 +26,7 @@ from .utils import soup_from_comment, str_between
 
 class NoHitterDicts(Singleton):
     """
-    A wrapper for several dictionaries which contain information about no-hitters.
+    A wrapper for several dictionaries that contain information about no-hitters.
     Contains dictionaries for individual no-hitters, perfect games, or combined no-hitters
     oriented by game, player, or team. Manages retrieval and caching of the data upon use of the
     `populate` method. Until this method is called, the dictionaries are empty.
@@ -125,7 +125,7 @@ class NoHitterDicts(Singleton):
             records,
             columns=("Rk", "Name", "Perfect", "Gcar", "Gtm", "Year", "Date", "Team", "Home/Away"),
         )
-        # remove the header rows which appear every 25 rows
+        # remove the header rows, which appear every 25 rows
         individual_df = individual_df.loc[individual_df["Name"] != "Name"].reset_index(drop=True)
         individual_df["Game Type"] = "R"
         postseason_mask = (
@@ -176,7 +176,7 @@ class NoHitterDicts(Singleton):
             records,
             columns=("Rk", "Year", "Date", "Team", "Home/Away", "Opp", "Rslt", "Name", "Gcar"),
         )
-        # remove the header rows which appear every 25 rows
+        # remove the header rows, which appear every 25 rows
         combined_df = combined_df.loc[combined_df["Name"] != "Name"].reset_index(drop=True)
         combined_df["Game Type"] = "R"
         postseason_mask = (

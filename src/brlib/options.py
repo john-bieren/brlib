@@ -12,9 +12,9 @@ from ._helpers.singleton import Singleton
 
 class Options(Singleton):
     """
-    Options to change brlib's behavior which can be read or set using attributes. When setting an
-    option's value, the type must match that of the option's default value, unless the assigned
-    value is `None`, which removes a previous assignment.
+    Configurable options for changing brlib's behavior, each of which can be read or set as an
+    attribute. When setting an option's value, the type must match that of the option's default
+    value, unless the assigned value is `None`, which removes a previous assignment.
 
     ## Attributes
 

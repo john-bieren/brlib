@@ -11,7 +11,7 @@ from .constants import TEAM_REPLACEMENTS
 
 def str_between(string: str, start: str, end: str, anchor: str = "start") -> str:
     """
-    Returns the substring of `string` which appears between `start` and `end`.
+    Returns the substring of `string` that appears between `start` and `end`.
     `string` must contain `start` and `end`.
 
     If `anchor` is `"start"`, the substring between the first occurrence of `start`
@@ -108,7 +108,7 @@ def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
             ValueError,  # includes a non-convertable value of a compatible type (e.g., "a")
             TypeError,  # includes a value of an incompatible type (e.g., a list)
         ):
-            # skip columns which cannot be converted
+            # skip columns that cannot be converted
             pass
     return df
 

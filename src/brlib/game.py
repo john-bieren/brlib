@@ -120,7 +120,7 @@ class Game:
 
     * `linescore`: `pandas.DataFrame`
 
-        Contains the game's linescore, a box score fixture which displays the teams' run totals by
+        Contains the game's linescore, a box score fixture that displays the teams' run totals by
         inning, as well as their total runs, hits, and errors. [See DataFrame
         info](https://github.com/john-bieren/brlib/wiki/DataFrames-Info#gamelinescore)
 
@@ -751,7 +751,7 @@ class Game:
         footer = table.find("div", {"class": "footer no_hide_long"})
         # [1:] because the first tag is the parent of the others
         for line in footer.find_all("div")[1:]:
-            # skip the divs which contain the fielding and baserunning divs
+            # skip the divs that contain the fielding and baserunning divs
             if "\n" in line.text:
                 continue
             line_str = line.text.replace("\xa0", " ")
