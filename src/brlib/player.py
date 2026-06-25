@@ -325,6 +325,7 @@ class Player:
         self.name = info.find("h1").text.strip()
         tables = content.find_all("div", {"class": "table_wrapper"}, recursive=False)
 
+        # find info from various places
         wrap = soup.find(id="wrap")
         self._scrape_info(info, wrap)
         self.info = convert_numeric_cols(self.info)
@@ -543,6 +544,9 @@ class Player:
                 links = [l["href"] for l in links if "team_ID=" in l["href"]]
                 year = str_between(links[-1], "year_ID=", "&")
                 franchise_id = str_between(links[-1], "team_ID=", "&")
+                # using franchise ID with correct_abvs is not smart, as some franchises have
+                # franchise IDs that are not one of their team IDs. However, all such cases come
+                # from the pre-draft era, so this is safe (and easy).
                 team_abv = abv_mgr.correct_abvs(franchise_id, int(year), era_adjustment=True)[0]
                 self.info["Draft Team ID"] = f"{team_abv}{year}"
 
@@ -789,7 +793,7 @@ class Player:
         ] = None
 
         df = convert_numeric_cols(df)
-        # season could be int64 if total rows are missing, e.g., hawkiro01, johns11
+        # season could be Int64 if total rows are missing, e.g., hawkiro01, johns11
         df["Season"] = df["Season"].astype("string")
         return df
 
@@ -941,7 +945,7 @@ class Player:
         return df_1
 
     @staticmethod
-    def _scrape_value_table(table) -> pd.DataFrame:
+    def _scrape_value_table(table: Tag) -> pd.DataFrame:
         """Scrapes value batting/pitching stats from `table`."""
         df_2 = Player._table_to_df(table, add_game_type=False)
         df_2 = df_2.drop(
@@ -964,7 +968,7 @@ class Player:
         return df_2
 
     @staticmethod
-    def _scrape_advanced_table(table, buffer: int) -> pd.DataFrame:
+    def _scrape_advanced_table(table: Tag, buffer: int) -> pd.DataFrame:
         """Scrapes advanced batting/pitching stats from `table`."""
         df_3 = Player._table_to_df(table, add_game_type=False, buffer=buffer)
         df_3 = df_3.drop(
