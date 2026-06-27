@@ -141,11 +141,13 @@ class GameSet:
         # fill in All-Star team names
         prep_df.loc[~non_asg_rows, "Franchise"] = prep_df.loc[~non_asg_rows, "Team"]
 
-        self.records = prep_df.groupby("Franchise")["Result"].value_counts()
-        self.records = self.records.unstack(fill_value=0).rename_axis(columns=None).reset_index()
-        self.records = self.records.rename({"Win": "Wins", "Loss": "Losses", "Tie": "Ties"}, axis=1)
-        if "Ties" not in self.records.columns:
-            self.records["Ties"] = 0
+        prep_df = prep_df.groupby("Franchise")["Result"].value_counts()
+        prep_df = prep_df.unstack(fill_value=0).rename_axis(columns=None).reset_index()
+        self.records = prep_df.rename({"Win": "Wins", "Loss": "Losses", "Tie": "Ties"}, axis=1)
+
+        # ensure all result columns are present
+        for result in ("Wins", "Losses", "Ties"):
+            self.records[result] = 0 if result not in self.records.columns else self.records[result]
 
         self.records["Games"] = self.records[["Wins", "Losses", "Ties"]].sum(axis=1).astype("Int64")
         self.records["W-L%"] = self.records["Wins"] / (
