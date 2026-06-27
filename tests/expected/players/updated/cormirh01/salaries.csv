@@ -1,18 +1,18 @@
-Player,Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
-Rhéal Cormier,1992,25.0,St. Louis Cardinals,120000,False,,4/2/92 USA Today,,cormirh01
-Rhéal Cormier,1993,26.0,St. Louis Cardinals,155000,False,,1996 Joint Exhibit 1,"Includes $10,000 earned bonus",cormirh01
-Rhéal Cormier,1994,27.0,St. Louis Cardinals,160000,False,,1996 Joint Exhibit 1,,cormirh01
-Rhéal Cormier,1995,28.0,Boston Red Sox,550000,False,,1996 Joint Exhibit 1,"Includes $50,000 earned bonus",cormirh01
-Rhéal Cormier,1996,29.0,Montreal Expos,950000,False,,1997 Joint Exhibit 1,,cormirh01
-Rhéal Cormier,1997,30.0,Montreal Expos,1050000,False,,1997 AP survey,,cormirh01
-Rhéal Cormier,1999,32.0,Boston Red Sox,900000,False,,2001 Joint Exhibit 1,"Includes $400,000 earned bonus",cormirh01
-Rhéal Cormier,2000,33.0,Boston Red Sox,2000000,False,,,,cormirh01
-Rhéal Cormier,2001,34.0,Philadelphia Phillies,2583333,False,,4/6/01 USA Today,,cormirh01
-Rhéal Cormier,2002,35.0,Philadelphia Phillies,2883333,False,,4/3/02 AP,,cormirh01
-Rhéal Cormier,2003,36.0,Philadelphia Phillies,2983333,False,,4/3/03 AP,,cormirh01
-Rhéal Cormier,2004,37.0,Philadelphia Phillies,3000000,False,,4/7/04 AP,,cormirh01
-Rhéal Cormier,2005,38.0,Philadelphia Phillies,2250000,False,,,,cormirh01
-Rhéal Cormier,2006,39.0,Philadelphia Phillies,2500000,False,,,,cormirh01
-Rhéal Cormier,2007,40.0,Cincinnati Reds,2250000,False,,,,cormirh01
-Rhéal Cormier,Career Totals,,,24334999,,,,May be incomplete,cormirh01
-Rhéal Cormier,Future Earnings,,,0,,,,,cormirh01
+Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
+1992,25.0,St. Louis Cardinals,120000,False,,4/2/92 USA Today,,cormirh01
+1993,26.0,St. Louis Cardinals,155000,False,,1996 Joint Exhibit 1,"Includes $10,000 earned bonus",cormirh01
+1994,27.0,St. Louis Cardinals,160000,False,,1996 Joint Exhibit 1,,cormirh01
+1995,28.0,Boston Red Sox,550000,False,,1996 Joint Exhibit 1,"Includes $50,000 earned bonus",cormirh01
+1996,29.0,Montreal Expos,950000,False,,1997 Joint Exhibit 1,,cormirh01
+1997,30.0,Montreal Expos,1050000,False,,1997 AP survey,,cormirh01
+1999,32.0,Boston Red Sox,900000,False,,2001 Joint Exhibit 1,"Includes $400,000 earned bonus",cormirh01
+2000,33.0,Boston Red Sox,2000000,False,,,,cormirh01
+2001,34.0,Philadelphia Phillies,2583333,False,,4/6/01 USA Today,,cormirh01
+2002,35.0,Philadelphia Phillies,2883333,False,,4/3/02 AP,,cormirh01
+2003,36.0,Philadelphia Phillies,2983333,False,,4/3/03 AP,,cormirh01
+2004,37.0,Philadelphia Phillies,3000000,False,,4/7/04 AP,,cormirh01
+2005,38.0,Philadelphia Phillies,2250000,False,,,,cormirh01
+2006,39.0,Philadelphia Phillies,2500000,False,,,,cormirh01
+2007,40.0,Cincinnati Reds,2250000,False,,,,cormirh01
+Career Totals,,,24334999,,,,May be incomplete,cormirh01
+Future Earnings,,,0,,,,,cormirh01

@@ -591,7 +591,6 @@ GAME_INFO_DTYPES = {
 }
 
 GAME_BATTING_DTYPES = {
-    "Game": "string",
     "Player": "string",
     "Position": "string",
     "AB": "Int64",
@@ -638,8 +637,6 @@ GAME_BATTING_DTYPES = {
     "2-Out RBI": "Int64",
     "LOB": "Int64",
     "RISP": "string",
-    "Team": "string",
-    "Opponent": "string",
     "Game ID": "string",
     "Player ID": "string",
     "Team ID": "string",
@@ -647,7 +644,6 @@ GAME_BATTING_DTYPES = {
 }
 
 GAME_PITCHING_DTYPES = {
-    "Game": "string",
     "Player": "string",
     "Position": "string",
     "IP": "Float64",
@@ -692,8 +688,6 @@ GAME_PITCHING_DTYPES = {
     "NH": "Int64",
     "PG": "Int64",
     "CNH": "Int64",
-    "Team": "string",
-    "Opponent": "string",
     "Game ID": "string",
     "Player ID": "string",
     "Team ID": "string",
@@ -701,7 +695,6 @@ GAME_PITCHING_DTYPES = {
 }
 
 GAME_FIELDING_DTYPES = {
-    "Game": "string",
     "Player": "string",
     "Position": "string",
     "PO": "Int64",
@@ -723,8 +716,6 @@ GAME_FIELDING_DTYPES = {
     "1B Pick": "Int64",
     "2B Pick": "Int64",
     "3B Pick": "Int64",
-    "Team": "string",
-    "Opponent": "string",
     "Game ID": "string",
     "Player ID": "string",
     "Team ID": "string",
@@ -732,7 +723,6 @@ GAME_FIELDING_DTYPES = {
 }
 
 GAME_TEAM_INFO_DTYPES = {
-    "Game": "string",
     "Team": "string",
     "Score": "Int64",
     "Record": "string",
@@ -745,7 +735,6 @@ GAME_TEAM_INFO_DTYPES = {
 }
 
 GAME_UMP_INFO_DTYPES = {
-    "Game": "string",
     "Umpire": "string",
     "Position": "string",
     "Game ID": "string",
@@ -797,7 +786,6 @@ PLAYER_INFO_DTYPES = {
 }
 
 PLAYER_BLING_DTYPES = {
-    "Player": "string",
     "Season": "string",
     "AS": "Int64",
     "SS": "Int64",
@@ -828,9 +816,7 @@ PLAYER_BLING_DTYPES = {
 }
 
 PLAYER_BATTING_DTYPES = {
-    "Player": "string",
     "Season": "string",
-    "Game Type": "string",
     "Age": "string",
     "Team": "string",
     "League": "string",
@@ -896,14 +882,13 @@ PLAYER_BATTING_DTYPES = {
     "RS%": "Float64",
     "SB%": "Float64",
     "XBT%": "Float64",
+    "Game Type": "string",
     "Player ID": "string",
     "Team ID": "string",
 }
 
 PLAYER_PITCHING_DTYPES = {
-    "Player": "string",
     "Season": "string",
-    "Game Type": "string",
     "Age": "string",
     "Team": "string",
     "League": "string",
@@ -972,14 +957,13 @@ PLAYER_PITCHING_DTYPES = {
     "NH": "Int64",
     "PG": "Int64",
     "CNH": "Int64",
+    "Game Type": "string",
     "Player ID": "string",
     "Team ID": "string",
 }
 
 PLAYER_FIELDING_DTYPES = {
-    "Player": "string",
     "Season": "string",
-    "Game Type": "string",
     "Age": "string",
     "Team": "string",
     "League": "string",
@@ -1010,12 +994,12 @@ PLAYER_FIELDING_DTYPES = {
     "CS%": "Float64",
     "lgCS%": "Float64",
     "Pick": "Int64",
+    "Game Type": "string",
     "Player ID": "string",
     "Team ID": "string",
 }
 
 PLAYER_SALARIES_DTYPES = {
-    "Player": "string",
     "Year": "string",
     "Age": "string",
     "Team": "string",
@@ -1064,8 +1048,6 @@ TEAM_INFO_DTYPES = {
 }
 
 TEAM_BLING_DTYPES = {
-    "Team": "string",
-    "Season": "Int64",
     "Player": "string",
     "AS": "Int64",
     "GG": "Int64",
@@ -1086,9 +1068,6 @@ TEAM_BLING_DTYPES = {
 }
 
 TEAM_BATTING_DTYPES = {
-    "Team": "string",
-    "Season": "Int64",
-    "Game Type": "string",
     "Player": "string",
     "Age": "string",
     "Position": "string",
@@ -1134,14 +1113,12 @@ TEAM_BATTING_DTYPES = {
     "oWAR": "Float64",
     "dWAR": "Float64",
     "oRAR": "Int64",
+    "Game Type": "string",
     "Team ID": "string",
     "Player ID": "string",
 }
 
 TEAM_PITCHING_DTYPES = {
-    "Team": "string",
-    "Season": "Int64",
-    "Game Type": "string",
     "Player": "string",
     "Age": "string",
     "Position": "string",
@@ -1193,14 +1170,12 @@ TEAM_PITCHING_DTYPES = {
     "NH": "Int64",
     "PG": "Int64",
     "CNH": "Int64",
+    "Game Type": "string",
     "Team ID": "string",
     "Player ID": "string",
 }
 
 TEAM_FIELDING_DTYPES = {
-    "Team": "string",
-    "Season": "Int64",
-    "Game Type": "string",
     "Player": "string",
     "Age": "string",
     "G": "Int64",
@@ -1228,6 +1203,7 @@ TEAM_FIELDING_DTYPES = {
     "CS%": "Float64",
     "Pick": "Int64",
     "Pos": "string",
+    "Game Type": "string",
     "Team ID": "string",
     "Player ID": "string",
 }

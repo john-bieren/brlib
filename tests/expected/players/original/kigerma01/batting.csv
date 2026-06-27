@@ -1,4 +1,4 @@
-Player,Season,Game Type,Age,Team,League,Batting bWAR,G,PA,AB,R,H,2B,3B,HR,RBI,SB,CS,BB,SO,BA,OBP,SLG,OPS,OPS+,rOBA,Rbat+,TB,GIDP,HBP,SH,SF,IBB,Pos,Rbat,Rbaser,Rdp,Rfield,Rpos,RAA,WAA,Rrep,RAR,waaWL%,162WL%,oWAR,dWAR,oRAR,BAbip,ISO,HR%,SO%,BB%,EV,HardH%,LD%,GB%,FB%,GB/FB,Pull%,Cent%,Oppo%,WPA,cWPA,RE24,RS%,SB%,XBT%,Player ID,Team ID
-Mark Kiger,2006,Postseason,26.0,OAK,AL,,2,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,/4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,kigerma01,OAK2006
-Mark Kiger,Career Totals,Postseason,,,,,2,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,/4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,kigerma01,
-Mark Kiger,162 Game Avg,Postseason,,,,,162,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,kigerma01,
+Season,Age,Team,League,Batting bWAR,G,PA,AB,R,H,2B,3B,HR,RBI,SB,CS,BB,SO,BA,OBP,SLG,OPS,OPS+,rOBA,Rbat+,TB,GIDP,HBP,SH,SF,IBB,Pos,Rbat,Rbaser,Rdp,Rfield,Rpos,RAA,WAA,Rrep,RAR,waaWL%,162WL%,oWAR,dWAR,oRAR,BAbip,ISO,HR%,SO%,BB%,EV,HardH%,LD%,GB%,FB%,GB/FB,Pull%,Cent%,Oppo%,WPA,cWPA,RE24,RS%,SB%,XBT%,Game Type,Player ID,Team ID
+2006,26.0,OAK,AL,,2,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,/4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Postseason,kigerma01,OAK2006
+Career Totals,,,,,2,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,/4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Postseason,kigerma01,
+162 Game Avg,,,,,162,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,0,,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Postseason,kigerma01,

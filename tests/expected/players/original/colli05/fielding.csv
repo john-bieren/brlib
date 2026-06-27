@@ -1,3 +1,3 @@
-Player,Season,Game Type,Age,Team,League,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,Player ID,Team ID
-Collins,1948,Regular Season,,MRS,NAL,P,1,0,,0.0,0,0,0,0,0,,,,,,,,,0.0,0.5,,,0,,,,,colli05,MRS1948
-Collins,Career Totals,Regular Season,,,,,1,0,,0.0,0,0,0,0,0,,,,,,,,,0.0,0.5,,,0,,,,,colli05,
+Season,Age,Team,League,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,Game Type,Player ID,Team ID
+1948,,MRS,NAL,P,1,0,,0.0,0,0,0,0,0,,,,,,,,,0.0,0.5,,,0,,,,,Regular Season,colli05,MRS1948
+Career Totals,,,,,1,0,,0.0,0,0,0,0,0,,,,,,,,,0.0,0.5,,,0,,,,,Regular Season,colli05,

@@ -658,7 +658,7 @@ class Player:
 
     def _scrape_bling(self, player_bling: Tag) -> None:
         """Populates the career totals row of `self.bling`."""
-        self.bling[["Player", "Season"]] = self.name, "Career Totals"
+        self.bling["Season"] = "Career Totals"
         self.bling[[*BLING_DICT.values()]] = 0
 
         if player_bling is None:
@@ -703,7 +703,7 @@ class Player:
         self.salaries.loc[career_totals_mask, ["Age", "Team"]] = pd.NA
         self.salaries.loc[career_totals_mask, "Year"] = "Career Totals"
         # add identifying columns
-        self.salaries[["Player", "Player ID"]] = self.name, self.id
+        self.salaries["Player ID"] = self.id
         # remove empty rows
         self.salaries = self.salaries.loc[self.salaries["Year"] != ""]
         # remove any "status" rows, which aren't part of the normal table format
@@ -727,7 +727,6 @@ class Player:
                     future_earnings = str(float(str_between(future_earnings, "$", "K")) * 1e3)
             future_earnings_row = pd.DataFrame(
                 {
-                    "Player": [self.name],
                     "Player ID": [self.id],
                     "Year": ["Future Earnings"],
                     "Age": [pd.NA],
@@ -753,7 +752,6 @@ class Player:
         self.salaries = convert_numeric_cols(self.salaries)
         self.salaries = self.salaries.groupby("Year", as_index=False).agg(
             {
-                "Player": "first",
                 "Player ID": "first",
                 "Year": "first",
                 "Age": "first",
@@ -778,7 +776,7 @@ class Player:
         """Adds player name, player ID, and team IDs to `df`, and corrects dtypes."""
         if len(df) == 0:
             return df
-        df[["Player", "Player ID"]] = self.name, self.id
+        df["Player ID"] = self.id
 
         df.loc[
             ((~df["Team"].isna()) & (df["Season"] != "Career Totals")),
@@ -861,8 +859,6 @@ class Player:
         season_rows = pd.DataFrame(
             {
                 "Season": prep_df["Season"].to_numpy(),
-                "Player": self.name,
-                "Player ID": self.id,
                 "MVP": 0,
                 "MVP Finish": pd.NA,
                 "CYA": 0,
@@ -874,6 +870,7 @@ class Player:
                 "LCS MVP": 0,
                 "SS": 0,
                 "GG": 0,
+                "Player ID": self.id,
             },
             index=range(len(prep_df)),
         )

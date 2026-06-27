@@ -1,17 +1,17 @@
-Player,Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
-Charles Bender,1903,19.0,Philadelphia Athletics,1200,False,,1942 TSN Guide 163,,bendech01
-Charles Bender,1905,21.0,Philadelphia Athletics,2100,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1906,22.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1907,23.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1908,24.0,Philadelphia Athletics,3000,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1909,25.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1910,26.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1911,27.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1912,28.0,Philadelphia Athletics,3000,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1913,29.0,Philadelphia Athletics,1500,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1914,30.0,Philadelphia Athletics,4000,False,,1942 TSN Guide 163,,bendech01
-Charles Bender,1916,32.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1917,33.0,Philadelphia Athletics,4500,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,1925,41.0,Chicago White Sox,3000,False,,Michael Haupert research of HOF contracts,,bendech01
-Charles Bender,Career Totals,,,33400,,,,May be incomplete,bendech01
-Charles Bender,Future Earnings,,,0,,,,,bendech01
+Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
+1903,19.0,Philadelphia Athletics,1200,False,,1942 TSN Guide 163,,bendech01
+1905,21.0,Philadelphia Athletics,2100,False,,Michael Haupert research of HOF contracts,,bendech01
+1906,22.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
+1907,23.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
+1908,24.0,Philadelphia Athletics,3000,False,,Michael Haupert research of HOF contracts,,bendech01
+1909,25.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
+1910,26.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
+1911,27.0,Philadelphia Athletics,1200,False,,Michael Haupert research of HOF contracts,,bendech01
+1912,28.0,Philadelphia Athletics,3000,False,,Michael Haupert research of HOF contracts,,bendech01
+1913,29.0,Philadelphia Athletics,1500,False,,Michael Haupert research of HOF contracts,,bendech01
+1914,30.0,Philadelphia Athletics,4000,False,,1942 TSN Guide 163,,bendech01
+1916,32.0,Philadelphia Athletics,2500,False,,Michael Haupert research of HOF contracts,,bendech01
+1917,33.0,Philadelphia Athletics,4500,False,,Michael Haupert research of HOF contracts,,bendech01
+1925,41.0,Chicago White Sox,3000,False,,Michael Haupert research of HOF contracts,,bendech01
+Career Totals,,,33400,,,,May be incomplete,bendech01
+Future Earnings,,,0,,,,,bendech01

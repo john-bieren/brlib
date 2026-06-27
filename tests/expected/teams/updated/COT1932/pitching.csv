@@ -1,1 +1,1 @@
-Team,Season,Game Type,Player,Age,Position,Pitching bWAR,W,L,W-L%,ERA,G,GS,GF,CG,SHO,SV,IP,H,R,ER,HR,BB,IBB,SO,HBP,BK,WP,BF,ERA+,FIP,WHIP,H9,HR9,BB9,SO9,SO/BB,RA9,RA9opp,RA9def,RA9role,RA9extras,PPFp,RA9avg,RAA,WAA,gmLI,WAAadj,RAR,waaWL%,162WL%,NH,PG,CNH,Team ID,Player ID
+Player,Age,Position,Pitching bWAR,W,L,W-L%,ERA,G,GS,GF,CG,SHO,SV,IP,H,R,ER,HR,BB,IBB,SO,HBP,BK,WP,BF,ERA+,FIP,WHIP,H9,HR9,BB9,SO9,SO/BB,RA9,RA9opp,RA9def,RA9role,RA9extras,PPFp,RA9avg,RAA,WAA,gmLI,WAAadj,RAR,waaWL%,162WL%,NH,PG,CNH,Game Type,Team ID,Player ID

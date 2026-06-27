@@ -287,27 +287,6 @@ class Team:
         self.info["Team"] = (
             self.info["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.info["Team"]).astype("string")
         )
-        self.bling["Team"] = (
-            self.bling["Team ID"].map(TEAM_REPLACEMENTS).fillna(self.bling["Team"]).astype("string")
-        )
-        self.batting["Team"] = (
-            self.batting["Team ID"]
-            .map(TEAM_REPLACEMENTS)
-            .fillna(self.batting["Team"])
-            .astype("string")
-        )
-        self.pitching["Team"] = (
-            self.pitching["Team ID"]
-            .map(TEAM_REPLACEMENTS)
-            .fillna(self.pitching["Team"])
-            .astype("string")
-        )
-        self.fielding["Team"] = (
-            self.fielding["Team ID"]
-            .map(TEAM_REPLACEMENTS)
-            .fillna(self.fielding["Team"])
-            .astype("string")
-        )
         if (new_name := TEAM_REPLACEMENTS.get(self.id)) is not None:
             self.name = f"{self.id[-4:]} {new_name}"
 
@@ -373,8 +352,6 @@ class Team:
         self.bling = pd.DataFrame(
             {
                 "Player": ["Team Totals"],
-                "Team": [team_name],
-                "Season": [season],
                 "Team ID": [self.id],
             }
         )
@@ -442,9 +419,9 @@ class Team:
         # add stats from soon-to-be-deleted awards columns into self.bling
         self._process_awards_columns()
 
-        self.batting[["Season", "Team", "Team ID"]] = season, team_name, self.id
-        self.pitching[["Season", "Team", "Team ID"]] = season, team_name, self.id
-        self.fielding[["Season", "Team", "Team ID"]] = season, team_name, self.id
+        self.batting["Team ID"] = self.id
+        self.pitching["Team ID"] = self.id
+        self.fielding["Team ID"] = self.id
 
         self.info = self.info.reindex(columns=list(TEAM_INFO_DTYPES))
         self.bling = self.bling.reindex(columns=list(TEAM_BLING_DTYPES))
@@ -676,9 +653,6 @@ class Team:
         season_rows = pd.DataFrame(
             {
                 "Player": prep_df["Player"].to_numpy(),
-                "Player ID": prep_df["Player ID"].to_numpy(),
-                "Team": team,
-                "Season": season,
                 "Team ID": self.id,
                 "MVP": 0,
                 "MVP Finish": pd.NA,
@@ -691,6 +665,7 @@ class Team:
                 "LCS MVP": 0,
                 "SS": 0,
                 "GG": 0,
+                "Player ID": prep_df["Player ID"].to_numpy(),
             },
             index=range(len(prep_df)),
         )

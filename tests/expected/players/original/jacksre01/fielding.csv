@@ -1,94 +1,94 @@
-Player,Season,Game Type,Age,Team,League,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,Player ID,Team ID
-Reggie Jackson,1967,Regular Season,21.0,KCA,AL,OF,34,32,29,301.0,60,55,1,4,0,0.933,0.98,-1,-4.0,,,1.67,2.05,1.65,2.06,,,,,,,,jacksre01,KCA1967
-Reggie Jackson,1967,Regular Season,21.0,KCA,AL,LF,19,18,17,167.333334,34,30,1,3,0,0.912,0.976,0,1.0,,,1.67,1.87,1.63,1.87,,,,,,,,jacksre01,KCA1967
-Reggie Jackson,1967,Regular Season,21.0,KCA,AL,RF,14,13,11,119.666667,21,20,0,1,0,0.952,0.981,-2,-22.0,,,1.5,1.82,1.43,1.82,,,,,,,,jacksre01,KCA1967
-Reggie Jackson,1967,Regular Season,21.0,KCA,AL,CF,3,1,1,14.0,6,6,0,0,0,1.0,0.982,1,94.0,,,3.86,2.44,2.0,2.47,,,,,,,,jacksre01,KCA1967
-Reggie Jackson,1968,Regular Season,22.0,OAK,AL,OF,151,145,132,1294.666667,295,269,14,12,5,0.959,0.981,8,8.0,,,1.97,2.08,1.87,2.07,,,,,,,,jacksre01,OAK1968
-Reggie Jackson,1968,Regular Season,22.0,OAK,AL,RF,148,137,130,1236.666667,281,256,13,12,5,0.957,0.977,8,8.0,,,1.96,1.88,1.82,1.87,,,,,,,,jacksre01,OAK1968
-Reggie Jackson,1968,Regular Season,22.0,OAK,AL,CF,10,8,2,55.333334,13,12,1,0,0,1.0,0.986,0,-7.0,,,2.11,2.52,1.3,2.52,,,,,,,,jacksre01,OAK1968
-Reggie Jackson,1968,Regular Season,22.0,OAK,AL,LF,1,0,0,2.666667,1,1,0,0,0,1.0,0.98,0,90.0,,,3.38,2.03,1.0,1.8,,,,,,,,jacksre01,OAK1968
-Reggie Jackson,1969,Regular Season,23.0,OAK,AL,OF,150,147,141,1350.333334,303,278,14,11,2,0.964,0.978,8,7.0,,,1.95,2.13,1.95,2.13,,,,,,,,jacksre01,OAK1969
-Reggie Jackson,1969,Regular Season,23.0,OAK,AL,RF,144,139,135,1273.333334,286,264,12,10,2,0.965,0.974,9,8.0,,,1.95,1.91,1.92,1.91,,,,,,,,jacksre01,OAK1969
-Reggie Jackson,1969,Regular Season,23.0,OAK,AL,CF,10,8,6,77.0,22,19,2,1,0,0.955,0.982,-1,-12.0,,,2.45,2.5,2.1,2.5,,,,,,,,jacksre01,OAK1969
-Reggie Jackson,1970,Regular Season,24.0,OAK,AL,OF,142,118,93,1085.666667,271,251,8,12,0,0.956,0.98,0,0.0,,,2.15,2.14,1.82,2.13,,,,,,,,jacksre01,OAK1970
-Reggie Jackson,1970,Regular Season,24.0,OAK,AL,RF,114,71,68,720.0,156,140,8,8,0,0.949,0.975,-2,-4.0,,,1.85,1.98,1.3,1.97,,,,,,,,jacksre01,OAK1970
-Reggie Jackson,1970,Regular Season,24.0,OAK,AL,CF,50,47,25,365.666667,123,119,0,4,0,0.967,0.985,2,7.0,,,2.93,2.62,2.38,2.61,,,,,,,,jacksre01,OAK1970
-Reggie Jackson,1971,Regular Season,25.0,OAK,AL,RF,145,143,126,1253.333334,306,285,15,6,3,0.98,0.98,12,11.0,,,2.15,2.05,2.07,2.04,,,,,,,,jacksre01,OAK1971
-Reggie Jackson,1971,Regular Season,25.0,OAK,AL,OF,145,145,126,1269.333334,307,285,15,7,3,0.977,0.982,11,10.0,,,2.13,2.24,2.07,2.22,,,,,,,,jacksre01,OAK1971
-Reggie Jackson,1971,Regular Season,25.0,OAK,AL,CF,3,2,0,16.0,2,1,0,1,0,0.5,0.985,-1,-68.0,,,0.56,2.76,0.33,2.73,,,,,,,,jacksre01,OAK1971
-Reggie Jackson,1972,Regular Season,26.0,OAK,AL,OF,135,135,119,1176.666667,315,301,5,9,5,0.971,0.983,0,0.0,,,2.34,2.22,2.27,2.21,,,,,,,,jacksre01,OAK1972
-Reggie Jackson,1972,Regular Season,26.0,OAK,AL,CF,92,92,79,791.0,224,215,4,5,4,0.978,0.987,3,4.0,,,2.49,2.65,2.38,2.64,,,,,,,,jacksre01,OAK1972
-Reggie Jackson,1972,Regular Season,26.0,OAK,AL,RF,43,43,40,385.666667,93,88,1,4,1,0.957,0.98,-3,-8.0,,,2.08,2.12,2.07,2.11,,,,,,,,jacksre01,OAK1972
-Reggie Jackson,1973,Regular Season,27.0,OAK,AL,OF,145,144,122,1236.666667,315,302,4,9,0,0.971,0.979,10,10.0,,,2.23,2.29,2.11,2.27,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1973,Regular Season,27.0,OAK,AL,RF,144,143,121,1227.666667,314,301,4,9,0,0.971,0.976,11,11.0,,,2.24,2.09,2.12,2.07,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1973,Regular Season,27.0,OAK,AL,DH,3,2,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1973,Regular Season,27.0,OAK,AL,CF,1,1,1,9.0,2,2,0,0,0,1.0,0.985,-1,-67.0,,,2.0,2.8,2.0,2.8,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1974,Regular Season,28.0,OAK,AL,OF,127,126,112,1092.666667,314,296,8,10,2,0.968,0.98,-2,-2.0,,,2.5,2.41,2.39,2.4,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1974,Regular Season,28.0,OAK,AL,RF,126,124,111,1070.333334,311,293,8,10,2,0.968,0.976,-1,-1.0,,,2.53,2.18,2.39,2.17,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1974,Regular Season,28.0,OAK,AL,DH,19,19,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1974,Regular Season,28.0,OAK,AL,CF,3,2,1,22.333334,7,7,0,0,0,1.0,0.986,-1,-54.0,,,2.82,2.94,2.33,2.93,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1975,Regular Season,29.0,OAK,AL,OF,147,147,124,1260.0,340,315,13,12,5,0.965,0.979,15,14.0,,,2.34,2.37,2.23,2.36,,,,,,,,jacksre01,OAK1975
-Reggie Jackson,1975,Regular Season,29.0,OAK,AL,RF,147,147,124,1260.0,342,317,13,12,4,0.965,0.976,15,14.0,,,2.36,2.11,2.24,2.1,,,,,,,,jacksre01,OAK1975
-Reggie Jackson,1975,Regular Season,29.0,OAK,AL,DH,9,9,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,OAK1975
-Reggie Jackson,1976,Regular Season,30.0,BAL,AL,OF,121,121,101,1057.666667,303,284,8,11,3,0.964,0.981,-3,-4.0,,,2.48,2.47,2.41,2.48,,,,,,,,jacksre01,BAL1976
-Reggie Jackson,1976,Regular Season,30.0,BAL,AL,RF,112,105,93,946.666667,265,248,8,9,3,0.966,0.98,1,1.0,,,2.43,2.21,2.29,2.22,,,,,,,,jacksre01,BAL1976
-Reggie Jackson,1976,Regular Season,30.0,BAL,AL,CF,16,16,8,111.0,36,34,0,2,0,0.944,0.984,-4,-44.0,,,2.76,2.98,2.13,2.99,,,,,,,,jacksre01,BAL1976
-Reggie Jackson,1976,Regular Season,30.0,BAL,AL,DH,11,10,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,BAL1976
-Reggie Jackson,1977,Regular Season,31.0,NYY,AL,RF,127,126,96,1057.0,253,233,7,13,0,0.949,0.974,-6,-6.0,,,2.04,2.08,1.89,2.07,,,,,,,,jacksre01,NYY1977
-Reggie Jackson,1977,Regular Season,31.0,NYY,AL,OF,127,126,96,1057.0,256,236,7,13,0,0.949,0.978,-6,-6.0,,,2.07,2.34,1.91,2.32,,,,,,,,jacksre01,NYY1977
-Reggie Jackson,1977,Regular Season,31.0,NYY,AL,DH,18,17,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1977
-Reggie Jackson,1978,Regular Season,32.0,NYY,AL,OF,104,104,95,911.333334,221,212,6,3,1,0.986,0.979,-3,-4.0,,,2.15,2.47,2.1,2.45,,,,,,,,jacksre01,NYY1978
-Reggie Jackson,1978,Regular Season,32.0,NYY,AL,RF,104,104,95,911.333334,216,207,6,3,1,0.986,0.978,-3,-4.0,,,2.1,2.24,2.05,2.22,,,,,,,,jacksre01,NYY1978
-Reggie Jackson,1978,Regular Season,32.0,NYY,AL,DH,35,34,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1978
-Reggie Jackson,1979,Regular Season,33.0,NYY,AL,RF,125,125,117,1082.666667,286,275,7,4,2,0.986,0.98,-5,-5.0,,,2.34,2.25,2.26,2.22,,,,,,,,jacksre01,NYY1979
-Reggie Jackson,1979,Regular Season,33.0,NYY,AL,OF,125,125,117,1082.666667,285,274,7,4,2,0.986,0.981,-5,-5.0,,,2.34,2.46,2.25,2.43,,,,,,,,jacksre01,NYY1979
-Reggie Jackson,1979,Regular Season,33.0,NYY,AL,DH,3,2,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1979
-Reggie Jackson,1980,Regular Season,34.0,NYY,AL,RF,94,94,66,787.666667,181,171,3,7,0,0.961,0.974,-13,-20.0,,,1.99,2.13,1.85,2.12,,,,,,,,jacksre01,NYY1980
-Reggie Jackson,1980,Regular Season,34.0,NYY,AL,OF,94,94,66,787.666667,184,174,3,7,0,0.962,0.979,-13,-20.0,,,2.02,2.47,1.88,2.46,,,,,,,,jacksre01,NYY1980
-Reggie Jackson,1980,Regular Season,34.0,NYY,AL,DH,46,44,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1980
-Reggie Jackson,1981,Regular Season,35.0,NYY,AL,OF,61,60,55,516.666667,117,111,3,3,0,0.974,0.983,-3,-7.0,,,1.99,2.48,1.87,2.47,,,,,,,,jacksre01,NYY1981
-Reggie Jackson,1981,Regular Season,35.0,NYY,AL,RF,61,60,55,516.666667,113,107,3,3,0,0.973,0.98,-3,-7.0,,,1.92,2.16,1.8,2.15,,,,,,,,jacksre01,NYY1981
-Reggie Jackson,1981,Regular Season,35.0,NYY,AL,DH,33,32,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1981
-Reggie Jackson,1982,Regular Season,36.0,CAL,AL,OF,139,137,59,1087.333334,212,200,6,6,1,0.972,0.982,-18,-19.0,,,1.71,2.47,1.48,2.46,,,,,,,,jacksre01,CAL1982
-Reggie Jackson,1982,Regular Season,36.0,CAL,AL,RF,139,137,59,1087.333334,209,197,6,6,1,0.971,0.981,-18,-19.0,,,1.68,2.27,1.46,2.26,,,,,,,,jacksre01,CAL1982
-Reggie Jackson,1982,Regular Season,36.0,CAL,AL,DH,5,5,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1982
-Reggie Jackson,1983,Regular Season,37.0,CAL,AL,DH,62,62,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1983
-Reggie Jackson,1983,Regular Season,37.0,CAL,AL,OF,47,44,25,355.333334,71,66,4,1,1,0.986,0.981,-6,-22.0,,,1.77,2.5,1.49,2.48,,,,,,,,jacksre01,CAL1983
-Reggie Jackson,1983,Regular Season,37.0,CAL,AL,RF,47,44,25,355.333334,76,70,5,1,1,0.987,0.978,-6,-22.0,,,1.9,2.25,1.6,2.23,,,,,,,,jacksre01,CAL1983
-Reggie Jackson,1984,Regular Season,38.0,CAL,AL,DH,134,133,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1984
-Reggie Jackson,1984,Regular Season,38.0,CAL,AL,RF,3,3,2,26.666667,7,7,0,0,0,1.0,0.979,0,14.0,,,2.36,2.23,2.33,2.2,,,,,,,,jacksre01,CAL1984
-Reggie Jackson,1984,Regular Season,38.0,CAL,AL,OF,3,3,2,26.666667,7,7,0,0,0,1.0,0.983,0,14.0,,,2.36,2.5,2.33,2.5,,,,,,,,jacksre01,CAL1984
-Reggie Jackson,1985,Regular Season,39.0,CAL,AL,OF,81,81,39,624.333334,125,112,6,7,1,0.944,0.982,-13,-24.0,,,1.7,2.44,1.46,2.42,,,,,,,,jacksre01,CAL1985
-Reggie Jackson,1985,Regular Season,39.0,CAL,AL,RF,81,81,39,624.333334,125,112,6,7,1,0.944,0.98,-13,-24.0,,,1.7,2.17,1.46,2.15,,,,,,,,jacksre01,CAL1985
-Reggie Jackson,1985,Regular Season,39.0,CAL,AL,DH,52,46,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1985
-Reggie Jackson,1986,Regular Season,40.0,CAL,AL,DH,121,111,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1986
-Reggie Jackson,1986,Regular Season,40.0,CAL,AL,OF,4,2,0,18.0,6,4,1,1,0,0.833,0.98,0,-27.0,,,2.5,2.4,1.25,2.38,,,,,,,,jacksre01,CAL1986
-Reggie Jackson,1986,Regular Season,40.0,CAL,AL,RF,4,2,0,18.0,6,4,1,1,0,0.833,0.975,0,-27.0,,,2.5,2.1,1.25,2.08,,,,,,,,jacksre01,CAL1986
-Reggie Jackson,1987,Regular Season,41.0,OAK,AL,DH,79,63,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,OAK1987
-Reggie Jackson,1987,Regular Season,41.0,OAK,AL,OF,20,20,15,164.0,30,30,0,0,0,1.0,0.98,-4,-31.0,,,1.65,2.31,1.5,2.29,,,,,,,,jacksre01,OAK1987
-Reggie Jackson,1987,Regular Season,41.0,OAK,AL,RF,20,20,15,164.0,29,29,0,0,0,1.0,0.979,-4,-31.0,,,1.59,2.12,1.45,2.1,,,,,,,,jacksre01,OAK1987
-Reggie Jackson,Career Totals,Regular Season,,,,,2102,2056,1668,17755.666667,4337,4062,133,142,31,0.967,0.98,-23,-2.0,,,2.13,2.32,2.0,2.31,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Regular Season,,,,OF,2102,2056,1668,17755.666667,4337,4062,133,142,31,0.967,0.98,-23,-2.0,,,2.13,2.32,2.0,2.31,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Regular Season,,,,RF,1942,1861,1528,16124.333334,3876,3624,126,126,26,0.967,0.977,-22,-2.0,,,2.09,2.11,1.93,2.1,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Regular Season,,,,DH,630,589,,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Regular Season,,,,CF,188,177,123,1461.333334,435,415,7,13,4,0.97,0.986,-2,-1.0,,,2.6,2.66,2.24,2.65,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Regular Season,,,,LF,20,18,17,170.0,35,31,1,3,0,0.914,0.976,0,3.0,,,1.69,1.87,1.6,1.87,,,,,,,,jacksre01,
-Reggie Jackson,1971,Postseason,25.0,OAK,AL,RF,3,3,3,25.0,11,10,1,0,0,1.0,,,,,,3.96,,3.67,,,,,,,,,jacksre01,OAK1971
-Reggie Jackson,1972,Postseason,26.0,OAK,AL,CF,5,5,4,38.0,15,14,0,1,0,0.933,,,,,,3.32,,2.8,,,,,,,,,jacksre01,OAK1972
-Reggie Jackson,1973,Postseason,27.0,OAK,"AL,WS",RF,9,7,6,73.0,26,26,0,0,0,1.0,,,,,,3.21,,2.89,,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1973,Postseason,27.0,OAK,WS,CF,6,5,3,39.0,10,10,0,0,0,1.0,,,,,,2.31,,1.67,,,,,,,,,jacksre01,OAK1973
-Reggie Jackson,1974,Postseason,28.0,OAK,"AL,WS",RF,6,6,4,49.0,10,8,1,1,0,0.9,,,,,,1.65,,1.5,,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1974,Postseason,28.0,OAK,AL,DH,3,3,0,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,OAK1974
-Reggie Jackson,1975,Postseason,29.0,OAK,AL,RF,3,3,3,25.0,7,5,2,0,1,1.0,,,,,,2.52,,2.33,,,,,,,,,jacksre01,OAK1975
-Reggie Jackson,1977,Postseason,31.0,NYY,"AL,WS",RF,10,10,5,79.0,20,19,1,0,0,1.0,,,,,,2.28,,2.0,,,,,,,,,jacksre01,NYY1977
-Reggie Jackson,1977,Postseason,31.0,NYY,AL,DH,1,0,0,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1977
-Reggie Jackson,1978,Postseason,32.0,NYY,"AL,WS",DH,9,9,0,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,NYY1978
-Reggie Jackson,1978,Postseason,32.0,NYY,AL,RF,1,1,1,8.0,4,4,0,0,0,1.0,,,,,,4.5,,4.0,,,,,,,,,jacksre01,NYY1978
-Reggie Jackson,1980,Postseason,34.0,NYY,AL,RF,3,3,3,25.0,6,6,0,0,0,1.0,,,,,,2.16,,2.0,,,,,,,,,jacksre01,NYY1980
-Reggie Jackson,1981,Postseason,35.0,NYY,"AL,WS",RF,10,10,8,80.0,14,13,0,1,0,0.929,,,,,,1.46,,1.3,,,,,,,,,jacksre01,NYY1981
-Reggie Jackson,1982,Postseason,36.0,CAL,AL,RF,5,5,3,39.0,2,2,0,0,0,1.0,,,,,,0.46,,0.4,,,,,,,,,jacksre01,CAL1982
-Reggie Jackson,1986,Postseason,40.0,CAL,AL,DH,6,6,0,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,CAL1986
-Reggie Jackson,Career Totals,Postseason,,,,,80,76,43,480.0,125,117,5,3,1,0.976,,,,,,2.29,,1.53,,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Postseason,,,,RF,50,48,36,403.0,100,93,5,2,1,0.98,,,,,,2.19,,1.96,,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Postseason,,,,DH,19,18,0,,,,,,,,,,,,,,,0.0,,,,,,,,,jacksre01,
-Reggie Jackson,Career Totals,Postseason,,,,CF,11,10,7,77.0,25,24,0,1,0,0.96,,,,,,2.81,,2.18,,,,,,,,,jacksre01,
+Season,Age,Team,League,Position,G,GS,CG,Inn,Ch,PO,A,E,DP,Fld%,lgFld%,Rtot,Rtot/yr,Rdrs,Rdrs/yr,RF/9,lgRF9,RF/G,lgRFG,PB,WP,SB,CS,CS%,lgCS%,Pick,Game Type,Player ID,Team ID
+1967,21.0,KCA,AL,OF,34,32,29,301.0,60,55,1,4,0,0.933,0.98,-1,-4.0,,,1.67,2.05,1.65,2.06,,,,,,,,Regular Season,jacksre01,KCA1967
+1967,21.0,KCA,AL,LF,19,18,17,167.333334,34,30,1,3,0,0.912,0.976,0,1.0,,,1.67,1.87,1.63,1.87,,,,,,,,Regular Season,jacksre01,KCA1967
+1967,21.0,KCA,AL,RF,14,13,11,119.666667,21,20,0,1,0,0.952,0.981,-2,-22.0,,,1.5,1.82,1.43,1.82,,,,,,,,Regular Season,jacksre01,KCA1967
+1967,21.0,KCA,AL,CF,3,1,1,14.0,6,6,0,0,0,1.0,0.982,1,94.0,,,3.86,2.44,2.0,2.47,,,,,,,,Regular Season,jacksre01,KCA1967
+1968,22.0,OAK,AL,OF,151,145,132,1294.666667,295,269,14,12,5,0.959,0.981,8,8.0,,,1.97,2.08,1.87,2.07,,,,,,,,Regular Season,jacksre01,OAK1968
+1968,22.0,OAK,AL,RF,148,137,130,1236.666667,281,256,13,12,5,0.957,0.977,8,8.0,,,1.96,1.88,1.82,1.87,,,,,,,,Regular Season,jacksre01,OAK1968
+1968,22.0,OAK,AL,CF,10,8,2,55.333334,13,12,1,0,0,1.0,0.986,0,-7.0,,,2.11,2.52,1.3,2.52,,,,,,,,Regular Season,jacksre01,OAK1968
+1968,22.0,OAK,AL,LF,1,0,0,2.666667,1,1,0,0,0,1.0,0.98,0,90.0,,,3.38,2.03,1.0,1.8,,,,,,,,Regular Season,jacksre01,OAK1968
+1969,23.0,OAK,AL,OF,150,147,141,1350.333334,303,278,14,11,2,0.964,0.978,8,7.0,,,1.95,2.13,1.95,2.13,,,,,,,,Regular Season,jacksre01,OAK1969
+1969,23.0,OAK,AL,RF,144,139,135,1273.333334,286,264,12,10,2,0.965,0.974,9,8.0,,,1.95,1.91,1.92,1.91,,,,,,,,Regular Season,jacksre01,OAK1969
+1969,23.0,OAK,AL,CF,10,8,6,77.0,22,19,2,1,0,0.955,0.982,-1,-12.0,,,2.45,2.5,2.1,2.5,,,,,,,,Regular Season,jacksre01,OAK1969
+1970,24.0,OAK,AL,OF,142,118,93,1085.666667,271,251,8,12,0,0.956,0.98,0,0.0,,,2.15,2.14,1.82,2.13,,,,,,,,Regular Season,jacksre01,OAK1970
+1970,24.0,OAK,AL,RF,114,71,68,720.0,156,140,8,8,0,0.949,0.975,-2,-4.0,,,1.85,1.98,1.3,1.97,,,,,,,,Regular Season,jacksre01,OAK1970
+1970,24.0,OAK,AL,CF,50,47,25,365.666667,123,119,0,4,0,0.967,0.985,2,7.0,,,2.93,2.62,2.38,2.61,,,,,,,,Regular Season,jacksre01,OAK1970
+1971,25.0,OAK,AL,RF,145,143,126,1253.333334,306,285,15,6,3,0.98,0.98,12,11.0,,,2.15,2.05,2.07,2.04,,,,,,,,Regular Season,jacksre01,OAK1971
+1971,25.0,OAK,AL,OF,145,145,126,1269.333334,307,285,15,7,3,0.977,0.982,11,10.0,,,2.13,2.24,2.07,2.22,,,,,,,,Regular Season,jacksre01,OAK1971
+1971,25.0,OAK,AL,CF,3,2,0,16.0,2,1,0,1,0,0.5,0.985,-1,-68.0,,,0.56,2.76,0.33,2.73,,,,,,,,Regular Season,jacksre01,OAK1971
+1972,26.0,OAK,AL,OF,135,135,119,1176.666667,315,301,5,9,5,0.971,0.983,0,0.0,,,2.34,2.22,2.27,2.21,,,,,,,,Regular Season,jacksre01,OAK1972
+1972,26.0,OAK,AL,CF,92,92,79,791.0,224,215,4,5,4,0.978,0.987,3,4.0,,,2.49,2.65,2.38,2.64,,,,,,,,Regular Season,jacksre01,OAK1972
+1972,26.0,OAK,AL,RF,43,43,40,385.666667,93,88,1,4,1,0.957,0.98,-3,-8.0,,,2.08,2.12,2.07,2.11,,,,,,,,Regular Season,jacksre01,OAK1972
+1973,27.0,OAK,AL,OF,145,144,122,1236.666667,315,302,4,9,0,0.971,0.979,10,10.0,,,2.23,2.29,2.11,2.27,,,,,,,,Regular Season,jacksre01,OAK1973
+1973,27.0,OAK,AL,RF,144,143,121,1227.666667,314,301,4,9,0,0.971,0.976,11,11.0,,,2.24,2.09,2.12,2.07,,,,,,,,Regular Season,jacksre01,OAK1973
+1973,27.0,OAK,AL,DH,3,2,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,OAK1973
+1973,27.0,OAK,AL,CF,1,1,1,9.0,2,2,0,0,0,1.0,0.985,-1,-67.0,,,2.0,2.8,2.0,2.8,,,,,,,,Regular Season,jacksre01,OAK1973
+1974,28.0,OAK,AL,OF,127,126,112,1092.666667,314,296,8,10,2,0.968,0.98,-2,-2.0,,,2.5,2.41,2.39,2.4,,,,,,,,Regular Season,jacksre01,OAK1974
+1974,28.0,OAK,AL,RF,126,124,111,1070.333334,311,293,8,10,2,0.968,0.976,-1,-1.0,,,2.53,2.18,2.39,2.17,,,,,,,,Regular Season,jacksre01,OAK1974
+1974,28.0,OAK,AL,DH,19,19,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,OAK1974
+1974,28.0,OAK,AL,CF,3,2,1,22.333334,7,7,0,0,0,1.0,0.986,-1,-54.0,,,2.82,2.94,2.33,2.93,,,,,,,,Regular Season,jacksre01,OAK1974
+1975,29.0,OAK,AL,OF,147,147,124,1260.0,340,315,13,12,5,0.965,0.979,15,14.0,,,2.34,2.37,2.23,2.36,,,,,,,,Regular Season,jacksre01,OAK1975
+1975,29.0,OAK,AL,RF,147,147,124,1260.0,342,317,13,12,4,0.965,0.976,15,14.0,,,2.36,2.11,2.24,2.1,,,,,,,,Regular Season,jacksre01,OAK1975
+1975,29.0,OAK,AL,DH,9,9,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,OAK1975
+1976,30.0,BAL,AL,OF,121,121,101,1057.666667,303,284,8,11,3,0.964,0.981,-3,-4.0,,,2.48,2.47,2.41,2.48,,,,,,,,Regular Season,jacksre01,BAL1976
+1976,30.0,BAL,AL,RF,112,105,93,946.666667,265,248,8,9,3,0.966,0.98,1,1.0,,,2.43,2.21,2.29,2.22,,,,,,,,Regular Season,jacksre01,BAL1976
+1976,30.0,BAL,AL,CF,16,16,8,111.0,36,34,0,2,0,0.944,0.984,-4,-44.0,,,2.76,2.98,2.13,2.99,,,,,,,,Regular Season,jacksre01,BAL1976
+1976,30.0,BAL,AL,DH,11,10,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,BAL1976
+1977,31.0,NYY,AL,RF,127,126,96,1057.0,253,233,7,13,0,0.949,0.974,-6,-6.0,,,2.04,2.08,1.89,2.07,,,,,,,,Regular Season,jacksre01,NYY1977
+1977,31.0,NYY,AL,OF,127,126,96,1057.0,256,236,7,13,0,0.949,0.978,-6,-6.0,,,2.07,2.34,1.91,2.32,,,,,,,,Regular Season,jacksre01,NYY1977
+1977,31.0,NYY,AL,DH,18,17,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,NYY1977
+1978,32.0,NYY,AL,OF,104,104,95,911.333334,221,212,6,3,1,0.986,0.979,-3,-4.0,,,2.15,2.47,2.1,2.45,,,,,,,,Regular Season,jacksre01,NYY1978
+1978,32.0,NYY,AL,RF,104,104,95,911.333334,216,207,6,3,1,0.986,0.978,-3,-4.0,,,2.1,2.24,2.05,2.22,,,,,,,,Regular Season,jacksre01,NYY1978
+1978,32.0,NYY,AL,DH,35,34,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,NYY1978
+1979,33.0,NYY,AL,RF,125,125,117,1082.666667,286,275,7,4,2,0.986,0.98,-5,-5.0,,,2.34,2.25,2.26,2.22,,,,,,,,Regular Season,jacksre01,NYY1979
+1979,33.0,NYY,AL,OF,125,125,117,1082.666667,285,274,7,4,2,0.986,0.981,-5,-5.0,,,2.34,2.46,2.25,2.43,,,,,,,,Regular Season,jacksre01,NYY1979
+1979,33.0,NYY,AL,DH,3,2,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,NYY1979
+1980,34.0,NYY,AL,RF,94,94,66,787.666667,181,171,3,7,0,0.961,0.974,-13,-20.0,,,1.99,2.13,1.85,2.12,,,,,,,,Regular Season,jacksre01,NYY1980
+1980,34.0,NYY,AL,OF,94,94,66,787.666667,184,174,3,7,0,0.962,0.979,-13,-20.0,,,2.02,2.47,1.88,2.46,,,,,,,,Regular Season,jacksre01,NYY1980
+1980,34.0,NYY,AL,DH,46,44,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,NYY1980
+1981,35.0,NYY,AL,OF,61,60,55,516.666667,117,111,3,3,0,0.974,0.983,-3,-7.0,,,1.99,2.48,1.87,2.47,,,,,,,,Regular Season,jacksre01,NYY1981
+1981,35.0,NYY,AL,RF,61,60,55,516.666667,113,107,3,3,0,0.973,0.98,-3,-7.0,,,1.92,2.16,1.8,2.15,,,,,,,,Regular Season,jacksre01,NYY1981
+1981,35.0,NYY,AL,DH,33,32,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,NYY1981
+1982,36.0,CAL,AL,OF,139,137,59,1087.333334,212,200,6,6,1,0.972,0.982,-18,-19.0,,,1.71,2.47,1.48,2.46,,,,,,,,Regular Season,jacksre01,CAL1982
+1982,36.0,CAL,AL,RF,139,137,59,1087.333334,209,197,6,6,1,0.971,0.981,-18,-19.0,,,1.68,2.27,1.46,2.26,,,,,,,,Regular Season,jacksre01,CAL1982
+1982,36.0,CAL,AL,DH,5,5,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,CAL1982
+1983,37.0,CAL,AL,DH,62,62,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,CAL1983
+1983,37.0,CAL,AL,OF,47,44,25,355.333334,71,66,4,1,1,0.986,0.981,-6,-22.0,,,1.77,2.5,1.49,2.48,,,,,,,,Regular Season,jacksre01,CAL1983
+1983,37.0,CAL,AL,RF,47,44,25,355.333334,76,70,5,1,1,0.987,0.978,-6,-22.0,,,1.9,2.25,1.6,2.23,,,,,,,,Regular Season,jacksre01,CAL1983
+1984,38.0,CAL,AL,DH,134,133,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,CAL1984
+1984,38.0,CAL,AL,RF,3,3,2,26.666667,7,7,0,0,0,1.0,0.979,0,14.0,,,2.36,2.23,2.33,2.2,,,,,,,,Regular Season,jacksre01,CAL1984
+1984,38.0,CAL,AL,OF,3,3,2,26.666667,7,7,0,0,0,1.0,0.983,0,14.0,,,2.36,2.5,2.33,2.5,,,,,,,,Regular Season,jacksre01,CAL1984
+1985,39.0,CAL,AL,OF,81,81,39,624.333334,125,112,6,7,1,0.944,0.982,-13,-24.0,,,1.7,2.44,1.46,2.42,,,,,,,,Regular Season,jacksre01,CAL1985
+1985,39.0,CAL,AL,RF,81,81,39,624.333334,125,112,6,7,1,0.944,0.98,-13,-24.0,,,1.7,2.17,1.46,2.15,,,,,,,,Regular Season,jacksre01,CAL1985
+1985,39.0,CAL,AL,DH,52,46,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,CAL1985
+1986,40.0,CAL,AL,DH,121,111,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,CAL1986
+1986,40.0,CAL,AL,OF,4,2,0,18.0,6,4,1,1,0,0.833,0.98,0,-27.0,,,2.5,2.4,1.25,2.38,,,,,,,,Regular Season,jacksre01,CAL1986
+1986,40.0,CAL,AL,RF,4,2,0,18.0,6,4,1,1,0,0.833,0.975,0,-27.0,,,2.5,2.1,1.25,2.08,,,,,,,,Regular Season,jacksre01,CAL1986
+1987,41.0,OAK,AL,DH,79,63,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,OAK1987
+1987,41.0,OAK,AL,OF,20,20,15,164.0,30,30,0,0,0,1.0,0.98,-4,-31.0,,,1.65,2.31,1.5,2.29,,,,,,,,Regular Season,jacksre01,OAK1987
+1987,41.0,OAK,AL,RF,20,20,15,164.0,29,29,0,0,0,1.0,0.979,-4,-31.0,,,1.59,2.12,1.45,2.1,,,,,,,,Regular Season,jacksre01,OAK1987
+Career Totals,,,,,2102,2056,1668,17755.666667,4337,4062,133,142,31,0.967,0.98,-23,-2.0,,,2.13,2.32,2.0,2.31,,,,,,,,Regular Season,jacksre01,
+Career Totals,,,,OF,2102,2056,1668,17755.666667,4337,4062,133,142,31,0.967,0.98,-23,-2.0,,,2.13,2.32,2.0,2.31,,,,,,,,Regular Season,jacksre01,
+Career Totals,,,,RF,1942,1861,1528,16124.333334,3876,3624,126,126,26,0.967,0.977,-22,-2.0,,,2.09,2.11,1.93,2.1,,,,,,,,Regular Season,jacksre01,
+Career Totals,,,,DH,630,589,,,,,,,,,,,,,,,,0.0,,,,,,,,,Regular Season,jacksre01,
+Career Totals,,,,CF,188,177,123,1461.333334,435,415,7,13,4,0.97,0.986,-2,-1.0,,,2.6,2.66,2.24,2.65,,,,,,,,Regular Season,jacksre01,
+Career Totals,,,,LF,20,18,17,170.0,35,31,1,3,0,0.914,0.976,0,3.0,,,1.69,1.87,1.6,1.87,,,,,,,,Regular Season,jacksre01,
+1971,25.0,OAK,AL,RF,3,3,3,25.0,11,10,1,0,0,1.0,,,,,,3.96,,3.67,,,,,,,,,Postseason,jacksre01,OAK1971
+1972,26.0,OAK,AL,CF,5,5,4,38.0,15,14,0,1,0,0.933,,,,,,3.32,,2.8,,,,,,,,,Postseason,jacksre01,OAK1972
+1973,27.0,OAK,"AL,WS",RF,9,7,6,73.0,26,26,0,0,0,1.0,,,,,,3.21,,2.89,,,,,,,,,Postseason,jacksre01,OAK1973
+1973,27.0,OAK,WS,CF,6,5,3,39.0,10,10,0,0,0,1.0,,,,,,2.31,,1.67,,,,,,,,,Postseason,jacksre01,OAK1973
+1974,28.0,OAK,"AL,WS",RF,6,6,4,49.0,10,8,1,1,0,0.9,,,,,,1.65,,1.5,,,,,,,,,Postseason,jacksre01,OAK1974
+1974,28.0,OAK,AL,DH,3,3,0,,,,,,,,,,,,,,,0.0,,,,,,,,,Postseason,jacksre01,OAK1974
+1975,29.0,OAK,AL,RF,3,3,3,25.0,7,5,2,0,1,1.0,,,,,,2.52,,2.33,,,,,,,,,Postseason,jacksre01,OAK1975
+1977,31.0,NYY,"AL,WS",RF,10,10,5,79.0,20,19,1,0,0,1.0,,,,,,2.28,,2.0,,,,,,,,,Postseason,jacksre01,NYY1977
+1977,31.0,NYY,AL,DH,1,0,0,,,,,,,,,,,,,,,0.0,,,,,,,,,Postseason,jacksre01,NYY1977
+1978,32.0,NYY,"AL,WS",DH,9,9,0,,,,,,,,,,,,,,,0.0,,,,,,,,,Postseason,jacksre01,NYY1978
+1978,32.0,NYY,AL,RF,1,1,1,8.0,4,4,0,0,0,1.0,,,,,,4.5,,4.0,,,,,,,,,Postseason,jacksre01,NYY1978
+1980,34.0,NYY,AL,RF,3,3,3,25.0,6,6,0,0,0,1.0,,,,,,2.16,,2.0,,,,,,,,,Postseason,jacksre01,NYY1980
+1981,35.0,NYY,"AL,WS",RF,10,10,8,80.0,14,13,0,1,0,0.929,,,,,,1.46,,1.3,,,,,,,,,Postseason,jacksre01,NYY1981
+1982,36.0,CAL,AL,RF,5,5,3,39.0,2,2,0,0,0,1.0,,,,,,0.46,,0.4,,,,,,,,,Postseason,jacksre01,CAL1982
+1986,40.0,CAL,AL,DH,6,6,0,,,,,,,,,,,,,,,0.0,,,,,,,,,Postseason,jacksre01,CAL1986
+Career Totals,,,,,80,76,43,480.0,125,117,5,3,1,0.976,,,,,,2.29,,1.53,,,,,,,,,Postseason,jacksre01,
+Career Totals,,,,RF,50,48,36,403.0,100,93,5,2,1,0.98,,,,,,2.19,,1.96,,,,,,,,,Postseason,jacksre01,
+Career Totals,,,,DH,19,18,0,,,,,,,,,,,,,,,0.0,,,,,,,,,Postseason,jacksre01,
+Career Totals,,,,CF,11,10,7,77.0,25,24,0,1,0,0.96,,,,,,2.81,,2.18,,,,,,,,,Postseason,jacksre01,

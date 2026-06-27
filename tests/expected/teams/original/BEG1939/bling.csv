@@ -1,29 +1,29 @@
-Team,Season,Player,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series,Team ID,Player ID
-Baltimore Elite Giants,1939,Wild Bill Wright,2,0,0,0,,0,,0,,0,0,,,,BEG1939,wrighwi01
-Baltimore Elite Giants,1939,Woody Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williwo03
-Baltimore Elite Giants,1939,Jim Willis,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williji05
-Baltimore Elite Giants,1939,Clarence Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,willicl01
-Baltimore Elite Giants,1939,Jim West,0,0,0,0,,0,,0,,0,0,,,,BEG1939,westji01
-Baltimore Elite Giants,1939,Hoss Walker,0,0,0,0,,0,,0,,0,0,,,,BEG1939,walkeho01
-Baltimore Elite Giants,1939,Felton Snow,0,0,0,0,,0,,0,,0,0,,,,BEG1939,snowfe01
-Baltimore Elite Giants,1939,Skin Down Robinson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,robinsk01
-Baltimore Elite Giants,1939,Charlie Rivera,0,0,0,0,,0,,0,,0,0,,,,BEG1939,riverch01
-Baltimore Elite Giants,1939,Lefty Phillips,0,0,0,0,,0,,0,,0,0,,,,BEG1939,phillle01
-Baltimore Elite Giants,1939,Red Moore,0,0,0,0,,0,,0,,0,0,,,,BEG1939,moorere01
-Baltimore Elite Giants,1939,Biz Mackey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,mackebi99
-Baltimore Elite Giants,1939,Henry Kimbro,0,0,0,0,,0,,0,,0,0,,,,BEG1939,kimbrhe01
-Baltimore Elite Giants,1939,Johnny Johnson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,johnsjo12
-Baltimore Elite Giants,1939,Sammy Hughes,2,0,0,0,,0,,0,,0,0,,,,BEG1939,hughesa01
-Baltimore Elite Giants,1939,Willie Hubert,0,0,0,0,,0,,0,,0,0,,,,BEG1939,huberwi01
-Baltimore Elite Giants,1939,Bill Hoskins,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hoskibi01
-Baltimore Elite Giants,1939,Crush Holloway,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hollocr01
-Baltimore Elite Giants,1939,Bill Harvey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,harvebi01
-Baltimore Elite Giants,1939,Tom Glover,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gloveto01
-Baltimore Elite Giants,1939,Jonas Gaines,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gainejo02
-Baltimore Elite Giants,1939,Homer Curry,0,0,0,0,,0,,0,,0,0,,,,BEG1939,currygo01
-Baltimore Elite Giants,1939,Roy Campanella,0,0,0,0,,0,,0,,0,0,,,,BEG1939,camparo01
-Baltimore Elite Giants,1939,Bill Byrd,2,0,0,0,,0,,0,,0,0,,,,BEG1939,byrdbi01
-Baltimore Elite Giants,1939,Tommy Butts,0,0,0,0,,0,,0,,0,0,,,,BEG1939,buttsto01
-Baltimore Elite Giants,1939,Oscar Boone,0,0,0,0,,0,,0,,0,0,,,,BEG1939,booneos01
-Baltimore Elite Giants,1939,Emery Adams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,adamsem01
-Baltimore Elite Giants,1939,Team Totals,6,0,0,0,0,0,0,0,0,0,0,0,1,0,BEG1939,
+Player,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series,Team ID,Player ID
+Wild Bill Wright,2,0,0,0,,0,,0,,0,0,,,,BEG1939,wrighwi01
+Woody Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williwo03
+Jim Willis,0,0,0,0,,0,,0,,0,0,,,,BEG1939,williji05
+Clarence Williams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,willicl01
+Jim West,0,0,0,0,,0,,0,,0,0,,,,BEG1939,westji01
+Hoss Walker,0,0,0,0,,0,,0,,0,0,,,,BEG1939,walkeho01
+Felton Snow,0,0,0,0,,0,,0,,0,0,,,,BEG1939,snowfe01
+Skin Down Robinson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,robinsk01
+Charlie Rivera,0,0,0,0,,0,,0,,0,0,,,,BEG1939,riverch01
+Lefty Phillips,0,0,0,0,,0,,0,,0,0,,,,BEG1939,phillle01
+Red Moore,0,0,0,0,,0,,0,,0,0,,,,BEG1939,moorere01
+Biz Mackey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,mackebi99
+Henry Kimbro,0,0,0,0,,0,,0,,0,0,,,,BEG1939,kimbrhe01
+Johnny Johnson,0,0,0,0,,0,,0,,0,0,,,,BEG1939,johnsjo12
+Sammy Hughes,2,0,0,0,,0,,0,,0,0,,,,BEG1939,hughesa01
+Willie Hubert,0,0,0,0,,0,,0,,0,0,,,,BEG1939,huberwi01
+Bill Hoskins,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hoskibi01
+Crush Holloway,0,0,0,0,,0,,0,,0,0,,,,BEG1939,hollocr01
+Bill Harvey,0,0,0,0,,0,,0,,0,0,,,,BEG1939,harvebi01
+Tom Glover,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gloveto01
+Jonas Gaines,0,0,0,0,,0,,0,,0,0,,,,BEG1939,gainejo02
+Homer Curry,0,0,0,0,,0,,0,,0,0,,,,BEG1939,currygo01
+Roy Campanella,0,0,0,0,,0,,0,,0,0,,,,BEG1939,camparo01
+Bill Byrd,2,0,0,0,,0,,0,,0,0,,,,BEG1939,byrdbi01
+Tommy Butts,0,0,0,0,,0,,0,,0,0,,,,BEG1939,buttsto01
+Oscar Boone,0,0,0,0,,0,,0,,0,0,,,,BEG1939,booneos01
+Emery Adams,0,0,0,0,,0,,0,,0,0,,,,BEG1939,adamsem01
+Team Totals,6,0,0,0,0,0,0,0,0,0,0,0,1,0,BEG1939,

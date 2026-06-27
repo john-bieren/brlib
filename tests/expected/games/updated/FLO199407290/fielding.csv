@@ -1,32 +1,32 @@
-Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
-"July 29, 1994, Montreal Expos vs Florida Marlins",Marquis Grissom,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,grissma02,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Rondell White,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,whitero02,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Moisés Alou,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,aloumo01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Cliff Floyd,PR-RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,floydcl01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Larry Walker,1B,9,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,walkela01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Wil Cordero,SS,0,5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,cordewi01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Lenny Webster,C,2,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,webstle01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jeff Shaw,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,shawje01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Mel Rojas,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,rojasme01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",John Wetteland,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,wettejo01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Mike Lansing,2B,5,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,lansimi01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Freddie Benavides,PH-2B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,benavfr01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Sean Berry,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,berryse01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Gil Heredia,P,0,2,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,heredgi01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Darrin Fletcher,C,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,fletcda01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Team Totals,,27,11,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,Montreal Expos,Florida Marlins,FLO199407290,,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Chuck Carr,CF,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,carrch02,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Mario Díaz,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,diazma01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Gary Sheffield,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,sheffga01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jeff Conine,1B,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,coninje01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Darrell Whitmore,LF,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,whitmda02,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Benito Santiago,C,3,1,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,1,0,Florida Marlins,Montreal Expos,FLO199407290,santibe01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Kurt Abbott,SS,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,abbotku01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Bret Barberie,2B,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,barbebr01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Luis Aquino,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,aquinlu01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Terry Mathews,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,mathete01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Rich Scheid,P,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,Florida Marlins,Montreal Expos,FLO199407290,scheiri02,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Richie Lewis,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,lewisri01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jeff Mutis,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,mutisje01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jerry Browne,2B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Florida Marlins,Montreal Expos,FLO199407290,brownje01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Team Totals,,27,8,1,0,0,0,0,1,0,2,1,0,0,0,0,0,0,2,0,Florida Marlins,Montreal Expos,FLO199407290,,FLA1994,MON1994
+Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Game ID,Player ID,Team ID,Opponent Team ID
+Marquis Grissom,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,grissma02,MON1994,FLA1994
+Rondell White,LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,whitero02,MON1994,FLA1994
+Moisés Alou,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,aloumo01,MON1994,FLA1994
+Cliff Floyd,PR-RF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,floydcl01,MON1994,FLA1994
+Larry Walker,1B,9,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,walkela01,MON1994,FLA1994
+Wil Cordero,SS,0,5,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,cordewi01,MON1994,FLA1994
+Lenny Webster,C,2,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,FLO199407290,webstle01,MON1994,FLA1994
+Jeff Shaw,P,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,shawje01,MON1994,FLA1994
+Mel Rojas,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,rojasme01,MON1994,FLA1994
+John Wetteland,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,wettejo01,MON1994,FLA1994
+Mike Lansing,2B,5,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,lansimi01,MON1994,FLA1994
+Freddie Benavides,PH-2B,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,benavfr01,MON1994,FLA1994
+Sean Berry,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,berryse01,MON1994,FLA1994
+Gil Heredia,P,0,2,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,FLO199407290,heredgi01,MON1994,FLA1994
+Darrin Fletcher,C,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,fletcda01,MON1994,FLA1994
+Team Totals,,27,11,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,FLO199407290,,MON1994,FLA1994
+Chuck Carr,CF,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,carrch02,FLA1994,MON1994
+Mario Díaz,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,diazma01,FLA1994,MON1994
+Gary Sheffield,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,sheffga01,FLA1994,MON1994
+Jeff Conine,1B,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,coninje01,FLA1994,MON1994
+Darrell Whitmore,LF,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,whitmda02,FLA1994,MON1994
+Benito Santiago,C,3,1,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,1,0,FLO199407290,santibe01,FLA1994,MON1994
+Kurt Abbott,SS,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,abbotku01,FLA1994,MON1994
+Bret Barberie,2B,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,barbebr01,FLA1994,MON1994
+Luis Aquino,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,aquinlu01,FLA1994,MON1994
+Terry Mathews,P,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,mathete01,FLA1994,MON1994
+Rich Scheid,P,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,FLO199407290,scheiri02,FLA1994,MON1994
+Richie Lewis,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,FLO199407290,lewisri01,FLA1994,MON1994
+Jeff Mutis,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,mutisje01,FLA1994,MON1994
+Jerry Browne,2B,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,FLO199407290,brownje01,FLA1994,MON1994
+Team Totals,,27,8,1,0,0,0,0,1,0,2,1,0,0,0,0,0,0,2,0,FLO199407290,,FLA1994,MON1994

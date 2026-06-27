@@ -1,12 +1,12 @@
-Player,Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
-Stephen Vogt,2012,27.0,Tampa Bay Rays,480000,False,,contracts,,vogtst01
-Stephen Vogt,2014,29.0,Oakland Athletics,502500,False,0.136,contracts,,vogtst01
-Stephen Vogt,2015,30.0,Oakland Athletics,512500,False,1.084,contracts,,vogtst01
-Stephen Vogt,2016,31.0,Oakland Athletics,527500,False,2.084,,,vogtst01
-Stephen Vogt,2017,32.0,Milwaukee Brewers,2965000,False,3.084,contracts,,vogtst01
-Stephen Vogt,2018,33.0,Milwaukee Brewers,3065000,False,4.084,,,vogtst01
-Stephen Vogt,2020,35.0,Arizona Diamondbacks,2500000,False,6.064,contract,,vogtst01
-Stephen Vogt,2021,36.0,Arizona Diamondbacks,3500000,False,7.064,contract,,vogtst01
-Stephen Vogt,2022,37.0,Oakland Athletics,850000,False,8.064,contract,,vogtst01
-Stephen Vogt,Career Totals,,,14902500,,,,May be incomplete,vogtst01
-Stephen Vogt,Future Earnings,,,0,,,,,vogtst01
+Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
+2012,27.0,Tampa Bay Rays,480000,False,,contracts,,vogtst01
+2014,29.0,Oakland Athletics,502500,False,0.136,contracts,,vogtst01
+2015,30.0,Oakland Athletics,512500,False,1.084,contracts,,vogtst01
+2016,31.0,Oakland Athletics,527500,False,2.084,,,vogtst01
+2017,32.0,Milwaukee Brewers,2965000,False,3.084,contracts,,vogtst01
+2018,33.0,Milwaukee Brewers,3065000,False,4.084,,,vogtst01
+2020,35.0,Arizona Diamondbacks,2500000,False,6.064,contract,,vogtst01
+2021,36.0,Arizona Diamondbacks,3500000,False,7.064,contract,,vogtst01
+2022,37.0,Oakland Athletics,850000,False,8.064,contract,,vogtst01
+Career Totals,,,14902500,,,,May be incomplete,vogtst01
+Future Earnings,,,0,,,,,vogtst01

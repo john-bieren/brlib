@@ -1,46 +1,46 @@
-Team,Season,Player,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series,Team ID,Player ID
-Los Angeles Angels,2012,C.J. Wilson,1,0,0,0,,0,,0,,0,0,,,,LAA2012,wilsocj01
-Los Angeles Angels,2012,Bobby Wilson,0,0,0,0,,0,,0,,0,0,,,,LAA2012,wilsobo02
-Los Angeles Angels,2012,Jerome Williams,0,0,0,0,,0,,0,,0,0,,,,LAA2012,willije01
-Los Angeles Angels,2012,Vernon Wells,0,0,0,0,,0,,0,,0,0,,,,LAA2012,wellsve01
-Los Angeles Angels,2012,Jered Weaver,1,0,0,0,22,0,3,0,,0,0,,,,LAA2012,weaveje02
-Los Angeles Angels,2012,Jordan Walden,0,0,0,0,,0,,0,,0,0,,,,LAA2012,waldejo01
-Los Angeles Angels,2012,Mark Trumbo,1,0,0,0,,0,,0,,0,0,,,,LAA2012,trumbma01
-Los Angeles Angels,2012,Mike Trout,1,0,1,0,2,0,,1,1,0,0,,,,LAA2012,troutmi01
-Los Angeles Angels,2012,Rich Thompson,0,0,0,0,,0,,0,,0,0,,,,LAA2012,thompri03
-Los Angeles Angels,2012,Andrew Taylor,0,0,0,0,,0,,0,,0,0,,,,LAA2012,tayloan01
-Los Angeles Angels,2012,Hisanori Takahashi,0,0,0,0,,0,,0,,0,0,,,,LAA2012,takahhi01
-Los Angeles Angels,2012,Jean Segura,0,0,0,0,,0,,0,,0,0,,,,LAA2012,segurje01
-Los Angeles Angels,2012,Ervin Santana,0,0,0,0,,0,,0,,0,0,,,,LAA2012,santaer01
-Los Angeles Angels,2012,Andrew Romine,0,0,0,0,,0,,0,,0,0,,,,LAA2012,rominan01
-Los Angeles Angels,2012,Garrett Richards,0,0,0,0,,0,,0,,0,0,,,,LAA2012,richaga01
-Los Angeles Angels,2012,Albert Pujols,0,0,0,0,17,0,,0,,0,0,,,,LAA2012,pujolal01
-Los Angeles Angels,2012,David Pauley,0,0,0,0,,0,,0,,0,0,,,,LAA2012,pauleda01
-Los Angeles Angels,2012,Kendrys Morales,0,0,0,0,,0,,0,,0,0,,,,LAA2012,moralke01
-Los Angeles Angels,2012,Brad Mills,0,0,0,0,,0,,0,,0,0,,,,LAA2012,millsbr02
-Los Angeles Angels,2012,Nick Maronde,0,0,0,0,,0,,0,,0,0,,,,LAA2012,maronni01
-Los Angeles Angels,2012,Ryan Langerhans,0,0,0,0,,0,,0,,0,0,,,,LAA2012,langery01
-Los Angeles Angels,2012,Howie Kendrick,0,0,0,0,,0,,0,,0,0,,,,LAA2012,kendrho01
-Los Angeles Angels,2012,Kevin Jepsen,0,0,0,0,,0,,0,,0,0,,,,LAA2012,jepseke01
-Los Angeles Angels,2012,Maicer Izturis,0,0,0,0,,0,,0,,0,0,,,,LAA2012,izturma01
-Los Angeles Angels,2012,Jason Isringhausen,0,0,0,0,,0,,0,,0,0,,,,LAA2012,isrinja01
-Los Angeles Angels,2012,Chris Iannetta,0,0,0,0,,0,,0,,0,0,,,,LAA2012,iannech01
-Los Angeles Angels,2012,Torii Hunter,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hunteto01
-Los Angeles Angels,2012,John Hester,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hestejo01
-Los Angeles Angels,2012,LaTroy Hawkins,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hawkila01
-Los Angeles Angels,2012,Dan Haren,0,0,0,0,,0,,0,,0,0,,,,LAA2012,harenda01
-Los Angeles Angels,2012,Zack Greinke,0,0,0,0,,0,,0,,0,0,,,,LAA2012,greinza01
-Los Angeles Angels,2012,Steve Geltz,0,0,0,0,,0,,0,,0,0,,,,LAA2012,geltzst01
-Los Angeles Angels,2012,Ernesto Frieri,0,0,0,0,,0,,0,,0,0,,,,LAA2012,frierer01
-Los Angeles Angels,2012,Barry Enright,0,0,0,0,,0,,0,,0,0,,,,LAA2012,enrigba01
-Los Angeles Angels,2012,Scott Downs,0,0,0,0,,0,,0,,0,0,,,,LAA2012,downssc01
-Los Angeles Angels,2012,Hank Conger,0,0,0,0,,0,,0,,0,0,,,,LAA2012,congeha01
-Los Angeles Angels,2012,Bobby Cassevah,0,0,0,0,,0,,0,,0,0,,,,LAA2012,cassebo01
-Los Angeles Angels,2012,David Carpenter,0,0,0,0,,0,,0,,0,0,,,,LAA2012,carpeda02
-Los Angeles Angels,2012,Alberto Callaspo,0,0,0,0,,0,,0,,0,0,,,,LAA2012,callaal01
-Los Angeles Angels,2012,Kole Calhoun,0,0,0,0,,0,,0,,0,0,,,,LAA2012,calhoko01
-Los Angeles Angels,2012,Peter Bourjos,0,0,0,0,,0,,0,,0,0,,,,LAA2012,bourjpe01
-Los Angeles Angels,2012,Erick Aybar,0,0,0,0,,0,,0,,0,0,,,,LAA2012,aybarer01
-Los Angeles Angels,2012,Alexi Amarista,0,0,0,0,,0,,0,,0,0,,,,LAA2012,amarial01
-Los Angeles Angels,2012,Bobby Abreu,0,0,0,0,,0,,0,,0,0,,,,LAA2012,abreubo01
-Los Angeles Angels,2012,Team Totals,4,0,1,0,3,0,1,1,1,0,0,0,0,0,LAA2012,
+Player,AS,GG,SS,MVP,MVP Finish,CYA,CYA Finish,ROY,ROY Finish,LCS MVP,WS MVP,Team Gold Glove,Pennant,World Series,Team ID,Player ID
+C.J. Wilson,1,0,0,0,,0,,0,,0,0,,,,LAA2012,wilsocj01
+Bobby Wilson,0,0,0,0,,0,,0,,0,0,,,,LAA2012,wilsobo02
+Jerome Williams,0,0,0,0,,0,,0,,0,0,,,,LAA2012,willije01
+Vernon Wells,0,0,0,0,,0,,0,,0,0,,,,LAA2012,wellsve01
+Jered Weaver,1,0,0,0,22,0,3,0,,0,0,,,,LAA2012,weaveje02
+Jordan Walden,0,0,0,0,,0,,0,,0,0,,,,LAA2012,waldejo01
+Mark Trumbo,1,0,0,0,,0,,0,,0,0,,,,LAA2012,trumbma01
+Mike Trout,1,0,1,0,2,0,,1,1,0,0,,,,LAA2012,troutmi01
+Rich Thompson,0,0,0,0,,0,,0,,0,0,,,,LAA2012,thompri03
+Andrew Taylor,0,0,0,0,,0,,0,,0,0,,,,LAA2012,tayloan01
+Hisanori Takahashi,0,0,0,0,,0,,0,,0,0,,,,LAA2012,takahhi01
+Jean Segura,0,0,0,0,,0,,0,,0,0,,,,LAA2012,segurje01
+Ervin Santana,0,0,0,0,,0,,0,,0,0,,,,LAA2012,santaer01
+Andrew Romine,0,0,0,0,,0,,0,,0,0,,,,LAA2012,rominan01
+Garrett Richards,0,0,0,0,,0,,0,,0,0,,,,LAA2012,richaga01
+Albert Pujols,0,0,0,0,17,0,,0,,0,0,,,,LAA2012,pujolal01
+David Pauley,0,0,0,0,,0,,0,,0,0,,,,LAA2012,pauleda01
+Kendrys Morales,0,0,0,0,,0,,0,,0,0,,,,LAA2012,moralke01
+Brad Mills,0,0,0,0,,0,,0,,0,0,,,,LAA2012,millsbr02
+Nick Maronde,0,0,0,0,,0,,0,,0,0,,,,LAA2012,maronni01
+Ryan Langerhans,0,0,0,0,,0,,0,,0,0,,,,LAA2012,langery01
+Howie Kendrick,0,0,0,0,,0,,0,,0,0,,,,LAA2012,kendrho01
+Kevin Jepsen,0,0,0,0,,0,,0,,0,0,,,,LAA2012,jepseke01
+Maicer Izturis,0,0,0,0,,0,,0,,0,0,,,,LAA2012,izturma01
+Jason Isringhausen,0,0,0,0,,0,,0,,0,0,,,,LAA2012,isrinja01
+Chris Iannetta,0,0,0,0,,0,,0,,0,0,,,,LAA2012,iannech01
+Torii Hunter,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hunteto01
+John Hester,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hestejo01
+LaTroy Hawkins,0,0,0,0,,0,,0,,0,0,,,,LAA2012,hawkila01
+Dan Haren,0,0,0,0,,0,,0,,0,0,,,,LAA2012,harenda01
+Zack Greinke,0,0,0,0,,0,,0,,0,0,,,,LAA2012,greinza01
+Steve Geltz,0,0,0,0,,0,,0,,0,0,,,,LAA2012,geltzst01
+Ernesto Frieri,0,0,0,0,,0,,0,,0,0,,,,LAA2012,frierer01
+Barry Enright,0,0,0,0,,0,,0,,0,0,,,,LAA2012,enrigba01
+Scott Downs,0,0,0,0,,0,,0,,0,0,,,,LAA2012,downssc01
+Hank Conger,0,0,0,0,,0,,0,,0,0,,,,LAA2012,congeha01
+Bobby Cassevah,0,0,0,0,,0,,0,,0,0,,,,LAA2012,cassebo01
+David Carpenter,0,0,0,0,,0,,0,,0,0,,,,LAA2012,carpeda02
+Alberto Callaspo,0,0,0,0,,0,,0,,0,0,,,,LAA2012,callaal01
+Kole Calhoun,0,0,0,0,,0,,0,,0,0,,,,LAA2012,calhoko01
+Peter Bourjos,0,0,0,0,,0,,0,,0,0,,,,LAA2012,bourjpe01
+Erick Aybar,0,0,0,0,,0,,0,,0,0,,,,LAA2012,aybarer01
+Alexi Amarista,0,0,0,0,,0,,0,,0,0,,,,LAA2012,amarial01
+Bobby Abreu,0,0,0,0,,0,,0,,0,0,,,,LAA2012,abreubo01
+Team Totals,4,0,1,0,3,0,1,1,1,0,0,0,0,0,LAA2012,

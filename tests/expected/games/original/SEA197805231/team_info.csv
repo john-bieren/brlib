@@ -1,3 +1,3 @@
-Game,Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
-"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Kansas City Royals,3,19-19,Loss,Away,SEA197805231,KCR1978,SEA197805220,SEA197805232
-"May 23, 1978, Kansas City Royals vs Seattle Mariners, Game 1",Seattle Mariners,4,16-27,Win,Home,SEA197805231,SEA1978,SEA197805220,SEA197805232
+Team,Score,Record,Result,Home/Away,Game ID,Team ID,Previous Game ID,Next Game ID
+Kansas City Royals,3,19-19,Loss,Away,SEA197805231,KCR1978,SEA197805220,SEA197805232
+Seattle Mariners,4,16-27,Win,Home,SEA197805231,SEA1978,SEA197805220,SEA197805232

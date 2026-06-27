@@ -1,21 +1,21 @@
-Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",John Farrell,CF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,farrejo02,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Sam Dungan,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,dungasa01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Joe Quinn,2B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,quinnjo02,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Clarence Foster,LF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,fostepo01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Bill Everitt,1B,7,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,everibi01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Mike Grady,C,5,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,gradymi01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Billy Clingman,SS,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,clingbi01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Bill Coughlin,3B,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,coughbi01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Wyatt Lee,P,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,leewa01,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Team Totals,,24,11,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Washington Senators,Milwaukee Brewers,MLA190105301,,WSH1901,MLA1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Irv Waldron,RF,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,waldrir01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Billy Gilbert,2B,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,gilbebi02,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Bill Hallman,LF,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,hallmbi02,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",John Anderson,1B,9,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,anderjo01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Wid Conroy,SS,4,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,conrowi01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Hugh Duffy,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,duffyhu01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Jimmy Burke,3B,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,burkeji01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Joe Connor,C,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,connojo03,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Tully Sparks,P,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,sparktu01,MLA1901,WSH1901
-"May 30, 1901, Washington Senators vs Milwaukee Brewers, Game 1",Team Totals,,27,12,3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Milwaukee Brewers,Washington Senators,MLA190105301,,MLA1901,WSH1901
+Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Game ID,Player ID,Team ID,Opponent Team ID
+John Farrell,CF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,farrejo02,WSH1901,MLA1901
+Sam Dungan,RF,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,dungasa01,WSH1901,MLA1901
+Joe Quinn,2B,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,quinnjo02,WSH1901,MLA1901
+Clarence Foster,LF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,fostepo01,WSH1901,MLA1901
+Bill Everitt,1B,7,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,everibi01,WSH1901,MLA1901
+Mike Grady,C,5,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,gradymi01,WSH1901,MLA1901
+Billy Clingman,SS,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,clingbi01,WSH1901,MLA1901
+Bill Coughlin,3B,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,coughbi01,WSH1901,MLA1901
+Wyatt Lee,P,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,leewa01,WSH1901,MLA1901
+Team Totals,,24,11,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,,WSH1901,MLA1901
+Irv Waldron,RF,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,waldrir01,MLA1901,WSH1901
+Billy Gilbert,2B,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,gilbebi02,MLA1901,WSH1901
+Bill Hallman,LF,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,hallmbi02,MLA1901,WSH1901
+John Anderson,1B,9,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,anderjo01,MLA1901,WSH1901
+Wid Conroy,SS,4,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,conrowi01,MLA1901,WSH1901
+Hugh Duffy,CF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,duffyhu01,MLA1901,WSH1901
+Jimmy Burke,3B,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,burkeji01,MLA1901,WSH1901
+Joe Connor,C,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,connojo03,MLA1901,WSH1901
+Tully Sparks,P,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,sparktu01,MLA1901,WSH1901
+Team Totals,,27,12,3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,MLA190105301,,MLA1901,WSH1901

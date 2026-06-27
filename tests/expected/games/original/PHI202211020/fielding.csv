@@ -1,30 +1,30 @@
-Game,Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Jose Altuve,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,altuvjo01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Jeremy Peña,SS,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,penaje02,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Alex Bregman,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,bregmal01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Kyle Tucker,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,tuckeky01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Yuli Gurriel,1B,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,gourryu01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Christian Vázquez,C,14,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,vazquch01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Aledmys Díaz,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,diazal02,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Mauricio Dubón,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,dubonma01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Chas McCormick,CF-LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,mccorch01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Cristian Javier,P,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,javiecr01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Bryan Abreu,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,abreubr01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Rafael Montero,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,montera01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Ryan Pressly,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,pressry01,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Team Totals,,27,4,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,Houston Astros,Philadelphia Phillies,PHI202211020,,HOU2022,PHI2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Kyle Schwarber,LF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,schwaky01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Rhys Hoskins,1B,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,hoskirh01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",J.T. Realmuto,C,11,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,realmjt01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Nick Castellanos,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,casteni01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Alec Bohm,3B,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,bohmal01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Bryson Stott,SS,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,stottbr01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Jean Segura,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,segurje01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Brandon Marsh,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,marshbr02,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Aaron Nola,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,nolaaa01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",José Alvarado,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,alvarjo03,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Andrew Bellatti,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,bellaan01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",David Robertson,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,roberda08,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Zach Eflin,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,eflinza01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Brad Hand,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,handbr01,PHI2022,HOU2022
-"November 2, 2022, Houston Astros vs Philadelphia Phillies, World Series Game 4",Team Totals,,27,5,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,Philadelphia Phillies,Houston Astros,PHI202211020,,PHI2022,HOU2022
+Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,Game ID,Player ID,Team ID,Opponent Team ID
+Jose Altuve,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,altuvjo01,HOU2022,PHI2022
+Jeremy Peña,SS,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,penaje02,HOU2022,PHI2022
+Alex Bregman,3B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,bregmal01,HOU2022,PHI2022
+Kyle Tucker,RF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,tuckeky01,HOU2022,PHI2022
+Yuli Gurriel,1B,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,gourryu01,HOU2022,PHI2022
+Christian Vázquez,C,14,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,PHI202211020,vazquch01,HOU2022,PHI2022
+Aledmys Díaz,LF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,diazal02,HOU2022,PHI2022
+Mauricio Dubón,CF,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,dubonma01,HOU2022,PHI2022
+Chas McCormick,CF-LF,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,mccorch01,HOU2022,PHI2022
+Cristian Javier,P,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,PHI202211020,javiecr01,HOU2022,PHI2022
+Bryan Abreu,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,abreubr01,HOU2022,PHI2022
+Rafael Montero,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,montera01,HOU2022,PHI2022
+Ryan Pressly,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,pressry01,HOU2022,PHI2022
+Team Totals,,27,4,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,PHI202211020,,HOU2022,PHI2022
+Kyle Schwarber,LF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,schwaky01,PHI2022,HOU2022
+Rhys Hoskins,1B,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,hoskirh01,PHI2022,HOU2022
+J.T. Realmuto,C,11,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,PHI202211020,realmjt01,PHI2022,HOU2022
+Nick Castellanos,RF,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,casteni01,PHI2022,HOU2022
+Alec Bohm,3B,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,bohmal01,PHI2022,HOU2022
+Bryson Stott,SS,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,stottbr01,PHI2022,HOU2022
+Jean Segura,2B,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,segurje01,PHI2022,HOU2022
+Brandon Marsh,CF,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,marshbr02,PHI2022,HOU2022
+Aaron Nola,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,nolaaa01,PHI2022,HOU2022
+José Alvarado,P,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,PHI202211020,alvarjo03,PHI2022,HOU2022
+Andrew Bellatti,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,bellaan01,PHI2022,HOU2022
+David Robertson,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,roberda08,PHI2022,HOU2022
+Zach Eflin,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,eflinza01,PHI2022,HOU2022
+Brad Hand,P,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PHI202211020,handbr01,PHI2022,HOU2022
+Team Totals,,27,5,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,PHI202211020,,PHI2022,HOU2022

@@ -397,14 +397,13 @@ class Game:
         self.pitching = convert_numeric_cols(self.pitching)
         self.players = list(dict.fromkeys(self.players))
 
-        self.info[["Game", "Game ID", "Home Team ID", "Away Team ID"]] = (
+        self.info[["Game", "Home Team ID", "Away Team ID"]] = (
             self.name,
-            self.id,
             self._home_team_id,
             self._away_team_id,
         )
-        self.batting[["Game", "Game ID"]] = self.name, self.id
-        self.pitching[["Game", "Game ID"]] = self.name, self.id
+        self.batting["Game ID"] = self.id
+        self.pitching["Game ID"] = self.id
         self.batting = self.batting.reset_index(drop=True)
         self.pitching = self.pitching.reset_index(drop=True)
 
@@ -428,7 +427,7 @@ class Game:
 
     def _scrape_info(self, content: Tag, other_info: Tag) -> None:
         """Populates `self.info` with data from `content` and `other_info`."""
-        self.info = pd.DataFrame([self.name], columns=["Game"])
+        self.info = pd.DataFrame([self.id], columns=["Game ID"])
         self.team_info = pd.DataFrame(
             {"Home/Away": ["Away", "Home"], "Game ID": [self.id, self.id]}
         )
@@ -591,7 +590,6 @@ class Game:
 
     def _gather_team_info(self) -> None:
         """Generates `self.team_info`."""
-        self.team_info["Game"] = self.name
         self.team_info["Team"] = [self._away_team, self._home_team]
         self.team_info["Team ID"] = [self._away_team_id, self._home_team_id]
         self.team_info["Score"] = [self._away_score, self._home_score]
@@ -902,23 +900,13 @@ class Game:
             or self._home_team == "Houston Colt .45s"
             and "HoustonColts" in table_id
         ):
-            df[["Team", "Opponent", "Team ID", "Opponent Team ID"]] = (
-                self._home_team,
-                self._away_team,
-                self._home_team_id,
-                self._away_team_id,
-            )
+            df[["Team ID", "Opponent Team ID"]] = self._home_team_id, self._away_team_id
         elif (
             str_remove(self._away_team, " ", "-", ".") in table_id
             or self._away_team == "Houston Colt .45s"
             and "HoustonColts" in table_id
         ):
-            df[["Team", "Opponent", "Team ID", "Opponent Team ID"]] = (
-                self._away_team,
-                self._home_team,
-                self._away_team_id,
-                self._home_team_id,
-            )
+            df[["Team ID", "Opponent Team ID"]] = self._away_team_id, self._home_team_id
         else:
             raise ValueError("home and away teams cannot be found from batting tables")
         return df
@@ -927,7 +915,6 @@ class Game:
         """Copies info and moves fielding stats from `self.batting` to `self.fielding`."""
         self.fielding = self.batting[
             [
-                "Game",
                 "Player",
                 "Player ID",
                 "Position",
@@ -940,8 +927,6 @@ class Game:
                 "PB",
                 "SB",
                 "CS",
-                "Team",
-                "Opponent",
                 "Team ID",
                 "Opponent Team ID",
                 "Game ID",
@@ -1064,7 +1049,7 @@ class Game:
         """Populates `self.ump_info`."""
         self.ump_info = pd.melt(
             self.info,
-            id_vars=["Game", "Game ID"],
+            id_vars=["Game ID"],
             value_vars=["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"],
         )
         self.ump_info = self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"})

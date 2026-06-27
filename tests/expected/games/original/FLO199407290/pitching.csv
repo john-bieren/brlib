@@ -1,12 +1,12 @@
-Game,Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Team,Opponent,Game ID,Player ID,Team ID,Opponent Team ID
-"July 29, 1994, Montreal Expos vs Florida Marlins",Gil Heredia,SP,4.666667,6,4,1,2,2,0,3.98,22,,,,,,,,,,42,,,-0.203,1.17,-0.0008,0.76,-1.7,0,0,1,0,0,0,0,0,0,0,0,1,0,,,,Montreal Expos,Florida Marlins,FLO199407290,heredgi01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jeff Shaw,RP,1.333334,0,0,0,0,1,0,3.75,4,,,,,,,,,,,1,0,0.123,1.15,0.0005,0.75,0.9,1,0,0,0,0,0,0,0,0,0,0,0,0,,,,Montreal Expos,Florida Marlins,FLO199407290,shawje01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Mel Rojas,RP,2.0,2,0,0,1,3,0,3.21,9,,,,,,,,,,,0,0,0.067,0.74,0.0003,0.48,1.1,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,Montreal Expos,Florida Marlins,FLO199407290,rojasme01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",John Wetteland,RP,1.0,0,0,0,0,0,0,2.67,4,,,,,,,,,,,0,0,0.02,0.36,0.0001,0.23,0.5,0,0,0,1,0,0,0,0,0,0,0,1,0,,,,Montreal Expos,Florida Marlins,FLO199407290,wettejo01,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Team Totals,,9.0,8,4,1,3,6,0,1.0,39,,,,,,,,,,42,1,0,0.007,0.99,0.0,0.65,0.7,1,0,1,1,0,0,0,0,0,0,0,2,0,,,,Montreal Expos,Florida Marlins,FLO199407290,,MON1994,FLA1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Rich Scheid,SP,5.0,8,4,3,0,3,1,2.74,24,,,,,,,,,,40,,,-0.157,0.81,-0.0,0.01,-1.4,0,0,1,0,0,0,0,0,0,0,0,2,0,,,,Florida Marlins,Montreal Expos,FLO199407290,scheiri02,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Richie Lewis,RP,1.0,1,1,1,1,0,0,4.72,5,,,,,,,,,,,0,0,0.018,1.74,0.0,0.03,0.1,0,1,0,0,0,0,0,0,0,0,0,0,0,,,,Florida Marlins,Montreal Expos,FLO199407290,lewisri01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Jeff Mutis,RP,0.0,2,2,2,0,0,0,5.66,2,,,,,,,,,,,1,1,-0.224,2.25,-0.0,0.04,-1.6,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,Florida Marlins,Montreal Expos,FLO199407290,mutisje01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Luis Aquino,RP,2.0,0,1,1,2,0,0,3.67,10,,,,,,,,,,,2,2,-0.135,0.66,-0.0,0.01,-0.9,0,0,0,0,0,0,0,0,0,0,1,2,0,,,,Florida Marlins,Montreal Expos,FLO199407290,aquinlu01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Terry Mathews,RP,1.0,0,0,0,1,0,0,3.06,4,,,,,,,,,,,0,0,0.004,0.06,0.0,0.0,0.5,0,0,0,1,0,0,0,0,0,0,0,0,0,,,,Florida Marlins,Montreal Expos,FLO199407290,mathete01,FLA1994,MON1994
-"July 29, 1994, Montreal Expos vs Florida Marlins",Team Totals,,9.0,11,8,7,4,3,1,7.0,45,,,,,,,,,,40,3,3,-0.494,0.89,-0.0,0.01,-3.3,0,1,1,1,0,0,0,0,0,0,1,4,0,,,,Florida Marlins,Montreal Expos,FLO199407290,,FLA1994,MON1994
+Player,Position,IP,H,R,ER,BB,SO,HR,ERA,BF,Pit,Str,Ctct,StS,StL,GB,FB,LD,Unk,GSc,IR,IS,WPA,aLI,cWPA,acLI,RE24,W,L,GS,GF,CG,SHO,SV,BS,Holds,Balks,WP,HBP,IBB,NH,PG,CNH,Game ID,Player ID,Team ID,Opponent Team ID
+Gil Heredia,SP,4.666667,6,4,1,2,2,0,3.98,22,,,,,,,,,,42,,,-0.203,1.17,-0.0008,0.76,-1.7,0,0,1,0,0,0,0,0,0,0,0,1,0,,,,FLO199407290,heredgi01,MON1994,FLA1994
+Jeff Shaw,RP,1.333334,0,0,0,0,1,0,3.75,4,,,,,,,,,,,1,0,0.123,1.15,0.0005,0.75,0.9,1,0,0,0,0,0,0,0,0,0,0,0,0,,,,FLO199407290,shawje01,MON1994,FLA1994
+Mel Rojas,RP,2.0,2,0,0,1,3,0,3.21,9,,,,,,,,,,,0,0,0.067,0.74,0.0003,0.48,1.1,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,FLO199407290,rojasme01,MON1994,FLA1994
+John Wetteland,RP,1.0,0,0,0,0,0,0,2.67,4,,,,,,,,,,,0,0,0.02,0.36,0.0001,0.23,0.5,0,0,0,1,0,0,0,0,0,0,0,1,0,,,,FLO199407290,wettejo01,MON1994,FLA1994
+Team Totals,,9.0,8,4,1,3,6,0,1.0,39,,,,,,,,,,42,1,0,0.007,0.99,0.0,0.65,0.7,1,0,1,1,0,0,0,0,0,0,0,2,0,,,,FLO199407290,,MON1994,FLA1994
+Rich Scheid,SP,5.0,8,4,3,0,3,1,2.74,24,,,,,,,,,,40,,,-0.157,0.81,-0.0,0.01,-1.4,0,0,1,0,0,0,0,0,0,0,0,2,0,,,,FLO199407290,scheiri02,FLA1994,MON1994
+Richie Lewis,RP,1.0,1,1,1,1,0,0,4.72,5,,,,,,,,,,,0,0,0.018,1.74,0.0,0.03,0.1,0,1,0,0,0,0,0,0,0,0,0,0,0,,,,FLO199407290,lewisri01,FLA1994,MON1994
+Jeff Mutis,RP,0.0,2,2,2,0,0,0,5.66,2,,,,,,,,,,,1,1,-0.224,2.25,-0.0,0.04,-1.6,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,FLO199407290,mutisje01,FLA1994,MON1994
+Luis Aquino,RP,2.0,0,1,1,2,0,0,3.67,10,,,,,,,,,,,2,2,-0.135,0.66,-0.0,0.01,-0.9,0,0,0,0,0,0,0,0,0,0,1,2,0,,,,FLO199407290,aquinlu01,FLA1994,MON1994
+Terry Mathews,RP,1.0,0,0,0,1,0,0,3.06,4,,,,,,,,,,,0,0,0.004,0.06,0.0,0.0,0.5,0,0,0,1,0,0,0,0,0,0,0,0,0,,,,FLO199407290,mathete01,FLA1994,MON1994
+Team Totals,,9.0,11,8,7,4,3,1,7.0,45,,,,,,,,,,40,3,3,-0.494,0.89,-0.0,0.01,-3.3,0,1,1,1,0,0,0,0,0,0,1,4,0,,,,FLO199407290,,FLA1994,MON1994

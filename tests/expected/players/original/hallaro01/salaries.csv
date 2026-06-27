@@ -1,18 +1,18 @@
-Player,Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
-Roy Halladay,1999,22.0,Toronto Blue Jays,200000,False,,4/6/99 USA Today,,hallaro01
-Roy Halladay,2000,23.0,Toronto Blue Jays,383333,False,,4/5/00 AP,,hallaro01
-Roy Halladay,2002,25.0,Toronto Blue Jays,2583333,False,,4/3/02 AP,,hallaro01
-Roy Halladay,2003,26.0,Toronto Blue Jays,3825000,False,,4/3/03 AP,,hallaro01
-Roy Halladay,2004,27.0,Toronto Blue Jays,6000000,False,,4/7/04 AP,,hallaro01
-Roy Halladay,2005,28.0,Toronto Blue Jays,10500000,False,,,,hallaro01
-Roy Halladay,2006,29.0,Toronto Blue Jays,12750000,False,,,,hallaro01
-Roy Halladay,2007,30.0,Toronto Blue Jays,12750000,False,,,,hallaro01
-Roy Halladay,2008,31.0,Toronto Blue Jays,10000000,False,,,,hallaro01
-Roy Halladay,2009,32.0,Toronto Blue Jays,14250000,False,,,,hallaro01
-Roy Halladay,2010,33.0,Philadelphia Phillies,15750000,False,10.047,,,hallaro01
-Roy Halladay,2011,34.0,Philadelphia Phillies,20000000,False,11.047,,,hallaro01
-Roy Halladay,2012,35.0,Philadelphia Phillies,20000000,False,12.047,contracts,,hallaro01
-Roy Halladay,2013,36.0,Philadelphia Phillies,20000000,False,13.047,contracts,,hallaro01
-Roy Halladay,2014,37.0,Philadelphia Phillies,0,False,14.047,contracts,,hallaro01
-Roy Halladay,Career Totals,,,148991666,,,,May be incomplete,hallaro01
-Roy Halladay,Future Earnings,,,0,,,,,hallaro01
+Year,Age,Team,Salary,Option Year,Service Time,Sources,Notes/Other Sources,Player ID
+1999,22.0,Toronto Blue Jays,200000,False,,4/6/99 USA Today,,hallaro01
+2000,23.0,Toronto Blue Jays,383333,False,,4/5/00 AP,,hallaro01
+2002,25.0,Toronto Blue Jays,2583333,False,,4/3/02 AP,,hallaro01
+2003,26.0,Toronto Blue Jays,3825000,False,,4/3/03 AP,,hallaro01
+2004,27.0,Toronto Blue Jays,6000000,False,,4/7/04 AP,,hallaro01
+2005,28.0,Toronto Blue Jays,10500000,False,,,,hallaro01
+2006,29.0,Toronto Blue Jays,12750000,False,,,,hallaro01
+2007,30.0,Toronto Blue Jays,12750000,False,,,,hallaro01
+2008,31.0,Toronto Blue Jays,10000000,False,,,,hallaro01
+2009,32.0,Toronto Blue Jays,14250000,False,,,,hallaro01
+2010,33.0,Philadelphia Phillies,15750000,False,10.047,,,hallaro01
+2011,34.0,Philadelphia Phillies,20000000,False,11.047,,,hallaro01
+2012,35.0,Philadelphia Phillies,20000000,False,12.047,contracts,,hallaro01
+2013,36.0,Philadelphia Phillies,20000000,False,13.047,contracts,,hallaro01
+2014,37.0,Philadelphia Phillies,0,False,14.047,contracts,,hallaro01
+Career Totals,,,148991666,,,,May be incomplete,hallaro01
+Future Earnings,,,0,,,,,hallaro01
