@@ -9,9 +9,12 @@ game_test_cases = [
     "ANA202305090",
     # illegal substitution with 2 positions and split stats, error by pitcher who didn't hit
     "BOS201708250",
+    # team with city-only name, asterisks on team PO totals, 10 innings, tie, doubleheader,
+    # lots of fielding events, two umps
+    "BSN191107122",
     # renamed team, wind "in unknown direction", Colt .45s table id special case
     "CHN196207291",
-    # Boom-Boom Beck tests parsing, renamed team, three umps, four OFA
+    # Boom-Boom Beck tests parsing, renamed team, no 2B ump (requires ump_info index reset), 4 OFA
     "CLE192805010",
     # renamed venue, renamed team, relocated team
     "FLO199407290",
