@@ -61,6 +61,8 @@ player_test_cases = [
     "pressry01",
     # catcher (with modern fielding stats), renamed draft team
     "vogtst01",
+    # no birthplace, incomplete birth and debut dates, but full death info
+    "willist03",
 ]
 
 team_test_cases = [
