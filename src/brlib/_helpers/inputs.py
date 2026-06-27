@@ -137,7 +137,7 @@ def validate_team_list(team_list: list[str]) -> list[str]:
             write(f'cannot get "{team_id}": {message}')
             continue
 
-        # check home team abbreviation
+        # check abbreviation
         correct_abvs = abv_mgr.correct_abvs(abv, int(season), era_adjustment=False)
         if len(correct_abvs) == 0:  # correct_abvs is a list of length 0 or 1
             write(f'cannot get "{team_id}": {abv} did not play in {season}')
