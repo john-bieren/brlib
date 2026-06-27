@@ -25,11 +25,13 @@ def test_info(
         file = expected_team_data / "original" / team.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_INFO_DTYPES)
         pd.testing.assert_frame_equal(team.info, expected_df)
+        assert f'{team.info["Season"].iloc[0]} {team.info["Team"].iloc[0]}' == team.name
 
     for team in updated_teams_list:
         file = expected_team_data / "updated" / team.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_INFO_DTYPES)
         pd.testing.assert_frame_equal(team.info, expected_df)
+        assert f'{team.info["Season"].iloc[0]} {team.info["Team"].iloc[0]}' == team.name
 
 
 def test_bling(

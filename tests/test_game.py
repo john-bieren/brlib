@@ -26,11 +26,13 @@ def test_info(
         file = expected_game_data / "original" / game.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=GAME_INFO_DTYPES)
         pd.testing.assert_frame_equal(game.info, expected_df)
+        assert game.info["Game"].iloc[0] == game.name
 
     for game in updated_games_list:
         file = expected_game_data / "updated" / game.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=GAME_INFO_DTYPES)
         pd.testing.assert_frame_equal(game.info, expected_df)
+        assert game.info["Game"].iloc[0] == game.name
 
 
 def test_batting(
