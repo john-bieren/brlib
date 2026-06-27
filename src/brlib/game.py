@@ -949,7 +949,7 @@ class Game:
         self.fielding = self.fielding[played_defense_mask]
         self.fielding = self.fielding.reset_index(drop=True)
 
-        # some old games have an asterisk in PO team total rows (e.g., SLN190106150)
+        # some old games have an asterisk in PO team total rows (e.g., SLN190106150, BSN191107122)
         self.fielding.loc[self.fielding["PO"] == "*", "PO"] = pd.NA
 
         # remove pitchers who did not hit

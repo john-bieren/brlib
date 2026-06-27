@@ -24,12 +24,12 @@ def test_info(
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_INFO_DTYPES)
-        pd.testing.assert_frame_equal(team.info, expected_df)  # to handle win % precision
+        pd.testing.assert_frame_equal(team.info, expected_df)
 
     for team in updated_teams_list:
         file = expected_team_data / "updated" / team.id / "info.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_INFO_DTYPES)
-        pd.testing.assert_frame_equal(team.info, expected_df)  # to handle win % precision
+        pd.testing.assert_frame_equal(team.info, expected_df)
 
 
 def test_bling(

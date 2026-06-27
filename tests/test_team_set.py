@@ -34,10 +34,10 @@ def test_dunders(teams_list: list[br.Team], team_set: br.TeamSet) -> None:
 def test_info(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `info` DataFrame."""
     expected_df = get_expected_df("teams", "info", False, TEAM_INFO_DTYPES)
-    pd.testing.assert_frame_equal(team_set.info, expected_df)  # to handle win % precision
+    pd.testing.assert_frame_equal(team_set.info, expected_df)
 
     expected_df = get_expected_df("teams", "info", True, TEAM_INFO_DTYPES)
-    pd.testing.assert_frame_equal(updated_team_set.info, expected_df)  # to handle win % precision
+    pd.testing.assert_frame_equal(updated_team_set.info, expected_df)
 
 
 def test_bling(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
@@ -71,7 +71,7 @@ def test_records(expected_team_data: Path, team_set: br.TeamSet) -> None:
     """Tests the contents of the `records` DataFrame."""
     file = expected_team_data / "records.csv"
     expected_df = pd.read_csv(file, dtype=RECORDS_DTYPES)
-    pd.testing.assert_frame_equal(team_set.records, expected_df)  # to handle win % precision
+    pd.testing.assert_frame_equal(team_set.records, expected_df)
 
 
 def test_players(team_set: br.TeamSet) -> None:

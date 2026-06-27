@@ -81,7 +81,7 @@ def test_records(expected_game_data: Path, game_set: br.GameSet) -> None:
     """Tests the contents of the `records` DataFrame."""
     file = expected_game_data / "records.csv"
     expected_df = pd.read_csv(file, dtype=RECORDS_DTYPES)
-    pd.testing.assert_frame_equal(game_set.records, expected_df)  # to handle win % precision
+    pd.testing.assert_frame_equal(game_set.records, expected_df)
 
 
 def test_players(game_set: br.GameSet) -> None:

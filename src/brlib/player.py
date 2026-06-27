@@ -461,14 +461,14 @@ class Player:
                     birthplace = birthplace[:-2]  # remove text representation of country flag
                     birthplace_split = birthplace.split(", ")
                     if len(birthplace_split) == 1:
-                        # city and/or state/country could be missing, so there's nothing to do
+                        # city and/or state/province/country could be missing, so there's nothing to do
                         dev_alert(f'{self.id}: incomplete birthplace "{birthplace.strip()}"')
                         continue
                     if len(birthplace_split) == 2:
                         birth_city, birth_state_or_country = birthplace.split(", ", maxsplit=1)
                         self.info["Birth City"] = birth_city
                         birth_state_or_country = birth_state_or_country.strip()
-                        # US states are represented by abbreviations
+                        # states/provinces are represented by abbreviations, countries by full names
                         if len(birth_state_or_country) == 2:
                             self.info["Birth State/Province"] = birth_state_or_country
                             self.info["Birth Country"] = "U.S."
@@ -518,8 +518,9 @@ class Player:
                         self.info["Death Country"] = "U.S."
                     else:
                         self.info["Death Country"] = death_state_or_country
-                elif death_place != "":  # only state/country listed
-                    if len(death_place) == 2:  # states are represented by abbreviations
+                elif death_place != "":  # only state/province/country listed
+                    # states/provinces are represented by abbreviations, countries by full names
+                    if len(death_place) == 2:
                         self.info["Death State/Province"] = death_place
                         self.info["Death Country"] = "U.S."
                     else:
