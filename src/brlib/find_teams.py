@@ -62,7 +62,8 @@ def find_teams(
     ['BBB1948', 'BEG1948', 'CAG1948', 'CBE1948', ...]
     ```
 
-    Abbreviations can match multiple teams due to era adjustment:
+    Abbreviations can match multiple teams due to [era
+    adjustment](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling):
 
     ```
     >>> br.find_teams("BAL", "1914")

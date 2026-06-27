@@ -91,7 +91,8 @@ def find_games(
     ['SEA201907020', 'SEA201907030', 'SEA201907040']
     ```
 
-    Abbreviations can match multiple teams due to era adjustment:
+    Abbreviations can match multiple teams due to [era
+    adjustment](https://github.com/john-bieren/brlib/wiki/Team-Abbreviation-Handling):
 
     ```
     >>> br.find_games(teams="BAL", seasons="1915", dates="825", home_away="home")
