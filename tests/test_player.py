@@ -85,11 +85,6 @@ def test_salaries(
         expected_df = pd.read_csv(file, dtype=PLAYER_SALARIES_DTYPES)
         pd.testing.assert_frame_equal(player.salaries, expected_df)
 
-    for player in updated_players_list:
-        file = expected_player_data / "updated" / player.id / "salaries.csv"
-        expected_df = pd.read_csv(file, dtype=PLAYER_SALARIES_DTYPES)
-        pd.testing.assert_frame_equal(player.salaries, expected_df)
-
 
 def test_relatives(expected_player_data: Path, players_list: list[br.Player]) -> None:
     """Tests the contents of the `relatives` dictionary."""

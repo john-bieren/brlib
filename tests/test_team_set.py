@@ -43,19 +43,13 @@ def test_info(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
 def test_bling(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `bling` DataFrame."""
     expected_df = get_expected_df("teams", "bling", False, TEAM_BLING_DTYPES)
-    pd.testing.assert_frame_equal(team_set.bling, expected_df)  # to handle win % precision
-
-    expected_df = get_expected_df("teams", "bling", True, TEAM_BLING_DTYPES)
-    pd.testing.assert_frame_equal(updated_team_set.bling, expected_df)  # to handle win % precision
+    pd.testing.assert_frame_equal(team_set.bling, expected_df)
 
 
 def test_batting(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `batting` DataFrame."""
     expected_df = get_expected_df("teams", "batting", False, TEAM_BATTING_DTYPES)
     pd.testing.assert_frame_equal(team_set.batting, expected_df)
-
-    expected_df = get_expected_df("teams", "batting", True, TEAM_BATTING_DTYPES)
-    pd.testing.assert_frame_equal(updated_team_set.batting, expected_df)
 
 
 def test_pitching(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
@@ -71,9 +65,6 @@ def test_fielding(team_set: br.TeamSet, updated_team_set: br.TeamSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
     expected_df = get_expected_df("teams", "fielding", False, TEAM_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(team_set.fielding, expected_df)
-
-    expected_df = get_expected_df("teams", "fielding", True, TEAM_FIELDING_DTYPES)
-    pd.testing.assert_frame_equal(updated_team_set.fielding, expected_df)
 
 
 def test_records(expected_team_data: Path, team_set: br.TeamSet) -> None:

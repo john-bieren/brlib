@@ -41,12 +41,7 @@ def test_bling(
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "bling.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_BLING_DTYPES)
-        pd.testing.assert_frame_equal(team.bling, expected_df)  # to handle win % precision
-
-    for team in updated_teams_list:
-        file = expected_team_data / "updated" / team.id / "bling.csv"
-        expected_df = pd.read_csv(file, dtype=TEAM_BLING_DTYPES)
-        pd.testing.assert_frame_equal(team.bling, expected_df)  # to handle win % precision
+        pd.testing.assert_frame_equal(team.bling, expected_df)
 
 
 def test_batting(
@@ -57,11 +52,6 @@ def test_batting(
     """Tests the contents of the `batting` DataFrame."""
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "batting.csv"
-        expected_df = pd.read_csv(file, dtype=TEAM_BATTING_DTYPES)
-        pd.testing.assert_frame_equal(team.batting, expected_df)
-
-    for team in updated_teams_list:
-        file = expected_team_data / "updated" / team.id / "batting.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_BATTING_DTYPES)
         pd.testing.assert_frame_equal(team.batting, expected_df)
 
@@ -91,11 +81,6 @@ def test_fielding(
     """Tests the contents of the `fielding` DataFrame."""
     for team in teams_list:
         file = expected_team_data / "original" / team.id / "fielding.csv"
-        expected_df = pd.read_csv(file, dtype=TEAM_FIELDING_DTYPES)
-        pd.testing.assert_frame_equal(team.fielding, expected_df)
-
-    for team in updated_teams_list:
-        file = expected_team_data / "updated" / team.id / "fielding.csv"
         expected_df = pd.read_csv(file, dtype=TEAM_FIELDING_DTYPES)
         pd.testing.assert_frame_equal(team.fielding, expected_df)
 

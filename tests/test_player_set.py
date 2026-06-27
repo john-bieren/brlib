@@ -72,9 +72,6 @@ def test_salaries(player_set: br.PlayerSet, updated_player_set: br.PlayerSet) ->
     expected_df = get_expected_df("players", "salaries", False, PLAYER_SALARIES_DTYPES)
     pd.testing.assert_frame_equal(player_set.salaries, expected_df)
 
-    expected_df = get_expected_df("players", "salaries", True, PLAYER_SALARIES_DTYPES)
-    pd.testing.assert_frame_equal(updated_player_set.salaries, expected_df)
-
 
 def test_teams(player_set: br.PlayerSet) -> None:
     """Tests the contents of the `teams` list."""

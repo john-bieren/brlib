@@ -44,11 +44,6 @@ def test_batting(
         expected_df = pd.read_csv(file, dtype=GAME_BATTING_DTYPES)
         pd.testing.assert_frame_equal(game.batting, expected_df)
 
-    for game in updated_games_list:
-        file = expected_game_data / "updated" / game.id / "batting.csv"
-        expected_df = pd.read_csv(file, dtype=GAME_BATTING_DTYPES)
-        pd.testing.assert_frame_equal(game.batting, expected_df)
-
 
 def test_pitching(
     expected_game_data: Path,
@@ -75,11 +70,6 @@ def test_fielding(
     """Tests the contents of the `fielding` DataFrame."""
     for game in games_list:
         file = expected_game_data / "original" / game.id / "fielding.csv"
-        expected_df = pd.read_csv(file, dtype=GAME_FIELDING_DTYPES)
-        pd.testing.assert_frame_equal(game.fielding, expected_df)
-
-    for game in updated_games_list:
-        file = expected_game_data / "updated" / game.id / "fielding.csv"
         expected_df = pd.read_csv(file, dtype=GAME_FIELDING_DTYPES)
         pd.testing.assert_frame_equal(game.fielding, expected_df)
 

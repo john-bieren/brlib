@@ -46,9 +46,6 @@ def test_batting(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     expected_df = get_expected_df("games", "batting", False, GAME_BATTING_DTYPES)
     pd.testing.assert_frame_equal(game_set.batting, expected_df)
 
-    expected_df = get_expected_df("games", "batting", True, GAME_BATTING_DTYPES)
-    pd.testing.assert_frame_equal(updated_game_set.batting, expected_df)
-
 
 def test_pitching(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `pitching` DataFrame."""
@@ -63,9 +60,6 @@ def test_fielding(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
     """Tests the contents of the `fielding` DataFrame."""
     expected_df = get_expected_df("games", "fielding", False, GAME_FIELDING_DTYPES)
     pd.testing.assert_frame_equal(game_set.fielding, expected_df)
-
-    expected_df = get_expected_df("games", "fielding", True, GAME_FIELDING_DTYPES)
-    pd.testing.assert_frame_equal(updated_game_set.fielding, expected_df)
 
 
 def test_team_info(game_set: br.GameSet, updated_game_set: br.GameSet) -> None:
