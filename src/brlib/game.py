@@ -744,6 +744,8 @@ class Game:
         dp_tp = ["DP", "TP"]
         h_df[list(player_stats.values())] = 0
         h_df[dp_tp] = 0
+        # find players with hyphenated names before parsing hyphen-delimited DP/TP player lists
+        hyphenated_names = h_df.loc[h_df["Player"].str.contains("-"), "Player"].to_numpy()
 
         team_totals_mask = h_df["Player"] == "Team Totals"
         footer = table.find("div", {"class": "footer no_hide_long"})
@@ -777,6 +779,9 @@ class Game:
             elif stat in dp_tp:
                 total, player_list = players.split(". ", maxsplit=1)
                 h_df.loc[team_totals_mask, stat] = int(total)
+                # distinguish between hyphenated names and delimiters
+                for name in hyphenated_names:
+                    player_list = player_list.replace(name, name.replace("-", "&"))
 
                 for dp_players in player_list.split("; "):
                     if dp_players.rsplit(maxsplit=1)[1].isnumeric():
@@ -785,7 +790,8 @@ class Game:
                     else:
                         number = 1
                     for player in set(dp_players.split("-")):
-                        h_df.loc[h_df["Player"] == player, stat] += number
+                        # revert to hyphenated name
+                        h_df.loc[h_df["Player"] == player.replace("&", "-"), stat] += number
 
         # convert cWPA from percentage to a float
         if "cWPA" in h_df.columns:
