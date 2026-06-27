@@ -35,6 +35,7 @@ def main() -> None:
 
 def refresh_games(games_dir: Path) -> None:
     """Refreshes expected data for games in `games_dir`."""
+    games_list = []
     for game_id in tqdm(game_test_cases, unit="game"):
         # locate, create target directories
         (original_dir := games_dir / "original" / game_id).mkdir(exist_ok=True)
@@ -60,6 +61,10 @@ def refresh_games(games_dir: Path) -> None:
         game.pitching.to_csv(updated_dir / "pitching.csv", index=False)
         game.team_info.to_csv(updated_dir / "team_info.csv", index=False)
         game.linescore.to_csv(updated_dir / "linescore.csv", index=False)
+
+        games_list.append(game)
+    game_set = br.GameSet(games_list)
+    game_set.records.to_csv(games_dir / "records.csv", index=False)
 
 
 def refresh_players(players_dir: Path) -> None:
