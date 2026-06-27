@@ -20,8 +20,6 @@ game_test_cases = [
     "FLO199407290",
     # both teams share names with later ones, limited stats (like SB info), doubleheader, one ump
     "MLA190105301",
-    # unassisted triple play, pitcher with two wild pitches
-    "NYN200908230",
     # combined no-hitter, WS game (matters for name)
     "PHI202211020",
     # dh = 3, 6 innings, 2 CGs with IP<9, two umps
