@@ -1,7 +1,7 @@
 """Defines lists of test case IDs."""
 
 game_test_cases = [
-    # ASG with dh != 0, 10 innings
+    # ASG with doubleheader (technically), 10 innings
     "1961-allstar-game-1",
     # ASG, essentially a forfeit, illegal(?) substitution with 1 position and split stats
     "2025-allstar-game",
@@ -11,17 +11,20 @@ game_test_cases = [
     "BOS201708250",
     # renamed team, wind "in unknown direction", Colt .45s table id special case
     "CHN196207291",
+    # Boom-Boom Beck tests parsing, renamed team, three umps, four OFA
+    "CLE192805010",
     # renamed venue, renamed team, relocated team
     "FLO199407290",
-    # both teams share names with later ones, limited stats (especially SB info), dh != 0
+    # both teams share names with later ones, limited stats (like SB info), doubleheader, one ump
     "MLA190105301",
     # unassisted triple play
     "NYN200908230",
     # combined no-hitter, WS game (matters for name)
     "PHI202211020",
-    # dh = 3, 6 innings, 2 CGs with IP<9
+    # dh = 3, 6 innings, 2 CGs with IP<9, two umps
     "PIT192010023",
-    # player with 2 DP, U L Washington tests parsing, 2 identical POCS, renamed venue, dh != 0
+    # player with 2 DP, U L Washington tests parsing, 2 identical POCS, renamed venue, doubleheader,
+    # DP including pitcher who didn't hit
     "SEA197805231",
     # renamed team, renamed venue, game played at away team's venue
     "SEA201106250",
@@ -31,9 +34,9 @@ game_test_cases = [
     "SEA201804190",
     # SB cycle with multiple pitcher/catcher combos, a balk
     "SEA201905270",
-    # non-WS postseason game (matters for name), 18 innings
+    # non-WS postseason game (matters for name), 18 innings, unassisted DP
     "SEA202210150",
-    # forfeited by team that finished with the lead, 4 innings, dh != 0
+    # forfeited by team that finished with the lead, 4 innings, doubleheader
     "SLN190710051",
 ]
 
