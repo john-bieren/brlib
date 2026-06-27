@@ -1059,5 +1059,5 @@ class Game:
             value_vars=["HP Ump", "1B Ump", "2B Ump", "3B Ump", "LF Ump", "RF Ump"],
         )
         self.ump_info = self.ump_info.rename(columns={"variable": "Position", "value": "Umpire"})
-        self.ump_info = self.ump_info.loc[~self.ump_info["Umpire"].isnull()]
+        self.ump_info = self.ump_info[~self.ump_info["Umpire"].isnull()].reset_index(drop=True)
         self.ump_info["Position"] = self.ump_info["Position"].str.replace(" Ump", "")
