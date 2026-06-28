@@ -21,7 +21,7 @@ from .team import Team
 from .team_set import TeamSet
 from .test_connection import test_connection
 
-__version__ = "1.0.0.dev0"
+__version__ = "0.7.0"
 
 __all__ = [
     "all_players",
