@@ -609,6 +609,8 @@ class Team:
 
         # remove column label rows
         df_1 = df_1.loc[(df_1["Rk"] != "Rk") & (df_1["Player"] != "Standard")]
+        # remove IL/40-man status for active teams
+        df_1["Player"] = df_1["Player"].str.split(" (", regex=False, n=1, expand=True)[0]
         # remove handedness indicators
         df_1.loc[:, "Player"] = df_1["Player"].str.strip("*#")
 
@@ -729,6 +731,8 @@ class Team:
         df_2 = pd.DataFrame(records, columns=column_names)
         # remove column label rows
         df_2 = df_2.loc[df_2["Rk"] != "Rk"]
+        # remove IL/40-man status for active teams
+        df_2["Player"] = df_2["Player"].str.split(" (", regex=False, n=1, expand=True)[0]
 
         # add player IDs to table, excluding non-player rows
         player_id_column = scrape_player_ids(table)
