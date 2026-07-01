@@ -65,12 +65,6 @@ class Player:
         empty by default (may require an additional request). If no value is passed, the value of
         `options.add_no_hitters` is used.
 
-    * `update_team_names`: `bool` or `None`, default `None`
-
-        Whether to standardize the team name in `Player.info["Draft Team"]` such that teams are
-        identified by one name, excluding relocations. If no value is passed, the value of
-        `options.update_team_names` is used. `Player.salaries["Team"]` is not updated.
-
     ## Attributes
 
     * `id`: `str`
@@ -134,7 +128,6 @@ class Player:
     ## Methods
 
     * [`Player.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/Player.add_no_hitters)
-    * [`Player.update_team_names`](https://github.com/john-bieren/brlib/wiki/Player.update_team_names)
     """
 
     @runtime_typecheck
@@ -143,12 +136,9 @@ class Player:
         player_id: str = "",
         page: Response = Response(),
         add_no_hitters: bool | None = None,
-        update_team_names: bool | None = None,
     ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
-        if update_team_names is None:
-            update_team_names = options.update_team_names
 
         if page.url == "":
             player_ids = validate_player_list([player_id])
@@ -174,8 +164,6 @@ class Player:
 
         if add_no_hitters:
             self.add_no_hitters()
-        if update_team_names:
-            self.update_team_names()
 
     def __str__(self) -> str:
         return self.id
@@ -277,39 +265,6 @@ class Player:
                     ),
                     col,
                 ] += 1
-
-    def update_team_names(self) -> None:
-        """
-        Standardizes the team name in `Player.info["Draft Team"]` such that teams are identified by
-        one name, excluding relocations. `Player.salaries["Team"]` is not updated.
-
-        ## Parameters
-
-        None
-
-        ## Returns
-
-        `None`
-
-        ## Example
-
-        ```
-        >>> p = br.Player("beckejo02")
-        >>> p.info["Draft Team"]
-        0    Florida Marlins
-        Name: Draft Team, dtype: string
-        >>> p.update_team_names()
-        >>> p.info["Draft Team"]
-        0    Miami Marlins
-        Name: Draft Team, dtype: string
-        ```
-        """
-        self.info["Draft Team"] = (
-            self.info["Draft Team ID"]
-            .map(TEAM_REPLACEMENTS)
-            .fillna(self.info["Draft Team"])
-            .astype("string")
-        )
 
     @staticmethod
     def _get_player(player_id: str) -> Response:

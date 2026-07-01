@@ -64,8 +64,7 @@ class Options(Singleton):
 
     * `update_team_names`, default `False`
 
-        Default value for `update_team_names` arguments when initializing `Game`, `Player`, and
-        `Team` objects.
+        Default value for `update_team_names` arguments when initializing `Game` and `Team` objects.
 
     * `update_venue_names`, default `False`
 
@@ -452,7 +451,7 @@ class Options(Singleton):
     def update_team_names(self) -> bool:
         """
         Default value for `update_team_names` arguments when initializing
-        `Game`, `Player`, and `Team` objects.
+        `Game` and `Team` objects.
         """
         return self._settings["update_team_names"]
 

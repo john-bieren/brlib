@@ -13,7 +13,6 @@ from .player import Player
 def get_players(
     player_list: list[str],
     add_no_hitters: bool | None = None,
-    update_team_names: bool | None = None,
     ignore_errors: bool = True,
 ) -> list[Player]:
     """
@@ -33,12 +32,6 @@ def get_players(
         Whether to populate the no-hitter columns in the `Player.pitching` DataFrames, which are
         empty by default (may require an additional request). If no value is passed, the value of
         `options.add_no_hitters` is used.
-
-    * `update_team_names`: `bool` or `None`, default `None`
-
-        Whether to standardize team names in `Player.info["Draft Team"]` such that teams are
-        identified by one name, excluding relocations. If no value is passed, the value of
-        `options.update_team_names` is used. `Player.salaries["Team"]` is not updated.
 
     * `ignore_errors`: `bool`, default `True`
 
@@ -70,8 +63,6 @@ def get_players(
     """
     if add_no_hitters is None:
         add_no_hitters = options.add_no_hitters
-    if update_team_names is None:
-        update_team_names = options.update_team_names
 
     player_list = validate_player_list(player_list)
     if len(player_list) == 0:
@@ -92,7 +83,6 @@ def get_players(
             result = Player(
                 page=page,
                 add_no_hitters=add_no_hitters,
-                update_team_names=update_team_names,
             )
             results.append(result)
             req_mgr.pause()

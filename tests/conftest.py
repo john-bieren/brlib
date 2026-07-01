@@ -111,7 +111,6 @@ def updated_players_list(players_list: list[br.Player]) -> list[br.Player]:
     players_list_copy = copy.deepcopy(players_list)
     for player in players_list_copy:
         player.add_no_hitters()
-        player.update_team_names()
     return players_list_copy
 
 
@@ -126,7 +125,6 @@ def updated_player_set(player_set: br.PlayerSet) -> br.PlayerSet:
     """A `PlayerSet` made from the contents of `players_list` after all public methods are run."""
     ps = copy.deepcopy(player_set)
     ps.add_no_hitters()
-    ps.update_team_names()
     return ps
 
 

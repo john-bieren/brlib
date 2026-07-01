@@ -87,7 +87,6 @@ def refresh_players(players_dir: Path) -> None:
 
         # refresh updated data
         player.add_no_hitters()
-        player.update_team_names()
         player.info.to_csv(updated_dir / "info.csv", index=False)
         player.pitching.to_csv(updated_dir / "pitching.csv", index=False)
 

@@ -80,7 +80,6 @@ class PlayerSet:
     ## Methods
 
     * [`PlayerSet.add_no_hitters`](https://github.com/john-bieren/brlib/wiki/PlayerSet.add_no_hitters)
-    * [`PlayerSet.update_team_names`](https://github.com/john-bieren/brlib/wiki/PlayerSet.update_team_names)
     """
 
     @runtime_typecheck
@@ -210,41 +209,3 @@ class PlayerSet:
                         ),
                         col,
                     ] += 1
-
-    def update_team_names(self) -> None:
-        """
-        Standardizes team names in `PlayerSet.info["Draft Team"]` such that teams are identified by
-        one name, excluding relocations. `PlayerSet.salaries["Team"]` is not updated.
-
-        ## Parameters
-
-        None
-
-        ## Returns
-
-        `None`
-
-        ## Example
-
-        ```
-        >>> pl = br.get_players(["longoev01", "hanigmi01", "troutmi01"])
-        >>> ps = br.PlayerSet(pl)
-        >>> ps.info["Draft Team"]
-        0             Tampa Bay Devil Rays
-        1                Milwaukee Brewers
-        2    Los Angeles Angels of Anaheim
-        Name: Draft Team, dtype: string
-        >>> ps.update_team_names()
-        >>> ps.info["Draft Team"]
-        0        Tampa Bay Rays
-        1     Milwaukee Brewers
-        2    Los Angeles Angels
-        Name: Draft Team, dtype: string
-        ```
-        """
-        self.info["Draft Team"] = (
-            self.info["Draft Team ID"]
-            .map(TEAM_REPLACEMENTS)
-            .fillna(self.info["Draft Team"])
-            .astype("string")
-        )
