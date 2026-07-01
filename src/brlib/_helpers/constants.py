@@ -758,6 +758,7 @@ PLAYER_INFO_DTYPES = {
     "Death State/Province": "string",
     "Death Country": "string",
     "Draft Team": "string",
+    "Draft Franchise": "string",
     "Draft Round": "Int64",
     "Draft Pick": "Int64",
     "Draft Year": "Int64",
@@ -780,7 +781,6 @@ PLAYER_INFO_DTYPES = {
     "Years Played": "Int64",
     "Teams Played For": "Int64",
     "Most Teams in a Year": "Int64",
-    "Draft Team ID": "string",
     "Debut Game ID": "string",
     "Last Game ID": "string",
 }

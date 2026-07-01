@@ -498,13 +498,9 @@ class Player:
 
                 links = line.find_all("a", href=True)
                 links = [l["href"] for l in links if "team_ID=" in l["href"]]
-                year = str_between(links[-1], "year_ID=", "&")
-                franchise_id = str_between(links[-1], "team_ID=", "&")
-                # using franchise ID with correct_abvs is not smart, as some franchises have
-                # franchise IDs that are not one of their team IDs. However, all such cases come
-                # from the pre-draft era, so this is safe (and easy).
-                team_abv = abv_mgr.correct_abvs(franchise_id, int(year), era_adjustment=True)[0]
-                self.info["Draft Team ID"] = f"{team_abv}{year}"
+                # this is not converted into a team ID because expansion teams draft before
+                # debuting, so these IDs would sometimes be invalid and crash abv_mgr
+                self.info["Draft Franchise"] = str_between(links[-1], "team_ID=", "&")
 
                 try:
                     self.info["Draft Pick"] = str_between(draft_line, "round (", ")").strip(
