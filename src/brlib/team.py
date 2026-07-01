@@ -2,7 +2,6 @@
 
 import re
 
-import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag
@@ -651,7 +650,6 @@ class Team:
         prep_df = prep_df.sort_values("Player ID", ascending=False)
 
         # the season rows to be added to self.bling
-        season, team = self.name.split(maxsplit=1)
         season_rows = pd.DataFrame(
             {
                 "Player": prep_df["Player"].to_numpy(),

@@ -5,7 +5,7 @@ from itertools import chain
 import pandas as pd
 
 from ._helpers.abbreviations_manager import abv_mgr
-from ._helpers.constants import MULTI_TEAM_REGEX, TEAM_REPLACEMENTS
+from ._helpers.constants import MULTI_TEAM_REGEX
 from ._helpers.no_hitter_dicts import nhd
 from ._helpers.typechecking import runtime_typecheck
 from .player import Player
