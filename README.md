@@ -18,8 +18,8 @@ A library for collecting baseball statistics from
   with attributes for stat tables and other information.
 * Aggregate these into `GameSet`, `PlayerSet`, or `TeamSet` classes, which have similar attributes,
   for easy analysis of larger samples.
-* Easily search for games, players, and teams, and gather their stats.
-* Quickly collect data without violating the
+* Search for games, players, and teams, and gather their stats.
+* Collect data without violating the
   [rate limit](https://www.sports-reference.com/429.html).
 
 Learn more by reading the documentation on the [wiki](https://github.com/john-bieren/brlib/wiki).
