@@ -497,6 +497,7 @@ LEAGUE_ABVS = {
 # the page text and corresponding columns for scraping player awards in _scrape_bling
 BLING_DICT = {
     "MVP": "MVP",
+    "MVP*": "MVP",  # unofficial MVPs, e.g., cronijo01 or fonsele01
     "Cy Young": "CYA",
     "Rookie of the Year": "ROY",
     "All-Star": "AS",
