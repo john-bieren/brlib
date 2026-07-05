@@ -9,9 +9,6 @@
 A library for collecting baseball statistics from
 [Baseball Reference](https://www.baseball-reference.com).
 
-> [!IMPORTANT]
-> brlib is in beta, breaking changes are possible until the release of version 1.
-
 ## Key Features
 
 * `Game`, `Player`, and `Team` classes give you easy access to all associated data in one place,
