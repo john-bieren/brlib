@@ -6,8 +6,8 @@ on:
       - '**'
   schedule:
     # run at 12 UTC, hopefully after BR's daily in-season updates
-    # run weekly (on Saturday), because anything more would be overkill
-    - cron: '0 12 * * 6'
+    # run weekly (on Wednesday, before dependabot), because anything more would be overkill
+    - cron: '0 12 * * 3'
 
 jobs:
   pytest:
