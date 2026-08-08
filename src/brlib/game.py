@@ -899,23 +899,24 @@ class Game:
             self.pitching["cWPA"] = self.pitching["cWPA"].round(4)
 
     def _set_team_ids(self, df: pd.DataFrame, table_id: str) -> pd.DataFrame:
-        """Sets team and opponent IDs in `df` using `table id`."""
-        if (
-            str_remove(self._home_team, " ", "-", ".") in table_id
-            # the Colt .45s are named HoustonColts in table IDs
-            or self._home_team == "Houston Colt .45s"
-            and "HoustonColts" in table_id
-        ):
+        """Sets team and opponent IDs in `df` using `table_id`."""
+        if Game._table_is_for_team(table_id, self._home_team):
             df[["Team ID", "Opponent Team ID"]] = self._home_team_id, self._away_team_id
-        elif (
-            str_remove(self._away_team, " ", "-", ".") in table_id
-            or self._away_team == "Houston Colt .45s"
-            and "HoustonColts" in table_id
-        ):
+        elif Game._table_is_for_team(table_id, self._away_team):
             df[["Team ID", "Opponent Team ID"]] = self._away_team_id, self._home_team_id
         else:
             raise ValueError("home and away teams cannot be found from batting tables")
         return df
+
+    @staticmethod
+    def _table_is_for_team(table_id: str, team_name: str) -> bool:
+        """Whether `table_id` is from a table containing stats for `team_name`."""
+        return (
+            str_remove(team_name, " ", "-", ".") in table_id
+            # the Colt .45s are named HoustonColts in table IDs
+            or team_name == "Houston Colt .45s"
+            and "HoustonColts" in table_id
+        )
 
     def _get_fielding_dataframe(self) -> None:
         """Copies info and moves fielding stats from `self.batting` to `self.fielding`."""
@@ -1019,6 +1020,21 @@ class Game:
             table = soup_from_comment(table, only_if_table=True)
             footer = table.find("div", {"class": "footer no_hide_long"})
 
+            # find defense team's ID
+            table_id = table.get("id")
+            if Game._table_is_for_team(table_id, self._home_team):
+                defense_team_id = self._home_team_id
+            elif Game._table_is_for_team(table_id, self._away_team):
+                defense_team_id = self._away_team_id
+            else:
+                raise ValueError("home and away teams cannot be found from batting tables")
+            defense_totals_mask = (self.fielding["Player"] == "Team Totals") & (
+                self.fielding["Team ID"] == defense_team_id
+            )
+            offense_totals_mask = (self.batting["Player"] == "Team Totals") & (
+                self.batting["Team ID"] != defense_team_id
+            )
+
             for line in footer.find_all("div", {"id": sb_ids}):
                 line_str = line.text.strip(".")
                 stat, players = line_str.split(": ", maxsplit=1)
@@ -1060,24 +1076,17 @@ class Game:
                         # increment fielder stats
                         for fielder, pos in fielders:
                             fielder_mask = self.fielding["Player"] == fielder
-                            defense_team_id = self.fielding.loc[fielder_mask, "Team ID"].iloc[0]
-                            team_totals_mask = (self.fielding["Player"] == "Team Totals") & (
-                                self.fielding["Team ID"] == defense_team_id
-                            )  # TODO use as literal below once subsequent use is removed in v2
-                            full_mask = fielder_mask | team_totals_mask
+                            defense_mask = fielder_mask | defense_totals_mask
                             self.fielding.loc[
-                                full_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
+                                defense_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
                             ] += times
                             self.fielding.loc[fielder_mask, [stat, f"{base} {stat}"]] += times
                         # noinspection PyUnboundLocalVariable
-                        self.fielding.loc[team_totals_mask, [stat, f"{base} {stat}"]] += times
+                        self.fielding.loc[defense_totals_mask, [stat, f"{base} {stat}"]] += times
 
                         # incremenet baserunner stats
                         stealer_mask = self.batting["Player"] == stealer
-                        offense_mask = stealer_mask | (
-                            (self.batting["Player"] == "Team Totals")
-                            & (self.batting["Team ID"] != defense_team_id)
-                        )
+                        offense_mask = stealer_mask | offense_totals_mask
                         # no need to increment SB or CS because they're already tallied
                         if stat == "Pick":
                             self.batting.loc[offense_mask, "Pick"] += times
