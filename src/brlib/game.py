@@ -11,6 +11,7 @@ from curl_cffi.requests import Response
 from ._helpers.constants import (
     ALLSTAR_GAME_URL_REGEX,
     ASG_ID_REGEX,
+    BASE_CONVERSIONS,
     FORFEITED_GAME_WINNERS,
     GAME_BATTING_DTYPES,
     GAME_FIELDING_DTYPES,
@@ -653,7 +654,7 @@ class Game:
     def _scrape_batting(self, table: Tag) -> pd.DataFrame:
         """Scrapes batting stats from `table`."""
         # extract stats from table
-        table_id = table.get("id")
+        table_id = table.get("id")  # must be defined before following line
         table = soup_from_comment(table, only_if_table=True)
         records = []
         for row in table.find_all("tr"):
@@ -1013,7 +1014,6 @@ class Game:
                 "3B Pick as P",
             ]
         ] = 0
-        base_conversions = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
 
         for table in batting_tables:
@@ -1058,7 +1058,7 @@ class Game:
                             PICKOFF_REGEX, attempt
                         )
                         assert att_match is not None
-                        base = base_conversions[att_match.group("base")]
+                        base = BASE_CONVERSIONS[att_match.group("base")]
                         # "pitcher" may be the catcher on some POCS, but it still works correctly
                         # strip() because there's a trailing space if times != 1
                         pitcher = att_match.group("pitcher").replace("POCS", "").strip()

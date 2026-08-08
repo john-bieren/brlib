@@ -101,6 +101,9 @@ PICKOFF_REGEX = re.compile(
     r"(?P<base>1st base|2nd base|3rd base|Home) by (?P<pitcher>\D+)(?P<times>\d?)"
 )
 
+# shorten full base names for use in column names
+BASE_CONVERSIONS = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
+
 # exponent used when calculating team Pythagorean W-L%
 # see https://www.sports-reference.com/blog/baseball-reference-faqs/
 PYTHAGOREAN_EXPONENT = 1.83
