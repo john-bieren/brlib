@@ -1017,11 +1017,11 @@ class Game:
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
 
         for table in batting_tables:
+            table_id = table.get("id")  # must be defined before following line
             table = soup_from_comment(table, only_if_table=True)
             footer = table.find("div", {"class": "footer no_hide_long"})
 
             # find defense team's ID
-            table_id = table.get("id")
             if Game._table_is_for_team(table_id, self._home_team):
                 defense_team_id = self._home_team_id
             elif Game._table_is_for_team(table_id, self._away_team):
