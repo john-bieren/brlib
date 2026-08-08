@@ -986,6 +986,30 @@ class Game:
                 "1B Pick",
                 "2B Pick",
                 "3B Pick",
+                "SB as C",
+                "2B SB as C",
+                "3B SB as C",
+                "HP SB as C",
+                "CS as C",
+                "2B CS as C",
+                "3B CS as C",
+                "HP CS as C",
+                "Pick as C",
+                "1B Pick as C",
+                "2B Pick as C",
+                "3B Pick as C",
+                "SB as P",
+                "2B SB as P",
+                "3B SB as P",
+                "HP SB as P",
+                "CS as P",
+                "2B CS as P",
+                "3B CS as P",
+                "HP CS as P",
+                "Pick as P",
+                "1B Pick as P",
+                "2B Pick as P",
+                "3B Pick as P",
             ]
         ] = 0
         base_conversions = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
@@ -1025,22 +1049,30 @@ class Game:
                         times = att_match.group("times")
                         times = int(times) if times != "" else 1
 
-                        # increment defensive stats
+                        # find the fielders involved and their positions
                         if len(att_match.groups()) == 4:  # match is _SB_ATTEMPT_REGEX
                             # strip() because there's a trailing space if times != 1
                             catcher = att_match.group("catcher").strip()
-                            defenders_mask = self.fielding["Player"].isin({pitcher, catcher})
+                            fielders = ((pitcher, "P"), (catcher, "C"))
                         else:
-                            defenders_mask = self.fielding["Player"] == pitcher
+                            fielders = ((pitcher, "P"),)
 
-                        defense_team_id = self.fielding.loc[defenders_mask, "Team ID"].iloc[0]
-                        defense_mask = defenders_mask | (
-                            (self.fielding["Player"] == "Team Totals")
-                            & (self.fielding["Team ID"] == defense_team_id)
-                        )
-                        self.fielding.loc[defense_mask, [stat, f"{base} {stat}"]] += times
+                        # increment fielder stats
+                        for fielder, pos in fielders:
+                            fielder_mask = self.fielding["Player"] == fielder
+                            defense_team_id = self.fielding.loc[fielder_mask, "Team ID"].iloc[0]
+                            team_totals_mask = (self.fielding["Player"] == "Team Totals") & (
+                                self.fielding["Team ID"] == defense_team_id
+                            )  # TODO use as literal below once subsequent use is removed in v2
+                            full_mask = fielder_mask | team_totals_mask
+                            self.fielding.loc[
+                                full_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
+                            ] += times
+                            self.fielding.loc[fielder_mask, [stat, f"{base} {stat}"]] += times
+                        # noinspection PyUnboundLocalVariable
+                        self.fielding.loc[team_totals_mask, [stat, f"{base} {stat}"]] += times
 
-                        # incremenet offensive stats
+                        # incremenet baserunner stats
                         stealer_mask = self.batting["Player"] == stealer
                         offense_mask = stealer_mask | (
                             (self.batting["Player"] == "Team Totals")
