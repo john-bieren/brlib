@@ -996,10 +996,6 @@ class Game:
                 "2B CS as C",
                 "3B CS as C",
                 "HP CS as C",
-                "Pick as C",
-                "1B Pick as C",
-                "2B Pick as C",
-                "3B Pick as C",
                 "SB as P",
                 "2B SB as P",
                 "3B SB as P",
@@ -1008,10 +1004,6 @@ class Game:
                 "2B CS as P",
                 "3B CS as P",
                 "HP CS as P",
-                "Pick as P",
-                "1B Pick as P",
-                "2B Pick as P",
-                "3B Pick as P",
             ]
         ] = 0
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
@@ -1077,11 +1069,11 @@ class Game:
                         for fielder, pos in fielders:
                             fielder_mask = self.fielding["Player"] == fielder
                             defense_mask = fielder_mask | defense_totals_mask
-                            self.fielding.loc[
-                                defense_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
-                            ] += times
+                            if stat != "Pick":  # position cannot be determined on pickoffs
+                                self.fielding.loc[
+                                    defense_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
+                                ] += times
                             self.fielding.loc[fielder_mask, [stat, f"{base} {stat}"]] += times
-                        # noinspection PyUnboundLocalVariable
                         self.fielding.loc[defense_totals_mask, [stat, f"{base} {stat}"]] += times
 
                         # incremenet baserunner stats

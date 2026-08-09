@@ -1,7 +1,7 @@
 """Defines lists of test case IDs."""
 
 game_test_cases = [
-    # ASG with doubleheader (technically), 10 innings
+    # ASG with doubleheader (technically), 10 innings, pickoff by pitcher
     "1961-allstar-game-1",
     # ASG, essentially a forfeit, illegal(?) substitution with 1 position and split stats
     "2025-allstar-game",
@@ -14,9 +14,10 @@ game_test_cases = [
     "BSN191107122",
     # renamed team, wind "in unknown direction", Colt .45s table id special case
     "CHN196207291",
-    # Boom-Boom Beck tests parsing, renamed team, no 2B ump (requires ump_info index reset), 4 OFA
+    # Boom-Boom Beck tests parsing, renamed team, no 2B ump (requires ump_info index reset), 4 OFA,
+    # pickoff by pitcher
     "CLE192805010",
-    # renamed venue, renamed team, relocated team
+    # renamed venue, renamed team, relocated team, pickoffs by catcher and pitcher
     "FLO199407290",
     # both teams share names with later ones, limited stats (like SB info), doubleheader, one ump
     "MLA190105301",
