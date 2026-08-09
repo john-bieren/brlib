@@ -1023,9 +1023,9 @@ class Game:
 
             # find defense team's ID
             if Game._table_is_for_team(table_id, self._home_team):
-                defense_team_id = self._home_team_id
-            elif Game._table_is_for_team(table_id, self._away_team):
                 defense_team_id = self._away_team_id
+            elif Game._table_is_for_team(table_id, self._away_team):
+                defense_team_id = self._home_team_id
             else:
                 raise ValueError("home and away teams cannot be found from batting tables")
             defense_totals_mask = (self.fielding["Player"] == "Team Totals") & (
