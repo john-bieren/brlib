@@ -20,8 +20,8 @@ class Options(Singleton):
 
     * `add_no_hitters`, default `False`
 
-        Default value for `add_no_hitters` arguments when initializing `Game`, `Player`, and `Team`
-        objects.
+        Default value for the `add_no_hitters` argument when initializing `Game`, `Player`, and
+        `Team` objects.
 
     * `dev_alerts`, default `False`
 
@@ -64,12 +64,18 @@ class Options(Singleton):
 
     * `update_team_names`, default `False`
 
-        Default value for `update_team_names` arguments when initializing `Game` and `Team` objects.
+        Default value for the `update_team_names` argument when initializing `Game` and `Team`
+        objects.
 
     * `update_venue_names`, default `False`
 
-        Default value for `update_venue_names` arguments when initializing `Game` and `Team`
+        Default value for the `update_venue_names` argument when initializing `Game` and `Team`
         objects.
+
+    * `validate_ids`, default `True`
+
+        Default value for the `validate_ids` argument when initializing `Game`, `Player`, and `Team`
+        objects, and when calling `get_games`, `get_players`, and `get_teams`.
 
     ## Examples
 
@@ -120,6 +126,7 @@ class Options(Singleton):
             "timeout_limit": 10,
             "update_team_names": False,
             "update_venue_names": False,
+            "validate_ids": True,
         }
         self._preferences_file = CONFIG_DIR / "preferences_v1.json"
         self._changes, self._preferences = [{} for _ in range(2)]
@@ -278,7 +285,7 @@ class Options(Singleton):
     @property
     def add_no_hitters(self) -> bool:
         """
-        Default value for `add_no_hitters` arguments when initializing
+        Default value for the `add_no_hitters` argument when initializing
         `Game`, `Player`, and `Team` objects.
         """
         return self._settings["add_no_hitters"]
@@ -450,7 +457,7 @@ class Options(Singleton):
     @property
     def update_team_names(self) -> bool:
         """
-        Default value for `update_team_names` arguments when initializing
+        Default value for the `update_team_names` argument when initializing
         `Game` and `Team` objects.
         """
         return self._settings["update_team_names"]
@@ -468,7 +475,7 @@ class Options(Singleton):
     @property
     def update_venue_names(self) -> bool:
         """
-        Default value for `update_venue_names` arguments when initializing
+        Default value for the `update_venue_names` argument when initializing
         `Game` and `Team` objects.
         """
         return self._settings["update_venue_names"]
@@ -482,6 +489,24 @@ class Options(Singleton):
             write(f"update_venue_names value must have type {bool}")
             return
         self._changes["update_venue_names"] = value
+
+    @property
+    def validate_ids(self) -> bool:
+        """
+        Default value for the `validate_ids` argument when initializing `Game`, `Player`, and `Team`
+        objects, and when calling `get_games`, `get_players`, and `get_teams`.
+        """
+        return self._settings["validate_ids"]
+
+    @validate_ids.setter
+    def validate_ids(self, value: bool | None) -> None:
+        if value is None:
+            self._changes.pop("validate_ids", None)
+            return
+        if not isinstance(value, bool):
+            write(f"validate_ids value must have type {bool}")
+            return
+        self._changes["validate_ids"] = value
 
 
 options = Options()

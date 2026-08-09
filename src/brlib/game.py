@@ -77,6 +77,11 @@ class Game:
         Whether to standardize the venue name such that venues are identified by one name. If no
         value is passed, the value of `options.update_venue_names` is used.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the `game_id` input, if applicable. If no value is passed, the value of
+        `options.validate_ids` is used.
+
     ## Attributes
 
     * `id`: `str`
@@ -166,6 +171,7 @@ class Game:
         add_no_hitters: bool | None = None,
         update_team_names: bool | None = None,
         update_venue_names: bool | None = None,
+        validate_ids: bool | None = None,
     ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
@@ -173,9 +179,13 @@ class Game:
             update_team_names = options.update_team_names
         if update_venue_names is None:
             update_venue_names = options.update_venue_names
+        if validate_ids is None:
+            validate_ids = options.validate_ids
 
         if page.url == "":
-            games = validate_game_list([game_id])
+            games = [game_id]
+            if validate_ids:
+                games = validate_game_list(games)
             if len(games) == 0:
                 raise ValueError("invalid arguments: must provide a game_id or page argument")
             page = Game._get_game(games[0])

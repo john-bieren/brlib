@@ -64,6 +64,11 @@ class Player:
         empty by default (may require an additional request). If no value is passed, the value of
         `options.add_no_hitters` is used.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the `player_id` input, if applicable. If no value is passed, the value
+        of `options.validate_ids` is used.
+
     ## Attributes
 
     * `id`: `str`
@@ -135,15 +140,20 @@ class Player:
         player_id: str = "",
         page: Response = Response(),
         add_no_hitters: bool | None = None,
+        validate_ids: bool | None = None,
     ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
+        if validate_ids is None:
+            validate_ids = options.validate_ids
 
         if page.url == "":
-            player_ids = validate_player_list([player_id])
-            if len(player_ids) == 0:
+            players = [player_id]
+            if validate_ids:
+                players = validate_player_list(players)
+            if len(players) == 0:
                 raise ValueError("invalid arguments: must provide a player_id or page argument")
-            page = Player._get_player(player_ids[0])
+            page = Player._get_player(players[0])
         else:
             if not re.fullmatch(PLAYER_URL_REGEX, page.url):
                 raise ValueError("page does not contain a player")

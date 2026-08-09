@@ -68,6 +68,11 @@ class Team:
         Whether to standardize the venue name such that venues are identified by one name. If no
         value is passed, the value of `options.update_venue_names` is used.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the `team_id` input, if applicable. If no value is passed, the value of
+        `options.validate_ids` is used.
+
     ## Attributes
 
     * `id`: `str`
@@ -133,6 +138,7 @@ class Team:
         add_no_hitters: bool | None = None,
         update_team_names: bool | None = None,
         update_venue_names: bool | None = None,
+        validate_ids: bool | None = None,
     ) -> None:
         if add_no_hitters is None:
             add_no_hitters = options.add_no_hitters
@@ -140,9 +146,13 @@ class Team:
             update_team_names = options.update_team_names
         if update_venue_names is None:
             update_venue_names = options.update_venue_names
+        if validate_ids is None:
+            validate_ids = options.validate_ids
 
         if page.url == "":
-            teams = validate_team_list([team_id])
+            teams = [team_id]
+            if validate_ids:
+                teams = validate_team_list(teams)
             if len(teams) == 0:
                 raise ValueError("invalid arguments: must provide a team_id or page argument")
             page = Team._get_team(teams[0])
