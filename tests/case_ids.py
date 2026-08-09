@@ -12,6 +12,8 @@ game_test_cases = [
     # team with city-only name, asterisks on team PO totals, 10 innings, tie, doubleheader,
     # lots of fielding events, two umps
     "BSN191107122",
+    # 26 innings, TWO COMPLETE GAMES!, tie, two umps, renamed teams, pickoffs by catchers
+    "BSN192005010",
     # renamed team, wind "in unknown direction", Colt .45s table id special case
     "CHN196207291",
     # Boom-Boom Beck tests parsing, renamed team, no 2B ump (requires ump_info index reset), 4 OFA,
