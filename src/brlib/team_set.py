@@ -118,12 +118,9 @@ class TeamSet:
     def _gather_records(self) -> None:
         """Populates `self.records`."""
         prep_df = self.info.copy()
-        # All-Star teams have no team ID, so they are excluded
-        non_asg_rows = ~prep_df["Team ID"].isna()
-        prep_df.loc[non_asg_rows, "Franchise"] = prep_df.loc[non_asg_rows, "Team ID"].apply(
+        prep_df["Franchise"] = prep_df["Team ID"].apply(
             lambda x: abv_mgr.franchise_abv(x[:-4], int(x[-4:]))
         )
-        prep_df.loc[~non_asg_rows, "Franchise"] = prep_df.loc[~non_asg_rows, "Team"]
         self.records = prep_df.groupby("Franchise")[["Wins", "Losses", "Ties"]].sum()
 
         self.records = self.records.reset_index()
