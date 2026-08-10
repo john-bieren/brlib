@@ -1,4 +1,4 @@
-Player,Position,PO,A,E,DP,TP,OFA,PB,SB,CS,Pick,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,1B Pick,2B Pick,3B Pick,1B OFA,2B OFA,3B OFA,HP OFA,SB as C,CS as C,2B SB as C,3B SB as C,HP SB as C,2B CS as C,3B CS as C,HP CS as C,SB as P,CS as P,2B SB as P,3B SB as P,HP SB as P,2B CS as P,3B CS as P,HP CS as P,Game ID,Player ID,Team ID,Opponent Team ID
+Player,Position,PO,A,E,DP,TP,PB,SB,CS,SB as C,CS as C,SB as P,CS as P,Pick,OFA,2B SB,3B SB,HP SB,2B CS,3B CS,HP CS,2B SB as C,3B SB as C,HP SB as C,2B CS as C,3B CS as C,HP CS as C,2B SB as P,3B SB as P,HP SB as P,2B CS as P,3B CS as P,HP CS as P,1B Pick,2B Pick,3B Pick,1B OFA,2B OFA,3B OFA,HP OFA,Game ID,Player ID,Team ID,Opponent Team ID
 Ivey Wingo,2B,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PIT192010023,wingoiv01,CIN1920,PIT1920
 Rube Bressler,CF,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PIT192010023,bressru01,CIN1920,PIT1920
 Hod Eller,1B,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,PIT192010023,ellerho01,CIN1920,PIT1920

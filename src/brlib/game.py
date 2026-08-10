@@ -972,17 +972,17 @@ class Game:
         """Tallies baserunning stats by base for baserunners and fielders from `batting_tables`."""
         self.batting[
             [
+                "Pick",
+                "OFA",
                 "2B SB",
                 "3B SB",
                 "HP SB",
                 "2B CS",
                 "3B CS",
                 "HP CS",
-                "Pick",
                 "1B Pick",
                 "2B Pick",
                 "3B Pick",
-                "OFA",
                 "1B OFA",
                 "2B OFA",
                 "3B OFA",
@@ -992,38 +992,38 @@ class Game:
         self.fielding[
             [
                 "SB",
+                "CS",
+                "SB as C",
+                "CS as C",
+                "SB as P",
+                "CS as P",
+                "Pick",
+                "OFA",
                 "2B SB",
                 "3B SB",
                 "HP SB",
-                "CS",
                 "2B CS",
                 "3B CS",
                 "HP CS",
-                "Pick",
+                "2B SB as C",
+                "3B SB as C",
+                "HP SB as C",
+                "2B CS as C",
+                "3B CS as C",
+                "HP CS as C",
+                "2B SB as P",
+                "3B SB as P",
+                "HP SB as P",
+                "2B CS as P",
+                "3B CS as P",
+                "HP CS as P",
                 "1B Pick",
                 "2B Pick",
                 "3B Pick",
-                "OFA",
                 "1B OFA",
                 "2B OFA",
                 "3B OFA",
                 "HP OFA",
-                "SB as C",
-                "2B SB as C",
-                "3B SB as C",
-                "HP SB as C",
-                "CS as C",
-                "2B CS as C",
-                "3B CS as C",
-                "HP CS as C",
-                "SB as P",
-                "2B SB as P",
-                "3B SB as P",
-                "HP SB as P",
-                "CS as P",
-                "2B CS as P",
-                "3B CS as P",
-                "HP CS as P",
             ]
         ] = 0
         sb_ids = {"SBhome", "SBvisitor", "CShome", "CSvisitor", "Pickoffshome", "Pickoffsvisitor"}
@@ -1122,6 +1122,8 @@ class Game:
                 assists = line_str.split(": ", maxsplit=1)[1]
 
                 for assist in assists.split("; "):
+                    # this logic isn't ready for multiple assists by the same outfielder against the
+                    # same baserunner at the same base in one game, since this has never happened
                     outfielder, info = assist.strip(")").split(" (", maxsplit=1)
                     if info == "":
                         # might be missing info on old games as with SB/CS?
