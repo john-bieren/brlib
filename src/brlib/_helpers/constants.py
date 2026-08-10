@@ -102,7 +102,13 @@ PICKOFF_REGEX = re.compile(
 )
 
 # shorten full base names for use in column names
-BASE_CONVERSIONS = {"1st base": "1B", "2nd base": "2B", "3rd base": "3B", "Home": "HP"}
+BASE_CONVERSIONS = {
+    "1st base": "1B",
+    "2nd base": "2B",
+    "3rd base": "3B",
+    "Home": "HP",
+    "home plate": "HP",
+}
 
 # exponent used when calculating team Pythagorean W-L%
 # see https://www.sports-reference.com/blog/baseball-reference-faqs/
@@ -629,6 +635,7 @@ GAME_BATTING_DTYPES = {
     "SB": "Int64",
     "CS": "Int64",
     "Pick": "Int64",
+    "OFA": "Int64",
     "2B SB": "Int64",
     "3B SB": "Int64",
     "HP SB": "Int64",
@@ -638,6 +645,10 @@ GAME_BATTING_DTYPES = {
     "1B Pick": "Int64",
     "2B Pick": "Int64",
     "3B Pick": "Int64",
+    "1B OFA": "Int64",
+    "2B OFA": "Int64",
+    "3B OFA": "Int64",
+    "HP OFA": "Int64",
     "2-Out RBI": "Int64",
     "LOB": "Int64",
     "RISP": "string",
@@ -720,6 +731,10 @@ GAME_FIELDING_DTYPES = {
     "1B Pick": "Int64",
     "2B Pick": "Int64",
     "3B Pick": "Int64",
+    "1B OFA": "Int64",
+    "2B OFA": "Int64",
+    "3B OFA": "Int64",
+    "HP OFA": "Int64",
     "SB as C": "Int64",
     "CS as C": "Int64",
     "2B SB as C": "Int64",

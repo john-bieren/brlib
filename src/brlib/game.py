@@ -419,7 +419,7 @@ class Game:
         self.pitching = self.pitching.reset_index(drop=True)
 
         self._get_fielding_dataframe()
-        self._scrape_stolen_base_stats(batting_tables)
+        self._scrape_baserunning_stats(batting_tables)
         self._get_ump_info()
 
         self.info = self.info.reindex(columns=list(GAME_INFO_DTYPES))
@@ -968,8 +968,8 @@ class Game:
         self.batting = self.batting.loc[~self.batting["AB"].isna()]
         self.batting = self.batting.reset_index(drop=True)
 
-    def _scrape_stolen_base_stats(self, batting_tables: list[Tag]) -> None:
-        """Tallies SB attempts and results by catcher, stealer, and base from `batting_tables`."""
+    def _scrape_baserunning_stats(self, batting_tables: list[Tag]) -> None:
+        """Tallies baserunning stats by base for baserunners and fielders from `batting_tables`."""
         self.batting[
             [
                 "2B SB",
@@ -982,6 +982,11 @@ class Game:
                 "1B Pick",
                 "2B Pick",
                 "3B Pick",
+                "OFA",
+                "1B OFA",
+                "2B OFA",
+                "3B OFA",
+                "HP OFA",
             ]
         ] = 0
         self.fielding[
@@ -998,6 +1003,11 @@ class Game:
                 "1B Pick",
                 "2B Pick",
                 "3B Pick",
+                "OFA",
+                "1B OFA",
+                "2B OFA",
+                "3B OFA",
+                "HP OFA",
                 "SB as C",
                 "2B SB as C",
                 "3B SB as C",
@@ -1030,13 +1040,14 @@ class Game:
                 defense_team_id = self._home_team_id
             else:
                 raise ValueError("home and away teams cannot be found from batting tables")
+
+            # scrape SB/CS/pickoffs
             defense_totals_mask = (self.fielding["Player"] == "Team Totals") & (
                 self.fielding["Team ID"] == defense_team_id
             )
             offense_totals_mask = (self.batting["Player"] == "Team Totals") & (
                 self.batting["Team ID"] != defense_team_id
             )
-
             for line in footer.find_all("div", {"id": sb_ids}):
                 line_str = line.text.strip(".")
                 stat, players = line_str.split(": ", maxsplit=1)
@@ -1093,6 +1104,41 @@ class Game:
                         if stat == "Pick":
                             self.batting.loc[offense_mask, "Pick"] += times
                         self.batting.loc[offense_mask, f"{base} {stat}"] += times
+
+            # scrape outfield assists
+            defense_totals_mask = (self.fielding["Player"] == "Team Totals") & (
+                self.fielding["Team ID"] != defense_team_id
+            )
+            offense_totals_mask = (self.batting["Player"] == "Team Totals") & (
+                self.batting["Team ID"] == defense_team_id
+            )
+            for line in [
+                line
+                for line in footer.find_all("div")
+                if line.text.startswith("Outfield Assists: ")
+            ]:
+                line_str = line.text.strip(".").replace("\xa0", " ")
+                # one item per OFA, even if by the same outfielder (e.g., DET202506240)
+                assists = line_str.split(": ", maxsplit=1)[1]
+
+                for assist in assists.split("; "):
+                    outfielder, info = assist.strip(")").split(" (", maxsplit=1)
+                    if info == "":
+                        # might be missing info on old games as with SB/CS?
+                        dev_alert(f"{self.id}: no OFA info; potential test case")
+                        continue
+                    baserunner, base = info.split(" at ", maxsplit=1)
+                    base = BASE_CONVERSIONS[base]
+
+                    # increment outfielder stats
+                    outfielder_mask = self.fielding["Player"] == outfielder
+                    defense_mask = outfielder_mask | defense_totals_mask
+                    self.fielding.loc[defense_mask, ["OFA", f"{base} OFA"]] += 1
+
+                    # incremenet baserunner stats
+                    baserunner_mask = self.batting["Player"] == baserunner
+                    offense_mask = baserunner_mask | offense_totals_mask
+                    self.batting.loc[offense_mask, ["OFA", f"{base} OFA"]] += 1
 
     def _get_ump_info(self) -> None:
         """Populates `self.ump_info`."""
