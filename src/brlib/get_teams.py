@@ -16,6 +16,7 @@ def get_teams(
     update_team_names: bool | None = None,
     update_venue_names: bool | None = None,
     ignore_errors: bool = True,
+    validate_ids: bool | None = None,
 ) -> list[Team]:
     """
     Returns a list of `Team` objects corresponding to the team IDs in `team_list`. By default, a
@@ -51,6 +52,11 @@ def get_teams(
         limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
         as-is.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the team ids in `team_list`. If no value is passed, the value of
+        `options.validate_ids` is used.
+
     ## Returns
 
     `list[Team]`
@@ -78,8 +84,11 @@ def get_teams(
         update_team_names = options.update_team_names
     if update_venue_names is None:
         update_venue_names = options.update_venue_names
+    if validate_ids is None:
+        validate_ids = options.validate_ids
 
-    team_list = validate_team_list(team_list)
+    if validate_ids:
+        team_list = validate_team_list(team_list)
     if len(team_list) == 0:
         return []
 
@@ -100,6 +109,7 @@ def get_teams(
                 add_no_hitters=add_no_hitters,
                 update_team_names=update_team_names,
                 update_venue_names=update_venue_names,
+                validate_ids=False,
             )
             results.append(result)
             req_mgr.pause()

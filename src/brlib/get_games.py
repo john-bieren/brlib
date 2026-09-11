@@ -17,6 +17,7 @@ def get_games(
     update_team_names: bool | None = None,
     update_venue_names: bool | None = None,
     ignore_errors: bool = True,
+    validate_ids: bool | None = None,
 ) -> list[Game]:
     """
     Returns a list of `Game` objects corresponding to the game IDs in `game_list`. By default, a
@@ -52,6 +53,11 @@ def get_games(
         limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
         as-is.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the game ids in `game_list`. If no value is passed, the value of
+        `options.validate_ids` is used.
+
     ## Returns
 
     `list[Game]`
@@ -79,8 +85,11 @@ def get_games(
         update_team_names = options.update_team_names
     if update_venue_names is None:
         update_venue_names = options.update_venue_names
+    if validate_ids is None:
+        validate_ids = options.validate_ids
 
-    game_list = validate_game_list(game_list)
+    if validate_ids:
+        game_list = validate_game_list(game_list)
     if len(game_list) == 0:
         return []
 
@@ -101,6 +110,7 @@ def get_games(
                 add_no_hitters=add_no_hitters,
                 update_team_names=update_team_names,
                 update_venue_names=update_venue_names,
+                validate_ids=False,
             )
             results.append(result)
             req_mgr.pause()

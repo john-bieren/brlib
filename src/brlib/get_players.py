@@ -14,6 +14,7 @@ def get_players(
     player_list: list[str],
     add_no_hitters: bool | None = None,
     ignore_errors: bool = True,
+    validate_ids: bool | None = None,
 ) -> list[Player]:
     """
     Returns a list of `Player` objects corresponding to the player IDs in `player_list`. By default,
@@ -40,6 +41,11 @@ def get_players(
         limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
         as-is.
 
+    * `validate_ids`: `bool` or `None`, default `None`
+
+        Whether to validate the player ids in `player_list`. If no value is passed, the value of
+        `options.validate_ids` is used.
+
     ## Returns
 
     `list[Player]`
@@ -63,8 +69,11 @@ def get_players(
     """
     if add_no_hitters is None:
         add_no_hitters = options.add_no_hitters
+    if validate_ids is None:
+        validate_ids = options.validate_ids
 
-    player_list = validate_player_list(player_list)
+    if validate_ids:
+        player_list = validate_player_list(player_list)
     if len(player_list) == 0:
         return []
 
@@ -83,6 +92,7 @@ def get_players(
             result = Player(
                 page=page,
                 add_no_hitters=add_no_hitters,
+                validate_ids=False,
             )
             results.append(result)
             req_mgr.pause()
