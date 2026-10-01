@@ -211,7 +211,6 @@ class Options(Singleton):
         else:
             # reset to default
             if option not in self._preferences:
-                write(f"no preference set for {option}")
                 return
             del self._preferences[option]
 
