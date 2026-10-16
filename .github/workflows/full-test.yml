@@ -11,17 +11,17 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.11", "3.15"]
+        python-version: ["3.12", "3.15"]
         resolution: ['highest']
         include:
           - os: ubuntu-latest
-            python-version: "3.11"
+            python-version: "3.12"
             resolution: 'lowest-direct'
           - os: windows-latest
-            python-version: "3.11"
+            python-version: "3.12"
             resolution: 'lowest-direct'
           - os: macos-latest
-            python-version: "3.11"
+            python-version: "3.12"
             resolution: 'lowest-direct'
 
     steps:
