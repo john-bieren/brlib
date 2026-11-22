@@ -617,7 +617,7 @@ class Player:
                     else:
                         dev_alert(f'{self.id}: unexpected relation "{r.strip()}"')
 
-    def _scrape_bling(self, player_bling: Tag) -> None:
+    def _scrape_bling(self, player_bling: Tag | None) -> None:
         """Populates the career totals row of `self.bling`."""
         self.bling["Season"] = "Career Totals"
         self.bling[[*BLING_DICT.values()]] = 0
