@@ -133,13 +133,13 @@ class GameSet:
     def _gather_records(self) -> None:
         """Populates `self.records`."""
         prep_df = self.team_info.copy()
-        # All-Star teams have no team ID, so they are excluded
-        non_asg_rows = ~prep_df["Team ID"].isna()
-        prep_df.loc[non_asg_rows, "Franchise"] = prep_df.loc[non_asg_rows, "Team ID"].apply(
+        # All-Star teams aren't real teams, so their IDs would be rejected
+        asg_rows = prep_df["Team ID"].str.startswith(("ALS", "NLS"), na=False)
+        prep_df.loc[~asg_rows, "Franchise"] = prep_df.loc[~asg_rows, "Team ID"].apply(
             lambda x: abv_mgr.franchise_abv(x[:-4], int(x[-4:]))
         )
-        # fill in All-Star team names
-        prep_df.loc[~non_asg_rows, "Franchise"] = prep_df.loc[~non_asg_rows, "Team"]
+        # fill in All-Star team rows
+        prep_df.loc[asg_rows, "Franchise"] = prep_df.loc[asg_rows, "Team ID"].str[:-4]
 
         prep_df = prep_df.groupby("Franchise")["Result"].value_counts()
         prep_df = prep_df.unstack(fill_value=0).rename_axis(columns=None).reset_index()

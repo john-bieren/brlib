@@ -476,12 +476,12 @@ class Game:
         self.linescore[records[0][1:]] = self.linescore[records[0][1:]].astype("Int64")
 
         # record the teams by using the links to their pages
+        tags = linescore.find_all("a", href=True)
+        teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
+        teams = [str_between(team, "/teams/", ".").replace("/", "") for team in teams]
+        assert len(teams) == 2
+        self._away_team_id, self._home_team_id = teams
         if not self._is_asg:
-            tags = linescore.find_all("a", href=True)
-            teams = [tag["href"] for tag in tags if tag["href"].startswith("/teams/")]
-            teams = [str_between(team, "/teams/", ".").replace("/", "") for team in teams]
-            assert len(teams) == 2
-            self._away_team_id, self._home_team_id = teams
             self.teams += teams
 
         changed_winner = FORFEITED_GAME_WINNERS.get(self.id)

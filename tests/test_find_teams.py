@@ -6,7 +6,9 @@ from brlib import find_teams
 def test_teams():
     """Tests that the `teams` argument is handled correctly."""
     # reject alias
-    assert len(find_teams("KC1", "ALL")) == 0
+    assert len(find_teams("KC1")) == 0
+    # reject All-Star teams
+    assert len(find_teams("ALS")) == 0
     # list, test case insensitivity
     assert find_teams(["col", "BAL"], "2020") == ["COL2020", "BAL2020"]
     # era adjustment

@@ -11,10 +11,10 @@ def test_teams():
     assert len(find_games("KCA", "1957")) == 154
     # list, test case insensitivity
     assert len(find_games(["col", "BAL"], "1993")) == 324
-    # "ALL"
-    assert len(find_games(seasons="1903")) == 1122
     # skip Negro League teams, which lack box score coverage
     assert len(find_games("BBB")) == 0
+    # skip All-Star teams, which are found with find_asg
+    assert len(find_games("ALS")) == 0
     # era adjustment
     assert find_games("BAL", "1915", dates="825-826") == [
         "BAL191508251",
@@ -46,8 +46,6 @@ def test_seasons():
 
 def test_opponents():
     """Tests that the `opponents` argument is handled correctly."""
-    # reject alias
-    assert len(find_games(seasons="1957", opponents="KC1")) == 0
     # with a teams argument (the expected use case)
     assert find_games("SEA", "2025", "MIL") == [
         "SEA202507210",
@@ -56,6 +54,10 @@ def test_opponents():
     ]
     # should work without a teams argument as well (though this usage is dubious)
     assert find_games(seasons="1985", opponents="BOS") == find_games(teams="BOS", seasons="1985")
+    # reject alias
+    assert len(find_games(seasons="1957", opponents="KC1")) == 0
+    # accept abbreviation that is also an alias
+    assert len(find_games(seasons="1957", opponents="KCA")) == 154
     # list, test case insensitivity
     assert find_games("LAD", "2020", opponents=["oak", "TEX"]) == [
         "TEX202008280",
@@ -64,6 +66,18 @@ def test_opponents():
         "LAD202009220",
         "LAD202009230",
         "LAD202009240",
+    ]
+    # skip Negro League teams, which lack box score coverage
+    assert len(find_games(opponents="BEG")) == 0
+    # skip All-Star teams, which are found with find_asg
+    assert len(find_games(opponents="NLS")) == 0
+    # era adjustment
+    assert find_games(seasons="1915", opponents="BAL", dates="825-826") == [
+        "BAL191508251",
+        "BAL191508252",
+        "SLB191508250",
+        "BAL191508260",
+        "SLB191508260",
     ]
 
 
