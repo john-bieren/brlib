@@ -1092,7 +1092,7 @@ class Game:
                             defense_mask = fielder_mask | defense_totals_mask
                             if stat != "Pick":  # position cannot be determined on pickoffs
                                 self.fielding.loc[
-                                    defense_mask, [f"{stat} as {pos}", f"{base} {stat} as {pos}"]
+                                    defense_mask, [f"{stat} ({pos})", f"{base} {stat} ({pos})"]
                                 ] += times
                             self.fielding.loc[fielder_mask, [stat, f"{base} {stat}"]] += times
                         self.fielding.loc[defense_totals_mask, [stat, f"{base} {stat}"]] += times
