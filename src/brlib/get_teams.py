@@ -12,10 +12,10 @@ from .team import Team
 @runtime_typecheck
 def get_teams(
     team_list: list[str],
+    ignore_errors: bool = True,
     add_no_hitters: bool | None = None,
     update_team_names: bool | None = None,
     update_venue_names: bool | None = None,
-    ignore_errors: bool = True,
     validate_ids: bool | None = None,
 ) -> list[Team]:
     """
@@ -28,6 +28,13 @@ def get_teams(
     * `team_list`: `list[str]`
 
         A list of team IDs.
+
+    * `ignore_errors`: `bool`, default `True`
+
+        Whether to suppress any raised exceptions. If `True`, Teams that raise an exception will be
+        omitted from the returned list. If the exception is caused by the [rate
+        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
+        as-is.
 
     * `add_no_hitters`: `bool` or `None`, default `None`
 
@@ -44,13 +51,6 @@ def get_teams(
 
         Whether to standardize venue names such that venues are identified by one name. If no value
         is passed, the value of `options.update_venue_names` is used.
-
-    * `ignore_errors`: `bool`, default `True`
-
-        Whether to suppress any raised exceptions. If `True`, teams that raise an exception will be
-        omitted from the returned list. If the exception is caused by the [rate
-        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
-        as-is.
 
     * `validate_ids`: `bool` or `None`, default `None`
 

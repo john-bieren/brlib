@@ -12,8 +12,8 @@ from .player import Player
 @runtime_typecheck
 def get_players(
     player_list: list[str],
-    add_no_hitters: bool | None = None,
     ignore_errors: bool = True,
+    add_no_hitters: bool | None = None,
     validate_ids: bool | None = None,
 ) -> list[Player]:
     """
@@ -28,18 +28,18 @@ def get_players(
         A list of player ID arguments like those for a
         [`Player`](https://github.com/john-bieren/brlib/wiki/Player) object.
 
+    * `ignore_errors`: `bool`, default `True`
+
+        Whether to suppress any raised exceptions. If `True`, Players that raise an exception will
+        be omitted from the returned list. If the exception is caused by the [rate
+        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
+        as-is.
+
     * `add_no_hitters`: `bool` or `None`, default `None`
 
         Whether to populate the no-hitter columns in the `Player.pitching` DataFrames, which are
         empty by default (may require an additional request). If no value is passed, the value of
         `options.add_no_hitters` is used.
-
-    * `ignore_errors`: `bool`, default `True`
-
-        Whether to suppress any raised exceptions. If `True`, players that raise an exception will
-        be omitted from the returned list. If the exception is caused by the [rate
-        limit](https://www.sports-reference.com/429.html) being exceeded, the list is returned
-        as-is.
 
     * `validate_ids`: `bool` or `None`, default `None`
 
