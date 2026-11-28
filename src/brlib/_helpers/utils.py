@@ -9,6 +9,99 @@ from bs4 import Tag
 from .constants import TEAM_REPLACEMENTS
 
 
+def clean_spaces(string: str) -> str:
+    """Removes consecutive, leading, and trailing spaces from `string`."""
+    return " ".join(string.split()).strip()
+
+
+def convert_innings_notation(innings: str | float) -> float | None:
+    """Converts box score notation to the correct numerical value so that values sum correctly."""
+    innings = str(innings) if not isinstance(innings, str) else innings
+    innings = innings.replace(".1", ".333334").replace(".2", ".666667")
+    if innings == "":
+        return None
+    return float(innings)
+
+
+def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
+    """Converts the numeric columns of `df` to correct dtypes using `pd.to_numeric`."""
+    for col in df.columns:
+        try:
+            df[col] = pd.to_numeric(df[col], errors="raise")
+        except (
+            ValueError,  # includes a non-convertable value of a compatible type (e.g., "a")
+            TypeError,  # includes a value of an incompatible type (e.g., a list)
+        ):
+            # skip columns that cannot be converted
+            pass
+    return df
+
+
+def create_padded_df(records: list[list[str]], column_names: list[str]) -> pd.DataFrame:
+    """
+    Creates a DataFrame from a given set of `records` and `column_names`; pads shorter-than-expected
+    rows with null values.
+    """
+    records = [list(row) + [None] * (len(column_names) - len(row)) for row in records]
+    return pd.DataFrame(records, columns=column_names)
+
+
+def game_id_to_endpoint(game_id: str) -> str:
+    """Converts `game_id` to the associated URL endpoint."""
+    is_asg = len(game_id) != 12
+    if is_asg:
+        endpoint = f"/allstar/{game_id}.shtml"
+    else:
+        endpoint = f"/boxes/{game_id[:-9]}/{game_id}.shtml"
+    return endpoint
+
+
+def reformat_date(string_date: str) -> str:
+    """
+    Converts `string_date` from "Month DD, YYYY" to YYYY-MM-DD for formatting consistency.
+    If `string_date` does not match this format, an empty string will be returned.
+    """
+    try:
+        date = datetime.strptime(string_date, "%B %d, %Y")
+    except ValueError:
+        # input doesn't match format, cannot be reformatted, and should be discarded
+        return ""
+    day, month = date.day, date.month
+    month = f"0{month}" if month < 10 else month
+    day = f"0{day}" if day < 10 else day
+    return f"{date.year}-{month}-{day}"
+
+
+def scrape_player_ids(table: bs | Tag) -> list[str]:
+    """Returns player IDs from anchor tags in `table`."""
+    player_id_column = []
+    for row in table.find_all("a", href=True):
+        link = row.get("href", "")
+        if "players" not in link:
+            continue
+        # [11:21] includes the period in ".shtml" so rsplit works if ID is short or has a period
+        player_id = link[11:21]
+        player_id_column.append(player_id.rsplit(".", maxsplit=1)[0])
+    return player_id_column
+
+
+def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
+    """
+    Returns contents from the first comment within `tag`.
+    If `tag` does not include a table and `only_if_table` is `True`, returns `tag`.
+    """
+    try:
+        comment_contents = str_between(tag.decode_contents(), "<!--", "-->").strip()
+        if only_if_table and not "<col><col><col>" in comment_contents:
+            return tag
+        return bs(comment_contents, "lxml")
+    except (
+        IndexError,  # thrown when indexing split functions in str_between
+        ValueError,  # thrown explicitly by str_between
+    ):
+        return tag
+
+
 def str_between(string: str, start: str, end: str, anchor: str = "start") -> str:
     """
     Returns the substring of `string` that appears between `start` and `end`.
@@ -39,90 +132,6 @@ def str_remove(string: str, *substrings: str) -> str:
     return string
 
 
-def clean_spaces(string: str) -> str:
-    """Removes consecutive, leading, and trailing spaces from `string`."""
-    return " ".join(string.split()).strip()
-
-
-def reformat_date(string_date: str) -> str:
-    """
-    Converts `string_date` from "Month DD, YYYY" to YYYY-MM-DD for formatting consistency.
-    If `string_date` does not match this format, an empty string will be returned.
-    """
-    try:
-        date = datetime.strptime(string_date, "%B %d, %Y")
-    except ValueError:
-        # input doesn't match format, cannot be reformatted, and should be discarded
-        return ""
-    day, month = date.day, date.month
-    month = f"0{month}" if month < 10 else month
-    day = f"0{day}" if day < 10 else day
-    return f"{date.year}-{month}-{day}"
-
-
-def soup_from_comment(tag: Tag, only_if_table: bool) -> bs | Tag:
-    """
-    Returns contents from the first comment within `tag`.
-    If `tag` does not include a table and `only_if_table` is `True`, returns `tag`.
-    """
-    try:
-        comment_contents = str_between(tag.decode_contents(), "<!--", "-->").strip()
-        if only_if_table and not "<col><col><col>" in comment_contents:
-            return tag
-        return bs(comment_contents, "lxml")
-    except (
-        IndexError,  # thrown when indexing split functions in str_between
-        ValueError,  # thrown explicitly by str_between
-    ):
-        return tag
-
-
-def scrape_player_ids(table: bs | Tag) -> list[str]:
-    """Returns player IDs from anchor tags in `table`."""
-    player_id_column = []
-    for row in table.find_all("a", href=True):
-        link = row.get("href", "")
-        if "players" not in link:
-            continue
-        # [11:21] includes the period in ".shtml" so rsplit works if ID is short or has a period
-        player_id = link[11:21]
-        player_id_column.append(player_id.rsplit(".", maxsplit=1)[0])
-    return player_id_column
-
-
-def convert_innings_notation(innings: str | float) -> float | None:
-    """Converts box score notation to the correct numerical value so that values sum correctly."""
-    innings = str(innings) if not isinstance(innings, str) else innings
-    innings = innings.replace(".1", ".333334").replace(".2", ".666667")
-    if innings == "":
-        return None
-    return float(innings)
-
-
-def convert_numeric_cols(df: pd.DataFrame) -> pd.DataFrame:
-    """Converts the numeric columns of `df` to correct dtypes using `pd.to_numeric`."""
-    for col in df.columns:
-        try:
-            df[col] = pd.to_numeric(df[col], errors="raise")
-        except (
-            ValueError,  # includes a non-convertable value of a compatible type (e.g., "a")
-            TypeError,  # includes a value of an incompatible type (e.g., a list)
-        ):
-            # skip columns that cannot be converted
-            pass
-    return df
-
-
-def game_id_to_endpoint(game_id: str) -> str:
-    """Converts `game_id` to the associated URL endpoint."""
-    is_asg = len(game_id) != 12
-    if is_asg:
-        endpoint = f"/allstar/{game_id}.shtml"
-    else:
-        endpoint = f"/boxes/{game_id[:-9]}/{game_id}.shtml"
-    return endpoint
-
-
 def update_game_col(row: pd.Series) -> str:
     """
     Returns the value of 'Game.info["Game"]' with updated team names for a given 'row'. Intended to
@@ -133,12 +142,3 @@ def update_game_col(row: pd.Series) -> str:
     mapped_away = TEAM_REPLACEMENTS.get(row["Away Team ID"], away)
     mapped_home = TEAM_REPLACEMENTS.get(row["Home Team ID"], home)
     return row["Game"].replace(away, mapped_away, 1).replace(home, mapped_home, 1)
-
-
-def create_padded_df(records: list[list[str]], column_names: list[str]) -> pd.DataFrame:
-    """
-    Creates a DataFrame from a given set of `records` and `column_names`; pads shorter-than-expected
-    rows with null values.
-    """
-    records = [list(row) + [None] * (len(column_names) - len(row)) for row in records]
-    return pd.DataFrame(records, columns=column_names)
