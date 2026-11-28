@@ -33,6 +33,7 @@ from ._helpers.utils import (
     clean_spaces,
     convert_innings_notation,
     convert_numeric_cols,
+    create_padded_df,
     reformat_date,
     soup_from_comment,
     str_between,
@@ -649,7 +650,7 @@ class Player:
             record = [ele.text.strip() for ele in row.find_all()]
             records.append(record)
 
-        self.salaries = pd.DataFrame(records[1:], columns=records[0])
+        self.salaries = create_padded_df(records[1:], records[0])
         self.salaries = self.salaries.rename(columns={"Tm": "Team", "SrvTm": "Service Time"})
         self.salaries = self.salaries.replace(r"\xa0", " ", regex=True)
 
@@ -812,7 +813,7 @@ class Player:
             .reindex(columns=["Season", "Game Type", "Awards"])
             .drop_duplicates(subset=["Season", "Game Type"])
         )
-        prep_df["Awards"] = prep_df["Awards"].fillna("")  # column is all-na if empty
+        prep_df["Awards"] = prep_df["Awards"].astype("string").fillna("")  # is all na if empty
         prep_df = prep_df.loc[prep_df["Season"].str.fullmatch(r"\d{4}")]
         prep_df = prep_df.groupby("Season")["Awards"].apply(lambda x: ",".join(x)).reset_index()
 
@@ -977,8 +978,8 @@ class Player:
         reg_column_names = reg_records.pop(0)
         if tables == 2:
             post_column_names = post_records.pop(0)
-            reg_df = pd.DataFrame(reg_records, columns=reg_column_names)
-            post_df = pd.DataFrame(post_records, columns=post_column_names)
+            reg_df = create_padded_df(reg_records, reg_column_names)
+            post_df = create_padded_df(post_records, post_column_names)
             reg_df = Player._clean_dataframe(reg_df)
             post_df = Player._clean_dataframe(post_df)
             if add_game_type:
@@ -990,7 +991,7 @@ class Player:
                 reg_df = pd.concat((reg_df, blank_rows))
             df = pd.concat((reg_df, post_df), ignore_index=True)
         else:
-            df = pd.DataFrame(reg_records, columns=reg_column_names)
+            df = create_padded_df(reg_records, reg_column_names)
             df = Player._clean_dataframe(df)
             if add_game_type:
                 # this could be a player who has only appeared in the postseason, e.g., kigerma01

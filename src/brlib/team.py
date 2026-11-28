@@ -27,6 +27,7 @@ from ._helpers.utils import (
     clean_spaces,
     convert_innings_notation,
     convert_numeric_cols,
+    create_padded_df,
     scrape_player_ids,
     soup_from_comment,
     str_between,
@@ -607,13 +608,13 @@ class Team:
             reg_column_names[3] = "Position"
         if found_postseason_table:
             post_column_names = post_records.pop(0)
-            reg_df = pd.DataFrame(reg_records, columns=reg_column_names)
-            post_df = pd.DataFrame(post_records, columns=post_column_names)
+            reg_df = create_padded_df(reg_records, reg_column_names)
+            post_df = create_padded_df(post_records, post_column_names)
             reg_df["Game Type"] = "Regular Season"
             post_df["Game Type"] = "Postseason"
             df_1 = pd.concat((reg_df, post_df))
         else:
-            df_1 = pd.DataFrame(reg_records, columns=reg_column_names)
+            df_1 = create_padded_df(reg_records, reg_column_names)
             df_1["Game Type"] = "Regular Season"
 
         # remove column label rows

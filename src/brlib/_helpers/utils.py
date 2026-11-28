@@ -133,3 +133,12 @@ def update_game_col(row: pd.Series) -> str:
     mapped_away = TEAM_REPLACEMENTS.get(row["Away Team ID"], away)
     mapped_home = TEAM_REPLACEMENTS.get(row["Home Team ID"], home)
     return row["Game"].replace(away, mapped_away, 1).replace(home, mapped_home, 1)
+
+
+def create_padded_df(records: list[list[str]], column_names: list[str]) -> pd.DataFrame:
+    """
+    Creates a DataFrame from a given set of `records` and `column_names`; pads shorter-than-expected
+    rows with null values.
+    """
+    records = [list(row) + [None] * (len(column_names) - len(row)) for row in records]
+    return pd.DataFrame(records, columns=column_names)

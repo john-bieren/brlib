@@ -564,10 +564,10 @@ class Game:
                 ][0]
                 score = int(team.find("div", {"class": "score"}).text)
                 if is_home:
-                    self.team_info.at[1, "Record"] = record
+                    self.team_info.loc[1, "Record"] = record
                     assert self._home_score == score
                 else:
-                    self.team_info.at[0, "Record"] = record
+                    self.team_info.loc[0, "Record"] = record
                     assert self._away_score == score
 
             # get team's previous and next game IDs
